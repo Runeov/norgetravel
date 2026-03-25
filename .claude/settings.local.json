@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node:*)",
+      "Bash(npm run build)",
+      "Bash(curl:*)",
+      "Bash(powershell -Command \"Invoke-RestMethod -Uri ''http://localhost:3000/api/admin/auth'' -Method POST -ContentType ''application/json'' -Body ''{\"\"email\"\":\"\"admin@averdi.no\"\",\"\"password\"\":\"\"admin123\"\"}'' | ConvertTo-Json\")",
+      "Bash(powershell -Command \"\\(Invoke-WebRequest -Uri ''http://localhost:3000/om-oss'' -UseBasicParsing\\).Content\")",
+      "Bash(find:*)",
+      "Bash(head:*)",
+      "Bash(cd:*)",
+      "Bash(cd /c/dev/November_2025/averdiNextJS && netlify status 2>&1)",
+      "Bash(cd /c/dev/November_2025/averdiNextJS && netlify sites:list 2>&1)",
+      "Bash(cd /c/dev/November_2025/averdiNextJS && netlify link --id splendid-dragon-d1c339 2>&1)",
+      "Bash(cd /c/dev/November_2025/averdiNextJS && netlify link --id c2f10865-206c-4586-bfe3-4497582c0e6d 2>&1)",
+      "Bash(cd /c/dev/November_2025/averdiNextJS && netlify deploy --prod 2>&1)",
+      "Bash(cd /c/dev/November_2025/averdiNextJS && npx @next/codemod@canary upgrade latest 2>&1)",
+      "Bash(cd /c/dev/November_2025/averdiNextJS && printf 'a\\\\n\\\\n' | npx @next/codemod@canary upgrade latest 2>&1)",
+      "Bash(cd /c/dev/November_2025/averdiNextJS && npx @next/codemod@canary middleware-to-proxy . 2>&1)",
+      "Bash(cd /c/dev/November_2025/averdiNextJS && npx @next/codemod@canary middleware-to-proxy . --force 2>&1 && npx @next/codemod@canary remove-experimental-ppr . --force 2>&1 && npx @next/codemod@canary remove-unstable-prefix . --force 2>&1)",
+      "Bash(tail:*)",
+      "WebFetch(domain:smartorg.no)",
+      "Bash(sed:*)",
+      "Bash(cd /c/dev/November_2025/averdiNextJS && npx tsc --noEmit 2>&1)",
+      "Bash(ls:*)",
+      "WebSearch",
+      "Bash(ping:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git:*)"
+    ]
+  }
+}

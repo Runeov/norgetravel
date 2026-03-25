@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Averdi Project Presentation - Work Done & Roadmap</title>
+    <style>
+        /* Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        
+        /* Print styles */
+        @media print {
+            body { background: white; }
+            .slide { page-break-after: always; box-shadow: none; border: 1px solid #e2e8f0; }
+            .slide:last-child { page-break-after: avoid; }
+            .no-print { display: none; }
+        }
+        
+        /* Slide container */
+        .presentation {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .slide {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            margin-bottom: 40px;
+            overflow: hidden;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Slide header */
+        .slide-header {
+            padding: 40px 50px 30px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .slide-header.gradient {
+            background: linear-gradient(135deg, #E86C1F 0%, #F4B223 100%);
+            color: white;
+            border-bottom: none;
+        }
+        
+        .slide-header.dark {
+            background: #0f172a;
+            color: white;
+            border-bottom: none;
+        }
+        
+        .slide-number {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.6;
+            margin-bottom: 10px;
+        }
+        
+        .slide-title {
+            font-size: 36px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+        
+        .slide-subtitle {
+            font-size: 18px;
+            opacity: 0.8;
+        }
+        
+        /* Slide content */
+        .slide-content {
+            padding: 40px 50px;
+            flex: 1;
+        }
+        
+        /* Typography */
+        h2 { font-size: 24px; color: #0f172a; margin-bottom: 20px; }
+        h3 { font-size: 18px; color: #334155; margin-bottom: 15px; }
+        p { margin-bottom: 15px; color: #475569; }
+        
+        /* Lists */
+        ul, ol { margin: 15px 0 20px 25px; }
+        li { margin-bottom: 10px; color: #475569; }
+        li strong { color: #0f172a; }
+        
+        /* Cards grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .card-grid.three { grid-template-columns: repeat(3, 1fr); }
+        
+        .card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 25px;
+        }
+        
+        .card.highlight {
+            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+            border-color: #fcd34d;
+        }
+        
+        .card.success {
+            background: linear-gradient(135deg, #dcfce7 0%, #d1fae5 100%);
+            border-color: #86efac;
+        }
+        
+        .card.primary {
+            background: linear-gradient(135deg, #E86C1F 0%, #F4B223 100%);
+            color: white;
+            border: none;
+        }
+        
+        .card.dark {
+            background: #1e293b;
+            color: white;
+            border: none;
+        }
+        
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .card-icon.orange { background: #fed7aa; }
+        .card-icon.blue { background: #bfdbfe; }
+        .card-icon.green { background: #bbf7d0; }
+        .card-icon.purple { background: #ddd6fe; }
+        
+        .card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: inherit;
+        }
+        
+        .card p {
+            font-size: 14px;
+            margin: 0;
+            color: inherit;
+            opacity: 0.9;
+        }
+        
+        /* Stats */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 25px;
+            background: #f8fafc;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .stat-value {
+            font-size: 36px;
+            font-weight: 800;
+            color: #E86C1F;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            color: #64748b;
+            font-weight: 500;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 30px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #E86C1F, #F4B223);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 25px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            background: white;
+            border: 3px solid #E86C1F;
+            border-radius: 50%;
+        }
+        
+        .timeline-item.completed::before {
+            background: #E86C1F;
+        }
+        
+        .timeline-item.in-progress::before {
+            background: #F4B223;
+            border-color: #F4B223;
+        }
+        
+        .timeline-item h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-item p {
+            font-size: 14px;
+            color: #64748b;
+            margin: 0;
+        }
+        
+        /* Progress bars */
+        .progress-item {
+            margin-bottom: 20px;
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .progress-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #334155;
+        }
+        
+        .progress-value {
+            font-size: 14px;
+            font-weight: 700;
+            color: #E86C1F;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #E86C1F, #F4B223);
+            border-radius: 5px;
+            transition: width 0.5s ease;
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        th {
+            background: #f8fafc;
+            font-weight: 700;
+            color: #334155;
+        }
+        
+        tr:hover { background: #f8fafc; }
+        
+        /* Status badges */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .badge.done { background: #dcfce7; color: #166534; }
+        .badge.progress { background: #fef3c7; color: #92400e; }
+        .badge.planned { background: #e2e8f0; color: #475569; }
+        
+        /* Quote box */
+        .quote-box {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-left: 4px solid #E86C1F;
+            padding: 25px 30px;
+            border-radius: 0 16px 16px 0;
+            margin: 25px 0;
+        }
+        
+        .quote-box p {
+            font-size: 18px;
+            font-style: italic;
+            color: #334155;
+            margin: 0;
+        }
+        
+        .quote-box .author {
+            font-size: 14px;
+            font-style: normal;
+            color: #64748b;
+            margin-top: 10px;
+        }
+        
+        /* Feature list */
+        .feature-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 15px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .feature-list li:last-child { border-bottom: none; }
+        
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: #dcfce7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #16a34a;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        
+        /* Two column layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        /* Cover slide special */
+        .cover-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px;
+            flex: 1;
+        }
+        
+        .cover-logo {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #E86C1F, #F4B223);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(232, 108, 31, 0.3);
+        }
+        
+        .cover-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 15px;
+        }
+        
+        .cover-subtitle {
+            font-size: 20px;
+            color: #64748b;
+            margin-bottom: 40px;
+        }
+        
+        .cover-meta {
+            font-size: 14px;
+            color: #94a3b8;
+        }
+        
+        /* Footer */
+        .slide-footer {
+            padding: 20px 50px;
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        
+        <!-- SLIDE 1: Cover -->
+        <div class="slide">
+            <div class="cover-content">
+                <div class="cover-logo">A</div>
+                <h1 class="cover-title">Averdi Digital Platform</h1>
+                <p class="cover-subtitle">Project Status, Achievements & Roadmap</p>
+                <p class="cover-meta">January 2026 | Prepared for Stakeholder Review</p>
+            </div>
+            <div class="slide-footer">
+                <span>Averdi AS</span>
+                <span>Confidential</span>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: Executive Summary -->
+        <div class="slide">
+            <div class="slide-header gradient">
+                <div class="slide-number">Slide 01</div>
+                <h1 class="slide-title">Executive Summary</h1>
+                <p class="slide-subtitle">What we've built and where we're going</p>
+            </div>
+            <div class="slide-content">
+                <div class="stat-grid">
+                    <div class="stat">
+                        <div class="stat-value">200+</div>
+                        <div class="stat-label">Development Hours</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">15+</div>
+                        <div class="stat-label">Knowledge Pages</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">3</div>
+                        <div class="stat-label">Interactive Tools</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">0 kr</div>
+                        <div class="stat-label">Server Costs*</div>
+                    </div>
+                </div>
+                
+                <div class="quote-box">
+                    <p>"We've built a comprehensive digital platform that positions Averdi as the authoritative source for accounting knowledge in Northern Norway — with zero ongoing server costs."</p>
+                </div>
+                
+                <div class="card-grid">
+                    <div class="card success">
+                        <h4>✅ Completed</h4>
+                        <p>Full website with knowledge hub, admin panel, employee management, and article system</p>
+                    </div>
+                    <div class="card highlight">
+                        <h4>🚧 In Progress</h4>
+                        <p>Advanced calculators, AI content assistant integration, social media automation</p>
+                    </div>
+                </div>
+                
+                <p style="font-size: 12px; color: #94a3b8; margin-top: 20px;">*Hosted on Vercel free tier with JSON file storage — no database costs</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: What We've Built -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-number">Slide 02</div>
+                <h1 class="slide-title">What We've Built</h1>
+                <p class="slide-subtitle">Core platform features delivered</p>
+            </div>
+            <div class="slide-content">
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-icon orange">🏠</div>
+                        <h4>Public Website</h4>
+                        <p>Modern, responsive website with hero, services, knowledge hub teaser, and contact sections</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon blue">📚</div>
+                        <h4>Kunnskapsbank (Knowledge Hub)</h4>
+                        <p>15+ deep-dive articles on Sametinget grants, tax benefits, and regional incentives</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon green">👥</div>
+                        <h4>Team Profiles</h4>
+                        <p>Dynamic employee pages with detailed bios, specialties, and contact information</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon purple">⚙️</div>
+                        <h4>Admin Panel</h4>
+                        <p>Full CMS for managing employees and articles without developer intervention</p>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 30px;">Technical Stack</h3>
+                <table>
+                    <tr>
+                        <th>Technology</th>
+                        <th>Purpose</th>
+                        <th>Benefit</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Next.js 15</strong></td>
+                        <td>React framework</td>
+                        <td>SEO-optimized, fast, modern</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tailwind CSS</strong></td>
+                        <td>Styling</td>
+                        <td>Consistent design, rapid development</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TipTap Editor</strong></td>
+                        <td>Rich text editing</td>
+                        <td>Professional article creation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>JSON Storage</strong></td>
+                        <td>Data persistence</td>
+                        <td>Zero database costs</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: Admin Panel Deep Dive -->
+        <div class="slide">
+            <div class="slide-header dark">
+                <div class="slide-number">Slide 03</div>
+                <h1 class="slide-title">Admin Panel</h1>
+                <p class="slide-subtitle">Total content freedom without server costs</p>
+            </div>
+            <div class="slide-content">
+                <div class="two-col">
+                    <div>
+                        <h3>Employee Management</h3>
+                        <ul class="feature-list">
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <div>
+                                    <strong>Create & Edit Employees</strong>
+                                    <p style="font-size: 13px; color: #64748b; margin: 5px 0 0;">Full profile editing with name, role, bio, specialties, education</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <div>
+                                    <strong>Image Upload</strong>
+                                    <p style="font-size: 13px; color: #64748b; margin: 5px 0 0;">Profile photos stored in public folder</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <div>
+                                    <strong>Active/Inactive Toggle</strong>
+                                    <p style="font-size: 13px; color: #64748b; margin: 5px 0 0;">Control visibility on public site</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <div>
+                                    <strong>Sort Order Control</strong>
+                                    <p style="font-size: 13px; color: #64748b; margin: 5px 0 0;">Drag to reorder team display</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Article Management</h3>
+                        <ul class="feature-list">
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <div>
+                                    <strong>Rich Text Editor</strong>
+                                    <p style="font-size: 13px; color: #64748b; margin: 5px 0 0;">TipTap WYSIWYG with formatting, images, links</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <div>
+                                    <strong>Draft/Publish Workflow</strong>
+                                    <p style="font-size: 13px; color: #64748b; margin: 5px 0 0;">Save drafts, publish when ready</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <div>
+                                    <strong>Category System</strong>
+                                    <p style="font-size: 13px; color: #64748b; margin: 5px 0 0;">Organize by topic (bedrift, sametinget, etc.)</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✓</span>
+                                <div>
+                                    <strong>SEO Fields</strong>
+                                    <p style="font-size: 13px; color: #64748b; margin: 5px 0 0;">Meta title, description, featured image</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card primary" style="margin-top: 30px;">
+                    <h4>💡 Key Benefit: Zero Server Costs</h4>
+                    <p>All data stored in JSON files, hosted on Vercel's free tier. No database subscriptions, no monthly fees. Full CMS functionality without the cost.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: Interactive Tools -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-number">Slide 04</div>
+                <h1 class="slide-title">Interactive Tools & Calculators</h1>
+                <p class="slide-subtitle">Engaging users with practical value</p>
+            </div>
+            <div class="slide-content">
+                <div class="card-grid three">
+                    <div class="card success">
+                        <h4>✅ Innsatssone Calculator</h4>
+                        <p>Multi-step wizard calculating employer tax savings, property tax differences, and recruitment advantages</p>
+                        <p style="margin-top: 10px;"><span class="badge done">Live</span></p>
+                    </div>
+                    <div class="card highlight">
+                        <h4>🚧 Advanced Relocation Calculator</h4>
+                        <p>Comprehensive tool comparing total cost of living between regions (fil1.tsx)</p>
+                        <p style="margin-top: 10px;"><span class="badge progress">80% Complete</span></p>
+                    </div>
+                    <div class="card">
+                        <h4>📋 Simplified Calculator</h4>
+                        <p>Quick 3-step version for social media and landing pages (fil2.tsx)</p>
+                        <p style="margin-top: 10px;"><span class="badge progress">70% Complete</span></p>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 30px;">Calculator Features</h3>
+                <table>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Innsatssone</th>
+                        <th>Advanced</th>
+                        <th>Simplified</th>
+                    </tr>
+                    <tr>
+                        <td>Employer Tax (AGA) Savings</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>Property Tax Comparison</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>Personal Benefits (Loan, Tax)</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>Municipality Selection</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>Gross Salary Equivalent</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                    </tr>
+                </table>
+                
+                <div class="quote-box">
+                    <p>"These calculators transform complex tax regulations into actionable insights — showing businesses exactly how much they save by relocating to Northern Norway."</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: Research Library -->
+        <div class="slide">
+            <div class="slide-header gradient">
+                <div class="slide-number">Slide 05</div>
+                <h1 class="slide-title">Research Library</h1>
+                <p class="slide-subtitle">Foundation for future content</p>
+            </div>
+            <div class="slide-content">
+                <p>We've compiled extensive research documents that serve as the foundation for future articles, calculators, and AI-assisted content generation.</p>
+                
+                <div class="two-col" style="margin-top: 30px;">
+                    <div>
+                        <h3>📁 Sametinget Research</h3>
+                        <ul>
+                            <li><strong>Budsjett 2026</strong> — Grant deadlines and amounts</li>
+                            <li><strong>Nord-Norge Bedriftsfordeler</strong> — Business benefits report</li>
+                            <li><strong>Såkorn- og etableringsfondet</strong> — Seed fund 2026-2029</li>
+                            <li><strong>Støtteordninger Samisk Språk</strong> — Language support schemes</li>
+                            <li><strong>Samisk Rapport Series</strong> — 5 deep-dive reports on Sami business</li>
+                        </ul>
+                        
+                        <h3 style="margin-top: 25px;">📁 Nord-Norge Research</h3>
+                        <ul>
+                            <li><strong>Avansert Flyttekalkulator</strong> — Calculator specifications</li>
+                            <li><strong>Tiltakssonen Fordeler</strong> — Relocation benefits</li>
+                            <li><strong>SEO-analyse</strong> — Keyword research for accounting</li>
+                            <li><strong>Sosioøkonomiske forskjeller</strong> — Regional inequality analysis</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>📁 Communication Guidelines</h3>
+                        <ul>
+                            <li><strong>Writing Style Guide</strong> — Tone and voice rules</li>
+                            <li><strong>AI-instruksjoner</strong> — Prompts for content generation</li>
+                        </ul>
+                        
+                        <h3 style="margin-top: 25px;">📁 Integration Research</h3>
+                        <ul>
+                            <li><strong>Vipps MobilePay Integration</strong> — Technical guide</li>
+                            <li><strong>PowerOffice Setup</strong> — Client key configuration</li>
+                        </ul>
+                        
+                        <div class="card dark" style="margin-top: 30px;">
+                            <h4>🤖 AI Content Assistant</h4>
+                            <p>We've created a custom AI assistant trained on these documents + Averdi's voice guidelines. Ready to generate articles, social posts, and client communications.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: Content Pipeline -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-number">Slide 06</div>
+                <h1 class="slide-title">Content Pipeline</h1>
+                <p class="slide-subtitle">AI-assisted article generation workflow</p>
+            </div>
+            <div class="slide-content">
+                <div class="timeline">
+                    <div class="timeline-item completed">
+                        <h4>1. Research Documents</h4>
+                        <p>PDF reports, government sources, industry data compiled in /Research folder</p>
+                    </div>
+                    <div class="timeline-item completed">
+                        <h4>2. Voice Guidelines</h4>
+                        <p>Averdi's 3-pillar voice system (Tangen Energy, Regnskap Authority, Utility Action)</p>
+                    </div>
+                    <div class="timeline-item completed">
+                        <h4>3. Custom AI Assistant</h4>
+                        <p>Trained on research + voice rules to generate on-brand content</p>
+                    </div>
+                    <div class="timeline-item in-progress">
+                        <h4>4. Article Generation</h4>
+                        <p>AI drafts → Human review → Admin panel publish</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>5. Social Media Automation</h4>
+                        <p>Auto-generate LinkedIn posts, summaries, and teasers from articles</p>
+                    </div>
+                </div>
+                
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>📝 Article Topics Ready</h4>
+                        <ul style="margin: 10px 0 0; padding-left: 20px; font-size: 14px;">
+                            <li>Sametinget grant application guides</li>
+                            <li>Tiltakssonen tax benefits explained</li>
+                            <li>Recruitment advantages in Finnmark</li>
+                            <li>Student loan write-off calculations</li>
+                            <li>Property tax comparisons by municipality</li>
+                        </ul>
+                    </div>
+                    <div class="card highlight">
+                        <h4>🚀 Social Media Strategy</h4>
+                        <ul style="margin: 10px 0 0; padding-left: 20px; font-size: 14px;">
+                            <li>LinkedIn thought leadership posts</li>
+                            <li>Calculator result sharing</li>
+                            <li>Grant deadline reminders</li>
+                            <li>Client success stories</li>
+                            <li>Regional news commentary</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 8: Development Timeline -->
+        <div class="slide">
+            <div class="slide-header dark">
+                <div class="slide-number">Slide 07</div>
+                <h1 class="slide-title">Development Timeline</h1>
+                <p class="slide-subtitle">Hours invested and progress tracking</p>
+            </div>
+            <div class="slide-content">
+                <h3>Hours Breakdown</h3>
+                
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-label">Technical Infrastructure</span>
+                        <span class="progress-value">60-80 hours</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-label">Kunnskapsbank (Knowledge Hub)</span>
+                        <span class="progress-value">80-120 hours</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-label">SEO & Content Optimization</span>
+                        <span class="progress-value">35-50 hours</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-label">Admin Panel Development</span>
+                        <span class="progress-value">40-60 hours</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-label">Interactive Calculators</span>
+                        <span class="progress-value">15-25 hours</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-label">Branding & Design</span>
+                        <span class="progress-value">25-35 hours</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+                
+                <div class="stat-grid" style="margin-top: 30px;">
+                    <div class="stat">
+                        <div class="stat-value">255+</div>
+                        <div class="stat-label">Total Hours</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">90%</div>
+                        <div class="stat-label">Core Complete</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">4</div>
+                        <div class="stat-label">Months Elapsed</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">∞</div>
+                        <div class="stat-label">ROI Potential</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 9: Roadmap -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-number">Slide 08</div>
+                <h1 class="slide-title">Roadmap: What's Next</h1>
+                <p class="slide-subtitle">Planned features and enhancements</p>
+            </div>
+            <div class="slide-content">
+                <div class="card-grid">
+                    <div class="card highlight">
+                        <h4>🔜 Q1 2026</h4>
+                        <ul style="margin: 10px 0 0; padding-left: 20px; font-size: 14px;">
+                            <li>Complete advanced calculators</li>
+                            <li>Launch AI content pipeline</li>
+                            <li>First batch of generated articles</li>
+                            <li>LinkedIn automation setup</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>📅 Q2 2026</h4>
+                        <ul style="margin: 10px 0 0; padding-left: 20px; font-size: 14px;">
+                            <li>Client portal integration</li>
+                            <li>Document upload system</li>
+                            <li>Appointment booking</li>
+                            <li>Newsletter automation</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>🎯 Q3-Q4 2026</h4>
+                        <ul style="margin: 10px 0 0; padding-left: 20px; font-size: 14px;">
+                            <li>Multi-language support (Sami)</li>
+                            <li>Advanced analytics dashboard</li>
+                            <li>Client self-service features</li>
+                            <li>Mobile app consideration</li>
+                        </ul>
+                    </div>
+                    <div class="card dark">
+                        <h4>🚀 Long-term Vision</h4>
+                        <ul style="margin: 10px 0 0; padding-left: 20px; font-size: 14px; color: #94a3b8;">
+                            <li>AI chatbot for grant questions</li>
+                            <li>Automated compliance alerts</li>
+                            <li>Integration with PowerOffice</li>
+                            <li>Regional business directory</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 30px;">Immediate Priorities</h3>
+                <table>
+                    <tr>
+                        <th>Task</th>
+                        <th>Status</th>
+                        <th>Est. Hours</th>
+                        <th>Impact</th>
+                    </tr>
+                    <tr>
+                        <td>Finish Advanced Calculator (fil1.tsx)</td>
+                        <td><span class="badge progress">In Progress</span></td>
+                        <td>8-10</td>
+                        <td>High</td>
+                    </tr>
+                    <tr>
+                        <td>Simplified Calculator (fil2.tsx)</td>
+                        <td><span class="badge progress">In Progress</span></td>
+                        <td>5-8</td>
+                        <td>Medium</td>
+                    </tr>
+                    <tr>
+                        <td>Generate 5 AI Articles</td>
+                        <td><span class="badge planned">Planned</span></td>
+                        <td>10-15</td>
+                        <td>High</td>
+                    </tr>
+                    <tr>
+                        <td>LinkedIn Post Templates</td>
+                        <td><span class="badge planned">Planned</span></td>
+                        <td>5-8</td>
+                        <td>Medium</td>
+                    </tr>
+                    <tr>
+                        <td>Vipps Integration Guide</td>
+                        <td><span class="badge done">Done</span></td>
+                        <td>—</td>
+                        <td>High</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- SLIDE 10: ROI & Value -->
+        <div class="slide">
+            <div class="slide-header gradient">
+                <div class="slide-number">Slide 09</div>
+                <h1 class="slide-title">Return on Investment</h1>
+                <p class="slide-subtitle">The value we've created</p>
+            </div>
+            <div class="slide-content">
+                <div class="stat-grid">
+                    <div class="stat">
+                        <div class="stat-value">0 kr</div>
+                        <div class="stat-label">Monthly Server Cost</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">∞</div>
+                        <div class="stat-label">Content Scalability</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">24/7</div>
+                        <div class="stat-label">Lead Generation</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">100%</div>
+                        <div class="stat-label">Content Ownership</div>
+                    </div>
+                </div>
+                
+                <div class="two-col" style="margin-top: 30px;">
+                    <div>
+                        <h3>Cost Savings</h3>
+                        <ul>
+                            <li><strong>No database fees</strong> — JSON file storage</li>
+                            <li><strong>No CMS subscription</strong> — Custom admin panel</li>
+                            <li><strong>No hosting fees</strong> — Vercel free tier</li>
+                            <li><strong>No design agency</strong> — In-house Tailwind</li>
+                        </ul>
+                        
+                        <div class="card success" style="margin-top: 20px;">
+                            <h4>Estimated Annual Savings</h4>
+                            <p style="font-size: 24px; font-weight: 800; color: #166534;">50,000 - 100,000 kr</p>
+                            <p>vs. traditional CMS + hosting + design</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Value Created</h3>
+                        <ul>
+                            <li><strong>SEO Authority</strong> — Ranking for regional keywords</li>
+                            <li><strong>Lead Magnet</strong> — Calculators drive engagement</li>
+                            <li><strong>Trust Building</strong> — Knowledge hub establishes expertise</li>
+                            <li><strong>Automation Ready</strong> — AI content pipeline prepared</li>
+                        </ul>
+                        
+                        <div class="card primary" style="margin-top: 20px;">
+                            <h4>Expected ROI (Year 1)</h4>
+                            <p style="font-size: 24px; font-weight: 800;">225-450%</p>
+                            <p>Based on lead generation and brand positioning</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 11: Thank You -->
+        <div class="slide">
+            <div class="cover-content" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
+                <div class="cover-logo" style="background: white; color: #E86C1F;">A</div>
+                <h1 class="cover-title" style="color: white;">Thank You</h1>
+                <p class="cover-subtitle" style="color: #94a3b8;">Questions? Let's discuss the roadmap.</p>
+                <div style="margin-top: 40px; display: flex; gap: 20px;">
+                    <div style="text-align: center; color: white;">
+                        <p style="font-size: 14px; color: #64748b; margin-bottom: 5px;">Website</p>
+                        <p style="font-weight: 600;">averdi.no</p>
+                    </div>
+                    <div style="text-align: center; color: white;">
+                        <p style="font-size: 14px; color: #64748b; margin-bottom: 5px;">Admin Panel</p>
+                        <p style="font-weight: 600;">averdi.no/admin</p>
+                    </div>
+                    <div style="text-align: center; color: white;">
+                        <p style="font-size: 14px; color: #64748b; margin-bottom: 5px;">Contact</p>
+                        <p style="font-weight: 600;">+47 78 46 61 16</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer" style="background: #0f172a; border-color: #334155;">
+                <span style="color: #64748b;">Averdi AS | Karasjok, Norway</span>
+                <span style="color: #64748b;">January 2026</span>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+

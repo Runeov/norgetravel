@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nord-Norge Kalkulator 2026 – Averdi</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #E86C1F 0%, #F4B223 100%);
+            color: white;
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+        header h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.5rem; }
+        header p  { font-size: 1rem; opacity: 0.9; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+        /* ── GRID ── */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        @media (max-width: 700px) { .grid-2 { grid-template-columns: 1fr; } }
+
+        /* ── CARDS ── */
+        .card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,.08);
+            border: 1px solid #e2e8f0;
+        }
+        .card h2 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #475569;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            margin-bottom: 1rem;
+        }
+
+        /* ── FORM CONTROLS ── */
+        label {
+            display: block;
+            font-size: .875rem;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: .35rem;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: .6rem .9rem;
+            border: 1.5px solid #cbd5e1;
+            border-radius: .5rem;
+            font-size: .95rem;
+            color: #0f172a;
+            background: #f8fafc;
+            transition: border-color .2s;
+            margin-bottom: 1rem;
+        }
+        input:focus { outline: none; border-color: #E86C1F; background: white; }
+
+        /* ── RESULT BANNER ── */
+        .result-banner {
+            background: linear-gradient(135deg, #E86C1F 0%, #F4B223 100%);
+            color: white;
+            border-radius: 1rem;
+            padding: 1.75rem 2rem;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+        .result-banner .label { font-size: .9rem; opacity: .85; margin-bottom: .4rem; }
+        .result-banner .amount { font-size: 2.5rem; font-weight: 800; letter-spacing: -.02em; }
+        .result-banner .sub { font-size: .85rem; opacity: .8; margin-top: .3rem; }
+
+        /* ── INSIGHT BOX ── */
+        .insight {
+            background: #fff7ed;
+            border-left: 4px solid #E86C1F;
+            border-radius: .5rem;
+            padding: 1rem 1.25rem;
+            font-size: .9rem;
+            color: #431407;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ── CHARTS ── */
+        .chart-wrap {
+            position: relative;
+            height: 260px;
+        }
+
+        /* ── BREAKDOWN TABLE ── */
+        .breakdown {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .875rem;
+        }
+        .breakdown th {
+            text-align: left;
+            padding: .5rem .75rem;
+            background: #f1f5f9;
+            color: #475569;
+            font-weight: 600;
+        }
+        .breakdown td {
+            padding: .5rem .75rem;
+            border-bottom: 1px solid #f1f5f9;
+            color: #334155;
+        }
+        .breakdown td:last-child { text-align: right; font-weight: 600; color: #E86C1F; }
+        .breakdown tr:last-child td { border-bottom: none; }
+
+        /* ── BADGE ── */
+        .badge {
+            display: inline-block;
+            padding: .2rem .65rem;
+            border-radius: 9999px;
+            font-size: .75rem;
+            font-weight: 700;
+        }
+        .badge-orange { background: #fff7ed; color: #E86C1F; border: 1px solid #fed7aa; }
+        .badge-teal   { background: #f0fdfa; color: #0d9488; border: 1px solid #99f6e4; }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: .8rem;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Nord-Norge Kalkulator 2026</h1>
+    <p>Sammenlign arbeidsgiver- og ansattkostnader mellom kommuner</p>
+</header>
+
+<div class="container">
+
+    <!-- ── INPUTS ── -->
+    <div class="grid-2" style="margin-bottom:1.5rem;">
+        <div class="card">
+            <h2>📍 Fra kommune</h2>
+            <label for="currentMunInput">Nåværende kommune</label>
+            <input type="text" id="currentMunInput" list="currentMunList" placeholder="Skriv kommunenavn…" autocomplete="off" />
+            <datalist id="currentMunList"></datalist>
+
+            <label for="salaryInput">Årslønn per ansatt (kr)</label>
+            <input type="number" id="salaryInput" value="700000" min="200000" max="3000000" step="10000" />
+
+            <label for="employeesInput">Antall ansatte</label>
+            <input type="number" id="employeesInput" value="5" min="1" max="500" step="1" />
+        </div>
+
+        <div class="card">
+            <h2>🎯 Til kommune</h2>
+            <label for="targetMunInput">Målkommune</label>
+            <input type="text" id="targetMunInput" list="targetMunList" placeholder="Skriv kommunenavn…" autocomplete="off" />
+            <datalist id="targetMunList"></datalist>
+
+            <label for="numChildrenInput">Antall barn per ansatt (barnehage)</label>
+            <input type="number" id="numChildrenInput" value="2" min="0" max="10" step="1" />
+        </div>
+    </div>
+
+    <!-- ── RESULT BANNER ── -->
+    <div class="result-banner">
+        <div class="label">Estimert total besparelse per år</div>
+        <div class="amount" id="totalSavingsDisplay">–</div>
+        <div class="sub">Arbeidsgiver + ansattfordeler kombinert</div>
+    </div>
+
+    <!-- ── INSIGHT ── -->
+    <div class="insight" id="insightText">Velg to kommuner for å se analysen.</div>
+
+    <!-- ── CHARTS ── -->
+    <div class="grid-2">
+        <div class="card">
+            <h2>📊 Arbeidsgiveravgift per ansatt</h2>
+            <div class="chart-wrap">
+                <canvas id="costChart"></canvas>
+            </div>
+        </div>
+        <div class="card">
+            <h2>💰 Fordeler per ansatt – målkommune</h2>
+            <div class="chart-wrap">
+                <canvas id="employeeValueChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── BREAKDOWN TABLE ── -->
+    <div class="card" style="margin-top:1.5rem;">
+        <h2>🔍 Detaljert oversikt</h2>
+        <table class="breakdown" id="breakdownTable">
+            <thead>
+                <tr>
+                    <th>Post</th>
+                    <th>Fra-kommune</th>
+                    <th>Til-kommune</th>
+                    <th>Besparelse</th>
+                </tr>
+            </thead>
+            <tbody id="breakdownBody"></tbody>
+        </table>
+    </div>
+
+</div>
+
+<footer>
+    Averdi AS · Karasjok · Tall basert på 2026-forslag. Kun veiledende – ikke juridisk rådgivning.
+</footer>
+
+<script>
+// ============================================================
+// MUNICIPALITY DATA – 2026 (name, sone, avgRent kr/mnd)
+// Sone 1 = 14.1% AGA | Sone 4a = 7.9% | Sone 5 = 0% (Tiltakssonen)
+// ============================================================
+const municipalityData = [
+    // ── Sone 1 (standard) ──
+    { name: "Oslo",          sone: "1",  avgRent: 17500 },
+    { name: "Bergen",        sone: "1",  avgRent: 14200 },
+    { name: "Trondheim",     sone: "1",  avgRent: 13800 },
+    { name: "Stavanger",     sone: "1",  avgRent: 14500 },
+    { name: "Kristiansand",  sone: "1",  avgRent: 12500 },
+    { name: "Drammen",       sone: "1",  avgRent: 13000 },
+    { name: "Fredrikstad",   sone: "1",  avgRent: 12200 },
+    { name: "Sandnes",       sone: "1",  avgRent: 13800 },
+    { name: "Tromsø",        sone: "1",  avgRent: 13200 },
+    { name: "Bodø",          sone: "1",  avgRent: 12800 },
+    { name: "Ålesund",       sone: "1",  avgRent: 12000 },
+    { name: "Sandefjord",    sone: "1",  avgRent: 12400 },
+    { name: "Tønsberg",      sone: "1",  avgRent: 12600 },
+    { name: "Moss",          sone: "1",  avgRent: 12100 },
+    { name: "Hamar",         sone: "1",  avgRent: 11800 },
+    { name: "Lillehammer",   sone: "1",  avgRent: 11600 },
+    { name: "Gjøvik",        sone: "1",  avgRent: 11200 },
+    { name: "Harstad",       sone: "1",  avgRent: 11500 },
+    { name: "Narvik",        sone: "1",  avgRent: 10800 },
+    { name: "Mo i Rana",     sone: "1",  avgRent: 10500 },
+    { name: "Mosjøen",       sone: "1",  avgRent: 10200 },
+    { name: "Brønnøysund",   sone: "1",  avgRent: 10000 },
+    { name: "Sortland",      sone: "1",  avgRent: 10100 },
+    { name: "Svolvær",       sone: "1",  avgRent: 10300 },
+    { name: "Leknes",        sone: "1",  avgRent:  9800 },
+    { name: "Stokmarknes",   sone: "1",  avgRent:  9700 },
+    { name: "Finnsnes",      sone: "1",  avgRent:  9900 },
+    // ── Sone 4a (7.9%) ──
+    { name: "Lenvik",        sone: "4a", avgRent:  9600 },
+    { name: "Senja",         sone: "4a", avgRent:  9400 },
+    { name: "Bardu",         sone: "4a", avgRent:  9000 },
+    { name: "Salangen",      sone: "4a", avgRent:  8800 },
+    { name: "Lavangen",      sone: "4a", avgRent:  8500 },
+    { name: "Gratangen",     sone: "4a", avgRent:  8400 },
+    { name: "Ibestad",       sone: "4a", avgRent:  8300 },
+    { name: "Dyrøy",         sone: "4a", avgRent:  8200 },
+    { name: "Torsken",       sone: "4a", avgRent:  8100 },
+    { name: "Berg",          sone: "4a", avgRent:  8000 },
+    // ── Sone 5 – Tiltakssonen (0% AGA) ──
+    { name: "Alta",          sone: "5",  avgRent: 11200 },
+    { name: "Hammerfest",    sone: "5",  avgRent: 11000 },
+    { name: "Vadsø",         sone: "5",  avgRent: 10200 },
+    { name: "Vardø",         sone: "5",  avgRent:  9500 },
+    { name: "Karasjok",      sone: "5",  avgRent:  9000 },
+    { name: "Kautokeino",    sone: "5",  avgRent:  8800 },
+    { name: "Porsanger",     sone: "5",  avgRent:  9200 },
+    { name: "Lebesby",       sone: "5",  avgRent:  8600 },
+    { name: "Gamvik",        sone: "5",  avgRent:  8400 },
+    { name: "Berlevåg",      sone: "5",  avgRent:  8300 },
+    { name: "Tana",          sone: "5",  avgRent:  8700 },
+    { name: "Nesseby",       sone: "5",  avgRent:  8500 },
+    { name: "Båtsfjord",     sone: "5",  avgRent:  8900 },
+    { name: "Sør-Varanger",  sone: "5",  avgRent: 10500 },
+    { name: "Loppa",         sone: "5",  avgRent:  8200 },
+    { name: "Hasvik",        sone: "5",  avgRent:  8100 },
+    { name: "Måsøy",         sone: "5",  avgRent:  8000 },
+    { name: "Nordkapp",      sone: "5",  avgRent:  9100 },
+    { name: "Kvalsund",      sone: "5",  avgRent:  8600 },
+    { name: "Kvænangen",     sone: "5",  avgRent:  8300 },
+    { name: "Nordreisa",     sone: "5",  avgRent:  9000 },
+    { name: "Skjervøy",      sone: "5",  avgRent:  8700 },
+    { name: "Kåfjord",       sone: "5",  avgRent:  8500 },
+    { name: "Storfjord",     sone: "5",  avgRent:  8400 },
+    { name: "Lyngen",        sone: "5",  avgRent:  8600 },
+];
+
+municipalityData.sort((a, b) => a.name.localeCompare(b.name, 'nb'));
+
+// ── AGA rates ──
+const rates = { "1": 0.141, "4a": 0.079, "5": 0.000 };
+const zoneLabels = {
+    "1":  "Sone 1 (14,1 %)",
+    "4a": "Sone 4a (7,9 %)",
+    "5":  "Sone 5 – Tiltakssonen (0 %)"
+};
+
+// ── State ──
+const state = {
+    currentMunicipality: municipalityData.find(m => m.name === "Oslo"),
+    targetMunicipality:  municipalityData.find(m => m.name === "Alta"),
+    salary:    700000,
+    employees: 5,
+    numChildren: 2
+};
+
+// ── Chart instances ──
+let costChartInstance    = null;
+let valueChartInstance   = null;
+
+// ── DOM refs ──
+const currentMunInput  = document.getElementById('currentMunInput');
+const targetMunInput   = document.getElementById('targetMunInput');
+const salaryInput      = document.getElementById('salaryInput');
+const employeesInput   = document.getElementById('employeesInput');
+const numChildrenInput = document.getElementById('numChildrenInput');
+
+// ============================================================
+// CORE CALCULATION
+// ============================================================
+function calculateAndRender() {
+    const empCount = state.employees;
+    const salary   = state.salary;
+
+    // AGA base
+    const vacationPay = salary * 0.12;
+    const pensionBase = salary + vacationPay;
+    const pension     = pensionBase * 0.02;
+    const agaBase     = salary + vacationPay + pension;
+
+    const rateCurrent = rates[state.currentMunicipality.sone];
+    const rateTarget  = rates[state.targetMunicipality.sone];
+
+    const agaCostCurrent = agaBase * rateCurrent;
+    const agaCostTarget  = agaBase * rateTarget;
+
+    const totalCostCurrent = agaBase + agaCostCurrent;
+    const totalCostTarget  = agaBase + agaCostTarget;
+    const perEmpAGASavings = totalCostCurrent - totalCostTarget;
+
+    // Employee benefits (target municipality)
+    const rentCurrent = state.currentMunicipality.avgRent || 16200;
+    const rentTarget  = state.targetMunicipality.avgRent  || 11500;
+    const rentSavingsPerEmp = (rentCurrent - rentTarget) * 12;
+
+    const isZone5 = state.targetMunicipality.sone === "5";
+    const numKids = state.numChildren;
+
+    const barnehageSavingsPerEmp  = isZone5 ? (1200 * 12 * numKids) : 0;
+    const finnmarkCashPerEmp      = isZone5 ? 9900  : 0;   // 45 000 × 22 %
+    const studentLoanPerEmp       = isZone5 ? 60000 : 0;
+    const lowerTaxSavingsPerEmp   = isZone5 ? Math.round(salary * 0.035) : 0; // 3,5 pp
+    const ekstraBarnetrygdPerEmp  = isZone5 ? (500 * 12 * numKids) : 0;       // 6 000 kr/barn/år (fra okt 2025)
+
+    const employeeBenefitsPerEmp = rentSavingsPerEmp + barnehageSavingsPerEmp +
+                                   finnmarkCashPerEmp + studentLoanPerEmp +
+                                   lowerTaxSavingsPerEmp + ekstraBarnetrygdPerEmp;
+
+    const totalSavings = (perEmpAGASavings + employeeBenefitsPerEmp) * empCount;
+
+    // ── Format helper ──
+    const fmt = n => new Intl.NumberFormat('nb-NO', {
+        style: 'currency', currency: 'NOK', maximumFractionDigits: 0
+    }).format(n);
+
+    document.getElementById('totalSavingsDisplay').textContent = fmt(totalSavings);
+
+    // ── Insight ──
+    generateInsight(perEmpAGASavings, employeeBenefitsPerEmp, empCount, fmt);
+
+    // ── Charts ──
+    updateCostChart(agaCostCurrent, agaCostTarget, fmt);
+    updateValueChart(finnmarkCashPerEmp, studentLoanPerEmp, rentSavingsPerEmp,
+                     barnehageSavingsPerEmp, lowerTaxSavingsPerEmp, ekstraBarnetrygdPerEmp);
+
+    // ── Breakdown table ──
+    updateBreakdown({
+        agaBase, agaCostCurrent, agaCostTarget, perEmpAGASavings,
+        rentSavingsPerEmp, barnehageSavingsPerEmp, finnmarkCashPerEmp,
+        studentLoanPerEmp, lowerTaxSavingsPerEmp, ekstraBarnetrygdPerEmp, empCount, fmt
+    });
+}
+
+// ============================================================
+// INSIGHT TEXT
+// ============================================================
+function generateInsight(agaSavings, benefitsPerEmp, empCount, fmt) {
+    const isZone5 = state.targetMunicipality.sone === "5";
+    const zone5Note = isZone5
+        ? `<br>I 2026 gir Tiltakssonen <strong>18,5 %</strong> skatt på alminnelig inntekt (mot 22 % ellers).
+           + 45 000 kr Finnmarksfradrag + 60 000 kr studielånsnedskrivning + 500 kr/mnd ekstra barnetrygd per barn (fra okt 2025).`
+        : '';
+
+    document.getElementById('insightText').innerHTML = `
+        <strong>${state.currentMunicipality.name}</strong>
+        <span class="badge badge-orange">${zoneLabels[state.currentMunicipality.sone]}</span>
+        → <strong>${state.targetMunicipality.name}</strong>
+        <span class="badge badge-teal">${zoneLabels[state.targetMunicipality.sone]}</span><br><br>
+        AGA-besparelse per ansatt: <strong>${fmt(agaSavings)}</strong> /år.
+        Ansattfordeler per ansatt: <strong>${fmt(benefitsPerEmp)}</strong> /år.
+        ${zone5Note}
+    `;
+}
+
+// ============================================================
+// COST CHART (bar – employer total cost)
+// ============================================================
+function updateCostChart(totalCurrent, totalTarget, fmt) {
+    const ctx = document.getElementById('costChart').getContext('2d');
+
+    const data = {
+        labels: [state.currentMunicipality.name, state.targetMunicipality.name],
+        datasets: [{
+            label: 'Arbeidsgiveravgift per ansatt (NOK)',
+            data: [totalCurrent, totalTarget],
+            backgroundColor: ['#94a3b8', '#E86C1F'],
+            borderRadius: 8,
+            borderSkipped: false
+        }]
+    };
+
+    const options = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                callbacks: {
+                    label: ctx => fmt(ctx.raw)
+                }
+            }
+        },
+        scales: {
+            y: {
+                ticks: {
+                    callback: v => new Intl.NumberFormat('nb-NO', {
+                        notation: 'compact', maximumFractionDigits: 1
+                    }).format(v) + ' kr'
+                }
+            }
+        }
+    };
+
+    if (costChartInstance) costChartInstance.destroy();
+    costChartInstance = new Chart(ctx, { type: 'bar', data, options });
+}
+
+// ============================================================
+// VALUE CHART (doughnut – employee benefits)
+// ============================================================
+function updateValueChart(finnmark, student, rent, barnehage, lowerTax, ekstraBarnetrygd) {
+    const ctx = document.getElementById('employeeValueChart').getContext('2d');
+
+    // Filter out zero-value slices for cleaner chart
+    const raw = [
+        { label: 'Finnmarksfradrag 2026',              value: finnmark,         color: '#F59E0B' },
+        { label: 'Studielånsnedskrivning',              value: student,          color: '#14B8A6' },
+        { label: 'Lavere skatt (3,5 pp)',               value: lowerTax,         color: '#10B981' },
+        { label: 'Husleiesparing',                      value: rent,             color: '#8B5CF6' },
+        { label: 'Gratis barnehage',                    value: barnehage,        color: '#EC4899' },
+        { label: 'Ekstra barnetrygd (500 kr/mnd)',      value: ekstraBarnetrygd, color: '#3B82F6' },
+    ].filter(d => d.value > 0);
+
+    const noData = raw.length === 0;
+
+    const data = {
+        labels: noData ? ['Ingen fordeler i valgt sone'] : raw.map(d => d.label),
+        datasets: [{
+            label: 'Verdi per ansatt (NOK)',
+            data:  noData ? [1] : raw.map(d => d.value),
+            backgroundColor: noData ? ['#e2e8f0'] : raw.map(d => d.color),
+            hoverOffset: 8
+        }]
+    };
+
+    const options = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { position: 'bottom', labels: { font: { size: 11 } } },
+            tooltip: {
+                callbacks: {
+                    label: ctx => noData ? '' : new Intl.NumberFormat('nb-NO', {
+                        style: 'currency', currency: 'NOK', maximumFractionDigits: 0
+                    }).format(ctx.raw)
+                }
+            }
+        }
+    };
+
+    if (valueChartInstance) valueChartInstance.destroy();
+    valueChartInstance = new Chart(ctx, { type: 'doughnut', data, options });
+}
+
+// ============================================================
+// BREAKDOWN TABLE
+// ============================================================
+function updateBreakdown({ agaBase, agaCostCurrent, agaCostTarget, perEmpAGASavings,
+    rentSavingsPerEmp, barnehageSavingsPerEmp, finnmarkCashPerEmp,
+    studentLoanPerEmp, lowerTaxSavingsPerEmp, ekstraBarnetrygdPerEmp, empCount, fmt }) {
+
+    const totalPerEmp = perEmpAGASavings + rentSavingsPerEmp + barnehageSavingsPerEmp +
+                        finnmarkCashPerEmp + studentLoanPerEmp + lowerTaxSavingsPerEmp + ekstraBarnetrygdPerEmp;
+
+    const rows = [
+        ['AGA-sats',                    zoneLabels[state.currentMunicipality.sone], zoneLabels[state.targetMunicipality.sone], fmt(perEmpAGASavings)],
+        ['Husleie (12 mnd)',            fmt((state.currentMunicipality.avgRent||16200)*12), fmt((state.targetMunicipality.avgRent||11500)*12), fmt(rentSavingsPerEmp)],
+        ['Barnehage',                   '–', barnehageSavingsPerEmp > 0 ? 'Gratis' : '–', fmt(barnehageSavingsPerEmp)],
+        ['Finnmarksfradrag',            '–', finnmarkCashPerEmp > 0 ? 'Ja' : '–', fmt(finnmarkCashPerEmp)],
+        ['Studielånsnedskrivning',      '–', studentLoanPerEmp > 0 ? '60 000 kr' : '–', fmt(studentLoanPerEmp)],
+        ['Lavere skatt (3,5 pp)',       '–', lowerTaxSavingsPerEmp > 0 ? 'Ja' : '–', fmt(lowerTaxSavingsPerEmp)],
+        ['Ekstra barnetrygd (500/mnd)', '–', ekstraBarnetrygdPerEmp > 0 ? '500 kr/mnd per barn' : '–', fmt(ekstraBarnetrygdPerEmp)],
+        ['<strong>Total per ansatt</strong>', '', '', `<strong>${fmt(totalPerEmp)}</strong>`],
+        [`<strong>Total ${empCount} ansatte</strong>`, '', '', `<strong>${fmt(totalPerEmp * empCount)}</strong>`],
+    ];
+
+    document.getElementById('breakdownBody').innerHTML = rows.map(([post, fra, til, spar]) =>
+        `<tr><td>${post}</td><td>${fra}</td><td>${til}</td><td>${spar}</td></tr>`
+    ).join('');
+}
+
+// ============================================================
+// DATALIST POPULATION
+// ============================================================
+function populateDatalist(listId, selectedName) {
+    const dl = document.getElementById(listId);
+    dl.innerHTML = municipalityData
+        .map(m => `<option value="${m.name}">`)
+        .join('');
+}
+
+// ============================================================
+// RESOLVE INPUT → municipality object
+// ============================================================
+function resolveMunicipality(name) {
+    return municipalityData.find(m => m.name.toLowerCase() === name.trim().toLowerCase()) || null;
+}
+
+// ============================================================
+// EVENT LISTENERS
+// ============================================================
+function attachListeners() {
+    currentMunInput.addEventListener('change', () => {
+        const m = resolveMunicipality(currentMunInput.value);
+        if (m) { state.currentMunicipality = m; calculateAndRender(); }
+    });
+
+    targetMunInput.addEventListener('change', () => {
+        const m = resolveMunicipality(targetMunInput.value);
+        if (m) { state.targetMunicipality = m; calculateAndRender(); }
+    });
+
+    salaryInput.addEventListener('input', () => {
+        const v = parseInt(salaryInput.value);
+        if (v >= 200000) { state.salary = v; calculateAndRender(); }
+    });
+
+    employeesInput.addEventListener('input', () => {
+        const v = parseInt(employeesInput.value);
+        if (v >= 1) { state.employees = v; calculateAndRender(); }
+    });
+
+    numChildrenInput.addEventListener('input', () => {
+        const v = parseInt(numChildrenInput.value);
+        if (v >= 0) { state.numChildren = v; calculateAndRender(); }
+    });
+}
+
+// ============================================================
+// INIT
+// ============================================================
+function init() {
+    populateDatalist('currentMunList');
+    populateDatalist('targetMunList');
+
+    currentMunInput.value = state.currentMunicipality.name;
+    targetMunInput.value  = state.targetMunicipality.name;
+    salaryInput.value     = state.salary;
+    employeesInput.value  = state.employees;
+    numChildrenInput.value = state.numChildren;
+
+    attachListeners();
+    calculateAndRender();
+}
+
+init();
+</script>
+</body>
+</html>

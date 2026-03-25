@@ -1,0 +1,284 @@
+{
+  "ingvald-laiti": {
+    "id": "ingvald-laiti",
+    "name": "Ingvald Laiti",
+    "role": "Daglig leder / Statsautorisert regnskapsfører",
+    "email": "ingvald.laiti@averdi.no",
+    "phone": "78 46 61 16",
+    "office": "karasjok",
+    "description": "Spesialist på regnskap for samiske organisasjoner og offentlig forvaltning.",
+    "longDescription": "Som grunnlegger av Averdi har Ingvald over 30 års erfaring med næringslivet i Finnmark. Han er **statsautorisert regnskapsfører** med en unik spisskompetanse innen **regnskap for samiske organisasjoner og institusjoner**.\n\nOffentlig tilskuddsforvaltning og prosjektregnskap kan være komplekst. Ingvald hjelper styret og daglig leder med å navigere i regelverket, sikre korrekt rapportering av offentlige midler, og trygge den økonomiske styringen. Han er din fremste rådgiver for større virksomheter som krever høy formell kompetanse.",
+    "experience": "30+ år",
+    "specialties": [
+      "Samiske organisasjoner",
+      "Offentlig tilskudd",
+      "Institusjonsregnskap",
+      "Virksomhetsstyring"
+    ],
+    "education": [
+      "Statsautorisert regnskapsfører"
+    ],
+    "languages": ["Norsk", "Nordsamisk"],
+    "workingHours": "Man-Fre: 08:00-16:00",
+    "achievements": [],
+    "clientTypes": [
+      "Organisasjoner",
+      "Samiske institusjoner",
+      "Stiftelser"
+    ],
+    "relatedHubs": [
+      { "title": "Lag og Foreninger", "link": "/kunnskapsbank/organisasjoner" },
+      { "title": "Sametinget Støtte", "link": "/kunnskapsbank/sametinget" }
+    ],
+    "timeline": [
+      {
+        "year": "1989",
+        "title": "Grunnla Averdi",
+        "description": "Startet regnskapsbyrået i Karasjok med visjon om å betjene nordnorsk næringsliv",
+        "icon": "star",
+        "highlight": true
+      },
+      {
+        "year": "1995",
+        "title": "Statsautorisert regnskapsfører",
+        "description": "Oppnådde statsautorisasjon og utvidet tjenestetilbudet",
+        "icon": "graduation"
+      },
+      {
+        "year": "2005",
+        "title": "Spesialisering i samisk sektor",
+        "description": "Bygget unik kompetanse på regnskap for samiske organisasjoner og institusjoner",
+        "icon": "award"
+      },
+      {
+        "year": "2015",
+        "title": "Digital transformasjon",
+        "description": "Ledet overgangen til skybaserte løsninger med PowerOffice GO",
+        "icon": "briefcase"
+      },
+      {
+        "year": "2024",
+        "title": "30+ års erfaring",
+        "description": "Fortsetter å lede Averdi med fokus på kvalitet og lokal forankring",
+        "icon": "star",
+        "highlight": true
+      }
+    ],
+    "isActive": true,
+    "sortOrder": 1,
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  "jan-atle-guttorm": {
+    "id": "jan-atle-guttorm",
+    "name": "Jan Atle Guttorm",
+    "role": "Regnskapsfører",
+    "email": "jan.atle.guttorm@averdi.no",
+    "phone": "915 48 089",
+    "office": "karasjok",
+    "description": "Ekspert på primærnæringer, reindrift og skattemelding for enkeltpersonforetak.",
+    "longDescription": "Jan Atle er din trygghet når det gjelder **primærnæringer og småbedrifter**. Han har inngående kjennskap til de spesielle skattereglene som gjelder for reindrift, jordbruk og fiske i tiltakssonen.\n\nDriver du et enkeltpersonforetak (ENK)? Jan Atle sørger for at årsoppgjør og skattemelding blir levert korrekt, og at du får alle fradragene du har krav på. Han hjelper deg å holde orden i bilagene slik at du kan fokusere på driften.",
+    "experience": "30+ år",
+    "specialties": [
+      "Reindriftsregnskap",
+      "Jordbruk og fiske",
+      "Enkeltpersonforetak",
+      "Skattemelding"
+    ],
+    "education": [
+      "Regnskapsfører"
+    ],
+    "languages": ["Norsk", "Nordsamisk"],
+    "workingHours": "Man-Fre: 08:00-16:00",
+    "achievements": [],
+    "clientTypes": [
+      "Reindriftsutøvere",
+      "Enkeltpersonforetak",
+      "Småbedrifter"
+    ],
+    "relatedHubs": [
+      { "title": "Primærnæringer", "link": "/kunnskapsbank/sametinget/primaernaering" }
+    ],
+    "isActive": true,
+    "sortOrder": 2,
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  "hilde-laiti": {
+    "id": "hilde-laiti",
+    "name": "Hilde M. Laiti",
+    "role": "Regnskapsfører",
+    "email": "hilde.marie.laiti@averdi.no",
+    "phone": "400 44 918",
+    "office": "karasjok",
+    "description": "Spesialist på handel, butikkdrift og integrasjon av kassesystemer.",
+    "longDescription": "Hilde er vår ekspert på **handel og butikkdrift**. I en bransje med små marginer er det avgjørende med stålkontroll på varelager og omsetning. Hilde hjelper deg å sette opp effektive rutiner som kobler kassesystemet (POS) direkte mot regnskapet.\n\nDriver du nettbutikk? Hilde kan bistå med integrasjoner mot Shopify eller WooCommerce, og håndtering av betalingsløsninger som Klarna og Vipps. Hun er også en superbruker på PowerOffice GO og hjelper deg å digitalisere bedriften.",
+    "experience": "10+ år",
+    "specialties": [
+      "Handel og butikk",
+      "Kassesystemer (POS)",
+      "Nettbutikk-regnskap",
+      "Lønnskjøring"
+    ],
+    "education": [
+      "Regnskapsfører"
+    ],
+    "languages": ["Norsk"],
+    "workingHours": "Man-Fre: 08:00-16:00",
+    "achievements": [],
+    "clientTypes": [
+      "Butikker",
+      "Nettbutikker",
+      "Tjenesteyting"
+    ],
+    "relatedHubs": [
+      { "title": "Bedrift & Handel", "link": "/kunnskapsbank/bedrifter" }
+    ],
+    "isActive": true,
+    "sortOrder": 3,
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  "alida-norvang": {
+    "id": "alida-norvang",
+    "name": "Alida G. Norvang",
+    "role": "Regnskapsfører",
+    "email": "alida.norvang@averdi.no",
+    "phone": "480 52 329",
+    "office": "karasjok",
+    "description": "Trygg støttespiller for lag og foreninger. Hjelper med momskompensasjon og medlemslister.",
+    "longDescription": "Frivilligheten er hjørnesteinen i lokalsamfunnet, men reglene kan være vanskelige. Alida har spesialisert seg på regnskap for **lag og foreninger**. Hun avlaster kassereren og sørger for at årsmøtet får et korrekt og oversiktlig regnskap.\n\nAlida passer på fristene for **momskompensasjon**, slik at foreningen får tilbake pengene de har krav på. Hun kan også bistå med medlemsregister og rapportering av lotteri- og grasrotmidler.",
+    "experience": "30+ år",
+    "specialties": [
+      "Lag og foreninger",
+      "Momskompensasjon",
+      "Frivillighetsregisteret",
+      "Årsmøtepapirer"
+    ],
+    "education": [
+      "Regnskapsfører"
+    ],
+    "languages": ["Norsk", "Nordsamisk"],
+    "workingHours": "Man-Fre: 08:00-16:00",
+    "achievements": [],
+    "clientTypes": [
+      "Idrettslag",
+      "Foreninger",
+      "Småbedrifter"
+    ],
+    "relatedHubs": [
+      { "title": "Lag og Foreninger", "link": "/kunnskapsbank/organisasjoner" }
+    ],
+    "isActive": true,
+    "sortOrder": 4,
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  "tonje-iren-anti": {
+    "id": "tonje-iren-anti",
+    "name": "Tonje Iren Anti",
+    "role": "Statsautorisert regnskapsfører",
+    "email": "tonje.iren.anti@averdi.no",
+    "phone": "480 23 265",
+    "office": "karasjok",
+    "description": "Rådgiver for lokalt næringsliv og samiske organisasjoner.",
+    "longDescription": "Tonje Iren kombinerer rollen som statsautorisert regnskapsfører med dyp lokal forankring. Hun jobber mye med **lokale småbedrifter** i Karasjok og omegn, og er en viktig sparringspartner for daglig leder.\n\nHun har også bred erfaring med prosjektregnskap for **samiske organisasjoner** som mottar støtte fra Sametinget. Tonje sikrer at midlene rapporteres korrekt slik at dere unngår trekk i støtten eller krav om tilbakebetaling.",
+    "experience": "15+ år",
+    "specialties": [
+      "Samiske organisasjoner",
+      "Prosjektrapportering",
+      "Lokalt næringsliv",
+      "Rådgivning"
+    ],
+    "education": [
+      "Statsautorisert regnskapsfører",
+      "Bachelor i Økonomi"
+    ],
+    "languages": ["Norsk", "Nordsamisk"],
+    "workingHours": "Man-Fre: 08:00-16:00",
+    "achievements": [],
+    "clientTypes": [
+      "Prosjektbedrifter",
+      "Organisasjoner",
+      "Lokale firma"
+    ],
+    "relatedHubs": [
+      { "title": "Sametinget Hub", "link": "/kunnskapsbank/sametinget" }
+    ],
+    "isActive": true,
+    "sortOrder": 5,
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  "linda-marja-anti-kildedam": {
+    "id": "linda-marja-anti-kildedam",
+    "name": "Linda Marja Anti Kildedam",
+    "role": "Økonomirådgiver",
+    "email": "linda.kildedam@averdi.no",
+    "phone": "480 51 672",
+    "office": "karasjok",
+    "description": "Hjelper gründere og duodji-utøvere med etablering og søknader.",
+    "longDescription": "Linda Marja brenner for nyskaping. Hun er den du snakker med når du skal **starte egen bedrift**. Hun hjelper deg med forretningsplan, budsjettering og valg av selskapsform (AS eller ENK).\n\nHun har spesiell kompetanse på **Duodji-næringen** og de spesifikke støtteordningene som finnes der. Trenger du hjelp til å søke etablererstøtte eller investeringsstøtte fra Sametinget? Linda guider deg gjennom søknadsprosessen.",
+    "experience": "10+ år",
+    "specialties": [
+      "Gründerhjelp",
+      "Etablering",
+      "Duodji-støtte",
+      "Søknadsskriving"
+    ],
+    "education": [
+      "Økonomirådgiver"
+    ],
+    "languages": ["Norsk", "Nordsamisk"],
+    "workingHours": "Man-Fre: 08:00-16:00",
+    "achievements": [],
+    "clientTypes": [
+      "Nyetablerere",
+      "Duodji-utøvere",
+      "Gründere"
+    ],
+    "relatedHubs": [
+      { "title": "Støtte til Duodji", "link": "/kunnskapsbank/sametinget/duodji" },
+      { "title": "Variert Næringsliv", "link": "/kunnskapsbank/sametinget/naering" }
+    ],
+    "isActive": true,
+    "sortOrder": 6,
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  "john-david-utsi-gaup": {
+    "id": "john-david-utsi-gaup",
+    "name": "John David Utsi Gaup",
+    "role": "Økonomirådgiver",
+    "email": "John.davit@averdi.no",
+    "phone": "480 23 265",
+    "office": "karasjok",
+    "description": "Strategisk rådgivning for reiseliv og vekstbedrifter.",
+    "longDescription": "John David jobber med tallene som forteller hvor bedriften din er på vei. Han spesialiserer seg på **lønnsomhetsanalyse og strategi** for bedrifter som ønsker å vokse.\n\nJobber du innen **samisk reiseliv** eller opplevelsesnæring? John David hjelper deg å kalkulere riktige priser på produktene dine og sette opp likviditetsbudsjetter som sikrer sunn drift gjennom hele sesongen.",
+    "experience": "5+ år",
+    "specialties": [
+      "Økonomisk analyse",
+      "Reiseliv og opplevelser",
+      "Likviditetsstyring",
+      "Vekststrategi"
+    ],
+    "education": [
+      "Økonomirådgiver"
+    ],
+    "languages": ["Norsk", "Nordsamisk"],
+    "workingHours": "Man-Fre: 08:00-16:00",
+    "achievements": [],
+    "clientTypes": [
+      "Reiselivsbedrifter",
+      "Vekstbedrifter",
+      "Prosjekt"
+    ],
+    "relatedHubs": [
+      { "title": "Sametinget Støtte", "link": "/kunnskapsbank/sametinget" }
+    ],
+    "isActive": true,
+    "sortOrder": 7,
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  }
+}

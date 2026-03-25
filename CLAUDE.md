@@ -1,0 +1,1 @@
+@docs/NORGETRAVEL_MANIFEST.md

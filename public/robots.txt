@@ -1,0 +1,12 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /team-demo
+Disallow: /api/
+Disallow: /admin/
+
+# Host
+Host: https://averdi-next-js-git-main-pro-design.vercel.app
+
+# Sitemaps
+Sitemap: https://averdi-next-js-git-main-pro-design.vercel.app/sitemap.xml

@@ -1,0 +1,1551 @@
+'use client';
+
+import React, { useState } from 'react';
+import { ChevronRight, ChevronLeft, Check, ShoppingCart, CreditCard, Users, Gift, BarChart3, Download, AlertCircle, Info, ChevronDown, ChevronUp, BookOpen, ExternalLink, Key, Eye, Shield } from 'lucide-react';
+
+// Accounting Credentials Guide Component
+function AccountingCredentialsGuide({ system }: { system: string }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const isPowerOffice = system === 'poweroffice';
+
+  return (
+    <div className="bg-purple-50 border border-purple-200 rounded-lg overflow-hidden mb-6">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full px-6 py-4 flex items-center justify-between hover:bg-purple-100 transition-colors"
+      >
+        <div className="flex items-center gap-3">
+          <BookOpen className="w-5 h-5 text-purple-600" />
+          <span className="font-semibold text-purple-900">
+            📖 Hvordan få API-tilgang i {isPowerOffice ? 'PowerOffice Go' : '24SevenOffice'}
+          </span>
+        </div>
+        {isOpen ? <ChevronUp className="w-5 h-5 text-purple-600" /> : <ChevronDown className="w-5 h-5 text-purple-600" />}
+      </button>
+
+      {isOpen && (
+        <div className="px-6 py-6 bg-white border-t border-purple-200 space-y-6">
+          {isPowerOffice ? (
+            /* PowerOffice Go Guide */
+            <>
+              <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+                <h4 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
+                  <Info className="w-5 h-5" />
+                  Om PowerOffice Go OAuth 2.0
+                </h4>
+                <p className="text-sm text-blue-800 mb-2">
+                  PowerOffice Go bruker OAuth 2.0. Du trenger to nøkler:
+                </p>
+                <ul className="list-disc list-inside text-sm text-blue-800 space-y-1 ml-2">
+                  <li><strong>Application Key</strong> - Fra integrasjonspartner</li>
+                  <li><strong>Client Key</strong> - Genereres automatisk i PowerOffice Go</li>
+                </ul>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">1</div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-gray-900 mb-2">Få Application Key</h3>
+                    <div className="bg-gray-50 p-4 rounded-lg text-sm space-y-2">
+                      <p className="text-gray-700">Application Key får du fra integrasjonspartner:</p>
+                      <ul className="space-y-2 ml-2">
+                        <li className="bg-white border p-2 rounded">
+                          <strong>iizy:</strong> <a href="https://www.poweroffice.no/utvidelser/vipps_iizy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs">Bestill her</a>
+                        </li>
+                        <li className="bg-white border p-2 rounded">
+                          <strong>SRH:</strong> <span className="text-xs">Kontakt SpareBank 1</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">2</div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-gray-900 mb-2">Logg inn på PowerOffice Go</h3>
+                    <div className="bg-gray-50 p-4 rounded-lg text-sm">
+                      <a href="https://go.poweroffice.net" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">go.poweroffice.net</a>
+                      <p className="text-xs text-gray-600 mt-1">Krever administrator-rettigheter</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">3</div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-gray-900 mb-2">Gå til Extensions</h3>
+                    <div className="bg-gray-50 p-4 rounded-lg text-sm">
+                      <div className="bg-white border-2 border-purple-300 p-2 rounded font-mono text-xs">
+                        Menu → Settings → Extensions
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">4</div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-gray-900 mb-2">Godkjenn integrasjonen</h3>
+                    <div className="bg-gray-50 p-4 rounded-lg text-sm space-y-2">
+                      <p className="text-gray-700">Finn integrasjonen og klikk "Authorize"</p>
+                      <div className="bg-green-50 border border-green-200 p-3 rounded">
+                        <p className="text-green-800 text-xs"><strong>Client Key genereres automatisk!</strong></p>
+                        <p className="text-green-700 text-xs mt-1">Du vil IKKE se den i PowerOffice (sikkerhet)</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">5</div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-gray-900 mb-2">Få Client Key fra partner</h3>
+                    <div className="bg-gray-50 p-4 rounded-lg text-sm">
+                      <p className="text-gray-700 mb-2">Logg inn på integrasjonspartnerens dashboard for å hente Client Key</p>
+                      <div className="bg-blue-50 p-2 rounded text-xs text-blue-800">
+                        <strong>Averdi-kunder:</strong> Send beskjed når godkjent, vi henter nøkkelen for deg
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          ) : (
+            /* 24SevenOffice Guide */
+            <>
+              <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+                <h4 className="font-semibold text-blue-900 mb-2">Om 24SevenOffice API</h4>
+                <p className="text-sm text-blue-800">24SevenOffice bruker API Keys (brukernavn og passord) som du genererer selv.</p>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">1</div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-gray-900 mb-2">Logg inn på 24SevenOffice</h3>
+                    <div className="bg-gray-50 p-4 rounded-lg text-sm">
+                      <a href="https://24sevenoffice.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">24sevenoffice.com</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">2</div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-gray-900 mb-2">Gå til API-integrasjoner</h3>
+                    <div className="bg-gray-50 p-4 rounded-lg text-sm">
+                      <div className="bg-white border-2 border-purple-300 p-2 rounded font-mono text-xs">
+                        Innstillinger → Integrasjoner → API-tilgang
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">3</div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-gray-900 mb-2">Generer API-nøkler</h3>
+                    <div className="bg-gray-50 p-4 rounded-lg text-sm space-y-2">
+                      <p className="text-gray-700">Klikk "Generer ny nøkkel"</p>
+                      <div className="bg-red-50 border-l-4 border-red-500 p-2">
+                        <p className="text-red-800 text-xs"><strong>API Secret vises kun én gang!</strong> Kopier og lagre den nå.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">4</div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-gray-900 mb-2">Kopier nøklene</h3>
+                    <div className="bg-gray-50 p-4 rounded-lg text-sm space-y-2">
+                      <div>
+                        <p className="text-gray-600 text-xs mb-1">API Key:</p>
+                        <div className="bg-white border p-2 rounded font-mono text-xs">a1b2c3d4-e5f6...</div>
+                      </div>
+                      <div>
+                        <p className="text-gray-600 text-xs mb-1">API Secret:</p>
+                        <div className="bg-white border p-2 rounded font-mono text-xs">X7mK9pL2nQ4r...</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+
+          <div className="bg-green-50 border border-green-200 p-4 rounded-lg">
+            <h4 className="font-bold text-green-900 mb-2">Trenger hjelp?</h4>
+            <div className="space-y-1 text-sm">
+              <a href={isPowerOffice ? "https://developer.poweroffice.net" : "https://24sevenoffice.com/support"} target="_blank" rel="noopener noreferrer" className="text-green-700 hover:underline flex items-center gap-1">
+                <ExternalLink className="w-3 h-3" />
+                {isPowerOffice ? 'PowerOffice docs' : '24SevenOffice support'}
+              </a>
+              <a href="mailto:support@averdi.no" className="text-green-700 hover:underline flex items-center gap-1">
+                <Key className="w-3 h-3" />
+                support@averdi.no
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Vipps Credentials Guide Component
+function VippsCredentialsGuide() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="bg-blue-50 border border-blue-200 rounded-lg overflow-hidden">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full px-6 py-4 flex items-center justify-between hover:bg-blue-100 transition-colors"
+      >
+        <div className="flex items-center gap-3">
+          <BookOpen className="w-5 h-5 text-blue-600" />
+          <span className="font-semibold text-blue-900">
+            📖 Hvordan finne API-nøklene dine (Steg-for-steg guide)
+          </span>
+        </div>
+        {isOpen ? <ChevronUp className="w-5 h-5 text-blue-600" /> : <ChevronDown className="w-5 h-5 text-blue-600" />}
+      </button>
+
+      {isOpen && (
+        <div className="px-6 py-6 bg-white border-t border-blue-200 space-y-6">
+          
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-start gap-3">
+              <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                1
+              </div>
+              <div className="flex-1">
+                <h3 className="font-bold text-gray-900 mb-2">Logg inn på Vipps Portal</h3>
+                <div className="bg-gray-50 p-4 rounded-lg space-y-2 text-sm">
+                  <p className="text-gray-700">
+                    <strong>URL:</strong>{' '}
+                    <a 
+                      href="https://portal.vippsmobilepay.com" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:underline inline-flex items-center gap-1"
+                    >
+                      portal.vippsmobilepay.com
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </p>
+                  <p className="text-gray-700">
+                    <strong>Autentisering:</strong> Bruk BankID (privatperson eller bedrift)
+                  </p>
+                  <div className="bg-yellow-50 border-l-4 border-yellow-400 p-3 mt-2">
+                    <p className="text-yellow-800 text-xs">
+                      <strong>⚠️ Viktig:</strong> Ikke bruk den gamle portalen (portal.vipps.no). 
+                      Den nye portalen er portal.vippsmobilepay<strong>.com</strong>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-start gap-3">
+              <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                2
+              </div>
+              <div className="flex-1">
+                <h3 className="font-bold text-gray-900 mb-2">Velg din organisasjon</h3>
+                <div className="bg-gray-50 p-4 rounded-lg space-y-2 text-sm">
+                  <p className="text-gray-700">
+                    Etter innlogging vil du se en liste over organisasjoner du har tilgang til.
+                  </p>
+                  <ul className="list-disc list-inside space-y-1 text-gray-700 ml-2">
+                    <li>Velg organisasjonen med riktig organisasjonsnummer</li>
+                    <li>Hvis du har flere "sales units" (salgssteder), velg hovedenheten</li>
+                  </ul>
+                  <div className="bg-blue-50 border border-blue-200 p-3 rounded mt-2">
+                    <p className="text-blue-800 text-xs">
+                      <Key className="w-4 h-4 inline mr-1" />
+                      <strong>Tips:</strong> Organisasjonsnummeret ditt vises øverst på siden. 
+                      Verifiser at det stemmer med det du skrev i forrige steg.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-start gap-3">
+              <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                3
+              </div>
+              <div className="flex-1">
+                <h3 className="font-bold text-gray-900 mb-2">Gå til Developer-seksjonen</h3>
+                <div className="bg-gray-50 p-4 rounded-lg space-y-3 text-sm">
+                  <p className="text-gray-700">
+                    I venstre meny, finn og klikk på:
+                  </p>
+                  <div className="bg-white border-2 border-blue-300 p-3 rounded-lg">
+                    <p className="font-mono text-gray-900 font-semibold">
+                      Developer → API keys
+                    </p>
+                  </div>
+                  <p className="text-gray-700">
+                    Alternativ vei: <span className="font-mono bg-gray-100 px-2 py-1 rounded">Settings → API credentials</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Step 4 - Client ID */}
+          <div className="space-y-3">
+            <div className="flex items-start gap-3">
+              <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                4a
+              </div>
+              <div className="flex-1">
+                <h3 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
+                  <Key className="w-5 h-5 text-green-600" />
+                  Finn Client ID
+                </h3>
+                <div className="bg-gray-50 p-4 rounded-lg space-y-2 text-sm">
+                  <p className="text-gray-700">
+                    På "API keys"-siden finner du <strong>Client ID</strong> under seksjonen "Production keys".
+                  </p>
+                  <div className="space-y-2">
+                    <p className="text-gray-700"><strong>Ser ut som:</strong></p>
+                    <div className="bg-white border border-gray-300 p-3 rounded font-mono text-xs text-gray-600">
+                      8a3b5c7d-1234-5678-90ab-cdef12345678
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-2 bg-blue-50 p-2 rounded">
+                    <Info className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                    <p className="text-blue-800 text-xs">
+                      Dette er en UUID (universally unique identifier) i formatet xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+                    </p>
+                  </div>
+                  <button 
+                    className="text-blue-600 hover:underline text-xs flex items-center gap-1"
+                    onClick={() => navigator.clipboard.writeText('Client ID kopieres med "Copy" knappen i portalen')}
+                  >
+                    <Eye className="w-3 h-3" />
+                    Klikk "Copy" knappen ved siden av nøkkelen for å kopiere
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Step 5 - Client Secret */}
+          <div className="space-y-3">
+            <div className="flex items-start gap-3">
+              <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                4b
+              </div>
+              <div className="flex-1">
+                <h3 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
+                  <Shield className="w-5 h-5 text-red-600" />
+                  Finn Client Secret
+                </h3>
+                <div className="bg-gray-50 p-4 rounded-lg space-y-2 text-sm">
+                  <p className="text-gray-700">
+                    <strong>Client Secret</strong> er IKKE synlig i portalen av sikkerhetshensyn.
+                  </p>
+                  
+                  <div className="bg-red-50 border-l-4 border-red-500 p-3 space-y-2">
+                    <p className="text-red-900 font-semibold">🔒 Viktig sikkerhetsinformasjon:</p>
+                    <ul className="list-disc list-inside space-y-1 text-red-800 text-xs ml-2">
+                      <li>Client Secret vises KUN når nøkkelen genereres første gang</li>
+                      <li>Hvis du har mistet den, må du regenerere en ny nøkkel</li>
+                      <li>Den gamle nøkkelen slutter da å virke</li>
+                    </ul>
+                  </div>
+
+                  <div className="space-y-2 mt-3">
+                    <p className="text-gray-700 font-semibold">Hvis du trenger ny Client Secret:</p>
+                    <ol className="list-decimal list-inside space-y-1 text-gray-700 ml-2 text-xs">
+                      <li>Klikk på "Regenerate" knappen ved siden av nøkkelen</li>
+                      <li>Bekreft at du vil generere ny nøkkel</li>
+                      <li>Den nye Client Secret vises på skjermen - <strong>KOPIER DEN NÅ</strong></li>
+                      <li>Du får aldri se denne nøkkelen igjen</li>
+                    </ol>
+                  </div>
+
+                  <div className="bg-yellow-50 border border-yellow-300 p-3 rounded mt-2">
+                    <p className="text-yellow-800 text-xs">
+                      <strong>Best practice:</strong> Lagre Client Secret i en passordmanager (1Password, LastPass, Bitwarden) 
+                      med en gang du får den.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Step 6 - MSN */}
+          <div className="space-y-3">
+            <div className="flex items-start gap-3">
+              <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                4c
+              </div>
+              <div className="flex-1">
+                <h3 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
+                  <Key className="w-5 h-5 text-purple-600" />
+                  Finn Merchant Serial Number (MSN)
+                </h3>
+                <div className="bg-gray-50 p-4 rounded-lg space-y-2 text-sm">
+                  <p className="text-gray-700">
+                    MSN finner du på samme side som API-nøklene, vanligvis øverst eller i en egen boks merket "Sales Unit".
+                  </p>
+                  <div className="space-y-2">
+                    <p className="text-gray-700"><strong>Ser ut som:</strong></p>
+                    <div className="bg-white border border-gray-300 p-3 rounded font-mono text-xs text-gray-600">
+                      123456
+                    </div>
+                    <p className="text-gray-500 text-xs">Et 5-6 sifret tall</p>
+                  </div>
+                  <div className="bg-blue-50 border border-blue-200 p-3 rounded">
+                    <p className="text-blue-800 text-xs">
+                      <strong>Hvis du har flere salgssteder:</strong> Du vil ha et MSN per salgssted. 
+                      Velg det som matcher hovedenheten din. Du kan legge til flere senere.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Step 7 - Subscription Key (Optional) */}
+          <div className="space-y-3">
+            <div className="flex items-start gap-3">
+              <div className="w-8 h-8 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                5
+              </div>
+              <div className="flex-1">
+                <h3 className="font-bold text-gray-900 mb-2">
+                  Subscription Key (Valgfritt) - For Report API
+                </h3>
+                <div className="bg-gray-50 p-4 rounded-lg space-y-2 text-sm">
+                  <p className="text-gray-700">
+                    Hvis du skal bruke Report API (for å hente oppgjørsrapporter), trenger du også en <strong>Subscription Key</strong>.
+                  </p>
+                  
+                  <div className="bg-blue-50 p-3 rounded space-y-2">
+                    <p className="text-blue-900 font-semibold text-xs">Hvor finner jeg denne?</p>
+                    <ol className="list-decimal list-inside space-y-1 text-blue-800 text-xs ml-2">
+                      <li>Gå til "Developer" → "API Products"</li>
+                      <li>Finn "Report API" i listen</li>
+                      <li>Klikk "Subscribe" hvis du ikke har abonnert</li>
+                      <li>Subscription Key vises under "Your subscriptions"</li>
+                    </ol>
+                  </div>
+
+                  <div className="bg-gray-100 border border-gray-300 p-3 rounded">
+                    <p className="text-gray-700 text-xs">
+                      <strong>Header navn:</strong> <code className="bg-white px-2 py-1 rounded">Ocp-Apim-Subscription-Key</code>
+                    </p>
+                  </div>
+
+                  <p className="text-gray-600 text-xs italic">
+                    Mange integrasjonspartnere (som iizy) håndterer dette for deg, så det er ofte ikke nødvendig.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Common Issues */}
+          <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+            <h4 className="font-bold text-yellow-900 mb-2 flex items-center gap-2">
+              <AlertCircle className="w-5 h-5" />
+              Vanlige feil
+            </h4>
+            <ul className="space-y-2 text-sm text-yellow-800">
+              <li className="flex items-start gap-2">
+                <span className="font-bold">❌</span>
+                <div>
+                  <strong>Feil portal:</strong> Sørg for at du bruker portal.vippsmobilepay<strong>.com</strong> og ikke den gamle portal.vipps.no
+                </div>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="font-bold">❌</span>
+                <div>
+                  <strong>Mangler tilgang:</strong> Hvis du ikke ser "Developer" i menyen, mangler du utvikler-tilgang. 
+                  Kontakt personen som administrerer Vipps-kontoen i organisasjonen din.
+                </div>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="font-bold">❌</span>
+                <div>
+                  <strong>Kopierer feil nøkkel:</strong> Pass på at du kopierer "Production" nøklene, IKKE "Test" nøklene.
+                </div>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="font-bold">❌</span>
+                <div>
+                  <strong>Mellomrom i nøkkelen:</strong> Når du limer inn, sjekk at det ikke er ekstra mellomrom før eller etter nøkkelen.
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          {/* Help section */}
+          <div className="bg-green-50 border border-green-200 p-4 rounded-lg">
+            <h4 className="font-bold text-green-900 mb-2">Trenger du hjelp?</h4>
+            <p className="text-sm text-green-800 mb-3">
+              Hvis du står fast eller ikke finner nøklene dine:
+            </p>
+            <div className="space-y-2 text-sm">
+              <a 
+                href="https://developer.vippsmobilepay.com/docs/knowledge-base/portal/" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-green-700 hover:underline"
+              >
+                <ExternalLink className="w-4 h-4" />
+                Offisiell Vipps dokumentasjon om portalen
+              </a>
+              <a 
+                href="mailto:support@averdi.no" 
+                className="flex items-center gap-2 text-green-700 hover:underline"
+              >
+                <Key className="w-4 h-4" />
+                Kontakt Averdi support: support@averdi.no
+              </a>
+            </div>
+          </div>
+
+        </div>
+      )}
+    </div>
+  );
+}
+
+export function VippsSetupWizard() {
+  const [step, setStep] = useState(0);
+  const [troubleshootingOpen, setTroubleshootingOpen] = useState(false);
+  const [config, setConfig] = useState({
+    accountingSystem: '',
+    modules: [] as string[],
+    companyName: '',
+    orgNumber: '',
+    organizationType: '',
+    vippsClientId: '',
+    vippsClientSecret: '',
+    vippsMerchantSerialNumber: '',
+    vippsSubscriptionKey: '',
+    accountingApiKey: '',
+    accountingApiSecret: '',
+    integrationPartner: '',
+    accounts: {
+      vippsInterim: '1580',
+      bankAccount: '1920',
+      salesIncome: '3100',
+      salesIncomeMVA: '3000',
+      fees: '7770',
+      roundingDiff: '7778'
+    },
+    mvaSettings: {
+      enabled: false,
+      threshold: 50000,
+      defaultCode: '0'
+    },
+    features: {
+      autoBooking: true,
+      eFaktura: false,
+      ocrEnabled: false,
+      loginWithVipps: false
+    }
+  });
+
+  const modules = [
+    {
+      id: 'ecommerce',
+      name: 'E-Commerce Checkout',
+      description: 'Integrate with WooCommerce, Shopify for online sales',
+      icon: ShoppingCart,
+      apis: ['Checkout API', 'ePayment API'],
+      vippsProduct: 'Vipps på Nett'
+    },
+    {
+      id: 'recurring',
+      name: 'Recurring Payments',
+      description: 'Memberships, subscriptions, and recurring donations',
+      icon: CreditCard,
+      apis: ['Recurring API'],
+      vippsProduct: 'Vipps Faste Betalinger'
+    },
+    {
+      id: 'donations',
+      name: 'Donations & Events',
+      description: 'QR codes and payment links for fundraising',
+      icon: Gift,
+      apis: ['Donations API', 'ePayment API'],
+      vippsProduct: 'Vipps Nummer'
+    },
+    {
+      id: 'pos',
+      name: 'POS/Kiosk Payments',
+      description: 'In-person sales with Vipps Number or QR codes',
+      icon: Users,
+      apis: ['ePayment API'],
+      vippsProduct: 'Vipps Nummer'
+    },
+    {
+      id: 'reconciliation',
+      name: 'Settlement Reconciliation',
+      description: 'Daily automatic sync of transactions and settlements',
+      icon: BarChart3,
+      apis: ['Report API', 'Management API'],
+      required: true
+    }
+  ];
+
+  const integrationPartners = [
+    {
+      id: 'iizy',
+      name: 'iizy',
+      description: 'Bank-independent middleware solution',
+      features: ['Daily settlement import', 'Fee calculation', 'MVA handling', 'Multi-entity support'],
+      pricing: '150-500 kr/month',
+      url: 'https://iizy.no'
+    },
+    {
+      id: 'srh',
+      name: 'SRH Oppgjør (SpareBank 1)',
+      description: 'Integrated solution for SpareBank 1 customers',
+      features: ['Bank integration', 'Automated posting', 'Settlement reports'],
+      pricing: 'Contact bank',
+      url: 'https://smnregnskap.no'
+    },
+    {
+      id: 'direct',
+      name: 'Direct Integration',
+      description: 'Build your own integration using APIs',
+      features: ['Full control', 'Custom workflows', 'Requires development'],
+      pricing: 'Developer time',
+      url: ''
+    }
+  ];
+
+  const updateConfig = (key: string, value: any) => {
+    setConfig(prev => ({ ...prev, [key]: value }));
+  };
+
+  const updateNested = (parent: string, key: string, value: any) => {
+    setConfig(prev => ({
+      ...prev,
+      [parent]: { ...(prev as any)[parent], [key]: value }
+    }));
+  };
+
+  const toggleModule = (moduleId: string) => {
+    setConfig(prev => ({
+      ...prev,
+      modules: prev.modules.includes(moduleId)
+        ? prev.modules.filter(m => m !== moduleId)
+        : [...prev.modules, moduleId]
+    }));
+  };
+
+  const canProceed = () => {
+    switch(step) {
+      case 0: return true;
+      case 1: return config.accountingSystem !== '';
+      case 2: return config.modules.length > 0;
+      case 3: return config.companyName && config.orgNumber && config.organizationType;
+      case 4: return config.integrationPartner !== '';
+      case 5: return config.vippsClientId && config.vippsClientSecret && config.vippsMerchantSerialNumber;
+      case 6: return config.accountingApiKey && config.accountingApiSecret;
+      case 7: return true;
+      case 8: return true;
+      default: return true;
+    }
+  };
+
+  const generateConfigFile = () => {
+    const configData = {
+      version: '2.0',
+      metadata: {
+        created: new Date().toISOString(),
+        wizard: 'Vipps-PowerOffice Integration Setup'
+      },
+      company: {
+        name: config.companyName,
+        orgNumber: config.orgNumber,
+        type: config.organizationType
+      },
+      vipps: {
+        clientId: config.vippsClientId,
+        merchantSerialNumber: config.vippsMerchantSerialNumber,
+        subscriptionKey: config.vippsSubscriptionKey || 'NOT_PROVIDED',
+        environment: 'production',
+        apiVersion: 'v2',
+        products: modules.filter(m => config.modules.includes(m.id) || m.required)
+          .map(m => m.vippsProduct).filter(Boolean)
+      },
+      accounting: {
+        system: config.accountingSystem,
+        integrationPartner: config.integrationPartner,
+        accounts: config.accounts,
+        mva: config.mvaSettings,
+        features: config.features
+      },
+      modules: config.modules,
+      authentication: {
+        vipps: {
+          method: 'OAuth 2.0',
+          tokenEndpoint: 'https://api.vipps.no/accesstoken/get'
+        },
+        poweroffice: {
+          method: 'OAuth 2.0 Client Credentials',
+          tokenEndpoint: 'https://goapi.poweroffice.net/OAuth/Token'
+        }
+      }
+    };
+    
+    const blob = new Blob([JSON.stringify(configData, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `vipps-integration-${config.orgNumber}-${Date.now()}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const generateImplementationGuide = () => {
+    const partner = integrationPartners.find(p => p.id === config.integrationPartner);
+    const activeModules = modules.filter(m => config.modules.includes(m.id) || m.required);
+    
+    const guide = `
+VIPPS MOBILEPAY INTEGRATION - IMPLEMENTATION GUIDE
+Generated: ${new Date().toLocaleDateString('nb-NO')} ${new Date().toLocaleTimeString('nb-NO')}
+==============================================================================
+
+CLIENT INFORMATION
+------------------
+Organization: ${config.companyName}
+Org. Number: ${config.orgNumber}
+Type: ${config.organizationType}
+Contact Email: [TO BE FILLED BY CLIENT]
+Contact Phone: [TO BE FILLED BY CLIENT]
+
+INTEGRATION CONFIGURATION
+--------------------------
+Accounting System: ${config.accountingSystem === 'poweroffice' ? 'PowerOffice Go' : '24SevenOffice'}
+Integration Partner: ${partner?.name || config.integrationPartner}
+MVA Enabled: ${config.mvaSettings.enabled ? 'Yes' : 'No'}
+${config.mvaSettings.enabled ? `MVA Threshold: ${config.mvaSettings.threshold.toLocaleString('nb-NO')} NOK\nDefault MVA Code: ${config.mvaSettings.defaultCode}` : ''}
+
+ACTIVE MODULES
+--------------
+${activeModules.map(m => `• ${m.name}\n  Vipps Product: ${m.vippsProduct || 'N/A'}\n  APIs Used: ${m.apis.join(', ')}`).join('\n')}
+
+ACCOUNT MAPPING (NS 4102)
+--------------------------
+Vipps Interim (Mellomregning): ${config.accounts.vippsInterim}
+Bank Account: ${config.accounts.bankAccount}
+Sales Income (VAT Free): ${config.accounts.salesIncome}
+Sales Income (VAT 25%): ${config.accounts.salesIncomeMVA}
+Bank & Card Fees: ${config.accounts.fees}
+Rounding Differences: ${config.accounts.roundingDiff}
+
+FEATURES ENABLED
+----------------
+✓ Automatic Booking: ${config.features.autoBooking ? 'Yes' : 'No'}
+✓ Vipps eFaktura: ${config.features.eFaktura ? 'Yes' : 'No'}
+✓ OCR Payment Matching: ${config.features.ocrEnabled ? 'Yes' : 'No'}
+✓ Login with Vipps: ${config.features.loginWithVipps ? 'Yes' : 'No'}
+
+VIPPS API CREDENTIALS (SECURE - HANDLE WITH CARE)
+--------------------------------------------------
+Client ID: ${config.vippsClientId}
+Merchant Serial Number (MSN): ${config.vippsMerchantSerialNumber}
+Client Secret: [REDACTED - See encrypted config file]
+Subscription Key: ${config.vippsSubscriptionKey ? '[PROVIDED]' : '[NOT PROVIDED]'}
+
+Portal: https://portal.vippsmobilepay.com
+Environment: Production
+API Version: v2 (ePayment API)
+
+${config.accountingSystem === 'poweroffice' ? `
+POWEROFFICE GO API CREDENTIALS
+------------------------------
+Application Key: ${config.accountingApiKey}
+Client Key: [REDACTED - See encrypted config file]
+Token Endpoint: https://goapi.poweroffice.net/OAuth/Token
+Authorization Method: OAuth 2.0 Client Credentials Grant
+
+Extensions Path: Menu > Settings > Extensions
+` : `
+24SEVENOFFICE API CREDENTIALS
+-----------------------------
+API Key: ${config.accountingApiKey}
+API Secret: [REDACTED - See encrypted config file]
+`}
+
+IMPLEMENTATION CHECKLIST FOR AVERDI ACCOUNTING
+-----------------------------------------------
+□ Step 1: Verify Signing Authority
+  - Client has BankID
+  - Client has signing authority (check Brønnøysund)
+  - If sports club: Check if board fullmakt/prokura is needed
+
+□ Step 2: Vipps Portal Setup
+  - Client logs into portal.vippsmobilepay.com
+  - Verify organization number ${config.orgNumber}
+  - Activate required products: ${activeModules.map(m => m.vippsProduct).filter(Boolean).join(', ')}
+  - Generate/verify API keys match configuration
+
+□ Step 3: Accounting System Setup
+  - Verify ${config.accountingSystem === 'poweroffice' ? 'PowerOffice Go' : '24SevenOffice'} account is active
+  - Create/verify account codes: ${Object.values(config.accounts).join(', ')}
+  ${config.features.eFaktura ? '  - Activate AutoPay and OCR in bank settings' : ''}
+  ${config.features.ocrEnabled ? '  - Configure OCR payment matching' : ''}
+
+□ Step 4: Integration Partner Setup (${partner?.name})
+  - Contact ${partner?.name} with this configuration
+  - Provide both JSON config file and this guide
+  - Complete OAuth authorization flow:
+    * Vipps Portal authorization
+    * ${config.accountingSystem === 'poweroffice' ? 'PowerOffice Go Extensions approval' : '24SevenOffice API approval'}
+  - Map Vipps sales units to accounting accounts
+  ${config.mvaSettings.enabled ? '  - Configure MVA code mapping per transaction type' : ''}
+
+□ Step 5: Testing Phase
+  - Perform test transaction (minimum 10 NOK)
+  - Verify transaction appears in ${config.accountingSystem === 'poweroffice' ? 'PowerOffice Go' : '24SevenOffice'}
+  - Check account ${config.accounts.vippsInterim} receives debit
+  - Wait for settlement (T+2/T+3 days)
+  - Verify settlement to account ${config.accounts.bankAccount}
+  - Confirm account ${config.accounts.vippsInterim} balances to zero
+  - Verify fees posted to account ${config.accounts.fees}
+
+□ Step 6: Go-Live Preparation
+  - Document access credentials in secure password manager
+  - Set up monthly reconciliation routine for account ${config.accounts.vippsInterim}
+  - Schedule training session with client treasurer/kasserer
+  - Provide troubleshooting guide to client
+  - Set calendar reminder for API key rotation (annual)
+
+□ Step 7: Post-Implementation
+  - Monitor first week of transactions daily
+  - Perform first month-end reconciliation together with client
+  - Address any MVA questions before first VAT report
+  - Document any client-specific customizations
+
+MONTHLY RECONCILIATION PROCEDURE
+---------------------------------
+Account ${config.accounts.vippsInterim} should balance to ZERO at month-end.
+
+If DEBIT balance exists:
+  → Check if sales near month-end (settlement in next month - OK)
+  → Verify all bank receipts are posted
+  → Review Vipps settlement report for missing transactions
+
+If CREDIT balance exists:
+  → Check for duplicate postings
+  → Verify bank receipt wasn't posted twice
+  → Review integration logs for errors
+
+Acceptable rounding differences (< 5 kr) → Post to account ${config.accounts.roundingDiff}
+
+TYPICAL TRANSACTION FLOW
+-------------------------
+Day 1 (Saturday): 
+  - Customer pays 100 kr for vaffel in kiosk
+  - Vipps registers transaction
+
+Day 3 (Monday):
+  - Vipps generates settlement report
+  - Middleware (${partner?.name}) fetches report at 06:00
+  - Booking posted in ${config.accountingSystem === 'poweroffice' ? 'PowerOffice Go' : '24SevenOffice'}:
+    Debit ${config.accounts.vippsInterim}: 100.00 kr
+    Credit ${config.accounts.salesIncome}: 100.00 kr
+
+Day 5 (Wednesday):
+  - Vipps pays out to bank (98.25 kr after 1.75 kr fee)
+  - Booking posted:
+    Debit ${config.accounts.bankAccount}: 98.25 kr
+    Debit ${config.accounts.fees}: 1.75 kr
+    Credit ${config.accounts.vippsInterim}: 100.00 kr
+
+Result: Account ${config.accounts.vippsInterim} = 0 kr (balanced)
+
+CONTACT INFORMATION
+-------------------
+Vipps Support: https://vippsmobilepay.com/support
+${config.accountingSystem === 'poweroffice' ? 'PowerOffice Support: https://www.poweroffice.no/support' : '24SevenOffice Support: https://24sevenoffice.com/support'}
+${partner ? `${partner.name}: ${partner.url || '[Contact via accounting software]'}` : ''}
+Averdi Accounting: support@averdi.no
+Phone: +47 78 46 61 16
+
+SECURITY NOTES
+--------------
+⚠️ CRITICAL: This document contains sensitive information
+- Store in encrypted location
+- Never send unencrypted via email
+- Rotate API keys annually or when staff changes
+- Revoke access immediately if security breach suspected
+- Client Secret and API keys redacted from this document - see encrypted JSON file
+
+GDPR COMPLIANCE
+---------------
+${config.integrationPartner !== 'direct' ? `- Databehandleravtale (DPA) with ${partner?.name} required` : '- Direct integration: Client is data controller'}
+- Personal data minimization: Only process necessary transaction data
+${config.modules.includes('donations') || config.modules.includes('pos') ? '- For kiosk/donations: Consider anonymizing customer data where names not required' : ''}
+${config.features.loginWithVipps ? '- Login with Vipps: Additional consent required from members' : ''}
+- Document retention: Settlement reports as accounting source documentation
+
+TROUBLESHOOTING QUICK REFERENCE
+--------------------------------
+Problem: Transactions not appearing
+→ Check: Integration partner dashboard for errors
+→ Action: Use "Retry" button if import failed
+
+Problem: Account ${config.accounts.vippsInterim} doesn't balance
+→ Check: Bank statement for Vipps payout
+→ Action: Compare with Vipps settlement report line by line
+
+Problem: Wrong MVA code
+→ Check: Integration default settings
+→ Action: Specify MVA code per transaction type
+
+Problem: Integration stopped working
+→ Check: Vipps Portal > Developer > API Keys status
+→ Action: Re-authorize in PowerOffice Extensions
+
+For detailed troubleshooting: Contact support@averdi.no
+
+ESTIMATED TIMELINE
+------------------
+Day 1-2:   Averdi reviews configuration
+Day 3-5:   Technical setup and OAuth authorizations
+Day 6-7:   Testing phase with client
+Day 8-10:  Go-live and monitoring
+Week 2-4:  First month-end reconciliation support
+
+PRICING REFERENCE (Estimated)
+------------------------------
+Vipps Transaction Fees: ${config.modules.includes('pos') ? '1.75%' : '2.99%'} + ${config.modules.includes('pos') ? '0 kr' : '1 kr'} per transaction
+Integration Partner (${partner?.name}): ${partner?.pricing}
+PowerOffice Go: Per bilag/transaction pricing
+Total Monthly: Typically ${partner?.pricing === '150-500 kr/month' ? '500-1000' : '300-800'} kr for small to medium organizations
+
+==============================================================================
+END OF IMPLEMENTATION GUIDE
+
+Generated by Vipps Integration Setup Wizard v2.0
+For: ${config.companyName} (${config.orgNumber})
+Date: ${new Date().toISOString()}
+
+This guide should be used together with the JSON configuration file.
+Send this TXT file via email, but send JSON file via secure channel only.
+==============================================================================
+`;
+
+    const blob = new Blob([guide], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `implementation-guide-${config.orgNumber}-${Date.now()}.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const sendToAverdi = () => {
+    const emailBody = `Hello Averdi Accounting Team,
+
+I have completed the Vipps MobilePay integration setup wizard.
+
+Organization: ${config.companyName}
+Org. Number: ${config.orgNumber}
+Integration Partner: ${integrationPartners.find(p => p.id === config.integrationPartner)?.name}
+
+I will send the full configuration file separately via secure channel.
+
+Best regards`;
+
+    const mailtoLink = `mailto:support@averdi.no?subject=Vipps Integration Setup - ${config.companyName} (${config.orgNumber})&body=${encodeURIComponent(emailBody)}`;
+    window.location.href = mailtoLink;
+  };
+
+  const TroubleshootingGuide = () => {
+    const issues = [
+      {
+        category: "Authentication & API Issues",
+        problems: [
+          {
+            issue: "Integration stopped working suddenly",
+            causes: ["API token expired", "Client Secret rotated"],
+            solutions: [
+              "Check Vipps Portal > Developer > API Keys",
+              "In PowerOffice Go: Settings > Extensions",
+              "Re-authorize if needed"
+            ]
+          }
+        ]
+      }
+    ];
+
+    return (
+      <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
+        <button
+          onClick={() => setTroubleshootingOpen(!troubleshootingOpen)}
+          className="w-full px-6 py-4 flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition-colors"
+        >
+          <div className="flex items-center gap-3">
+            <AlertCircle className="w-5 h-5 text-orange-600" />
+            <h3 className="font-semibold text-gray-900">Troubleshooting Guide</h3>
+          </div>
+          {troubleshootingOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+        </button>
+
+        {troubleshootingOpen && (
+          <div className="p-6">
+            <p className="text-sm text-gray-600">
+              For full troubleshooting guide, contact <a href="mailto:support@averdi.no" className="text-blue-600 hover:underline">support@averdi.no</a>
+            </p>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  const steps = [
+    {
+      title: 'Welcome',
+      content: (
+        <div className="space-y-6">
+          <div className="text-center">
+            <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl mx-auto mb-6 flex items-center justify-center">
+              <Check className="w-10 h-10 text-white" />
+            </div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Vipps MobilePay Integration Setup</h2>
+            <p className="text-lg text-gray-600">Complete integration in 10 minutes</p>
+          </div>
+          
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+              <Info className="w-5 h-5 text-blue-600" />
+              What you'll need:
+            </h3>
+            <ul className="space-y-2 text-gray-700">
+              <li className="flex items-start gap-2">
+                <Check className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                <span><strong>Vipps Portal access</strong> with BankID</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                <span><strong>PowerOffice Go</strong> or 24SevenOffice API credentials</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                <span><strong>Signing authority</strong> for your organization</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      )
+    },
+    {
+      title: 'Accounting System',
+      content: (
+        <div className="space-y-6">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Select Your Accounting System</h2>
+            <p className="text-gray-600">Choose your bookkeeping platform</p>
+          </div>
+
+          <div className="grid gap-4">
+            <button
+              onClick={() => updateConfig('accountingSystem', '24sevenoffice')}
+              className={`p-6 rounded-lg border-2 transition-all text-left ${
+                config.accountingSystem === '24sevenoffice'
+                  ? 'border-orange-500 bg-orange-50'
+                  : 'border-gray-200 hover:border-gray-300'
+              }`}
+            >
+              <div className="flex items-start justify-between">
+                <div>
+                  <h3 className="font-semibold text-lg text-gray-900">24SevenOffice</h3>
+                  <p className="text-gray-600 mt-1">Cloud-based ERP system</p>
+                </div>
+                {config.accountingSystem === '24sevenoffice' && (
+                  <Check className="w-6 h-6 text-orange-500 flex-shrink-0" />
+                )}
+              </div>
+            </button>
+
+            <button
+              onClick={() => updateConfig('accountingSystem', 'poweroffice')}
+              className={`p-6 rounded-lg border-2 transition-all text-left ${
+                config.accountingSystem === 'poweroffice'
+                  ? 'border-orange-500 bg-orange-50'
+                  : 'border-gray-200 hover:border-gray-300'
+              }`}
+            >
+              <div className="flex items-start justify-between">
+                <div>
+                  <h3 className="font-semibold text-lg text-gray-900">PowerOffice Go</h3>
+                  <p className="text-gray-600 mt-1">API-first accounting software</p>
+                </div>
+                {config.accountingSystem === 'poweroffice' && (
+                  <Check className="w-6 h-6 text-orange-500 flex-shrink-0" />
+                )}
+              </div>
+            </button>
+          </div>
+        </div>
+      )
+    },
+    {
+      title: 'Select Modules',
+      content: (
+        <div className="space-y-6">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Choose Integration Modules</h2>
+            <p className="text-gray-600">Select the Vipps features you need</p>
+          </div>
+
+          <div className="grid gap-4">
+            {modules.map((module) => {
+              const Icon = module.icon;
+              const isSelected = config.modules.includes(module.id) || module.required;
+              
+              return (
+                <button
+                  key={module.id}
+                  onClick={() => !module.required && toggleModule(module.id)}
+                  disabled={module.required}
+                  className={`p-5 rounded-lg border-2 transition-all text-left ${
+                    isSelected
+                      ? 'border-orange-500 bg-orange-50'
+                      : 'border-gray-200 hover:border-gray-300'
+                  }`}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className={`p-3 rounded-lg ${isSelected ? 'bg-orange-100' : 'bg-gray-100'}`}>
+                      <Icon className={`w-6 h-6 ${isSelected ? 'text-orange-600' : 'text-gray-600'}`} />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h3 className="font-semibold text-gray-900">{module.name}</h3>
+                        {module.required && (
+                          <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">Required</span>
+                        )}
+                      </div>
+                      <p className="text-sm text-gray-600 mt-1">{module.description}</p>
+                    </div>
+                    {isSelected && (
+                      <Check className="w-6 h-6 text-orange-500 flex-shrink-0" />
+                    )}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )
+    },
+    {
+      title: 'Organization Info',
+      content: (
+        <div className="space-y-6">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Organization Information</h2>
+            <p className="text-gray-600">Enter your company details</p>
+          </div>
+
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Organization Name *
+              </label>
+              <input
+                type="text"
+                value={config.companyName}
+                onChange={(e) => updateConfig('companyName', e.target.value)}
+                placeholder="e.g., Averdi AS or Ski Idrettslag"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Organization Number *
+              </label>
+              <input
+                type="text"
+                value={config.orgNumber}
+                onChange={(e) => updateConfig('orgNumber', e.target.value)}
+                placeholder="e.g., 123456789"
+                maxLength={9}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Organization Type *
+              </label>
+              <select
+                value={config.organizationType}
+                onChange={(e) => updateConfig('organizationType', e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+              >
+                <option value="">Select type...</option>
+                <option value="as">AS (Aksjeselskap)</option>
+                <option value="idrettslag">Idrettslag (Sports Club)</option>
+                <option value="forening">Forening (Association)</option>
+                <option value="nonprofit">Non-profit Organization</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      title: 'Integration Partner',
+      content: (
+        <div className="space-y-6">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Choose Integration Partner</h2>
+            <p className="text-gray-600">Select middleware for settlement reconciliation</p>
+          </div>
+
+          <div className="grid gap-4">
+            {integrationPartners.map((partner) => (
+              <button
+                key={partner.id}
+                onClick={() => updateConfig('integrationPartner', partner.id)}
+                className={`p-5 rounded-lg border-2 transition-all text-left ${
+                  config.integrationPartner === partner.id
+                    ? 'border-orange-500 bg-orange-50'
+                    : 'border-gray-200 hover:border-gray-300'
+                }`}
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <div>
+                    <h3 className="font-semibold text-lg text-gray-900">{partner.name}</h3>
+                    <p className="text-sm text-gray-600 mt-1">{partner.description}</p>
+                  </div>
+                  {config.integrationPartner === partner.id && (
+                    <Check className="w-6 h-6 text-orange-500 flex-shrink-0" />
+                  )}
+                </div>
+                
+                <div className="mt-3 pt-3 border-t border-gray-200">
+                  <span className="text-sm font-medium text-gray-700">Pricing: {partner.pricing}</span>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+      )
+    },
+    {
+      title: 'Vipps Credentials',
+      content: (
+        <div className="space-y-6">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Vipps MobilePay API Credentials</h2>
+            <p className="text-gray-600">Enter credentials from Vipps Developer Portal</p>
+          </div>
+
+          {/* How-to Guide - Expandable */}
+          <VippsCredentialsGuide />
+
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Client ID *
+              </label>
+              <input
+                type="text"
+                value={config.vippsClientId}
+                onChange={(e) => updateConfig('vippsClientId', e.target.value)}
+                placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent font-mono text-sm"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Client Secret * 🔒
+              </label>
+              <input
+                type="password"
+                value={config.vippsClientSecret}
+                onChange={(e) => updateConfig('vippsClientSecret', e.target.value)}
+                placeholder="Enter your Client Secret"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent font-mono text-sm"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Merchant Serial Number (MSN) *
+              </label>
+              <input
+                type="text"
+                value={config.vippsMerchantSerialNumber}
+                onChange={(e) => updateConfig('vippsMerchantSerialNumber', e.target.value)}
+                placeholder="123456"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent font-mono text-sm"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Subscription Key (Optional)
+              </label>
+              <input
+                type="password"
+                value={config.vippsSubscriptionKey}
+                onChange={(e) => updateConfig('vippsSubscriptionKey', e.target.value)}
+                placeholder="For Report API access"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent font-mono text-sm"
+              />
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      title: 'Accounting API',
+      content: (
+        <div className="space-y-6">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              {config.accountingSystem === 'poweroffice' ? 'PowerOffice Go' : '24SevenOffice'} API Access
+            </h2>
+            <p className="text-gray-600">Configure API authentication</p>
+          </div>
+
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                {config.accountingSystem === 'poweroffice' ? 'Application Key' : 'API Key'} *
+              </label>
+              <input
+                type="text"
+                value={config.accountingApiKey}
+                onChange={(e) => updateConfig('accountingApiKey', e.target.value)}
+                placeholder="From integration partner"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent font-mono text-sm"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                {config.accountingSystem === 'poweroffice' ? 'Client Key' : 'API Secret'} * 🔒
+              </label>
+              <input
+                type="password"
+                value={config.accountingApiSecret}
+                onChange={(e) => updateConfig('accountingApiSecret', e.target.value)}
+                placeholder="Generated in PowerOffice Go"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent font-mono text-sm"
+              />
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      title: 'Account Mapping',
+      content: (
+        <div className="space-y-6">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Chart of Accounts</h2>
+            <p className="text-gray-600">Map transactions to accounting accounts (NS 4102)</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Vipps Interim Account
+              </label>
+              <input
+                type="text"
+                value={config.accounts.vippsInterim}
+                onChange={(e) => updateNested('accounts', 'vippsInterim', e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg"
+              />
+              <p className="text-xs text-gray-500 mt-1">Default: 1580</p>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Bank Account
+              </label>
+              <input
+                type="text"
+                value={config.accounts.bankAccount}
+                onChange={(e) => updateNested('accounts', 'bankAccount', e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg"
+              />
+              <p className="text-xs text-gray-500 mt-1">Default: 1920</p>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Sales Income (VAT Free)
+              </label>
+              <input
+                type="text"
+                value={config.accounts.salesIncome}
+                onChange={(e) => updateNested('accounts', 'salesIncome', e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Bank Fees
+              </label>
+              <input
+                type="text"
+                value={config.accounts.fees}
+                onChange={(e) => updateNested('accounts', 'fees', e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg"
+              />
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      title: 'Complete',
+      content: (
+        <div className="space-y-6">
+          <div className="text-center">
+            <div className="w-20 h-20 bg-green-500 rounded-full mx-auto mb-6 flex items-center justify-center">
+              <Check className="w-10 h-10 text-white" />
+            </div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Setup Complete!</h2>
+            <p className="text-lg text-gray-600">Your configuration is ready</p>
+          </div>
+
+          <div className="bg-gray-50 rounded-lg p-6">
+            <h3 className="font-semibold text-gray-900 mb-4">Configuration Summary</h3>
+            <div className="space-y-2 text-sm">
+              <div className="flex justify-between">
+                <span className="text-gray-600">Organization:</span>
+                <span className="font-medium">{config.companyName}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-600">Accounting System:</span>
+                <span className="font-medium capitalize">{config.accountingSystem}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-600">Integration Partner:</span>
+                <span className="font-medium capitalize">{config.integrationPartner}</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <button
+              onClick={generateConfigFile}
+              className="w-full bg-orange-500 hover:bg-orange-600 text-white px-6 py-4 rounded-lg font-medium flex items-center justify-center gap-2 transition-colors"
+            >
+              <Download className="w-5 h-5" />
+              Download Configuration File (JSON)
+            </button>
+
+            <button
+              onClick={generateImplementationGuide}
+              className="w-full bg-blue-500 hover:bg-blue-600 text-white px-6 py-4 rounded-lg font-medium flex items-center justify-center gap-2 transition-colors"
+            >
+              <Download className="w-5 h-5" />
+              Download Implementation Guide (TXT)
+            </button>
+
+            <button
+              onClick={sendToAverdi}
+              className="w-full bg-green-500 hover:bg-green-600 text-white px-6 py-4 rounded-lg font-medium flex items-center justify-center gap-2 transition-colors"
+            >
+              <Check className="w-5 h-5" />
+              Email Configuration to Averdi
+            </button>
+          </div>
+
+          <TroubleshootingGuide />
+        </div>
+      )
+    }
+  ];
+
+  return (
+    <div className="p-8">
+      {/* Progress Bar */}
+      <div className="mb-8">
+        <div className="flex items-center justify-between mb-2">
+          {steps.map((s, idx) => (
+            <div key={idx} className="flex items-center flex-1">
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center font-medium text-sm ${
+                idx < step ? 'bg-green-500 text-white' :
+                idx === step ? 'bg-orange-500 text-white' :
+                'bg-gray-300 text-gray-600'
+              }`}>
+                {idx < step ? <Check className="w-5 h-5" /> : idx + 1}
+              </div>
+              {idx < steps.length - 1 && (
+                <div className={`flex-1 h-1 mx-2 ${idx < step ? 'bg-green-500' : 'bg-gray-300'}`} />
+              )}
+            </div>
+          ))}
+        </div>
+        <div className="text-sm text-gray-600 text-center">
+          Step {step + 1} of {steps.length}: {steps[step].title}
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="mb-6">
+        {steps[step].content}
+      </div>
+
+      {/* Navigation */}
+      <div className="flex justify-between items-center pt-6 border-t border-gray-200">
+        <button
+          onClick={() => setStep(step - 1)}
+          disabled={step === 0}
+          className="px-6 py-3 text-gray-700 hover:bg-gray-100 rounded-lg font-medium flex items-center gap-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          <ChevronLeft className="w-5 h-5" />
+          Back
+        </button>
+
+        {step < steps.length - 1 ? (
+          <button
+            onClick={() => setStep(step + 1)}
+            disabled={!canProceed()}
+            className="px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-medium flex items-center gap-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Next
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        ) : (
+          <button
+            onClick={() => window.location.reload()}
+            className="px-8 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium"
+          >
+            Start New Setup
+          </button>
+        )}
+      </div>
+    </div>
+  );
+}

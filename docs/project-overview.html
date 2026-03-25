@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Averdi Next.js Project Overview</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: #ffffff;
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        /* Print styles */
+        @media print {
+            body {
+                padding: 20px;
+                font-size: 11pt;
+            }
+            
+            .page-break {
+                page-break-before: always;
+            }
+            
+            h1, h2, h3 {
+                page-break-after: avoid;
+            }
+            
+            table, pre, .diagram {
+                page-break-inside: avoid;
+            }
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #E86C1F;
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #E86C1F, #F4B223);
+            border-radius: 12px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        
+        h1 {
+            font-size: 28px;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #64748b;
+            font-size: 16px;
+        }
+        
+        /* Sections */
+        section {
+            margin-bottom: 35px;
+        }
+        
+        h2 {
+            font-size: 20px;
+            color: #E86C1F;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f1f5f9;
+        }
+        
+        h3 {
+            font-size: 16px;
+            color: #334155;
+            margin: 20px 0 10px;
+        }
+        
+        p {
+            margin-bottom: 12px;
+            color: #475569;
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #e2e8f0;
+        }
+        
+        th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #334155;
+        }
+        
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        
+        /* Code blocks */
+        pre, code {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 13px;
+        }
+        
+        pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #E86C1F;
+        }
+        
+        pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin: 10px 0 15px 25px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            color: #475569;
+        }
+        
+        /* Diagrams */
+        .diagram {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        
+        .diagram-title {
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .flow-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .flow-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .flow-box {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 12px 20px;
+            text-align: center;
+            min-width: 120px;
+        }
+        
+        .flow-box.primary {
+            background: linear-gradient(135deg, #E86C1F, #F4B223);
+            color: white;
+            border: none;
+        }
+        
+        .flow-box.secondary {
+            background: #3b82f6;
+            color: white;
+            border: none;
+        }
+        
+        .flow-box.success {
+            background: #22c55e;
+            color: white;
+            border: none;
+        }
+        
+        .flow-arrow {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 20px;
+        }
+        
+        /* Feature boxes */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .feature-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .feature-box h4 {
+            color: #E86C1F;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .feature-box p {
+            font-size: 13px;
+            margin: 0;
+        }
+        
+        /* Color swatches */
+        .color-grid {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .color-swatch {
+            text-align: center;
+        }
+        
+        .color-box {
+            width: 80px;
+            height: 50px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .color-box.orange {
+            background: #E86C1F;
+        }
+        
+        .color-box.yellow {
+            background: #F4B223;
+        }
+        
+        .color-box.slate {
+            background: #64748b;
+        }
+        
+        .color-label {
+            font-size: 12px;
+            color: #64748b;
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+        
+        /* Highlight box */
+        .highlight-box {
+            background: linear-gradient(135deg, #fef3c7, #fef9c3);
+            border-left: 4px solid #F4B223;
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+        
+        .highlight-box p {
+            margin: 0;
+            color: #92400e;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">A</div>
+        <h1>Averdi Next.js Project</h1>
+        <p class="subtitle">Technical Documentation & Overview</p>
+    </div>
+
+    <!-- What is This Project -->
+    <section>
+        <h2>1. What is This Project?</h2>
+        <p><strong>Averdi</strong> is a professional website for a state-authorized accounting firm based in Karasjok, Northern Norway. The company positions itself as "The Interpreter of Northern Norway" (Tolken av Nord-Norge).</p>
+        
+        <h3>Specializations</h3>
+        <ul>
+            <li>Accounting services for Northern Norwegian businesses</li>
+            <li>Sami Parliament (Sametinget) grant navigation</li>
+            <li>Tax advantages in the "Tiltakssonen" (Action Zone)</li>
+            <li>Advisory services for regional incentives</li>
+        </ul>
+    </section>
+
+    <!-- Tech Stack -->
+    <section>
+        <h2>2. Technology Stack</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Technology</th>
+                    <th>Version</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Next.js</strong></td>
+                    <td>15.x</td>
+                    <td>React framework with App Router & Server Components</td>
+                </tr>
+                <tr>
+                    <td><strong>TypeScript</strong></td>
+                    <td>5.x</td>
+                    <td>Type-safe development</td>
+                </tr>
+                <tr>
+                    <td><strong>Tailwind CSS</strong></td>
+                    <td>3.4.x</td>
+                    <td>Utility-first styling</td>
+                </tr>
+                <tr>
+                    <td><strong>Framer Motion</strong></td>
+                    <td>11.x</td>
+                    <td>Animations and transitions</td>
+                </tr>
+                <tr>
+                    <td><strong>TipTap</strong></td>
+                    <td>3.x</td>
+                    <td>Rich text editor for admin panel</td>
+                </tr>
+                <tr>
+                    <td><strong>Lucide React</strong></td>
+                    <td>0.460.x</td>
+                    <td>Icon library</td>
+                </tr>
+                <tr>
+                    <td><strong>jose</strong></td>
+                    <td>6.x</td>
+                    <td>JWT authentication</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Project Structure Diagram -->
+    <section>
+        <h2>3. Project Architecture</h2>
+        
+        <div class="diagram">
+            <div class="diagram-title">System Overview</div>
+            <div class="flow-container">
+                <div class="flow-row">
+                    <div class="flow-box">Public Website</div>
+                    <div class="flow-box primary">Admin Panel</div>
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-row">
+                    <div class="flow-box secondary">API Routes</div>
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-row">
+                    <div class="flow-box success">Data Storage (JSON/TS)</div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Directory Structure</h3>
+        <pre><code>src/
+├── app/
+│   ├── page.tsx              # Homepage
+│   ├── om-oss/               # About page & employee profiles
+│   ├── tjenester/            # Service pages
+│   ├── kunnskapsbank/        # Knowledge hub articles
+│   ├── admin/                # Admin panel pages
+│   │   ├── login/
+│   │   ├── dashboard/
+│   │   ├── employees/
+│   │   └── articles/
+│   └── api/admin/            # API routes
+├── components/
+│   ├── admin/                # Admin UI components
+│   ├── layout/               # Navbar, Footer
+│   ├── modules/              # Page-specific components
+│   └── ui/                   # Reusable UI components
+├── data/
+│   ├── employees.ts          # Employee data
+│   └── articles.json         # Article data
+└── lib/
+    ├── admin/                # Admin utilities
+    └── utils.ts              # Helper functions</code></pre>
+    </section>
+
+    <div class="page-break"></div>
+
+    <!-- Key Pages -->
+    <section>
+        <h2>4. Key Pages</h2>
+        
+        <h3>Public Website</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Route</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>/</code></td>
+                    <td>Homepage with Hero, Services, Knowledge Hub teaser, Contact</td>
+                </tr>
+                <tr>
+                    <td><code>/om-oss</code></td>
+                    <td>About page with company story and team members</td>
+                </tr>
+                <tr>
+                    <td><code>/om-oss/[employee]</code></td>
+                    <td>Individual employee profile pages</td>
+                </tr>
+                <tr>
+                    <td><code>/tjenester/*</code></td>
+                    <td>Service pages (regnskap, lønn, rådgiving, årsoppgjør)</td>
+                </tr>
+                <tr>
+                    <td><code>/kunnskapsbank/*</code></td>
+                    <td>Knowledge hub with articles on grants and regulations</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Admin Panel</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Route</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>/admin/login</code></td>
+                    <td>Password-protected login page</td>
+                </tr>
+                <tr>
+                    <td><code>/admin/dashboard</code></td>
+                    <td>Overview with statistics and quick actions</td>
+                </tr>
+                <tr>
+                    <td><code>/admin/employees</code></td>
+                    <td>List, create, edit, delete team members</td>
+                </tr>
+                <tr>
+                    <td><code>/admin/articles</code></td>
+                    <td>Create and edit news articles with rich text</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Admin Panel Features -->
+    <section>
+        <h2>5. Admin Panel Features</h2>
+        
+        <div class="feature-grid">
+            <div class="feature-box">
+                <h4>👥 Employee Management</h4>
+                <p>Add, edit, and remove team members. Control display order and active status.</p>
+            </div>
+            <div class="feature-box">
+                <h4>📝 Article Editor</h4>
+                <p>Rich text editor (TipTap) with formatting, images, and links.</p>
+            </div>
+            <div class="feature-box">
+                <h4>📊 Dashboard</h4>
+                <p>Overview of employees, published articles, and drafts.</p>
+            </div>
+            <div class="feature-box">
+                <h4>🔐 Authentication</h4>
+                <p>Password-protected with JWT session cookies.</p>
+            </div>
+        </div>
+
+        <h3>Employee Management Capabilities</h3>
+        <ul>
+            <li><strong>View all employees</strong> — List with active/inactive status</li>
+            <li><strong>Create new employees</strong> — Add name, role, bio, specialties, image</li>
+            <li><strong>Edit existing employees</strong> — Update any field</li>
+            <li><strong>Delete employees</strong> — Remove from the system</li>
+            <li><strong>Reorder employees</strong> — Control display order on public site</li>
+        </ul>
+
+        <h3>Article Management Capabilities</h3>
+        <ul>
+            <li><strong>Create articles</strong> — Rich text editor with full formatting</li>
+            <li><strong>Draft/Publish workflow</strong> — Save drafts before publishing</li>
+            <li><strong>Categories</strong> — Organize by topic (bedrift, sametinget, etc.)</li>
+            <li><strong>Featured articles</strong> — Highlight important content</li>
+        </ul>
+    </section>
+
+    <div class="page-break"></div>
+
+    <!-- Authentication Flow -->
+    <section>
+        <h2>6. Authentication Flow</h2>
+        
+        <div class="diagram">
+            <div class="diagram-title">Login Process</div>
+            <div class="flow-container">
+                <div class="flow-row">
+                    <div class="flow-box">1. User visits /admin</div>
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-row">
+                    <div class="flow-box">2. Redirected to /admin/login</div>
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-row">
+                    <div class="flow-box">3. Enter password</div>
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-row">
+                    <div class="flow-box secondary">4. API verifies credentials against users.json + bcrypt hash</div>
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-row">
+                    <div class="flow-box success">5. JWT cookie set, redirect to dashboard</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <p><strong>Security Note:</strong> The admin panel uses HTTP-only cookies with JWT tokens. Sessions expire after 24 hours. Passwords are stored as bcrypt hashes (users.json), with optional hash override via environment variables.</p>
+        </div>
+    </section>
+
+    <!-- API Routes -->
+    <section>
+        <h2>7. API Routes</h2>
+        
+        <h3>Authentication</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Endpoint</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>POST</td>
+                    <td><code>/api/admin/auth</code></td>
+                    <td>Login with password</td>
+                </tr>
+                <tr>
+                    <td>POST</td>
+                    <td><code>/api/admin/auth/logout</code></td>
+                    <td>Clear session</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Employees</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Endpoint</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>GET</td>
+                    <td><code>/api/admin/employees</code></td>
+                    <td>List all employees</td>
+                </tr>
+                <tr>
+                    <td>POST</td>
+                    <td><code>/api/admin/employees</code></td>
+                    <td>Create employee</td>
+                </tr>
+                <tr>
+                    <td>GET</td>
+                    <td><code>/api/admin/employees/[id]</code></td>
+                    <td>Get single employee</td>
+                </tr>
+                <tr>
+                    <td>PUT</td>
+                    <td><code>/api/admin/employees/[id]</code></td>
+                    <td>Update employee</td>
+                </tr>
+                <tr>
+                    <td>DELETE</td>
+                    <td><code>/api/admin/employees/[id]</code></td>
+                    <td>Delete employee</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Articles</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Endpoint</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>GET</td>
+                    <td><code>/api/admin/articles</code></td>
+                    <td>List all articles</td>
+                </tr>
+                <tr>
+                    <td>POST</td>
+                    <td><code>/api/admin/articles</code></td>
+                    <td>Create article</td>
+                </tr>
+                <tr>
+                    <td>GET</td>
+                    <td><code>/api/admin/articles/[id]</code></td>
+                    <td>Get single article</td>
+                </tr>
+                <tr>
+                    <td>PUT</td>
+                    <td><code>/api/admin/articles/[id]</code></td>
+                    <td>Update article</td>
+                </tr>
+                <tr>
+                    <td>DELETE</td>
+                    <td><code>/api/admin/articles/[id]</code></td>
+                    <td>Delete article</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <div class="page-break"></div>
+
+    <!-- Components -->
+    <section>
+        <h2>8. Key Components</h2>
+        
+        <h3>Admin Components</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Component</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>AdminLayoutWrapper</code></td>
+                    <td>Wraps admin pages with sidebar navigation</td>
+                </tr>
+                <tr>
+                    <td><code>AdminSidebar</code></td>
+                    <td>Navigation menu for admin sections</td>
+                </tr>
+                <tr>
+                    <td><code>EmployeeForm</code></td>
+                    <td>Form for creating/editing employees</td>
+                </tr>
+                <tr>
+                    <td><code>ArticleForm</code></td>
+                    <td>Form with rich text editor for articles</td>
+                </tr>
+                <tr>
+                    <td><code>RichTextEditor</code></td>
+                    <td>TipTap editor wrapper with toolbar</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Public Components</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Component</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>Navbar</code></td>
+                    <td>Site navigation with responsive mobile menu</td>
+                </tr>
+                <tr>
+                    <td><code>Footer</code></td>
+                    <td>Site footer with links and contact info</td>
+                </tr>
+                <tr>
+                    <td><code>TeamSectionModern</code></td>
+                    <td>Employee grid display on About page</td>
+                </tr>
+                <tr>
+                    <td><code>EmployeeProfileCard</code></td>
+                    <td>Detailed employee view on profile pages</td>
+                </tr>
+                <tr>
+                    <td><code>Hero</code></td>
+                    <td>Homepage hero section</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Running the Project -->
+    <section>
+        <h2>9. Running the Project</h2>
+        
+        <h3>Development</h3>
+        <pre><code># Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# The site will be available at http://localhost:3000</code></pre>
+
+        <h3>Production</h3>
+        <pre><code># Build for production
+npm run build
+
+# Start production server
+npm start</code></pre>
+
+        <h3>Environment Variables</h3>
+        <p>Create a <code>.env.local</code> file in the project root:</p>
+        <pre><code># Required for admin panel
+JWT_SECRET=your-secure-jwt-secret
+
+# Optional initial-admin password hash override
+ADMIN_PASSWORD_HASH=your-bcrypt-hash-here
+
+# Optional analytics
+NEXT_PUBLIC_HOTJAR_ID=your-hotjar-site-id
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX</code></pre>
+    </section>
+
+    <!-- Brand Colors -->
+    <section>
+        <h2>10. Brand Identity</h2>
+        
+        <h3>Color Palette</h3>
+        <div class="color-grid">
+            <div class="color-swatch">
+                <div class="color-box orange"></div>
+                <div class="color-label">Averdi Orange<br><code>#E86C1F</code></div>
+            </div>
+            <div class="color-swatch">
+                <div class="color-box yellow"></div>
+                <div class="color-label">Averdi Yellow<br><code>#F4B223</code></div>
+            </div>
+            <div class="color-swatch">
+                <div class="color-box slate"></div>
+                <div class="color-label">Slate<br>Tailwind scale</div>
+            </div>
+        </div>
+
+        <h3>Usage Guidelines</h3>
+        <ul>
+            <li><strong>Orange (#E86C1F)</strong> — Primary CTAs, accents, active states</li>
+            <li><strong>Yellow (#F4B223)</strong> — Gradients, highlights, secondary accents</li>
+            <li><strong>Slate</strong> — Text colors, backgrounds, borders</li>
+        </ul>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>Averdi AS — Statsautorisert regnskapsførerselskap</p>
+        <p>Hovedgata 15, 9730 Karasjok, Norway</p>
+        <p>Documentation generated January 2026</p>
+    </div>
+</body>
+</html>
