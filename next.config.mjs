@@ -1,30 +1,26 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Dette peker Next.js til riktig rotmappe for å løse "inferred workspace root" warning
-  outputFileTracingRoot: __dirname,
-
-  // Next.js 15: `experimental.serverComponentsExternalPackages` -> `serverExternalPackages`
+  // Stable in v15+: Renamed from experimental.serverComponentsExternalPackages
   serverExternalPackages: ['chart.js'],
 
   reactStrictMode: true,
 
-  // Enable static export for GitHub Pages
-  output: process.env.EXPORT === 'true' ? 'export' : undefined,
+  // Force static export for GitHub Pages compatibility
+  output: 'export', 
 
-  // Set basePath for GitHub Pages (if needed)
-  basePath: process.env.BASE_PATH || '',
+  // Dynamically handle repo-name subpaths for GitHub Pages
+  // If using a custom domain (e.g., NorgeTravel.com), keep this as ''
+  basePath: process.env.NODE_ENV === 'production' ? '' : '',
 
   images: {
-    qualities: [75, 85, 90],
-    // Uncomment the following line if using GitHub Pages with a custom domain or subdirectory
-    // unoptimized: true,
+    // REQUIRED for 'output: export': GitHub Pages does not have a 
+    // runtime server to resize images on the fly.
+    unoptimized: true, 
+    formats: ['image/avif', 'image/webp'],
   },
+
+  // SEO: Ensure clean URLs by removing the .html extension
+  trailingSlash: true,
 };
 
 export default nextConfig;
