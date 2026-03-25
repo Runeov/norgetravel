@@ -14,8 +14,16 @@ const nextConfig = {
 
   reactStrictMode: true,
 
+  // Enable static export for GitHub Pages
+  output: process.env.EXPORT === 'true' ? 'export' : undefined,
+
+  // Set basePath for GitHub Pages (if needed)
+  basePath: process.env.BASE_PATH || '',
+
   images: {
     qualities: [75, 85, 90],
+    // Uncomment the following line if using GitHub Pages with a custom domain or subdirectory
+    // unoptimized: true,
   },
 };
 

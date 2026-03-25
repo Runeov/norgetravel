@@ -238,6 +238,27 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 
 Configured for **Netlify** (`netlify.toml`, Netlify Forms). Also works on **Vercel** — set `SITE_URL` in environment variables.
 
+### GitHub Pages
+
+To deploy to GitHub Pages, you can export the site as static HTML and push to the `gh-pages` branch.
+
+1. Set the `BASE_PATH` environment variable to your repository name (e.g., `/averdiNextJS-main` if your repo is `username.github.io/averdiNextJS-main`). If you are using a custom domain or hosting at the root (`username.github.io`), leave it empty.
+
+2. Run the export script:
+   ```bash
+   npm run github
+   ```
+   This will build the site and export it to the `out` directory.
+
+3. Push the contents of the `out` directory to the `gh-pages` branch. You can use the `git subtree` command or a third-party action.
+
+   Example using `git subtree`:
+   ```bash
+   git subtree push --prefix out origin gh-pages
+   ```
+
+   Alternatively, you can use the `peaceiris/actions-gh-pages` GitHub Action.
+
 ```bash
 npm run build    # builds Next.js + generates sitemap + robots.txt
 ```
