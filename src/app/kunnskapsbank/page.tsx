@@ -5,7 +5,7 @@ import { AverdiBackground } from '@/components/modules/AverdiBackground';
 import { FaqAccordion } from '@/components/ui/FaqAccordion'; // Ny import
 import { getAllKunnskapsbankSectionsSorted } from '@/lib/admin/kunnskapsbank';
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
   title: 'Kunnskapsbank for Nord-Norge | Sametinget, Tiltakssonen & Idrettslag | Averdi',

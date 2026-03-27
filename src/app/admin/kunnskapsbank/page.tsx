@@ -3,7 +3,7 @@ import { BookOpen, Eye, ExternalLink } from 'lucide-react';
 import { getAllKunnskapsbankSectionsSorted } from '@/lib/admin/kunnskapsbank';
 import ToggleKunnskapsbankPublishButton from '@/components/admin/ToggleKunnskapsbankPublishButton';
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-static';
 
 export default async function AdminKunnskapsbankPage() {
   const sections = await getAllKunnskapsbankSectionsSorted();
