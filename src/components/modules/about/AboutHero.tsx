@@ -1,12 +1,12 @@
 'use client';
 
-import { AverdiBackground } from '@/components/modules/AverdiBackground';
+import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { MapPin, Users, Award } from 'lucide-react';
 
 export default function AboutHero() {
   return (
     <section className="relative overflow-hidden bg-slate-50 pt-20 pb-16 lg:pt-32 lg:pb-24">
-      <AverdiBackground />
+      <NorgeBackground />
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Landmark, Building2, Users, ArrowRight, HelpCircle } from 'lucide-react';
-import { AverdiBackground } from '@/components/modules/AverdiBackground';
+import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { FaqAccordion } from '@/components/ui/FaqAccordion'; // Ny import
 import { getAllKunnskapsbankSectionsSorted } from '@/lib/admin/kunnskapsbank';
 
@@ -76,7 +76,7 @@ export default async function KunnskapsbankPage() {
 
   return (
     <main className="min-h-screen bg-slate-50 relative overflow-hidden">
-      <AverdiBackground />
+      <NorgeBackground />
       
       {/* 1. SKJULT: Inject Schema for Google/AI */}
       <script

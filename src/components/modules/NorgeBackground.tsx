@@ -8,6 +8,3 @@ export function NorgeBackground() {
     </div>
   );
 }
-
-// Keep old export name so existing imports don't break during migration
-export { NorgeBackground as AverdiBackground };

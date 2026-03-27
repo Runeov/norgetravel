@@ -1,7 +1,7 @@
 'use client';
 
 import { FeatureTabs, type FeatureTabItem } from '@/components/ui/FeatureTabs';
-import { AverdiBackground } from '@/components/modules/AverdiBackground'; 
+import { NorgeBackground } from '@/components/modules/NorgeBackground'; 
 
 interface TemplateFeatureSectionProps {
   // Unik ID for at MCP-serveren skal kunne identifisere denne seksjonen ved scraping/validering
@@ -54,7 +54,7 @@ export default function TemplateFeatureSection({
   return (
     // ID attributtet her er kroken MCP-serveren ser etter
     <section id={mcpId} className="py-24 relative overflow-hidden bg-white" data-mcp-status="active">
-      <AverdiBackground />
+      <NorgeBackground />
       
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 relative z-10">
         

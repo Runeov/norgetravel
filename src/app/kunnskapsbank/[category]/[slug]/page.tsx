@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Clock, BookOpen, User, Calendar, Tag, ArrowRight } from 'lucide-react';
-import { AverdiBackground } from '@/components/modules/AverdiBackground';
+import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { getArticles } from '@/lib/admin/articles';
 import { CATEGORY_LABELS } from '@/types/admin';
 import type { ArticleCategory } from '@/types/admin';
@@ -113,7 +113,7 @@ export default async function DynamicArticlePage({ params }: PageProps) {
 
   return (
     <main className="min-h-screen bg-slate-50 relative overflow-hidden font-sans">
-      <AverdiBackground />
+      <NorgeBackground />
 
       <script
         type="application/ld+json"
