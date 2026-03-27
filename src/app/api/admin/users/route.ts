@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getAllUsersSafe, createUser, updateUser, deleteUser } from '@/lib/admin/users';
 import { getSessionFromRequest } from '@/lib/admin/auth';
 import { getAdminReadOnlyResponse } from '@/lib/admin/write-access';
+
+export const dynamic = 'force-static';
 import { UserCreateSchema, UserUpdateSchema } from '@/lib/schemas/user.schema';
 import { ZodError } from 'zod';
 

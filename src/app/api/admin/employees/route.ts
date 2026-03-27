@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getAllEmployeesSorted, createEmployee } from '@/lib/admin/employees';
 import { getAdminReadOnlyResponse } from '@/lib/admin/write-access';
 
+export const dynamic = 'force-static';
+
 /**
  * GET /api/admin/employees - List all employees
  */
