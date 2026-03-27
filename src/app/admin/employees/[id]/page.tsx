@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 import { getEmployee } from '@/lib/admin/employees';
 import EmployeeForm from '@/components/admin/employee/EmployeeForm';
 
+export function generateStaticParams() { return []; }
+
 interface PageProps {
   params: Promise<{ id: string }>;
 }

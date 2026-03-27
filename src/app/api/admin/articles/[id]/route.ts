@@ -3,6 +3,8 @@ import { getArticle, updateArticle, deleteArticle } from '@/lib/admin/articles';
 import { getAdminReadOnlyResponse } from '@/lib/admin/write-access';
 import type { ArticleFormData } from '@/types/admin';
 
+export function generateStaticParams() { return []; }
+
 interface RouteParams {
   params: Promise<{ id: string }>;
 }

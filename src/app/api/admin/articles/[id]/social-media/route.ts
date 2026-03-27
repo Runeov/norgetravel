@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getArticle } from '@/lib/admin/articles';
 import { generateSocialMediaPosts, validatePost } from '@/lib/ai/social-media-generator';
 
+export function generateStaticParams() { return []; }
+
 /**
  * POST /api/admin/articles/[id]/social-media
  *

@@ -6,6 +6,13 @@ import { AverdiBackground } from '@/components/modules/AverdiBackground';
 import { getArticles } from '@/lib/admin/articles';
 import { CATEGORY_LABELS } from '@/types/admin';
 import type { ArticleCategory } from '@/types/admin';
+import articlesJson from '@/data/articles.json';
+
+export function generateStaticParams() {
+  return Object.values(articlesJson as Record<string, { category: string; slug: string; status: string }>)
+    .filter((a) => a.status === 'published')
+    .map((a) => ({ category: a.category, slug: a.slug }));
+}
 
 interface PageProps {
   params: Promise<{ category: string; slug: string }>;

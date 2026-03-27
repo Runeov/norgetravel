@@ -4,13 +4,15 @@ import { getEmployee } from '@/lib/admin/employees';
 import EmployeeProfileCard from '@/components/modules/about/EmployeeProfileCard';
 import { ArrowLeft, Users } from 'lucide-react';
 import Link from 'next/link';
+import employeesJson from '@/data/employees.json';
 
 interface PageProps {
   params: Promise<{ employee: string }>;
 }
 
-// Keep employee pages dynamic so admin updates are reflected without rebuild.
-export const dynamic = 'force-dynamic';
+export function generateStaticParams() {
+  return Object.keys(employeesJson).map((id) => ({ employee: id }));
+}
 
 // Generate metadata for each employee page
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

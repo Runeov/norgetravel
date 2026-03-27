@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getEmployee, updateEmployee, deleteEmployee } from '@/lib/admin/employees';
 import { getAdminReadOnlyResponse } from '@/lib/admin/write-access';
 
+export function generateStaticParams() { return []; }
+
 interface RouteParams {
   params: Promise<{ id: string }>;
 }
