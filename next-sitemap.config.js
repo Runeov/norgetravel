@@ -35,7 +35,7 @@ module.exports = {
   changefreq: 'weekly',
   priority: 0.7,
   sitemapSize: 5000,
-  outDir: './public',
+  outDir: './out',
   exclude: [
     '/team-demo', // Internal demo page
     '/kunnskapsbank/artikler/sosiookonomiske-forskjeller_Long',
