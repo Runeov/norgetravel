@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getEmployee, updateEmployee, deleteEmployee } from '@/lib/admin/employees';
 import { getAdminReadOnlyResponse } from '@/lib/admin/write-access';
 
+export const dynamic = 'force-static';
 export function generateStaticParams() { return []; }
 
 interface RouteParams {
