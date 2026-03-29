@@ -1,1 +1,25 @@
-{}
+{
+  "best-time-visit-norway-northern-lights": {
+    "id": "best-time-visit-norway-northern-lights",
+    "slug": "best-time-visit-norway-northern-lights",
+    "title": "Best time to see the Northern Lights in Norway",
+    "subtitle": "Your complete guide to Solar Cycle 25 aurora viewing",
+    "excerpt": "Solar Cycle 25 is peaking in 2025-2026, delivering the strongest aurora activity in two decades. Here is exactly when and where to position yourself for the best Northern Lights experience in Norway.",
+    "content": "<h2>Why 2025-2026 is the best time in years</h2><p>Solar Cycle 25 reached its solar maximum in late 2024, producing G3 and G4-class geomagnetic storms visible as far south as Scotland. In northern Norway, Kp-index 3 storms are sufficient for strong aurora displays — and we are seeing Kp 5-7 events multiple times per month.</p><h2>The aurora season: September to March</h2><p>The Northern Lights require two conditions: solar activity and a dark sky. Norway's aurora season runs from late September through late March, when nights are long enough for proper darkness. December and January offer the longest nights, but October and February often deliver clearer skies with less precipitation.</p><h2>Best destinations in Norway</h2><p>Tromsø at 70°N sits directly under the auroral oval — the ring of maximum aurora activity circling the magnetic pole. Svalbard offers unique opportunities for 24-hour darkness in winter. The Lofoten Islands combine dramatic scenery with excellent aurora viewing.</p><h2>What to book</h2><p>A guided Northern Lights chase from Tromsø costs €90-€180 per person and includes transport to clear-sky locations away from city light pollution. Private tours for groups of 4 run €350-€500 and are worth every krone for serious photographers.</p>",
+    "category": "artikler",
+    "tags": ["northern lights", "aurora borealis", "solar cycle 25", "tromsø", "svalbard"],
+    "readTime": 6,
+    "authorId": "admin",
+    "authorName": "NorgeTravel Editorial",
+    "featuredImage": null,
+    "featuredImageAlt": null,
+    "metaTitle": "Best Time to See Northern Lights in Norway 2025-2026 | NorgeTravel",
+    "metaDescription": "Solar Cycle 25 is peaking now. Find out exactly when and where to see the Northern Lights in Norway for the best aurora viewing in two decades.",
+    "status": "published",
+    "publishedAt": "2026-01-15T10:00:00.000Z",
+    "createdAt": "2026-01-15T10:00:00.000Z",
+    "updatedAt": "2026-03-01T12:00:00.000Z",
+    "isFeatured": true,
+    "sortOrder": 1
+  }
+}

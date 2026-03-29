@@ -12,6 +12,7 @@ export function Navbar() {
   const [mobileDropdowns, setMobileDropdowns] = useState({
     destinations: false,
     tours: false,
+    travel: false,
   });
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
@@ -27,7 +28,7 @@ export function Navbar() {
 
   useEffect(() => {
     setIsMenuOpen(false);
-    setMobileDropdowns({ destinations: false, tours: false });
+    setMobileDropdowns({ destinations: false, tours: false, travel: false });
   }, [pathname]);
 
   const scrollToSection = (sectionId: string) => {
@@ -43,7 +44,7 @@ export function Navbar() {
       }
     }
     setIsMenuOpen(false);
-    setMobileDropdowns({ destinations: false, tours: false });
+    setMobileDropdowns({ destinations: false, tours: false, travel: false });
   };
 
   const navLinkClass = (isActive: boolean) =>
@@ -74,10 +75,10 @@ export function Navbar() {
 
   const closeMobileMenu = () => {
     setIsMenuOpen(false);
-    setMobileDropdowns({ destinations: false, tours: false });
+    setMobileDropdowns({ destinations: false, tours: false, travel: false });
   };
 
-  const toggleMobileDropdown = (key: 'destinations' | 'tours') => {
+  const toggleMobileDropdown = (key: 'destinations' | 'tours' | 'travel') => {
     setMobileDropdowns((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
@@ -168,6 +169,37 @@ export function Navbar() {
                 </div>
               </div>
 
+              {/* Travel Map dropdown */}
+              <div className="relative group">
+                <button
+                  type="button"
+                  className={`${navLinkClass(pathname.startsWith('/travel'))} inline-flex items-center gap-1`}
+                  aria-haspopup="menu"
+                >
+                  Travel Map
+                  <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" />
+                </button>
+                <div className="absolute left-0 top-full pt-2 opacity-0 invisible -translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0">
+                  <div className="w-60 rounded-2xl border border-slate-200 bg-white/95 backdrop-blur-md p-2 shadow-xl">
+                    <Link href="/travel/transport" className={dropdownItemClass(pathname.startsWith('/travel/transport'))}>
+                      🚂 Transport
+                    </Link>
+                    <Link href="/travel/accommodation" className={dropdownItemClass(pathname.startsWith('/travel/accommodation'))}>
+                      🏨 Accommodation
+                    </Link>
+                    <Link href="/travel/guides" className={dropdownItemClass(pathname.startsWith('/travel/guides'))}>
+                      🧭 Guides
+                    </Link>
+                    <Link href="/travel/experiences" className={dropdownItemClass(pathname.startsWith('/travel/experiences'))}>
+                      ⛷️ Experiences
+                    </Link>
+                    <Link href="/travel/restaurants" className={dropdownItemClass(pathname.startsWith('/travel/restaurants'))}>
+                      🍽️ Restaurants
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
               <Link href="/om-oss" className={navLinkClass(pathname === '/om-oss')}>
                 About
               </Link>
@@ -197,7 +229,7 @@ export function Navbar() {
                 setIsMenuOpen((prev) => {
                   const next = !prev;
                   if (!next) {
-                    setMobileDropdowns({ destinations: false, tours: false });
+                    setMobileDropdowns({ destinations: false, tours: false, travel: false });
                   }
                   return next;
                 });
@@ -269,6 +301,36 @@ export function Navbar() {
                   </Link>
                   <Link href="/tjenester/remote-cabins" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/tjenester/remote-cabins'))}>
                     Remote Cabin Stays
+                  </Link>
+                </div>
+              )}
+
+              <button
+                type="button"
+                onClick={() => toggleMobileDropdown('travel')}
+                className={mobileMenuItemClass(pathname.startsWith('/travel'))}
+              >
+                <span className="flex items-center justify-between">
+                  Travel Map
+                  <ChevronDown className={`h-5 w-5 transition-transform ${mobileDropdowns.travel ? 'rotate-180' : ''}`} />
+                </span>
+              </button>
+              {mobileDropdowns.travel && (
+                <div className="pl-4 space-y-1">
+                  <Link href="/travel/transport" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/travel/transport'))}>
+                    🚂 Transport
+                  </Link>
+                  <Link href="/travel/accommodation" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/travel/accommodation'))}>
+                    🏨 Accommodation
+                  </Link>
+                  <Link href="/travel/guides" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/travel/guides'))}>
+                    🧭 Guides
+                  </Link>
+                  <Link href="/travel/experiences" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/travel/experiences'))}>
+                    ⛷️ Experiences
+                  </Link>
+                  <Link href="/travel/restaurants" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/travel/restaurants'))}>
+                    🍽️ Restaurants
                   </Link>
                 </div>
               )}

@@ -7,6 +7,7 @@ import {
   Users, 
   FileText, 
   BookOpen,
+  MapPin,
   ChevronRight,
   Plus
 } from 'lucide-react';
@@ -47,6 +48,19 @@ const navItems: NavItem[] = [
     label: 'Kunnskapsbank',
     href: '/admin/kunnskapsbank',
     icon: <BookOpen className="w-5 h-5" />,
+  },
+  {
+    label: 'Travel Map',
+    href: '/admin/travel',
+    icon: <MapPin className="w-5 h-5" />,
+    children: [
+      { label: 'Overview', href: '/admin/travel' },
+      { label: 'Transport', href: '/admin/travel/transport' },
+      { label: 'Accommodation', href: '/admin/travel/accommodation' },
+      { label: 'Guides', href: '/admin/travel/guides' },
+      { label: 'Experiences', href: '/admin/travel/experiences' },
+      { label: 'Restaurants', href: '/admin/travel/restaurants' },
+    ],
   },
 ];
 
