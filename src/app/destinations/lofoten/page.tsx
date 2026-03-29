@@ -13,13 +13,13 @@ export const metadata: Metadata = {
 const experiences = [
   { emoji: '🥾', title: 'Reinebringen', body: 'The iconic 448-step hike above Reine. Allow 2–3 hours round trip. No shuttle — it starts from the village.' },
   { emoji: '🎣', title: 'Stockfish heritage', body: 'Lofoten dries 20,000 tonnes of cod each year. The Stockfish Museum in Å tells the full story in 90 minutes.' },
-  { emoji: '🏄', title: 'Unstad surf beach', body: 'One of Europe's most northerly surf breaks. Waves 1–4m, water 8–12°C. Wetsuits provided by local schools.' },
+  { emoji: '🏄', title: 'Unstad surf beach', body: "One of Europe's most northerly surf breaks. Waves 1–4m, water 8–12°C. Wetsuits provided by local schools." },
   { emoji: '🛶', title: 'Sea kayaking', body: 'Paddle between fishermen\'s cabins (rorbuer). Multi-day routes connect Svolvær to Å — 200 km of sheltered fjords.' },
   { emoji: '🌅', title: 'Midnight sun photography', body: 'June–July: 24-hour daylight turns village harbours into photography gold. Best light 10 pm–2 am.' },
   { emoji: '🐟', title: 'Cod fishing charter', body: 'Year-round fishing. Peak season Jan–Apr when Arctic cod migrate to spawn. Charters from NOK 950/person.' },
 ];
 
-export default function LofoteнPage() {
+export default function LofotenPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Hero */}
@@ -97,6 +97,41 @@ export default function LofoteнPage() {
                 <p className="text-slate-600 text-sm">Stops at Stamsund and Svolvær. Combine with a coastal cruise for the full experience.</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* When to visit */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">When to visit</h2>
+          <p className="text-slate-600 mb-8">
+            Lofoten now draws over <strong>1 million visitors a year</strong> against a permanent population of 25,000 — a 40:1 ratio. Timing your trip well makes a genuine difference.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-4 mb-10">
+            <div className="p-5 border border-slate-200 rounded-2xl bg-white">
+              <p className="font-bold text-slate-900 mb-1">Sep–Mar — Aurora season</p>
+              <p className="text-slate-600 text-sm">Peak Northern Lights probability. Fewer visitors than summer. 2026–27 is the last elevated solar activity window before the 2031 minimum — book now.</p>
+            </div>
+            <div className="p-5 border border-slate-200 rounded-2xl bg-white">
+              <p className="font-bold text-slate-900 mb-1">Jun–Jul — Midnight sun</p>
+              <p className="text-slate-600 text-sm">24-hour daylight for photography. Peak crowds — book accommodation 6–8 weeks ahead. Best hiking and kayaking conditions.</p>
+            </div>
+            <div className="p-5 border border-slate-200 rounded-2xl bg-white">
+              <p className="font-bold text-slate-900 mb-1">Jan–Apr — Cod fishing</p>
+              <p className="text-slate-600 text-sm">Arctic cod migrate to Lofoten to spawn. Peak season for fishing charters from NOK 950/person. Combines well with aurora viewing.</p>
+            </div>
+            <div className="p-5 border border-slate-200 rounded-2xl bg-white">
+              <p className="font-bold text-slate-900 mb-1">May & Aug–Sep — Shoulder season</p>
+              <p className="text-slate-600 text-sm">Best balance of good weather, long days, and manageable crowds. Accommodation prices drop 20–30% vs. peak summer.</p>
+            </div>
+          </div>
+
+          <div className="p-6 border border-[#00CC6A]/30 bg-[#00CC6A]/5 rounded-2xl">
+            <p className="font-bold text-slate-900 mb-2">Want Lofoten landscapes without the crowds? Consider Senja Island.</p>
+            <p className="text-slate-600 text-sm">
+              Senja — two hours north of Tromsø — offers the same dramatic peaks-into-sea scenery as Lofoten with a fraction of the foot traffic. It's one of Norway's fastest-growing destinations on TikTok and Instagram, but still has space. No new airport, no cruise ship docks. If you're flexible, it's worth the detour.
+            </p>
           </div>
         </div>
       </section>

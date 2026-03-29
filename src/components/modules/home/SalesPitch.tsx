@@ -46,7 +46,7 @@ export default function SalesPitch() {
 
               <div className="space-y-6 text-lg text-slate-600 leading-relaxed mb-10">
                 <p>
-                  Solar Cycle 25 peaked in 2026 — the most intense aurora activity in over a decade. Add the world's strictest zero-emission fjord mandate and you have a market that's drawing record international visitors.
+                  Solar Cycle 25 peaked in 2024–25 — the most intense aurora activity in over a decade. The 2026–27 season is the last elevated window before the 11-year decline to solar minimum in 2031. Norway logged a record 7.2 million international arrivals in 2025 (+8% YoY), with Scandinavia bookings up 35% as travelers escape southern European heat.
                 </p>
                 <p>
                   NorgeTravel.com sits at the intersection of high-intent travellers and best-in-class Norwegian operators. Every tour we feature is independently verified for sustainability credentials.

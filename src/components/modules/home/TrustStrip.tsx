@@ -5,6 +5,7 @@ export default function TrustStrip() {
     { name: 'Hurtigruten', emoji: '🚢', tagline: 'Northern Lights Guarantee' },
     { name: 'Havila Voyages', emoji: '⚡', tagline: 'Zero-emission fjord cruises' },
     { name: 'Booking.com', emoji: '🏠', tagline: '28M+ listings · Cabin stays' },
+    { name: 'SafetyWing', emoji: '🛡️', tagline: '10% recurring · 364-day cookie' },
   ];
 
   return (

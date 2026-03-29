@@ -31,7 +31,7 @@ export default function Hero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00CC6A] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00CC6A]"></span>
               </span>
-              Solar Maximum 2026 — Peak Aurora Season
+              2026–27 Aurora Season — Last Peak Before 2031
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 mb-6">
@@ -61,7 +61,7 @@ export default function Hero() {
               </button>
             </div>
 
-            <div className="flex items-center justify-center lg:justify-start gap-6 text-sm text-slate-500">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm text-slate-500">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-[#00CC6A]" aria-hidden="true" />
                 <span>Zero-Emission Partners</span>
@@ -69,6 +69,10 @@ export default function Hero() {
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-[#00CC6A]" aria-hidden="true" />
                 <span>Peak Aurora Season</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-[#00CC6A]" aria-hidden="true" />
+                <span>Norway 2025: 7.2M Record Arrivals</span>
               </div>
             </div>
           </div>

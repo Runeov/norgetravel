@@ -1,5 +1,6 @@
 import Hero from '@/components/modules/home/Hero';
 import TrustStrip from '@/components/modules/home/TrustStrip';
+import WhatsNew2026 from '@/components/modules/home/WhatsNew2026';
 import Services from '@/components/modules/home/Services';
 import SalesPitch from '@/components/modules/home/SalesPitch';
 import TravelGuideTeaser from '@/components/modules/home/KunnskapsbankTeaser';
@@ -63,6 +64,7 @@ export default function HomePage() {
 
       <Hero />
       <TrustStrip />
+      <WhatsNew2026 />
       <Services />
       <SalesPitch />
       <TravelGuideTeaser />

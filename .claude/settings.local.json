@@ -33,5 +33,8 @@
       "Bash(sed -i \"s|import { AverdiBackground } from ''@/components/modules/AverdiBackground''|import { NorgeBackground } from ''@/components/modules/NorgeBackground''|g\" /c/Users/Administrator/Documents/GitHub/norgetravel/src/app/kunnskapsbank/page.tsx \"/c/Users/Administrator/Documents/GitHub/norgetravel/src/app/kunnskapsbank/[category]/[slug]/page.tsx\" /c/Users/Administrator/Documents/GitHub/norgetravel/src/components/modules/about/AboutHero.tsx /c/Users/Administrator/Documents/GitHub/norgetravel/src/components/modules/home/templates/TemplateFeatureSection.tsx)",
       "Bash(__NEW_LINE_68102c9e92706d17__ sed:*)"
     ]
+  },
+  "env": {
+    "CLAUDE_CODE_GIT_BASH_PATH": "C:\\Program Files\\Git\\bin\\bash.exe"
   }
 }
