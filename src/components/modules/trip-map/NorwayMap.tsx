@@ -6,7 +6,8 @@ import {
   svalbardSpitsbergen,
   svalbardNordaustlandet,
   svalbardEdgeoya,
-  cityMarkers,
+  referenceMarkers,
+  cityZonePositions,
   mapZones,
 } from '@/data/norway-map-zones';
 
@@ -19,7 +20,10 @@ interface NorwayMapProps {
 
 export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: NorwayMapProps) {
   const svalbardZone = mapZones.find((z) => z.id === 'svalbard');
-  const mainlandZones = mapZones.filter((z) => z.id !== 'svalbard');
+  const cityZone = mapZones.find((z) => z.id === 'cities');
+  const polygonZones = mapZones.filter((z) => z.id !== 'svalbard' && z.id !== 'cities');
+
+  const cityActive = hoveredZone === 'cities' || selectedZone === 'cities';
 
   return (
     <svg
@@ -37,11 +41,17 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
+        <filter id="city-glow">
+          <feGaussianBlur stdDeviation="6" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
       </defs>
 
       {/* Svalbard inset — scaled and positioned above mainland */}
       <g transform="translate(30, -110) scale(0.55)">
-        {/* Inset border */}
         <rect
           x={-5}
           y={-5}
@@ -55,33 +65,12 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
           rx={4}
         />
 
-        {/* Svalbard islands outline */}
-        <path
-          d={svalbardSpitsbergen}
-          fill="white"
-          fillOpacity={0.05}
-          stroke="white"
-          strokeWidth={1}
-          strokeOpacity={0.2}
-        />
-        <path
-          d={svalbardNordaustlandet}
-          fill="white"
-          fillOpacity={0.05}
-          stroke="white"
-          strokeWidth={1}
-          strokeOpacity={0.2}
-        />
-        <path
-          d={svalbardEdgeoya}
-          fill="white"
-          fillOpacity={0.05}
-          stroke="white"
-          strokeWidth={1}
-          strokeOpacity={0.2}
-        />
+        {/* Svalbard island outlines */}
+        <path d={svalbardSpitsbergen} fill="white" fillOpacity={0.05} stroke="white" strokeWidth={1} strokeOpacity={0.2} />
+        <path d={svalbardNordaustlandet} fill="white" fillOpacity={0.05} stroke="white" strokeWidth={1} strokeOpacity={0.2} />
+        <path d={svalbardEdgeoya} fill="white" fillOpacity={0.05} stroke="white" strokeWidth={1} strokeOpacity={0.2} />
 
-        {/* Svalbard interactive zone — uses Spitsbergen as click target */}
+        {/* Svalbard interactive zone */}
         {svalbardZone && (() => {
           const isHovered = hoveredZone === svalbardZone.id;
           const isSelected = selectedZone === svalbardZone.id;
@@ -89,67 +78,33 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
 
           return (
             <g>
-              {/* Clickable overlay covering all three islands */}
-              <motion.path
-                d={svalbardSpitsbergen}
-                fill={svalbardZone.color}
-                initial={{ fillOpacity: 0.15 }}
-                animate={{
-                  fillOpacity: isSelected ? 0.5 : isHovered ? 0.35 : 0.15,
-                }}
-                transition={{ duration: 0.2 }}
-                stroke={svalbardZone.color}
-                strokeWidth={isActive ? 2 : 1}
-                strokeOpacity={isActive ? 0.8 : 0.3}
-                filter={isSelected ? 'url(#zone-glow)' : undefined}
-                className="cursor-pointer"
-                onMouseEnter={() => onHover(svalbardZone.id)}
-                onMouseLeave={() => onHover(null)}
-                onClick={() => onSelect(svalbardZone.id)}
-                role="button"
-                tabIndex={0}
-                aria-label={svalbardZone.name}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    onSelect(svalbardZone.id);
-                  }
-                }}
-              />
-              <motion.path
-                d={svalbardNordaustlandet}
-                fill={svalbardZone.color}
-                initial={{ fillOpacity: 0.15 }}
-                animate={{
-                  fillOpacity: isSelected ? 0.5 : isHovered ? 0.35 : 0.15,
-                }}
-                transition={{ duration: 0.2 }}
-                stroke={svalbardZone.color}
-                strokeWidth={isActive ? 2 : 1}
-                strokeOpacity={isActive ? 0.8 : 0.3}
-                className="cursor-pointer pointer-events-auto"
-                onMouseEnter={() => onHover(svalbardZone.id)}
-                onMouseLeave={() => onHover(null)}
-                onClick={() => onSelect(svalbardZone.id)}
-              />
-              <motion.path
-                d={svalbardEdgeoya}
-                fill={svalbardZone.color}
-                initial={{ fillOpacity: 0.15 }}
-                animate={{
-                  fillOpacity: isSelected ? 0.5 : isHovered ? 0.35 : 0.15,
-                }}
-                transition={{ duration: 0.2 }}
-                stroke={svalbardZone.color}
-                strokeWidth={isActive ? 2 : 1}
-                strokeOpacity={isActive ? 0.8 : 0.3}
-                className="cursor-pointer pointer-events-auto"
-                onMouseEnter={() => onHover(svalbardZone.id)}
-                onMouseLeave={() => onHover(null)}
-                onClick={() => onSelect(svalbardZone.id)}
-              />
+              {[svalbardSpitsbergen, svalbardNordaustlandet, svalbardEdgeoya].map((path, i) => (
+                <motion.path
+                  key={i}
+                  d={path}
+                  fill={svalbardZone.color}
+                  initial={{ fillOpacity: 0.15 }}
+                  animate={{ fillOpacity: isSelected ? 0.5 : isHovered ? 0.35 : 0.15 }}
+                  transition={{ duration: 0.2 }}
+                  stroke={svalbardZone.color}
+                  strokeWidth={isActive ? 2 : 1}
+                  strokeOpacity={isActive ? 0.8 : 0.3}
+                  filter={isSelected ? 'url(#zone-glow)' : undefined}
+                  className="cursor-pointer"
+                  onMouseEnter={() => onHover(svalbardZone.id)}
+                  onMouseLeave={() => onHover(null)}
+                  onClick={() => onSelect(svalbardZone.id)}
+                  {...(i === 0 ? {
+                    role: 'button' as const,
+                    tabIndex: 0,
+                    'aria-label': svalbardZone.name,
+                    onKeyDown: (e: React.KeyboardEvent) => {
+                      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect(svalbardZone.id); }
+                    },
+                  } : {})}
+                />
+              ))}
 
-              {/* Svalbard label */}
               <motion.text
                 x={svalbardZone.labelPosition.x}
                 y={svalbardZone.labelPosition.y}
@@ -204,8 +159,8 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
         strokeOpacity={0.2}
       />
 
-      {/* Interactive mainland zone regions */}
-      {mainlandZones.map((zone) => {
+      {/* Polygon-based zones (Northern Norway, Lofoten, Fjords) */}
+      {polygonZones.map((zone) => {
         const isHovered = hoveredZone === zone.id;
         const isSelected = selectedZone === zone.id;
         const isActive = isHovered || isSelected;
@@ -241,7 +196,6 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
               }}
             />
 
-            {/* Zone label */}
             <motion.text
               x={zone.labelPosition.x}
               y={zone.labelPosition.y}
@@ -258,7 +212,6 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
               {zone.name}
             </motion.text>
 
-            {/* Pulsing dot for selected zone */}
             {isSelected && (
               <motion.circle
                 cx={zone.labelPosition.x}
@@ -274,16 +227,131 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
         );
       })}
 
-      {/* City markers */}
-      {cityMarkers.map((city) => (
-        <g key={city.name} className="pointer-events-none">
-          <circle
-            cx={city.x}
-            cy={city.y}
-            r={2.5}
+      {/* City Norway zone — interactive dot markers with connecting lines */}
+      {cityZone && (
+        <g>
+          {/* Connecting lines between cities */}
+          {cityZonePositions.map((city, i) => {
+            const next = cityZonePositions[(i + 1) % cityZonePositions.length];
+            return (
+              <motion.line
+                key={`city-line-${i}`}
+                x1={city.x}
+                y1={city.y}
+                x2={next.x}
+                y2={next.y}
+                stroke="white"
+                strokeWidth={0.8}
+                strokeDasharray="3 5"
+                animate={{ strokeOpacity: cityActive ? 0.4 : 0.08 }}
+                transition={{ duration: 0.2 }}
+                className="pointer-events-none"
+              />
+            );
+          })}
+
+          {/* City dots */}
+          {cityZonePositions.map((city, i) => {
+            const isSelected = selectedZone === 'cities';
+            return (
+              <g key={city.name}>
+                {/* Outer glow ring */}
+                <motion.circle
+                  cx={city.x}
+                  cy={city.y}
+                  r={18}
+                  fill="white"
+                  stroke="white"
+                  strokeWidth={cityActive ? 1.5 : 0.5}
+                  animate={{
+                    fillOpacity: isSelected ? 0.2 : cityActive ? 0.12 : 0.04,
+                    strokeOpacity: cityActive ? 0.5 : 0.15,
+                  }}
+                  transition={{ duration: 0.2 }}
+                  filter={isSelected ? 'url(#city-glow)' : undefined}
+                  className="cursor-pointer"
+                  onMouseEnter={() => onHover('cities')}
+                  onMouseLeave={() => onHover(null)}
+                  onClick={() => onSelect('cities')}
+                  {...(i === 0 ? {
+                    role: 'button' as const,
+                    tabIndex: 0,
+                    'aria-label': cityZone.name,
+                    onKeyDown: (e: React.KeyboardEvent) => {
+                      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect('cities'); }
+                    },
+                  } : {})}
+                />
+
+                {/* Inner dot */}
+                <motion.circle
+                  cx={city.x}
+                  cy={city.y}
+                  r={4}
+                  fill="white"
+                  animate={{ fillOpacity: cityActive ? 0.9 : 0.5 }}
+                  transition={{ duration: 0.2 }}
+                  className="pointer-events-none"
+                />
+
+                {/* City name label */}
+                <motion.text
+                  x={city.x}
+                  y={city.y - 24}
+                  textAnchor="middle"
+                  dominantBaseline="central"
+                  fill="white"
+                  fontSize={8}
+                  fontWeight={600}
+                  letterSpacing={0.3}
+                  className="pointer-events-none select-none"
+                  animate={{ opacity: cityActive ? 0.9 : 0.35 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {city.name}
+                </motion.text>
+
+                {/* Pulsing ring on selected */}
+                {isSelected && (
+                  <motion.circle
+                    cx={city.x}
+                    cy={city.y}
+                    r={4}
+                    fill="none"
+                    stroke="white"
+                    strokeWidth={1}
+                    initial={{ opacity: 0.6, r: 4 }}
+                    animate={{ opacity: [0.6, 0, 0.6], r: [4, 22, 4] }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: 'easeOut', delay: i * 0.3 }}
+                  />
+                )}
+              </g>
+            );
+          })}
+
+          {/* Zone label — "City Norway" */}
+          <motion.text
+            x={cityZone.labelPosition.x}
+            y={cityZone.labelPosition.y}
+            textAnchor="middle"
+            dominantBaseline="central"
+            className="pointer-events-none select-none"
             fill="white"
-            fillOpacity={0.6}
-          />
+            fontSize={11}
+            fontWeight={600}
+            letterSpacing={0.5}
+            animate={{ opacity: cityActive ? 1 : 0.4 }}
+            transition={{ duration: 0.2 }}
+          >
+            {cityZone.name}
+          </motion.text>
+        </g>
+      )}
+
+      {/* Reference markers (Northern Norway cities) */}
+      {referenceMarkers.map((city) => (
+        <g key={city.name} className="pointer-events-none">
+          <circle cx={city.x} cy={city.y} r={2.5} fill="white" fillOpacity={0.6} />
           <text
             x={city.x + 6}
             y={city.y + 1}
