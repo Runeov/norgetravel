@@ -6,9 +6,12 @@ import { X } from 'lucide-react';
 import { useTripMap } from '@/context/TripMapContext';
 import { mapZones } from '@/data/norway-map-zones';
 import { zoneSubcategories } from '@/data/zone-subcategories';
+import type { ZoneDetailData } from '@/data/zone-subcategories';
 import { NorwayMap } from './NorwayMap';
 import { ZoneInfoPanel } from './ZoneInfoPanel';
 import { ZoneDetailView } from './ZoneDetailView';
+
+const allDrillDownZones: ZoneDetailData[] = Object.values(zoneSubcategories);
 
 export function NorwayMapOverlay() {
   const { isOpen, closeMap } = useTripMap();
@@ -131,7 +134,12 @@ export function NorwayMapOverlay() {
                   transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                   className="flex-1 min-h-0 overflow-y-auto"
                 >
-                  <ZoneDetailView data={drillDownData} onBack={handleBack} />
+                  <ZoneDetailView
+                    data={drillDownData}
+                    onBack={handleBack}
+                    allZones={allDrillDownZones}
+                    onSwitchZone={handleExplore}
+                  />
                 </motion.div>
               ) : (
                 <motion.div
