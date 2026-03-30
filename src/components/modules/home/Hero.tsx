@@ -18,18 +18,21 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden min-h-[90vh] flex items-center">
       {/* Background image */}
-      <Image
-        src="/landing.png"
-        alt="Arctic Norway — Northern Lights over a Norwegian fjord landscape"
-        fill
-        className="object-cover"
-        priority
-        sizes="100vw"
-        quality={90}
-      />
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/landing.png"
+          alt="Husky dog sled team resting on ice under the Northern Lights in Arctic Norway"
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+          quality={90}
+          unoptimized
+        />
+      </div>
 
       {/* Gradient overlay — dark left, transparent right */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#1B3A5C]/85 via-[#1B3A5C]/55 to-transparent z-10" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#1B3A5C]/80 via-[#1B3A5C]/50 to-[#1B3A5C]/20 z-10" />
 
       {/* Content */}
       <div className="container mx-auto px-4 sm:px-6 relative z-20">
