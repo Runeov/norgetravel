@@ -5,13 +5,14 @@ import CompanyStory from '@/components/modules/about/CompanyStory';
 import TeamSectionModern from '@/components/modules/about/TeamSectionModern';
 import CompanyValues from '@/components/modules/about/CompanyValues';
 import ContactPanel from '@/components/modules/home/ContactPanel';
+import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Om oss | Averdi AS - Regnskapsfører i Finnmark og Nord-Troms',
-  description: 'Statsautoriserte regnskapsførere med over 35 års erfaring i Finnmark. Vi er regnskapsfører for små og mellomstore bedrifter i Finnmark og Nord-Troms, med skybasert regnskap og personlig oppfølging.',
+  title: 'About NorgeTravel | The Honest Guide to Arctic Norway',
+  description: 'NorgeTravel is an independent editorial platform connecting international travellers with the best sustainable operators in Norway — Northern Lights tours, fjord cruises, and remote wilderness stays.',
   openGraph: {
-    title: 'Om oss | Averdi AS',
-    description: 'Statsautoriserte regnskapsførere med over 35 års erfaring i Finnmark og Nord-Troms.',
+    title: 'About NorgeTravel.com',
+    description: 'The honest guide to Arctic Norway. Expert local knowledge, realistic logistics, and zero brochure-speak.',
     type: 'website',
   },
 };
@@ -22,22 +23,15 @@ export default async function OmOssPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'AboutPage',
-    'name': 'Om Averdi AS',
-    'description': 'Statsautorisert regnskapsførerselskap etablert i 1989, spesialisert på nordnorsk næringsliv og samiske organisasjoner.',
-    'url': 'https://averdi.no/om-oss',
+    'name': 'About NorgeTravel.com',
+    'description': 'Independent editorial platform for authentic Norwegian travel experiences.',
+    'url': 'https://norgetravel.com/om-oss',
     'mainEntity': {
-      '@type': 'AccountingService',
-      'name': 'Averdi AS',
-      'foundingDate': '1989',
-      'address': {
-        '@type': 'PostalAddress',
-        'streetAddress': 'Juhána Rásttoš geaidnu 2',
-        'addressLocality': 'Karasjok',
-        'postalCode': '9730',
-        'addressCountry': 'NO'
-      },
-      'telephone': '+47 78 46 61 16',
-      'areaServed': ['Finnmark', 'Troms', 'Nord-Norge']
+      '@type': 'TravelAgency',
+      'name': 'NorgeTravel.com',
+      'url': 'https://norgetravel.com',
+      'areaServed': ['Norway', 'Svalbard'],
+      'slogan': 'The Real Norway, Unfiltered',
     }
   };
 
@@ -55,16 +49,17 @@ export default async function OmOssPage() {
       <section className="py-14 bg-slate-50">
         <div className="max-w-2xl mx-auto text-center px-4 sm:px-6">
           <h2 className="text-2xl font-bold text-slate-900 mb-3">
-            Vil du vite om vi passer for deg?
+            Planning a trip to Norway?
           </h2>
           <p className="text-slate-600 mb-8">
-            Book et møte. Du får en konkret vurdering av hvordan vi kan forbedre regnskapet ditt.
+            We map the best operators so you don&apos;t have to. Northern Lights, fjord cruises, trekking, and remote cabins — all vetted, all honest.
           </p>
           <a
             href="/#contact"
-            className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[#E86C1F] to-[#F4B223] rounded-full hover:shadow-lg hover:shadow-[#E86C1F]/30 hover:-translate-y-0.5 transition-all duration-300"
+            className="inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-full hover:shadow-lg hover:shadow-[#1B3A5C]/30 hover:-translate-y-0.5 transition-all duration-300"
           >
-            Bestill møte
+            Start Planning
+            <ArrowRight className="h-4 w-4" />
           </a>
         </div>
       </section>

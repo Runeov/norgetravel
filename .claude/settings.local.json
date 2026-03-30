@@ -1,4 +1,7 @@
 {
+  "env": {
+    "CLAUDE_CODE_GIT_BASH_PATH": "C:\\Program Files\\Git\\bin\\bash.exe"
+  },
   "permissions": {
     "allow": [
       "Bash(node:*)",
@@ -31,10 +34,14 @@
       "Bash(wc -l /c/Users/Administrator/Documents/GitHub/norgetravel/src/data/*.json)",
       "Bash(xargs grep:*)",
       "Bash(sed -i \"s|import { AverdiBackground } from ''@/components/modules/AverdiBackground''|import { NorgeBackground } from ''@/components/modules/NorgeBackground''|g\" /c/Users/Administrator/Documents/GitHub/norgetravel/src/app/kunnskapsbank/page.tsx \"/c/Users/Administrator/Documents/GitHub/norgetravel/src/app/kunnskapsbank/[category]/[slug]/page.tsx\" /c/Users/Administrator/Documents/GitHub/norgetravel/src/components/modules/about/AboutHero.tsx /c/Users/Administrator/Documents/GitHub/norgetravel/src/components/modules/home/templates/TemplateFeatureSection.tsx)",
-      "Bash(__NEW_LINE_68102c9e92706d17__ sed:*)"
+      "Bash(__NEW_LINE_68102c9e92706d17__ sed:*)",
+      "Bash(find /c/Users/Administrator/Documents/GitHub/norgetravel/src -type f \\\\\\(-name *.tsx -o -name *.ts \\\\\\))",
+      "Bash(NODE_OPTIONS=--max-old-space-size=8192 npm run build)",
+      "Bash(where npm:*)",
+      "Read(//c/Users/Administrator/AppData/Roaming/npm/**)",
+      "Bash(find /c -name npm.cmd)",
+      "Bash(cmd //c \"where npm\")",
+      "Bash(cmd //c \"where node\")"
     ]
-  },
-  "env": {
-    "CLAUDE_CODE_GIT_BASH_PATH": "C:\\Program Files\\Git\\bin\\bash.exe"
   }
 }

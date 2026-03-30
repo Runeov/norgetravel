@@ -1,99 +1,69 @@
 'use client';
 
-import { Building2, Users, Monitor, TrendingUp, Shield } from 'lucide-react';
+import { Mountain, Compass, Flame } from 'lucide-react';
 
 export default function CompanyStory() {
   return (
     <section className="py-16 lg:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          
+
           {/* Section Header */}
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Vår historie
+              How we work
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Fra lokalt regnskapskontor til den ledende tolken av Nord-Norges unike forretningsmuligheter.
+              Three editorial pillars. One rule: tell the traveller what they need to know, not what they want to hear.
             </p>
           </div>
 
-          {/* Timeline */}
+          {/* Pillars */}
           <div className="space-y-12">
 
-            {/* 1989 */}
+            {/* THE GRIT */}
             <div className="flex gap-6 items-start">
-              <div className="flex-shrink-0 w-16 h-16 rounded-full bg-[#E86C1F]/10 flex items-center justify-center">
-                <Building2 className="w-8 h-8 text-[#E86C1F]" aria-hidden="true" />
+              <div className="flex-shrink-0 w-16 h-16 rounded-full bg-[#1B3A5C]/10 flex items-center justify-center">
+                <Mountain className="w-8 h-8 text-[#1B3A5C]" aria-hidden="true" />
               </div>
               <div className="flex-1">
-                <div className="text-sm font-bold text-[#E86C1F] mb-2">1989</div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Behovet var lokalt og konkret</h3>
+                <div className="text-sm font-bold text-[#1B3A5C] mb-2 uppercase tracking-wider">THE GRIT</div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Reality over fantasy</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Ingvald startet Laitis Regnskapskontor i 1989. Han hadde jobbet i bank etter endt utdanning og så at mange bedrifter manglet tett økonomisk oppfølging. Banken kunne gi lån, men bedriftene trengte noen som fulgte tallene hver måned. Målet var enkelt: gi lokale bedrifter kontroll på økonomien. Vi har samarbeidet med lokale bedrifter siden 90-tallet.
+                  Norway is breathtaking — and demanding. Trolltunga is a 12-hour trek in sideways rain. The Arctic in February is not a postcard. We tell you the DNT grade, the elevation gain, and the weather reality before you lace up. If a trail is dangerous, we say it. If a route will take 6 hours, not 4, we give you the 6-hour number.
                 </p>
               </div>
             </div>
 
-            {/* 1999 */}
+            {/* THE COMPASS */}
             <div className="flex gap-6 items-start">
-              <div className="flex-shrink-0 w-16 h-16 rounded-full bg-[#E86C1F]/10 flex items-center justify-center">
-                <Users className="w-8 h-8 text-[#E86C1F]" aria-hidden="true" />
+              <div className="flex-shrink-0 w-16 h-16 rounded-full bg-[#1B3A5C]/10 flex items-center justify-center">
+                <Compass className="w-8 h-8 text-[#1B3A5C]" aria-hidden="true" />
               </div>
               <div className="flex-1">
-                <div className="text-sm font-bold text-[#E86C1F] mb-2">1999</div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Averdi blir etablert</h3>
+                <div className="text-sm font-bold text-[#1B3A5C] mb-2 uppercase tracking-wider">THE COMPASS</div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Logistics that actually work</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  I 1999 ble Averdi etablert. Det ga rom for vekst, flere ansatte og bredere kompetanse. For kundene betydde det mer enn et navnebytte. De fikk tilgang til et større fagmiljø og bedre kapasitet, men med samme faste kontaktperson.
+                  The Bodø–Moskenes ferry crosses the Vestfjord in two hours — in winter, you feel every kilometre. We cover AutoPASS, ferry timetables, seasonal road closures, and the toll fees Google Maps won&apos;t mention. If you need a guide, we tell you who runs it and what it costs. No guessing.
                 </p>
               </div>
             </div>
 
-            {/* 2005 */}
+            {/* THE HEARTH */}
             <div className="flex gap-6 items-start">
-              <div className="flex-shrink-0 w-16 h-16 rounded-full bg-[#E86C1F]/10 flex items-center justify-center">
-                <Monitor className="w-8 h-8 text-[#E86C1F]" aria-hidden="true" />
+              <div className="flex-shrink-0 w-16 h-16 rounded-full bg-[#00CC6A]/10 flex items-center justify-center">
+                <Flame className="w-8 h-8 text-[#00CC6A]" aria-hidden="true" />
               </div>
               <div className="flex-1">
-                <div className="text-sm font-bold text-[#E86C1F] mb-2">2005</div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Digitalisering før det ble standard</h3>
+                <div className="text-sm font-bold text-[#00CC6A] mb-2 uppercase tracking-wider">THE HEARTH</div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">The reward at the end of the route</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Vi tok i bruk skybaserte løsninger tidlig. Det gjorde at kundene fikk tilgang til egne tall i stedet for å vente på papirutskrifter. De kunne se resultat og likviditet når de ville. Det ga raskere beslutninger og færre overraskelser.
-                </p>
-              </div>
-            </div>
-
-            {/* 2015 */}
-            <div className="flex gap-6 items-start">
-              <div className="flex-shrink-0 w-16 h-16 rounded-full bg-[#E86C1F]/10 flex items-center justify-center">
-                <TrendingUp className="w-8 h-8 text-[#E86C1F]" aria-hidden="true" />
-              </div>
-              <div className="flex-1">
-                <div className="text-sm font-bold text-[#E86C1F] mb-2">2015</div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Mer rådgivning, mindre bare bokføring</h3>
-                <p className="text-slate-600 leading-relaxed">
-                  Regelverket ble mer komplekst. Bedrifter trengte mer enn føring av bilag. Vi styrket rådgivningen innen skatt, arbeidsgiveravgift og tiltakssonen i Finnmark og Nord-Troms. Kundene fikk konkrete råd basert på egne tall.
-                </p>
-              </div>
-            </div>
-
-            {/* 2022 */}
-            <div className="flex gap-6 items-start">
-              <div className="flex-shrink-0 w-16 h-16 rounded-full bg-[#E86C1F]/10 flex items-center justify-center">
-                <Shield className="w-8 h-8 text-[#E86C1F]" aria-hidden="true" />
-              </div>
-              <div className="flex-1">
-                <div className="text-sm font-bold text-[#E86C1F] mb-2">2022</div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Ny generasjon, samme prinsipp</h3>
-                <p className="text-slate-600 leading-relaxed">
-                  Ny generasjon tok over eierskapet. Kompetansen ble videreført. Systemene ble modernisert. Retningen er den samme som i 1989: du skal forstå tallene dine, og du skal bruke dem aktivt.
+                  After six hours in the sleet, peeling off wet wool by an iron stove in an old bakery — that is <em>koselig</em>. It is not a café aesthetic. We connect you to the working coast, the fishing villages, the Sami communities and the small producers who make Norway worth the effort. Warmth earned is warmth felt.
                 </p>
               </div>
             </div>
 
           </div>
-
-
         </div>
       </div>
     </section>

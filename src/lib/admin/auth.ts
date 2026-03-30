@@ -20,12 +20,12 @@ function getSecretKey(): Uint8Array {
     );
   }
   _secretKey = new TextEncoder().encode(
-    secret || 'averdi-admin-dev-only-secret-key-32chars-min'
+    secret || 'norgetravel-admin-dev-only-secret-key-32chars'
   );
   return _secretKey;
 }
 
-const COOKIE_NAME = 'averdi-admin-session';
+const COOKIE_NAME = 'norgetravel-admin-session';
 const SESSION_DURATION = 24 * 60 * 60; // 24 hours in seconds
 
 export interface SessionPayload {

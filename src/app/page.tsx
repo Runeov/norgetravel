@@ -14,7 +14,7 @@ export default function HomePage() {
     '@context': 'https://schema.org',
     '@type': 'TravelAgency',
     'name': 'NorgeTravel.com',
-    'image': `${siteUrl}/logo_norgetravel.png`,
+    'image': `${siteUrl}/norgeTravel.png`,
     'description': 'Sustainable Arctic adventure guides for Norway — Northern Lights tours in Tromsø, zero-emission fjord cruises, luxury trekking in Lofoten and Svalbard, and remote cabin stays.',
     'slogan': 'Sustainable Arctic Adventures',
     'url': siteUrl,

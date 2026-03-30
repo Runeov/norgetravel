@@ -10,7 +10,7 @@ const siteUrl = getSiteUrl();
 
 // 1. Viewport is handled separately in Next.js 15+
 export const viewport: Viewport = {
-  themeColor: '#003366', // Your "Deep Fjord Blue"
+  themeColor: '#1B3A5C',
   width: 'device-width',
   initialScale: 1,
 };
@@ -32,9 +32,9 @@ export const metadata: Metadata = {
     'NorgeTravel',
   ],
   icons: {
-    icon: '/logo_thumbail.avif',
-    shortcut: '/logo_thumbail.avif',
-    apple: '/logo_thumbail.avif',
+    icon: '/norgeTravel_noText.png',
+    shortcut: '/norgeTravel_noText.png',
+    apple: '/norgeTravel_noText.png',
   },
   openGraph: {
     type: 'website',
@@ -69,7 +69,7 @@ export default function RootLayout({
     '@type': 'TravelAgency',
     'name': 'NorgeTravel.com',
     'url': siteUrl,
-    'logo': `${siteUrl}/logo_thumbail.avif`,
+    'logo': `${siteUrl}/norgeTravel.png`,
     'description': 'Leading provider of sustainable Arctic adventures and Northern Lights tours for the 2026 season.',
     'address': {
       '@type': 'PostalAddress',

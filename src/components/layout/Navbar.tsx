@@ -5,7 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
-import logoNorgeTravel from '@/assets/logo_norgetravel.png';
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -97,8 +96,9 @@ export function Navbar() {
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity" aria-label="NorgeTravel – Go to homepage">
               <Image
-                src={logoNorgeTravel}
+                src="/norgeTravel.png"
                 alt="NorgeTravel Logo"
+                width={220}
                 height={80}
                 className="h-20 w-auto"
                 priority

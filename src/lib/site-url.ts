@@ -1,4 +1,4 @@
-const FALLBACK_SITE_URL = 'https://averdi-next-js-git-main-pro-design.vercel.app';
+const FALLBACK_SITE_URL = 'https://norgetravel.com';
 
 function normalizeSiteUrl(value: string | undefined): string | null {
   if (!value) return null;
