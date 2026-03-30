@@ -5,10 +5,12 @@ import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { ArrowUp } from 'lucide-react';
 import logoNorgeTravel from '@/assets/norgeTravel.png';
+import { useTripMap } from '@/context/TripMapContext';
 
 export function Footer() {
   const router = useRouter();
   const pathname = usePathname();
+  const { openMap } = useTripMap();
 
   const scrollToSection = (sectionId: string) => {
     if (pathname !== '/') {
@@ -82,9 +84,9 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('contact')} className="hover:text-[#1B3A5C] transition-colors flex items-center gap-2 group">
+                <button onClick={openMap} className="hover:text-[#1B3A5C] transition-colors flex items-center gap-2 group">
                   <span className="w-1 h-1 rounded-full bg-[#1B3A5C] opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  Contact
+                  Plan Your Trip
                 </button>
               </li>
             </ul>

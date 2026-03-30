@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
 import logoNorgeTravel from '@/assets/norgeTravel.png';
+import { useTripMap } from '@/context/TripMapContext';
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,6 +18,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+  const { openMap } = useTripMap();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -219,7 +221,7 @@ export function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden md:block">
             <button
-              onClick={() => scrollToSection('contact')}
+              onClick={openMap}
               className="group relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white transition-all duration-300 bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-full hover:shadow-lg hover:shadow-[#1B3A5C]/30 hover:-translate-y-0.5 focus:outline-none"
               aria-label="Plan your trip"
             >
@@ -354,7 +356,7 @@ export function Navbar() {
               </Link>
 
               <div className="pt-4 mt-2 border-t border-slate-100">
-                <button onClick={() => scrollToSection('contact')} className="w-full flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-xl shadow-md active:scale-95 transition-all" aria-label="Plan your trip">
+                <button onClick={() => { openMap(); setIsMenuOpen(false); }} className="w-full flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-xl shadow-md active:scale-95 transition-all" aria-label="Plan your trip">
                   Plan Your Trip
                 </button>
               </div>

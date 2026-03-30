@@ -3,8 +3,10 @@
 import Image from 'next/image';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import heroImage from '@/assets/landing.png';
+import { useTripMap } from '@/context/TripMapContext';
 
 export default function Hero() {
+  const { openMap } = useTripMap();
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -56,7 +58,7 @@ export default function Hero() {
               <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
             </button>
             <button
-              onClick={() => scrollToSection('contact')}
+              onClick={openMap}
               className="inline-flex items-center justify-center rounded-full text-base font-medium transition-all focus-visible:outline-none border border-white/40 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 h-12 px-8"
             >
               Plan Your Trip
