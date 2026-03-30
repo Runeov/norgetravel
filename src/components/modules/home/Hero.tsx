@@ -16,26 +16,20 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden min-h-[90vh] flex items-center">
-      {/* Background image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/landing.png"
-          alt="Husky dog sled team resting on ice under the Northern Lights in Arctic Norway"
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-          quality={90}
-          unoptimized
-        />
-      </div>
-
-      {/* Gradient overlay — dark left, transparent right */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#1B3A5C]/80 via-[#1B3A5C]/50 to-[#1B3A5C]/20 z-10" />
+    <section className="relative overflow-hidden min-h-[90vh] flex items-center bg-slate-900 text-white">
+      <Image
+        src="/landing.png"
+        alt="Husky dog sled team resting on ice under the Northern Lights in Arctic Norway"
+        fill
+        className="object-cover opacity-50"
+        priority
+        sizes="100vw"
+        unoptimized
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#1B3A5C]/60 via-[#1B3A5C]/30 to-transparent" />
 
       {/* Content */}
-      <div className="container mx-auto px-4 sm:px-6 relative z-20">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6">
         <div className="max-w-2xl">
 
           {/* Badge */}
@@ -56,7 +50,7 @@ export default function Hero() {
           </h1>
 
           {/* Body */}
-          <p className="text-lg sm:text-xl text-white/80 mb-8 leading-relaxed">
+          <p className="text-lg sm:text-xl text-slate-300 mb-8 leading-relaxed">
             Sustainable Arctic adventures hand-picked for the modern explorer. Northern Lights tours, zero-emission fjord cruises, and remote wilderness stays — all in one place.
           </p>
 
@@ -78,7 +72,7 @@ export default function Hero() {
           </div>
 
           {/* Trust strip */}
-          <div className="flex flex-wrap items-center gap-6 text-sm text-white/70">
+          <div className="flex flex-wrap items-center gap-6 text-sm text-slate-300">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-5 h-5 text-[#00CC6A]" aria-hidden="true" />
               <span>Zero-Emission Partners</span>
