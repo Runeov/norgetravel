@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import heroImage from '@/assets/landing.png';
 
 export default function Hero() {
 
@@ -18,15 +19,15 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden min-h-[90vh] flex items-center bg-slate-900 text-white">
       <Image
-        src="/landing.png"
+        src={heroImage}
         alt="Husky dog sled team resting on ice under the Northern Lights in Arctic Norway"
         fill
         className="object-cover opacity-50"
         priority
+        placeholder="blur"
         sizes="100vw"
-        unoptimized
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#1B3A5C]/60 via-[#1B3A5C]/30 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/40 to-slate-900/80" />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6">

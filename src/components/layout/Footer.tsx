@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { ArrowUp } from 'lucide-react';
+import logoNorgeTravel from '@/assets/norgeTravel.png';
 
 export function Footer() {
   const router = useRouter();
@@ -35,7 +36,7 @@ export function Footer() {
           {/* Brand Info */}
           <div className="col-span-1 md:col-span-2 space-y-6">
             <div>
-              <Image src="/norgeTravel.png" alt="NorgeTravel Logo" width={180} height={60} className="h-[60px] w-auto opacity-90" />
+              <Image src={logoNorgeTravel} alt="NorgeTravel Logo" width={180} height={60} className="h-[60px] w-auto opacity-90" placeholder="blur" />
             </div>
             <p className="text-slate-500 leading-relaxed max-w-sm text-base">
               Your guide to sustainable Arctic adventures — Northern Lights tours, zero-emission fjord cruises, luxury trekking, and remote cabin stays across Norway.
