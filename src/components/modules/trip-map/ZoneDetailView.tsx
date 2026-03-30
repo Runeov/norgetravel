@@ -1,8 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowLeft,
   ArrowRight,
@@ -15,7 +15,6 @@ import {
   Calendar,
   Music,
   UtensilsCrossed,
-  Snowflake,
   Building2,
   Landmark,
   Church,
@@ -31,17 +30,14 @@ interface ZoneDetailViewProps {
 }
 
 const iconMap: Record<string, React.ElementType> = {
-  // Northern Norway
   'northern-lights': Sparkles,
   'dog-sledding': PawPrint,
   'midnight-sun': Sun,
   'arctic-wildlife': Bird,
-  // Events
   'festivals-markets': Music,
   'northern-lights-season': Sparkles,
   'midnight-sun-events': Sun,
   'food-drink-events': UtensilsCrossed,
-  // Cities
   'oslo': Building2,
   'bergen': Landmark,
   'trondheim': Church,
@@ -54,24 +50,17 @@ const zoneIconMap: Record<string, React.ElementType> = {
   'cities': Building2,
 };
 
-// Gradient fallbacks when no image is available
-const gradientMap: Record<string, string> = {
-  'northern-lights': 'from-emerald-900/80 via-teal-900/70 to-slate-900/90',
-  'dog-sledding': 'from-sky-900/80 via-slate-800/70 to-slate-900/90',
-  'midnight-sun': 'from-amber-900/80 via-orange-900/70 to-slate-900/90',
-  'arctic-wildlife': 'from-cyan-900/80 via-blue-900/70 to-slate-900/90',
-  'festivals-markets': 'from-purple-900/80 via-indigo-900/70 to-slate-900/90',
-  'northern-lights-season': 'from-emerald-900/80 via-teal-900/70 to-slate-900/90',
-  'midnight-sun-events': 'from-amber-900/80 via-orange-900/70 to-slate-900/90',
-  'food-drink-events': 'from-red-900/80 via-rose-900/70 to-slate-900/90',
-  'oslo': 'from-slate-800/80 via-gray-900/70 to-slate-900/90',
-  'bergen': 'from-blue-900/80 via-slate-800/70 to-slate-900/90',
-  'trondheim': 'from-indigo-900/80 via-slate-800/70 to-slate-900/90',
-  'stavanger': 'from-teal-900/80 via-slate-800/70 to-slate-900/90',
-};
+// Placeholder gradient backgrounds for each bullet card
+const bulletGradients = [
+  'from-emerald-800/60 to-emerald-950/80',
+  'from-sky-800/60 to-sky-950/80',
+  'from-amber-800/60 to-amber-950/80',
+  'from-cyan-800/60 to-cyan-950/80',
+];
 
 export function ZoneDetailView({ data, onBack, allZones, onSwitchZone }: ZoneDetailViewProps) {
   const router = useRouter();
+  const [activeTab, setActiveTab] = useState(0);
 
   const currentIndex = allZones?.findIndex((z) => z.zoneId === data.zoneId) ?? -1;
   const prevZone = allZones && currentIndex > 0 ? allZones[currentIndex - 1] : null;
@@ -101,7 +90,10 @@ export function ZoneDetailView({ data, onBack, allZones, onSwitchZone }: ZoneDet
                   <button
                     key={zone.zoneId}
                     onClick={() => {
-                      if (!isActive) onSwitchZone(zone.zoneId);
+                      if (!isActive) {
+                        setActiveTab(0);
+                        onSwitchZone(zone.zoneId);
+                      }
                     }}
                     className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
                       isActive
@@ -127,139 +119,260 @@ export function ZoneDetailView({ data, onBack, allZones, onSwitchZone }: ZoneDet
         </p>
       </div>
 
-      {/* Cards grid */}
-      <div className="flex-1 min-h-0 overflow-y-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
+      {/* Tab layout */}
+      <div className="flex-1 flex flex-col lg:flex-row gap-6 min-h-0 overflow-y-auto lg:overflow-visible">
+
+        {/* Left: Tab buttons */}
+        <div className="lg:w-[280px] shrink-0 flex flex-col gap-2">
           {data.subcategories.map((sub, index) => {
+            const isActive = activeTab === index;
             const Icon = iconMap[sub.id] || Sparkles;
-            const gradient = gradientMap[sub.id] || 'from-slate-800/80 via-slate-900/70 to-slate-900/90';
 
             return (
-              <motion.div
-                key={sub.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.08, ease: 'easeOut' }}
-                className="group relative rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer"
-                onClick={() => router.push(sub.link)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    router.push(sub.link);
-                  }
-                }}
-              >
-                {/* Image or gradient background */}
-                <div className="relative h-[220px] sm:h-[240px] lg:h-[280px] w-full">
-                  {sub.imageUrl ? (
-                    <>
-                      <Image
-                        src={sub.imageUrl}
-                        alt={sub.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        sizes="(max-width: 640px) 100vw, 50vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                    </>
-                  ) : (
-                    <div className={`absolute inset-0 bg-gradient-to-br ${gradient}`}>
-                      {/* Decorative icon */}
-                      <Icon
-                        className="absolute top-6 right-6 w-16 h-16 text-white/[0.06]"
-                        aria-hidden="true"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                    </div>
-                  )}
+              <div key={sub.id} className="flex flex-col">
+                <button
+                  onClick={() => setActiveTab(index)}
+                  aria-expanded={isActive}
+                  aria-controls={`zone-tab-${sub.id}`}
+                  className={`group flex items-center gap-3 p-3 rounded-xl text-left transition-all duration-200 w-full border ${
+                    isActive
+                      ? 'bg-white/10 border-white/20'
+                      : 'bg-white/5 border-transparent hover:bg-white/8 hover:border-white/10'
+                  }`}
+                >
+                  <div
+                    className={`shrink-0 w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${
+                      isActive ? 'bg-white/15' : 'bg-white/5 group-hover:bg-white/10'
+                    }`}
+                  >
+                    <Icon className="w-5 h-5 text-white/80" aria-hidden="true" />
+                  </div>
 
-                  {/* Content overlay */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-5 lg:p-6">
-                    {/* Icon badge */}
-                    <div
-                      className="w-10 h-10 rounded-lg flex items-center justify-center mb-3 backdrop-blur-sm"
-                      style={{ backgroundColor: `${data.zoneColor}30` }}
+                  <div className="flex-1 min-w-0">
+                    <h3
+                      className={`font-bold text-sm transition-colors truncate ${
+                        isActive ? 'text-white' : 'text-white/70'
+                      }`}
                     >
-                      <Icon
-                        className="w-5 h-5"
-                        style={{ color: data.zoneColor }}
-                        aria-hidden="true"
-                      />
-                    </div>
-
-                    <h3 className="text-lg lg:text-xl font-bold text-white mb-1">
                       {sub.title}
                     </h3>
-                    <p className="text-white/60 text-sm leading-relaxed line-clamp-2 mb-3">
+                    <p className="text-xs text-white/40 hidden sm:block truncate">
                       {sub.shortDesc}
                     </p>
+                  </div>
 
-                    {/* CTA */}
+                  <ChevronRight
+                    className={`w-4 h-4 shrink-0 transition-transform duration-200 ${
+                      isActive
+                        ? 'text-white/60 rotate-90 lg:rotate-0 lg:translate-x-0.5'
+                        : 'text-white/20'
+                    }`}
+                    aria-hidden="true"
+                  />
+                </button>
+
+                {/* Mobile accordion content */}
+                <div className="lg:hidden">
+                  <AnimatePresence>
+                    {isActive && (
+                      <motion.div
+                        id={`zone-tab-${sub.id}`}
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        className="overflow-hidden"
+                      >
+                        <div className="p-4 pl-6 pt-2 pb-5 my-1 border-l border-white/10 ml-5">
+                          <p className="text-white/60 text-sm leading-relaxed mb-4">
+                            {sub.content}
+                          </p>
+                          {/* Mobile CTA image cards */}
+                          <div className="grid grid-cols-2 gap-2 mb-4">
+                            {sub.bullets.map((bullet, i) => (
+                              <button
+                                key={i}
+                                onClick={() => router.push(sub.link)}
+                                className="group/card relative rounded-xl overflow-hidden border border-white/10 hover:border-white/20 transition-all text-left"
+                              >
+                                <div className={`h-16 w-full bg-gradient-to-br ${bulletGradients[i % bulletGradients.length]}`} />
+                                <div className="p-2.5">
+                                  <p className="text-white/80 text-xs font-medium leading-snug line-clamp-2">{bullet}</p>
+                                  <ArrowRight
+                                    className="w-3 h-3 mt-1.5 transition-transform group-hover/card:translate-x-0.5"
+                                    style={{ color: data.zoneColor }}
+                                    aria-hidden="true"
+                                  />
+                                </div>
+                              </button>
+                            ))}
+                          </div>
+                          <button
+                            onClick={() => router.push(sub.link)}
+                            className="font-bold text-sm flex items-center gap-2 hover:gap-3 transition-all"
+                            style={{ color: data.zoneColor }}
+                          >
+                            {sub.linkText}
+                            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                          </button>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
+            );
+          })}
+
+          {/* Mobile zone navigation */}
+          {allZones && allZones.length > 1 && onSwitchZone && (
+            <div className="sm:hidden flex items-center gap-2 mt-4 pt-4 border-t border-white/10">
+              {allZones.map((zone) => {
+                const isActive = zone.zoneId === data.zoneId;
+                const ZoneIcon = zoneIconMap[zone.zoneId] || Calendar;
+                return (
+                  <button
+                    key={zone.zoneId}
+                    onClick={() => {
+                      if (!isActive) {
+                        setActiveTab(0);
+                        onSwitchZone(zone.zoneId);
+                      }
+                    }}
+                    className={`flex-1 flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-medium transition-all ${
+                      isActive
+                        ? 'bg-white/15 text-white'
+                        : 'bg-white/5 text-white/40'
+                    }`}
+                  >
+                    <ZoneIcon className="w-3.5 h-3.5" aria-hidden="true" />
+                    {zone.zoneName}
+                  </button>
+                );
+              })}
+            </div>
+          )}
+        </div>
+
+        {/* Right: Desktop content panel */}
+        <div className="hidden lg:flex flex-1 bg-white/5 rounded-2xl border border-white/10 p-8 min-h-[420px] flex-col backdrop-blur-sm">
+          <AnimatePresence mode="wait">
+            {data.subcategories[activeTab] && (
+              <motion.div
+                key={`${data.zoneId}-${activeTab}`}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.25 }}
+                className="flex flex-col h-full"
+                role="tabpanel"
+              >
+                {/* Tab header */}
+                <div className="flex items-center gap-4 mb-6">
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center"
+                    style={{ backgroundColor: `${data.zoneColor}20` }}
+                  >
+                    {(() => {
+                      const Icon = iconMap[data.subcategories[activeTab].id] || Sparkles;
+                      return <Icon className="w-6 h-6" style={{ color: data.zoneColor }} aria-hidden="true" />;
+                    })()}
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-white">
+                      {data.subcategories[activeTab].title}
+                    </h3>
                     <div
-                      className="inline-flex items-center gap-1.5 text-sm font-bold transition-all group-hover:gap-2.5"
+                      className="h-1 w-10 mt-2 rounded-full"
+                      style={{ backgroundColor: data.zoneColor }}
+                    />
+                  </div>
+                </div>
+
+                {/* Description */}
+                <p className="text-white/60 text-base leading-relaxed mb-6">
+                  {data.subcategories[activeTab].content}
+                </p>
+
+                {/* 4 CTA image cards replacing bullet points */}
+                <div className="grid grid-cols-2 gap-3 mb-6">
+                  {data.subcategories[activeTab].bullets.map((bullet, i) => (
+                    <button
+                      key={i}
+                      onClick={() => router.push(data.subcategories[activeTab].link)}
+                      className="group/card relative rounded-xl overflow-hidden border border-white/10 hover:border-white/25 hover:shadow-lg hover:shadow-black/20 transition-all duration-300 text-left"
+                    >
+                      {/* Placeholder image area */}
+                      <div className={`relative h-24 w-full bg-gradient-to-br ${bulletGradients[i % bulletGradients.length]}`}>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                        {/* Placeholder label */}
+                        <span className="absolute top-2 right-2 text-[10px] text-white/30 font-medium uppercase tracking-wider">
+                          Image
+                        </span>
+                      </div>
+                      {/* Text + CTA */}
+                      <div className="p-3">
+                        <p className="text-white/80 text-sm font-medium leading-snug line-clamp-2 mb-2">
+                          {bullet}
+                        </p>
+                        <span
+                          className="inline-flex items-center gap-1 text-xs font-bold transition-all group-hover/card:gap-1.5"
+                          style={{ color: data.zoneColor }}
+                        >
+                          Learn more
+                          <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/card:translate-x-0.5" aria-hidden="true" />
+                        </span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+
+                {/* Main CTA + zone navigation */}
+                <div className="mt-auto pt-6 border-t border-white/10">
+                  <div className="flex items-center justify-between">
+                    <button
+                      onClick={() => router.push(data.subcategories[activeTab].link)}
+                      className="inline-flex items-center gap-2 font-bold text-sm hover:gap-3 transition-all group"
                       style={{ color: data.zoneColor }}
                     >
-                      {sub.linkText}
-                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-                    </div>
+                      {data.subcategories[activeTab].linkText}
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                    </button>
+
+                    {allZones && allZones.length > 1 && onSwitchZone && (
+                      <div className="flex items-center gap-2">
+                        {prevZone && (
+                          <button
+                            onClick={() => {
+                              setActiveTab(0);
+                              onSwitchZone(prevZone.zoneId);
+                            }}
+                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 text-white/50 hover:bg-white/10 hover:text-white/80 text-xs font-medium transition-all"
+                          >
+                            <ChevronLeft className="w-3.5 h-3.5" aria-hidden="true" />
+                            {prevZone.zoneName}
+                          </button>
+                        )}
+                        {nextZone && (
+                          <button
+                            onClick={() => {
+                              setActiveTab(0);
+                              onSwitchZone(nextZone.zoneId);
+                            }}
+                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 text-white/50 hover:bg-white/10 hover:text-white/80 text-xs font-medium transition-all"
+                          >
+                            {nextZone.zoneName}
+                            <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />
+                          </button>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </div>
               </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Mobile zone navigation */}
-        {allZones && allZones.length > 1 && onSwitchZone && (
-          <div className="sm:hidden flex items-center gap-2 mt-6 pt-4 border-t border-white/10">
-            {allZones.map((zone) => {
-              const isActive = zone.zoneId === data.zoneId;
-              const ZoneIcon = zoneIconMap[zone.zoneId] || Calendar;
-              return (
-                <button
-                  key={zone.zoneId}
-                  onClick={() => {
-                    if (!isActive) onSwitchZone(zone.zoneId);
-                  }}
-                  className={`flex-1 flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-medium transition-all ${
-                    isActive
-                      ? 'bg-white/15 text-white'
-                      : 'bg-white/5 text-white/40'
-                  }`}
-                >
-                  <ZoneIcon className="w-3.5 h-3.5" aria-hidden="true" />
-                  {zone.zoneName}
-                </button>
-              );
-            })}
-          </div>
-        )}
-
-        {/* Desktop prev/next navigation */}
-        {allZones && allZones.length > 1 && onSwitchZone && (prevZone || nextZone) && (
-          <div className="hidden sm:flex items-center justify-between mt-6 pt-4 border-t border-white/10">
-            {prevZone ? (
-              <button
-                onClick={() => onSwitchZone(prevZone.zoneId)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 text-white/50 hover:bg-white/10 hover:text-white/80 text-xs font-medium transition-all"
-              >
-                <ChevronLeft className="w-3.5 h-3.5" aria-hidden="true" />
-                {prevZone.zoneName}
-              </button>
-            ) : <div />}
-            {nextZone && (
-              <button
-                onClick={() => onSwitchZone(nextZone.zoneId)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 text-white/50 hover:bg-white/10 hover:text-white/80 text-xs font-medium transition-all"
-              >
-                {nextZone.zoneName}
-                <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />
-              </button>
             )}
-          </div>
-        )}
+          </AnimatePresence>
+        </div>
       </div>
     </div>
   );
