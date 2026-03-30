@@ -46,7 +46,7 @@ export default function EmployeeBasicInfoSection({
         <TextInput
           value={formData.email}
           onChange={(v) => onChange('email', v)}
-          placeholder="ola@averdi.no"
+          placeholder="name@norgetravel.com"
           type="email"
           required
         />

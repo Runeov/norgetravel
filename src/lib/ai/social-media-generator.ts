@@ -2,7 +2,7 @@
  * Social Media Post Generator
  * 
  * Generates LinkedIn and Facebook posts from article content
- * following Averdi's voice architecture rules.
+ * following NorgeTravel's voice architecture rules.
  */
 
 import type { Article } from '@/types/admin';
@@ -26,9 +26,9 @@ export interface SocialMediaPostSet {
  * Generate social media posts for an article
  * 
  * This function uses AI to create platform-specific posts following
- * Averdi's voice architecture:
- * - LinkedIn: TANGEN mode (energetic, question-based, professional)
- * - Facebook: TANGEN mode with more casual tone
+ * NorgeTravel's voice architecture:
+ * - LinkedIn: THE GRIT mode (reality-first, specific, anti-brochure)
+ * - Facebook: THE HEARTH mode with more sensory, people-first tone
  */
 export async function generateSocialMediaPosts(
   article: Article
@@ -147,40 +147,40 @@ function buildLinkedInPrompt(params: {
   const contentPreview = plainContent.substring(0, 500);
   
   return `
-Du er en ekspert på å skrive LinkedIn-innlegg for Averdi AS, et regnskapsselskap i Nord-Norge.
+You are an expert at writing LinkedIn posts for NorgeTravel.com, an independent travel guide for Arctic Norway.
 
-AVERDI'S VOICE ARCHITECTURE - TANGEN MODE (LinkedIn):
-- Start med et spørsmål eller kontrær påstand (THE HOOK)
-- 3-4 korte avsnitt, maks 15-20 ord per setning
-- Bruk aktive verb: dykket ned i, knekket, avdekket, bygget
-- Nordnorske metaforer når relevant
-- Vis entusiasme og energi
-- Avslutt med et engasjerende spørsmål til publikum
-- Bruk emojis sparsomt: ✅, 📉, 💡, 📋
+NORGETRAVEL VOICE ARCHITECTURE - THE GRIT MODE (LinkedIn):
+- Open with an expectation vs. reality hook — correct a common misconception
+- 3-4 short paragraphs, max 15-20 words per sentence
+- Use active verbs: demands, rewards, clears, crosses, plunges
+- Back every claim with a number, date, or named operator
+- No hedging: "generally", "may vary" — cut these
+- End with a specific, actionable question or next step
+- Use emojis sparingly: ⛰️, 🧭, 🌌 — one maximum
 
-STRUKTUR:
-1. THE HOOK (1-2 setninger) → Spørsmål eller kontrær påstand
-2. THE MEAT (3-4 korte avsnitt) → Hovedpoeng med data/innsikt
-3. THE TWIST (1-2 setninger) → Averdi's unike perspektiv
-4. THE ENGAGEMENT (1 setning) → Spørsmål til publikum
+STRUCTURE:
+1. THE HOOK (1-2 sentences) → Reality check — what the Instagram grid doesn't show
+2. THE FACTS (3-4 short paragraphs) → Specific data: distances, grades, costs, operators
+3. THE NORGETRAVEL ANGLE (1-2 sentences) → The honest local guide perspective
+4. THE ENGAGEMENT (1 sentence) → Specific question to the audience
 
 ARTIKKEL INFO:
 Tittel: ${title}
 Sammendrag: ${excerpt}
 Innhold (første 500 tegn): ${contentPreview}
 
-EKSEMPEL PÅ GOD LINKEDIN-POST:
-"Er du klar over at din ansatt i Alta tjener mer enn din ansatt i Oslo – for samme lønn?
+EXAMPLE OF A GOOD LINKEDIN POST:
+"Trolltunga is not a beautiful hike for everyone.
 
-Med 2026-forslaget om 60 000 kr i nedskrivning og 45 000 kr i Finnmarksfradrag, er en lønn på 600k i nord verdt 750k i sør.
+It is a grueling 12-hour trek with 800 meters of elevation gain. In July, expect sideways rain. The DNT grade is Red — that means scrambling over wet rock, no shelter if the weather turns.
 
-Det handler ikke om geografi. Det handler om regnekraft. 💡
+Most tourists show up with trainers and a phone. The ferry at Odda sells out weeks in advance.
 
-Vi har dykket ned i tallene. Resultatet? Nordnorske bedrifter har en skjult konkurransefordel som få utnytter fullt ut.
+We mapped the real route, the real timing, and the real gear list. Link in the first comment. ⛰️
 
-Hvordan bruker din bedrift Nord-Norge-fordelen?"
+What's the most underestimated hike you've done in Norway?"
 
-Generer nå en LinkedIn-post basert på artikkelen. Maks 1300 tegn. Skriv på norsk.
+Generate a LinkedIn post based on the article. Max 1300 characters. Write in English.
 `.trim();
 }
 
@@ -200,38 +200,36 @@ function buildFacebookPrompt(params: {
   const contentPreview = plainContent.substring(0, 500);
   
   return `
-Du er en ekspert på å skrive Facebook-innlegg for Averdi AS, et regnskapsselskap i Nord-Norge.
+You are an expert at writing Facebook posts for NorgeTravel.com, an independent travel guide for Arctic Norway.
 
-AVERDI'S VOICE ARCHITECTURE - TANGEN MODE (Facebook):
-- Mer uformell og personlig enn LinkedIn
-- Start med et spørsmål eller relaterbar situasjon
-- Kortere avsnitt, lettere å lese på mobil
-- Vis menneskene bak selskapet
-- Bruk emojis mer generøst: 💡, 📊, 🎯, ✨, 🔥
-- Avslutt med oppfordring til handling eller spørsmål
+NORGETRAVEL VOICE ARCHITECTURE - THE HEARTH MODE (Facebook):
+- More personal and sensory than LinkedIn
+- Lead with smell, sound, or texture — not just visuals
+- Short paragraphs, easy to read on mobile
+- Put the people making the experience at the centre
+- One emoji maximum — functional only 🥾 🧭
+- End with a specific action or question
 
-STRUKTUR:
-1. HOOK (1-2 setninger) → Relaterbar situasjon eller spørsmål
-2. VERDI (2-3 korte avsnitt) → Hva artikkelen handler om
-3. CALL TO ACTION → Les mer / Kontakt oss / Spørsmål
+STRUCTURE:
+1. HOOK (1-2 sentences) → Sensory scene or reality check
+2. THE STORY (2-3 short paragraphs) → What the article covers, who it's about
+3. CALL TO ACTION → Read the guide / Plan the trip / Share your experience
 
 ARTIKKEL INFO:
 Tittel: ${title}
 Sammendrag: ${excerpt}
 Innhold (første 500 tegn): ${contentPreview}
 
-EKSEMPEL PÅ GOD FACEBOOK-POST:
-"Visste du at du kan spare 14,1% på hver lønnskrone i Finnmark? 💡
+EXAMPLE OF A GOOD FACEBOOK POST:
+"The room smells of salted cod and birch woodsmoke. The nets on the wall were in use last winter.
 
-Vi har skrevet en ny artikkel om hvordan nordnorske bedrifter kan bruke tiltakssonen til sin fordel.
+This is the Lofoten the cruise ships don't show you. January to April, the skrei season turns Henningsvær into a working production facility. Ask the harbour master about the catch. You'll learn more than any museum exhibit can teach you.
 
-Kort fortalt: Med 0% arbeidsgiveravgift har du plutselig et innovasjonsfond på 14,1% av lønnsbudsjettet. Det er reelle penger som kan brukes på vekst. 📊
+We mapped the ferry from Bodø, the best rorbu to book, and the one café that the fishermen actually use. Link in the guide. 🥾
 
-Les hele artikkelen på averdi.no (link i kommentarfeltet) 👇
+Have you visited Lofoten in winter? What did you find?"
 
-Har du spørsmål om hvordan dette gjelder din bedrift? Send oss en melding! ✨"
-
-Generer nå en Facebook-post basert på artikkelen. Maks 1000 tegn. Skriv på norsk.
+Generate a Facebook post based on the article. Max 1000 characters. Write in English.
 `.trim();
 }
 
@@ -312,7 +310,7 @@ ${excerpt}
 
 Vi har dykket ned i dette temaet og funnet innsikter som kan hjelpe din bedrift.
 
-Les hele artikkelen på averdi.no for å lære mer.
+Read the full guide at norgetravel.com.
 
 Hva er dine erfaringer med dette? Del gjerne i kommentarfeltet! 👇`;
   } else {
@@ -320,7 +318,7 @@ Hva er dine erfaringer med dette? Del gjerne i kommentarfeltet! 👇`;
 
 ${excerpt}
 
-Les hele artikkelen på averdi.no (link i kommentarfeltet) 👇
+Read the full guide at norgetravel.com (link in comments) 🧭
 
 Har du spørsmål? Send oss en melding! ✨`;
   }

@@ -157,9 +157,9 @@ export default function AdminLoginPage() {
 
         {/* Footer */}
         <p className="text-center text-sm text-slate-400 mt-6">
-          Tilbake til{' '}
-          <a href="/" className="text-[#E86C1F] hover:underline">
-            averdi.no
+          Back to{' '}
+          <a href="/" className="text-[#1B3A5C] hover:underline">
+            norgetravel.com
           </a>
         </p>
       </div>

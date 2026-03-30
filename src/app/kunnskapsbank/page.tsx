@@ -8,17 +8,17 @@ import { getAllKunnskapsbankSectionsSorted } from '@/lib/admin/kunnskapsbank';
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
-  title: 'Kunnskapsbank for Nord-Norge | Sametinget, Tiltakssonen & Idrettslag | Averdi',
-  description: 'Din guide til næringsliv og frivillighet i Finnmark og Nord-Troms. Spesialist på Sametinget støtteordninger, 0% AGA i Tiltakssonen og regnskap for idrettslag.',
+  title: 'Travel Guide | Norway Tips, Routes & Expert Advice | NorgeTravel',
+  description: 'Expert travel guides for Norway — Northern Lights forecasting, fjord driving routes, Lofoten logistics, Svalbard expedition prep, and sustainable operator reviews.',
   alternates: {
     canonical: '/kunnskapsbank',
   },
   openGraph: {
-    title: 'Kunnskapsbank for Nord-Norge | Averdi',
-    description: 'Gratis fagartikler om Sametinget tilskudd, skattefordeler i Tiltakssonen og regnskap for lag og foreninger i Finnmark.',
-    url: 'https://www.averdi.no/kunnskapsbank',
-    siteName: 'Averdi - Tolken av Nord-Norge',
-    locale: 'nb_NO',
+    title: 'Travel Guide | NorgeTravel.com',
+    description: 'Expert travel guides for Norway — Northern Lights, fjord routes, Lofoten logistics, and sustainable operator reviews.',
+    url: 'https://norgetravel.com/kunnskapsbank',
+    siteName: 'NorgeTravel.com',
+    locale: 'en_US',
     type: 'website',
   },
 };
@@ -61,15 +61,15 @@ export default async function KunnskapsbankPage() {
       {
         '@type': 'BreadcrumbList',
         'itemListElement': [
-          { '@type': 'ListItem', 'position': 1, 'name': 'Kunnskapsbank', 'item': 'https://www.averdi.no/kunnskapsbank' }
+          { '@type': 'ListItem', 'position': 1, 'name': 'Travel Guide', 'item': 'https://norgetravel.com/kunnskapsbank' }
         ]
       },
       {
         '@type': 'CollectionPage',
-        'name': 'Kunnskapsbank for Nord-Norge',
-        'description': 'Fagartikler og guider om Sametinget støtteordninger, Tiltakssonen skattefordeler og regnskap for lag og foreninger i Finnmark og Nord-Troms.',
-        'url': 'https://www.averdi.no/kunnskapsbank',
-        'publisher': { '@type': 'Organization', 'name': 'Averdi AS' }
+        'name': 'Travel Guide | NorgeTravel.com',
+        'description': 'Expert travel guides for Norway — Northern Lights, fjord routes, Lofoten logistics, and sustainable operator reviews.',
+        'url': 'https://norgetravel.com/kunnskapsbank',
+        'publisher': { '@type': 'Organization', 'name': 'NorgeTravel.com' }
       }
     ]
   };

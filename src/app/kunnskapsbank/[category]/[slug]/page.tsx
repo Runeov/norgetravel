@@ -53,14 +53,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   return {
-    title: article.metaTitle || `${article.title} | Averdi Innsikt`,
+    title: article.metaTitle || `${article.title} | NorgeTravel`,
     description: article.metaDescription || article.excerpt,
     openGraph: {
       title: article.metaTitle || article.title,
       description: article.metaDescription || article.excerpt,
-      url: `https://www.averdi.no/kunnskapsbank/${article.category}/${article.slug}`,
-      siteName: 'Averdi - Tolken av Nord-Norge',
-      locale: 'nb_NO',
+      url: `https://norgetravel.com/kunnskapsbank/${article.category}/${article.slug}`,
+      siteName: 'NorgeTravel.com',
+      locale: 'en_US',
       type: 'article',
       ...(article.featuredImage && {
         images: [{ url: article.featuredImage, alt: article.featuredImageAlt || article.title }],
@@ -95,19 +95,19 @@ export default async function DynamicArticlePage({ params }: PageProps) {
     description: article.excerpt,
     author: {
       '@type': 'Person',
-      name: article.authorName || 'Averdi',
+      name: article.authorName || 'NorgeTravel',
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Averdi AS',
-      url: 'https://www.averdi.no',
+      name: 'NorgeTravel.com',
+      url: 'https://norgetravel.com',
     },
     datePublished: article.publishedAt || article.createdAt,
     dateModified: article.updatedAt,
-    url: `https://www.averdi.no/kunnskapsbank/${article.category}/${article.slug}`,
+    url: `https://norgetravel.com/kunnskapsbank/${article.category}/${article.slug}`,
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://www.averdi.no/kunnskapsbank/${article.category}/${article.slug}`,
+      '@id': `https://norgetravel.com/kunnskapsbank/${article.category}/${article.slug}`,
     },
   };
 

@@ -2,146 +2,145 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Personvernerklæring',
-  description: 'Personvernerklæring for Averdi AS — informasjon om hvilke data vi samler inn og dine rettigheter.',
+  title: 'Privacy Policy | NorgeTravel.com',
+  description: 'Privacy policy for NorgeTravel.com — what data we collect and your rights under GDPR.',
 };
 
 export default function PersonvernPage() {
   return (
     <main className="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
-      <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2">Personvernerklæring</h1>
-      <p className="text-slate-500 mb-10">Sist oppdatert: 24. februar 2026</p>
+      <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2">Privacy Policy</h1>
+      <p className="text-slate-500 mb-10">Last updated: March 2026</p>
 
       <section className="prose prose-slate max-w-none space-y-10 text-slate-700">
 
-        {/* 1. Behandlingsansvarlig */}
+        {/* 1. Data controller */}
         <div>
-          <h2 className="text-xl font-semibold text-slate-900 mb-3">1. Behandlingsansvarlig</h2>
+          <h2 className="text-xl font-semibold text-slate-900 mb-3">1. Data controller</h2>
           <p>
-            Averdi AS er behandlingsansvarlig for personopplysninger som behandles via dette nettstedet.
+            NorgeTravel.com is the data controller for personal data processed via this website.
           </p>
           <ul className="mt-3 space-y-1 list-none pl-0">
-            <li><span className="font-medium">Organisasjonsnummer:</span> 980 383 571</li>
-            <li><span className="font-medium">Adresse:</span> Juhána Rásttoš geaidnu 2, 9730 Karasjok</li>
+            <li><span className="font-medium">Website:</span> norgetravel.com</li>
             <li>
-              <span className="font-medium">E-post:</span>{' '}
-              <a href="mailto:post@averdi.no" className="text-[#E86C1F] hover:underline">post@averdi.no</a>
+              <span className="font-medium">Email:</span>{' '}
+              <a href="mailto:hello@norgetravel.com" className="text-[#1B3A5C] hover:underline">hello@norgetravel.com</a>
             </li>
           </ul>
         </div>
 
-        {/* 2. Hvilke data samles inn */}
+        {/* 2. What data we collect */}
         <div>
-          <h2 className="text-xl font-semibold text-slate-900 mb-3">2. Hvilke personopplysninger samler vi inn?</h2>
-          <p>Vi samler inn følgende kategorier av personopplysninger:</p>
+          <h2 className="text-xl font-semibold text-slate-900 mb-3">2. What personal data do we collect?</h2>
+          <p>We collect the following categories of personal data:</p>
           <ul className="mt-3 space-y-2 list-disc pl-5">
             <li>
-              <span className="font-medium">Kontaktskjema:</span> navn, e-postadresse, telefonnummer (valgfritt) og innholdet i meldingen du sender oss.
+              <span className="font-medium">Contact form:</span> name, email address, phone number (optional), and the content of your message.
             </li>
             <li>
-              <span className="font-medium">Bruksanalyse (kun med samtykke):</span> anonymiserte data om besøk, sidevisninger, museklikk og scrolling via Hotjar. Ingen data kobles til identifiserbare enkeltpersoner.
+              <span className="font-medium">Usage analytics (consent only):</span> anonymised data about visits, page views, and scrolling via Hotjar. No data is linked to identifiable individuals.
             </li>
           </ul>
         </div>
 
-        {/* 3. Informasjonskapsler */}
+        {/* 3. Cookies */}
         <div>
-          <h2 className="text-xl font-semibold text-slate-900 mb-3">3. Informasjonskapsler (cookies)</h2>
-          <p className="mb-4">Nettsiden bruker følgende informasjonskapsler:</p>
+          <h2 className="text-xl font-semibold text-slate-900 mb-3">3. Cookies</h2>
+          <p className="mb-4">This website uses the following cookies:</p>
           <div className="overflow-x-auto rounded border border-slate-200">
             <table className="w-full text-sm text-left">
-              <caption className="sr-only">Oversikt over informasjonskapsler brukt på averdi.no</caption>
+              <caption className="sr-only">Cookies used on norgetravel.com</caption>
               <thead className="bg-slate-100 text-slate-600 uppercase text-xs">
                 <tr>
-                  <th scope="col" className="px-4 py-3">Navn</th>
+                  <th scope="col" className="px-4 py-3">Name</th>
                   <th scope="col" className="px-4 py-3">Type</th>
-                  <th scope="col" className="px-4 py-3">Formål</th>
-                  <th scope="col" className="px-4 py-3">Lagringstid</th>
+                  <th scope="col" className="px-4 py-3">Purpose</th>
+                  <th scope="col" className="px-4 py-3">Duration</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
                 <tr>
                   <td className="px-4 py-3 font-mono">cookie-consent</td>
-                  <td className="px-4 py-3">Nødvendig</td>
-                  <td className="px-4 py-3">Husker ditt samtykkevalg</td>
-                  <td className="px-4 py-3">Inntil nettleserlagring slettes</td>
+                  <td className="px-4 py-3">Necessary</td>
+                  <td className="px-4 py-3">Remembers your consent choice</td>
+                  <td className="px-4 py-3">Until browser storage cleared</td>
                 </tr>
                 <tr className="bg-slate-50/50">
                   <td className="px-4 py-3 font-mono">_hjSession*</td>
-                  <td className="px-4 py-3">Analyse (Hotjar)</td>
-                  <td className="px-4 py-3">Anonymisert analyse av sidebruk</td>
-                  <td className="px-4 py-3">Sesjon / 1 år</td>
+                  <td className="px-4 py-3">Analytics (Hotjar)</td>
+                  <td className="px-4 py-3">Anonymised page usage analysis</td>
+                  <td className="px-4 py-3">Session / 1 year</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-3 font-mono">_hjSessionUser*</td>
-                  <td className="px-4 py-3">Analyse (Hotjar)</td>
-                  <td className="px-4 py-3">Identifiserer anonym bruker mellom besøk</td>
-                  <td className="px-4 py-3">1 år</td>
+                  <td className="px-4 py-3">Analytics (Hotjar)</td>
+                  <td className="px-4 py-3">Identifies anonymous user across visits</td>
+                  <td className="px-4 py-3">1 year</td>
                 </tr>
               </tbody>
             </table>
           </div>
           <p className="mt-4 text-sm text-slate-500">
-            Du kan trekke tilbake samtykket til analysecookies når som helst ved å klikke «Kun nødvendige» i cookie-banneret som vises ved nytt besøk etter at du har slettet nettleserlagringen din.
+            You can withdraw consent for analytics cookies at any time by clicking &quot;Necessary only&quot; in the cookie banner.
           </p>
         </div>
 
-        {/* 4. Rettslig grunnlag */}
+        {/* 4. Legal basis */}
         <div>
-          <h2 className="text-xl font-semibold text-slate-900 mb-3">4. Rettslig grunnlag</h2>
+          <h2 className="text-xl font-semibold text-slate-900 mb-3">4. Legal basis</h2>
           <ul className="space-y-2 list-disc pl-5">
             <li>
-              <span className="font-medium">Analysecookies (Hotjar):</span> samtykke (GDPR art. 6 nr. 1 bokstav a).
+              <span className="font-medium">Analytics cookies (Hotjar):</span> consent (GDPR Art. 6(1)(a)).
             </li>
             <li>
-              <span className="font-medium">Nødvendig informasjonskapsel (samtykkevalg):</span> berettiget interesse i å huske ditt valg (GDPR art. 6 nr. 1 bokstav f).
+              <span className="font-medium">Necessary cookie (consent preference):</span> legitimate interest in remembering your choice (GDPR Art. 6(1)(f)).
             </li>
             <li>
-              <span className="font-medium">Kontaktskjema:</span> oppfyllelse av en avtale eller gjennomføring av tiltak på den registrertes anmodning (GDPR art. 6 nr. 1 bokstav b).
+              <span className="font-medium">Contact form:</span> performance of a contract or pre-contractual steps (GDPR Art. 6(1)(b)).
             </li>
           </ul>
         </div>
 
-        {/* 5. Lagring og deling */}
+        {/* 5. Retention and sharing */}
         <div>
-          <h2 className="text-xl font-semibold text-slate-900 mb-3">5. Lagringstid og deling</h2>
+          <h2 className="text-xl font-semibold text-slate-900 mb-3">5. Retention and sharing</h2>
           <p>
-            Opplysninger fra kontaktskjemaet lagres kun så lenge det er nødvendig for å behandle henvendelsen, maksimalt 2 år etter siste kontakt.
+            Contact form data is retained only as long as necessary to handle your enquiry — maximum 2 years after last contact.
           </p>
           <p className="mt-3">
-            Hotjar-data behandles av Hotjar Ltd. (Malta) som databehandler under en databehandleravtale. Data overføres ikke til tredjeland uten tilstrekkelige garantier i henhold til GDPR. Se{' '}
-            <a href="https://www.hotjar.com/legal/policies/privacy/" target="_blank" rel="noopener noreferrer" className="text-[#E86C1F] hover:underline">Hotjars personvernerklæring<span className="sr-only"> (åpner i ny fane)</span></a>{' '}
-            for detaljer.
+            Hotjar data is processed by Hotjar Ltd. (Malta) as a data processor under a data processing agreement. Data is not transferred to third countries without adequate safeguards. See{' '}
+            <a href="https://www.hotjar.com/legal/policies/privacy/" target="_blank" rel="noopener noreferrer" className="text-[#1B3A5C] hover:underline">Hotjar&apos;s privacy policy<span className="sr-only"> (opens in new tab)</span></a>{' '}
+            for details.
           </p>
-          <p className="mt-3">Vi selger ikke personopplysninger til tredjeparter.</p>
+          <p className="mt-3">We do not sell personal data to third parties.</p>
         </div>
 
-        {/* 6. Dine rettigheter */}
+        {/* 6. Your rights */}
         <div>
-          <h2 className="text-xl font-semibold text-slate-900 mb-3">6. Dine rettigheter</h2>
-          <p>Som registrert har du rett til å:</p>
+          <h2 className="text-xl font-semibold text-slate-900 mb-3">6. Your rights</h2>
+          <p>As a data subject you have the right to:</p>
           <ul className="mt-3 space-y-2 list-disc pl-5">
-            <li><span className="font-medium">Innsyn</span> — få vite hvilke opplysninger vi behandler om deg.</li>
-            <li><span className="font-medium">Retting</span> — kreve at feilaktige opplysninger rettes.</li>
-            <li><span className="font-medium">Sletting</span> — be om at opplysninger slettes («retten til å bli glemt»).</li>
-            <li><span className="font-medium">Trekke samtykke</span> — du kan når som helst trekke tilbake samtykke til analysecookies uten at det påvirker lovligheten av behandling basert på samtykke før tilbaketrekkingen.</li>
-            <li><span className="font-medium">Klage</span> — du har rett til å klage til <a href="https://www.datatilsynet.no" target="_blank" rel="noopener noreferrer" className="text-[#E86C1F] hover:underline">Datatilsynet<span className="sr-only"> (åpner i ny fane)</span></a>.</li>
+            <li><span className="font-medium">Access</span> — find out what data we hold about you.</li>
+            <li><span className="font-medium">Rectification</span> — request correction of inaccurate data.</li>
+            <li><span className="font-medium">Erasure</span> — request deletion (&quot;right to be forgotten&quot;).</li>
+            <li><span className="font-medium">Withdraw consent</span> — you may withdraw consent for analytics cookies at any time without affecting the lawfulness of prior processing.</li>
+            <li><span className="font-medium">Complain</span> — you have the right to lodge a complaint with <a href="https://www.datatilsynet.no" target="_blank" rel="noopener noreferrer" className="text-[#1B3A5C] hover:underline">Datatilsynet (Norway)<span className="sr-only"> (opens in new tab)</span></a>.</li>
           </ul>
         </div>
 
-        {/* 7. Kontakt */}
+        {/* 7. Contact */}
         <div>
-          <h2 className="text-xl font-semibold text-slate-900 mb-3">7. Kontakt oss</h2>
+          <h2 className="text-xl font-semibold text-slate-900 mb-3">7. Contact us</h2>
           <p>
-            For spørsmål om personvern eller for å utøve dine rettigheter, ta kontakt med oss på{' '}
-            <a href="mailto:post@averdi.no" className="text-[#E86C1F] hover:underline">post@averdi.no</a>.
+            For privacy questions or to exercise your rights, contact us at{' '}
+            <a href="mailto:hello@norgetravel.com" className="text-[#1B3A5C] hover:underline">hello@norgetravel.com</a>.
           </p>
         </div>
 
       </section>
 
       <div className="mt-12 pt-8 border-t border-slate-200">
-        <Link href="/" className="text-sm text-[#E86C1F] hover:underline">← Tilbake til forsiden</Link>
+        <Link href="/" className="text-sm text-[#1B3A5C] hover:underline">← Back to home</Link>
       </div>
     </main>
   );

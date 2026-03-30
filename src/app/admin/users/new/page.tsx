@@ -109,7 +109,7 @@ export default function NewUserPage() {
               onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
               required
               className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#E86C1F] focus:border-transparent transition-all"
-              placeholder="ola@averdi.no"
+              placeholder="name@norgetravel.com"
             />
           </div>
 
