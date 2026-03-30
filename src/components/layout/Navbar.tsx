@@ -105,7 +105,7 @@ export function Navbar() {
                 alt="NorgeTravel Logo"
                 width={220}
                 height={80}
-                className="h-20 w-auto"
+                className={`h-20 w-auto transition-all duration-300 ${scrolled ? '' : 'brightness-0 invert'}`}
                 priority
                 placeholder="blur"
               />
