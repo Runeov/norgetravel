@@ -49,9 +49,13 @@ export function Navbar() {
 
   const navLinkClass = (isActive: boolean) =>
     `px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-      isActive
-        ? 'text-[#1B3A5C] bg-[#1B3A5C]/10'
-        : 'text-slate-600 hover:text-[#1B3A5C] hover:bg-slate-50'
+      scrolled
+        ? isActive
+          ? 'text-[#1B3A5C] bg-[#1B3A5C]/10'
+          : 'text-slate-600 hover:text-[#1B3A5C] hover:bg-slate-50'
+        : isActive
+          ? 'text-white bg-white/20'
+          : 'text-white/80 hover:text-white hover:bg-white/10'
     }`;
 
   const dropdownItemClass = (isActive: boolean) =>
@@ -87,7 +91,7 @@ export function Navbar() {
       className={`sticky top-0 z-50 w-full border-b transition-all duration-300 ${
         scrolled
           ? 'bg-white/80 backdrop-blur-md border-slate-200/50 shadow-sm'
-          : 'bg-white/60 backdrop-blur-sm border-transparent'
+          : 'bg-transparent border-transparent'
       }`}
     >
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
@@ -236,7 +240,11 @@ export function Navbar() {
                   return next;
                 });
               }}
-              className="inline-flex items-center justify-center p-2 rounded-full text-slate-600 hover:text-[#1B3A5C] hover:bg-[#1B3A5C]/10 transition-colors"
+              className={`inline-flex items-center justify-center p-2 rounded-full transition-colors ${
+                scrolled
+                  ? 'text-slate-600 hover:text-[#1B3A5C] hover:bg-[#1B3A5C]/10'
+                  : 'text-white hover:text-white hover:bg-white/10'
+              }`}
               aria-expanded={isMenuOpen}
               aria-label="Open menu"
             >
