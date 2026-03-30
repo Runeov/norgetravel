@@ -33,15 +33,6 @@ export default function Hero() {
       <div className="relative z-10 container mx-auto px-4 sm:px-6">
         <div className="max-w-2xl">
 
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm text-white text-sm font-medium mb-6 border border-white/20">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00CC6A] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00CC6A]"></span>
-            </span>
-            2026–27 Aurora Season — Last Peak Before 2031
-          </div>
-
           {/* Heading */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6">
             Discover{' '}
