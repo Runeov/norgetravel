@@ -4,14 +4,16 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, MapPin } from 'lucide-react';
 import type { MapZone } from '@/data/norway-map-zones';
+import { zoneSubcategories } from '@/data/zone-subcategories';
 
 interface ZoneInfoPanelProps {
   hoveredZone: MapZone | null;
   selectedZone: MapZone | null;
   onClose: () => void;
+  onExplore?: (zoneId: string) => void;
 }
 
-export function ZoneInfoPanel({ hoveredZone, selectedZone }: ZoneInfoPanelProps) {
+export function ZoneInfoPanel({ hoveredZone, selectedZone, onExplore }: ZoneInfoPanelProps) {
   const zone = selectedZone || hoveredZone;
 
   return (
@@ -90,13 +92,23 @@ export function ZoneInfoPanel({ hoveredZone, selectedZone }: ZoneInfoPanelProps)
             </div>
 
             <div className="mt-auto">
-              <Link
-                href={selectedZone.href}
-                className="inline-flex items-center justify-center w-full px-6 py-3 text-sm font-bold text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-full hover:shadow-lg hover:shadow-[#00CC6A]/30 hover:-translate-y-0.5 transition-all duration-300"
-              >
-                Explore {selectedZone.name}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+              {zoneSubcategories[selectedZone.id] ? (
+                <button
+                  onClick={() => onExplore?.(selectedZone.id)}
+                  className="inline-flex items-center justify-center w-full px-6 py-3 text-sm font-bold text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-full hover:shadow-lg hover:shadow-[#00CC6A]/30 hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  Explore {selectedZone.name}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </button>
+              ) : (
+                <Link
+                  href={selectedZone.href}
+                  className="inline-flex items-center justify-center w-full px-6 py-3 text-sm font-bold text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-full hover:shadow-lg hover:shadow-[#00CC6A]/30 hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  Explore {selectedZone.name}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              )}
             </div>
           </motion.div>
         ) : (
