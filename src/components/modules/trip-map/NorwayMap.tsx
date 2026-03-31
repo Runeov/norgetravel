@@ -25,6 +25,15 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
 
   const cityActive = hoveredZone === 'cities' || selectedZone === 'cities';
 
+  // Sort polygon zones so the active one renders last (SVG z-ordering)
+  const sortedPolygonZones = [...polygonZones].sort((a, b) => {
+    const aActive = hoveredZone === a.id || selectedZone === a.id;
+    const bActive = hoveredZone === b.id || selectedZone === b.id;
+    if (aActive && !bActive) return 1;
+    if (!aActive && bActive) return -1;
+    return 0;
+  });
+
   return (
     <svg
       viewBox="-30 -120 460 950"
@@ -77,7 +86,11 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
           const isActive = isHovered || isSelected;
 
           return (
-            <g>
+            <motion.g
+              animate={{ scale: isActive ? 1.5 : 1 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              style={{ transformOrigin: `${svalbardZone.labelPosition.x}px ${svalbardZone.labelPosition.y}px` }}
+            >
               {[svalbardSpitsbergen, svalbardNordaustlandet, svalbardEdgeoya].map((path, i) => (
                 <motion.path
                   key={i}
@@ -115,9 +128,8 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
                 fontSize={14}
                 fontWeight={600}
                 letterSpacing={0.5}
-                animate={{ opacity: isActive ? 1 : 0.6, scale: isActive ? 3 : 1 }}
+                animate={{ opacity: isActive ? 1 : 0.6 }}
                 transition={{ duration: 0.2 }}
-                style={{ transformOrigin: `${svalbardZone.labelPosition.x}px ${svalbardZone.labelPosition.y}px` }}
               >
                 {svalbardZone.name}
               </motion.text>
@@ -133,7 +145,7 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
                   transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
                 />
               )}
-            </g>
+            </motion.g>
           );
         })()}
       </g>
@@ -160,21 +172,25 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
         strokeOpacity={0.2}
       />
 
-      {/* Polygon-based zones (Northern Norway, Lofoten, Fjords) */}
-      {polygonZones.map((zone) => {
+      {/* Polygon-based zones (Northern Norway, Lofoten, Fjords) — active zone renders last for z-ordering */}
+      {sortedPolygonZones.map((zone) => {
         const isHovered = hoveredZone === zone.id;
         const isSelected = selectedZone === zone.id;
         const isActive = isHovered || isSelected;
 
         return (
-          <g key={zone.id}>
+          <motion.g
+            key={zone.id}
+            animate={{ scale: isActive ? 1.5 : 1 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+            style={{ transformOrigin: `${zone.labelPosition.x}px ${zone.labelPosition.y}px` }}
+          >
             <motion.path
               d={zone.svgPath}
               fill={zone.color}
               initial={{ fillOpacity: 0.15 }}
               animate={{
                 fillOpacity: isSelected ? 0.5 : isHovered ? 0.35 : 0.15,
-                scale: isActive ? 1.01 : 1,
               }}
               transition={{ duration: 0.2 }}
               stroke={zone.color}
@@ -182,7 +198,6 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
               strokeOpacity={isActive ? 0.8 : 0.3}
               filter={isSelected ? 'url(#zone-glow)' : undefined}
               className="cursor-pointer"
-              style={{ transformOrigin: `${zone.labelPosition.x}px ${zone.labelPosition.y}px` }}
               onMouseEnter={() => onHover(zone.id)}
               onMouseLeave={() => onHover(null)}
               onClick={() => onSelect(zone.id)}
@@ -207,9 +222,8 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
               fontSize={zone.id === 'lofoten' ? 9 : 11}
               fontWeight={600}
               letterSpacing={0.5}
-              animate={{ opacity: isActive ? 1 : 0.6, scale: isActive ? 3 : 1 }}
+              animate={{ opacity: isActive ? 1 : 0.6 }}
               transition={{ duration: 0.2 }}
-              style={{ transformOrigin: `${zone.labelPosition.x}px ${zone.labelPosition.y}px` }}
             >
               {zone.name}
             </motion.text>
@@ -225,7 +239,7 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
                 transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
               />
             )}
-          </g>
+          </motion.g>
         );
       })}
 
@@ -342,9 +356,8 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
             fontSize={11}
             fontWeight={600}
             letterSpacing={0.5}
-            animate={{ opacity: cityActive ? 1 : 0.4, scale: cityActive ? 3 : 1 }}
+            animate={{ opacity: cityActive ? 1 : 0.4 }}
             transition={{ duration: 0.2 }}
-            style={{ transformOrigin: `${cityZone.labelPosition.x}px ${cityZone.labelPosition.y}px` }}
           >
             {cityZone.name}
           </motion.text>
