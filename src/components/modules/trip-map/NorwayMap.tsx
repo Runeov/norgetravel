@@ -115,8 +115,9 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
                 fontSize={14}
                 fontWeight={600}
                 letterSpacing={0.5}
-                animate={{ opacity: isActive ? 1 : 0.6 }}
+                animate={{ opacity: isActive ? 1 : 0.6, scale: isActive ? 3 : 1 }}
                 transition={{ duration: 0.2 }}
+                style={{ transformOrigin: `${svalbardZone.labelPosition.x}px ${svalbardZone.labelPosition.y}px` }}
               >
                 {svalbardZone.name}
               </motion.text>
@@ -206,8 +207,9 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
               fontSize={zone.id === 'lofoten' ? 9 : 11}
               fontWeight={600}
               letterSpacing={0.5}
-              animate={{ opacity: isActive ? 1 : 0.6 }}
+              animate={{ opacity: isActive ? 1 : 0.6, scale: isActive ? 3 : 1 }}
               transition={{ duration: 0.2 }}
+              style={{ transformOrigin: `${zone.labelPosition.x}px ${zone.labelPosition.y}px` }}
             >
               {zone.name}
             </motion.text>
@@ -340,8 +342,9 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
             fontSize={11}
             fontWeight={600}
             letterSpacing={0.5}
-            animate={{ opacity: cityActive ? 1 : 0.4 }}
+            animate={{ opacity: cityActive ? 1 : 0.4, scale: cityActive ? 3 : 1 }}
             transition={{ duration: 0.2 }}
+            style={{ transformOrigin: `${cityZone.labelPosition.x}px ${cityZone.labelPosition.y}px` }}
           >
             {cityZone.name}
           </motion.text>
