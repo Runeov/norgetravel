@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowLeft,
   ArrowRight,
+  CheckCircle2,
   ChevronRight,
   ChevronLeft,
   Sparkles,
@@ -20,7 +21,7 @@ import {
   Church,
   Palette,
 } from 'lucide-react';
-import type { ZoneDetailData } from '@/data/zone-subcategories';
+import type { ZoneDetailData, BulletDetail } from '@/data/zone-subcategories';
 
 interface ZoneDetailViewProps {
   data: ZoneDetailData;
@@ -50,7 +51,6 @@ const zoneIconMap: Record<string, React.ElementType> = {
   'cities': Building2,
 };
 
-// Placeholder gradient backgrounds for each bullet card
 const bulletGradients = [
   'from-emerald-800/60 to-emerald-950/80',
   'from-sky-800/60 to-sky-950/80',
@@ -58,13 +58,102 @@ const bulletGradients = [
   'from-cyan-800/60 to-cyan-950/80',
 ];
 
+/* ── Card detail panel (third-level drill-down) ────────────────────── */
+function CardDetailPanel({
+  detail,
+  zoneColor,
+  bulletIndex,
+  onBack,
+}: {
+  detail: BulletDetail;
+  zoneColor: string;
+  bulletIndex: number;
+  onBack: () => void;
+}) {
+  const router = useRouter();
+
+  return (
+    <motion.div
+      key={`card-detail-${bulletIndex}`}
+      initial={{ opacity: 0, x: 30 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 30 }}
+      transition={{ duration: 0.25 }}
+      className="flex flex-col h-full"
+      role="article"
+    >
+      {/* Back to cards */}
+      <button
+        onClick={onBack}
+        className="flex items-center gap-2 text-white/50 hover:text-white transition-colors mb-5"
+      >
+        <ArrowLeft className="w-4 h-4" />
+        <span className="text-sm font-medium">Back to overview</span>
+      </button>
+
+      {/* Placeholder image */}
+      <div className={`relative h-32 w-full rounded-xl overflow-hidden mb-6 bg-gradient-to-br ${bulletGradients[bulletIndex % bulletGradients.length]}`}>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+        <span className="absolute top-3 right-3 text-[10px] text-white/30 font-medium uppercase tracking-wider">
+          Image placeholder
+        </span>
+      </div>
+
+      {/* Title */}
+      <h3 className="text-xl font-bold text-white mb-1">{detail.title}</h3>
+      <div
+        className="h-1 w-10 mt-1 mb-5 rounded-full"
+        style={{ backgroundColor: zoneColor }}
+      />
+
+      {/* Content */}
+      <p className="text-white/60 text-sm leading-relaxed mb-6">
+        {detail.content}
+      </p>
+
+      {/* Highlights */}
+      <div className="space-y-2.5 mb-6">
+        {detail.highlights.map((h, i) => (
+          <div key={i} className="flex items-start gap-3">
+            <CheckCircle2
+              className="w-4 h-4 shrink-0 mt-0.5"
+              style={{ color: zoneColor }}
+              aria-hidden="true"
+            />
+            <span className="text-white/80 text-sm font-medium">{h}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* CTA */}
+      <div className="mt-auto pt-5 border-t border-white/10">
+        <button
+          onClick={() => router.push(detail.ctaLink)}
+          className="inline-flex items-center justify-center w-full px-6 py-3 text-sm font-bold text-white rounded-full hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+          style={{ background: `linear-gradient(to right, #1B3A5C, ${zoneColor})` }}
+        >
+          {detail.ctaText}
+          <ArrowRight className="ml-2 h-4 w-4" />
+        </button>
+      </div>
+    </motion.div>
+  );
+}
+
+/* ── Main component ────────────────────────────────────────────────── */
 export function ZoneDetailView({ data, onBack, allZones, onSwitchZone }: ZoneDetailViewProps) {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState(0);
+  const [selectedCard, setSelectedCard] = useState<number | null>(null);
 
   const currentIndex = allZones?.findIndex((z) => z.zoneId === data.zoneId) ?? -1;
   const prevZone = allZones && currentIndex > 0 ? allZones[currentIndex - 1] : null;
   const nextZone = allZones && currentIndex < (allZones.length - 1) ? allZones[currentIndex + 1] : null;
+
+  const activeSub = data.subcategories[activeTab];
+  const activeDetail = selectedCard !== null && activeSub?.bulletDetails?.[selectedCard]
+    ? activeSub.bulletDetails[selectedCard]
+    : null;
 
   return (
     <div className="flex flex-col h-full">
@@ -92,6 +181,7 @@ export function ZoneDetailView({ data, onBack, allZones, onSwitchZone }: ZoneDet
                     onClick={() => {
                       if (!isActive) {
                         setActiveTab(0);
+                        setSelectedCard(null);
                         onSwitchZone(zone.zoneId);
                       }
                     }}
@@ -131,7 +221,7 @@ export function ZoneDetailView({ data, onBack, allZones, onSwitchZone }: ZoneDet
             return (
               <div key={sub.id} className="flex flex-col">
                 <button
-                  onClick={() => setActiveTab(index)}
+                  onClick={() => { setActiveTab(index); setSelectedCard(null); }}
                   aria-expanded={isActive}
                   aria-controls={`zone-tab-${sub.id}`}
                   className={`group flex items-center gap-3 p-3 rounded-xl text-left transition-all duration-200 w-full border ${
@@ -184,37 +274,55 @@ export function ZoneDetailView({ data, onBack, allZones, onSwitchZone }: ZoneDet
                         className="overflow-hidden"
                       >
                         <div className="p-4 pl-6 pt-2 pb-5 my-1 border-l border-white/10 ml-5">
-                          <p className="text-white/60 text-sm leading-relaxed mb-4">
-                            {sub.content}
-                          </p>
-                          {/* Mobile CTA image cards */}
-                          <div className="grid grid-cols-2 gap-2 mb-4">
-                            {sub.bullets.map((bullet, i) => (
-                              <button
-                                key={i}
-                                onClick={() => router.push(sub.link)}
-                                className="group/card relative rounded-xl overflow-hidden border border-white/10 hover:border-white/20 transition-all text-left"
+                          <AnimatePresence mode="wait">
+                            {selectedCard !== null && sub.bulletDetails?.[selectedCard] ? (
+                              <CardDetailPanel
+                                detail={sub.bulletDetails[selectedCard]}
+                                zoneColor={data.zoneColor}
+                                bulletIndex={selectedCard}
+                                onBack={() => setSelectedCard(null)}
+                              />
+                            ) : (
+                              <motion.div
+                                key="mobile-cards"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.15 }}
                               >
-                                <div className={`h-16 w-full bg-gradient-to-br ${bulletGradients[i % bulletGradients.length]}`} />
-                                <div className="p-2.5">
-                                  <p className="text-white/80 text-xs font-medium leading-snug line-clamp-2">{bullet}</p>
-                                  <ArrowRight
-                                    className="w-3 h-3 mt-1.5 transition-transform group-hover/card:translate-x-0.5"
-                                    style={{ color: data.zoneColor }}
-                                    aria-hidden="true"
-                                  />
+                                <p className="text-white/60 text-sm leading-relaxed mb-4">
+                                  {sub.content}
+                                </p>
+                                <div className="grid grid-cols-2 gap-2 mb-4">
+                                  {sub.bullets.map((bullet, i) => (
+                                    <button
+                                      key={i}
+                                      onClick={() => sub.bulletDetails?.[i] ? setSelectedCard(i) : router.push(sub.link)}
+                                      className="group/card relative rounded-xl overflow-hidden border border-white/10 hover:border-white/20 transition-all text-left"
+                                    >
+                                      <div className={`h-16 w-full bg-gradient-to-br ${bulletGradients[i % bulletGradients.length]}`} />
+                                      <div className="p-2.5">
+                                        <p className="text-white/80 text-xs font-medium leading-snug line-clamp-2">{bullet}</p>
+                                        <ArrowRight
+                                          className="w-3 h-3 mt-1.5 transition-transform group-hover/card:translate-x-0.5"
+                                          style={{ color: data.zoneColor }}
+                                          aria-hidden="true"
+                                        />
+                                      </div>
+                                    </button>
+                                  ))}
                                 </div>
-                              </button>
-                            ))}
-                          </div>
-                          <button
-                            onClick={() => router.push(sub.link)}
-                            className="font-bold text-sm flex items-center gap-2 hover:gap-3 transition-all"
-                            style={{ color: data.zoneColor }}
-                          >
-                            {sub.linkText}
-                            <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                          </button>
+                                <button
+                                  onClick={() => router.push(sub.link)}
+                                  className="font-bold text-sm flex items-center gap-2 hover:gap-3 transition-all"
+                                  style={{ color: data.zoneColor }}
+                                >
+                                  {sub.linkText}
+                                  <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                                </button>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
                         </div>
                       </motion.div>
                     )}
@@ -236,6 +344,7 @@ export function ZoneDetailView({ data, onBack, allZones, onSwitchZone }: ZoneDet
                     onClick={() => {
                       if (!isActive) {
                         setActiveTab(0);
+                        setSelectedCard(null);
                         onSwitchZone(zone.zoneId);
                       }
                     }}
@@ -255,9 +364,18 @@ export function ZoneDetailView({ data, onBack, allZones, onSwitchZone }: ZoneDet
         </div>
 
         {/* Right: Desktop content panel */}
-        <div className="hidden lg:flex flex-1 bg-white/5 rounded-2xl border border-white/10 p-8 min-h-[420px] flex-col backdrop-blur-sm">
+        <div className="hidden lg:flex flex-1 bg-white/5 rounded-2xl border border-white/10 p-8 min-h-[420px] flex-col backdrop-blur-sm overflow-y-auto">
           <AnimatePresence mode="wait">
-            {data.subcategories[activeTab] && (
+            {activeDetail ? (
+              /* ── Card detail view (third level) ─────────────────── */
+              <CardDetailPanel
+                detail={activeDetail}
+                zoneColor={data.zoneColor}
+                bulletIndex={selectedCard!}
+                onBack={() => setSelectedCard(null)}
+              />
+            ) : activeSub ? (
+              /* ── Tab content with CTA cards ─────────────────────── */
               <motion.div
                 key={`${data.zoneId}-${activeTab}`}
                 initial={{ opacity: 0, x: 20 }}
@@ -274,13 +392,13 @@ export function ZoneDetailView({ data, onBack, allZones, onSwitchZone }: ZoneDet
                     style={{ backgroundColor: `${data.zoneColor}20` }}
                   >
                     {(() => {
-                      const Icon = iconMap[data.subcategories[activeTab].id] || Sparkles;
+                      const Icon = iconMap[activeSub.id] || Sparkles;
                       return <Icon className="w-6 h-6" style={{ color: data.zoneColor }} aria-hidden="true" />;
                     })()}
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-white">
-                      {data.subcategories[activeTab].title}
+                      {activeSub.title}
                     </h3>
                     <div
                       className="h-1 w-10 mt-2 rounded-full"
@@ -291,26 +409,23 @@ export function ZoneDetailView({ data, onBack, allZones, onSwitchZone }: ZoneDet
 
                 {/* Description */}
                 <p className="text-white/60 text-base leading-relaxed mb-6">
-                  {data.subcategories[activeTab].content}
+                  {activeSub.content}
                 </p>
 
-                {/* 4 CTA image cards replacing bullet points */}
+                {/* 4 CTA image cards */}
                 <div className="grid grid-cols-2 gap-3 mb-6">
-                  {data.subcategories[activeTab].bullets.map((bullet, i) => (
+                  {activeSub.bullets.map((bullet, i) => (
                     <button
                       key={i}
-                      onClick={() => router.push(data.subcategories[activeTab].link)}
+                      onClick={() => activeSub.bulletDetails?.[i] ? setSelectedCard(i) : router.push(activeSub.link)}
                       className="group/card relative rounded-xl overflow-hidden border border-white/10 hover:border-white/25 hover:shadow-lg hover:shadow-black/20 transition-all duration-300 text-left"
                     >
-                      {/* Placeholder image area */}
                       <div className={`relative h-24 w-full bg-gradient-to-br ${bulletGradients[i % bulletGradients.length]}`}>
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                        {/* Placeholder label */}
                         <span className="absolute top-2 right-2 text-[10px] text-white/30 font-medium uppercase tracking-wider">
                           Image
                         </span>
                       </div>
-                      {/* Text + CTA */}
                       <div className="p-3">
                         <p className="text-white/80 text-sm font-medium leading-snug line-clamp-2 mb-2">
                           {bullet}
@@ -331,11 +446,11 @@ export function ZoneDetailView({ data, onBack, allZones, onSwitchZone }: ZoneDet
                 <div className="mt-auto pt-6 border-t border-white/10">
                   <div className="flex items-center justify-between">
                     <button
-                      onClick={() => router.push(data.subcategories[activeTab].link)}
+                      onClick={() => router.push(activeSub.link)}
                       className="inline-flex items-center gap-2 font-bold text-sm hover:gap-3 transition-all group"
                       style={{ color: data.zoneColor }}
                     >
-                      {data.subcategories[activeTab].linkText}
+                      {activeSub.linkText}
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                     </button>
 
@@ -345,6 +460,7 @@ export function ZoneDetailView({ data, onBack, allZones, onSwitchZone }: ZoneDet
                           <button
                             onClick={() => {
                               setActiveTab(0);
+                              setSelectedCard(null);
                               onSwitchZone(prevZone.zoneId);
                             }}
                             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 text-white/50 hover:bg-white/10 hover:text-white/80 text-xs font-medium transition-all"
@@ -357,6 +473,7 @@ export function ZoneDetailView({ data, onBack, allZones, onSwitchZone }: ZoneDet
                           <button
                             onClick={() => {
                               setActiveTab(0);
+                              setSelectedCard(null);
                               onSwitchZone(nextZone.zoneId);
                             }}
                             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 text-white/50 hover:bg-white/10 hover:text-white/80 text-xs font-medium transition-all"
@@ -370,7 +487,7 @@ export function ZoneDetailView({ data, onBack, allZones, onSwitchZone }: ZoneDet
                   </div>
                 </div>
               </motion.div>
-            )}
+            ) : null}
           </AnimatePresence>
         </div>
       </div>
