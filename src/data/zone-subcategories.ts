@@ -251,6 +251,65 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
       },
     ],
   },
+  'lofoten': {
+    zoneId: 'lofoten',
+    zoneName: 'Lofoten & Islands',
+    zoneColor: '#5CBFEE',
+    headline: 'Lofoten & Islands',
+    subtitle: '170 km of jagged peaks, red rorbuer, and the E10 \u2014 one road in, one road out',
+    subcategories: [
+      {
+        id: 'lo-cities',
+        title: 'Cities',
+        shortDesc: 'Fishing villages and island basecamps',
+        content:
+          'Cities and villages for Lofoten & Islands are coming soon. Check back for Svolv\u00E6r, Henningsv\u00E6r, Reine, \u00C5, Stamsund, and Vester\u00E5len basecamps.',
+        bullets: [],
+        link: '/destinations/lofoten',
+        linkText: 'Browse Lofoten villages',
+      },
+      {
+        id: 'lo-activities',
+        title: 'Activities',
+        shortDesc: 'Hiking, kayaking, and fishing culture',
+        content:
+          'Activities for Lofoten & Islands are coming soon. Check back for Reinebringen hiking, sea kayaking, stockfish tours, surfing at Unstad, and sea eagle safaris.',
+        bullets: [],
+        link: '/destinations/lofoten',
+        linkText: 'Browse activities',
+      },
+      {
+        id: 'lo-events',
+        title: 'Events',
+        shortDesc: 'Skrei festivals and island happenings',
+        content:
+          'Events for Lofoten & Islands are coming soon. Check back for the Lofoten Skrei Festival, chamber music festivals, and seasonal happenings.',
+        bullets: [],
+        link: '/destinations/lofoten',
+        linkText: 'Browse events',
+      },
+      {
+        id: 'lo-tours',
+        title: 'Tours',
+        shortDesc: 'Guided island itineraries',
+        content:
+          'Tours for Lofoten & Islands are coming soon. Check back for guided E10 road trips, multi-day hiking packages, and fishing village tours.',
+        bullets: [],
+        link: '/destinations/lofoten',
+        linkText: 'Browse tours',
+      },
+      {
+        id: 'lo-accommodation',
+        title: 'Accommodation',
+        shortDesc: 'Rorbuer, cabins, and coastal lodges',
+        content:
+          'Accommodation for Lofoten & Islands is coming soon. Check back for rorbuer in Reine and Henningsv\u00E6r, coastal lodges, and camping options.',
+        bullets: [],
+        link: '/destinations/lofoten',
+        linkText: 'Browse accommodation',
+      },
+    ],
+  },
   'svalbard': {
     zoneId: 'svalbard',
     zoneName: 'Svalbard',
