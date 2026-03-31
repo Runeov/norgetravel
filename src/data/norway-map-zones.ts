@@ -59,7 +59,7 @@ export const mapZones: MapZone[] = [
       { label: 'Latitude', value: '67°N – 71°N' },
       { label: 'Top base', value: 'Tromsø' },
     ],
-    highlights: ['Cities', 'Activities & Events', 'Tours', 'Accommodation'],
+    highlights: ['Cities', 'Activities', 'Events', 'Tours', 'Accommodation'],
   },
   {
     id: 'lofoten',

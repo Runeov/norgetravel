@@ -106,7 +106,7 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
       },
       {
         id: 'nn-activities',
-        title: 'Activities & Events',
+        title: 'Activities',
         shortDesc: 'Arctic experiences across every season',
         content:
           'Northern Lights chase tours, dog sledding across frozen lakes, midnight sun hiking, and whale watching \u2014 Northern Norway runs on extreme seasons. Solar Cycle 25 makes 2026\u201327 the last peak aurora window until 2031. The midnight sun delivers 69 days of 24-hour daylight. The wildlife follows the herring.',
@@ -148,6 +148,16 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         ],
         link: '/destinations/northern-norway',
         linkText: 'Browse all activities',
+      },
+      {
+        id: 'nn-events',
+        title: 'Events',
+        shortDesc: 'Festivals and seasonal happenings',
+        content:
+          'Events for Northern Norway are coming soon. Check back for festivals, seasonal celebrations, and cultural happenings across the Arctic.',
+        bullets: [],
+        link: '/travel/events',
+        linkText: 'Browse events',
       },
       {
         id: 'nn-tours',

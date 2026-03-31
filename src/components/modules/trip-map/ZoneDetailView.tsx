@@ -36,6 +36,7 @@ interface ZoneDetailViewProps {
 const iconMap: Record<string, React.ElementType> = {
   'nn-cities': MapPin,
   'nn-activities': Sparkles,
+  'nn-events': Calendar,
   'nn-tours': Compass,
   'nn-accommodation': Bed,
   'northern-lights': Sparkles,
