@@ -13,6 +13,7 @@ export interface ZoneSubCategory {
   content: string;
   bullets: string[];
   bulletDetails?: BulletDetail[];
+  bulletImages?: string[];
   link: string;
   linkText: string;
   imageUrl?: string;
@@ -40,15 +41,24 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         title: 'Cities',
         shortDesc: 'Arctic basecamps from coast to inland',
         content:
-          'Seven basecamps spread across 3,500 km of Arctic coastline and Finnmark\u2019s interior. Troms\u00F8 is the largest city above the Arctic Circle in Norway. Alta holds the oldest Northern Lights observatory. Hammerfest claims to be the northernmost city in the world. Each serves a different purpose on your itinerary.',
+          'Seven basecamps spread across 3,500 km of Arctic coastline and Finnmark\u2019s interior. Troms\u00F8 is the largest city above the Arctic Circle in Norway. Alta holds the oldest Northern Lights observatory. North Cape stands at 71\u00B0N \u2014 the symbolic end of Europe. Each serves a different purpose on your itinerary.',
         bullets: [
           'Troms\u00F8 \u2014 Arctic capital, aurora hub, 75,000 residents',
           'Alta \u2014 Northern Lights observatory, canyon hiking, Sami culture',
-          'Hammerfest \u2014 Northernmost city, energy capital, Arctic heritage',
-          'Harstad \u2014 Cultural festivals, Trondenes church, gateway to Vester\u00E5len',
+          'North Cape \u2014 71\u00B0N, the symbolic northern tip of Europe',
+          'Vester\u00E5len \u2014 Whale safaris, sea eagles, quieter island life',
           'Senja \u2014 Norway\u2019s second-largest island, Segla peak, fishing villages',
           'Karasjok \u2014 Sami parliament, reindeer herding, Finnmark interior',
-          'Skibotn \u2014 Lyngen Alps gateway, fjord-to-summit base, dark-sky site',
+          'Lyngen \u2014 Lyngen Alps, fjord-to-summit skiing, dark-sky aurora site',
+        ],
+        bulletImages: [
+          '/pics/Tromso/tromso_banner.jpeg',
+          '/pics/Finnmark/alta_banner.jpeg',
+          '/pics/nordkapp/nordkapp_banner.jpeg',
+          '/pics/vesteraalen/vesteralen_banner.jpeg',
+          '/pics/senja/senja_banner.jpeg',
+          '/pics/Finnmark/Reinsdyr.jpeg',
+          '/pics/lyngen/Lyngen_banner.jpeg',
         ],
         bulletDetails: [
           {
@@ -66,18 +76,18 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
             ctaText: 'Explore Alta',
           },
           {
-            title: 'Hammerfest',
-            content: 'Hammerfest (70\u00B0N) claims the title of world\u2019s northernmost city. It rebuilt twice \u2014 after a hurricane in 1856 and after German forces burned it in 1944. Today it runs on LNG and Arctic energy. The Royal and Ancient Polar Bear Society is housed here. The town is small (11,000 residents) but strategic: it connects to North Cape via the E6.',
-            highlights: ['70\u00B0N \u2014 claims northernmost city status', 'Museum of Reconstruction \u2014 WWII Arctic history', 'Royal and Ancient Polar Bear Society', 'Gateway to North Cape via the E6 (140 km)'],
+            title: 'North Cape',
+            content: 'North Cape (Nordkapp) stands at 71\u00B008\u2019N on the island of Magerøya \u2014 the symbolic northernmost point of mainland Europe. The 307-meter cliff drops straight into the Barents Sea. In summer, the midnight sun hangs above the horizon from May 13 to July 29. In winter, the polar night and aurora make the drive worth the ice. The E69 from Honningsv\u00E5g is 34 km of exposed Arctic road.',
+            highlights: ['71\u00B008\u2019N \u2014 symbolic northern tip of Europe', 'Midnight sun: May 13 \u2013 July 29', '307-meter cliff into the Barents Sea', 'E69 from Honningsv\u00E5g: 34 km, open year-round'],
             ctaLink: '/destinations/northern-norway',
-            ctaText: 'Explore Hammerfest',
+            ctaText: 'Explore North Cape',
           },
           {
-            title: 'Harstad',
-            content: 'Harstad sits on Hinnøya, Norway\u2019s largest island. Trondenes Church (13th century) is the world\u2019s northernmost medieval stone church. The Festspillene i Nord-Norge festival runs every June \u2014 Northern Norway\u2019s largest cultural event. From Harstad, Vester\u00E5len and its whale safaris are within reach.',
-            highlights: ['Festspillene i Nord-Norge \u2014 June cultural festival', 'Trondenes Church: northernmost medieval stone church', 'Hinnøya \u2014 Norway\u2019s largest island', 'Vester\u00E5len whale safaris within 1 hour'],
+            title: 'Vester\u00E5len',
+            content: 'Vester\u00E5len is Lofoten\u2019s quieter northern neighbour \u2014 five islands with sperm whale safaris, sea eagle colonies, and 80,000 puffin pairs on Bleiksøya. Andøya is the whale watching capital: sperm whales feed in the deep Bleik Canyon year-round. Sortland is the \u201CBlue City\u201D \u2014 every building painted blue. Harstad on Hinnøya hosts Festspillene i Nord-Norge every June.',
+            highlights: ['Andøya whale safaris \u2014 sperm whales year-round', 'Bleiksøya puffin colony: 80,000+ nesting pairs', 'Sortland \u2014 the Blue City', 'Festspillene i Nord-Norge \u2014 June cultural festival in Harstad'],
             ctaLink: '/destinations/northern-norway',
-            ctaText: 'Explore Harstad',
+            ctaText: 'Explore Vester\u00E5len',
           },
           {
             title: 'Senja',
@@ -94,11 +104,11 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
             ctaText: 'Explore Karasjok',
           },
           {
-            title: 'Skibotn',
-            content: 'Skibotn sits at the head of Lyngen fjord \u2014 the gateway to the Lyngen Alps. The peaks here rise 1,800m directly from the fjord. In winter, this is Norway\u2019s premier ski touring destination. Skibotn is also one of Northern Norway\u2019s best dark-sky sites: the aurora observatory at Skibotn runs research-grade telescopes and public viewing nights.',
-            highlights: ['Gateway to the Lyngen Alps \u2014 1,800m peaks from sea level', 'Premier ski touring: January\u2013May', 'Dark-sky aurora observatory with public nights', 'Lyngen fjord \u2014 deep water, dramatic mountain backdrop'],
+            title: 'Lyngen',
+            content: 'The Lyngen Alps rise 1,800 meters directly from the fjord \u2014 the most alpine landscape in Northern Norway. Lyngen is the premier ski touring destination in the Arctic: January to May, backcountry skiers descend from summit to sea level in a single run. In summer, the peaks draw hikers and climbers. The Skibotn aurora observatory sits at the fjord\u2019s head \u2014 one of Northern Norway\u2019s best dark-sky sites.',
+            highlights: ['Lyngen Alps: 1,800m peaks rising from the fjord', 'Premier ski touring: January\u2013May, summit-to-sea descents', 'Skibotn aurora observatory \u2014 dark-sky viewing nights', 'Summer hiking and alpine climbing'],
             ctaLink: '/destinations/northern-norway',
-            ctaText: 'Explore Skibotn',
+            ctaText: 'Explore Lyngen',
           },
         ],
         link: '/destinations/northern-norway',
@@ -152,12 +162,51 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
       {
         id: 'nn-events',
         title: 'Events',
-        shortDesc: 'Festivals and seasonal happenings',
+        shortDesc: 'Festivals and seasonal happenings across the Arctic',
         content:
-          'Events for Northern Norway are coming soon. Check back for festivals, seasonal celebrations, and cultural happenings across the Arctic.',
-        bullets: [],
+          'Northern Norway runs on its own cultural calendar — anchored to the auroral oval, the cod migration, and the Sami seasons. The Sami Easter Festival in Kautokeino (20,000 visitors, Easter week) is the largest indigenous cultural gathering in the world. The Midnight Sun Marathon in Tromsø starts at 22:30 and finishes under broad daylight. Riddu Riđđu in Manndalen is a four-day circumpolar indigenous festival that draws artists from Sápmi to New Zealand. Add the Northern Lights season (late September to late March), whale watching off Tromsø (November to February), and the Olavsfestdagene in Trondheim — and Northern Norway has the densest events calendar of any region in Norway.',
+        bullets: [
+          'Sami Easter Festival — Kautokeino, Easter week (20,000 visitors)',
+          'Midnight Sun Marathon — Tromsø, June 13–14 (22:30 start, midnight sun finish)',
+          'Riddu Riđđu — Manndalen, July 8–12 (circumpolar indigenous festival)',
+          'Olavsfestdagene — Trondheim, July 25 – August 3 (Nidaros Cathedral concerts)',
+          'Trænafestivalen — Træna archipelago, July 9–12 (most remote festival in Norway)',
+          'Northern Lights season — Tromsø, late September to late March',
+          'Whale safari season — Kaldfjord, October to February (400–600 orca at peak)',
+          'Nordlysfestivalen — Tromsø, January 22–31 (Arctic Cathedral concerts)',
+        ],
+        bulletDetails: [
+          {
+            title: 'Sami Easter Festival',
+            content: 'Kautokeino (population 3,000) fills with 20,000 visitors for four days during Easter week. The programme covers joik concerts, reindeer racing on the frozen river (Easter Monday 12:00), traditional Sami weddings, and the Sami Grand Prix music competition. This is the most important cultural event in the Sami calendar — not a tourist display, but a living political and cultural gathering running since 1972. Book accommodation six months in advance. The reindeer race is free to spectate from the river bank.',
+            highlights: ['Joik concerts and Sami Grand Prix music competition', 'Reindeer racing on frozen Kautokeino river — Easter Monday', 'Traditional gákti (Sami clothing) worn by all participants', 'Temperature: −15°C to −25°C — dress for Arctic cold'],
+            ctaLink: '/travel/events',
+            ctaText: 'View Sami Easter Festival',
+          },
+          {
+            title: 'Midnight Sun Marathon',
+            content: 'Tromsø\'s full marathon starts at 22:30 and finishes under the midnight sun at approximately 02:00. The route crosses the Tromsø Bridge twice with the Lyngen Alps as backdrop. 6,000 runners from 60 countries. June in Tromsø: 24-hour daylight, 10–14°C at race time — perfect running conditions. Register by April; the marathon fills months in advance. The 22:30 start means dinner at 19:00 and a race in the golden evening light that never darkens.',
+            highlights: ['22:30 start — finish under full midnight daylight', 'Crosses Tromsø Bridge with Lyngen Alps backdrop', '6,000 runners from 60 countries', 'Race temperature 10–14°C — optimal running conditions'],
+            ctaLink: '/travel/events',
+            ctaText: 'View Midnight Sun Marathon',
+          },
+          {
+            title: 'Northern Lights Season',
+            content: 'The Northern Lights season in Tromsø runs late September through late March — when the nights are dark enough for aurora visibility. KP index 3+ and clear skies are the combination you need. Commercial aurora chases depart nightly (20:00, return 02:00), tracking clear sky patches by car up to 200 km from Tromsø. Minimum stay for a reasonable sighting probability: 4 nights. The aurora appears 20–30% of clear nights at KP3 or above — cloud cover is the primary variable.',
+            highlights: ['Season: late September to late March', 'KP index 3+ and clear skies required', 'Commercial chases track clear sky by car — 50 to 200 km radius', 'Book 4 nights minimum for reasonable sighting probability'],
+            ctaLink: '/tjenester/northern-lights',
+            ctaText: 'Book Northern Lights tour',
+          },
+          {
+            title: 'Whale Safari Season',
+            content: 'Orca and humpback whales gather in Kaldfjord and Kvenangfjord southwest of Tromsø from November through February, following the Norwegian spring herring (NVG sild) wintering in the fjords. The December–January peak brings 400–600 orca simultaneously — one of the largest aggregations on the planet. RIB and traditional vessel safaris depart daily from Tromsø (6–8 hours). Most operators offer a free rebooking if no whales are sighted; 90% of departures result in sightings at peak season. Book December slots 3–4 weeks in advance.',
+            highlights: ['Season: late October to late February', 'Peak: December–January (400–600 orca in Kaldfjord)', 'RIB and traditional vessel options from Tromsø harbour', '90% sighting rate at peak season — free rebooking if none seen'],
+            ctaLink: '/tjenester/northern-lights',
+            ctaText: 'Book whale safari',
+          },
+        ],
         link: '/travel/events',
-        linkText: 'Browse events',
+        linkText: 'Browse all Northern Norway events',
       },
       {
         id: 'nn-tours',
@@ -281,12 +330,44 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
       {
         id: 'lo-events',
         title: 'Events',
-        shortDesc: 'Skrei festivals and island happenings',
+        shortDesc: 'Skrei season, midnight sun, and island happenings',
         content:
-          'Events for Lofoten & Islands are coming soon. Check back for the Lofoten Skrei Festival, chamber music festivals, and seasonal happenings.',
-        bullets: [],
-        link: '/destinations/lofoten',
-        linkText: 'Browse events',
+          'Lofoten\'s events are anchored to the sea, the season, and the light. The skrei (Arctic migratory cod) season runs January through April — 300+ fishing boats, dawn unloading at Henningsvær dock, torsketunge (cod tongue) cutting from 06:00. The midnight sun runs 27 May to 17 July (52 days of no darkness). The Northern Lights season returns in late September. Between the natural events: the Lofoten International Art Festival (LIAF, September), the Lofoten Literature Festival, the Arctic Surf competition at Unstad, and the new SKREI Museum opening in June 2026 at Storvågan. Lofoten has 24,000 residents and 800,000 annual visitors — timing your events visit correctly is the difference between the working archipelago and the tourist queue.',
+        bullets: [
+          'Skrei season — January 15 to April 15 (300+ fishing vessels, Henningsvær dock)',
+          'Midnight sun — May 27 to July 17 (52 days, Reinebringen summit viewpoint)',
+          'SKREI Museum opening — Storvågan, June 5–7 2026 (one-time event)',
+          'Northern Lights season — late September to late March',
+          'LIAF Art Festival — Svolvær/Kabelvåg/Henningsvær, September 4–13',
+          'Lofoten Literature Festival (LITER) — Kabelvåg, September 10–13',
+          'Lofoten Masters Surfing — Unstad beach, October 10–12',
+          'Lofoten Marathon — Svolvær to Kabelvåg, June 20',
+        ],
+        bulletDetails: [
+          {
+            title: 'Skrei Season',
+            content: 'The Arctic cod migration to Lofoten has happened every January through April for 1,000 years. Watch the boats unload at Henningsvær dock from 06:00. The torsketunge (cod tongue) cutting starts immediately after landing — it\'s a local tradition going back generations. Eat torsketunge at Fiskekrogen in Henningsvær: fried in flour and duck fat, served with flatbrød. The stockfish racks (hjell) on the hillsides around Henningsvær fill from February — the smell of wind-dried cod is the defining sensory marker of Lofoten winter.',
+            highlights: ['Season: January 15 to April 15', 'Watch unloading at Henningsvær dock — 06:00 onwards', 'Torsketunge (cod tongue) — the local delicacy, fried in duck fat', 'Stockfish racks fill the hillsides from February'],
+            ctaLink: '/travel/events',
+            ctaText: 'View Lofoten events',
+          },
+          {
+            title: 'Midnight Sun',
+            content: 'The midnight sun in Lofoten runs from May 27 to July 17 — 52 consecutive days when the sun never drops below the horizon. The best viewpoint is Reinebringen (448m) above Reine, reached via the Nepalese sherpa-built staircase (2–3 hours return). At midnight the sun sits above the Moskenesstraumen tidal current. Commercial midnight sun boat tours from Svolvær harbour depart 22:00 and return at 01:30 — they book out in May.',
+            highlights: ['52 days of no darkness: May 27 to July 17', 'Reinebringen summit (448m) — the primary viewpoint above Reine', 'Midnight sun boat tours from Svolvær — book by May', 'Flakstadøya beaches: amber-gold light from 23:00 to 02:00'],
+            ctaLink: '/travel/events',
+            ctaText: 'Plan your midnight sun visit',
+          },
+          {
+            title: 'SKREI Museum Opening',
+            content: 'The world\'s first museum dedicated to the cultural history of the skrei (Arctic migratory cod) opens at Storvågan, Kabelvåg in June 2026. Storvågan was the medieval centre of the Lofoten fishing world and the hub of the Hanseatic stockfish trade from the 12th century. The opening programme runs June 5–7 with demonstrations, local producers, and a public concert on the quay. This is a one-time opening event — the museum will operate year-round from June 2026.',
+            highlights: ['One-time opening event: June 5–7 2026 at Storvågan, Kabelvåg', 'Free public opening programme including concert on the quay', 'Museum covers 1,000 years of Lofoten cod culture', 'Year-round operation begins after the opening week'],
+            ctaLink: '/travel/events',
+            ctaText: 'View SKREI Museum opening',
+          },
+        ],
+        link: '/travel/events',
+        linkText: 'Browse all Lofoten events',
       },
       {
         id: 'lo-tours',
@@ -340,12 +421,42 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
       {
         id: 'sv-events',
         title: 'Events',
-        shortDesc: 'Polar festivals and seasonal happenings',
+        shortDesc: 'Polar night festivals and Arctic seasonal events',
         content:
-          'Events for Svalbard are coming soon. Check back for festivals, seasonal celebrations, and cultural happenings in the high Arctic.',
-        bullets: [],
-        link: '/destinations/svalbard',
-        linkText: 'Browse events',
+          'Svalbard\'s events are determined by two facts: the polar night runs from late October to mid-February (4 months of darkness at 78°N), and the sun returns 24 hours a day from late April to mid-August. Every event on the Svalbard calendar is a response to one of these extremes. The Svalbard Ski Marathon (April, 1,200 competitors, armed polar bear guides on the course), the Dark Season Blues festival (October, 2,000 visitors as the sun sets for the last time), and Polarjazz (February, the world\'s northernmost jazz festival) define the three seasonal transitions. The summer expedition season (June–September) opens the fjords for guided glacier and wildlife tours as sea ice retreats.',
+        bullets: [
+          'Svalbard Ski Marathon — April 25–26 (world\'s northernmost ski marathon, 78°N)',
+          'Dark Season Blues — October 21–25 (festival marking onset of polar night)',
+          'Northern Lights season — late October to mid-February (24-hour visibility in polar night)',
+          'Polarjazz — February 4–7 (world\'s northernmost jazz festival)',
+          'Summer expedition season — June to September (glacier, wildlife, midnight sun)',
+          'Svalbard Snø og Mat Festival — March 12–14 (snow sculpture and food as sun returns)',
+        ],
+        bulletDetails: [
+          {
+            title: 'Svalbard Ski Marathon',
+            content: 'The world\'s northernmost ski marathon — 42 km classic-style on sea ice and snowfields around Longyearbyen at 78°N. Armed guides patrol the course perimeter throughout (polar bear territory). 24-hour daylight in late April. Race day temperatures typically −10°C to −20°C. 1,200 registered skiers from 30+ countries. Registration opens in November and sells out within days via lottery for international participants. This is a competitive race, not a touring event.',
+            highlights: ['42 km classic-style course at 78°N latitude', 'Armed polar bear guides patrol the entire course', '1,200 competitors from 30+ countries — lottery entry', 'Temperature: −10°C to −20°C — full Arctic kit required'],
+            ctaLink: '/travel/events',
+            ctaText: 'View Svalbard Ski Marathon',
+          },
+          {
+            title: 'Dark Season Blues',
+            content: 'Longyearbyen\'s festival marking the onset of polar night — the week the sun sets for the last time before four months of total darkness. Blues, roots, and soul music across the town\'s intimate venues from October 21–25. 2,000 visitors in a town of 2,400 residents means the visitor-to-local ratio is unlike any other Norwegian festival. The atmosphere is deliberate: the darkness begins, the music starts. Accommodation: 800 hotel beds in Longyearbyen — book six months in advance.',
+            highlights: ['Timed around the final sunset before 4 months of polar night', '2,000 visitors in a town of 2,400 — intimate by necessity', 'Blues, roots, and soul across Longyearbyen\'s venues', 'All travel to Svalbard by air via Oslo or Tromsø'],
+            ctaLink: '/travel/events',
+            ctaText: 'View Dark Season Blues',
+          },
+          {
+            title: 'Northern Lights on Svalbard',
+            content: 'Svalbard\'s polar night gives it a unique aurora advantage: the Northern Lights are potentially visible 24 hours a day from late October to mid-February. No sunset required — a clear afternoon at 78°N in December can show the aurora overhead at 14:00. The auroral oval sits directly above Longyearbyen. Commercial dog sled tours combine aurora watching with a 2-hour Arctic landscape traverse — all require an armed guide as polar bear zones begin at the town perimeter.',
+            highlights: ['Aurora visible 24 hours a day during polar night', 'Polar night: late October to mid-February at 78°N', 'Dog sled and snowmobile aurora tours — armed guide required', 'Minimal light pollution from Longyearbyen town itself'],
+            ctaLink: '/tjenester/northern-lights',
+            ctaText: 'Book Svalbard aurora tour',
+          },
+        ],
+        link: '/travel/events',
+        linkText: 'Browse all Svalbard events',
       },
       {
         id: 'sv-tours',
@@ -493,12 +604,51 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
       {
         id: 'fj-events',
         title: 'Events',
-        shortDesc: 'Fjord festivals and seasonal happenings',
+        shortDesc: 'Fjord festivals, food seasons, and extreme sports',
         content:
-          'Events for the fjords region are coming soon. Check back for festivals, seasonal celebrations, and cultural happenings across Vestlandet.',
-        bullets: [],
+          'The fjords run the most varied events calendar in Norway — classical music at Troldhaugen during Festspillene i Bergen (May–June, 150,000 tickets sold annually), base jumping at Voss during Ekstremsportveko (June, 5,000 athletes), and the Norseman Xtreme Triathlon (August, 250 participants swimming the Hardangerfjord in darkness at 05:00 and finishing on top of Gaustatoppen). The Hardanger apple harvest runs August through October. Gladmatfestivalen in Stavanger draws 250,000 visitors over four days in July. Vossajazz, Bergenfest, and Moldejazz give the region a concert programme that runs May through August.',
+        bullets: [
+          'Festspillene i Bergen — May 21 – June 1 (Troldhaugen morning concerts sell out in February)',
+          'Ekstremsportveko — Voss, June 24–30 (world\'s largest extreme sports festival)',
+          'Bergenfest — Koengen Bergen, June 11–13 (30,000 daily capacity, fortress backdrop)',
+          'Gladmatfestivalen — Stavanger, July 22–25 (250,000 visitors, Scandinavia\'s largest food festival)',
+          'Norseman Xtreme Triathlon — Eidfjord to Gaustatoppen, August 1 (250 competitors by lottery)',
+          'Hardanger apple harvest — August 25 to October 15 (40% of Norway\'s fruit)',
+          'Vossajazz — Voss, April 15–19 (avant-garde jazz since 1970)',
+          'Nuart Festival — Stavanger, April 9–12 (Europe\'s leading street art festival)',
+        ],
+        bulletDetails: [
+          {
+            title: 'Festspillene i Bergen',
+            content: 'Norway\'s largest classical music and arts festival, running since 1953. Twelve days of opera, orchestral concerts, chamber music, and theatre anchored around the legacy of Edvard Grieg. The morning concerts at Troldhaugen (Grieg\'s own home and composition studio) are the most sought-after tickets — book immediately when the programme is announced in February. The evening concerts at Grieghallen and the Bryggen Museum are the main programme. 150,000 tickets sold annually across 200 events.',
+            highlights: ['Morning concerts at Troldhaugen — book in February when programme launches', 'Grieghallen, Troldhaugen, Bryggen Museum — three main venues', '150,000 tickets sold annually — book early', 'May 21 – June 1, Bergen'],
+            ctaLink: '/travel/events',
+            ctaText: 'View Festspillene i Bergen',
+          },
+          {
+            title: 'Ekstremsportveko',
+            content: 'The world\'s largest extreme sports festival, running in Voss since 1998. 5,000 athletes, 30,000 spectators, one week in late June. Paragliding, base jumping, skydiving, kayaking, mountain biking, wingsuit proximity flying — all running simultaneously across the Voss mountain landscape. Spectating the main events from Vangsvatnet lake shore and the Voss town centre is free. The wingsuit proximity flights require binoculars from town — or a 2-hour hike to the designated spectator ridgeline.',
+            highlights: ['5,000 athletes from 60+ countries', 'Paragliding, base jumping, wingsuit, kayaking — all running simultaneously', 'Spectating from Voss town centre and lake shore is free', 'Late June — combine with Hardangerfjord before or after'],
+            ctaLink: '/travel/events',
+            ctaText: 'View Ekstremsportveko',
+          },
+          {
+            title: 'Norseman Xtreme Triathlon',
+            content: 'The world\'s hardest triathlon: 3.8 km swim across the Hardangerfjord at 05:00 (in darkness, jumping from a ferry), 180 km bike over Hardangervidda to 1,200m, 42 km run finishing on the summit of Gaustatoppen (1,883m). 250 competitors by lottery only — applications open in November. The black T-shirt (top 160 to the summit) versus the white T-shirt (alternative summit) is the race\'s defining distinction. Spectating the Eidfjord swim start is free and accessible from the harbour.',
+            highlights: ['3.8 km fjord swim at 05:00 in darkness — jump from ferry', '180 km bike over Hardangervidda plateau to 1,200m', 'Finish on Gaustatoppen summit at 1,883m', '250 competitors by lottery — applications open November'],
+            ctaLink: '/travel/events',
+            ctaText: 'View Norseman Triathlon',
+          },
+          {
+            title: 'Hardanger Apple Harvest',
+            content: 'The Hardangerfjord valley produces 40% of Norway\'s fruit. The harvest season runs from late August (plums and pears) through October (apples). The cideries along the Fv551 south shore open their farmgates: Aga Cider, Hardanger Saft og Siderfabrikk, and Noregs Cider are all accessible by car. The Hardangertun market at Lofthus (third weekend of September) is the official harvest festival — 50 producers, 8,000 visitors, outdoor concerts. Outside festival days, farm visits are unticketed and free — call ahead.',
+            highlights: ['Season: August 25 to October 15', 'Hardangertun harvest market at Lofthus — third weekend of September', 'Cideries along Fv551 open for farmgate sales and tastings', 'September: almost no tourist crowds on the fjord road'],
+            ctaLink: '/travel/events',
+            ctaText: 'Plan your harvest visit',
+          },
+        ],
         link: '/travel/events',
-        linkText: 'Browse events',
+        linkText: 'Browse all Fjords events',
       },
       {
         id: 'fj-tours',
@@ -611,6 +761,12 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
           'T-bane to Frognerseteren for forest hiking in 25 minutes',
           'Ferry to Bygd\u00F8y peninsula: Fram Museum, Kon-Tiki, Viking Ship',
         ],
+        bulletImages: [
+          '/pics/cities/oslo_bjorvika.jpeg',
+          '/pics/cities/oslo_opera.jpeg',
+          '/pics/cities/oslo_viegelandsparken.jpeg',
+          '/pics/cities/oslo_bjorvika.jpeg',
+        ],
         bulletDetails: [
           {
             title: 'Mathallen Food Hall',
@@ -655,6 +811,12 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
           'Fl\u00F8ibanen funicular to 320m \u2014 city panorama',
           'Fish market at Torget: arrive before 09:00',
           'Gateway to Hardangerfjord and Sognefjord',
+        ],
+        bulletImages: [
+          '/pics/cities/Bergen_banner.jpeg',
+          '/pics/cities/Bergen_banner.jpeg',
+          '/pics/cities/Bergen_banner.jpeg',
+          '/pics/cities/Bergen_banner.jpeg',
         ],
         bulletDetails: [
           {
@@ -701,6 +863,12 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
           'Ravnkloa fish market \u2014 local catch daily',
           'Cycling city: free bike lifts on steep hills',
         ],
+        bulletImages: [
+          '/pics/cities/trondheim_nidarosdomen.jpeg',
+          '/pics/cities/trondheim_city.jpeg',
+          '/pics/cities/trondheim_banner.jpeg',
+          '/pics/cities/trondheim_banner.jpeg',
+        ],
         bulletDetails: [
           {
             title: 'Nidarosdomen',
@@ -746,6 +914,12 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
           'Gamle Stavanger: 173 white wooden houses',
           'Norwegian Petroleum Museum \u2014 the oil story',
         ],
+        bulletImages: [
+          '/pics/cities/stavanger_prekestolen.jpeg',
+          '/pics/cities/Stavanger_banner.jpeg',
+          '/pics/cities/Stavanger_banner.jpeg',
+          '/pics/cities/Stavanger_banner.jpeg',
+        ],
         bulletDetails: [
           {
             title: 'Preikestolen (Pulpit Rock)',
@@ -790,6 +964,12 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
           'Klippfisk heritage \u2014 300 years of salted cod exports',
           'Grip island \u2014 Norway\u2019s smallest former municipality, stave church from 1470',
           'Opera house \u2014 Nordic Opera Festival every February',
+        ],
+        bulletImages: [
+          '/pics/cities/Kristiansund_banner.jpeg',
+          '/pics/cities/Kristiansund_banner.jpeg',
+          '/pics/cities/Kristiansund_banner.jpeg',
+          '/pics/cities/Kristiansund_banner.jpeg',
         ],
         bulletDetails: [
           {
