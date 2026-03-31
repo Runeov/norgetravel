@@ -39,6 +39,16 @@ const iconMap: Record<string, React.ElementType> = {
   'nn-events': Calendar,
   'nn-tours': Compass,
   'nn-accommodation': Bed,
+  'sv-cities': MapPin,
+  'sv-activities': Sparkles,
+  'sv-events': Calendar,
+  'sv-tours': Compass,
+  'sv-accommodation': Bed,
+  'fj-cities': MapPin,
+  'fj-activities': Sparkles,
+  'fj-events': Calendar,
+  'fj-tours': Compass,
+  'fj-accommodation': Bed,
   'northern-lights': Sparkles,
   'dog-sledding': PawPrint,
   'midnight-sun': Sun,
@@ -55,7 +65,8 @@ const iconMap: Record<string, React.ElementType> = {
 
 const zoneIconMap: Record<string, React.ElementType> = {
   'northern-norway': Sparkles,
-  'events': Calendar,
+  'svalbard': Compass,
+  'fjords': Landmark,
   'cities': Building2,
 };
 
