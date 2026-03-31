@@ -59,7 +59,7 @@ export const mapZones: MapZone[] = [
       { label: 'Latitude', value: '67°N – 71°N' },
       { label: 'Top base', value: 'Tromsø' },
     ],
-    highlights: ['Northern Lights', 'Tromsø', 'Midnight Sun', 'Dog Sledding'],
+    highlights: ['Cities', 'Activities & Events', 'Tours', 'Accommodation'],
   },
   {
     id: 'lofoten',
@@ -78,7 +78,7 @@ export const mapZones: MapZone[] = [
       { label: 'Peak length', value: '170 km' },
       { label: 'Top trail', value: 'Reinebringen' },
     ],
-    highlights: ['Reinebringen', 'Rorbu Cabins', 'Sea Kayaking', 'Stockfish'],
+    highlights: ['Cities', 'Activities & Events', 'Tours', 'Accommodation'],
   },
   {
     id: 'fjords',
@@ -97,7 +97,7 @@ export const mapZones: MapZone[] = [
       { label: 'Electric ferries', value: 'From 2026' },
       { label: 'Top port', value: 'Bergen' },
     ],
-    highlights: ['Geirangerfjord', 'Nærøyfjord', 'Electric Cruises', 'Trollstigen'],
+    highlights: ['Cities', 'Activities & Events', 'Tours', 'Accommodation'],
   },
   {
     id: 'svalbard',
@@ -115,7 +115,7 @@ export const mapZones: MapZone[] = [
       { label: 'Polar bears', value: '~3,000' },
       { label: 'Population', value: '~2,400' },
     ],
-    highlights: ['Polar Bears', 'Glacier Hiking', 'Dog Sled Aurora', 'Snowmobile'],
+    highlights: ['Cities', 'Activities & Events', 'Tours', 'Accommodation'],
   },
   {
     id: 'cities',
@@ -133,6 +133,6 @@ export const mapZones: MapZone[] = [
       { label: 'Best time', value: 'Year-round' },
       { label: 'Top museum', value: 'Munch, Oslo' },
     ],
-    highlights: ['Bryggen (Bergen)', 'Opera House (Oslo)', 'Nidaros Cathedral', 'Nuart Street Art'],
+    highlights: ['Cities', 'Activities & Events', 'Tours', 'Accommodation'],
   },
 ];
