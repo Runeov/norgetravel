@@ -125,7 +125,7 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
                 dominantBaseline="central"
                 className="pointer-events-none select-none"
                 fill="white"
-                fontSize={14}
+                fontSize={28}
                 fontWeight={600}
                 letterSpacing={0.5}
                 animate={{ opacity: isActive ? 1 : 0.6 }}
@@ -219,7 +219,7 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
               dominantBaseline="central"
               className="pointer-events-none select-none"
               fill="white"
-              fontSize={zone.id === 'lofoten' ? 9 : 11}
+              fontSize={zone.id === 'lofoten' ? 14 : 18}
               fontWeight={600}
               letterSpacing={0.5}
               animate={{ opacity: isActive ? 1 : 0.6 }}
@@ -313,11 +313,11 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
                 {/* City name label */}
                 <motion.text
                   x={city.x}
-                  y={city.y - 24}
+                  y={city.y - 28}
                   textAnchor="middle"
                   dominantBaseline="central"
                   fill="white"
-                  fontSize={8}
+                  fontSize={12}
                   fontWeight={600}
                   letterSpacing={0.3}
                   className="pointer-events-none select-none"
@@ -353,7 +353,7 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
             dominantBaseline="central"
             className="pointer-events-none select-none"
             fill="white"
-            fontSize={11}
+            fontSize={18}
             fontWeight={600}
             letterSpacing={0.5}
             animate={{ opacity: cityActive ? 1 : 0.4 }}
@@ -367,13 +367,13 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
       {/* Reference markers (Northern Norway cities) */}
       {referenceMarkers.map((city) => (
         <g key={city.name} className="pointer-events-none">
-          <circle cx={city.x} cy={city.y} r={2.5} fill="white" fillOpacity={0.6} />
+          <circle cx={city.x} cy={city.y} r={3} fill="white" fillOpacity={0.6} />
           <text
-            x={city.x + 6}
+            x={city.x + 8}
             y={city.y + 1}
             fill="white"
-            fillOpacity={0.4}
-            fontSize={8}
+            fillOpacity={0.5}
+            fontSize={12}
             fontWeight={500}
             dominantBaseline="central"
           >
