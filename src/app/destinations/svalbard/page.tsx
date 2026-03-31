@@ -3,6 +3,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, MapPin, Clock, Thermometer } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
+import { SvalbardTabs } from '@/components/modules/destinations/SvalbardTabs';
+import { experiencesStore } from '@/lib/admin/travel-experiences';
+import { eventsStore } from '@/lib/admin/travel-events';
+import { accommodationStore } from '@/lib/admin/travel-accommodation';
+import { guidesStore } from '@/lib/admin/travel-guides';
 import heroImage from '@/assets/karasjok_Over.avif';
 
 export const metadata: Metadata = {
@@ -46,7 +51,13 @@ const experiences = [
   },
 ];
 
-export default function SvalbardPage() {
+export default async function SvalbardPage() {
+  const [activities, events, accommodation, tours] = await Promise.all([
+    experiencesStore.filterByDestination('svalbard'),
+    eventsStore.filterByDestination('svalbard'),
+    accommodationStore.filterByDestination('svalbard'),
+    guidesStore.filterByDestination('svalbard'),
+  ]);
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Hero */}
@@ -94,24 +105,21 @@ export default function SvalbardPage() {
         </div>
       </section>
 
-      {/* Experiences */}
+      {/* Explore Svalbard — tabbed section */}
       <section className="relative py-20 overflow-hidden">
         <NorgeBackground />
         <div className="container mx-auto px-4 relative z-10">
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">What to do</h2>
-          <p className="text-slate-600 mb-12 max-w-2xl">You can't explore Svalbard alone. All wilderness trips require a licensed guide — which keeps polar bear incidents at zero.</p>
-          <div className="grid sm:grid-cols-2 gap-6">
-            {experiences.map((e) => (
-              <div key={e.title} className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/50">
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="font-bold text-xl text-slate-900">{e.title}</h3>
-                  <span className="text-xs bg-slate-100 text-slate-600 px-3 py-1 rounded-full whitespace-nowrap">{e.duration}</span>
-                </div>
-                <p className="text-[#1B3A5C] font-bold text-sm mb-3">{e.price}</p>
-                <p className="text-slate-600 text-sm leading-relaxed">{e.body}</p>
-              </div>
-            ))}
-          </div>
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">Explore Svalbard</h2>
+          <p className="text-slate-600 mb-12 max-w-2xl">
+            Everything you need for a Svalbard expedition — activities, events, accommodation, and guided tours from licensed operators.
+          </p>
+          <SvalbardTabs
+            activities={activities}
+            events={events}
+            accommodation={accommodation}
+            tours={tours}
+            fallbackActivities={experiences}
+          />
         </div>
       </section>
 
