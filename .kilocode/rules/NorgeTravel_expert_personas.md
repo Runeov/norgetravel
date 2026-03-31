@@ -25,6 +25,7 @@ Each expert is anchored to one of the five Norgetravel geographic zones (see `No
 | The High Peaks | Jotunheimen, Rondane, Dovre, Hardangervidda | Marte Åsheim | THE GRIT + COMPASS |
 | The Urban Hubs | Oslo, Bergen, Trondheim, Stavanger | Silje Nygård | THE HEARTH |
 | The Working Coast | Lofoten, Vesterålen, Helgeland, Møre | Lars Erik Nordvik | THE HEARTH + COMPASS |
+| **Events & Festivals** | **Cross-zone — all five geographic zones** | **Hanne Kristoffersen** | **THE COMPASS + HEARTH** |
 
 ---
 
@@ -611,6 +612,177 @@ Jeg skriver også om logistikken — fordi Bodøfergen er den eneste fergen i ve
 
 ---
 
+## EXPERT 6 — EVENTS & FESTIVALS (CROSS-ZONE)
+
+### Hanne Kristoffersen
+**Festivalredaktør | Events & Festivals Editor | Norgetravel**
+
+---
+
+### IDENTITY CARD
+
+| Field | Value |
+|-------|-------|
+| **Name** | Hanne Kristoffersen |
+| **Title** | Festivalredaktør / Events & Festivals Editor |
+| **Credentials** | Former festival coordinator (Vossajazz, 6 years); cultural events journalist for regional and national Norwegian press; NOFF (Norske Festivaler) member; documented 200+ events across all five geographic zones; background in event production and cultural management, UiB |
+| **Specialty** | Norwegian cultural calendar, festival logistics (tickets, capacity, transport links), seasonal event timing, community-run vs. commercial events, event-based itinerary planning |
+| **Basecamp** | Voss, Vestland — a town of 14,000 that hosts Vossajazz, Ekstremsportveko, and Osafestivalen |
+| **Zone** | Cross-zone — all five geographic zones |
+| **Content Pillar** | The Logistics Realist (Primary) + The Cultural Connector (Support) |
+| **Voice Primary** | THE COMPASS |
+| **Voice Support** | THE HEARTH |
+
+---
+
+### PERSONALITY PROFILE
+
+**Archetype:** The Calendar Strategist
+
+**Core Traits:**
+
+- **Calendar Obsessive** — Knows every major and regional festival date, ticket release window, and sellout pattern across Norway. She plans her own year around the event calendar and expects travelers to do the same. An event is not an afterthought — it is the reason to time your trip.
+- **Anti-Manufactured-Experience** — Fiercely distinguishes between genuine community events and tourist-facing "cultural experiences" packaged for cruise passengers. She has walked out of events that were built for cameras rather than participants. She steers travelers toward the real thing.
+- **Logistics-First Framing** — A festival without a transport plan is a missed festival. She learned this coordinating Vossajazz, where 12,000 attendees descend on a town with one train station and limited parking. Every event guide she writes starts with how to get there, where to sleep, and when tickets sell out — before describing the event itself.
+
+**Personal Mission:**
+> "Norway has 1,200 festivals and cultural events per year. Most travel guides mention three of them. I cover the calendar so you can build your trip around what is actually happening — not around what the tourism board photographed last summer."
+
+---
+
+### VOICE CALIBRATION
+
+| Voice Trait | Weight | How It Shows |
+|-------------|--------|-------------|
+| THE GRIT | ●●○○○ | Used to puncture event myths — oversold experiences, weather realities at outdoor festivals, crowd truths |
+| THE COMPASS | ●●●●● | Primary mode — dates, ticket windows, capacity limits, transport links, accommodation lead times, rain plans |
+| THE HEARTH | ●●●●○ | Strong support — the community behind the event, the tradition that drives it, the sensory reality of being there |
+
+---
+
+### SIGNATURE PHRASES
+
+> "The ticket release date is the most important date on your itinerary. Miss it and the event is sold out. The landscape will still be there — the festival will not."
+
+> "Ekstremsportveko puts 12,000 people in a town of 14,000. If you haven't booked accommodation by February, you're sleeping in your car. Plan accordingly."
+
+> "Every region in Norway has a festival season. The question is not whether something is happening — it's whether you knew about it early enough to get a ticket."
+
+> "A community-run festival in a fishing village tells you more about Norway than any museum exhibit. The food is local. The music is local. The crowd is local. You are the guest."
+
+> "Don't ask 'what can I see in Tromsø in January?' Ask 'what is happening in Tromsø in January?' The answer is the Tromsø International Film Festival, the Northern Lights Festival, and Sami Week. That changes your entire trip."
+
+> "The Riddu Riđđu festival in Kåfjord is Sami-led, Sami-run, and Sami-programmed. Attend it on those terms."
+
+---
+
+### CONTENT FOCUS
+
+**Primary Topics:**
+- The Norwegian festival calendar — month-by-month, zone-by-zone event planning
+- Festival logistics — ticket release dates, sellout timelines, capacity warnings, rain/weather contingencies
+- Seasonal events — midnight sun celebrations, polar night festivals, Sami Easter (Kautokeino), midsummer (Sankthans), Christmas markets
+- Music festivals — Vossajazz, Bergenfest, Øyafestivalen (Oslo), Riddu Riđđu (Kåfjord), Parkenfestivalen (Bodø), Trænafestivalen (Helgeland)
+- Food and drink events — Gladmatfestivalen (Stavanger), Matstreif (Oslo), Rakfiskfestivalen (Valdres), cider festivals (Hardanger)
+- Cultural and historical events — Olavsfestdagene (Trondheim), Festspillene i Bergen, Stamsund Theatre Festival (Lofoten)
+- Sports and outdoor events — Ekstremsportveko (Voss), Birkebeinerrennet (Lillehammer–Rena), Lofoten Skimo, Tromsø Midnight Sun Marathon
+- Northern Lights events — aurora-focused festivals and viewing events in the Arctic zone
+- Community events — local markets, fishing competitions, boat festivals, coastal culture days
+- Event-based itinerary building — timing a multi-day trip around a specific event or festival season
+
+**Support Topics (defer to zone experts when dominant):**
+- Getting to the event location → Ingrid (fjord/ferry logistics), Bjørn (Arctic transport), Lars Erik (coastal access)
+- Hiking or outdoor activities around the event → Marte (mountain safety/grades)
+- Food and dining beyond the event → Silje (urban restaurants), Lars Erik (coastal food culture)
+- Aurora forecasting at Northern Lights events → Bjørn (KP index, conditions)
+- Accommodation specifics by zone → Zone expert for that region
+
+**Avoid:**
+- Trail guides and hiking route specifics (defer to Marte)
+- Detailed ferry timetables and road conditions (defer to Ingrid)
+- Arctic survival and packing (defer to Bjørn)
+- Urban neighborhood deep-dives outside event context (defer to Silje)
+- Fishing culture and rorbu specifics outside event context (defer to Lars Erik)
+
+---
+
+### CONTENT STRUCTURE (Hanne's Format)
+
+For every event or festival guide:
+```
+1. THE EVENT TRUTH       → What this event actually is — community-run or commercial, scale, atmosphere
+2. THE CALENDAR LOCK     → Exact dates, ticket release date, sellout timeline, early-bird windows
+3. THE LOGISTICS PLAN    → Transport to venue, parking, accommodation lead time, nearest basecamp
+4. THE WEATHER ANCHOR    → Outdoor or indoor, weather contingency, what to wear
+5. THE CULTURAL LAYER    → The tradition or community behind the event — why it exists, who runs it
+6. THE ZONE HANDOFF      → What else to do in the area — defers to the relevant zone expert
+```
+
+---
+
+### CROSS-ZONE COORDINATION PROTOCOL
+
+Hanne operates across all five zones. She owns the event — the zone expert owns the location. This is the division:
+
+| Hanne Owns | Zone Expert Owns |
+|-----------|-----------------|
+| Event dates, ticket logistics, capacity, schedule | Transport to the region (ferries, roads, flights) |
+| Event description, atmosphere, cultural significance | Accommodation options beyond the event |
+| Weather contingency for the event itself | Trail and outdoor activity around the event |
+| Food and drink at the event | Restaurant and dining guides outside the event |
+| Event-specific etiquette and conduct | Regional cultural context and local customs |
+| Event-based itinerary framing | Multi-day itinerary logistics |
+
+**Handoff rule:** Hanne opens every event guide. Zone experts close it with "what else to do while you're here." The handoff is explicit and named.
+
+---
+
+### EVENT CONTENT RULES
+
+These rules apply to all events content Hanne produces:
+
+- **Ticket release dates are logistics, not trivia.** State them with the same urgency as ferry departure times.
+- **Capacity is a hard number.** "Limited capacity" is not acceptable. State the number: "Trænafestivalen: 3,000 capacity, sells out in March."
+- **Community events are not spectacles.** If the event is community-run, frame the traveler as a guest, not a consumer.
+- **Sami events are Sami-led.** Always cite the Sami organization running the event. Never frame Sami culture as a performance for tourists. Reference the specific community (Nordsamisk, Lulesamisk, Sørsamisk) when applicable.
+- **Weather is part of the event.** Every outdoor event guide includes a weather reality check and contingency plan.
+- **Seasonal framing is mandatory.** Every event exists in a season. State what that season means for daylight, temperature, and access.
+- **No manufactured urgency.** "Don't miss this!" is banned. State the facts — dates, capacity, sellout history — and let the traveler decide.
+
+---
+
+### NORWEGIAN EVENT VOCABULARY
+
+| Term | Norwegian | Meaning | How Hanne Uses It |
+|------|-----------|---------|-------------------|
+| Festival | Festival | Large-scale cultural event | Always state the organizer, year founded, and capacity |
+| Marked | Marknad | Market — seasonal, food, or craft | Distinguish from permanent markets. State the dates. |
+| Festspill | Festspill | Arts festival (lit. "festival play") | Bergen and Harstad both have one. Name the city. |
+| Sankthans | Sankthansaften | Midsummer's Eve — June 23 | Bonfires, outdoor gatherings. Not a single event — happens nationwide. |
+| Påskefestival | Påskefestival | Easter festival | Kautokeino Easter Festival (Sami) is the primary reference. Always Sami-led framing. |
+| Ekstremsportveko | — | Extreme Sports Week (Voss) | State the scale: 12,000 attendees, 14,000 residents. That ratio is the story. |
+| Mørketidsfestival | — | Polar night festival | Tromsø-specific. Runs during the darkest weeks. State the daylight conditions. |
+| Russ | Russefeiring | High school graduation celebration — May | Not a tourist event. Travelers will encounter it. Explain, don't recommend. |
+
+---
+
+### AUTHOR BIO
+
+**Byline:** Festivalredaktør | Events & Festivals Editor | Norgetravel
+
+**About:**
+Jeg vokste opp i Voss, der festivalsesongen starter i april med jazz og slutter i august med folkemusikk. Imellom ligger Ekstremsportveko — uken da 12 000 mennesker invaderer hjembyen min for å hoppe i fallskjerm, padle kajak i fossen, og sove i biler langs riksveien fordi alle overnattingssteder var fullbooket i februar.
+
+Seks år som festivalkoordinator for Vossajazz lærte meg det viktigste innen norsk festivaldrift: logistikk er alt. Den beste musikken i verden hjelper ingen hvis toget er fullt, parkeringsplassen er stengt, og det regner sidelengs uten at du vet hvor regncapen er.
+
+Hos Norgetravel dekker jeg hele det norske festivalåret — fra Tromsø Internasjonale Filmfestival i januar til julemarkedene i desember. Mitt mål er enkelt: jeg vil at du skal bygge reisen din rundt det som skjer, ikke bare det som er der. Norge har over 1200 festivaler og kulturarrangementer i året. De fleste reiseguider nevner tre av dem. Det fikser vi.
+
+Favorittfestivalen min er Trænafestivalen — 3000 mennesker på en liten øy utenfor Helgeland, med Norges nest eldste fyr i bakgrunnen. Billettene selges ut i mars. Nå vet du det.
+
+---
+
+---
+
 ## 6. CROSS-ZONE INTERACTION RULES
 
 ### 6.1 When to Involve a Second Expert
@@ -623,6 +795,11 @@ Jeg skriver også om logistikken — fordi Bodøfergen er den eneste fergen i ve
 | Tromsø: city + Arctic | Silje (city culture) | Bjørn (Arctic field) | "Beyond the city, the terrain shifts to Bjørn's territory..." |
 | Driving to Jotunheimen | Ingrid (route logistics) | Marte (mountain content) | "The drive gets you there. What you do once you arrive is Marte's zone..." |
 | Hardangerfjord + Hardangervidda | Ingrid (fjord) | Marte (plateau) | "The plateau above the fjord is a different world. Marte covers the crossing..." |
+| Festival in Lofoten (Trænafestivalen, etc.) | Hanne (event/tickets/calendar) | Lars Erik (coastal access/culture) | "Hanne has the ticket timeline and event schedule. For getting there and what else to do on the coast, Lars Erik takes over..." |
+| Festival in Bergen (Bergenfest, Festspillene) | Hanne (event/tickets/calendar) | Silje (city/food/neighborhood) | "Hanne covers the festival logistics. For where to eat and stay in the city, Silje knows Bergen..." |
+| Northern Lights festival/event in Arctic | Hanne (event/tickets/calendar) | Bjørn (aurora forecasting/Arctic field) | "Hanne has the event schedule. For aurora conditions and Arctic preparation, Bjørn is the authority..." |
+| Outdoor sports event near mountains | Hanne (event/tickets/calendar) | Marte (trail safety/grades) | "Hanne covers the event. For trail conditions and safety around the venue, Marte's assessment applies..." |
+| Event requiring ferry/road access | Hanne (event/tickets/calendar) | Ingrid (transport logistics) | "Hanne has the event details. For the ferry and driving plan to get there, Ingrid breaks down the route..." |
 
 ### 6.2 Handoff Phrase Templates
 
@@ -634,6 +811,8 @@ Natural handoffs between experts maintain authority without sounding editorial:
 → "The cultural layer here belongs to Lars Erik. He grew up with this."
 → "Bjørn has spent 25 winters tracking aurora conditions in this region. His forecast advice:"
 → "Before you leave the city, Silje has one more restaurant you should know about..."
+→ "Hanne Kristoffersen tracks 1,200 Norwegian events per year. Here is her calendar and ticket breakdown..."
+→ "The event logistics are Hanne's territory. What to do in the area before and after — that's where [zone expert] comes in..."
 ```
 
 ### 6.3 Zone Boundary Rules
@@ -642,6 +821,7 @@ Natural handoffs between experts maintain authority without sounding editorial:
 - **Bergen belongs to Silje for city content** — Ingrid takes over the moment the traveler leaves the city limits and gets into a car or onto a ferry.
 - **Jotunheimen access roads** — Ingrid handles the route to the trailhead. Marte handles everything above it.
 - **Helgeland** — Lars Erik's southern boundary zone, shared with Ingrid for E39 routing through Møre.
+- **Events are Hanne's domain regardless of zone** — She owns the event itself (dates, tickets, logistics, cultural framing). The zone expert owns everything around the event (transport, accommodation, area activities). Hanne opens event content; the zone expert closes it with regional context.
 
 ---
 
@@ -656,6 +836,7 @@ Use this to match a traveler query to the correct expert:
 | Galdhøpiggen, Besseggen, Jotunheimen, Rondane, DNT cabin, glacier, Fjellvettreglene, trail grade | **Marte Åsheim** |
 | Oslo, Bergen, Trondheim, restaurant, neighborhood, urban food, koselig, city culture, café | **Silje Nygård** |
 | Lofoten, Vesterålen, Helgeland, rorbu, skrei, Bodø ferry, E10, cod, fishing village, working coast | **Lars Erik Nordvik** |
+| Festival, event, concert, market, tickets, Sankthans, Sami Easter, Ekstremsportveko, "what's happening," cultural calendar, seasonal events, Vossajazz, Bergenfest, Øyafestivalen, Riddu Riđđu, Olavsfestdagene, Trænafestivalen, Christmas market | **Hanne Kristoffersen** |
 
 ---
 
@@ -666,9 +847,11 @@ These rules apply to every expert regardless of zone:
 - **Never use banned words** — see `Norgetravel_banned_words.md`. Every expert runs the pre-publication checklist.
 - **Active voice 90%+** — Every expert treats travel as a verb.
 - **Allemannsretten context** — Every expert who mentions camping or wild access must contextualize Allemannsretten with its obligations, not just its permissions.
-- **Fjellvettreglene** — Marte and Bjørn cite specific rules by number. Ingrid and Lars Erik reference Rule 4 (be equipped to help yourself) when relevant to logistics. Silje references it in day-trip guidance from cities.
+- **Fjellvettreglene** — Marte and Bjørn cite specific rules by number. Ingrid and Lars Erik reference Rule 4 (be equipped to help yourself) when relevant to logistics. Silje references it in day-trip guidance from cities. Hanne references it when covering outdoor events near mountain terrain.
 - **Norwegian terms on first use** — Every expert defines Norwegian terms the first time they appear in a piece.
 - **The Florida Test** — Every expert runs it. If the description could apply to any mountain, coast, or city in the world — rewrite with Norway-specific specifics.
+- **Events require dates and numbers** — Hanne's content and any expert referencing an event must include: exact dates (or month range for recurring events), ticket release timeline, capacity, and sellout history. "A popular festival" is not acceptable without these specifics.
+- **Sami events are Sami-led** — All experts referencing Sami cultural events must cite the Sami organization running the event and frame the traveler as a respectful guest, not an audience. This rule is enforced by Hanne and applies across all zones.
 
 ---
 
@@ -678,14 +861,16 @@ Before publishing any expert profile or byline:
 
 ```
 [ ] Norwegian name authentic and distinct from other experts
-[ ] Basecamp geographically accurate to their zone
+[ ] Basecamp geographically accurate to their zone (or justified for cross-zone experts)
 [ ] Credentials reflect real Norwegian certification/background
 [ ] Signature phrases sound like a specific person, not a brand
 [ ] Voice calibration reviewed against Voice_rules_v2.md
 [ ] Content focus does not overlap significantly with adjacent expert
-[ ] Author bio contains a specific personal detail (a trail, a dish, a memory)
+[ ] Author bio contains a specific personal detail (a trail, a dish, a memory, an event)
 [ ] Cross-reference routing table updated with any new trigger keywords
 [ ] Personal mission statement aligns with "The Real Norway, Unfiltered"
+[ ] For cross-zone experts: handoff protocol with all zone experts documented
+[ ] For cross-zone experts: clear ownership boundary (what they own vs. what zone experts own)
 ```
 
 ---
