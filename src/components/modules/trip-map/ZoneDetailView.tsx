@@ -20,6 +20,9 @@ import {
   Landmark,
   Church,
   Palette,
+  MapPin,
+  Compass,
+  Bed,
 } from 'lucide-react';
 import type { ZoneDetailData, BulletDetail } from '@/data/zone-subcategories';
 
@@ -31,6 +34,10 @@ interface ZoneDetailViewProps {
 }
 
 const iconMap: Record<string, React.ElementType> = {
+  'nn-cities': MapPin,
+  'nn-activities': Sparkles,
+  'nn-tours': Compass,
+  'nn-accommodation': Bed,
   'northern-lights': Sparkles,
   'dog-sledding': PawPrint,
   'midnight-sun': Sun,
