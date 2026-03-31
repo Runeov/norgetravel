@@ -91,7 +91,7 @@ export function NorwayMapOverlay() {
           }}
         >
           {/* Backdrop */}
-          <div className="absolute inset-0 bg-[#1B3A5C]/95 backdrop-blur-lg" />
+          <div className="absolute inset-0 bg-[#1B3A5C]/95 backdrop-blur-lg pointer-events-none" />
 
           {/* Content */}
           <motion.div
