@@ -136,6 +136,25 @@ Remove entirely. These add zero information.
 
 ---
 
+## PART 4B — PUNCTUATION RULES
+
+### The Em Dash Ban ( — )
+
+**Never use the em dash ( — ) in any Norgetravel content.**
+
+The em dash creates a lazy pause that replaces either a full stop or a properly constructed sentence. It fragments ideas instead of completing them. It is a crutch.
+
+| ❌ Em dash (Avoid) | ✅ Replacement |
+|-------------------|--------------|
+| "The ferry crosses Vestfjord — two hours of open sea." | "The ferry crosses Vestfjord in two hours of open sea." |
+| "Besseggen is a Red-grade trail — this means scrambling and exposure." | "Besseggen is a Red-grade trail. That means scrambling and exposure." |
+| "Pack layers — the wind on the plateau is brutal." | "Pack layers. The wind on the plateau is brutal." |
+| "The rorbu smells of salt and old wood — this is not a negative." | "The rorbu smells of salt and old wood. This is not a negative." |
+
+**Rule:** Replace every em dash with either a full stop or a comma. If neither works, rewrite the sentence.
+
+---
+
 ## PART 5 — ZONE-SPECIFIC BANNED PHRASES
 
 Research-sourced from actual 2024–2025 travel writing. These are the exact phrases dominating each zone's coverage. Avoid every one of them.
@@ -337,6 +356,9 @@ These terms are ours. Use them consistently. Define on first use in every articl
 Run this on every article before output. The full checklist is in `NorgeTravel_voice_rules_v2.md` Section 12. This is the abbreviated cliché-focused version:
 
 ```
+PUNCTUATION SCAN:
+[ ] Search: " — " (em dash). Replace every instance with a full stop or comma.
+
 BANNED WORDS SCAN:
 [ ] Search: "breathtaking," "stunning," "magical," "vibrant," "charming"
 [ ] Search: "hidden gem," "bucket list," "once-in-a-lifetime," "unforgettable"

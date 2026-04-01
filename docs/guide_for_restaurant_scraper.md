@@ -49,7 +49,7 @@ GOOGLE_PLACES_API_KEY=your-key-here
 ### 3. Current API key status
 
 - **Project ID:** 430435712908
-- **Key:** `AIzaSyAasxe5tF2yNcAKA7laWCgxCJLka5jlPjg`
+- **Key:** stored in `.env.local` (never commit API keys to the repository)
 - **Issue:** Places API (New) not enabled + billing not enabled
 - **Action needed:** Enable both (see Step 1 and Step 2 above), then re-run
 

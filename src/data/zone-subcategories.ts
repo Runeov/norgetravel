@@ -126,6 +126,12 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
           'Midnight Sun \u2014 endless daylight from May to July',
           'Arctic Wildlife \u2014 whales, eagles, and reindeer',
         ],
+        bulletImages: [
+          '/pics/subcategory_tours/nordlys_banner.png',
+          '/pics/subcategory_activities/arctic_huskey_sledfront_banner.png',
+          '/pics/subcategory_activities/Midnattsol_padler_fjell_banner.png',
+          '/pics/subcategory_activities/arctic_reinsdyr_i_kulde_banner.png',
+        ],
         bulletDetails: [
           {
             title: 'Northern Lights Tours',

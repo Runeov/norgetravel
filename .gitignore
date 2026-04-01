@@ -32,6 +32,9 @@ ts-debug.log*
 .vercel
 .netlify
 
+# Claude Code local settings (may contain allowed-command secrets)
+.claude/settings.local.json
+
 # Auto Claude data directory
 .auto-claude/
 
