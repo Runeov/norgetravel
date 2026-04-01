@@ -7,6 +7,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
 import logoNorgeTravel from '@/assets/norgeTravel.png';
 import { useTripMap } from '@/context/TripMapContext';
+import { useTrip } from '@/context/TripContext';
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,6 +20,7 @@ export function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const { openMap } = useTripMap();
+  const { itemCount } = useTrip();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -219,7 +221,22 @@ export function Navbar() {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-3">
+            {itemCount > 0 && (
+              <Link
+                href="/my-trip"
+                className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  scrolled
+                    ? 'text-[#1B3A5C] hover:bg-[#1B3A5C]/10'
+                    : 'text-white/90 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                My Trip
+                <span className="absolute -top-1 -right-1 bg-[#00CC6A] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  {itemCount}
+                </span>
+              </Link>
+            )}
             <button
               onClick={openMap}
               className="group relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white transition-all duration-300 bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-full hover:shadow-lg hover:shadow-[#1B3A5C]/30 hover:-translate-y-0.5 focus:outline-none"
@@ -355,8 +372,20 @@ export function Navbar() {
                 Travel Guide
               </Link>
 
-              <div className="pt-4 mt-2 border-t border-slate-100">
-                <button onClick={() => { openMap(); setIsMenuOpen(false); }} className="w-full flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-xl shadow-md active:scale-95 transition-all" aria-label="Plan your trip">
+              <div className="pt-4 mt-2 border-t border-slate-100 space-y-2">
+                {itemCount > 0 && (
+                  <Link
+                    href="/my-trip"
+                    onClick={closeMobileMenu}
+                    className="w-full flex items-center justify-center gap-2 px-6 py-3 text-base font-medium text-[#1B3A5C] border border-[#1B3A5C] rounded-md active:scale-95 transition-all"
+                  >
+                    My Trip
+                    <span className="bg-[#00CC6A] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                      {itemCount}
+                    </span>
+                  </Link>
+                )}
+                <button onClick={() => { openMap(); setIsMenuOpen(false); }} className="w-full flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md shadow-md active:scale-95 transition-all" aria-label="Plan your trip">
                   Plan Your Trip
                 </button>
               </div>

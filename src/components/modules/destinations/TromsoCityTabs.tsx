@@ -4,12 +4,15 @@ import { useState } from 'react';
 import { Mountain, Calendar, Building, Compass } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { TravelCard } from '@/components/modules/travel/TravelCard';
+import { EventGrid } from '@/components/modules/travel/EventGrid';
 import type { TravelItemBase } from '@/lib/schemas/travel.shared';
+import type { Event } from '@/lib/schemas/travel.events.schema';
 import type { CityExperience } from '@/types/city-guide';
+import type { TripItemCategory } from '@/types/trip';
 
 interface TromsoCityTabsProps {
   activities: TravelItemBase[];
-  events: TravelItemBase[];
+  events: Event[];
   accommodation: TravelItemBase[];
   tours: TravelItemBase[];
   fallbackActivities: CityExperience[];
@@ -52,14 +55,13 @@ export function TromsoCityTabs({
 }: TromsoCityTabsProps) {
   const [activeTab, setActiveTab] = useState<TabId>('activities');
 
-  const dataMap: Record<TabId, TravelItemBase[]> = {
+  const dataMap: Record<Exclude<TabId, 'events'>, TravelItemBase[]> = {
     activities,
-    events,
     accommodation,
     tours,
   };
 
-  const currentItems = dataMap[activeTab];
+  const currentItems = activeTab === 'events' ? [] : dataMap[activeTab];
   const activeTabDef = TABS.find((t) => t.id === activeTab)!;
 
   return (
@@ -88,11 +90,32 @@ export function TromsoCityTabs({
       </div>
 
       {/* Tab content */}
-      {currentItems.length > 0 ? (
+      {activeTab === 'events' ? (
+        events.length > 0 ? (
+          <EventGrid events={events} destination="northern-norway" />
+        ) : (
+          <div className="text-center py-16">
+            <Calendar className="w-12 h-12 text-slate-300 mx-auto mb-4" aria-hidden="true" />
+            <h3 className="text-xl font-bold text-slate-900 mb-3">
+              {EMPTY_STATES.events.heading}
+            </h3>
+            <p className="text-slate-600 max-w-md mx-auto leading-relaxed">
+              {EMPTY_STATES.events.description}
+            </p>
+          </div>
+        )
+      ) : currentItems.length > 0 ? (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {currentItems.map((item) => (
-            <TravelCard key={item.id} item={item} />
-          ))}
+          {currentItems.map((item) => {
+            const categoryMap: Record<string, TripItemCategory> = {
+              activities: 'experiences',
+              accommodation: 'accommodation',
+              tours: 'tours',
+            };
+            return (
+              <TravelCard key={item.id} item={item} category={categoryMap[activeTab]} />
+            );
+          })}
         </div>
       ) : activeTab === 'activities' ? (
         <div className="grid sm:grid-cols-2 gap-6">

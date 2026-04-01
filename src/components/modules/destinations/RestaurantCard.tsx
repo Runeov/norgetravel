@@ -1,6 +1,9 @@
+'use client';
+
 import { ExternalLink } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { CityRestaurant, MichelinDistinction } from '@/types/city-guide';
+import { AddToTripButton } from '@/components/ui/AddToTripButton';
 
 function MichelinBadge({ distinction }: { distinction: MichelinDistinction }) {
   if (distinction.type === 'none') return null;
@@ -122,32 +125,39 @@ export function RestaurantCard({ restaurant: r }: RestaurantCardProps) {
         )}
       </div>
 
-      {/* Footer — reservation or website link only */}
-      {(r.reservationUrl || r.website) && (
-        <div className="flex justify-end pt-3 border-t border-slate-100">
-          {r.reservationUrl ? (
-            <a
-              href={r.reservationUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-xs font-semibold text-[#1B3A5C] hover:text-[#00CC6A] transition-colors"
-            >
-              Reserve a table
-              <ExternalLink className="w-3 h-3" aria-hidden="true" />
-            </a>
-          ) : (
-            <a
-              href={r.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-xs font-semibold text-[#1B3A5C] hover:text-[#00CC6A] transition-colors"
-            >
-              View website
-              <ExternalLink className="w-3 h-3" aria-hidden="true" />
-            </a>
-          )}
-        </div>
-      )}
+      {/* Footer */}
+      <div className="flex items-center justify-between pt-3 border-t border-slate-100 gap-2">
+        <AddToTripButton
+          item={{
+            id: r.id,
+            name: r.name,
+            category: 'restaurants',
+            location: r.address,
+            addedAt: '',
+          }}
+        />
+        {r.reservationUrl ? (
+          <a
+            href={r.reservationUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-[#1B3A5C] hover:text-[#00CC6A] transition-colors min-h-[44px]"
+          >
+            Reserve a table
+            <ExternalLink className="w-3 h-3" aria-hidden="true" />
+          </a>
+        ) : r.website ? (
+          <a
+            href={r.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-[#1B3A5C] hover:text-[#00CC6A] transition-colors min-h-[44px]"
+          >
+            View website
+            <ExternalLink className="w-3 h-3" aria-hidden="true" />
+          </a>
+        ) : null}
+      </div>
     </article>
   );
 }
