@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import '../index.css';
 import { cn } from '@/lib/utils';
 import { RootLayoutContent } from '@/components/layout/RootLayoutContent';
@@ -109,6 +110,7 @@ export default function RootLayout({
             {children}
           </main>
         </RootLayoutContent>
+        <SpeedInsights />
       </body>
     </html>
   );
