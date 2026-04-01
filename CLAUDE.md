@@ -119,6 +119,71 @@ Add Booking.com affiliate tracking params to `bookingUrl` after joining the affi
 
 ---
 
+## RESTAURANT DATA PIPELINE
+
+### Architecture
+
+```
+Google Places API (v1)
+  → fetch_restaurants.py (search + verify OPERATIONAL)
+    → JSON store (src/data/city-guides/restaurants-{city}.json)
+      → import_restaurants.py (JSON → TypeScript)
+        → TypeScript data (src/data/city-guides/restaurants-{city}.ts)
+          → City page components (ISR — live ratings every 24h)
+```
+
+### Target restaurant counts per city
+
+| City | Target | Data file |
+|---|---|---|
+| Tromsø | 50 | `restaurants-tromso.json` |
+| Trondheim | 100 | `restaurants-trondheim.json` |
+| Stavanger | 100 | `restaurants-stavanger.json` |
+| Bergen | 200 | `restaurants-bergen.json` |
+| Oslo | 200 | `restaurants-oslo.json` |
+
+### Scripts
+
+```powershell
+# Prerequisites
+pip install requests
+
+# Fetch restaurants for all cities (requires GOOGLE_PLACES_API_KEY)
+set GOOGLE_PLACES_API_KEY=your-key
+python scripts/fetch_restaurants.py
+
+# Fetch one city
+python scripts/fetch_restaurants.py --city tromso
+
+# Preview without writing
+python scripts/fetch_restaurants.py --dry-run
+
+# Verify existing data (checks business status via Google)
+python scripts/verify_restaurants.py --city tromso
+
+# Auto-remove closed restaurants
+python scripts/verify_restaurants.py --city tromso --fix
+
+# Import JSON → TypeScript
+python scripts/import_restaurants.py --city tromso
+```
+
+### Verification rules
+- Every restaurant must have `businessStatus: OPERATIONAL` from Google Places API
+- The fetch script automatically skips `CLOSED_PERMANENTLY` and `CLOSED_TEMPORARILY` entries
+- The ISR refresh (google-places.ts) also checks `businessStatus` and returns null for closed restaurants
+- Run `verify_restaurants.py` periodically to catch restaurants that close after initial fetch
+- Minimum quality threshold: 3.5★ Google rating, 10+ reviews
+
+### Data flow
+- `fetch_restaurants.py` writes JSON → `src/data/city-guides/restaurants-{city}.json`
+- `import_restaurants.py` converts JSON → TypeScript → `src/data/city-guides/restaurants-{city}.ts`
+- City page components import from the TypeScript files
+- Live ratings refresh via ISR every 24 hours (when `placeId` is set + API key configured)
+- Descriptions marked "pending editorial review" need manual editing before going live
+
+---
+
 ## DATA FILE RULES
 
 - JSON files in `src/data/` are the source of truth — no database

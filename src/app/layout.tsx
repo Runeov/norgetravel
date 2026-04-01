@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
+import Script from 'next/script';
 import '../index.css';
 import { cn } from '@/lib/utils';
 import { RootLayoutContent } from '@/components/layout/RootLayoutContent';
@@ -87,8 +88,13 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {/* Affiliate ownership verification — Emerald */}
+        <Script
+          src="https://emrld.ltd/NTE0MTc1.js?t=514175"
+          strategy="afterInteractive"
+        />
       </head>
-      <body className={cn(
+      <body suppressHydrationWarning className={cn(
         inter.variable, 
         "font-sans antialiased bg-slate-50 text-slate-900 min-h-screen flex flex-col"
       )}>

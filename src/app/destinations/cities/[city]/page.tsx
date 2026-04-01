@@ -40,6 +40,7 @@ export default async function CityPage({ params }: PageProps) {
           alt={city.heroImageAlt}
           fill
           priority
+          quality={75}
           className="object-cover opacity-50"
           sizes="100vw"
         />

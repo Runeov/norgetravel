@@ -48,6 +48,7 @@ export default async function AttractionPage({ params }: PageProps) {
           alt={attraction.heroImageAlt}
           fill
           priority
+          quality={75}
           className="object-cover opacity-50"
           sizes="100vw"
         />

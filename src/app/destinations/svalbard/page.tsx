@@ -68,6 +68,7 @@ export default async function SvalbardPage() {
           fill
           className="object-cover opacity-40"
           priority
+          quality={75}
           placeholder="blur"
           sizes="100vw"
         />

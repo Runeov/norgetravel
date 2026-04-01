@@ -65,7 +65,7 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
             title: 'Troms\u00F8',
             content: 'Troms\u00F8 sits at 69\u00B0N with 75,000 residents, a university, a brewery, the Arctic Cathedral, and 69 days of polar night. It is the primary basecamp for Northern Lights chase tours, whale watching departures, and the gateway to Kvaløya and Senja. The Midnight Sun Marathon runs mid-June. The city has more pubs per capita than any Norwegian city outside Bergen.',
             highlights: ['Population: 75,000 \u2014 largest city above the Arctic Circle', 'Aurora season: September\u2013March, inside the auroral oval', 'Midnight sun: May 18 \u2013 July 26', 'Airport: Troms\u00F8 Langnes (TOS), direct flights from Oslo'],
-            ctaLink: '/destinations/northern-norway',
+            ctaLink: '/destinations/tromso',
             ctaText: 'Explore Troms\u00F8',
           },
           {

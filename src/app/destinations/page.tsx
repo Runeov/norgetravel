@@ -45,6 +45,15 @@ const destinations = [
     emoji: '🐻‍❄️',
     color: 'from-[#00CC6A] to-[#1B3A5C]',
   },
+  {
+    slug: 'tromso',
+    name: 'Tromsø',
+    tagline: 'Arctic capital — 69°N',
+    description: '75,000 residents inside the auroral oval. Northern Lights September–March, midnight sun May–July, orca in the fjords November–February.',
+    highlights: ['Northern Lights', 'Whale Watching', 'Midnight Sun', 'Dog Sledding'],
+    emoji: '🌌',
+    color: 'from-[#1B3A5C] to-[#5CBFEE]',
+  },
 ];
 
 export default function DestinationsPage() {
