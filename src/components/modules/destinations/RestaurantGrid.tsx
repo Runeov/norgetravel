@@ -31,23 +31,43 @@ interface RestaurantGridProps {
   cityName: string;
 }
 
+type SortOption = 'score' | 'name' | 'price';
+
+const SORT_LABELS: Record<SortOption, string> = {
+  score: 'Top rated',
+  name: 'A\u2013Z',
+  price: 'Price',
+};
+
 export function RestaurantGrid({ restaurants, cityName }: RestaurantGridProps) {
   const [activeCuisine, setActiveCuisine] = useState<CuisineCategory | 'all'>('all');
   const [activePrice, setActivePrice] = useState<PricePoint | 'all'>('all');
+  const [sortBy, setSortBy] = useState<SortOption>('score');
   const [showAll, setShowAll] = useState(false);
 
   // Collapse back to preview whenever filters change
   useEffect(() => {
     setShowAll(false);
-  }, [activeCuisine, activePrice]);
+  }, [activeCuisine, activePrice, sortBy]);
 
   const cuisines = Array.from(new Set(restaurants.map((r) => r.cuisine)));
 
-  const filtered = restaurants.filter((r) => {
-    const matchesCuisine = activeCuisine === 'all' || r.cuisine === activeCuisine;
-    const matchesPrice = activePrice === 'all' || r.pricePoint === activePrice;
-    return matchesCuisine && matchesPrice;
-  });
+  const filtered = restaurants
+    .filter((r) => {
+      const matchesCuisine = activeCuisine === 'all' || r.cuisine === activeCuisine;
+      const matchesPrice = activePrice === 'all' || r.pricePoint === activePrice;
+      return matchesCuisine && matchesPrice;
+    })
+    .sort((a, b) => {
+      if (sortBy === 'score') {
+        return (b.diceScore ?? 0) - (a.diceScore ?? 0);
+      }
+      if (sortBy === 'name') {
+        return a.name.localeCompare(b.name);
+      }
+      // price: sort by price point length ($ < $$ < $$$ < $$$$)
+      return a.pricePoint.length - b.pricePoint.length;
+    });
 
   const visibleItems = showAll ? filtered : filtered.slice(0, INITIAL_COUNT);
   const hiddenCount = filtered.length - INITIAL_COUNT;
@@ -111,12 +131,31 @@ export function RestaurantGrid({ restaurants, cityName }: RestaurantGridProps) {
             </button>
           ))}
         </div>
+
+        {/* Sort */}
+        <div className="flex flex-wrap gap-2 sm:ml-auto">
+          <span className="self-center text-xs text-slate-400 font-medium uppercase tracking-wide mr-1">Sort</span>
+          {(['score', 'name', 'price'] as SortOption[]).map((s) => (
+            <button
+              key={s}
+              onClick={() => setSortBy(s)}
+              className={cn(
+                'px-3 py-1.5 rounded-sm text-sm font-medium transition-colors min-h-[44px]',
+                sortBy === s
+                  ? 'bg-[#1B3A5C] text-white'
+                  : 'bg-white border border-slate-200 text-slate-600 hover:border-[#1B3A5C]/30 hover:text-[#1B3A5C]'
+              )}
+            >
+              {SORT_LABELS[s]}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Disclaimer */}
       <p className="text-xs text-slate-400 mb-6">
-        Google ratings updated automatically every 24 hours. NorgeTravel earns no commission on
-        restaurant reservations.
+        Ratings aggregated from Google, TripAdvisor, Yelp, and Facebook. Dice score (1-6) is a
+        weighted composite. NorgeTravel earns no commission on restaurant reservations.
       </p>
 
       {/* Grid */}

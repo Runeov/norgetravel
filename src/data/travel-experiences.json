@@ -20,10 +20,24 @@
     "difficulty": "easy",
     "minAge": 8,
     "groupSize": "2–8 persons",
-    "includes": ["Thermal suit", "Warm boots", "Hot chocolate", "Certified guide", "Husky team briefing"],
+    "includes": [
+      "Thermal suit",
+      "Warm boots",
+      "Hot chocolate",
+      "Certified guide",
+      "Husky team briefing"
+    ],
     "bookingUrl": null,
     "seasonalAvailability": "November – February (polar night season)",
-    "meetingPoint": "Longyearbyen town centre"
+    "meetingPoint": "Longyearbyen town centre",
+    "ratings": {
+      "tripAdvisor": {
+        "score": 4.7,
+        "reviewCount": 455,
+        "bubbleRating": 5
+      }
+    },
+    "diceScore": 6
   },
   "svalbard-polar-bear-safari-snowmobile": {
     "id": "svalbard-polar-bear-safari-snowmobile",
@@ -46,10 +60,24 @@
     "difficulty": "moderate",
     "minAge": 18,
     "groupSize": "4–10 persons",
-    "includes": ["Snowmobile and fuel", "Thermal oversuit", "Helmet", "Licensed armed guide", "Lunch pack"],
+    "includes": [
+      "Snowmobile and fuel",
+      "Thermal oversuit",
+      "Helmet",
+      "Licensed armed guide",
+      "Lunch pack"
+    ],
     "bookingUrl": null,
     "seasonalAvailability": "March – May (sufficient daylight, stable snow)",
-    "meetingPoint": "Svalbard Adventures base, Longyearbyen"
+    "meetingPoint": "Svalbard Adventures base, Longyearbyen",
+    "ratings": {
+      "tripAdvisor": {
+        "score": 4.6,
+        "reviewCount": 701,
+        "bubbleRating": 5
+      }
+    },
+    "diceScore": 6
   },
   "svalbard-glacier-hiking-expedition": {
     "id": "svalbard-glacier-hiking-expedition",
@@ -72,10 +100,17 @@
     "difficulty": "challenging",
     "minAge": 16,
     "groupSize": "4–8 persons",
-    "includes": ["Crampons", "Ice axe", "Harness", "Certified glacier guide", "Safety briefing"],
+    "includes": [
+      "Crampons",
+      "Ice axe",
+      "Harness",
+      "Certified glacier guide",
+      "Safety briefing"
+    ],
     "bookingUrl": "https://57hours.com/guided-self-guided-hikes-norway/",
     "seasonalAvailability": "May – September (accessible glacier surface)",
-    "meetingPoint": "Longyearbyen town centre"
+    "meetingPoint": "Longyearbyen town centre",
+    "ratings": {}
   },
   "svalbard-snowmobile-russian-ghost-town": {
     "id": "svalbard-snowmobile-russian-ghost-town",
@@ -98,10 +133,17 @@
     "difficulty": "moderate",
     "minAge": 18,
     "groupSize": "4–12 persons",
-    "includes": ["Snowmobile and fuel", "Thermal oversuit", "Helmet", "Licensed armed guide", "Warm lunch in Pyramiden"],
+    "includes": [
+      "Snowmobile and fuel",
+      "Thermal oversuit",
+      "Helmet",
+      "Licensed armed guide",
+      "Warm lunch in Pyramiden"
+    ],
     "bookingUrl": null,
     "seasonalAvailability": "February – May (frozen fjord required)",
-    "meetingPoint": "Longyearbyen snowmobile base"
+    "meetingPoint": "Longyearbyen snowmobile base",
+    "ratings": {}
   },
   "svalbard-sail-and-hike-expedition": {
     "id": "svalbard-sail-and-hike-expedition",
@@ -124,10 +166,17 @@
     "difficulty": "challenging",
     "minAge": 18,
     "groupSize": "6–12 persons",
-    "includes": ["Sailing vessel accommodation", "All meals aboard", "Mountain guide", "Skipper", "Safety equipment"],
+    "includes": [
+      "Sailing vessel accommodation",
+      "All meals aboard",
+      "Mountain guide",
+      "Skipper",
+      "Safety equipment"
+    ],
     "bookingUrl": "https://57hours.com/guided-self-guided-hikes-norway/",
     "seasonalAvailability": "June – August (ice-free sailing)",
-    "meetingPoint": "Longyearbyen harbour"
+    "meetingPoint": "Longyearbyen harbour",
+    "ratings": {}
   },
   "svalbard-arctic-wildlife-photography": {
     "id": "svalbard-arctic-wildlife-photography",
@@ -150,10 +199,23 @@
     "difficulty": "moderate",
     "minAge": 16,
     "groupSize": "4–8 persons",
-    "includes": ["Zodiac boat transport", "Professional photography guide", "Armed polar bear guard", "Lunch", "Waterproof gear"],
+    "includes": [
+      "Zodiac boat transport",
+      "Professional photography guide",
+      "Armed polar bear guard",
+      "Lunch",
+      "Waterproof gear"
+    ],
     "bookingUrl": null,
     "seasonalAvailability": "June – August (midnight sun, breeding season)",
-    "meetingPoint": "Longyearbyen harbour"
+    "meetingPoint": "Longyearbyen harbour",
+    "ratings": {
+      "facebook": {
+        "score": 4.6,
+        "reviewCount": 33
+      }
+    },
+    "diceScore": 6
   },
   "svalbard-northern-lights-photography-chase": {
     "id": "svalbard-northern-lights-photography-chase",
@@ -176,10 +238,17 @@
     "difficulty": "easy",
     "minAge": 12,
     "groupSize": "2–6 persons (private groups available)",
-    "includes": ["Minibus transport", "Tripod rental", "Photography guidance", "Hot drinks", "Thermal suit"],
+    "includes": [
+      "Minibus transport",
+      "Tripod rental",
+      "Photography guidance",
+      "Hot drinks",
+      "Thermal suit"
+    ],
     "bookingUrl": null,
     "seasonalAvailability": "October – February (polar night, peak aurora)",
-    "meetingPoint": "Longyearbyen town centre"
+    "meetingPoint": "Longyearbyen town centre",
+    "ratings": {}
   },
   "svalbard-midnight-sun-kayaking": {
     "id": "svalbard-midnight-sun-kayaking",
@@ -202,9 +271,23 @@
     "difficulty": "easy",
     "minAge": 14,
     "groupSize": "4–10 persons",
-    "includes": ["Sea kayak and paddle", "Dry suit", "Safety vest", "Certified guide", "Waterproof bag"],
+    "includes": [
+      "Sea kayak and paddle",
+      "Dry suit",
+      "Safety vest",
+      "Certified guide",
+      "Waterproof bag"
+    ],
     "bookingUrl": null,
     "seasonalAvailability": "June – August (midnight sun, ice-free fjords)",
-    "meetingPoint": "Longyearbyen harbour"
+    "meetingPoint": "Longyearbyen harbour",
+    "ratings": {
+      "tripAdvisor": {
+        "score": 3.7,
+        "reviewCount": 21,
+        "bubbleRating": 4
+      }
+    },
+    "diceScore": 4
   }
 }

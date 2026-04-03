@@ -112,6 +112,16 @@ def restaurant_to_ts(r: dict) -> str:
         ratings_parts.append(
             f"tripAdvisor: {{ score: {ta['score']}, reviewCount: {ta['reviewCount']}, bubbleRating: {ta['bubbleRating']} }}"
         )
+    if ratings.get("yelp"):
+        y = ratings["yelp"]
+        ratings_parts.append(
+            f"yelp: {{ score: {y['score']}, reviewCount: {y['reviewCount']} }}"
+        )
+    if ratings.get("facebook"):
+        fb = ratings["facebook"]
+        ratings_parts.append(
+            f"facebook: {{ score: {fb['score']}, reviewCount: {fb['reviewCount']} }}"
+        )
     if ratings.get("michelin"):
         m = ratings["michelin"]
         if m.get("type") == "stars":
@@ -125,6 +135,10 @@ def restaurant_to_ts(r: dict) -> str:
         ratings_parts.append("michelin: { type: 'none' }")
 
     lines.append(f"      ratings: {{ {', '.join(ratings_parts)} }},")
+
+    if r.get("diceScore") is not None:
+        lines.append(f"      diceScore: {r['diceScore']},")
+
     lines.append("    },")
 
     return "\n".join(lines)

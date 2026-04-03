@@ -1,0 +1,1114 @@
+{
+  "_meta": {
+    "city": "Bergen",
+    "fetchedAt": "2026-04-03T18:16:16.317889+00:00",
+    "count": 47,
+    "note": "Fetched via Google Places API. All restaurants verified OPERATIONAL at fetch time. Descriptions marked 'pending editorial review' need manual editing."
+  },
+  "restaurants": [
+    {
+      "id": "urban-sushi",
+      "name": "URBAN sushi",
+      "placeId": "ChIJbSJaOwD5PEYR7AnBbPn5n88",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Wiers-jenssens vei 1, 5089 Bergen, Norway",
+      "website": "https://urbansushi.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: Closed; Wednesday: 2:00 – 9:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.9,
+          "reviewCount": 59
+        },
+        "tripAdvisor": {
+          "score": 4.8,
+          "reviewCount": 2106,
+          "bubbleRating": 5
+        },
+        "facebook": {
+          "score": 4.0,
+          "reviewCount": 38
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "gaptrast",
+      "name": "Gaptrast",
+      "placeId": "ChIJgUiMla39PEYRa8mIQgCsksg",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Baneveien 16, 5010 Bergen, Norway",
+      "website": "https://gaptrast.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: Closed; Wednesday: 6:00 PM – 12:00 AM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.9,
+          "reviewCount": 39
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "basso-social-bergen",
+      "name": "Basso Social - Bergen",
+      "placeId": "ChIJoRUbplL9PEYR_Wpayu3tlJQ",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Strandgaten 53, 5004 Bergen, Norway",
+      "website": "https://diningsix.no/basso-social/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 5:00 – 8:30 PM; Tuesday: 5:00 – 8:30 PM; Wednesday: 5:00 – 8:30 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.8,
+          "reviewCount": 519
+        },
+        "tripAdvisor": {
+          "score": 4.7,
+          "reviewCount": 122,
+          "bubbleRating": 5
+        },
+        "facebook": {
+          "score": 5.0,
+          "reviewCount": 5
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "pinocchio-mat-og-vinbar",
+      "name": "Pinocchio Mat og Vinbar",
+      "placeId": "ChIJn_2cdmz9PEYRS41qbcXZ-EM",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Strandgaten 73, 5004 Bergen, Norway",
+      "website": "https://pinocchiobergen.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 12:00 – 11:00 PM; Wednesday: 12:00 – 11:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.8,
+          "reviewCount": 278
+        },
+        "tripAdvisor": {
+          "score": 4.8,
+          "reviewCount": 193,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "kakure-omakase",
+      "name": "Kakure Omakase",
+      "placeId": "ChIJIzf-3zD_PEYRiPAYs5ClvqE",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Stølegaten 12B, 5003 Bergen, Norway",
+      "website": "https://www.kakureomakase.no/?utm_source=google",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: Closed; Wednesday: 5:00 – 10:30 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.8,
+          "reviewCount": 58
+        },
+        "tripAdvisor": {
+          "score": 3.8,
+          "reviewCount": 139,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "thai-town-eatery-and-bar",
+      "name": "Thai Town Eatery and Bar",
+      "placeId": "ChIJf05zGAD_PEYRfNKP8irnvmg",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Hollendergaten 3, 5017 Bergen, Norway",
+      "website": "https://www.thaitownrestaurant.com/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 2:00 – 10:00 PM; Wednesday: 2:00 – 10:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.8,
+          "reviewCount": 52
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "the-dining-hook",
+      "name": "The Dining Hook",
+      "placeId": "ChIJE8AzMAP8PEYRURXUIdH98ig",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Klostergaten 8, 5005 Bergen, Norway",
+      "website": "http://www.spisekroken.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 5:00 – 10:00 PM; Tuesday: 5:00 – 10:00 PM; Wednesday: 5:00 – 10:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 954
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "lola",
+      "name": "Lola",
+      "placeId": "ChIJ_7f8XoD9PEYRQXcYSuvhGlI",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Neumanns gate 5, 5010 Bergen, Norway",
+      "website": "https://www.lolabergen.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 5:00 – 9:30 PM; Wednesday: 5:00 – 9:30 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 289
+        },
+        "tripAdvisor": {
+          "score": 4.8,
+          "reviewCount": 2755,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "ranchi-ramen-rice",
+      "name": "Ranchi - Ramen & Rice",
+      "placeId": "ChIJCfWlEQD_PEYRm9NrTr2G4EU",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Fosswinckels gate 16, 5007 Bergen, Norway",
+      "website": "https://ranchiramen.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 12:00 – 8:00 PM; Tuesday: 12:00 – 8:00 PM; Wednesday: 12:00 – 8:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 230
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "sushi-roll-sandviken",
+      "name": "Sushi Roll Sandviken",
+      "placeId": "ChIJZaEEXWP_PEYRuSp6fG7knZU",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Stølegaten 12B, 5003 Bergen, Norway",
+      "website": "http://sushirollsandviken.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 3:00 – 9:30 PM; Tuesday: 3:00 – 9:30 PM; Wednesday: 3:00 – 9:30 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 199
+        },
+        "tripAdvisor": {
+          "score": 4.9,
+          "reviewCount": 27,
+          "bubbleRating": 5
+        },
+        "facebook": {
+          "score": 5.0,
+          "reviewCount": 6
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "restaurant-amateur",
+      "name": "Restaurant Amateur",
+      "placeId": "ChIJz1L-n1T_PEYRfKxUoXReYsY",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Marken 9, 5017 Bergen, Norway",
+      "website": "https://www.amateur.kitchen/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 12:00 – 3:00 PM, 5:00 – 10:00 PM; Tuesday: 12:00 – 3:00 PM, 5:00 – 10:00 PM; Wednesday: 12:00 – 3:00 PM, 5:00 – 10:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 53
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "mandalay-sushi-burmese",
+      "name": "Mandalay Sushi & Burmese",
+      "placeId": "ChIJW8VKgKj-PEYRrXvmnKlroqY",
+      "cuisine": "norwegian",
+      "pricePoint": "$",
+      "address": "Nedre Korskirkeallmenningen 5, 5017 Bergen, Norway",
+      "website": "https://m.facebook.com/MandalaySushiBurmese/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 3:00 – 9:00 PM; Tuesday: 3:00 – 9:00 PM; Wednesday: 3:00 – 9:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 572
+        },
+        "tripAdvisor": {
+          "score": 4.3,
+          "reviewCount": 292,
+          "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 4.7,
+          "reviewCount": 206
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "kod-bergen",
+      "name": "KöD Bergen",
+      "placeId": "ChIJ7TJeKwD9PEYRdePjrEgURTM",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Øvre Ole Bulls plass 7, 5012 Bergen, Norway",
+      "website": "https://diningsix.no/koed/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 5:00 – 10:00 PM; Tuesday: 5:00 – 10:00 PM; Wednesday: 5:00 – 10:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 353
+        },
+        "tripAdvisor": {
+          "score": 4.1,
+          "reviewCount": 18,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "frk-schmidt",
+      "name": "Frk. Schmidt",
+      "placeId": "ChIJZaajZ-H9PEYRSmLj2KuwOaQ",
+      "cuisine": "pub",
+      "pricePoint": "$$",
+      "address": "Vaskerelvsmauet, 5014 Bergen, Norway",
+      "website": "https://www.frkschmidt.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 4:00 – 10:00 PM; Tuesday: 4:00 – 10:00 PM; Wednesday: 4:00 – 10:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 161
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "omakase-by-sergey-pak",
+      "name": "Omakase by Sergey Pak",
+      "placeId": "ChIJIcr8GAD_PEYRdGgj6BW0gCg",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Domkirkegaten 6, 5017 Bergen, Norway",
+      "website": "https://www.debergenske.no/bergen/restauranter/omakase-by-sergey-pak/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: Closed; Wednesday: 7:00 – 11:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 32
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "fjellskal-seafood-market",
+      "name": "Fjellskål Seafood Market",
+      "placeId": "ChIJqwN4LQD9PEYR5MMJ1-50g90",
+      "cuisine": "seafood",
+      "pricePoint": "$$",
+      "address": "Strandkaien 3, 5013 Bergen, Norway",
+      "website": "http://fjellskaal.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 9:00 PM; Tuesday: 11:00 AM – 9:00 PM; Wednesday: 11:00 AM – 9:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 18
+        },
+        "tripAdvisor": {
+          "score": 4.8,
+          "reviewCount": 1242,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "as-bryggestuen-bryggeloftet",
+      "name": "AS Bryggestuen - Bryggeloftet",
+      "placeId": "ChIJm0A8jqf-PEYR-v-dbzHZO9s",
+      "cuisine": "norwegian",
+      "pricePoint": "$$$",
+      "address": "Bryggen 11, 5003 Bergen, Norway",
+      "website": "http://www.bryggeloftet.no/",
+      "reservationRequired": true,
+      "openingHours": "Monday: 12:00 – 11:00 PM; Tuesday: 12:00 – 11:00 PM; Wednesday: 12:00 – 11:30 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 4929
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "pingvinen",
+      "name": "Pingvinen",
+      "placeId": "ChIJS3_-egL8PEYR5JfrwhPxdiI",
+      "cuisine": "pub",
+      "pricePoint": "$$",
+      "address": "Vaskerelven 14, 5014 Bergen, Norway",
+      "website": "https://portal.gastroplanner.no/p/nFYlVe",
+      "reservationRequired": false,
+      "openingHours": "Monday: 12:00 PM – 12:00 AM; Tuesday: 12:00 PM – 12:00 AM; Wednesday: 12:00 PM – 12:00 AM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 3134
+        },
+        "tripAdvisor": {
+          "score": 4.2,
+          "reviewCount": 1800,
+          "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 4.6,
+          "reviewCount": 718
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "brasilia-bergen",
+      "name": "Brasilia Bergen",
+      "placeId": "ChIJcVyq3qn-PEYRtD4gnjhVY28",
+      "cuisine": "pub",
+      "pricePoint": "$$",
+      "address": "Olav Kyrres gate 39, 5014 Bergen, Norway",
+      "website": "http://brasilia.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 4:00 – 11:00 PM; Tuesday: 4:00 – 11:00 PM; Wednesday: 4:00 – 11:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 2467
+        },
+        "tripAdvisor": {
+          "score": 4.5,
+          "reviewCount": 893,
+          "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 4.8,
+          "reviewCount": 574
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "the-hagelin-sisters",
+      "name": "The Hagelin Sisters",
+      "placeId": "ChIJ8UFEBaj-PEYRSAJv8YFTup8",
+      "cuisine": "seafood",
+      "pricePoint": "$$",
+      "address": "Strandgaten 3, 5013 Bergen, Norway",
+      "website": "http://www.sostrenehagelin.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 10:00 AM – 7:00 PM; Tuesday: 10:00 AM – 7:00 PM; Wednesday: 10:00 AM – 7:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 1399
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "the-unicorn-fish-restaurant",
+      "name": "The Unicorn Fish Restaurant",
+      "placeId": "ChIJpZz8ex38PEYRJ7B6_xAnOxo",
+      "cuisine": "seafood",
+      "pricePoint": "$$$",
+      "address": "Enhjørningsgården 29, 5003 Bergen, Norway",
+      "website": "http://www.enhjorningen.no/",
+      "reservationRequired": true,
+      "openingHours": "Monday: 4:00 – 11:00 PM; Tuesday: 4:00 – 11:00 PM; Wednesday: 4:00 – 11:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 935
+        },
+        "tripAdvisor": {
+          "score": 4.5,
+          "reviewCount": 366,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "marg-bein",
+      "name": "Marg & Bein",
+      "placeId": "ChIJHZY_Lqr-PEYRcZaf4xguPgk",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Fosswinckels gate 18, 5007 Bergen, Norway",
+      "website": "http://www.marg-bein.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 12:00 – 10:00 PM; Wednesday: 12:00 – 10:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 652
+        },
+        "tripAdvisor": {
+          "score": 4.5,
+          "reviewCount": 639,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "to-kokker",
+      "name": "To Kokker",
+      "placeId": "ChIJ3dRgfqf-PEYRLKbUvt0YClk",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Enhjørningsgården 29, 5003 Bergen, Norway",
+      "website": "http://www.tokokker.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: Closed; Wednesday: 5:00 – 11:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 234
+        },
+        "tripAdvisor": {
+          "score": 4.3,
+          "reviewCount": 331,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "sabi-sushi-togstasjonen",
+      "name": "Sabi Sushi Togstasjonen",
+      "placeId": "ChIJv6DcKcD_PEYRIMlSZOpUfVg",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Strømgaten 4, 5015 Bergen, Norway",
+      "website": "https://www.sabi.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 10:00 AM – 10:00 PM; Tuesday: 10:00 AM – 10:00 PM; Wednesday: 10:00 AM – 10:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 162
+        },
+        "tripAdvisor": {
+          "score": 3.9,
+          "reviewCount": 11,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "cartels-latin-american-kitchen-bar-bergen-sentrum",
+      "name": "Cartel's Latin American Kitchen & Bar (Bergen Sentrum)",
+      "placeId": "ChIJQWMabgL8PEYRoXGZ2Hjaylo",
+      "cuisine": "pub",
+      "pricePoint": "$$",
+      "address": "Neumanns gate 25, 5015 Bergen, Norway",
+      "website": "http://www.cartels.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 4:00 – 10:00 PM; Tuesday: 4:00 – 10:00 PM; Wednesday: 4:00 – 10:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 1252
+        },
+        "tripAdvisor": {
+          "score": 4.3,
+          "reviewCount": 465,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "cornelius-sjmatrestaurant",
+      "name": "Cornelius Sjømatrestaurant",
+      "placeId": "ChIJkYL6auT6PEYRoQk6M3OJt5w",
+      "cuisine": "seafood",
+      "pricePoint": "$$$",
+      "address": "Katlavika 14, 5177 Bjørøyhamn, Norway",
+      "website": "https://corneliusrestaurant.no/",
+      "reservationRequired": true,
+      "openingHours": "Monday: 6:00 – 10:30 PM; Tuesday: 6:00 – 10:30 PM; Wednesday: 6:00 – 10:30 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 1117
+        },
+        "tripAdvisor": {
+          "score": 3.3,
+          "reviewCount": 252,
+          "bubbleRating": 3
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "allmuen",
+      "name": "Allmuen",
+      "placeId": "ChIJm8ejH6j-PEYRaSk-oFSJe6o",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Valkendorfsgaten 1B, 5012 Bergen, Norway",
+      "website": "http://www.allmuenbistro.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 5:00 – 11:30 PM; Tuesday: 5:00 – 11:30 PM; Wednesday: 5:00 – 11:30 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 570
+        },
+        "tripAdvisor": {
+          "score": 3.9,
+          "reviewCount": 203,
+          "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 4.9,
+          "reviewCount": 225
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "redsun-bergen",
+      "name": "Redsun Bergen",
+      "placeId": "ChIJr3aszqf-PEYRh8VQ1yQa4qM",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Kong Oscars gate 4, 5017 Bergen, Norway",
+      "website": "http://www.redsun.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 3:00 – 9:30 PM; Tuesday: 3:00 – 9:30 PM; Wednesday: 3:00 – 9:30 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 459
+        },
+        "tripAdvisor": {
+          "score": 4.1,
+          "reviewCount": 208,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "olivia-ole-bulls-plass",
+      "name": "Olivia Ole Bulls plass",
+      "placeId": "ChIJr7nnda_9PEYRRtqVV9nQLdQ",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Kong Olav Vs plass 4, 5014 Bergen, Norway",
+      "website": "https://oliviarestauranter.no/restauranter/ole-bulls-plass/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 11:00 PM; Tuesday: 11:00 AM – 11:00 PM; Wednesday: 11:00 AM – 11:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 394
+        },
+        "tripAdvisor": {
+          "score": 3.8,
+          "reviewCount": 62,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "brasserie-cherie",
+      "name": "Brasserie Cherie",
+      "placeId": "ChIJcTqXNsH_PEYR5SQwsBmXG90",
+      "cuisine": "fine-dining",
+      "pricePoint": "$$",
+      "address": "Skostredet 12, 5017 Bergen, Norway",
+      "website": "http://www.brasseriecherie.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 6:30 AM – 10:00 PM; Tuesday: 6:30 AM – 10:00 PM; Wednesday: 6:30 AM – 10:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 310
+        },
+        "tripAdvisor": {
+          "score": 4.4,
+          "reviewCount": 411,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "bryggeriet-restaurant",
+      "name": "Bryggeriet Restaurant",
+      "placeId": "ChIJCWd-NA3_PEYRYCQl2ccPEEs",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Zachariasbryggen 2nd floor, Torget 2, 5014 Bergen, Norway",
+      "website": "https://bryggeriet.biz/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 4:00 – 9:00 PM; Wednesday: 4:00 – 9:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 176
+        },
+        "tripAdvisor": {
+          "score": 4.4,
+          "reviewCount": 719,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "mm-atmosphere",
+      "name": "MM Atmosphere",
+      "placeId": "ChIJU_0cMBr9PEYR4DGrzZ7xtUI",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Øvre Ole Bulls plass 3, 5012 Bergen, Norway",
+      "website": "https://www.mmcafeogbar.no/bergen-atmo/mm-cafe-bar-atmosphere",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:30 AM – 11:00 PM; Tuesday: 11:30 AM – 11:00 PM; Wednesday: 11:30 AM – 11:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 93
+        },
+        "tripAdvisor": {
+          "score": 3.3,
+          "reviewCount": 20,
+          "bubbleRating": 3
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "olivia-zachariasbryggen",
+      "name": "Olivia Zachariasbryggen",
+      "placeId": "ChIJRTju6Kf-PEYRZz28V7Jf_yQ",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Torget 2, 5014 Bergen, Norway",
+      "website": "https://oliviarestauranter.no/restaurant/zachariasbryggen/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 11:00 PM; Tuesday: 11:00 AM – 11:00 PM; Wednesday: 11:00 AM – 11:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 3529
+        },
+        "tripAdvisor": {
+          "score": 4.0,
+          "reviewCount": 1017,
+          "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 4.5,
+          "reviewCount": 550
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "fjellskal-seafood-restaurant",
+      "name": "Fjellskål Seafood Restaurant",
+      "placeId": "ChIJiSrITRn8PEYROi_8oK_hvzY",
+      "cuisine": "seafood",
+      "pricePoint": "$$$",
+      "address": "Strandkaien 3, 5013 Bergen, Norway",
+      "website": "https://www.fjellskaal.no/",
+      "reservationRequired": true,
+      "openingHours": "Monday: 9:00 AM – 10:30 PM; Tuesday: 9:00 AM – 10:30 PM; Wednesday: 9:00 AM – 10:30 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 2545
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "sumo-restaurant-bergen-sentrum",
+      "name": "Sumo Restaurant Bergen Sentrum",
+      "placeId": "ChIJE6uVcQL8PEYRd5UyOW4R8IE",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Vestre Torggaten 3, 5015 Bergen, Norway",
+      "website": "http://www.sumorestaurant.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 12:00 – 10:00 PM; Tuesday: 12:00 – 10:00 PM; Wednesday: 12:00 – 10:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 1230
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "cyclo-spisebar",
+      "name": "Cyclo Spisebar",
+      "placeId": "ChIJ5bxM4an-PEYRT_3rFwAnH3s",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Olav Kyrres gate 28, 5015 Bergen, Norway",
+      "website": "http://www.cyclo.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 3:00 – 10:00 PM; Tuesday: 3:00 – 10:00 PM; Wednesday: 3:00 – 10:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 319
+        },
+        "tripAdvisor": {
+          "score": 4.0,
+          "reviewCount": 135,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "kin-bergen-sushi-buffet",
+      "name": "KIN BERGEN - SUSHI & BUFFET",
+      "placeId": "ChIJy9U0T7P9PEYR5EkG5H8pGrs",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Kong Oscars gate 44, 5017 Bergen, Norway",
+      "website": "https://www.kinbergen.com/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 2:00 – 9:00 PM; Tuesday: 2:00 – 9:00 PM; Wednesday: 2:00 – 9:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 285
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "namo-sushi",
+      "name": "Namo Sushi",
+      "placeId": "ChIJcb-kzWv9PEYR_vIX9fIxIxs",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Klostergaten 12, 5005 Bergen, Norway",
+      "website": "https://www.mynamo.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 12:00 – 9:30 PM; Tuesday: 12:00 – 9:30 PM; Wednesday: 12:00 – 9:30 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 44
+        },
+        "tripAdvisor": {
+          "score": 4.5,
+          "reviewCount": 11,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "fishmarket-in-bergen",
+      "name": "Fishmarket in Bergen",
+      "placeId": "ChIJYXAm56f-PEYROC3eIbJkUso",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Torget 5, 5014 Bergen, Norway",
+      "website": "https://www.bergen.kommune.no/hvaskjer/tema/fisketorget",
+      "reservationRequired": false,
+      "openingHours": "Monday: 9:00 AM – 10:30 PM; Tuesday: 9:00 AM – 10:30 PM; Wednesday: 9:00 AM – 10:30 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.2,
+          "reviewCount": 16041
+        },
+        "tripAdvisor": {
+          "score": 4.6,
+          "reviewCount": 1157,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "fish-me-fishmarket",
+      "name": "Fish Me Fishmarket",
+      "placeId": "ChIJH5Mt_Kf-PEYRDk_aLh7BJWI",
+      "cuisine": "seafood",
+      "pricePoint": "$$$",
+      "address": "Strandkaien 3, 5013 Bergen, Norway",
+      "website": "https://www.fishme.no/",
+      "reservationRequired": true,
+      "openingHours": "Monday: 12:00 – 10:00 PM; Tuesday: 12:00 – 10:00 PM; Wednesday: 12:00 – 10:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.2,
+          "reviewCount": 3037
+        },
+        "tripAdvisor": {
+          "score": 4.6,
+          "reviewCount": 1157,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "nama",
+      "name": "Nama",
+      "placeId": "ChIJB4IwmKf-PEYRdTroBBnpP8Q",
+      "cuisine": "norwegian",
+      "pricePoint": "$$$",
+      "address": "Lodin Lepps gate 2B, 5003 Bergen, Norway",
+      "website": "https://namasushi.no/",
+      "reservationRequired": true,
+      "openingHours": "Monday: 11:00 AM – 10:00 PM; Tuesday: 11:00 AM – 10:00 PM; Wednesday: 11:00 AM – 10:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.2,
+          "reviewCount": 851
+        },
+        "tripAdvisor": {
+          "score": 4.9,
+          "reviewCount": 745,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "rebel",
+      "name": "Rebel",
+      "placeId": "ChIJKTdXjPD9PEYRgdRs58tZ7IE",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Vaskerelven 16, 5014 Bergen, Norway",
+      "website": "https://rebelsk.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 6:00 PM – 12:00 AM; Wednesday: 6:00 PM – 12:00 AM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.2,
+          "reviewCount": 224
+        },
+        "tripAdvisor": {
+          "score": 4.5,
+          "reviewCount": 98,
+          "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 4.7,
+          "reviewCount": 13
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "ying-ying-restaurant-lounge",
+      "name": "Ying Ying Restaurant & Lounge",
+      "placeId": "ChIJzQto2nf_PEYRgGeWPMdMTqo",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Torgallmenningen 3A, 5014 Bergen, Norway",
+      "website": "https://www.yingying.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 4:00 – 10:00 PM; Wednesday: 4:00 – 10:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.2,
+          "reviewCount": 164
+        },
+        "tripAdvisor": {
+          "score": 4.6,
+          "reviewCount": 73,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "frescohallen",
+      "name": "Frescohallen",
+      "placeId": "ChIJJ7PZc6j-PEYRJ0obi1TWGVM",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Vågsallmenningen 1, 5014 Bergen, Norway",
+      "website": "https://www.debergenske.no/bergen/restauranter/frescohallen",
+      "reservationRequired": false,
+      "openingHours": "Monday: 7:00 AM – 11:00 PM; Tuesday: 7:00 AM – 11:00 PM; Wednesday: 7:00 AM – 11:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4,
+          "reviewCount": 437
+        },
+        "tripAdvisor": {
+          "score": 3.3,
+          "reviewCount": 146,
+          "bubbleRating": 3
+        }
+      },
+      "diceScore": 4
+    },
+    {
+      "id": "izakaya-skostredet",
+      "name": "Izakaya Skostredet",
+      "placeId": "ChIJOU4lcAD_PEYRb67gklrULW8",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Domkirkegaten 6, 5017 Bergen, Norway",
+      "website": "https://www.debergenske.no/bergen/restauranter/izakaya-skostredet/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 4:00 – 11:00 PM; Tuesday: 4:00 – 11:00 PM; Wednesday: 4:00 – 11:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4,
+          "reviewCount": 165
+        },
+        "tripAdvisor": {
+          "score": 4.8,
+          "reviewCount": 1484,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "sj-restaurant-vinbar",
+      "name": "SJØ Restaurant & Vinbar",
+      "placeId": "ChIJ_aq_juH9PEYRl3oIxvEWcw8",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Strandgaten 15, 5013 Bergen, Norway",
+      "website": "https://www.sjorestaurant.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 7:00 – 10:00 AM, 4:00 – 10:00 PM; Wednesday: 7:00 – 10:00 AM, 4:00 – 10:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4,
+          "reviewCount": 49
+        },
+        "tripAdvisor": {
+          "score": 3.4,
+          "reviewCount": 47,
+          "bubbleRating": 3
+        }
+      },
+      "diceScore": 4
+    },
+    {
+      "id": "sabrura-sticks-sushi-galleriet",
+      "name": "Sabrura Sticks & Sushi Galleriet",
+      "placeId": "ChIJ-cK2vKv_PEYRUc6o3O9mn7I",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Torgallmenningen 8, 5015 Bergen, Norway",
+      "website": "https://www.sabrurasushi.no/restauranter/vest-norge/sabrura-galleriet/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 10:00 AM – 11:00 PM; Tuesday: 10:00 AM – 11:00 PM; Wednesday: 10:00 AM – 11:00 PM...",
+      "description": "Restaurant in Bergen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 3.9,
+          "reviewCount": 909
+        },
+        "tripAdvisor": {
+          "score": 3.1,
+          "reviewCount": 106,
+          "bubbleRating": 3
+        }
+      },
+      "diceScore": 4
+    }
+  ]
+}

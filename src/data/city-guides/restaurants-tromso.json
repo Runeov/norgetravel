@@ -1,0 +1,130 @@
+{
+  "_meta": {
+    "city": "Tromsø",
+    "fetchedAt": "2026-04-03T16:46:05.549481+00:00",
+    "count": 5,
+    "note": "Fetched via Google Places API. All restaurants verified OPERATIONAL at fetch time. Descriptions marked 'pending editorial review' need manual editing."
+  },
+  "restaurants": [
+    {
+      "id": "wedebs-restaurant",
+      "name": "Wedeb's Restaurant",
+      "placeId": "ChIJ6Tb9s3bFxEURi17E0qP5QQE",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Skippergata 27, 9008 Tromsø, Norway",
+      "website": "http://wedebsrestaurant.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: Closed; Wednesday: 4:00 – 10:00 PM...",
+      "description": "Restaurant in Tromsø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.9,
+          "reviewCount": 460
+        },
+        "tripAdvisor": {
+          "score": 4.9,
+          "reviewCount": 127,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "mathallen-troms",
+      "name": "Mathallen Tromsø",
+      "placeId": "ChIJr5VzJq3FxEURtPlJRZxE5M0",
+      "cuisine": "norwegian",
+      "pricePoint": "$$$",
+      "address": "Grønnegata 60, 9008 Tromsø, Norway",
+      "website": "https://www.mathallentromso.no/",
+      "reservationRequired": true,
+      "openingHours": "Monday: 11:00 AM – 10:00 PM; Tuesday: 11:00 AM – 10:00 PM; Wednesday: 11:00 AM – 10:00 PM...",
+      "description": "Restaurant in Tromsø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 937
+        },
+        "tripAdvisor": {
+          "score": 4.6,
+          "reviewCount": 1129,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "hildr-gastro-bar",
+      "name": "Hildr Gastro Bar",
+      "placeId": "ChIJBxWLvFPExEUR84TYozH1G_U",
+      "cuisine": "norwegian",
+      "pricePoint": "$$$",
+      "address": "Skippergata 11, 9008 Tromsø, Norway",
+      "website": "http://www.hildr.no/",
+      "reservationRequired": true,
+      "openingHours": "Monday: Closed; Tuesday: 3:00 – 10:00 PM; Wednesday: 3:00 – 10:00 PM...",
+      "description": "Restaurant in Tromsø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 445
+        },
+        "tripAdvisor": {
+          "score": 4.4,
+          "reviewCount": 459,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "yalla-habibi-restaurant",
+      "name": "Yalla Habibi Restaurant",
+      "placeId": "ChIJyRpW66zFxEURFcBh-CHr9cc",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Storgata 102, 9008 Tromsø, Norway",
+      "website": null,
+      "reservationRequired": false,
+      "openingHours": "Monday: 3:00 – 10:00 PM; Tuesday: 1:00 – 10:00 PM; Wednesday: 3:00 – 10:00 PM...",
+      "description": "Restaurant in Tromsø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 281
+        },
+        "tripAdvisor": {
+          "score": 4.3,
+          "reviewCount": 23,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "the-social-bar-bistro-troms",
+      "name": "The Social Bar & Bistro Tromsø",
+      "placeId": "ChIJ50h55XXFxEURMWXWz6KrFG8",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Kaigata 6, 9008 Tromsø, Norway",
+      "website": "https://clarionhotel.cc/socialedge",
+      "reservationRequired": false,
+      "openingHours": "Monday: 4:00 – 10:00 PM; Tuesday: 4:00 – 10:00 PM; Wednesday: 4:00 – 10:00 PM...",
+      "description": "Restaurant in Tromsø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 74
+        },
+        "tripAdvisor": {
+          "score": 3.2,
+          "reviewCount": 76,
+          "bubbleRating": 3
+        }
+      },
+      "diceScore": 4
+    }
+  ]
+}

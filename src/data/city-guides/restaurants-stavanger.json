@@ -1,0 +1,1165 @@
+{
+  "_meta": {
+    "city": "Stavanger",
+    "fetchedAt": "2026-04-03T18:17:01.084477+00:00",
+    "count": 50,
+    "note": "Fetched via Google Places API. All restaurants verified OPERATIONAL at fetch time. Descriptions marked 'pending editorial review' need manual editing."
+  },
+  "restaurants": [
+    {
+      "id": "monella-food-truck",
+      "name": "Monella food truck",
+      "placeId": "ChIJrRQh4N41OkYR_sm_KxjDNRM",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Fiskepiren 1, 4013 Stavanger, Norway",
+      "website": "http://www.monellapizza.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 3:00 – 9:00 PM; Wednesday: 3:00 – 9:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 5,
+          "reviewCount": 201
+        },
+        "tripAdvisor": {
+          "score": 2.3,
+          "reviewCount": 6,
+          "bubbleRating": 2
+        }
+      },
+      "diceScore": 4
+    },
+    {
+      "id": "bellies",
+      "name": "Bellies",
+      "placeId": "ChIJ62s1uPY1OkYRiNYN-qDWUOw",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Støperigata 6, 4014 Stavanger, Norway",
+      "website": "http://bellies.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: Closed; Wednesday: 5:30 – 11:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.9,
+          "reviewCount": 323
+        },
+        "tripAdvisor": {
+          "score": 4.8,
+          "reviewCount": 76,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "spisoh-south-indian-restaurant",
+      "name": "Spisoh - South Indian Restaurant",
+      "placeId": "ChIJEfnjvrs1OkYRf51y0KzI2CY",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Løkkeveien 28, 4008 Stavanger, Norway",
+      "website": "http://www.spisoh.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 3:30 – 9:00 PM; Tuesday: 3:30 – 9:00 PM; Wednesday: 3:30 – 9:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.8,
+          "reviewCount": 1220
+        },
+        "tripAdvisor": {
+          "score": 4.8,
+          "reviewCount": 293,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "matsaya-bobas-bbq-stavanger",
+      "name": "Matsaya Bobas & BBQ (Stavanger)",
+      "placeId": "ChIJG6z0UQ41OkYRuEoGYri5O9s",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Nytorget 8, 4013 Stavanger, Norway",
+      "website": "https://www.matsayafood.com/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 2:00 – 9:00 PM; Wednesday: 2:00 – 9:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.8,
+          "reviewCount": 333
+        },
+        "tripAdvisor": {
+          "score": 4.5,
+          "reviewCount": 16,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "re-naa",
+      "name": "Re-naa",
+      "placeId": "ChIJG7IDHko1OkYRNC5tAviphS0",
+      "cuisine": "fine-dining",
+      "pricePoint": "$$$$",
+      "address": "Nordbøgata 8, 4006 Stavanger, Norway",
+      "website": "http://www.restaurantrenaa.no/",
+      "reservationRequired": true,
+      "openingHours": "Monday: Closed; Tuesday: Closed; Wednesday: 5:30 PM – 1:00 AM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.8,
+          "reviewCount": 219
+        },
+        "tripAdvisor": {
+          "score": 4.5,
+          "reviewCount": 364,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "amor-grill-bar",
+      "name": "AMOR Grill & Bar",
+      "placeId": "ChIJv1hrVwA1OkYREHoqxYRknBc",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Jernbaneveien 3, 4005 Stavanger, Norway",
+      "website": "http://amorgrill.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 2:00 – 10:00 PM; Tuesday: 2:00 – 10:00 PM; Wednesday: 2:00 – 10:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.8,
+          "reviewCount": 215
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "monella-trattoria",
+      "name": "Monella Trattoria",
+      "placeId": "ChIJUR6KLZM1OkYRjcVVYqfLSO8",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Ryfylkegata 33, 4014 Stavanger, Norway",
+      "website": "http://www.monellapizza.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 3:00 – 10:00 PM; Wednesday: 3:00 – 10:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.8,
+          "reviewCount": 172
+        },
+        "tripAdvisor": {
+          "score": 4.3,
+          "reviewCount": 2076,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "bravo",
+      "name": "Bravo",
+      "placeId": "ChIJmT7MOlA1OkYRJQh9-EBYvik",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Pedersgata 71, 4013 Stavanger, Norway",
+      "website": "http://restaurant-bravo.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: Closed; Wednesday: 5:00 – 11:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.8,
+          "reviewCount": 170
+        },
+        "tripAdvisor": {
+          "score": 4.4,
+          "reviewCount": 258,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "sabi-omakase",
+      "name": "Sabi Omakase",
+      "placeId": "ChIJPy3OSzE1OkYRbZ2eFN3V3yA",
+      "cuisine": "fine-dining",
+      "pricePoint": "$$$$",
+      "address": "Pedersgata 38a, 4013 Stavanger, Norway",
+      "website": "http://www.omakase.no/",
+      "reservationRequired": true,
+      "openingHours": "Monday: Closed; Tuesday: Closed; Wednesday: 7:00 PM – 12:00 AM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.8,
+          "reviewCount": 152
+        },
+        "tripAdvisor": {
+          "score": 4.3,
+          "reviewCount": 257,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "savor",
+      "name": "Savor",
+      "placeId": "ChIJ2QWFPwA1OkYRlpaC7caMvT0",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Hospitalsgata 11, 4013 Stavanger, Norway",
+      "website": "https://www.savorsteak.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 4:00 – 10:00 PM; Wednesday: 4:00 – 10:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.8,
+          "reviewCount": 82
+        },
+        "tripAdvisor": {
+          "score": 4.4,
+          "reviewCount": 383,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "restaurant-broken",
+      "name": "Restaurant Broken",
+      "placeId": "ChIJ03_9TQA1OkYRiaZh86B2KiQ",
+      "cuisine": "seafood",
+      "pricePoint": "$$",
+      "address": "Langgata 9, 4013 Stavanger, Norway",
+      "website": "https://www.restaurantbroken.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 5:00 – 10:00 PM; Wednesday: 5:00 – 10:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.8,
+          "reviewCount": 50
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "monella-forus",
+      "name": "Monella Forus",
+      "placeId": "ChIJ-0QBXwA1OkYRIMTo8Kejfcw",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Godesetdalen 10, 4034 Stavanger, Norway",
+      "website": "http://monellapizza.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 3:00 – 10:00 PM; Wednesday: 3:00 – 10:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.8,
+          "reviewCount": 45
+        },
+        "tripAdvisor": {
+          "score": 2.3,
+          "reviewCount": 6,
+          "bubbleRating": 2
+        }
+      },
+      "diceScore": 4
+    },
+    {
+      "id": "gadja-etiopisk-restaurant",
+      "name": "Gådjå Etiopisk Restaurant",
+      "placeId": "ChIJXzhTPjY1OkYRa039CErYonM",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Smedgata 7, Bergelandsgata 1, 4013 Stavanger, Norway",
+      "website": "https://gadja.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 4:00 – 10:00 PM; Tuesday: 4:00 – 10:00 PM; Wednesday: 4:00 – 10:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 891
+        },
+        "tripAdvisor": {
+          "score": 4.6,
+          "reviewCount": 325,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "panzanella-pizzeria-restaurant",
+      "name": "Panzanella Pizzeria Restaurant",
+      "placeId": "ChIJXwtppFk1OkYRoevl-V0WJ58",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Pedersgata 7, 4013 Stavanger, Norway",
+      "website": "https://panzanella.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: Closed; Wednesday: 4:00 – 10:30 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 435
+        },
+        "tripAdvisor": {
+          "score": 4.6,
+          "reviewCount": 66,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "adriatico",
+      "name": "Adriatico",
+      "placeId": "ChIJLbUFh1k1OkYRp11lHvBmI4s",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Steinkargata 20, 4006 Stavanger, Norway",
+      "website": "https://adriatico.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 5:00 – 10:00 PM; Wednesday: 5:00 – 10:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 210
+        },
+        "tripAdvisor": {
+          "score": 3.7,
+          "reviewCount": 39,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "jack-sushi-asia-mat",
+      "name": "Jack Sushi & Asia Mat",
+      "placeId": "ChIJZaofZbfKO0YR1QjxHHzsbxE",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Buøy Ring 66, 4077 Stavanger, Norway",
+      "website": "http://jacksushi.winorder.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 2:00 – 9:00 PM; Wednesday: 2:00 – 9:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 149
+        },
+        "tripAdvisor": {
+          "score": 4.7,
+          "reviewCount": 17,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "ramen-namen-by-matsaya",
+      "name": "RAMEN NAMEN by Matsaya",
+      "placeId": "ChIJX0awkw41OkYRjpclhhBjB9k",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Nytorget 8, 4013 Stavanger, Norway",
+      "website": "http://www.matsayafood.com/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 2:00 – 9:00 PM; Wednesday: 2:00 – 9:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 135
+        },
+        "tripAdvisor": {
+          "score": 4.6,
+          "reviewCount": 8,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "hermetikken-restaurant",
+      "name": "Hermetikken Restaurant",
+      "placeId": "ChIJwUDyOPc1OkYRYq8KAbZLJ0A",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Niels Juels gate 50, 4008 Stavanger, Norway",
+      "website": "https://hermetikken-restaurant.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 5:45 PM – 12:00 AM; Wednesday: 5:45 PM – 12:00 AM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 65
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "aladdin-restaurant-stavanger",
+      "name": "Aladdin Restaurant Stavanger",
+      "placeId": "ChIJdYyXewY1OkYRnupXXU99g4k",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Salvågergata 3, 4006 Stavanger, Norway",
+      "website": "http://aladdin-cuisine.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 2:00 – 10:00 PM; Wednesday: 2:00 – 10:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 843
+        },
+        "tripAdvisor": {
+          "score": 4.6,
+          "reviewCount": 112,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "wanna-sushi-thai-mat",
+      "name": "Wanna Sushi & Thai Mat",
+      "placeId": "ChIJ1dzJdJ81OkYRnbUSDRYTKfw",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Bakkegata 7, 4006 Stavanger, Norway",
+      "website": "https://www.facebook.com/ManopSushi99Thaimat/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 1:00 – 9:00 PM; Tuesday: 2:00 – 9:00 PM; Wednesday: 1:00 – 9:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 391
+        },
+        "tripAdvisor": {
+          "score": 4.7,
+          "reviewCount": 50,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "cincin-restaurant-cocktailbar",
+      "name": "CinCin - Restaurant & Cocktailbar",
+      "placeId": "ChIJwQHjHpA1OkYR0c9bhl073Bc",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Hospitalsgata 6, 4006 Stavanger, Norway",
+      "website": "http://www.cin-cin.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 5:30 PM – 12:00 AM; Wednesday: 5:30 PM – 12:00 AM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 263
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "kansui",
+      "name": "kansui",
+      "placeId": "ChIJb2jFBAA1OkYRir91yBrpqLs",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Langgata 11A, 4013 Stavanger, Norway",
+      "website": "https://kansuistavanger.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: Closed; Wednesday: 12:00 – 8:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 189
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "a-idse-grill-berkel",
+      "name": "A. Idsøe - grill & berkel",
+      "placeId": "ChIJNfHXfNI1OkYRuBBkzKObbPk",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Verksgata 7, 4013 Stavanger, Norway",
+      "website": "https://www.idsoe.no/restaurant",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 12:00 – 3:00 PM, 4:30 – 11:00 PM; Wednesday: 12:00 – 3:00 PM, 4:30 – 11:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 182
+        },
+        "tripAdvisor": {
+          "score": 4.2,
+          "reviewCount": 41,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "brasserie-pigalle",
+      "name": "Brasserie Pigalle",
+      "placeId": "ChIJC4cGvlI1OkYRU8Q3TVlK8MQ",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Skansegata 1, 4006 Stavanger, Norway",
+      "website": "https://www.brasseriepigalle.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 5:00 – 10:00 PM; Tuesday: 5:00 – 10:00 PM; Wednesday: 5:00 – 10:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 75
+        },
+        "tripAdvisor": {
+          "score": 3.9,
+          "reviewCount": 29,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "zouq-restaurant-take-away",
+      "name": "Zouq Restaurant & Take away",
+      "placeId": "ChIJuxkmlDY1OkYR_y9DbLJomQo",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Pedersgata 4, 4013 Stavanger, Norway",
+      "website": "https://zouq.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 3:00 – 10:00 PM; Tuesday: 3:00 – 10:00 PM; Wednesday: 3:00 – 10:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 1356
+        },
+        "tripAdvisor": {
+          "score": 4.2,
+          "reviewCount": 265,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "fisketorget-stavanger",
+      "name": "Fisketorget Stavanger",
+      "placeId": "ChIJhUPTl0k1OkYRYy14i5gBBDM",
+      "cuisine": "seafood",
+      "pricePoint": "$$",
+      "address": "Strandkaien 37, 4005 Stavanger, Norway",
+      "website": "http://fisketorget-stavanger.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 12:00 AM; Tuesday: 11:00 AM – 12:00 AM; Wednesday: 11:00 AM – 12:00 AM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 2523
+        },
+        "tripAdvisor": {
+          "score": 4.2,
+          "reviewCount": 1303,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "citra",
+      "name": "Citra",
+      "placeId": "ChIJS6PkBXM1OkYRfmB8FeorSPA",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Øvre Holmegate 30, 4006 Stavanger, Norway",
+      "website": "http://www.citra.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 4:00 PM – 12:00 AM; Wednesday: 4:00 PM – 12:00 AM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 206
+        },
+        "tripAdvisor": {
+          "score": 3.3,
+          "reviewCount": 16,
+          "bubbleRating": 3
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "seid-grill-cocktailbar",
+      "name": "Seid Grill & Cocktailbar",
+      "placeId": "ChIJ63EFXQA1OkYRpNMaQNr-v2M",
+      "cuisine": "pub",
+      "pricePoint": "$$",
+      "address": "Knud Holms gate 8, 4005 Stavanger, Norway",
+      "website": "https://www.seidrestaurant.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 11:00 AM – 12:00 AM; Wednesday: 11:00 AM – 12:00 AM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 141
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "isushi-eiganes",
+      "name": "iSushi Eiganes",
+      "placeId": "ChIJvWhlpDg1OkYRqZ3Zcsvl9Vg",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Holbergs gate 34, 4009 Stavanger, Norway",
+      "website": "http://www.isushi.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 2:00 – 9:00 PM; Tuesday: 2:00 – 9:00 PM; Wednesday: 2:00 – 9:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 65
+        },
+        "tripAdvisor": {
+          "score": 4.2,
+          "reviewCount": 101,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "firelake-grill-house-cocktail-bar",
+      "name": "Firelake Grill House & Cocktail Bar",
+      "placeId": "ChIJGeuuWkg1OkYRo0G3hIV5dy4",
+      "cuisine": "norwegian",
+      "pricePoint": "$$$",
+      "address": "Olav V s gate 3, 4002 Stavanger, Norway",
+      "website": "https://www.radissonhotels.com/en-us/hotels/radisson-blu-stavanger-atlantic/restaurant-bar?cid=a:se+b:gmb+c:emea+i:localFire+e:rdb+d:nob+t:fnb+h:NOSVGATL",
+      "reservationRequired": true,
+      "openingHours": "Monday: 6:00 – 10:00 PM; Tuesday: 6:00 – 10:00 PM; Wednesday: 6:00 – 10:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 733
+        },
+        "tripAdvisor": {
+          "score": 4.4,
+          "reviewCount": 345,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "far-east-take-away",
+      "name": "Far East Take-Away",
+      "placeId": "ChIJZWxaYTY1OkYRwaqu8YUuNVQ",
+      "cuisine": "seafood",
+      "pricePoint": "$",
+      "address": "Nytorget 8, 4013 Stavanger, Norway",
+      "website": "http://www.feast.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 1:00 – 10:00 PM; Tuesday: Closed; Wednesday: 1:00 – 10:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 510
+        },
+        "tripAdvisor": {
+          "score": 4.3,
+          "reviewCount": 294,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "sabi-sushi-stavanger",
+      "name": "Sabi Sushi Stavanger",
+      "placeId": "ChIJPy3OSzE1OkYRGlciFLCmfLg",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Pedersgata 38, 4013 Stavanger, Norway",
+      "website": "http://www.sabi.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 3:00 – 10:00 PM; Tuesday: 3:00 – 10:00 PM; Wednesday: 3:00 – 10:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 441
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "sabi-sushi-forus",
+      "name": "Sabi Sushi Forus",
+      "placeId": "ChIJPy3OSzE1OkYRIyYaoRa3BnY",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Lagerveien 2, 4033 Stavanger, Norway",
+      "website": "http://www.sabi.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 10:00 AM – 8:00 PM; Tuesday: 10:00 AM – 8:00 PM; Wednesday: 10:00 AM – 8:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 359
+        },
+        "tripAdvisor": {
+          "score": 4.3,
+          "reviewCount": 174,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "sabi-sushi-hinna",
+      "name": "Sabi Sushi Hinna",
+      "placeId": "ChIJo-GOCrw1OkYRdWaDv136Xcg",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Jåttåvågveien 7, 4020 Stavanger, Norway",
+      "website": "http://sabi.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 9:00 PM; Tuesday: 11:00 AM – 9:00 PM; Wednesday: 11:00 AM – 9:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 285
+        },
+        "tripAdvisor": {
+          "score": 4.0,
+          "reviewCount": 70,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "olivia-torget",
+      "name": "Olivia Torget",
+      "placeId": "ChIJw4Rb0LQ1OkYR5P_wSi7mxD8",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Kongsgårdbakken 1, 4005 Stavanger, Norway",
+      "website": "https://oliviarestauranter.no/restaurant/torget",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 11:00 PM; Tuesday: 11:00 AM – 11:00 PM; Wednesday: 11:00 AM – 11:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.2,
+          "reviewCount": 2166
+        },
+        "tripAdvisor": {
+          "score": 3.8,
+          "reviewCount": 584,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "sumo-restaurant-hall-toll",
+      "name": "Sumo Restaurant Hall Toll",
+      "placeId": "ChIJF9hRklI1OkYRaO9xjzbLS74",
+      "cuisine": "norwegian",
+      "pricePoint": "$$$",
+      "address": "Skansegata 2, 4006 Stavanger, Norway",
+      "website": "http://www.sumorestaurant.no/",
+      "reservationRequired": true,
+      "openingHours": "Monday: 3:00 – 11:00 PM; Tuesday: 3:00 – 11:00 PM; Wednesday: 3:00 – 11:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.2,
+          "reviewCount": 1343
+        },
+        "tripAdvisor": {
+          "score": 3.5,
+          "reviewCount": 176,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "phileas-fogg",
+      "name": "Phileas Fogg",
+      "placeId": "ChIJH7EbgUk1OkYR-xoPS319fPM",
+      "cuisine": "norwegian",
+      "pricePoint": "$$$",
+      "address": "Skagen 27, 4006 Stavanger, Norway",
+      "website": "https://phileas.no/",
+      "reservationRequired": true,
+      "openingHours": "Monday: 3:00 – 10:00 PM; Tuesday: 3:00 – 10:00 PM; Wednesday: 3:00 – 10:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.2,
+          "reviewCount": 1203
+        },
+        "tripAdvisor": {
+          "score": 3.6,
+          "reviewCount": 772,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "sabi-sushi-madla",
+      "name": "Sabi Sushi Madla",
+      "placeId": "ChIJw54J6ZlKOkYRN1aql7C5cbc",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Madlakrossen 10, 4042 Hafrsfjord, Norway",
+      "website": null,
+      "reservationRequired": false,
+      "openingHours": "Monday: 2:00 – 10:00 PM; Tuesday: 2:00 – 10:00 PM; Wednesday: 2:00 – 10:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.2,
+          "reviewCount": 216
+        },
+        "tripAdvisor": {
+          "score": 3.0,
+          "reviewCount": 23,
+          "bubbleRating": 3
+        }
+      },
+      "diceScore": 4
+    },
+    {
+      "id": "isushi-hillevag",
+      "name": "iSushi Hillevåg",
+      "placeId": "ChIJw_lMinA1OkYRTwuEVTaYV5Y",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Gartnerveien 33, 4016 Stavanger, Norway",
+      "website": "http://www.isushi.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 2:00 – 9:00 PM; Tuesday: 2:00 – 9:00 PM; Wednesday: 2:00 – 9:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.2,
+          "reviewCount": 168
+        },
+        "tripAdvisor": {
+          "score": 4.2,
+          "reviewCount": 101,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "sabi-sushi-tasta",
+      "name": "Sabi Sushi Tasta",
+      "placeId": "ChIJ3cMizEo1OkYRJrb5jkE8gVU",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Randabergveien 30, 4025 Stavanger, Norway",
+      "website": "https://sabi.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 3:00 – 10:00 PM; Tuesday: 3:00 – 10:00 PM; Wednesday: 3:00 – 10:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.2,
+          "reviewCount": 61
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "trattoria-italo",
+      "name": "Trattoria Italo",
+      "placeId": "ChIJtXpAXNE1OkYRuIdqnSeIJE0",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Smedgata 9, 4013 Stavanger, Norway",
+      "website": "https://www.tratoriaitalo.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 11:00 PM; Tuesday: 11:00 AM – 11:00 PM; Wednesday: 11:00 AM – 11:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.2,
+          "reviewCount": 48
+        },
+        "tripAdvisor": {
+          "score": 2.9,
+          "reviewCount": 15,
+          "bubbleRating": 3
+        }
+      },
+      "diceScore": 4
+    },
+    {
+      "id": "villa-22-trattoria-bar",
+      "name": "Villa 22 Trattoria & Bar",
+      "placeId": "ChIJCy6LgUk1OkYRWO00ZNXNf-8",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Skagen 22, 4006 Stavanger, Norway",
+      "website": "http://www.villa22.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 4:00 – 11:00 PM; Wednesday: 4:00 – 11:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.1,
+          "reviewCount": 1700
+        },
+        "tripAdvisor": {
+          "score": 3.7,
+          "reviewCount": 585,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "skagen-fiskerestaurant",
+      "name": "Skagen Fiskerestaurant",
+      "placeId": "ChIJQTpvmUk1OkYRlYLVHXJkcyw",
+      "cuisine": "seafood",
+      "pricePoint": "$$",
+      "address": "Skagenkaien 26, 4006 Stavanger, Norway",
+      "website": "https://www.skagenfiskerestaurant.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 4:00 – 9:00 PM; Tuesday: 4:00 – 9:00 PM; Wednesday: 4:00 – 9:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.1,
+          "reviewCount": 583
+        },
+        "tripAdvisor": {
+          "score": 3.9,
+          "reviewCount": 1166,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "deja-vu-delikatesse-as",
+      "name": "Deja Vu Delikatesse AS",
+      "placeId": "ChIJIXyV3jU1OkYRJFA-2FuXNG0",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Verksgata 2, 4013 Stavanger, Norway",
+      "website": "http://www.dejavu.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 8:00 PM; Tuesday: 11:00 AM – 8:00 PM; Wednesday: 11:00 AM – 8:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.1,
+          "reviewCount": 552
+        },
+        "tripAdvisor": {
+          "score": 3.6,
+          "reviewCount": 203,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "fish-cow",
+      "name": "Fish & Cow",
+      "placeId": "ChIJuXvXv0k1OkYRb2JVf0KiL-8",
+      "cuisine": "norwegian",
+      "pricePoint": "$$$",
+      "address": "Skagen 3, 4001 Stavanger, Norway",
+      "website": "https://bytango.no/fish-cow/",
+      "reservationRequired": true,
+      "openingHours": "Monday: 5:00 PM – 12:00 AM; Tuesday: 5:00 PM – 12:00 AM; Wednesday: 5:00 PM – 12:00 AM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.1,
+          "reviewCount": 532
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "polka-grill-spiseri",
+      "name": "POLKA Grill & Spiseri",
+      "placeId": "ChIJrTMxCVY1OkYRM8qk4bIXhGA",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Skagen 3, 4006 Stavanger, Norway",
+      "website": "https://bytango.no/polka/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 10:00 AM – 11:00 PM; Tuesday: 10:00 AM – 11:00 PM; Wednesday: 10:00 AM – 11:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.1,
+          "reviewCount": 95
+        },
+        "tripAdvisor": {
+          "score": 4.3,
+          "reviewCount": 88,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "al-forno-pizzeria-stokka",
+      "name": "Al Forno Pizzeria Stokka",
+      "placeId": "ChIJ41wSzVE1OkYRpSElH6MTc74",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Stokkaveien 53, 4024 Stavanger, Norway",
+      "website": "https://alforno.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 2:30 – 10:00 PM; Tuesday: 2:30 – 10:00 PM; Wednesday: 2:30 – 10:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4,
+          "reviewCount": 173
+        },
+        "tripAdvisor": {
+          "score": 3.9,
+          "reviewCount": 24,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "peppes-pizza-stavanger",
+      "name": "Peppes Pizza Stavanger",
+      "placeId": "ChIJW1BKWb01OkYRANCHHDknA90",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Øvre Holmegate 12, 4006 Stavanger, Norway",
+      "website": "https://www.peppes.no/?utm_source=googlemybusiness&utm_medium=organic&utm_content=stavanger",
+      "reservationRequired": false,
+      "openingHours": "Monday: 1:00 – 10:00 PM; Tuesday: 1:00 – 10:00 PM; Wednesday: 1:00 – 10:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 3.7,
+          "reviewCount": 944
+        },
+        "tripAdvisor": {
+          "score": 2.2,
+          "reviewCount": 72,
+          "bubbleRating": 2
+        }
+      },
+      "diceScore": 3
+    },
+    {
+      "id": "mikado-hong-kong-garden",
+      "name": "Mikado Hong Kong Garden",
+      "placeId": "ChIJuZNQ9jU1OkYR_dwJhkM-VBc",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Østervågkaien 1c, 4006 Stavanger, Norway",
+      "website": "http://www.mikadostavanger.com/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 12:30 – 10:00 PM; Tuesday: 12:30 – 10:00 PM; Wednesday: 12:30 – 10:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 3.7,
+          "reviewCount": 618
+        },
+        "tripAdvisor": {
+          "score": 4.2,
+          "reviewCount": 39,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "sabrura-sticks-sushi-herbarium",
+      "name": "Sabrura Sticks & Sushi Herbarium",
+      "placeId": "ChIJd7NGt0I1OkYRaca4EKO-z7U",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Lars Hertervigs gate 6, 4005 Stavanger, Norway",
+      "website": "https://www.sabrurasushi.no/restauranter/vest-norge/sabrura-herbarium/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 10:00 AM – 10:00 PM; Tuesday: 10:00 AM – 10:00 PM; Wednesday: 10:00 AM – 10:00 PM...",
+      "description": "Restaurant in Stavanger. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 3.5,
+          "reviewCount": 505
+        },
+        "tripAdvisor": {
+          "score": 2.1,
+          "reviewCount": 58,
+          "bubbleRating": 2
+        }
+      },
+      "diceScore": 3
+    }
+  ]
+}

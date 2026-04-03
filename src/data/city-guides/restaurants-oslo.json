@@ -1,0 +1,1201 @@
+{
+  "_meta": {
+    "city": "Oslo",
+    "fetchedAt": "2026-04-03T18:08:17.499247+00:00",
+    "count": 49,
+    "note": "Fetched via Google Places API. All restaurants verified OPERATIONAL at fetch time. Descriptions marked 'pending editorial review' need manual editing."
+  },
+  "restaurants": [
+    {
+      "id": "injera-africano-restaurant",
+      "name": "Injera-Africano Restaurant",
+      "placeId": "ChIJtwzexyBvQUYRtcsWYUDAS7I",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Calmeyers gate 9A, 0183 Oslo, Norway",
+      "website": "https://injera-oslo.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 2:00 – 10:00 PM; Tuesday: 2:00 – 10:00 PM; Wednesday: 2:00 – 10:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.9,
+          "reviewCount": 243
+        },
+        "tripAdvisor": {
+          "score": 4.4,
+          "reviewCount": 5,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "sabi-omakase-oslo",
+      "name": "Sabi Omakase Oslo",
+      "placeId": "ChIJyZ1OK35uQUYRs_kHgYhPRqE",
+      "cuisine": "international",
+      "pricePoint": "$$$$",
+      "address": "Ruseløkkveien 3, 0251 Oslo, Norway",
+      "website": "https://www.omakaseoslo.no/",
+      "reservationRequired": true,
+      "openingHours": "Monday: Closed; Tuesday: Closed; Wednesday: 5:00 – 11:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.9,
+          "reviewCount": 243
+        },
+        "tripAdvisor": {
+          "score": 4.9,
+          "reviewCount": 100,
+          "bubbleRating": 5
+        },
+        "facebook": {
+          "score": 4.9,
+          "reviewCount": 100
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "panu",
+      "name": "Panu",
+      "placeId": "ChIJcdoojjhvQUYR8aMYGP5Rbnk",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "St. Olavs Plass 3, 0165 Oslo, Norway",
+      "website": "https://www.restaurant-panu.com/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: Closed; Wednesday: 5:30 PM – 12:00 AM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.9,
+          "reviewCount": 143
+        },
+        "tripAdvisor": {
+          "score": 4.0,
+          "reviewCount": 6,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "yalla-habibi-grill-restaurant",
+      "name": "Yalla habibi Grill Restaurant",
+      "placeId": "ChIJQZSTEQBvQUYRTy3mstuRkag",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Trondheimsveien 14, 0560 Oslo, Norway",
+      "website": null,
+      "reservationRequired": false,
+      "openingHours": "Monday: 12:00 – 11:00 PM; Tuesday: 12:00 – 11:00 PM; Wednesday: 12:00 – 11:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.8,
+          "reviewCount": 296
+        },
+        "tripAdvisor": {
+          "score": 4.3,
+          "reviewCount": 23,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "varemottaket",
+      "name": "Varemottaket",
+      "placeId": "ChIJZSJaSRZvQUYRNVftg0hsPtk",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Dronning Eufemias gate 37, Inngang Wismargata, 0194 Oslo, Norway",
+      "website": "https://polsemakeri.no/restauranten-oslobukta/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: Closed; Wednesday: Closed...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.8,
+          "reviewCount": 55
+        },
+        "tripAdvisor": {
+          "score": 4.8,
+          "reviewCount": 5,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "the-salmon",
+      "name": "The Salmon",
+      "placeId": "ChIJZzTDywdvQUYRa-0cSuNLmoI",
+      "cuisine": "seafood",
+      "pricePoint": "$$",
+      "address": "Strandpromenaden 11, 0252 Oslo, Norway",
+      "website": "https://www.thesalmon.com/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:30 AM – 10:00 PM; Tuesday: 11:30 AM – 10:00 PM; Wednesday: 11:30 AM – 10:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 3206
+        },
+        "tripAdvisor": {
+          "score": 4.6,
+          "reviewCount": 520,
+          "bubbleRating": 5
+        },
+        "facebook": {
+          "score": 4.8,
+          "reviewCount": 23
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "alex-sushi",
+      "name": "Alex Sushi",
+      "placeId": "ChIJYdl0NNVtQUYR0d8C8HjwBSQ",
+      "cuisine": "international",
+      "pricePoint": "$$$$",
+      "address": "Cort Adelers gate 2, 0254 Oslo, Norway",
+      "website": "http://www.alexsushi.no/",
+      "reservationRequired": true,
+      "openingHours": "Monday: 4:00 – 10:00 PM; Tuesday: 4:00 – 10:00 PM; Wednesday: 4:00 – 10:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 1213
+        },
+        "tripAdvisor": {
+          "score": 4.4,
+          "reviewCount": 1246,
+          "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 4.8,
+          "reviewCount": 1217
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "maaemo",
+      "name": "Maaemo",
+      "placeId": "ChIJhyP_qopuQUYRwvq5k9QGIy8",
+      "cuisine": "norwegian",
+      "pricePoint": "$$$$",
+      "address": "Dronning Eufemias gate 23, 0194 Oslo, Norway",
+      "website": "http://www.maaemo.no/",
+      "reservationRequired": true,
+      "openingHours": "Monday: Closed; Tuesday: 6:00 PM – 12:00 AM; Wednesday: 6:00 PM – 12:00 AM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 855
+        },
+        "tripAdvisor": {
+          "score": 4.7,
+          "reviewCount": 622,
+          "bubbleRating": 5
+        },
+        "facebook": {
+          "score": 4.8,
+          "reviewCount": 1164
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "levant-spektrum",
+      "name": "Levant Spektrum بلاد الشام",
+      "placeId": "ChIJTxr05zpvQUYRn_FRZPND-hU",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Stenersgata 10, 0184 Oslo, Norway",
+      "website": "https://levantspektrum.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 12:00 – 10:00 PM; Wednesday: 12:00 – 10:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 479
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "restaurant-kontrast",
+      "name": "Restaurant Kontrast",
+      "placeId": "ChIJoZWp-ipsQUYR-u_yrxmpgnI",
+      "cuisine": "norwegian",
+      "pricePoint": "$$$$",
+      "address": "Maridalsveien 15a, 0175 Oslo, Norway",
+      "website": "http://www.restaurant-kontrast.no/",
+      "reservationRequired": true,
+      "openingHours": "Monday: Closed; Tuesday: Closed; Wednesday: 6:00 PM – 12:00 AM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 461
+        },
+        "tripAdvisor": {
+          "score": 4.5,
+          "reviewCount": 361,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "lulu",
+      "name": "LuLu",
+      "placeId": "ChIJMyUxzWNuQUYRNDH6hd1976s",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Youngs gate 7, 0181 Oslo, Norway",
+      "website": "http://lulu.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 5:00 PM – 12:00 AM; Wednesday: 5:00 PM – 12:00 AM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 431
+        },
+        "tripAdvisor": {
+          "score": 4.2,
+          "reviewCount": 739,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "bnder-i-byen-grunerlkka",
+      "name": "Bønder i Byen Grünerløkka",
+      "placeId": "ChIJ37FJIEdvQUYRfID7gtdWe-E",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Seilduksgata 15, 0553 Oslo, Norway",
+      "website": "http://www.bonderibyen.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 10:00 PM; Tuesday: 11:00 AM – 10:00 PM; Wednesday: 11:00 AM – 10:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 398
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "la-mayor",
+      "name": "La Mayor",
+      "placeId": "ChIJIckAhWVvQUYR3z1nUchkWOY",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Bernt Ankers gate 25, 0183 Oslo, Norway",
+      "website": "http://www.lamayor.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 5:00 – 10:00 PM; Tuesday: 5:00 – 10:00 PM; Wednesday: 5:00 – 10:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 306
+        },
+        "tripAdvisor": {
+          "score": 4.3,
+          "reviewCount": 30,
+          "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 4.7,
+          "reviewCount": 12
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "hos-peder",
+      "name": "Hos Peder",
+      "placeId": "ChIJnWyJZ59vQUYRXr6IXQ9fASA",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Thorvald Meyers gate 40B, 0555 Oslo, Norway",
+      "website": "https://hospeder.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 4:00 – 11:00 PM; Wednesday: 4:00 – 11:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 300
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "lkka-sushi",
+      "name": "Løkka Sushi",
+      "placeId": "ChIJ-TJIH15vQUYRCKK5_cF3mWg",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Sannergata 28, 0557 Oslo, Norway",
+      "website": "http://løkkasushi.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 2:00 – 9:00 PM; Tuesday: 2:00 – 9:00 PM; Wednesday: Closed...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 94
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "mamma-pizza",
+      "name": "Mamma Pizza",
+      "placeId": "ChIJsccBuIluQUYR-6IZ8lW-kdA",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Dronningens gt. 22, 0154 Oslo, Norway",
+      "website": "https://www.mammapizza.no/osteria-italiana",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 9:30 PM; Tuesday: 11:00 AM – 9:30 PM; Wednesday: 11:00 AM – 9:30 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 6396
+        },
+        "tripAdvisor": {
+          "score": 4.7,
+          "reviewCount": 145,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "den-glade-gris",
+      "name": "Den Glade Gris",
+      "placeId": "ChIJQRB2oX5uQUYRTwy1N2whyOE",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "St. Olavs Gate 33, 0166 Oslo, Norway",
+      "website": "http://www.dengladegris.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 4:00 – 9:30 PM; Tuesday: 12:00 – 9:30 PM; Wednesday: 12:00 – 9:30 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 5135
+        },
+        "tripAdvisor": {
+          "score": 4.5,
+          "reviewCount": 2604,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "seaport-restaurant",
+      "name": "Seaport Restaurant",
+      "placeId": "ChIJoUVfDY1uQUYRI9tIEkOXOZo",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Sørengkaia 101, 0194 Oslo, Norway",
+      "website": "http://www.sea-port.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 12:00 – 11:00 PM; Tuesday: 12:00 – 11:00 PM; Wednesday: 12:00 – 11:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 3838
+        },
+        "tripAdvisor": {
+          "score": 4.6,
+          "reviewCount": 1325,
+          "bubbleRating": 5
+        },
+        "facebook": {
+          "score": 4.5,
+          "reviewCount": 293
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "yokoso-restaurant-aker-brygge",
+      "name": "Yokoso Restaurant Aker Brygge",
+      "placeId": "ChIJEajdotBvQUYRmbSDHGIyk_U",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Stranden 63, 0250 Oslo, Norway",
+      "website": "http://www.yokosorestaurant.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 10:00 PM; Tuesday: 11:00 AM – 10:30 PM; Wednesday: 11:00 AM – 10:30 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 2779
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "castello-restaurant-oslo",
+      "name": "Castello Restaurant - Oslo",
+      "placeId": "ChIJ5cRcHwZvQUYRVYh_sxWzEAI",
+      "cuisine": "norwegian",
+      "pricePoint": "$$$",
+      "address": "Sørengkaia 99, 0194 Oslo, Norway",
+      "website": "https://www.castellorestaurant.no/",
+      "reservationRequired": true,
+      "openingHours": "Monday: 12:00 – 11:00 PM; Tuesday: 12:00 – 11:00 PM; Wednesday: 12:00 – 11:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 1285
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "fiskeriet-bjrvika",
+      "name": "Fiskeriet Bjørvika",
+      "placeId": "ChIJ2fym8O5vQUYRZf6OtjUXn5U",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Operagata 69b, 0194 Oslo, Norway",
+      "website": "https://fiskeriet.net/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 10:30 PM; Tuesday: 11:00 AM – 10:30 PM; Wednesday: 11:00 AM – 10:30 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 571
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "helt-vilt-completely-wild",
+      "name": "Helt Vilt (Completely Wild)",
+      "placeId": "ChIJg-W9tZVvQUYR7WVbB_ql5Hs",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Vulkan 5, 0178 Oslo, Norway",
+      "website": "http://www.heltviltoslo.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 11:00 AM – 10:00 PM; Wednesday: 11:00 AM – 10:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 548
+        },
+        "tripAdvisor": {
+          "score": 4.3,
+          "reviewCount": 76,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "rugantino-oslo",
+      "name": "Rugantino Oslo",
+      "placeId": "ChIJiQywoPtvQUYRo10Xl_dCZGU",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Youngs gate 9, 0181 Oslo, Norway",
+      "website": "http://www.rugantino.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 4:00 – 11:00 PM; Tuesday: 4:00 – 11:00 PM; Wednesday: 4:00 – 11:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 399
+        },
+        "facebook": {
+          "score": 5.0,
+          "reviewCount": 10
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "koie-ramen",
+      "name": "Koie Ramen",
+      "placeId": "ChIJLa_z_GNuQUYRRhUe7WvM-Lk",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Osterhaus' gate 13, 0183 Oslo, Norway",
+      "website": "https://koieramen.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 10:00 PM; Tuesday: 11:00 AM – 10:00 PM; Wednesday: 11:00 AM – 10:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 2773
+        },
+        "tripAdvisor": {
+          "score": 4.0,
+          "reviewCount": 237,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "riviera-restaurant-bar",
+      "name": "Riviera Restaurant & Bar",
+      "placeId": "ChIJ76Zu8mtvQUYRjBABcCjp25A",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Grensen 10, 0159 Oslo, Norway",
+      "website": "https://www.riviera.restaurant/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 11:00 PM; Tuesday: 11:00 AM – 11:00 PM; Wednesday: 11:00 AM – 11:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 2174
+        },
+        "tripAdvisor": {
+          "score": 3.9,
+          "reviewCount": 222,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "vulkanfisk",
+      "name": "Vulkanfisk",
+      "placeId": "ChIJJVZavWVuQUYRXHlvxPkntP8",
+      "cuisine": "seafood",
+      "pricePoint": "$$",
+      "address": "Vulkan 5, 0178 Oslo, Norway",
+      "website": "https://www.vulkanfisk.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 11:30 AM – 10:00 PM; Wednesday: 11:30 AM – 10:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 1097
+        },
+        "tripAdvisor": {
+          "score": 4.3,
+          "reviewCount": 728,
+          "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 4.6,
+          "reviewCount": 342
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "kanpai-izakaya",
+      "name": "Kanpai Izakaya",
+      "placeId": "ChIJL8ijAJFvQUYRECyoVqQZoDA",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Parkveien 1b, 0350 Oslo, Norway",
+      "website": "http://www.kanpai.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 4:00 – 11:00 PM; Wednesday: 4:00 – 11:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 657
+        },
+        "tripAdvisor": {
+          "score": 4.1,
+          "reviewCount": 95,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "oslo-street-food",
+      "name": "Oslo Street Food",
+      "placeId": "ChIJ_82Ml0dvQUYR9CfRMglU_lo",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Torggata 16b, 0181 Oslo, Norway",
+      "website": "https://www.oslo-streetfood.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 11:00 PM; Tuesday: 11:00 AM – 11:00 PM; Wednesday: 11:00 AM – 11:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 7499
+        },
+        "tripAdvisor": {
+          "score": 4.1,
+          "reviewCount": 343,
+          "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 4.7,
+          "reviewCount": 694
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "fiskeriet-youngstorget",
+      "name": "Fiskeriet Youngstorget",
+      "placeId": "ChIJcyZ0NmJuQUYRwFeRww7iAxs",
+      "cuisine": "seafood",
+      "pricePoint": "$$",
+      "address": "Youngstorget 2b, 0181 Oslo, Norway",
+      "website": "http://www.fiskeriet.net/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 10:30 PM; Tuesday: 11:00 AM – 10:30 PM; Wednesday: 11:00 AM – 10:30 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 3131
+        },
+        "tripAdvisor": {
+          "score": 4.2,
+          "reviewCount": 1310,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "elias-mat-sant",
+      "name": "Elias mat & sånt",
+      "placeId": "ChIJSdUu-XxuQUYRDITcBHYCtYA",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Kristian Augusts gate 14, 0164 Oslo, Norway",
+      "website": "http://www.cafeelias.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 12:30 – 11:00 PM; Tuesday: 12:30 – 11:00 PM; Wednesday: 12:30 – 11:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 1670
+        },
+        "tripAdvisor": {
+          "score": 4.4,
+          "reviewCount": 2179,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "sushi-bowl",
+      "name": "Sushi Bowl",
+      "placeId": "ChIJjz7ILWJuQUYRE9UuVULEKRA",
+      "cuisine": "international",
+      "pricePoint": "$",
+      "address": "Tollbugata 17, 0152 Oslo, Norway",
+      "website": "http://www.sushibowl.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 12:00 – 9:00 PM; Tuesday: 12:00 – 9:00 PM; Wednesday: 12:00 – 9:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 829
+        },
+        "tripAdvisor": {
+          "score": 4.2,
+          "reviewCount": 76,
+          "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 4.9,
+          "reviewCount": 58
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "sabi-sushi-vika",
+      "name": "Sabi Sushi Vika",
+      "placeId": "ChIJWaC21H9uQUYR2cmfNkETwbE",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Ruseløkkveien 3, 0251 Oslo, Norway",
+      "website": "https://www.genki.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 10:00 PM; Tuesday: 11:00 AM – 10:00 PM; Wednesday: 11:00 AM – 10:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 545
+        },
+        "tripAdvisor": {
+          "score": 4.5,
+          "reviewCount": 88,
+          "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 5.0,
+          "reviewCount": 83
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "jonoe-ringnes-park",
+      "name": "Jonoe Ringnes Park",
+      "placeId": "ChIJwaC24mtuQUYR36r9Di7o0jI",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Thorvald Meyers gate 14, 0555 Oslo, Norway",
+      "website": "http://www.jonoe.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 2:00 – 10:30 PM; Tuesday: 2:00 – 10:30 PM; Wednesday: 2:00 – 10:30 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 329
+        },
+        "tripAdvisor": {
+          "score": 3.8,
+          "reviewCount": 125,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "roots-restaurant",
+      "name": "Roots Restaurant",
+      "placeId": "ChIJU3_U_P1vQUYRjC-DyGGunrw",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Grensen 10, 0159 Oslo, Norway",
+      "website": "https://www.koskososlo.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 2:00 – 10:00 PM; Tuesday: 2:00 – 10:00 PM; Wednesday: 2:00 – 10:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 189
+        },
+        "tripAdvisor": {
+          "score": 4.3,
+          "reviewCount": 23,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "rorbua-aker-brygge",
+      "name": "Rorbua Aker Brygge",
+      "placeId": "ChIJe4n4joFuQUYRMaNe6vdjcRM",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Stranden 71, 0250 Oslo, Norway",
+      "website": "http://www.rorbua.as/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 3:00 – 9:30 PM; Tuesday: 3:00 – 9:30 PM; Wednesday: 3:00 – 9:30 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 2762
+        },
+        "tripAdvisor": {
+          "score": 4.1,
+          "reviewCount": 1278,
+          "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 4.5,
+          "reviewCount": 918
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "hanami",
+      "name": "Hanami",
+      "placeId": "ChIJzcR-AIJuQUYR2DlFt0juc4o",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Kanalen 1, 0252 Oslo, Norway",
+      "website": "http://hanami.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 11:00 PM; Tuesday: 11:00 AM – 11:00 PM; Wednesday: 11:00 AM – 11:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 1197
+        },
+        "tripAdvisor": {
+          "score": 4.2,
+          "reviewCount": 940,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "skur-33",
+      "name": "Skur 33",
+      "placeId": "ChIJ53SynIZuQUYRu4gn-yPb61M",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Akershusstranda 11, 0150 Oslo, Norway",
+      "website": "http://skur33.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: Closed; Wednesday: 4:00 – 9:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 1114
+        },
+        "tripAdvisor": {
+          "score": 3.6,
+          "reviewCount": 565,
+          "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 4.6,
+          "reviewCount": 476
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "sjmagasinet",
+      "name": "Sjømagasinet",
+      "placeId": "ChIJN1_VGoJuQUYRmLx2kbijkyI",
+      "cuisine": "seafood",
+      "pricePoint": "$$$$",
+      "address": "Tjuvholmen allé 14, 0252 Oslo, Norway",
+      "website": "http://www.sjomagasinet.no/",
+      "reservationRequired": true,
+      "openingHours": "Monday: 11:30 AM – 11:00 PM; Tuesday: 11:30 AM – 11:00 PM; Wednesday: 11:30 AM – 11:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 764
+        },
+        "tripAdvisor": {
+          "score": 4.3,
+          "reviewCount": 1181,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "genji-izakaya-ramen",
+      "name": "Genji Izakaya Ramen",
+      "placeId": "ChIJ-3yqhFpvQUYRhtWdG5yZKA8",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Prinsens gate 8, 0152 Oslo, Norway",
+      "website": "https://www.genji.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 12:00 – 10:00 PM; Tuesday: 12:00 – 10:00 PM; Wednesday: 12:00 – 10:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 420
+        },
+        "tripAdvisor": {
+          "score": 4.4,
+          "reviewCount": 144,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "fish-me-oslo",
+      "name": "Fish Me Oslo",
+      "placeId": "ChIJnfQBYQBvQUYRbT2etbGzXSE",
+      "cuisine": "seafood",
+      "pricePoint": "$$",
+      "address": "Rådhusbrygge 4, 0160 Oslo, Norway",
+      "website": "https://fishme.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 11:00 AM – 10:00 PM; Wednesday: 11:00 AM – 10:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 103
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "restaurant-havsmak",
+      "name": "Restaurant Havsmak",
+      "placeId": "ChIJYWbwyn9uQUYR_-npVy_Z2o8",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Kirsten Flagstads plass 1, 0150, 0255 Oslo, Norway",
+      "website": "http://www.havsmak.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 4:00 – 11:00 PM; Wednesday: 4:00 – 11:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 74
+        },
+        "tripAdvisor": {
+          "score": 3.7,
+          "reviewCount": 28,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "lofoten-fiskerestaurant",
+      "name": "Lofoten Fiskerestaurant",
+      "placeId": "ChIJR8oEhoFuQUYRovvzW3cJbHQ",
+      "cuisine": "seafood",
+      "pricePoint": "$$$",
+      "address": "Stranden 75, 0250 Oslo, Norway",
+      "website": "http://www.lofoten-fiskerestaurant.no/",
+      "reservationRequired": true,
+      "openingHours": "Monday: 11:30 AM – 10:00 PM; Tuesday: 11:30 AM – 10:00 PM; Wednesday: 11:30 AM – 10:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.2,
+          "reviewCount": 1747
+        },
+        "tripAdvisor": {
+          "score": 3.8,
+          "reviewCount": 1407,
+          "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 4.5,
+          "reviewCount": 709
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "tavernan",
+      "name": "Taverna'n",
+      "placeId": "ChIJ9__DNGJuQUYRTsDefAlh_ks",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Youngstorget 1, 0181 Oslo, Norway",
+      "website": "http://tavernan.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 10:00 PM; Tuesday: 11:00 AM – 10:00 PM; Wednesday: 11:00 AM – 11:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.2,
+          "reviewCount": 1119
+        },
+        "tripAdvisor": {
+          "score": 3.9,
+          "reviewCount": 387,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "sushi-city-wok-skippergata",
+      "name": "Sushi City Wok - Skippergata",
+      "placeId": "ChIJRVml6YluQUYRhgJlvPnuV7M",
+      "cuisine": "international",
+      "pricePoint": "$",
+      "address": "Skippergata 32, 0154 Oslo, Norway",
+      "website": "https://www.sushicity.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 8:00 PM; Tuesday: 11:00 AM – 8:00 PM; Wednesday: 11:00 AM – 8:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.2,
+          "reviewCount": 947
+        },
+        "tripAdvisor": {
+          "score": 4.3,
+          "reviewCount": 168,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "cafe-cathedral",
+      "name": "Café Cathedral",
+      "placeId": "ChIJHUEmdmJuQUYRYLZuZ708vJY",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Dronningens gt. 27, 0154 Oslo, Norway",
+      "website": "http://cafecathedral.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 9:30 AM – 10:00 PM; Tuesday: 9:30 AM – 10:00 PM; Wednesday: 9:30 AM – 10:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.1,
+          "reviewCount": 2408
+        },
+        "tripAdvisor": {
+          "score": 3.8,
+          "reviewCount": 1137,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "sabrura-sticks-sushi-stortorvet",
+      "name": "Sabrura Sticks & Sushi - Stortorvet",
+      "placeId": "ChIJKZM8mzhvQUYRPZqNs_WYYtA",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Grensen 4, 0155 Oslo, Norway",
+      "website": "https://www.sabrurasushi.no/restauranter/ost-norge/sabrura-stortorvet/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 10:00 AM – 11:00 PM; Tuesday: 10:00 AM – 11:00 PM; Wednesday: 10:00 AM – 11:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.1,
+          "reviewCount": 1325
+        },
+        "tripAdvisor": {
+          "score": 2.3,
+          "reviewCount": 40,
+          "bubbleRating": 2
+        }
+      },
+      "diceScore": 4
+    },
+    {
+      "id": "sea-sushi-bar-hammersborggata",
+      "name": "Sea Sushi Bar Hammersborggata",
+      "placeId": "ChIJqSyJ1WNuQUYRS1RP6cxZ-Us",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Hammersborggata 9, 0181 Oslo, Norway",
+      "website": "https://www.seasushibar.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 3:00 – 9:00 PM; Tuesday: 3:00 – 9:00 PM; Wednesday: 3:00 – 9:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.1,
+          "reviewCount": 208
+        },
+        "tripAdvisor": {
+          "score": 4.0,
+          "reviewCount": 154,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "hawaii-oslo",
+      "name": "Hawaii Oslo",
+      "placeId": "ChIJDasVPTptQUYRqdbD7lnXBkI",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Torggata 16, 0181 Oslo, Norway",
+      "website": "http://www.facebook.com/hawaiioslo",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 10:00 PM; Tuesday: 11:00 AM – 10:00 PM; Wednesday: 11:00 AM – 10:00 PM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.1,
+          "reviewCount": 49
+        },
+        "tripAdvisor": {
+          "score": 4.9,
+          "reviewCount": 8,
+          "bubbleRating": 5
+        },
+        "facebook": {
+          "score": 5.0,
+          "reviewCount": 10
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "izakaya-bar-terrace",
+      "name": "Izakaya Bar & Terrace",
+      "placeId": "ChIJswoU5-ttQUYRWeF9onecv7Q",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Sommerrogata 1, 0255 Oslo, Norway",
+      "website": "https://www.sommerrohouse.com/en/restaurants/izakaya/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 4:00 – 11:00 PM; Wednesday: 4:00 PM – 12:00 AM...",
+      "description": "Restaurant in Oslo. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 3.5,
+          "reviewCount": 82
+        },
+        "tripAdvisor": {
+          "score": 4.4,
+          "reviewCount": 87,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    }
+  ]
+}

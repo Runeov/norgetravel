@@ -11,6 +11,16 @@ export interface TripAdvisorRating {
   reviewCount: number;
 }
 
+export interface YelpRating {
+  score: number;       // 1.0–5.0
+  reviewCount: number;
+}
+
+export interface FacebookRating {
+  score: number;       // 1.0–5.0
+  reviewCount: number;
+}
+
 export type MichelinDistinction =
   | { type: 'stars'; count: 1 | 2 | 3 }
   | { type: 'bib-gourmand' }
@@ -20,6 +30,8 @@ export type MichelinDistinction =
 export interface RestaurantRatings {
   google?: GoogleRating;
   tripAdvisor?: TripAdvisorRating;
+  yelp?: YelpRating;
+  facebook?: FacebookRating;
   michelin?: MichelinDistinction;
 }
 
@@ -55,6 +67,8 @@ export interface CityRestaurant {
   description: string;
   mustOrder?: string[];
   ratings: RestaurantRatings;
+  /** Composite score 1–6. Google 25% + TripAdvisor 25% + Yelp 25% + Facebook 25%. Michelin +10% bonus. */
+  diceScore?: number;
 }
 
 // ─── Affiliate ────────────────────────────────────────────────────────────────

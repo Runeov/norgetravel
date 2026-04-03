@@ -44,6 +44,43 @@ function TripAdvisorBubbles({ count }: { count: 1 | 2 | 3 | 4 | 5 }) {
   );
 }
 
+const DICE_COLORS: Record<number, string> = {
+  1: 'bg-red-500 text-white',
+  2: 'bg-orange-400 text-white',
+  3: 'bg-amber-400 text-slate-900',
+  4: 'bg-lime-500 text-white',
+  5: 'bg-emerald-500 text-white',
+  6: 'bg-[#1B3A5C] text-white',
+};
+
+const DICE_LABELS: Record<number, string> = {
+  1: 'Poor',
+  2: 'Below average',
+  3: 'Average',
+  4: 'Good',
+  5: 'Very good',
+  6: 'Exceptional',
+};
+
+function DiceScore({ score }: { score: number }) {
+  const color = DICE_COLORS[score] ?? 'bg-slate-400 text-white';
+  const label = DICE_LABELS[score] ?? '';
+  return (
+    <div className="flex items-center gap-2">
+      <span
+        className={cn(
+          'inline-flex items-center justify-center w-8 h-8 rounded-md text-sm font-black',
+          color
+        )}
+        aria-label={`Dice score ${score} of 6`}
+      >
+        {score}
+      </span>
+      <span className="text-xs font-medium text-slate-500">{label}</span>
+    </div>
+  );
+}
+
 const CUISINE_LABELS: Record<string, string> = {
   norwegian: 'Norwegian',
   seafood: 'Seafood',
@@ -99,15 +136,21 @@ export function RestaurantCard({ restaurant: r }: RestaurantCardProps) {
         </p>
       )}
 
-      {/* Ratings box */}
+      {/* Dice score + ratings */}
       <div className="border border-slate-100 rounded-md p-3 mb-4 space-y-2">
+        {r.diceScore != null && (
+          <div className="flex items-center justify-between mb-1 pb-2 border-b border-slate-100">
+            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wide">NorgeTravel Score</span>
+            <DiceScore score={r.diceScore} />
+          </div>
+        )}
         {r.ratings.google && (
           <div className="flex items-center justify-between text-sm">
             <span className="text-slate-500">Google</span>
             <span className="font-semibold text-slate-800">
               ★ {r.ratings.google.score.toFixed(1)}
               <span className="font-normal text-slate-400 ml-1">
-                ({r.ratings.google.reviewCount.toLocaleString()} reviews)
+                ({r.ratings.google.reviewCount.toLocaleString()})
               </span>
             </span>
           </div>
@@ -121,6 +164,28 @@ export function RestaurantCard({ restaurant: r }: RestaurantCardProps) {
                 ({r.ratings.tripAdvisor.reviewCount.toLocaleString()})
               </span>
             </div>
+          </div>
+        )}
+        {r.ratings.yelp && (
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-slate-500">Yelp</span>
+            <span className="font-semibold text-slate-800">
+              ★ {r.ratings.yelp.score.toFixed(1)}
+              <span className="font-normal text-slate-400 ml-1">
+                ({r.ratings.yelp.reviewCount.toLocaleString()})
+              </span>
+            </span>
+          </div>
+        )}
+        {r.ratings.facebook && (
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-slate-500">Facebook</span>
+            <span className="font-semibold text-slate-800">
+              ★ {r.ratings.facebook.score.toFixed(1)}
+              <span className="font-normal text-slate-400 ml-1">
+                ({r.ratings.facebook.reviewCount.toLocaleString()})
+              </span>
+            </span>
           </div>
         )}
       </div>
