@@ -87,11 +87,19 @@ MICHELIN_BONUS_TYPES = {"stars", "bib-gourmand"}
 MICHELIN_BONUS = 1.10
 
 RESTAURANT_CITIES = {
-    "tromso":     {"name": "Tromsø, Norway",    "country": "NO"},
+    "tromso":     {"name": "Tromsø, Norway",     "country": "NO"},
     "trondheim":  {"name": "Trondheim, Norway",  "country": "NO"},
     "stavanger":  {"name": "Stavanger, Norway",  "country": "NO"},
     "bergen":     {"name": "Bergen, Norway",     "country": "NO"},
     "oslo":       {"name": "Oslo, Norway",       "country": "NO"},
+    "alta":       {"name": "Alta, Norway",       "country": "NO"},
+    "lofoten":    {"name": "Lofoten, Norway",    "country": "NO"},
+    "bodo":       {"name": "Bodø, Norway",       "country": "NO"},
+    "hammerfest": {"name": "Hammerfest, Norway", "country": "NO"},
+    "narvik":     {"name": "Narvik, Norway",     "country": "NO"},
+    "senja":      {"name": "Senja, Norway",      "country": "NO"},
+    "nordkapp":   {"name": "Nordkapp, Norway",   "country": "NO"},
+    "lyngen":     {"name": "Lyngen, Norway",     "country": "NO"},
 }
 
 # Travel data JSON files (dict-keyed format: {id: {item}, ...})

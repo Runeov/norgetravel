@@ -27,6 +27,14 @@ CITIES = {
     "stavanger": {"name": "Stavanger", "slug": "stavanger"},
     "bergen": {"name": "Bergen", "slug": "bergen"},
     "oslo": {"name": "Oslo", "slug": "oslo"},
+    "alta": {"name": "Alta", "slug": "alta"},
+    "lofoten": {"name": "Lofoten", "slug": "lofoten"},
+    "bodo": {"name": "Bodø", "slug": "bodo"},
+    "hammerfest": {"name": "Hammerfest", "slug": "hammerfest"},
+    "narvik": {"name": "Narvik", "slug": "narvik"},
+    "senja": {"name": "Senja", "slug": "senja"},
+    "nordkapp": {"name": "Nordkapp", "slug": "nordkapp"},
+    "lyngen": {"name": "Lyngen", "slug": "lyngen"},
 }
 
 

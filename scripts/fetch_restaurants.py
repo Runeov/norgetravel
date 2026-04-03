@@ -87,6 +87,62 @@ CITIES = {
         "target": 200,
         "output": ROOT / "src" / "data" / "city-guides" / "restaurants-oslo.json",
     },
+    "alta": {
+        "name": "Alta",
+        "center": {"latitude": 69.9689, "longitude": 23.2716},
+        "radius": 5000,
+        "target": 30,
+        "output": ROOT / "src" / "data" / "city-guides" / "restaurants-alta.json",
+    },
+    "lofoten": {
+        "name": "Lofoten",
+        "center": {"latitude": 68.2342, "longitude": 14.5658},  # Svolvær area
+        "radius": 50000,  # 50km — covers the archipelago
+        "target": 40,
+        "output": ROOT / "src" / "data" / "city-guides" / "restaurants-lofoten.json",
+    },
+    "bodo": {
+        "name": "Bodø",
+        "center": {"latitude": 67.2804, "longitude": 14.4049},
+        "radius": 5000,
+        "target": 30,
+        "output": ROOT / "src" / "data" / "city-guides" / "restaurants-bodo.json",
+    },
+    "hammerfest": {
+        "name": "Hammerfest",
+        "center": {"latitude": 70.6634, "longitude": 23.6821},
+        "radius": 5000,
+        "target": 20,
+        "output": ROOT / "src" / "data" / "city-guides" / "restaurants-hammerfest.json",
+    },
+    "narvik": {
+        "name": "Narvik",
+        "center": {"latitude": 68.4385, "longitude": 17.4272},
+        "radius": 5000,
+        "target": 20,
+        "output": ROOT / "src" / "data" / "city-guides" / "restaurants-narvik.json",
+    },
+    "senja": {
+        "name": "Senja",
+        "center": {"latitude": 69.2850, "longitude": 17.0200},  # Finnsnes/Silsand area
+        "radius": 30000,  # 30km — covers accessible parts of island
+        "target": 15,
+        "output": ROOT / "src" / "data" / "city-guides" / "restaurants-senja.json",
+    },
+    "nordkapp": {
+        "name": "Nordkapp",
+        "center": {"latitude": 70.9787, "longitude": 25.9744},  # Honningsvåg
+        "radius": 10000,
+        "target": 15,
+        "output": ROOT / "src" / "data" / "city-guides" / "restaurants-nordkapp.json",
+    },
+    "lyngen": {
+        "name": "Lyngen",
+        "center": {"latitude": 69.5740, "longitude": 20.2090},
+        "radius": 15000,
+        "target": 10,
+        "output": ROOT / "src" / "data" / "city-guides" / "restaurants-lyngen.json",
+    },
 }
 
 # Map Google price_level to our PricePoint

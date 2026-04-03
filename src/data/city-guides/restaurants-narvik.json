@@ -1,0 +1,393 @@
+{
+  "_meta": {
+    "city": "Narvik",
+    "fetchedAt": "2026-04-03T20:40:52.268138+00:00",
+    "count": 17,
+    "note": "Fetched via Google Places API. All restaurants verified OPERATIONAL at fetch time. Descriptions marked 'pending editorial review' need manual editing."
+  },
+  "restaurants": [
+    {
+      "id": "glasskiosken",
+      "name": "Glasskiosken",
+      "placeId": "ChIJmdj4ewCV20URP2k4JrbZ6eY",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Tårnveien 26a, 8517 Narvik, Norway",
+      "website": "https://www.glasskiosken.no/",
+      "reservationRequired": false,
+      "openingHours": "Check website for hours",
+      "description": "Restaurant in Narvik. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 5,
+          "reviewCount": 24
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "sina-street-food",
+      "name": "sina street food",
+      "placeId": "ChIJX4Oiuai_20URWBDsYh9g23M",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "bakgården, Kongensgate 57, 8514 Narvik, Norway",
+      "website": null,
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 12:00 – 8:00 PM; Wednesday: 12:00 – 8:00 PM...",
+      "description": "Restaurant in Narvik. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.8,
+          "reviewCount": 35
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "gois-restaurant-og-cocktailbar",
+      "name": "Gois Restaurant og Cocktailbar",
+      "placeId": "ChIJ3cNKede_20URqjJTDA2TFLs",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Torgsvingen 15, 8514 Narvik, Norway",
+      "website": "https://gois.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 3:00 – 11:00 PM; Tuesday: 3:00 – 11:00 PM; Wednesday: 3:00 – 11:00 PM...",
+      "description": "Restaurant in Narvik. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 12
+        },
+        "tripAdvisor": {
+          "score": 4.3,
+          "reviewCount": 115,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "restaurant-fiskekroken-narvik",
+      "name": "Restaurant Fiskekroken Narvik",
+      "placeId": "ChIJ_aSC3Sm-20URwdnf0ACimbA",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Kongensgate 42, 8514 Narvik, Norway",
+      "website": "https://facebook.com/FiskekrokenNarvik/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 12:00 – 7:00 PM; Wednesday: 12:00 – 7:00 PM...",
+      "description": "Restaurant in Narvik. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 622
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "furu-gastropub",
+      "name": "Furu Gastropub",
+      "placeId": "ChIJgwpt6re_20URiY8Hd3NNFDs",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Kongensgate 36, 8514 Narvik, Norway",
+      "website": "https://www.facebook.com/FuruGastropub/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 12:00 – 11:00 PM; Tuesday: 12:00 – 11:00 PM; Wednesday: 12:00 – 11:00 PM...",
+      "description": "Restaurant in Narvik. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 403
+        },
+        "tripAdvisor": {
+          "score": 4.6,
+          "reviewCount": 129,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "nordre-matbar",
+      "name": "Nordre Matbar",
+      "placeId": "ChIJh3RJfAa_20URcX73q8SEUpM",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Dronningensgate 47, 8514 Narvik, Norway",
+      "website": "https://nordrematbar.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 3:00 PM – 1:00 AM; Wednesday: 3:00 PM – 1:00 AM...",
+      "description": "Restaurant in Narvik. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 65
+        },
+        "tripAdvisor": {
+          "score": 4.6,
+          "reviewCount": 225,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "fiskehallen-narvik",
+      "name": "Fiskehallen Narvik",
+      "placeId": "ChIJUwzr3im-20URlezncqnvmpI",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Kongensgate 42, 8514 Narvik, Norway",
+      "website": "https://facebook.com/FiskehallenDrift/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 9:30 AM – 4:30 PM; Tuesday: 9:30 AM – 4:30 PM; Wednesday: 9:30 AM – 4:30 PM...",
+      "description": "Restaurant in Narvik. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 278
+        },
+        "tripAdvisor": {
+          "score": 4.4,
+          "reviewCount": 330,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "linken-restaurant-bar",
+      "name": "Linken Restaurant & Bar",
+      "placeId": "ChIJi5DDRii-20URYn9jMHQ8eOA",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Kongensgate 64, 8514 Narvik, Norway",
+      "website": "https://qh.grand-royal.munu.shop/bookings",
+      "reservationRequired": false,
+      "openingHours": "Monday: 6:00 – 11:00 PM; Tuesday: 6:00 – 11:00 PM; Wednesday: 6:00 – 11:00 PM...",
+      "description": "Restaurant in Narvik. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 105
+        },
+        "tripAdvisor": {
+          "score": 4.3,
+          "reviewCount": 138,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "bella-napoli-restaurant-narvik",
+      "name": "Bella Napoli Restaurant Narvik",
+      "placeId": "ChIJUwzr3im-20UREGOHvWuRXTU",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Kongensgate 42, 8514 Narvik, Norway",
+      "website": "https://www.bella-napoli-narvik.com/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 2:00 – 10:30 PM; Tuesday: 2:00 – 10:30 PM; Wednesday: 2:00 – 10:30 PM...",
+      "description": "Restaurant in Narvik. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.2,
+          "reviewCount": 935
+        },
+        "tripAdvisor": {
+          "score": 3.4,
+          "reviewCount": 198,
+          "bubbleRating": 3
+        }
+      },
+      "diceScore": 4
+    },
+    {
+      "id": "milano-narvik",
+      "name": "Milano Narvik",
+      "placeId": "ChIJB04X8yS_20URaDvkvUGDy-U",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Dronningensgate 53, 8514 Narvik, Norway",
+      "website": "https://www.rootsandflame.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 2:00 – 10:30 PM; Wednesday: 2:00 – 10:30 PM...",
+      "description": "Restaurant in Narvik. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.2,
+          "reviewCount": 747
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "rallarn-pub-kro",
+      "name": "Rallar'n Pub & Kro",
+      "placeId": "ChIJc29rOvm_20URIo5gv5QrAFY",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Kongensgate 64, 8514 Narvik, Norway",
+      "website": "https://qh.grand-royal.munu.shop/bookings",
+      "reservationRequired": false,
+      "openingHours": "Monday: 3:00 – 11:00 PM; Tuesday: 3:00 – 11:00 PM; Wednesday: 3:00 – 11:00 PM...",
+      "description": "Restaurant in Narvik. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.2,
+          "reviewCount": 515
+        },
+        "tripAdvisor": {
+          "score": 3.7,
+          "reviewCount": 252,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "sushi-lab-narvik",
+      "name": "Sushi Lab Narvik",
+      "placeId": "ChIJdZFX4QRV2UURdaxrCgrEm88",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Fagernesveien 109, 8514 Narvik, Norway",
+      "website": "https://sushilab.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 1:00 – 8:00 PM; Wednesday: 1:00 – 8:00 PM...",
+      "description": "Restaurant in Narvik. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.2,
+          "reviewCount": 25
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "arilds-grillbar",
+      "name": "Arilds Grillbar",
+      "placeId": "ChIJUwzr3im-20URREE8v6IJ_wU",
+      "cuisine": "pub",
+      "pricePoint": "$$",
+      "address": "Torgsvingen 9, 8502 Narvik, Norway",
+      "website": null,
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 11:00 PM; Tuesday: 11:00 AM – 11:00 PM; Wednesday: 11:00 AM – 11:00 PM...",
+      "description": "Restaurant in Narvik. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.1,
+          "reviewCount": 437
+        },
+        "tripAdvisor": {
+          "score": 3.5,
+          "reviewCount": 12,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 4
+    },
+    {
+      "id": "duus-matverk-narvik",
+      "name": "Duus Matverk Narvik",
+      "placeId": "ChIJMV6brHS_20URzw5aK6TpBaA",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Kongensgate 66, 8514 Narvik, Norway",
+      "website": "http://duusmatverk.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 10:00 AM – 8:00 PM; Tuesday: 10:00 AM – 8:00 PM; Wednesday: 10:00 AM – 8:00 PM...",
+      "description": "Restaurant in Narvik. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.1,
+          "reviewCount": 125
+        },
+        "tripAdvisor": {
+          "score": 1.3,
+          "reviewCount": 3,
+          "bubbleRating": 1
+        }
+      },
+      "diceScore": 3
+    },
+    {
+      "id": "ttta-bar",
+      "name": "Tøtta Bar",
+      "placeId": "ChIJP4EJqICV20URu_q5U4tIX6M",
+      "cuisine": "pub",
+      "pricePoint": "$$",
+      "address": "Kongensgate 33, 8514 Narvik, Norway",
+      "website": "https://www.scandichotels.com/hotels/norway/narvik/scandic-narvik/restaurant-bar/totta-bar",
+      "reservationRequired": false,
+      "openingHours": "Monday: 6:00 – 11:00 PM; Tuesday: 6:00 – 11:00 PM; Wednesday: 6:00 – 11:00 PM...",
+      "description": "Restaurant in Narvik. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4,
+          "reviewCount": 166
+        },
+        "tripAdvisor": {
+          "score": 3.5,
+          "reviewCount": 136,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 4
+    },
+    {
+      "id": "jordbrpikene-narvik",
+      "name": "Jordbærpikene Narvik",
+      "placeId": "ChIJaRklJwqV20URQohFt7aHQ2Y",
+      "cuisine": "cafe",
+      "pricePoint": "$$",
+      "address": "Bolagsgata 1, 8514 Narvik, Norway",
+      "website": "https://www.jordbarpikene.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 10:00 AM – 8:00 PM; Tuesday: 10:00 AM – 8:00 PM; Wednesday: 10:00 AM – 8:00 PM...",
+      "description": "Restaurant in Narvik. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 3.7,
+          "reviewCount": 73
+        },
+        "tripAdvisor": {
+          "score": 3.3,
+          "reviewCount": 7,
+          "bubbleRating": 3
+        }
+      },
+      "diceScore": 4
+    },
+    {
+      "id": "tind-restaurant",
+      "name": "Tind Restaurant",
+      "placeId": "ChIJVVVlqICV20URBSoNydFNxag",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Kongensgate 33, 8514 Narvik, Norway",
+      "website": null,
+      "reservationRequired": false,
+      "openingHours": "Check website for hours",
+      "description": "Restaurant in Narvik. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 3.7,
+          "reviewCount": 13
+        },
+        "tripAdvisor": {
+          "score": 3.8,
+          "reviewCount": 67,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 4
+    }
+  ]
+}

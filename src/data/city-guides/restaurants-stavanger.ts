@@ -118,8 +118,8 @@ export const stavangerRestaurants: CityRestaurant[] = [
       reservationRequired: false,
       openingHours: 'Monday: Closed; Tuesday: Closed; Wednesday: 5:00\u2009\u2013\u200911:00\u202FPM...',
       description: "Restaurant in Stavanger. Description pending editorial review.",
-      ratings: { google: { score: 4.8, reviewCount: 170 }, tripAdvisor: { score: 4.4, reviewCount: 258, bubbleRating: 4 } },
-      diceScore: 6,
+      ratings: { google: { score: 4.8, reviewCount: 170 }, tripAdvisor: { score: 4.4, reviewCount: 258, bubbleRating: 4 }, facebook: { score: 3.4, reviewCount: 642 } },
+      diceScore: 5,
     },
     {
       id: 'sabi-omakase',
@@ -132,8 +132,8 @@ export const stavangerRestaurants: CityRestaurant[] = [
       reservationRequired: true,
       openingHours: 'Monday: Closed; Tuesday: Closed; Wednesday: 7:00\u202FPM\u2009\u2013\u200912:00\u202FAM...',
       description: "Restaurant in Stavanger. Description pending editorial review.",
-      ratings: { google: { score: 4.8, reviewCount: 152 }, tripAdvisor: { score: 4.3, reviewCount: 257, bubbleRating: 4 } },
-      diceScore: 5,
+      ratings: { google: { score: 4.8, reviewCount: 152 }, tripAdvisor: { score: 4.3, reviewCount: 257, bubbleRating: 4 }, facebook: { score: 5.0, reviewCount: 211 } },
+      diceScore: 6,
     },
     {
       id: 'savor',
@@ -230,7 +230,7 @@ export const stavangerRestaurants: CityRestaurant[] = [
       reservationRequired: false,
       openingHours: 'Monday: Closed; Tuesday: 2:00\u2009\u2013\u20099:00\u202FPM; Wednesday: 2:00\u2009\u2013\u20099:00\u202FPM...',
       description: "Restaurant in Stavanger. Description pending editorial review.",
-      ratings: { google: { score: 4.7, reviewCount: 149 }, tripAdvisor: { score: 4.7, reviewCount: 17, bubbleRating: 5 } },
+      ratings: { google: { score: 4.7, reviewCount: 149 }, tripAdvisor: { score: 4.7, reviewCount: 17, bubbleRating: 5 }, facebook: { score: 5.0, reviewCount: 79 } },
       diceScore: 6,
     },
     {
@@ -258,7 +258,7 @@ export const stavangerRestaurants: CityRestaurant[] = [
       reservationRequired: false,
       openingHours: 'Monday: Closed; Tuesday: 5:45\u202FPM\u2009\u2013\u200912:00\u202FAM; Wednesday: 5:45\u202FPM\u2009\u2013\u200912:00\u202FAM...',
       description: "Restaurant in Stavanger. Description pending editorial review.",
-      ratings: { google: { score: 4.7, reviewCount: 65 } },
+      ratings: { google: { score: 4.7, reviewCount: 65 }, facebook: { score: 5.0, reviewCount: 14 } },
       diceScore: 6,
     },
     {
@@ -272,7 +272,7 @@ export const stavangerRestaurants: CityRestaurant[] = [
       reservationRequired: false,
       openingHours: 'Monday: Closed; Tuesday: 2:00\u2009\u2013\u200910:00\u202FPM; Wednesday: 2:00\u2009\u2013\u200910:00\u202FPM...',
       description: "Restaurant in Stavanger. Description pending editorial review.",
-      ratings: { google: { score: 4.6, reviewCount: 843 }, tripAdvisor: { score: 4.6, reviewCount: 112, bubbleRating: 5 } },
+      ratings: { google: { score: 4.6, reviewCount: 843 }, tripAdvisor: { score: 4.6, reviewCount: 112, bubbleRating: 5 }, facebook: { score: 5.0, reviewCount: 54 } },
       diceScore: 6,
     },
     {
@@ -370,7 +370,7 @@ export const stavangerRestaurants: CityRestaurant[] = [
       reservationRequired: false,
       openingHours: 'Monday: 11:00\u202FAM\u2009\u2013\u200912:00\u202FAM; Tuesday: 11:00\u202FAM\u2009\u2013\u200912:00\u202FAM; Wednesday: 11:00\u202FAM\u2009\u2013\u200912:00\u202FAM...',
       description: "Restaurant in Stavanger. Description pending editorial review.",
-      ratings: { google: { score: 4.4, reviewCount: 2523 }, tripAdvisor: { score: 4.2, reviewCount: 1303, bubbleRating: 4 } },
+      ratings: { google: { score: 4.4, reviewCount: 2523 }, tripAdvisor: { score: 4.2, reviewCount: 1303, bubbleRating: 4 }, facebook: { score: 4.6, reviewCount: 774 } },
       diceScore: 5,
     },
     {
@@ -482,7 +482,7 @@ export const stavangerRestaurants: CityRestaurant[] = [
       reservationRequired: false,
       openingHours: 'Monday: 11:00\u202FAM\u2009\u2013\u20099:00\u202FPM; Tuesday: 11:00\u202FAM\u2009\u2013\u20099:00\u202FPM; Wednesday: 11:00\u202FAM\u2009\u2013\u20099:00\u202FPM...',
       description: "Restaurant in Stavanger. Description pending editorial review.",
-      ratings: { google: { score: 4.3, reviewCount: 285 }, tripAdvisor: { score: 4.0, reviewCount: 70, bubbleRating: 4 } },
+      ratings: { google: { score: 4.3, reviewCount: 285 }, tripAdvisor: { score: 4.0, reviewCount: 70, bubbleRating: 4 }, facebook: { score: 4.6, reviewCount: 217 } },
       diceScore: 5,
     },
     {
@@ -496,7 +496,7 @@ export const stavangerRestaurants: CityRestaurant[] = [
       reservationRequired: false,
       openingHours: 'Monday: 11:00\u202FAM\u2009\u2013\u200911:00\u202FPM; Tuesday: 11:00\u202FAM\u2009\u2013\u200911:00\u202FPM; Wednesday: 11:00\u202FAM\u2009\u2013\u200911:00\u202FPM...',
       description: "Restaurant in Stavanger. Description pending editorial review.",
-      ratings: { google: { score: 4.2, reviewCount: 2166 }, tripAdvisor: { score: 3.8, reviewCount: 584, bubbleRating: 4 } },
+      ratings: { google: { score: 4.2, reviewCount: 2166 }, tripAdvisor: { score: 3.8, reviewCount: 584, bubbleRating: 4 }, facebook: { score: 4.1, reviewCount: 343 } },
       diceScore: 5,
     },
     {
@@ -510,7 +510,7 @@ export const stavangerRestaurants: CityRestaurant[] = [
       reservationRequired: true,
       openingHours: 'Monday: 3:00\u2009\u2013\u200911:00\u202FPM; Tuesday: 3:00\u2009\u2013\u200911:00\u202FPM; Wednesday: 3:00\u2009\u2013\u200911:00\u202FPM...',
       description: "Restaurant in Stavanger. Description pending editorial review.",
-      ratings: { google: { score: 4.2, reviewCount: 1343 }, tripAdvisor: { score: 3.5, reviewCount: 176, bubbleRating: 4 } },
+      ratings: { google: { score: 4.2, reviewCount: 1343 }, tripAdvisor: { score: 3.5, reviewCount: 176, bubbleRating: 4 }, facebook: { score: 4.5, reviewCount: 61 } },
       diceScore: 5,
     },
     {
@@ -677,8 +677,8 @@ export const stavangerRestaurants: CityRestaurant[] = [
       reservationRequired: false,
       openingHours: 'Monday: 1:00\u2009\u2013\u200910:00\u202FPM; Tuesday: 1:00\u2009\u2013\u200910:00\u202FPM; Wednesday: 1:00\u2009\u2013\u200910:00\u202FPM...',
       description: "Restaurant in Stavanger. Description pending editorial review.",
-      ratings: { google: { score: 3.7, reviewCount: 944 }, tripAdvisor: { score: 2.2, reviewCount: 72, bubbleRating: 2 } },
-      diceScore: 3,
+      ratings: { google: { score: 3.7, reviewCount: 944 }, tripAdvisor: { score: 2.2, reviewCount: 72, bubbleRating: 2 }, facebook: { score: 3.5, reviewCount: 53 } },
+      diceScore: 4,
     },
     {
       id: 'mikado-hong-kong-garden',
@@ -691,7 +691,7 @@ export const stavangerRestaurants: CityRestaurant[] = [
       reservationRequired: false,
       openingHours: 'Monday: 12:30\u2009\u2013\u200910:00\u202FPM; Tuesday: 12:30\u2009\u2013\u200910:00\u202FPM; Wednesday: 12:30\u2009\u2013\u200910:00\u202FPM...',
       description: "Restaurant in Stavanger. Description pending editorial review.",
-      ratings: { google: { score: 3.7, reviewCount: 618 }, tripAdvisor: { score: 4.2, reviewCount: 39, bubbleRating: 4 } },
+      ratings: { google: { score: 3.7, reviewCount: 618 }, tripAdvisor: { score: 4.2, reviewCount: 39, bubbleRating: 4 }, facebook: { score: 3.6, reviewCount: 243 } },
       diceScore: 5,
     },
     {
