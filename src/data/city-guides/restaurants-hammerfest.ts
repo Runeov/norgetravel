@@ -20,7 +20,7 @@ export const hammerfestRestaurants: CityRestaurant[] = [
       reservationRequired: false,
       openingHours: 'Monday: Closed; Tuesday: 11:00\u202FAM\u2009\u2013\u20097:00\u202FPM; Wednesday: 11:00\u202FAM\u2009\u2013\u20097:00\u202FPM...',
       description: "Restaurant in Hammerfest. Description pending editorial review.",
-      ratings: { google: { score: 4.8, reviewCount: 256 }, tripAdvisor: { score: 4.7, reviewCount: 43, bubbleRating: 5 } },
+      ratings: { google: { score: 4.8, reviewCount: 256 }, tripAdvisor: { score: 4.7, reviewCount: 43, bubbleRating: 5 }, facebook: { score: 4.7, reviewCount: 31 } },
       diceScore: 6,
     },
     {
@@ -61,7 +61,7 @@ export const hammerfestRestaurants: CityRestaurant[] = [
       reservationRequired: false,
       openingHours: 'Monday: 10:00\u202FAM\u2009\u2013\u20093:30\u202FPM; Tuesday: 10:00\u202FAM\u2009\u2013\u20093:30\u202FPM; Wednesday: 10:00\u202FAM\u2009\u2013\u20093:30\u202FPM...',
       description: "Restaurant in Hammerfest. Description pending editorial review.",
-      ratings: { google: { score: 4.7, reviewCount: 21 }, tripAdvisor: { score: 5.0, reviewCount: 5, bubbleRating: 5 } },
+      ratings: { google: { score: 4.7, reviewCount: 21 }, tripAdvisor: { score: 5.0, reviewCount: 5, bubbleRating: 5 }, facebook: { score: 5.0, reviewCount: 14 } },
       diceScore: 6,
     },
     {
@@ -117,8 +117,8 @@ export const hammerfestRestaurants: CityRestaurant[] = [
       reservationRequired: false,
       openingHours: 'Monday: 10:30\u202FAM\u2009\u2013\u20099:30\u202FPM; Tuesday: 10:30\u202FAM\u2009\u2013\u20099:30\u202FPM; Wednesday: 10:30\u202FAM\u2009\u2013\u20099:30\u202FPM...',
       description: "Restaurant in Hammerfest. Description pending editorial review.",
-      ratings: { google: { score: 4.3, reviewCount: 207 }, tripAdvisor: { score: 4.3, reviewCount: 959, bubbleRating: 4 } },
-      diceScore: 5,
+      ratings: { google: { score: 4.3, reviewCount: 207 }, tripAdvisor: { score: 4.3, reviewCount: 959, bubbleRating: 4 }, facebook: { score: 2.0, reviewCount: 66 } },
+      diceScore: 4,
     },
     {
       id: 'enjoy-cafe-thai-take-away-as',
@@ -227,7 +227,7 @@ export const hammerfestRestaurants: CityRestaurant[] = [
       reservationRequired: false,
       openingHours: 'Monday: 11:00\u202FAM\u2009\u2013\u200910:00\u202FPM; Tuesday: 11:00\u202FAM\u2009\u2013\u200910:00\u202FPM; Wednesday: 11:00\u202FAM\u2009\u2013\u200910:00\u202FPM...',
       description: "Restaurant in Hammerfest. Description pending editorial review.",
-      ratings: { google: { score: 3.9, reviewCount: 19 } },
+      ratings: { google: { score: 3.9, reviewCount: 19 }, facebook: { score: 4.5, reviewCount: 23 } },
       diceScore: 5,
     },
     {

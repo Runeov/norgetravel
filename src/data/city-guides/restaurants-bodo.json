@@ -1,8 +1,8 @@
 {
   "_meta": {
     "city": "Bodø",
-    "fetchedAt": "2026-04-03T20:38:38.154112+00:00",
-    "count": 28,
+    "fetchedAt": "2026-04-05T17:41:28.361112+00:00",
+    "count": 32,
     "note": "Fetched via Google Places API. All restaurants verified OPERATIONAL at fetch time. Descriptions marked 'pending editorial review' need manual editing."
   },
   "restaurants": [
@@ -69,6 +69,10 @@
           "score": 4.7,
           "reviewCount": 3,
           "bubbleRating": 5
+        },
+        "facebook": {
+          "score": 4.8,
+          "reviewCount": 58
         }
       },
       "diceScore": 6
@@ -155,6 +159,10 @@
           "score": 4.1,
           "reviewCount": 294,
           "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 4.7,
+          "reviewCount": 450
         }
       },
       "diceScore": 5
@@ -375,6 +383,10 @@
           "score": 3.7,
           "reviewCount": 23,
           "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 3.8,
+          "reviewCount": 342
         }
       },
       "diceScore": 5
@@ -485,6 +497,10 @@
         "google": {
           "score": 4.1,
           "reviewCount": 108
+        },
+        "facebook": {
+          "score": 5.0,
+          "reviewCount": 6
         }
       },
       "diceScore": 5
@@ -623,6 +639,92 @@
         "tripAdvisor": {
           "score": 3.2,
           "reviewCount": 41,
+          "bubbleRating": 3
+        }
+      },
+      "diceScore": 4
+    },
+    {
+      "id": "fellini-pizza-bod",
+      "name": "Fellini pizza - Bodø",
+      "placeId": "ChIJ_0e4cWEX30URXro1fZD9aXo",
+      "cuisine": "international",
+      "pricePoint": "$",
+      "address": "Mørkvedsentret 11, 8028 Bodø, Norway",
+      "website": "http://www.fellinipizza.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 2:00 – 9:00 PM; Tuesday: 2:00 – 9:00 PM; Wednesday: 2:00 – 9:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 446
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "royal-pizzeria",
+      "name": "Royal Pizzeria",
+      "placeId": "ChIJkz955m0a30URtml65zQagAA",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "8015 Løpsmarka, Norway",
+      "website": null,
+      "reservationRequired": false,
+      "openingHours": "Monday: 2:00 – 9:00 PM; Tuesday: 2:00 – 9:00 PM; Wednesday: 2:00 – 9:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 77
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "china-garden-bod-as",
+      "name": "China Garden Bodø AS",
+      "placeId": "ChIJ76jy2F8Q30URegJ-uGctUGg",
+      "cuisine": "international",
+      "pricePoint": "$",
+      "address": "Storgata 60, 8006 Bodø, Norway",
+      "website": null,
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 2:00 – 9:00 PM; Wednesday: 2:00 – 9:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.1,
+          "reviewCount": 307
+        },
+        "tripAdvisor": {
+          "score": 3.4,
+          "reviewCount": 48,
+          "bubbleRating": 3
+        }
+      },
+      "diceScore": 4
+    },
+    {
+      "id": "great-gandhi",
+      "name": "Great Gandhi",
+      "placeId": "ChIJj1zhM-f_g0QRX-dIVAJWwvE",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Dronningens gate 25, 8006 Bodø, Norway",
+      "website": "https://great-gandhi.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 2:00 – 11:00 PM; Tuesday: 2:00 – 11:00 PM; Wednesday: 2:00 – 11:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4,
+          "reviewCount": 544
+        },
+        "tripAdvisor": {
+          "score": 3.3,
+          "reviewCount": 171,
           "bubbleRating": 3
         }
       },

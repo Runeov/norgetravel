@@ -184,6 +184,10 @@
           "score": 4.9,
           "reviewCount": 22,
           "bubbleRating": 5
+        },
+        "facebook": {
+          "score": 5.0,
+          "reviewCount": 23
         }
       },
       "diceScore": 6
@@ -332,9 +336,13 @@
           "score": 4.5,
           "reviewCount": 645,
           "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 4.9,
+          "reviewCount": 260
         }
       },
-      "diceScore": 5
+      "diceScore": 6
     },
     {
       "id": "klatrekafeen",
@@ -533,6 +541,10 @@
           "score": 4.3,
           "reviewCount": 744,
           "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 4.8,
+          "reviewCount": 717
         }
       },
       "diceScore": 5
@@ -605,9 +617,13 @@
           "score": 4.3,
           "reviewCount": 299,
           "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 5.0,
+          "reviewCount": 55
         }
       },
-      "diceScore": 5
+      "diceScore": 6
     },
     {
       "id": "solsiden-lofoten",
@@ -629,6 +645,10 @@
           "score": 4.1,
           "reviewCount": 37,
           "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 4.2,
+          "reviewCount": 5
         }
       },
       "diceScore": 5
@@ -677,6 +697,10 @@
           "score": 3.7,
           "reviewCount": 272,
           "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 4.4,
+          "reviewCount": 472
         }
       },
       "diceScore": 5

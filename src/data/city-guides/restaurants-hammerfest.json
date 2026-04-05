@@ -1,7 +1,7 @@
 {
   "_meta": {
     "city": "Hammerfest",
-    "fetchedAt": "2026-04-03T20:40:49.479155+00:00",
+    "fetchedAt": "2026-04-05T17:41:30.235201+00:00",
     "count": 17,
     "note": "Fetched via Google Places API. All restaurants verified OPERATIONAL at fetch time. Descriptions marked 'pending editorial review' need manual editing."
   },
@@ -26,6 +26,10 @@
           "score": 4.7,
           "reviewCount": 43,
           "bubbleRating": 5
+        },
+        "facebook": {
+          "score": 4.7,
+          "reviewCount": 31
         }
       },
       "diceScore": 6
@@ -88,6 +92,10 @@
           "score": 5.0,
           "reviewCount": 5,
           "bubbleRating": 5
+        },
+        "facebook": {
+          "score": 5.0,
+          "reviewCount": 14
         }
       },
       "diceScore": 6
@@ -184,9 +192,13 @@
           "score": 4.3,
           "reviewCount": 959,
           "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 2.0,
+          "reviewCount": 66
         }
       },
-      "diceScore": 5
+      "diceScore": 4
     },
     {
       "id": "enjoy-cafe-thai-take-away-as",
@@ -346,6 +358,10 @@
         "google": {
           "score": 3.9,
           "reviewCount": 19
+        },
+        "facebook": {
+          "score": 4.5,
+          "reviewCount": 23
         }
       },
       "diceScore": 5

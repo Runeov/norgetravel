@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, MapPin, Clock, Thermometer } from 'lucide-react';
+import { ArrowRight, MapPin, Clock, Thermometer, UtensilsCrossed } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
+import { RestaurantGrid } from '@/components/modules/destinations/RestaurantGrid';
+import { lofotenRestaurants } from '@/data/city-guides/restaurants-lofoten';
 import heroImage from '@/assets/karasjok_Over.avif';
 
 export const metadata: Metadata = {
@@ -136,6 +138,25 @@ export default function LofotenPage() {
           </div>
         </div>
       </section>
+
+      {/* Restaurants */}
+      {lofotenRestaurants.length > 0 && (
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center gap-3 mb-4">
+              <UtensilsCrossed className="w-6 h-6 text-[#1A365D]" aria-hidden="true" />
+              <h2 className="text-3xl font-bold text-slate-900">Where to eat in Lofoten</h2>
+            </div>
+            <p className="text-slate-600 mb-12 max-w-2xl">
+              {lofotenRestaurants.length} restaurants across the archipelago. Scores combine Google, TripAdvisor, Facebook, and Yelp ratings.
+            </p>
+            <RestaurantGrid
+              restaurants={lofotenRestaurants}
+              cityName="Lofoten"
+            />
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] text-white">

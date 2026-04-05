@@ -179,6 +179,10 @@
           "score": 4.3,
           "reviewCount": 49,
           "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 4.8,
+          "reviewCount": 369
         }
       },
       "diceScore": 5
@@ -246,6 +250,10 @@
           "score": 4.2,
           "reviewCount": 97,
           "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 4.6,
+          "reviewCount": 293
         }
       },
       "diceScore": 5

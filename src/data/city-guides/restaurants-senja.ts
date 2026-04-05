@@ -117,7 +117,7 @@ export const senjaRestaurants: CityRestaurant[] = [
       reservationRequired: false,
       openingHours: 'Monday: 8:00\u2009\u2013\u200910:00\u202FAM, 5:00\u2009\u2013\u20098:30\u202FPM; Tuesday: 8:00\u2009\u2013\u200910:00\u202FAM, 5:00\u2009\u2013\u20098:30\u202FPM; Wednesday: 8:00\u2009\u2013\u200910:00\u202FAM, 5:00\u2009\u2013\u20098:30\u202FPM...',
       description: "Restaurant in Senja. Description pending editorial review.",
-      ratings: { google: { score: 4.6, reviewCount: 1009 }, tripAdvisor: { score: 4.3, reviewCount: 49, bubbleRating: 4 } },
+      ratings: { google: { score: 4.6, reviewCount: 1009 }, tripAdvisor: { score: 4.3, reviewCount: 49, bubbleRating: 4 }, facebook: { score: 4.8, reviewCount: 369 } },
       diceScore: 5,
     },
     {
@@ -159,7 +159,7 @@ export const senjaRestaurants: CityRestaurant[] = [
       reservationRequired: false,
       openingHours: 'Monday: 1:00\u2009\u2013\u20099:00\u202FPM; Tuesday: 1:00\u2009\u2013\u20099:00\u202FPM; Wednesday: 1:00\u2009\u2013\u20099:00\u202FPM...',
       description: "Restaurant in Senja. Description pending editorial review.",
-      ratings: { google: { score: 4.5, reviewCount: 719 }, tripAdvisor: { score: 4.2, reviewCount: 97, bubbleRating: 4 } },
+      ratings: { google: { score: 4.5, reviewCount: 719 }, tripAdvisor: { score: 4.2, reviewCount: 97, bubbleRating: 4 }, facebook: { score: 4.6, reviewCount: 293 } },
       diceScore: 5,
     },
     {

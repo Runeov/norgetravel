@@ -2,9 +2,39 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowRight, ArrowLeft, MapPin } from 'lucide-react';
+import { ArrowRight, ArrowLeft, MapPin, UtensilsCrossed } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { getCity, getCityAttractions, getAllCitySlugs } from '@/data/city-attractions';
+import { RestaurantGrid } from '@/components/modules/destinations/RestaurantGrid';
+import type { CityRestaurant } from '@/types/city-guide';
+
+import { osloRestaurants } from '@/data/city-guides/restaurants-oslo';
+import { bergenRestaurants } from '@/data/city-guides/restaurants-bergen';
+import { trondheimRestaurants } from '@/data/city-guides/restaurants-trondheim';
+import { stavangerRestaurants } from '@/data/city-guides/restaurants-stavanger';
+import { tromsoRestaurants } from '@/data/city-guides/restaurants-tromso';
+import { altaRestaurants } from '@/data/city-guides/restaurants-alta';
+import { bodoRestaurants } from '@/data/city-guides/restaurants-bodo';
+import { hammerfestRestaurants } from '@/data/city-guides/restaurants-hammerfest';
+import { narvikRestaurants } from '@/data/city-guides/restaurants-narvik';
+import { senjaRestaurants } from '@/data/city-guides/restaurants-senja';
+import { nordkappRestaurants } from '@/data/city-guides/restaurants-nordkapp';
+import { lyngenRestaurants } from '@/data/city-guides/restaurants-lyngen';
+
+const CITY_RESTAURANTS: Record<string, CityRestaurant[]> = {
+  oslo: osloRestaurants,
+  bergen: bergenRestaurants,
+  trondheim: trondheimRestaurants,
+  stavanger: stavangerRestaurants,
+  tromso: tromsoRestaurants,
+  alta: altaRestaurants,
+  bodo: bodoRestaurants,
+  hammerfest: hammerfestRestaurants,
+  narvik: narvikRestaurants,
+  senja: senjaRestaurants,
+  nordkapp: nordkappRestaurants,
+  lyngen: lyngenRestaurants,
+};
 
 interface PageProps {
   params: Promise<{ city: string }>;
@@ -116,6 +146,25 @@ export default async function CityPage({ params }: PageProps) {
           </div>
         </div>
       </section>
+
+      {/* Restaurants */}
+      {CITY_RESTAURANTS[citySlug] && CITY_RESTAURANTS[citySlug].length > 0 && (
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center gap-3 mb-4">
+              <UtensilsCrossed className="w-6 h-6 text-[#1A365D]" aria-hidden="true" />
+              <h2 className="text-3xl font-bold text-slate-900">Where to eat in {city.name}</h2>
+            </div>
+            <p className="text-slate-600 mb-12 max-w-2xl">
+              {CITY_RESTAURANTS[citySlug].length} restaurants rated by NorgeTravel. Scores combine Google, TripAdvisor, Facebook, and Yelp ratings.
+            </p>
+            <RestaurantGrid
+              restaurants={CITY_RESTAURANTS[citySlug]}
+              cityName={city.name}
+            />
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] text-white">

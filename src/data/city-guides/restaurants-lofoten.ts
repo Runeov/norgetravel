@@ -116,7 +116,7 @@ export const lofotenRestaurants: CityRestaurant[] = [
       reservationRequired: false,
       openingHours: 'Monday: 9:00\u202FAM\u2009\u2013\u20093:30\u202FPM; Tuesday: 9:00\u202FAM\u2009\u2013\u20093:30\u202FPM; Wednesday: 9:00\u202FAM\u2009\u2013\u20093:30\u202FPM...',
       description: "Restaurant in Lofoten. Description pending editorial review.",
-      ratings: { google: { score: 4.7, reviewCount: 231 }, tripAdvisor: { score: 4.9, reviewCount: 22, bubbleRating: 5 } },
+      ratings: { google: { score: 4.7, reviewCount: 231 }, tripAdvisor: { score: 4.9, reviewCount: 22, bubbleRating: 5 }, facebook: { score: 5.0, reviewCount: 23 } },
       diceScore: 6,
     },
     {
@@ -214,8 +214,8 @@ export const lofotenRestaurants: CityRestaurant[] = [
       reservationRequired: false,
       openingHours: 'Monday: Closed; Tuesday: Closed; Wednesday: 6:00\u2009\u2013\u20099:00\u202FPM...',
       description: "Restaurant in Lofoten. Description pending editorial review.",
-      ratings: { google: { score: 4.6, reviewCount: 990 }, tripAdvisor: { score: 4.5, reviewCount: 645, bubbleRating: 4 } },
-      diceScore: 5,
+      ratings: { google: { score: 4.6, reviewCount: 990 }, tripAdvisor: { score: 4.5, reviewCount: 645, bubbleRating: 4 }, facebook: { score: 4.9, reviewCount: 260 } },
+      diceScore: 6,
     },
     {
       id: 'klatrekafeen',
@@ -339,7 +339,7 @@ export const lofotenRestaurants: CityRestaurant[] = [
       reservationRequired: false,
       openingHours: 'Monday: 12:00\u2009\u2013\u20098:00\u202FPM; Tuesday: 12:00\u2009\u2013\u20098:00\u202FPM; Wednesday: 12:00\u2009\u2013\u20098:00\u202FPM...',
       description: "Restaurant in Lofoten. Description pending editorial review.",
-      ratings: { google: { score: 4.5, reviewCount: 1570 }, tripAdvisor: { score: 4.3, reviewCount: 744, bubbleRating: 4 } },
+      ratings: { google: { score: 4.5, reviewCount: 1570 }, tripAdvisor: { score: 4.3, reviewCount: 744, bubbleRating: 4 }, facebook: { score: 4.8, reviewCount: 717 } },
       diceScore: 5,
     },
     {
@@ -381,8 +381,8 @@ export const lofotenRestaurants: CityRestaurant[] = [
       reservationRequired: false,
       openingHours: 'Monday: 6:00\u2009\u2013\u200910:00\u202FPM; Tuesday: 6:00\u2009\u2013\u200910:00\u202FPM; Wednesday: 6:00\u2009\u2013\u200910:00\u202FPM...',
       description: "Restaurant in Lofoten. Description pending editorial review.",
-      ratings: { google: { score: 4.5, reviewCount: 288 }, tripAdvisor: { score: 4.3, reviewCount: 299, bubbleRating: 4 } },
-      diceScore: 5,
+      ratings: { google: { score: 4.5, reviewCount: 288 }, tripAdvisor: { score: 4.3, reviewCount: 299, bubbleRating: 4 }, facebook: { score: 5.0, reviewCount: 55 } },
+      diceScore: 6,
     },
     {
       id: 'solsiden-lofoten',
@@ -395,7 +395,7 @@ export const lofotenRestaurants: CityRestaurant[] = [
       reservationRequired: false,
       openingHours: 'Monday: 8:00\u202FAM\u2009\u2013\u200912:00\u202FPM, 3:00\u2009\u2013\u20099:30\u202FPM; Tuesday: 8:00\u202FAM\u2009\u2013\u200912:00\u202FPM, 3:00\u2009\u2013\u20099:30\u202FPM; Wednesday: 8:00\u202FAM\u2009\u2013\u200912:00\u202FPM, 3:00\u2009\u2013\u20099:30\u202FPM...',
       description: "Restaurant in Lofoten. Description pending editorial review.",
-      ratings: { google: { score: 4.5, reviewCount: 156 }, tripAdvisor: { score: 4.1, reviewCount: 37, bubbleRating: 4 } },
+      ratings: { google: { score: 4.5, reviewCount: 156 }, tripAdvisor: { score: 4.1, reviewCount: 37, bubbleRating: 4 }, facebook: { score: 4.2, reviewCount: 5 } },
       diceScore: 5,
     },
     {
@@ -423,7 +423,7 @@ export const lofotenRestaurants: CityRestaurant[] = [
       reservationRequired: false,
       openingHours: 'Monday: 8:00\u202FAM\u2009\u2013\u200911:00\u202FPM; Tuesday: 8:00\u202FAM\u2009\u2013\u200911:00\u202FPM; Wednesday: 8:00\u202FAM\u2009\u2013\u200911:00\u202FPM...',
       description: "Restaurant in Lofoten. Description pending editorial review.",
-      ratings: { google: { score: 4.4, reviewCount: 602 }, tripAdvisor: { score: 3.7, reviewCount: 272, bubbleRating: 4 } },
+      ratings: { google: { score: 4.4, reviewCount: 602 }, tripAdvisor: { score: 3.7, reviewCount: 272, bubbleRating: 4 }, facebook: { score: 4.4, reviewCount: 472 } },
       diceScore: 5,
     },
     {

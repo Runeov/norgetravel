@@ -48,7 +48,7 @@ export const lyngenRestaurants: CityRestaurant[] = [
       reservationRequired: false,
       openingHours: 'Check website for hours',
       description: "Restaurant in Lyngen. Description pending editorial review.",
-      ratings: { google: { score: 4.8, reviewCount: 362 }, tripAdvisor: { score: 4.6, reviewCount: 7, bubbleRating: 5 } },
+      ratings: { google: { score: 4.8, reviewCount: 362 }, tripAdvisor: { score: 4.6, reviewCount: 7, bubbleRating: 5 }, facebook: { score: 5.0, reviewCount: 53 } },
       diceScore: 6,
     },
     {

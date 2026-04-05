@@ -487,9 +487,24 @@ def fetch_city_restaurants(city_key: str, city_config: dict, limit: int = None) 
     return restaurants[:target]
 
 
-def write_output(restaurants: list, output_path: Path, city_name: str):
-    """Write restaurant data to JSON file."""
+def write_output(restaurants: list, output_path: Path, city_name: str, merge: bool = False):
+    """Write restaurant data to JSON file.
+
+    If merge=True, load the existing file and only append new restaurants
+    (matched by name, case-insensitive). Existing entries keep their
+    enriched ratings, dice scores, and other metadata intact.
+    """
     output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    if merge and output_path.exists():
+        with open(output_path, "r", encoding="utf-8") as f:
+            existing = json.load(f)
+        existing_restaurants = existing.get("restaurants", [])
+        existing_names = {r["name"].lower() for r in existing_restaurants}
+        new_restaurants = [r for r in restaurants if r["name"].lower() not in existing_names]
+        merged = existing_restaurants + new_restaurants
+        print(f"  [merge] {len(existing_restaurants)} existing + {len(new_restaurants)} new = {len(merged)} total")
+        restaurants = merged
 
     output = {
         "_meta": {
@@ -512,6 +527,7 @@ def main():
     parser.add_argument("--city", choices=list(CITIES.keys()), help="Fetch one city only")
     parser.add_argument("--limit", type=int, help="Override target restaurant count")
     parser.add_argument("--dry-run", action="store_true", help="Print results without writing")
+    parser.add_argument("--merge", action="store_true", help="Merge with existing data (preserve enriched ratings)")
     parser.add_argument("--min-rating", type=float, default=3.5, help="Minimum Google rating (default: 3.5)")
     parser.add_argument("--min-reviews", type=int, default=10, help="Minimum review count (default: 10)")
     args = parser.parse_args()
@@ -548,7 +564,7 @@ def main():
             if len(restaurants) > 5:
                 print(f"    ... and {len(restaurants) - 5} more")
         else:
-            write_output(restaurants, city_config["output"], city_config["name"])
+            write_output(restaurants, city_config["output"], city_config["name"], merge=args.merge)
 
     print(f"\n{'='*60}")
     print(f"  Done. Restaurant JSON files are in src/data/city-guides/")

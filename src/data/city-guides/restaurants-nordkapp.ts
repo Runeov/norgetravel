@@ -76,7 +76,7 @@ export const nordkappRestaurants: CityRestaurant[] = [
       reservationRequired: false,
       openingHours: 'Monday: 8:00\u202FAM\u2009\u2013\u20095:00\u202FPM; Tuesday: 8:00\u202FAM\u2009\u2013\u20095:00\u202FPM; Wednesday: 8:00\u202FAM\u2009\u2013\u20095:00\u202FPM...',
       description: "Restaurant in Nordkapp. Description pending editorial review.",
-      ratings: { google: { score: 4.5, reviewCount: 439 }, tripAdvisor: { score: 4.7, reviewCount: 132, bubbleRating: 5 } },
+      ratings: { google: { score: 4.5, reviewCount: 439 }, tripAdvisor: { score: 4.7, reviewCount: 132, bubbleRating: 5 }, facebook: { score: 4.8, reviewCount: 33 } },
       diceScore: 6,
     },
     {

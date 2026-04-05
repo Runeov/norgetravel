@@ -1,8 +1,8 @@
 {
   "_meta": {
     "city": "Narvik",
-    "fetchedAt": "2026-04-03T20:40:52.268138+00:00",
-    "count": 17,
+    "fetchedAt": "2026-04-05T17:41:35.816539+00:00",
+    "count": 19,
     "note": "Fetched via Google Places API. All restaurants verified OPERATIONAL at fetch time. Descriptions marked 'pending editorial review' need manual editing."
   },
   "restaurants": [
@@ -107,6 +107,10 @@
           "score": 4.6,
           "reviewCount": 129,
           "bubbleRating": 5
+        },
+        "facebook": {
+          "score": 4.7,
+          "reviewCount": 55
         }
       },
       "diceScore": 6
@@ -388,6 +392,54 @@
         }
       },
       "diceScore": 4
+    },
+    {
+      "id": "pizzabakeren-narvik",
+      "name": "Pizzabakeren Narvik",
+      "placeId": "ChIJK4AfMii-20URx51OcWXnnXk",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Kongensgate 57, 8514 Narvik, Norway",
+      "website": "https://www.pizzabakeren.no/?utm_source=gmb&utm_medium=organic&utm_campaign=google_mybusiness&utm_content=narvik",
+      "reservationRequired": false,
+      "openingHours": "Monday: 10:00 AM – 10:00 PM; Tuesday: 10:00 AM – 10:00 PM; Wednesday: 10:00 AM – 10:00 PM...",
+      "description": "Restaurant in Narvik. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 3.9,
+          "reviewCount": 280
+        },
+        "tripAdvisor": {
+          "score": 3.2,
+          "reviewCount": 41,
+          "bubbleRating": 3
+        }
+      },
+      "diceScore": 4
+    },
+    {
+      "id": "fu-lam-china-restaurant",
+      "name": "Fu Lam China restaurant",
+      "placeId": "ChIJQ_zV6Sm-20URr0AoX8bkQPA",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Kongensgate 38, 8514 Narvik, Norway",
+      "website": "https://m.facebook.com/FuLamNarvik/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 2:00 – 10:00 PM; Tuesday: 2:00 – 10:00 PM; Wednesday: 2:00 – 10:00 PM...",
+      "description": "Restaurant in Narvik. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 3.6,
+          "reviewCount": 409
+        },
+        "tripAdvisor": {
+          "score": 4.4,
+          "reviewCount": 17,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
     }
   ]
 }
