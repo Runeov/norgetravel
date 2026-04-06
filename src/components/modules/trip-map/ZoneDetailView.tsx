@@ -24,6 +24,9 @@ import {
   MapPin,
   Compass,
   Bed,
+  Ship,
+  Anchor,
+  Waves,
 } from 'lucide-react';
 import type { ZoneDetailData, BulletDetail } from '@/data/zone-subcategories';
 
@@ -55,6 +58,10 @@ const iconMap: Record<string, React.ElementType> = {
   'fj-events': Calendar,
   'fj-tours': Compass,
   'fj-accommodation': Bed,
+  'br-south': Ship,
+  'br-helgeland': Anchor,
+  'br-lofoten': Waves,
+  'br-arctic': Compass,
   'northern-lights': Sparkles,
   'dog-sledding': PawPrint,
   'midnight-sun': Sun,

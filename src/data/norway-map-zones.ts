@@ -32,6 +32,32 @@ export const referenceMarkers = [
   { name: 'Bodø', x: 146.7, y: 241.1 },
 ];
 
+// ── Kystruten (Coastal Express) boat route ───────────────────────────────────
+// 12 key ports along the Bergen–Kirkenes route, mapped to the 400×800 viewBox.
+// Grouped into 4 zones as defined in the Norway Boat Travel Operators document.
+export const boatRoutePoints: { name: string; x: number; y: number; zone: 'south' | 'helgeland' | 'lofoten' | 'arctic' }[] = [
+  // Zone 1 — Southern & Central Coast
+  { name: 'Bergen',      x: 12.2,  y: 634.7, zone: 'south' },
+  { name: 'Ålesund',     x: 28.0,  y: 540.0, zone: 'south' },
+  { name: 'Trondheim',   x: 87.3,  y: 461.1, zone: 'south' },
+  // Zone 2 — Helgeland & Arctic Circle
+  { name: 'Brønnøysund', x: 108.0, y: 395.0, zone: 'helgeland' },
+  { name: 'Bodø',        x: 146.7, y: 241.1, zone: 'helgeland' },
+  // Zone 3 — Lofoten & Vesterålen
+  { name: 'Svolvær',     x: 122.0, y: 210.0, zone: 'lofoten' },
+  { name: 'Stokmarknes', x: 158.0, y: 175.0, zone: 'lofoten' },
+  { name: 'Harstad',     x: 190.0, y: 150.0, zone: 'lofoten' },
+  // Zone 4 — High Arctic & Finnmark
+  { name: 'Tromsø',      x: 214.1, y: 105.8, zone: 'arctic' },
+  { name: 'Honningsvåg', x: 286.0, y: 62.0,  zone: 'arctic' },
+  { name: 'Vardø',       x: 355.0, y: 48.0,  zone: 'arctic' },
+  { name: 'Kirkenes',    x: 375.0, y: 55.0,  zone: 'arctic' },
+];
+
+// SVG path connecting the ports — stroke-only, follows the coast north
+export const boatRoutePath =
+  'M12.2,634.7 C20,590 25,560 28.0,540.0 C40,510 60,490 87.3,461.1 C95,435 102,415 108.0,395.0 C120,350 135,290 146.7,241.1 C144,230 135,220 122.0,210.0 C130,200 145,185 158.0,175.0 C170,165 180,158 190.0,150.0 C198,135 206,120 214.1,105.8 C235,88 260,72 286.0,62.0 C315,52 340,48 355.0,48.0 L375.0,55.0';
+
 // City Norway zone — 4 major cities as interactive dots
 export const cityZonePositions = [
   { name: 'Trondheim', x: 87.3, y: 461.1 },
@@ -116,6 +142,24 @@ export const mapZones: MapZone[] = [
       { label: 'Population', value: '~2,400' },
     ],
     highlights: ['Cities', 'Activities & Events', 'Tours', 'Accommodation'],
+  },
+  {
+    id: 'boat-routes',
+    name: 'Boat Routes',
+    tagline: 'Bergen to Kirkenes — 34 ports, 11 nights',
+    description:
+      'The Kystruten coastal express has connected 34 Norwegian ports since 1893. Hurtigruten and Havila Voyages run alternating sailings on the full Bergen–Kirkenes route — 2,545 km of coastline, fjords, Arctic wilderness, and working fishing communities.',
+    svgPath: '',
+    labelPosition: { x: 160, y: 450 },
+    href: '/travel/transport',
+    color: '#5CBFEE',
+    stats: [
+      { label: 'Total ports', value: '34' },
+      { label: 'Journey', value: '11 nights' },
+      { label: 'Operators', value: 'Hurtigruten & Havila' },
+      { label: 'Route length', value: '2,545 km' },
+    ],
+    highlights: ['Southern Coast', 'Lofoten & Vesterålen', 'High Arctic', 'Book a Cruise'],
   },
   {
     id: 'cities',

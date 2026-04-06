@@ -1003,4 +1003,146 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
       },
     ],
   },
+
+  'boat-routes': {
+    zoneId: 'boat-routes',
+    zoneName: 'Boat Routes',
+    zoneColor: '#5CBFEE',
+    headline: 'The Kystruten — Norway by Sea',
+    subtitle: 'Bergen to Kirkenes: 34 ports, 2,545 km, two world-class operators running alternating sailings since 1893',
+    subcategories: [
+      {
+        id: 'br-south',
+        title: 'Southern & Central Coast',
+        shortDesc: 'Bergen to Trondheim — fjords, islands, and open sea',
+        content:
+          'The southern leg departs Bergen and runs north through Norway\'s most dramatic fjord coastline. Florø (Norway\'s westernmost town), Måløy, Torvik, and Ålesund are working harbour towns with Art Nouveau architecture, active fish markets, and genuine coastal life. Molde and Kristiansund bridge the gap to Trondheim — Norway\'s medieval capital and the route\'s first major overnight stop. Both Hurtigruten and Havila Voyages serve this leg on alternating days. Sailing time: Bergen to Trondheim is approximately 42 hours northbound.',
+        bullets: [
+          'Bergen — departure port since 1893, UNESCO Bryggen, fish market, funicular',
+          'Florø — Norway\'s westernmost town, active cod fishery, compact harbour',
+          'Ålesund — Art Nouveau architecture, Geirangerfjord day trips, Jugendstilsenteret museum',
+          'Molde — panorama of 222 mountain peaks, jazz festival every July since 1961',
+          'Kristiansund — klippfisk (salt cod) capital of Norway, opera tradition since 1928',
+          'Trondheim — Nidaros Cathedral, medieval pilgrim route endpoint, 12-hour port call',
+        ],
+        bulletDetails: [
+          {
+            title: 'Hurtigruten',
+            content: 'Hurtigruten has operated the coastal route since 1893 — the world\'s oldest continuous passenger shipping service. The fleet includes the historic MS Lofoten (1964) alongside modernised 1990s–2000s vessels. Fleet retrofitting is underway: battery hybrid technology and liquefied biogas (LBG) propulsion reduce emissions by up to 25% on the route. Book the full 11-night Bergen–Kirkenes sailing or any individual segment. Cabins range from interior berths to premium ocean-view suites.',
+            highlights: ['Operating since 1893 — oldest continuous passenger route in the world', 'Fleet of 9 ships — including MS Lofoten (1964, historic preservation)', 'Battery hybrid and LBG retrofitting underway across fleet', 'Book any segment: full 11 nights or individual legs'],
+            ctaLink: '/tjenester/fjord-cruises',
+            ctaText: 'Book Hurtigruten',
+          },
+          {
+            title: 'Havila Voyages',
+            content: 'Havila Voyages launched in 2021 as the green challenger on the coastal route. Four brand-new vessels (Havila Castor, Pollux, Capella, Capricorn) are built with the world\'s largest marine battery packs for passenger ships — enabling zero-emission sailing for up to 4 hours through UNESCO-designated fjords. LNG (liquefied natural gas) propulsion covers open-sea legs. Havila and Hurtigruten sail alternating days: every port receives a call every 24 hours in each direction.',
+            highlights: ['Four brand-new ships built 2021–2022 — Castor, Pollux, Capella, Capricorn', 'World\'s largest marine battery packs for passenger ships', 'Zero-emission sailing up to 4 hours through UNESCO fjords', 'Alternating daily service with Hurtigruten — 34 ports served every 24 hours'],
+            ctaLink: '/tjenester/fjord-cruises',
+            ctaText: 'Book Havila Voyages',
+          },
+        ],
+        link: '/tjenester/fjord-cruises',
+        linkText: 'View southern coast sailings',
+      },
+      {
+        id: 'br-helgeland',
+        title: 'Helgeland & Arctic Circle',
+        shortDesc: 'Brønnøysund to Bodø — the Arctic Circle crossing',
+        content:
+          'The Helgeland coast is the most geologically dramatic stretch of the route. The Seven Sisters mountain range (De Syv Søstre) rises directly from the sea. Brønnøysund sits at the base of the 1,072m Torghatten mountain — famous for the natural tunnel punched through its summit by a stone in Norse mythology, now scientifically explained by glacial erosion. The Arctic Circle crossing at 66°33\'N is marked on board by both operators — a ceremony for northbound passengers. Bodø is the route\'s major hub: Norway\'s second-busiest airport, the Bodø–Lofoten ferry terminal, and a city rebuilt entirely after total destruction in 1940.',
+        bullets: [
+          'Brønnøysund — Torghatten mountain with natural tunnel, Seven Sisters visible at sea',
+          'Sandnessjøen — base for Helgeland coast island hiking and kayaking',
+          'Nesna — peninsula town, ferry connections to Helgeland islands',
+          'Ørnes — gateway to Svartisen glacier, second-largest in mainland Norway',
+          'Arctic Circle crossing at 66°33\'N — ceremony on board, northbound sailings',
+          'Bodø — second-busiest Norwegian airport, Bodø–Moskenes ferry terminal, rebuilt 1940–1960',
+        ],
+        bulletDetails: [
+          {
+            title: 'Arctic Circle Crossing',
+            content: 'At 66°33\'N, the ship crosses the Arctic Circle — the latitude above which the sun does not set during summer solstice and does not rise during winter solstice. Both Hurtigruten and Havila Voyages mark the northbound crossing with an on-board ceremony. In summer, the midnight sun is visible from the deck for the entire Helgeland and Northern Norway stretch. In winter, the northern lights begin to appear with regularity above this latitude.',
+            highlights: ['Crossing at 66°33\'N — the Arctic Circle', 'Midnight sun visible from deck: June–July northbound', 'Northern Lights from October northbound sailings', 'On-board ceremony on both Hurtigruten and Havila vessels'],
+            ctaLink: '/destinations/northern-norway',
+            ctaText: 'Northern Norway guide',
+          },
+          {
+            title: 'Svartisen Glacier',
+            content: 'Svartisen is the second-largest glacier on the Norwegian mainland, covering 370 km². From Ørnes on the coastal route, local ferry connections reach the Svartisen base. The Engabreen arm descends to 20 metres above sea level — one of the lowest-altitude glaciers in mainland Europe. A 3 km walk from the fjord landing leads to the glacier face. The ice is blue from compressed air exclusion and moves approximately 1 metre per day at the ice front.',
+            highlights: ['370 km² — second largest on Norwegian mainland', 'Engabreen arm: glacier face at 20m above sea level', '3 km walk from landing to glacier face', 'Access from Ørnes via local ferry'],
+            ctaLink: '/destinations/northern-norway',
+            ctaText: 'Northern Norway activities',
+          },
+        ],
+        link: '/destinations/northern-norway',
+        linkText: 'Explore Helgeland coast',
+      },
+      {
+        id: 'br-lofoten',
+        title: 'Lofoten & Vesterålen',
+        shortDesc: 'Svolvær to Harstad — the Lofoten wall from the sea',
+        content:
+          'The Vestfjord crossing from Bodø to the Lofoten islands is one of the most dramatic passages in Norwegian coastal shipping. The "Lofoten wall" — 170 km of granite peaks rising 1,000m directly from the Norwegian Sea — is first visible as a silhouette from 60 km distance. Stamsund and Svolvær are the two Lofoten calls. Stokmarknes is the historic birthplace of the coastal route: it was here in 1893 that the first Hurtigruten sailing departed. Harstad, on the mainland side of Vesterålen, is the route\'s northernmost city before the High Arctic stretch.',
+        bullets: [
+          'Stamsund — Lofoten\'s working fishing port, sea eagle nesting site',
+          'Svolvær — Lofoten capital, art galleries, rock climbing, midnight sun concerts',
+          'Stokmarknes — birthplace of the Hurtigruten route (1893), Hurtigruten Museum',
+          'Sortland — Blue City (buildings painted blue), gateway to Vesterålen hiking',
+          'Harstad — Trondenes medieval church (Norway\'s northernmost), Sami culture centre',
+          'Lofoten wall — first visible from Vestfjord at 60 km, peaks 1,000m from sea level',
+        ],
+        bulletDetails: [
+          {
+            title: 'Svolvær',
+            content: 'Svolvær is the administrative capital of Lofoten with 10,000 residents, a working cod dock, and a gallery scene disproportionate to its size. The Svolvær Goat (Svolværgeita) — two rock pinnacles at 764m — is the route\'s signature scramble for experienced climbers. The Lofoten International Art Festival brings galleries, studios, and outdoor installations every second year. The midnight sun concert season runs May through July. Boat taxis to the outer islands operate year-round from the harbour.',
+            highlights: ['Population 10,000 — Lofoten\'s largest town', 'Svolværgeita: technical twin-pinnacle scramble at 764m', 'Lofoten International Art Festival (LIAF): biennial, summer', 'Midnight sun: May 28 – July 14'],
+            ctaLink: '/destinations/lofoten',
+            ctaText: 'Lofoten guide',
+          },
+          {
+            title: 'Hurtigruten Museum, Stokmarknes',
+            content: 'Stokmarknes is where the original coastal route began in 1893. The Hurtigruten Museum preserves the DS Finnmarken (1956) — a retired coastal express ship displayed on land — alongside the full history of the route, the vessels, and the communities it has served for 130 years. The ship is accessible to visitors. The museum documents the transformation from essential public service to premium travel product, the environmental retrofitting programme, and the construction of the Havila Voyages fleet.',
+            highlights: ['Birthplace of the Hurtigruten route — July 2, 1893', 'DS Finnmarken (1956) preserved and accessible on land', 'Full history of all vessels and routes since 1893', 'Stokmarknes town: 3,000 residents, active boat-building heritage'],
+            ctaLink: '/tjenester/fjord-cruises',
+            ctaText: 'Plan Lofoten sailing',
+          },
+        ],
+        link: '/destinations/lofoten',
+        linkText: 'View Lofoten sailing guide',
+      },
+      {
+        id: 'br-arctic',
+        title: 'High Arctic & Finnmark',
+        shortDesc: 'Tromsø to Kirkenes — the Barents Sea coast',
+        content:
+          'The northernmost leg of the Kystruten is the most remote. From Tromsø — the largest city above the Arctic Circle — the route follows the Finnmark coast through settlements with no road connections. Honningsvåg is the gateway to North Cape (71°08\'N). Vardø is the easternmost town in mainland Norway, sitting inside a genuine Arctic wind exposure zone with the climate closer to the Russian Arctic than to Bergen. Kirkenes, 400 km north of the Arctic Circle and 14 km from the Russian border, is the route\'s terminus — and for southbound sailings, the starting point.',
+        bullets: [
+          'Tromsø — Arctic Circle\'s largest city, aurora hub, 69 days polar night, 5 museums',
+          'Skjervøy — island town connected by E6 bridge, northern sea fishing base',
+          'Honningsvåg — gateway to North Cape (71°08\'N), year-round E69 access',
+          'Kjøllefjord — no road connection, accessible only by sea or small plane',
+          'Vardø — Norway\'s easternmost town, Arctic exposure, Vardøhus fortress (1737)',
+          'Kirkenes — 14 km from Russian border, 2-hour drive to the Barents Sea coast',
+        ],
+        bulletDetails: [
+          {
+            title: 'Tromsø',
+            content: 'Tromsø at 69°N is the primary embarkation point for Kystruten\'s Arctic leg. The city has 75,000 residents, a university, and direct daily flights from Oslo (2 hours). Both Hurtigruten and Havila make a 6-hour port call in Tromsø — long enough for a city tour, the Arctic Cathedral, or the cable car to 421m. The aurora season runs September through March. The Tromsø International Film Festival (January) and Northern Lights Festival (January) make winter embarkations worthwhile beyond the route itself.',
+            highlights: ['75,000 residents — largest city above the Arctic Circle', '6-hour port call on Kystruten — enough for aurora chase or city tour', 'Direct Oslo flights (TOS): 2 hours, multiple daily departures', 'Aurora season: September–March, inside the auroral oval'],
+            ctaLink: '/destinations/tromso',
+            ctaText: 'Tromsø city guide',
+          },
+          {
+            title: 'Kirkenes',
+            content: 'Kirkenes sits at the end of the Varangerfjord, 14 km from the Russian border and 400 km north of the Arctic Circle. It is Norway\'s most eastern town: when it is noon in Bergen, it is almost 14:00 in Kirkenes by solar time. The town was bombed 328 times during World War II — the second-most bombed place in Europe after Malta. The Øvre Pasvik National Park to the south is one of the last great boreal forests in Scandinavia. The King Crab safari industry (snow crab and king crab) is Kirkenes\'s primary tourism economy.',
+            highlights: ['14 km from the Russian border — Norway\'s eastern terminus', '400 km north of the Arctic Circle — genuine Arctic exposure', 'King Crab safaris: October–April, guided ice-fishing on Bøkfjorden', 'Bombed 328 times 1941–1944 — second-most bombed place in wartime Europe'],
+            ctaLink: '/destinations/northern-norway',
+            ctaText: 'Northern Norway guide',
+          },
+        ],
+        link: '/tjenester/fjord-cruises',
+        linkText: 'Book the Arctic sailing',
+      },
+    ],
+  },
 };

@@ -9,6 +9,8 @@ import {
   referenceMarkers,
   cityZonePositions,
   mapZones,
+  boatRoutePoints,
+  boatRoutePath,
 } from '@/data/norway-map-zones';
 
 interface NorwayMapProps {
@@ -21,9 +23,13 @@ interface NorwayMapProps {
 export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: NorwayMapProps) {
   const svalbardZone = mapZones.find((z) => z.id === 'svalbard');
   const cityZone = mapZones.find((z) => z.id === 'cities');
-  const polygonZones = mapZones.filter((z) => z.id !== 'svalbard' && z.id !== 'cities');
+  const boatZone = mapZones.find((z) => z.id === 'boat-routes');
+  const polygonZones = mapZones.filter(
+    (z) => z.id !== 'svalbard' && z.id !== 'cities' && z.id !== 'boat-routes'
+  );
 
   const cityActive = hoveredZone === 'cities' || selectedZone === 'cities';
+  const boatActive = hoveredZone === 'boat-routes' || selectedZone === 'boat-routes';
 
   // Sort polygon zones so the active one renders last (SVG z-ordering)
   const sortedPolygonZones = [...polygonZones].sort((a, b) => {
@@ -361,6 +367,94 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
           >
             {cityZone.name}
           </motion.text>
+        </g>
+      )}
+
+      {/* Boat Routes — Kystruten coastal express line */}
+      {boatZone && (
+        <g
+          className="cursor-pointer"
+          onMouseEnter={() => onHover('boat-routes')}
+          onMouseLeave={() => onHover(null)}
+          onClick={() => onSelect('boat-routes')}
+          role="button"
+          tabIndex={0}
+          aria-label={boatZone.name}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect('boat-routes'); }
+          }}
+        >
+          {/* Invisible wide hit area for easier clicking */}
+          <path
+            d={boatRoutePath}
+            fill="none"
+            stroke="transparent"
+            strokeWidth={18}
+          />
+
+          {/* Animated route line */}
+          <motion.path
+            d={boatRoutePath}
+            fill="none"
+            stroke={boatZone.color}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeDasharray="6 5"
+            animate={{
+              strokeWidth: boatActive ? 2.5 : 1.5,
+              strokeOpacity: boatActive ? 0.9 : 0.45,
+            }}
+            transition={{ duration: 0.2 }}
+            className="pointer-events-none"
+          />
+
+          {/* Port markers */}
+          {boatRoutePoints.map((port) => (
+            <motion.circle
+              key={port.name}
+              cx={port.x}
+              cy={port.y}
+              animate={{
+                r: boatActive ? 4 : 2.5,
+                fillOpacity: boatActive ? 0.95 : 0.55,
+              }}
+              transition={{ duration: 0.2 }}
+              fill={boatZone.color}
+              stroke={boatZone.color}
+              strokeWidth={0.5}
+              className="pointer-events-none"
+            />
+          ))}
+
+          {/* Route label at midpoint */}
+          <motion.text
+            x={boatZone.labelPosition.x}
+            y={boatZone.labelPosition.y}
+            textAnchor="middle"
+            dominantBaseline="central"
+            className="pointer-events-none select-none"
+            fill={boatZone.color}
+            fontSize={13}
+            fontWeight={600}
+            letterSpacing={0.4}
+            animate={{ opacity: boatActive ? 1 : 0.5 }}
+            transition={{ duration: 0.2 }}
+          >
+            {boatZone.name}
+          </motion.text>
+
+          {/* Pulsing dot on selected */}
+          {selectedZone === 'boat-routes' && (
+            <motion.circle
+              cx={boatZone.labelPosition.x}
+              cy={boatZone.labelPosition.y + 14}
+              r={3}
+              fill={boatZone.color}
+              initial={{ opacity: 0.8, r: 3 }}
+              animate={{ opacity: [0.8, 0.3, 0.8], r: [3, 6, 3] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            />
+          )}
         </g>
       )}
 
