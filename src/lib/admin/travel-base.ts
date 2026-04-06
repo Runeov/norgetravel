@@ -17,6 +17,8 @@ export interface TravelStore<T extends TravelItemBase> {
   getPublished: () => Promise<T[]>;
   getFeatured: () => Promise<T[]>;
   filterByDestination: (destination: Destination) => Promise<T[]>;
+  /** Filter published items whose JSON key starts with one of the given city prefixes, e.g. ['tromso', 'troms']. */
+  filterByIdPrefixes: (prefixes: string[]) => Promise<T[]>;
   create: (data: Omit<T, 'id' | 'sortOrder' | 'createdAt' | 'updatedAt'>) => Promise<T>;
   update: (id: string, updates: Partial<T>) => Promise<T | null>;
   remove: (id: string) => Promise<boolean>;
@@ -122,6 +124,18 @@ export function createTravelStore<T extends TravelItemBase>(
       .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
   }
 
+  async function filterByIdPrefixes(prefixes: string[]): Promise<T[]> {
+    if (!prefixes.length) return [];
+    const items = await readFile();
+    return Object.entries(items)
+      .filter(([id, item]) => {
+        if (item.status !== 'published') return false;
+        return prefixes.some((p) => id === p || id.startsWith(p + '-'));
+      })
+      .map(([, item]) => item)
+      .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
+  }
+
   async function create(
     data: Omit<T, 'id' | 'sortOrder' | 'createdAt' | 'updatedAt'>
   ): Promise<T> {
@@ -217,6 +231,7 @@ export function createTravelStore<T extends TravelItemBase>(
     getPublished,
     getFeatured,
     filterByDestination,
+    filterByIdPrefixes,
     create,
     update,
     remove,

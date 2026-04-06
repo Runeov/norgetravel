@@ -2,10 +2,13 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowRight, ArrowLeft, MapPin, UtensilsCrossed } from 'lucide-react';
+import { ArrowRight, ArrowLeft, MapPin, UtensilsCrossed, Mountain } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { getCity, getCityAttractions, getAllCitySlugs } from '@/data/city-attractions';
 import { RestaurantGrid } from '@/components/modules/destinations/RestaurantGrid';
+import { TravelCard } from '@/components/modules/travel/TravelCard';
+import { experiencesStore } from '@/lib/admin/travel-experiences';
+import { CITY_EXPERIENCE_PREFIXES } from '@/lib/city-experience-prefixes';
 import type { CityRestaurant } from '@/types/city-guide';
 
 import { osloRestaurants } from '@/data/city-guides/restaurants-oslo';
@@ -60,6 +63,11 @@ export default async function CityPage({ params }: PageProps) {
   if (!city) notFound();
 
   const cityAttractions = getCityAttractions(citySlug);
+
+  const prefixes = CITY_EXPERIENCE_PREFIXES[citySlug] ?? [];
+  const experiences = prefixes.length > 0
+    ? await experiencesStore.filterByIdPrefixes(prefixes)
+    : [];
 
   return (
     <main className="min-h-screen bg-slate-50">
@@ -146,6 +154,37 @@ export default async function CityPage({ params }: PageProps) {
           </div>
         </div>
       </section>
+
+      {/* Experiences & Activities */}
+      {experiences.length > 0 && (
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center gap-3 mb-4">
+              <Mountain className="w-6 h-6 text-[#1A365D]" aria-hidden="true" />
+              <h2 className="text-3xl font-bold text-slate-900">Things to do in {city.name}</h2>
+            </div>
+            <p className="text-slate-600 mb-12 max-w-2xl">
+              {experiences.length} activities and tours based in {city.name}.
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {experiences.slice(0, 9).map((exp) => (
+                <TravelCard key={exp.id} item={exp} category="experience" />
+              ))}
+            </div>
+            {experiences.length > 9 && (
+              <div className="mt-10 text-center">
+                <Link
+                  href="/travel/experiences"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#1A365D] text-white text-sm font-semibold rounded-md hover:bg-[#152d52] transition-colors"
+                >
+                  See all {experiences.length} activities
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* Restaurants */}
       {CITY_RESTAURANTS[citySlug] && CITY_RESTAURANTS[citySlug].length > 0 && (

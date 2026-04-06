@@ -15,6 +15,7 @@ import { accommodationStore } from '@/lib/admin/travel-accommodation';
 import { guidesStore } from '@/lib/admin/travel-guides';
 import { tromso } from '@/data/city-guides/tromso';
 import { fetchGoogleRatings } from '@/lib/google-places';
+import { CITY_EXPERIENCE_PREFIXES } from '@/lib/city-experience-prefixes';
 
 export const metadata: Metadata = {
   title: tromso.metaTitle,
@@ -28,7 +29,7 @@ export default async function TromsoPage() {
     .filter((id): id is string => Boolean(id));
 
   const [activities, events, accommodation, tours, liveRatings] = await Promise.all([
-    experiencesStore.filterByDestination('northern-norway'),
+    experiencesStore.filterByIdPrefixes(CITY_EXPERIENCE_PREFIXES['tromso']),
     eventsStore.filterByDestination('northern-norway'),
     accommodationStore.filterByDestination('northern-norway'),
     guidesStore.filterByDestination('northern-norway'),
