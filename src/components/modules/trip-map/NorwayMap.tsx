@@ -454,16 +454,16 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
           >
             {/* Hit area */}
             <circle
-              cx={55}
-              cy={530}
+              cx={-15}
+              cy={430}
               r={28}
               fill="transparent"
             />
 
             {/* Glow ring */}
             <motion.circle
-              cx={55}
-              cy={530}
+              cx={-15}
+              cy={430}
               r={22}
               fill={boatZone.color}
               stroke={boatZone.color}
@@ -478,7 +478,7 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
 
             {/* Boat SVG icon (simplified ship silhouette) */}
             <motion.g
-              transform="translate(43, 518) scale(1)"
+              transform="translate(-27, 418) scale(1)"
               animate={{ opacity: boatActive ? 1 : 0.7 }}
               transition={{ duration: 0.2 }}
               className="pointer-events-none"
@@ -506,8 +506,8 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
 
             {/* Label below icon */}
             <motion.text
-              x={55}
-              y={557}
+              x={-15}
+              y={457}
               textAnchor="middle"
               dominantBaseline="central"
               fill="white"
@@ -524,8 +524,8 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
             {/* Pulsing ring when selected */}
             {selectedZone === 'boat-routes' && (
               <motion.circle
-                cx={55}
-                cy={530}
+                cx={-15}
+                cy={430}
                 r={22}
                 fill="none"
                 stroke={boatZone.color}
