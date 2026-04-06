@@ -1,8 +1,8 @@
 """
 NorgeTravel Accommodation Scraper
 ==================================
-Scrapes accommodation listings for Svalbard and Finnmark from Booking.com
-and writes results into src/data/travel-accommodation.json.
+Scrapes accommodation listings from Booking.com for all Norwegian cities
+covered by NorgeTravel and writes results into src/data/travel-accommodation.json.
 
 Usage:
     pip install requests beautifulsoup4 playwright
@@ -11,18 +11,26 @@ Usage:
 
 Options:
     --dry-run    Print results without writing to JSON
-    --region     svalbard | finnmark | both (default: both)
-    --limit      Max properties per region (default: 50)
+    --region     svalbard | finnmark | oslo | bergen | trondheim | stavanger |
+                 tromso | lofoten | nordnorge | all (default: all)
+    --limit      Max properties per search (default: 50)
 """
 
 import argparse
 import json
 import re
+import sys
 import time
 import unicodedata
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
+
+# Force UTF-8 output on Windows so Norwegian chars (ø, å, æ) don't crash
+if sys.stdout.encoding and sys.stdout.encoding.lower() not in ("utf-8", "utf-8-sig"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if sys.stderr.encoding and sys.stderr.encoding.lower() not in ("utf-8", "utf-8-sig"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 # ── Try Playwright (preferred, handles JS-rendered pages) ─────────────────────
 try:
@@ -44,50 +52,94 @@ from bs4 import BeautifulSoup
 ROOT = Path(__file__).parent.parent
 OUTPUT_FILE = ROOT / "src" / "data" / "travel-accommodation.json"
 
+def _url(city: str, country: str = "Norway") -> str:
+    """Build a Booking.com search URL for a city."""
+    import urllib.parse
+    query = f"{city}, {country}"
+    return (
+        "https://www.booking.com/searchresults.html"
+        f"?ss={urllib.parse.quote(query)}"
+        "&lang=en-us&sb=1&src_elem=sb&src=index&dest_type=city"
+        "&checkin=2026-07-01&checkout=2026-07-07"
+        "&group_adults=2&no_rooms=1&group_children=0"
+    )
+
+
 REGIONS = {
+    # ── Svalbard ───────────────────────────────────────────────────────────────
     "svalbard": {
         "destination": "svalbard",
         "searches": [
-            {
-                "label": "Longyearbyen",
-                "url": "https://www.booking.com/searchresults.html?ss=Longyearbyen%2C+Svalbard&lang=en-us&sb=1&src_elem=sb&src=index&dest_type=city&checkin=2026-02-01&checkout=2026-02-07&group_adults=2&no_rooms=1&group_children=0",
-            },
-            {
-                "label": "Barentsburg",
-                "url": "https://www.booking.com/searchresults.html?ss=Barentsburg%2C+Svalbard&lang=en-us&sb=1&src_elem=sb&src=index&dest_type=city&checkin=2026-02-01&checkout=2026-02-07&group_adults=2&no_rooms=1&group_children=0",
-            },
+            {"label": "Longyearbyen", "url": _url("Longyearbyen", "Svalbard")},
         ],
-        "nearby_towns": {
-            "Longyearbyen": "Longyearbyen",
-            "Barentsburg": "Barentsburg",
-            "Ny-Ålesund": "Ny-Ålesund",
-        },
     },
+    # ── Urban Hubs ─────────────────────────────────────────────────────────────
+    "oslo": {
+        "destination": "all",
+        "searches": [
+            {"label": "Oslo", "url": _url("Oslo")},
+        ],
+    },
+    "bergen": {
+        "destination": "fjords",
+        "searches": [
+            {"label": "Bergen", "url": _url("Bergen")},
+        ],
+    },
+    "trondheim": {
+        "destination": "all",
+        "searches": [
+            {"label": "Trondheim", "url": _url("Trondheim")},
+        ],
+    },
+    "stavanger": {
+        "destination": "fjords",
+        "searches": [
+            {"label": "Stavanger", "url": _url("Stavanger")},
+        ],
+    },
+    # ── Northern Norway: Tromsø ────────────────────────────────────────────────
+    "tromso": {
+        "destination": "northern-norway",
+        "searches": [
+            {"label": "Tromsø", "url": _url("Tromsø")},
+        ],
+    },
+    # ── Northern Norway: Lofoten + Vesterålen ─────────────────────────────────
+    "lofoten": {
+        "destination": "lofoten",
+        "searches": [
+            {"label": "Svolvær",      "url": _url("Svolvær")},
+            {"label": "Leknes",       "url": _url("Leknes")},
+            {"label": "Reine",        "url": _url("Reine, Lofoten")},
+            {"label": "Henningsvær",  "url": _url("Henningsvær")},
+            {"label": "Å i Lofoten",  "url": _url("Å i Lofoten")},
+            {"label": "Stamsund",     "url": _url("Stamsund")},
+        ],
+    },
+    # ── Northern Norway: rest ──────────────────────────────────────────────────
+    "nordnorge": {
+        "destination": "northern-norway",
+        "searches": [
+            {"label": "Bodø",         "url": _url("Bodø")},
+            {"label": "Narvik",       "url": _url("Narvik")},
+            {"label": "Alta",         "url": _url("Alta")},
+            {"label": "Hammerfest",   "url": _url("Hammerfest")},
+            {"label": "Honningsvåg",  "url": _url("Honningsvåg")},
+            {"label": "Senja",        "url": _url("Senja")},
+            {"label": "Lyngen",       "url": _url("Lyngen")},
+            {"label": "Kirkenes",     "url": _url("Kirkenes")},
+        ],
+    },
+    # ── Legacy alias ──────────────────────────────────────────────────────────
     "finnmark": {
         "destination": "northern-norway",
         "searches": [
-            {
-                "label": "Alta",
-                "url": "https://www.booking.com/searchresults.html?ss=Alta%2C+Finnmark&lang=en-us&sb=1&src_elem=sb&src=index&dest_type=city&checkin=2026-02-01&checkout=2026-02-07&group_adults=2&no_rooms=1&group_children=0",
-            },
-            {
-                "label": "Hammerfest",
-                "url": "https://www.booking.com/searchresults.html?ss=Hammerfest%2C+Finnmark&lang=en-us&sb=1&src_elem=sb&src=index&dest_type=city&checkin=2026-02-01&checkout=2026-02-07&group_adults=2&no_rooms=1&group_children=0",
-            },
-            {
-                "label": "Kirkenes",
-                "url": "https://www.booking.com/searchresults.html?ss=Kirkenes%2C+Finnmark&lang=en-us&sb=1&src_elem=sb&src=index&dest_type=city&checkin=2026-02-01&checkout=2026-02-07&group_adults=2&no_rooms=1&group_children=0",
-            },
-            {
-                "label": "Vadsø",
-                "url": "https://www.booking.com/searchresults.html?ss=Vads%C3%B8%2C+Finnmark&lang=en-us&sb=1&src_elem=sb&src=index&dest_type=city&checkin=2026-02-01&checkout=2026-02-07&group_adults=2&no_rooms=1&group_children=0",
-            },
-            {
-                "label": "Honningsvåg",
-                "url": "https://www.booking.com/searchresults.html?ss=Honningsv%C3%A5g%2C+Finnmark&lang=en-us&sb=1&src_elem=sb&src=index&dest_type=city&checkin=2026-02-01&checkout=2026-02-07&group_adults=2&no_rooms=1&group_children=0",
-            },
+            {"label": "Alta",         "url": _url("Alta")},
+            {"label": "Hammerfest",   "url": _url("Hammerfest")},
+            {"label": "Honningsvåg",  "url": _url("Honningsvåg")},
+            {"label": "Kirkenes",     "url": _url("Kirkenes")},
         ],
-        "nearby_towns": {},
     },
 }
 
@@ -232,7 +284,7 @@ def scrape_with_playwright(url: str, label: str, limit: int) -> list[dict]:
                     # Parse star rating from score text (e.g. "8.5 Excellent 1,234 reviews")
                     star_match = re.search(r"\b([1-5])\s*star", score_text, re.IGNORECASE)
                     star_rating = int(star_match.group(1)) if star_match else None
-                    # Booking score → approx stars if no explicit star rating
+                    # Booking score -> approx stars if no explicit star rating
                     if star_rating is None:
                         score_match = re.search(r"(\d+\.?\d*)", score_text)
                         if score_match:
@@ -321,7 +373,7 @@ def scrape_with_requests(url: str, label: str, limit: int) -> list[dict]:
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Convert raw scraped row → NorgeTravel accommodation entry
+# Convert raw scraped row -> NorgeTravel accommodation entry
 # ─────────────────────────────────────────────────────────────────────────────
 
 def build_entry(raw: dict, destination: str, sort_order: int, existing_ids: set) -> dict:
@@ -369,18 +421,30 @@ def build_entry(raw: dict, destination: str, sort_order: int, existing_ids: set)
 # ─────────────────────────────────────────────────────────────────────────────
 
 def main():
+    all_region_keys = list(REGIONS.keys()) + ["all"]
     parser = argparse.ArgumentParser(description="Scrape accommodation for NorgeTravel")
     parser.add_argument("--dry-run", action="store_true", help="Print without saving")
-    parser.add_argument("--region", choices=["svalbard", "finnmark", "both"], default="both")
+    parser.add_argument(
+        "--region",
+        choices=all_region_keys,
+        default="all",
+        help="Region to scrape (default: all)",
+    )
     parser.add_argument("--limit", type=int, default=50, help="Max results per search")
     args = parser.parse_args()
 
     # Load existing data to avoid duplicates
+    # The file may be a list (legacy) or a dict keyed by id
     existing: dict = {}
     if OUTPUT_FILE.exists():
         try:
-            existing = json.loads(OUTPUT_FILE.read_text(encoding="utf-8"))
-        except json.JSONDecodeError:
+            raw_data = json.loads(OUTPUT_FILE.read_text(encoding="utf-8"))
+            if isinstance(raw_data, list):
+                # Convert list -> dict keyed by id
+                existing = {item["id"]: item for item in raw_data if "id" in item}
+            elif isinstance(raw_data, dict):
+                existing = raw_data
+        except (json.JSONDecodeError, KeyError):
             existing = {}
 
     existing_ids: set = set(existing.keys())
@@ -388,7 +452,9 @@ def main():
     sort_counter = max((v.get("sortOrder", 0) for v in existing.values()), default=0)
 
     target_regions = (
-        list(REGIONS.keys()) if args.region == "both" else [args.region]
+        [k for k in REGIONS.keys() if k != "finnmark"]  # skip legacy alias when running all
+        if args.region == "all"
+        else [args.region]
     )
 
     new_entries: dict = {}
@@ -397,7 +463,7 @@ def main():
         region = REGIONS[region_key]
         destination = region["destination"]
         print(f"\n{'='*60}")
-        print(f"Region: {region_key.upper()}  →  destination: {destination}")
+        print(f"Region: {region_key.upper()}  ->  destination: {destination}")
         print(f"{'='*60}")
 
         for search in region["searches"]:
@@ -428,7 +494,7 @@ def main():
                 existing_names.add(name.lower())
                 added += 1
 
-            print(f"  → {label}: {added} new, {skipped_dup} skipped (duplicates)")
+            print(f"  -> {label}: {added} new, {skipped_dup} skipped (duplicates)")
 
             # Polite delay between searches
             time.sleep(3)

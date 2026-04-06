@@ -2,13 +2,15 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowRight, ArrowLeft, MapPin, UtensilsCrossed, Mountain } from 'lucide-react';
+import { ArrowRight, ArrowLeft, MapPin, UtensilsCrossed, Mountain, BedDouble } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { getCity, getCityAttractions, getAllCitySlugs } from '@/data/city-attractions';
 import { RestaurantGrid } from '@/components/modules/destinations/RestaurantGrid';
 import { TravelCard } from '@/components/modules/travel/TravelCard';
 import { experiencesStore } from '@/lib/admin/travel-experiences';
+import { accommodationStore } from '@/lib/admin/travel-accommodation';
 import { CITY_EXPERIENCE_PREFIXES } from '@/lib/city-experience-prefixes';
+import { CITY_ACCOMMODATION_TOWNS } from '@/lib/city-accommodation-towns';
 import type { CityRestaurant } from '@/types/city-guide';
 
 import { osloRestaurants } from '@/data/city-guides/restaurants-oslo';
@@ -65,9 +67,12 @@ export default async function CityPage({ params }: PageProps) {
   const cityAttractions = getCityAttractions(citySlug);
 
   const prefixes = CITY_EXPERIENCE_PREFIXES[citySlug] ?? [];
-  const experiences = prefixes.length > 0
-    ? await experiencesStore.filterByIdPrefixes(prefixes)
-    : [];
+  const towns = CITY_ACCOMMODATION_TOWNS[citySlug] ?? [];
+
+  const [experiences, accommodation] = await Promise.all([
+    prefixes.length > 0 ? experiencesStore.filterByIdPrefixes(prefixes) : Promise.resolve([]),
+    towns.length > 0 ? accommodationStore.filterByNearestTowns(towns) : Promise.resolve([]),
+  ]);
 
   return (
     <main className="min-h-screen bg-slate-50">
@@ -168,7 +173,7 @@ export default async function CityPage({ params }: PageProps) {
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {experiences.slice(0, 9).map((exp) => (
-                <TravelCard key={exp.id} item={exp} category="experience" />
+                <TravelCard key={exp.id} item={exp} category="experiences" />
               ))}
             </div>
             {experiences.length > 9 && (
@@ -178,6 +183,37 @@ export default async function CityPage({ params }: PageProps) {
                   className="inline-flex items-center gap-2 px-6 py-3 bg-[#1A365D] text-white text-sm font-semibold rounded-md hover:bg-[#152d52] transition-colors"
                 >
                   See all {experiences.length} activities
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* Accommodation */}
+      {accommodation.length > 0 && (
+        <section className="py-20 bg-slate-50">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center gap-3 mb-4">
+              <BedDouble className="w-6 h-6 text-[#1A365D]" aria-hidden="true" />
+              <h2 className="text-3xl font-bold text-slate-900">Where to stay in {city.name}</h2>
+            </div>
+            <p className="text-slate-600 mb-12 max-w-2xl">
+              {accommodation.length} properties in {city.name}. Hotels, cabins, and apartments — booked via Booking.com.
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {accommodation.slice(0, 9).map((acc) => (
+                <TravelCard key={acc.id} item={acc} category="accommodation" />
+              ))}
+            </div>
+            {accommodation.length > 9 && (
+              <div className="mt-10 text-center">
+                <Link
+                  href="/travel/accommodation"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#1A365D] text-white text-sm font-semibold rounded-md hover:bg-[#152d52] transition-colors"
+                >
+                  See all {accommodation.length} properties
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
