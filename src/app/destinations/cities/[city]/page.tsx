@@ -11,6 +11,7 @@ import { experiencesStore } from '@/lib/admin/travel-experiences';
 import { accommodationStore } from '@/lib/admin/travel-accommodation';
 import { CITY_EXPERIENCE_PREFIXES } from '@/lib/city-experience-prefixes';
 import { CITY_ACCOMMODATION_TOWNS } from '@/lib/city-accommodation-towns';
+import { extractRatings } from '@/lib/ratings';
 import type { CityRestaurant } from '@/types/city-guide';
 
 import { osloRestaurants } from '@/data/city-guides/restaurants-oslo';
@@ -173,7 +174,7 @@ export default async function CityPage({ params }: PageProps) {
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {experiences.slice(0, 9).map((exp) => (
-                <TravelCard key={exp.id} item={exp} category="experiences" />
+                <TravelCard key={exp.id} item={exp} category="experiences" ratings={extractRatings(exp)} />
               ))}
             </div>
             {experiences.length > 9 && (
@@ -204,7 +205,7 @@ export default async function CityPage({ params }: PageProps) {
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {accommodation.slice(0, 9).map((acc) => (
-                <TravelCard key={acc.id} item={acc} category="accommodation" />
+                <TravelCard key={acc.id} item={acc} category="accommodation" ratings={extractRatings(acc)} />
               ))}
             </div>
             {accommodation.length > 9 && (

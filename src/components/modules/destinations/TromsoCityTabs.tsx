@@ -5,6 +5,7 @@ import { Mountain, Calendar, Building, Compass } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { TravelCard } from '@/components/modules/travel/TravelCard';
 import { EventGrid } from '@/components/modules/travel/EventGrid';
+import { extractRatings } from '@/lib/ratings';
 import type { TravelItemBase } from '@/lib/schemas/travel.shared';
 import type { Event } from '@/lib/schemas/travel.events.schema';
 import type { CityExperience } from '@/types/city-guide';
@@ -113,7 +114,7 @@ export function TromsoCityTabs({
               tours: 'tours',
             };
             return (
-              <TravelCard key={item.id} item={item} category={categoryMap[activeTab]} />
+              <TravelCard key={item.id} item={item} category={categoryMap[activeTab]} ratings={extractRatings(item)} />
             );
           })}
         </div>

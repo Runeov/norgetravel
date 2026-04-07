@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Mountain, Calendar, Building, Compass } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { TravelCard } from '@/components/modules/travel/TravelCard';
+import { extractRatings } from '@/lib/ratings';
 import type { TravelItemBase } from '@/lib/schemas/travel.shared';
 
 interface StaticExperience {
@@ -93,7 +94,7 @@ export function SvalbardTabs({
       {currentItems.length > 0 ? (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {currentItems.map((item) => (
-            <TravelCard key={item.id} item={item} />
+            <TravelCard key={item.id} item={item} ratings={extractRatings(item)} />
           ))}
         </div>
       ) : activeTab === 'activities' ? (

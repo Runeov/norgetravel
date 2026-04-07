@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { MapPin, ExternalLink } from 'lucide-react';
+import { MapPin, ExternalLink, Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   DESTINATION_LABELS,
@@ -14,12 +14,44 @@ import {
 import { AddToTripButton } from '@/components/ui/AddToTripButton';
 import type { TripItemCategory } from '@/types/trip';
 
+export interface RatingData {
+  googleRating?: number | null;
+  googleReviewCount?: number | null;
+  bookingRating?: number | null;
+  bookingReviewCount?: number | null;
+  tripAdvisorRating?: number | null;
+  tripAdvisorReviewCount?: number | null;
+}
+
 interface TravelCardProps {
   item: TravelItemBase;
   category?: TripItemCategory;
+  ratings?: RatingData;
 }
 
-export function TravelCard({ item, category }: TravelCardProps) {
+function RatingBadge({ source, rating, reviewCount }: { source: string; rating: number; reviewCount?: number | null }) {
+  const colors: Record<string, string> = {
+    Google: 'bg-white border border-slate-200 text-slate-800',
+    'Booking.com': 'bg-[#003580] text-white',
+    TripAdvisor: 'bg-[#00AF87] text-white',
+  };
+  const isBooking = source === 'Booking.com';
+  const displayRating = isBooking ? rating.toFixed(1) : rating.toFixed(1);
+  const maxLabel = isBooking ? '/10' : '/5';
+
+  return (
+    <span className={cn('inline-flex items-center gap-1 px-2 py-0.5 rounded-sm text-xs font-medium', colors[source] || 'bg-slate-100 text-slate-700')}>
+      <Star className="w-3 h-3 fill-current" aria-hidden="true" />
+      {displayRating}{maxLabel}
+      {reviewCount != null && reviewCount > 0 && (
+        <span className="opacity-75">({reviewCount.toLocaleString()})</span>
+      )}
+      <span className="opacity-75 text-[10px]">{source}</span>
+    </span>
+  );
+}
+
+export function TravelCard({ item, category, ratings }: TravelCardProps) {
   return (
     <div className="group bg-white rounded-lg overflow-hidden shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
       {/* Image or gradient placeholder */}
@@ -75,6 +107,21 @@ export function TravelCard({ item, category }: TravelCardProps) {
           <MapPin className="w-3.5 h-3.5" aria-hidden="true" />
           <span>{item.location}</span>
         </div>
+
+        {/* Ratings */}
+        {ratings && (ratings.googleRating || ratings.bookingRating || ratings.tripAdvisorRating) && (
+          <div className="flex items-center gap-1.5 flex-wrap mb-3">
+            {ratings.googleRating != null && ratings.googleRating > 0 && (
+              <RatingBadge source="Google" rating={ratings.googleRating} reviewCount={ratings.googleReviewCount} />
+            )}
+            {ratings.bookingRating != null && ratings.bookingRating > 0 && (
+              <RatingBadge source="Booking.com" rating={ratings.bookingRating} reviewCount={ratings.bookingReviewCount} />
+            )}
+            {ratings.tripAdvisorRating != null && ratings.tripAdvisorRating > 0 && (
+              <RatingBadge source="TripAdvisor" rating={ratings.tripAdvisorRating} reviewCount={ratings.tripAdvisorReviewCount} />
+            )}
+          </div>
+        )}
 
         {/* Description */}
         <p className="text-slate-600 text-sm leading-relaxed line-clamp-3 mb-4">

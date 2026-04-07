@@ -16,6 +16,7 @@ import { TravelCard } from '@/components/modules/travel/TravelCard';
 import { experiencesStore } from '@/lib/admin/travel-experiences';
 import { accommodationStore } from '@/lib/admin/travel-accommodation';
 import { eventsStore } from '@/lib/admin/travel-events';
+import { extractRatings } from '@/lib/ratings';
 
 export const metadata: Metadata = {
   title: 'Travel Norway 2026 | NorgeTravel',
@@ -253,7 +254,7 @@ export default async function TravelPage() {
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {featuredExperiences.slice(0, 6).map((exp) => (
-                <TravelCard key={exp.id} item={exp} category="experiences" />
+                <TravelCard key={exp.id} item={exp} category="experiences" ratings={extractRatings(exp)} />
               ))}
             </div>
           </div>
@@ -284,7 +285,7 @@ export default async function TravelPage() {
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {featuredEvents.slice(0, 6).map((ev) => (
-                <TravelCard key={ev.id} item={ev} category="events" />
+                <TravelCard key={ev.id} item={ev} category="events" ratings={extractRatings(ev)} />
               ))}
             </div>
           </div>
@@ -315,7 +316,7 @@ export default async function TravelPage() {
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {recentAccommodation.map((acc) => (
-                <TravelCard key={acc.id} item={acc} category="accommodation" />
+                <TravelCard key={acc.id} item={acc} category="accommodation" ratings={extractRatings(acc)} />
               ))}
             </div>
           </div>

@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react';
 import { MapPin } from 'lucide-react';
 import { TravelCard } from './TravelCard';
 import { TravelFilters } from './TravelFilters';
+import { extractRatings } from '@/lib/ratings';
 import type { TravelItemBase, Destination } from '@/lib/schemas/travel.shared';
 
 interface TravelGridProps {
@@ -37,7 +38,7 @@ export function TravelGrid({ items, showFilters = true }: TravelGridProps) {
       {filteredItems.length > 0 ? (
         <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-6">
           {filteredItems.map((item) => (
-            <TravelCard key={item.id} item={item} />
+            <TravelCard key={item.id} item={item} ratings={extractRatings(item)} />
           ))}
         </div>
       ) : (
