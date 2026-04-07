@@ -233,9 +233,9 @@ export function Navbar() {
             <button
               onClick={openMap}
               className="group relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white transition-all duration-300 bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-full hover:shadow-lg hover:shadow-[#1B3A5C]/30 hover:-translate-y-0.5 focus:outline-none"
-              aria-label="Plan your trip"
+              aria-label="Open trip planner"
             >
-              Plan Your Trip
+              Trip Planner
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </button>
           </div>
@@ -372,8 +372,8 @@ export function Navbar() {
                     </span>
                   </Link>
                 )}
-                <button onClick={() => { openMap(); setIsMenuOpen(false); }} className="w-full flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md shadow-md active:scale-95 transition-all" aria-label="Plan your trip">
-                  Plan Your Trip
+                <button onClick={() => { openMap(); setIsMenuOpen(false); }} className="w-full flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md shadow-md active:scale-95 transition-all" aria-label="Open trip planner">
+                  Trip Planner
                 </button>
               </div>
             </div>

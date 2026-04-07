@@ -7,6 +7,7 @@ import { CookieBanner } from '@/components/layout/CookieBanner';
 import { TripMapProvider } from '@/context/TripMapContext';
 import { TripProvider } from '@/context/TripContext';
 import { NorwayMapOverlay } from '@/components/modules/trip-map/NorwayMapOverlay';
+import { MinimizedTripPlanner } from '@/components/modules/trip-map/MinimizedTripPlanner';
 
 interface RootLayoutContentProps {
   children: React.ReactNode;
@@ -31,6 +32,7 @@ export function RootLayoutContent({ children }: RootLayoutContentProps) {
         <Footer />
         <CookieBanner />
         <NorwayMapOverlay />
+        <MinimizedTripPlanner />
       </TripProvider>
     </TripMapProvider>
   );

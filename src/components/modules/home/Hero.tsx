@@ -62,7 +62,7 @@ export default function Hero() {
               onClick={openMap}
               className="inline-flex items-center justify-center rounded-full text-base font-medium transition-all focus-visible:outline-none border border-white/40 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 h-12 px-8"
             >
-              Plan Your Trip
+              Trip Planner
             </button>
           </div>
 

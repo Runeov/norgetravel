@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useTripMap } from '@/context/TripMapContext';
+import type { TripMapState } from '@/context/TripMapContext';
 import { mapZones } from '@/data/norway-map-zones';
 import { zoneSubcategories } from '@/data/zone-subcategories';
 import type { ZoneDetailData } from '@/data/zone-subcategories';
@@ -14,11 +15,23 @@ import { ZoneDetailView } from './ZoneDetailView';
 const allDrillDownZones: ZoneDetailData[] = Object.values(zoneSubcategories);
 
 export function NorwayMapOverlay() {
-  const { isOpen, closeMap } = useTripMap();
+  const { isOpen, savedState, closeMap, minimizeMap } = useTripMap();
   const [hoveredZone, setHoveredZone] = useState<string | null>(null);
   const [selectedZone, setSelectedZone] = useState<string | null>(null);
   const [drillDownZone, setDrillDownZone] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState(0);
+  const [selectedCard, setSelectedCard] = useState<number | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  // Restore saved state when reopening from minimized
+  useEffect(() => {
+    if (isOpen && savedState) {
+      setSelectedZone(savedState.selectedZone);
+      setDrillDownZone(savedState.drillDownZone);
+      setActiveTab(savedState.activeTab);
+      setSelectedCard(savedState.selectedCard);
+    }
+  }, [isOpen, savedState]);
 
   // Lock body scroll and focus close button when open
   useEffect(() => {
@@ -27,14 +40,29 @@ export function NorwayMapOverlay() {
       setTimeout(() => closeButtonRef.current?.focus(), 100);
     } else {
       document.body.style.overflow = '';
-      setHoveredZone(null);
-      setSelectedZone(null);
-      setDrillDownZone(null);
+      if (!savedState) {
+        setHoveredZone(null);
+        setSelectedZone(null);
+        setDrillDownZone(null);
+        setActiveTab(0);
+        setSelectedCard(null);
+      }
     }
     return () => {
       document.body.style.overflow = '';
     };
-  }, [isOpen]);
+  }, [isOpen, savedState]);
+
+  const getCurrentState = useCallback((): TripMapState => ({
+    selectedZone,
+    drillDownZone,
+    activeTab,
+    selectedCard,
+  }), [selectedZone, drillDownZone, activeTab, selectedCard]);
+
+  const handleNavigateAway = useCallback(() => {
+    minimizeMap(getCurrentState());
+  }, [minimizeMap, getCurrentState]);
 
   // Escape: back out of drill-down first, then close overlay
   useEffect(() => {
@@ -85,7 +113,7 @@ export function NorwayMapOverlay() {
           className="fixed inset-0 z-[60] flex items-center justify-center"
           role="dialog"
           aria-modal="true"
-          aria-label="Plan your trip — interactive Norway map"
+          aria-label="Trip planner — interactive Norway map"
           onClick={(e) => {
             if (e.target === e.currentTarget) closeMap();
           }}
@@ -105,7 +133,7 @@ export function NorwayMapOverlay() {
             <div className="flex items-center justify-between mb-4 lg:mb-6 shrink-0">
               <div>
                 <h2 className="text-2xl lg:text-3xl font-bold text-white">
-                  Plan your trip
+                  Trip Planner
                 </h2>
                 <p className="text-white/50 text-sm mt-1 hidden sm:block">
                   {drillDownZone
@@ -139,6 +167,11 @@ export function NorwayMapOverlay() {
                     onBack={handleBack}
                     allZones={allDrillDownZones}
                     onSwitchZone={handleExplore}
+                    onNavigateAway={handleNavigateAway}
+                    activeTab={activeTab}
+                    onTabChange={setActiveTab}
+                    selectedCard={selectedCard}
+                    onCardChange={setSelectedCard}
                   />
                 </motion.div>
               ) : (
@@ -167,6 +200,7 @@ export function NorwayMapOverlay() {
                       selectedZone={selectedData}
                       onClose={() => setSelectedZone(null)}
                       onExplore={handleExplore}
+                      onNavigateAway={handleNavigateAway}
                     />
                   </div>
                 </motion.div>
