@@ -26,7 +26,7 @@ export const tromso: CityGuide = {
     "69\u00B0N. 75,000 residents inside the auroral oval. The aurora hangs overhead from September to March, the sun never sets in June, and orca pods follow the herring into the fjords every November. This is Norway's Arctic capital \u2014 not a postcard backdrop.",
 
   heroStats: [
-    { icon: 'map-pin', text: 'Troms\u00F8 Langnes (TOS) \u2014 direct from Oslo' },
+    { icon: 'map-pin', text: 'Troms\u00F8 Langnes (TOS) \u2014 46 direct flight destinations' },
     { icon: 'moon', text: 'Polar night: Nov 26 \u2013 Jan 15' },
     { icon: 'sun', text: 'Midnight sun: May 18 \u2013 Jul 26' },
     { icon: 'thermometer', text: '\u221215\u00B0C to +20\u00B0C year-round range' },

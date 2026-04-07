@@ -7,7 +7,6 @@ export const revalidate = 86400;
 import { ArrowRight, MapPin, Clock, Thermometer } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { TromsoCityTabs } from '@/components/modules/destinations/TromsoCityTabs';
-import { TourOperatorsGrid } from '@/components/modules/destinations/TourOperatorsGrid';
 import { RestaurantGrid } from '@/components/modules/destinations/RestaurantGrid';
 import { experiencesStore } from '@/lib/admin/travel-experiences';
 import { eventsStore } from '@/lib/admin/travel-events';
@@ -144,48 +143,6 @@ export default async function TromsoPage() {
         </div>
       </section>
 
-      {/* Tour operators — affiliate */}
-      <section className="relative py-20 overflow-hidden bg-white">
-        <div className="container mx-auto px-4">
-          <TourOperatorsGrid
-            operators={tromso.tourOperators}
-            heading="Book a Northern Lights tour"
-          />
-        </div>
-      </section>
-
-      {/* Accommodation affiliate */}
-      <section className="py-20 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-slate-900 mb-3">Where to stay in Tromsø</h2>
-          <p className="text-slate-500 text-sm mb-8">
-            Affiliate disclosure: NorgeTravel earns a commission when you book via our links.
-            Your price does not change.
-          </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-3xl">
-            {tromso.accommodationAffiliates.map((a) => (
-              <div
-                key={a.name}
-                className="bg-white border border-slate-200 rounded-lg p-6 flex flex-col"
-              >
-                <h3 className="font-bold text-slate-900 mb-1">{a.name}</h3>
-                <p className="text-sm text-slate-500 mb-1">{a.type}</p>
-                <p className="text-xs text-slate-400 mb-4">via {a.network}</p>
-                <div className="flex-1" />
-                <p className="text-xs text-slate-400 mb-3">Commission: {a.commission}</p>
-                <a
-                  href={a.affiliateUrl}
-                  rel={a.rel}
-                  className="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
-                >
-                  Search availability <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Restaurants */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
@@ -207,45 +164,73 @@ export default async function TromsoPage() {
           <div className="space-y-4">
             <div className="flex gap-4 p-5 border border-slate-200 rounded-lg bg-white">
               <span className="text-2xl" aria-hidden="true">✈️</span>
-              <div>
+              <div className="flex-1">
                 <p className="font-bold text-slate-900">Direct flights from Oslo (OSL) to Tromsø (TOS)</p>
-                <p className="text-slate-600 text-sm">
+                <p className="text-slate-600 text-sm mb-3">
                   SAS and Norwegian fly multiple times daily. Flight time: 2 hours. Fares from
-                  NOK 799 return in shoulder season. Book 6–8 weeks ahead for winter aurora season.
+                  NOK 799 return in shoulder season. Book 6-8 weeks ahead for winter aurora season.
                 </p>
+                <a
+                  href="https://www.kiwi.com/deep?from=OSL&to=TOS"
+                  rel="noopener noreferrer sponsored"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
+                >
+                  Search flights <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </a>
               </div>
             </div>
             <div className="flex gap-4 p-5 border border-slate-200 rounded-lg bg-white">
               <span className="text-2xl" aria-hidden="true">🚢</span>
-              <div>
+              <div className="flex-1">
                 <p className="font-bold text-slate-900">Hurtigruten coastal ferry</p>
-                <p className="text-slate-600 text-sm">
-                  Tromsø is a stop on the Bergen–Kirkenes coastal route. The northbound sailing
+                <p className="text-slate-600 text-sm mb-3">
+                  Tromsø is a stop on the Bergen-Kirkenes coastal route. The northbound sailing
                   arrives at 14:30 and departs at 18:30. 12-hour transit from Bergen to Tromsø
-                  by Hurtigruten is not realistic — fly in, sail a segment out.
+                  by Hurtigruten is not realistic. Fly in, sail a segment out.
                 </p>
+                <a
+                  href="https://www.hurtigruten.com/en"
+                  rel="noopener noreferrer sponsored"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
+                >
+                  Browse sailings <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </a>
               </div>
             </div>
             <div className="flex gap-4 p-5 border border-slate-200 rounded-lg bg-white">
               <span className="text-2xl" aria-hidden="true">🚗</span>
-              <div>
+              <div className="flex-1">
                 <p className="font-bold text-slate-900">Driving — E8 from Finland or E6 from the south</p>
-                <p className="text-slate-600 text-sm">
+                <p className="text-slate-600 text-sm mb-3">
                   From Narvik via E6: 3.5 hours (209 km). From the Finnish border (Skibotn) via
-                  E8: 2 hours. Winter driving requires studded tyres — Norwegian law between
+                  E8: 2 hours. Winter driving requires studded tyres. Norwegian law between
                   November 1 and first Sunday after Easter in Nord-Norge.
                 </p>
+                <a
+                  href="https://www.discovercars.com/?pos=TOS"
+                  rel="noopener noreferrer sponsored"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
+                >
+                  Compare car rentals <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </a>
               </div>
             </div>
             <div className="flex gap-4 p-5 border border-slate-200 rounded-lg bg-white">
               <span className="text-2xl" aria-hidden="true">🚌</span>
-              <div>
+              <div className="flex-1">
                 <p className="font-bold text-slate-900">Express bus from Narvik</p>
-                <p className="text-slate-600 text-sm">
-                  The Tromskortet express runs Narvik–Tromsø in 4 hours with multiple daily
-                  departures. Book at troms.no. Narvik has direct rail connections from Stockholm
-                  via the Ofoten Line — a scenic entry point for train travellers.
+                <p className="text-slate-600 text-sm mb-3">
+                  The Tromskortet express runs Narvik-Tromsø in 4 hours with multiple daily
+                  departures. Narvik has direct rail connections from Stockholm
+                  via the Ofoten Line. A scenic entry point for train travellers.
                 </p>
+                <a
+                  href="https://svipper.no"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
+                >
+                  Book on Svipper <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </a>
               </div>
             </div>
           </div>

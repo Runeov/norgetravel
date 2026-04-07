@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, MapPin, Clock } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
-import heroImage from '@/assets/Hero_Tjenester.avif';
 
 export const metadata: Metadata = {
   title: 'Norwegian Fjords Travel Guide 2026 | NorgeTravel',
@@ -53,13 +52,12 @@ export default function FjordsPage() {
       {/* Hero */}
       <section className="relative overflow-hidden bg-slate-900 text-white">
         <Image
-          src={heroImage}
-          alt="Norwegian fjord — steep cliffs and calm blue water"
+          src="/images/narvik/fjord-railway/ofoten-railway-fjord_christina-myrland.jpg"
+          alt="Ofoten railway running along the fjord near Narvik, steep mountains dropping into calm water"
           fill
           className="object-cover opacity-50"
           priority
           quality={75}
-          placeholder="blur"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/40 to-slate-900/80" />

@@ -5,7 +5,6 @@ import { ArrowRight, MapPin, Clock, Thermometer, UtensilsCrossed } from 'lucide-
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { RestaurantGrid } from '@/components/modules/destinations/RestaurantGrid';
 import { lofotenRestaurants } from '@/data/city-guides/restaurants-lofoten';
-import heroImage from '@/assets/karasjok_Over.avif';
 
 export const metadata: Metadata = {
   title: 'Lofoten Islands Travel Guide 2026 | NorgeTravel',
@@ -27,13 +26,12 @@ export default function LofotenPage() {
       {/* Hero */}
       <section className="relative overflow-hidden bg-slate-900 text-white">
         <Image
-          src={heroImage}
-          alt="Lofoten Islands aerial view — dramatic peaks and fishing villages"
+          src="/images/lofoten/landscapes/lofoten-landscape-hero_jorn-eriksen.jpg"
+          alt="Lofoten archipelago from above, jagged peaks rising from the Norwegian Sea with fishing villages below"
           fill
           className="object-cover opacity-50"
           priority
           quality={75}
-          placeholder="blur"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/40 to-slate-900/80" />
@@ -81,23 +79,44 @@ export default function LofotenPage() {
           <div className="space-y-4">
             <div className="flex gap-4 p-5 border border-slate-200 rounded-2xl">
               <span className="text-2xl">✈️</span>
-              <div>
+              <div className="flex-1">
                 <p className="font-bold text-slate-900">Fly to Svolvær (SVJ) or Leknes (LKN)</p>
-                <p className="text-slate-600 text-sm">Daily connections from Oslo (1h 45m). Book 6–8 weeks ahead for summer.</p>
+                <p className="text-slate-600 text-sm mb-3">Daily connections from Oslo (1h 45m). Book 6-8 weeks ahead for summer.</p>
+                <a
+                  href="https://www.kiwi.com/deep?from=OSL&to=SVJ"
+                  rel="noopener noreferrer sponsored"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
+                >
+                  Search flights <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </a>
               </div>
             </div>
             <div className="flex gap-4 p-5 border border-slate-200 rounded-2xl">
               <span className="text-2xl">🚗</span>
-              <div>
+              <div className="flex-1">
                 <p className="font-bold text-slate-900">Drive the E10 from Narvik</p>
-                <p className="text-slate-600 text-sm">3 hours from Narvik. The E10 crosses the islands via bridges — no ferry needed.</p>
+                <p className="text-slate-600 text-sm mb-3">3 hours from Narvik. The E10 crosses the islands via bridges. No ferry needed.</p>
+                <a
+                  href="https://www.discovercars.com/?pos=EVE"
+                  rel="noopener noreferrer sponsored"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
+                >
+                  Compare car rentals <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </a>
               </div>
             </div>
             <div className="flex gap-4 p-5 border border-slate-200 rounded-2xl">
               <span className="text-2xl">🚢</span>
-              <div>
+              <div className="flex-1">
                 <p className="font-bold text-slate-900">Hurtigruten coastal express</p>
-                <p className="text-slate-600 text-sm">Stops at Stamsund and Svolvær. Combine with a coastal cruise for the full experience.</p>
+                <p className="text-slate-600 text-sm mb-3">Stops at Stamsund and Svolvær. Combine with a coastal cruise for the full experience.</p>
+                <a
+                  href="https://www.hurtigruten.com/en"
+                  rel="noopener noreferrer sponsored"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
+                >
+                  Browse sailings <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </a>
               </div>
             </div>
           </div>

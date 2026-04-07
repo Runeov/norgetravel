@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { Mountain, Calendar, Building, Compass } from 'lucide-react';
+import { useState, useCallback } from 'react';
+import { Mountain, Calendar, Building, Compass, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { TravelCard } from '@/components/modules/travel/TravelCard';
 import { extractRatings } from '@/lib/ratings';
@@ -53,7 +53,14 @@ export function SvalbardTabs({
   tours,
   fallbackActivities,
 }: SvalbardTabsProps) {
+  const INITIAL_COUNT = 6;
   const [activeTab, setActiveTab] = useState<TabId>('activities');
+  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
+
+  const handleTabChange = useCallback((tab: TabId) => {
+    setActiveTab(tab);
+    setVisibleCount(INITIAL_COUNT);
+  }, []);
 
   const dataMap: Record<TabId, TravelItemBase[]> = {
     activities,
@@ -63,6 +70,8 @@ export function SvalbardTabs({
   };
 
   const currentItems = dataMap[activeTab];
+  const displayItems = currentItems.slice(0, visibleCount);
+  const remaining = currentItems.length - visibleCount;
   const activeTabDef = TABS.find((t) => t.id === activeTab)!;
 
   return (
@@ -75,7 +84,7 @@ export function SvalbardTabs({
           return (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => handleTabChange(tab.id)}
               className={cn(
                 'inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 whitespace-nowrap min-h-[44px]',
                 isActive
@@ -92,10 +101,23 @@ export function SvalbardTabs({
 
       {/* Tab content */}
       {currentItems.length > 0 ? (
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {currentItems.map((item) => (
-            <TravelCard key={item.id} item={item} ratings={extractRatings(item)} />
-          ))}
+        <div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {displayItems.map((item) => (
+              <TravelCard key={item.id} item={item} ratings={extractRatings(item)} />
+            ))}
+          </div>
+          {remaining > 0 && (
+            <div className="flex justify-center mt-8">
+              <button
+                onClick={() => setVisibleCount((c) => c + INITIAL_COUNT)}
+                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-[#1B3A5C] bg-white border border-slate-200 rounded-xl hover:border-[#1B3A5C]/30 hover:bg-slate-50 transition-all duration-300 min-h-[44px]"
+              >
+                View {Math.min(remaining, INITIAL_COUNT)} more
+                <ChevronDown className="w-4 h-4" aria-hidden="true" />
+              </button>
+            </div>
+          )}
         </div>
       ) : activeTab === 'activities' ? (
         <div className="grid sm:grid-cols-2 gap-6">

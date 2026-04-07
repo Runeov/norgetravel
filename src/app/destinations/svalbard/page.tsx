@@ -8,7 +8,7 @@ import { experiencesStore } from '@/lib/admin/travel-experiences';
 import { eventsStore } from '@/lib/admin/travel-events';
 import { accommodationStore } from '@/lib/admin/travel-accommodation';
 import { guidesStore } from '@/lib/admin/travel-guides';
-import heroImage from '@/assets/karasjok_Over.avif';
+import { CITY_EXPERIENCE_PREFIXES } from '@/lib/city-experience-prefixes';
 
 export const metadata: Metadata = {
   title: 'Svalbard Travel Guide 2026 | NorgeTravel',
@@ -53,7 +53,7 @@ const experiences = [
 
 export default async function SvalbardPage() {
   const [activities, events, accommodation, tours] = await Promise.all([
-    experiencesStore.filterByDestination('svalbard'),
+    experiencesStore.filterByIdPrefixes(CITY_EXPERIENCE_PREFIXES['svalbard']),
     eventsStore.filterByDestination('svalbard'),
     accommodationStore.filterByDestination('svalbard'),
     guidesStore.filterByDestination('svalbard'),
@@ -63,13 +63,12 @@ export default async function SvalbardPage() {
       {/* Hero */}
       <section className="relative overflow-hidden bg-slate-900 text-white">
         <Image
-          src={heroImage}
-          alt="Svalbard Arctic wilderness — glacier and polar landscape"
+          src="/images/svalbard/landscapes/svalbard-panorama_emilien-gigandet-1.jpg"
+          alt="Svalbard panorama at 78 degrees north, glacial terrain and Arctic mountains under pale polar light"
           fill
           className="object-cover opacity-40"
           priority
           quality={75}
-          placeholder="blur"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-slate-900/50 to-slate-900/90" />
@@ -131,9 +130,16 @@ export default async function SvalbardPage() {
           <div className="space-y-4">
             <div className="flex gap-4 p-5 border border-slate-200 rounded-2xl">
               <span className="text-2xl">✈️</span>
-              <div>
+              <div className="flex-1">
                 <p className="font-bold text-slate-900">Direct flights from Oslo (OSL) to Longyearbyen (LYR)</p>
-                <p className="text-slate-600 text-sm">Norwegian Air and SAS fly daily. Flight time: ~3 hours. Fares from NOK 2,400 return.</p>
+                <p className="text-slate-600 text-sm mb-3">Norwegian Air and SAS fly daily. Flight time: ~3 hours. Fares from NOK 2,400 return.</p>
+                <a
+                  href="https://www.kiwi.com/deep?from=OSL&to=LYR"
+                  rel="noopener noreferrer sponsored"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
+                >
+                  Search flights <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </a>
               </div>
             </div>
             <div className="flex gap-4 p-5 border border-slate-200 rounded-2xl">
