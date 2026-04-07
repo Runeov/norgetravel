@@ -26,7 +26,7 @@ export default function Services() {
       icon: imgFjords.src,
       content: 'From January 2026 all vessels entering UNESCO World Heritage fjords must meet zero-emission standards. Our partners — Hurtigruten and Havila Voyages — already exceed that bar.',
       bullets: ['Zero-emission certified operators', 'Geirangerfjord & Nærøyfjord', 'Hurtigruten Northern Lights Guarantee', 'Havila 4-hour battery sailing'],
-      link: '/tjenester/fjord-cruises',
+      link: '/destinations/fjords',
       linkText: 'Explore fjord cruises',
     },
     {

@@ -46,7 +46,7 @@ const destinations = [
     tagline: 'Mountains straight out of the sea',
     description:
       '170 km of jagged granite peaks rising 1,000m from the Norwegian Sea. Red rorbuer, stockfish racks, and the E10. 800,000 visitors in summer, 24,000 residents year-round.',
-    image: '/pics/Lofoten/lofoten_banner.jpeg',
+    image: '/images/lofoten/landscapes/lofoten-landscape-hero_jorn-eriksen.jpg',
     imageAlt: 'Lofoten Islands red rorbuer cabins against dramatic mountain backdrop',
     href: '/destinations/lofoten',
     color: '#5CBFEE',
@@ -61,7 +61,7 @@ const destinations = [
     tagline: 'Two UNESCO sites, zero-emission from 2026',
     description:
       'Geirangerfjord and Nærøyfjord carry UNESCO World Heritage status. Bergen, Stavanger, Ålesund, and Trondheim serve as basecamps for the fjord region.',
-    image: '/pics/Fjords/fjords_banner.jpeg',
+    image: '/pics/cities/Bergen_banner.jpeg',
     imageAlt: 'Norwegian fjord with steep green cliffs and calm blue water',
     href: '/destinations/fjords',
     color: '#5CBFEE',

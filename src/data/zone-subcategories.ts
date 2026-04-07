@@ -47,7 +47,7 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
           'Alta \u2014 Northern Lights observatory, canyon hiking, Sami culture',
           'North Cape \u2014 71\u00B0N, the symbolic northern tip of Europe',
           'Vester\u00E5len & Senja \u2014 Whale safaris, Segla peak, fishing villages, quieter island life',
-          'Karasjok \u2014 Sami parliament, reindeer herding, Finnmark interior',
+          'S\u00E1pmi \u2014 Sami heartland across Karasjok, Kautokeino, and Tana',
           'Lyngen \u2014 Lyngen Alps, fjord-to-summit skiing, dark-sky aurora site',
         ],
         bulletImages: [
@@ -55,7 +55,7 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
           '/pics/Finnmark/alta_banner.jpeg',
           '/pics/nordkapp/nordkapp_banner.jpeg',
           '/pics/vesteraalen/vesteralen_banner.jpeg',
-          '/pics/Finnmark/Reinsdyr.jpeg',
+          '/images/sapmi/sami-culture/sami-lavvo_christian-roth-christensen.jpg',
           '/pics/lyngen/Lyngen_banner.jpeg',
         ],
         bulletDetails: [
@@ -88,11 +88,11 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
             ctaText: 'Explore Vester\u00E5len & Senja',
           },
           {
-            title: 'Karasjok',
-            content: 'Karasjok is the seat of the Sami Parliament (Sametinget) and the cultural capital of the Norwegian Sami people. The town sits deep in the Finnmark interior, 300 km from the coast. Winter temperatures drop to \u221240\u00B0C. Sami-owned reindeer herding experiences, traditional duodji craft workshops, and the Sami museum (De Samiske Samlinger) are here.',
-            highlights: ['Sametinget \u2014 the Norwegian Sami Parliament', 'De Samiske Samlinger \u2014 Sami cultural museum', 'Reindeer herding experiences \u2014 Sami-owned and operated', 'Winter temperatures: regularly \u221230\u00B0C to \u221240\u00B0C'],
+            title: 'S\u00E1pmi',
+            content: 'S\u00E1pmi \u2014 the Sami homeland \u2014 stretches across the Finnmark interior and into Troms. Karasjok holds the Sami Parliament (Sametinget) and De Samiske Samlinger museum. Kautokeino is the centre of Sami reindeer herding culture, with 100,000 reindeer on the surrounding vidda and the Kautokeino Easter Festival drawing thousands each spring. Tana is the heartland of the salmon-fishing S\u00E1mi along the Tana River. Manndalen in Troms keeps the coastal Sami craft tradition alive. All cultural experiences are Sami-owned and Sami-operated.',
+            highlights: ['Karasjok \u2014 Sami Parliament and national museum', 'Kautokeino \u2014 reindeer herding capital, Easter Festival', 'Tana \u2014 salmon-fishing S\u00E1mi, river culture', 'Manndalen \u2014 coastal Sami duodji crafts in Troms', 'Duodji workshops, joik performances, lavvo stays'],
             ctaLink: '/destinations/northern-norway',
-            ctaText: 'Explore Karasjok',
+            ctaText: 'Explore S\u00E1pmi',
           },
           {
             title: 'Lyngen',
@@ -160,6 +160,16 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         id: 'nn-events',
         title: 'Events',
         shortDesc: 'Festivals and seasonal happenings across the Arctic',
+        bulletImages: [
+          '/pics/subcategory_events/riddu_banner.jpg',
+          '/pics/subcategory_events/MSM_Banner.png',
+          '/pics/subcategory_events/riddu_banner.jpg',
+          '/pics/subcategory_events/olavfestdagene_banner.jpg',
+          '/pics/subcategory_events/traena_banner.jpg',
+          '/pics/subcategory_tours/nordlys_banner.png',
+          '/images/lyngen/activities/whale-safari-skjervoy_francisco-damm.jpg',
+          '/images/lyngen/northern-lights/aurora-otertind_petr-pavlicek.jpg',
+        ],
         content:
           'Northern Norway runs on its own cultural calendar — anchored to the auroral oval, the cod migration, and the Sami seasons. The Sami Easter Festival in Kautokeino (20,000 visitors, Easter week) is the largest indigenous cultural gathering in the world. The Midnight Sun Marathon in Tromsø starts at 22:30 and finishes under broad daylight. Riddu Riđđu in Manndalen is a four-day circumpolar indigenous festival that draws artists from Sápmi to New Zealand. Add the Northern Lights season (late September to late March), whale watching off Tromsø (November to February), and the Olavsfestdagene in Trondheim — and Northern Norway has the densest events calendar of any region in Norway.',
         bullets: [
@@ -209,6 +219,12 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         id: 'nn-tours',
         title: 'Tours',
         shortDesc: 'Guided expeditions and multi-day packages',
+        bulletImages: [
+          '/images/lyngen/northern-lights/aurora-camp-tamok_lyngsfjord-adventure.jpg',
+          '/images/senja/landscapes/senja-scenic_baard-loeken.jpg',
+          '/pics/Finnmark/nordkapp.jpeg',
+          '/pics/Tromso/tromso_oversikt_nordlys.jpeg',
+        ],
         content:
           'Northern Norway is not a self-guided destination for most visitors. The distances are vast, the weather is volatile, and the best experiences require local knowledge. Guided packages combine transport, accommodation, and activities into itineraries that work \u2014 from 3-day aurora breaks to 10-day Arctic coast expeditions.',
         bullets: [
@@ -254,6 +270,12 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         id: 'nn-accommodation',
         title: 'Accommodation',
         shortDesc: 'Rorbuer, lodges, and Arctic hotels',
+        bulletImages: [
+          '/pics/subcategory_accomendation/rorbu.jpeg',
+          '/pics/Tromso/tromso_banner.jpeg',
+          '/images/lyngen/landscapes/lyngen-alps-panorama_petr-pavlicek-1.jpg',
+          '/images/senja/activities/husky-sledding_silje-eriksen.jpg',
+        ],
         content:
           'Northern Norway accommodation ranges from converted fishermen\u2019s cabins (rorbuer) on the coast to wilderness lodges in the Lyngen Alps. Troms\u00F8 has full-service hotels. Lofoten runs on rorbuer. Finnmark offers Sami-run glamping and ice hotels. Book 3\u20136 months ahead for peak aurora and midnight sun seasons.',
         bullets: [
@@ -309,18 +331,118 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         title: 'Cities',
         shortDesc: 'Fishing villages and island basecamps',
         content:
-          'Cities and villages for Lofoten & Islands are coming soon. Check back for Svolv\u00E6r, Henningsv\u00E6r, Reine, \u00C5, Stamsund, and Vester\u00E5len basecamps.',
-        bullets: [],
+          'Six villages and towns spread across 170 km of the E10. Svolv\u00E6r is the administrative capital with 4,500 residents, a working harbour, and the closest thing to a town centre. Henningsv\u00E6r is the fishing village that became a climbing and gallery destination. Reine is the most photographed. \u00C5 is the end of the road \u2014 literally. Each has a different character, a different dock, and a different view.',
+        bullets: [
+          'Svolv\u00E6r \u2014 Lofoten capital, 4,500 residents, harbour and galleries',
+          'Henningsv\u00E6r \u2014 fishing village on three islands, active cod dock',
+          'Reine \u2014 most photographed village, Reinebringen trailhead',
+          '\u00C5 i Lofoten \u2014 end of the E10, Stockfish Museum',
+          'Kabelvåg \u2014 historic trading post, Lofoten Cathedral, SKREI Museum',
+          'Stamsund \u2014 Hurtigruten stop, working fishing harbour, hostel culture',
+        ],
+        bulletImages: [
+          '/images/lofoten/landscapes/lofoten-landscape-hero_jorn-eriksen.jpg',
+          '/images/lofoten/villages/henningsvaer-aerial_tobias-bjorkli.jpg',
+          '/images/lofoten/villages/fishing-village-winter_kristian-nashoug.jpg',
+          '/images/lofoten/villages/lofoten-fishing-village_roger-johansen.jpg',
+          '/images/lofoten/culture-history/lofoten-cathedral.jpg',
+          '/images/lofoten/villages/lofoten-village_kristian-nashoug.jpg',
+        ],
+        bulletDetails: [
+          {
+            title: 'Svolv\u00E6r',
+            content: 'Svolv\u00E6r is Lofoten\u2019s largest town with 4,500 residents, a working harbour, daily flights from Oslo via Bod\u00F8, and the main Hurtigruten stop. The town sits at the base of Svolv\u00E6rgeita (The Goat) \u2014 a twin-pinnacle rock climb that requires a guide and a head for heights. Sea eagle RIB safaris depart from the harbour year-round. The Magic Ice gallery, Nordnorsk Kunstmuseum gallery, and a growing restaurant scene make Svolv\u00E6r the logical first night on the islands.',
+            highlights: ['Population: 4,500 \u2014 Lofoten\u2019s administrative capital', 'Airport: Svolv\u00E6r (SVJ), daily flights via Bod\u00F8', 'Hurtigruten coastal express stop', 'Sea eagle RIB safaris from the harbour year-round'],
+            ctaLink: '/destinations/lofoten',
+            ctaText: 'Explore Svolv\u00E6r',
+          },
+          {
+            title: 'Henningsv\u00E6r',
+            content: 'Henningsv\u00E6r spreads across three small islands connected by single-lane bridges, with 500 permanent residents and an active cod dock. The harbour fills with fishing boats from January through April during skrei season. The town has reinvented itself around climbing (Klatref\u00F8rer Lofoten operates here), art galleries in converted fish processing plants, and two serious restaurants: Fiskekrogen and Lysstøperiet. The football pitch on the outer island is the most photographed in Norway.',
+            highlights: ['500 permanent residents across three islands', 'Active cod dock \u2014 watch boats unload from 06:00 in skrei season', 'Climbing hub: Svolv\u00E6rgeita and multi-pitch sea cliff routes', 'Fiskekrogen restaurant: torsketunge fried in duck fat'],
+            ctaLink: '/destinations/lofoten',
+            ctaText: 'Explore Henningsv\u00E6r',
+          },
+          {
+            title: 'Reine',
+            content: 'Reine sits where Reinefjord meets Vestfjord, with Reinebringen (448m) rising directly above. The village has 300 residents and the highest concentration of rorbuer on the islands. The sherpa-built staircase to Reinebringen summit takes 2\u20133 hours return and delivers the view that sells Lofoten to the world. In winter, the Northern Lights reflect in the harbour. In summer, midnight sun photography from the summit runs 23:00 to 02:00.',
+            highlights: ['Reinebringen summit: 448m, sherpa-built staircase, 2\u20133 hours return', 'Highest concentration of rorbu accommodation', 'Reinefjord ferry to Vindstad and Bunes beach', 'Northern Lights reflection in Reine harbour (Sep\u2013Mar)'],
+            ctaLink: '/destinations/lofoten',
+            ctaText: 'Explore Reine',
+          },
+          {
+            title: '\u00C5 i Lofoten',
+            content: '\u00C5 is the last village on the E10 \u2014 the road ends here, literally. The Norwegian Fishing Village Museum and the Stockfish Museum occupy the preserved 19th-century buildings along the harbour. Bakery \u00C5 Rorbuer serves Norway\u2019s most famous cinnamon buns from a wood-fired oven. The village has fewer than 100 residents. From \u00C5, the Moskenesstraumen tidal current (the original "maelstrom") churns between Moskenesøya and V\u00E6røy.',
+            highlights: ['End of the E10 \u2014 the road stops here', 'Norwegian Fishing Village Museum and Stockfish Museum', 'Bakery \u00C5 Rorbuer: wood-fired cinnamon buns', 'Moskenesstraumen tidal current visible from shore'],
+            ctaLink: '/destinations/lofoten',
+            ctaText: 'Explore \u00C5',
+          },
+          {
+            title: 'Kabelvåg',
+            content: 'Kabelvåg was Lofoten\u2019s first trading post and the medieval centre of the cod trade. The Lofoten Cathedral (V\u00E5gan kirke, 1898) is the largest wooden church north of Trondheim, seating 1,200 \u2014 built to serve the fishermen who gathered here each winter. The Lofoten Aquarium and the Galleri Espolin are here. The SKREI Museum opens at Storvågan in June 2026, dedicated to 1,000 years of Arctic cod culture. Kabelvåg is 5 km from Svolv\u00E6r by road.',
+            highlights: ['Lofoten Cathedral: largest wooden church north of Trondheim (1,200 seats)', 'SKREI Museum opening June 2026 at Storvågan', 'Medieval cod trading history', '5 km from Svolv\u00E6r \u2014 walking distance in summer'],
+            ctaLink: '/destinations/lofoten',
+            ctaText: 'Explore Kabelvåg',
+          },
+          {
+            title: 'Stamsund',
+            content: 'Stamsund is a working fishing harbour with a Hurtigruten stop and Lofoten\u2019s original backpacker hostel (Justad Rorbuer, operating since the 1960s). The village has 1,100 residents and a quieter pace than Svolv\u00E6r or Henningsv\u00E6r. The cod drying racks line the hillside from February. The harbour is active year-round. Stamsund is the base for hiking to Steinetind (571m) with views across the Vestfjord to the mainland.',
+            highlights: ['Hurtigruten coastal express stop', 'Justad Rorbuer: Lofoten\u2019s original backpacker hostel', 'Active fishing harbour with drying racks from February', 'Steinetind hike (571m) with Vestfjord panorama'],
+            ctaLink: '/destinations/lofoten',
+            ctaText: 'Explore Stamsund',
+          },
+        ],
         link: '/destinations/lofoten',
         linkText: 'Browse Lofoten villages',
       },
       {
         id: 'lo-activities',
         title: 'Activities',
-        shortDesc: 'Hiking, kayaking, and fishing culture',
+        shortDesc: 'Hiking, kayaking, surfing, and fishing culture',
         content:
-          'Activities for Lofoten & Islands are coming soon. Check back for Reinebringen hiking, sea kayaking, stockfish tours, surfing at Unstad, and sea eagle safaris.',
-        bullets: [],
+          'Lofoten runs on vertical terrain, cold water, and 1,000 years of fishing culture. The hiking is exposed and steep \u2014 Reinebringen\u2019s 448m ascent and Ryten\u2019s ridge walk above Kvalvika beach are not casual walks. The surfing at Unstad runs year-round in water between 6\u00B0C and 13\u00B0C. Sea kayaking threads between rorbuer and cod docks. The fishing charters follow the same routes the skrei boats have taken since the Viking Age.',
+        bullets: [
+          'Hiking \u2014 Reinebringen, Ryten, Svolv\u00E6rgeita, Kvalvika ridge',
+          'Surfing \u2014 Unstad beach, year-round, 6\u201313\u00B0C water',
+          'Sea Kayaking \u2014 Svolv\u00E6r to Henningsv\u00E6r, rorbu-to-rorbu paddling',
+          'Fishing & Cod Culture \u2014 skrei charters, torsketunge, stockfish tours',
+        ],
+        bulletImages: [
+          '/images/lofoten/activities/hiking-kirkesfjorden_baard-loeken.jpg',
+          '/images/lofoten/activities/surfing-unstad_kian-bourke-steer.jpg',
+          '/images/lofoten/activities/kayaking-vestvagoey_kristin-folsland-olsen.jpg',
+          '/images/lofoten/fishing-culture/cod-fishing-at-sea_reiner-schaufler.jpg',
+        ],
+        bulletDetails: [
+          {
+            title: 'Hiking',
+            content: 'Reinebringen (448m) is the signature hike \u2014 sherpa-built stone staircase, 2\u20133 hours return, the view that defined Lofoten on Instagram. Ryten (543m) drops to a ridge overlooking Kvalvika beach \u2014 4\u20135 hours, exposed in wind. Svolv\u00E6rgeita (The Goat) is a technical twin-pinnacle rock climb requiring a certified guide. Munkebu is a 3\u20134 hour hike to a DNT cabin at 480m with views across Vestfjord. None of these are casual walks. Bring layers, waterproofs, and proper boots regardless of season.',
+            highlights: ['Reinebringen: 448m, 2\u20133 hours return, sherpa staircase', 'Ryten: 543m, ridge above Kvalvika beach, 4\u20135 hours', 'Svolv\u00E6rgeita: technical rock climb, guide required', 'Munkebu: DNT cabin hike, 480m, Vestfjord views'],
+            ctaLink: '/tjenester/trekking',
+            ctaText: 'Browse Lofoten hikes',
+          },
+          {
+            title: 'Surfing',
+            content: 'Unstad beach on Vestvåg\u00F8y is one of Europe\u2019s most northerly surf breaks, with rideable waves year-round. Winter swells (October\u2013March) produce the best waves: 1\u20134m faces under the Northern Lights. Water temperature drops to 6\u00B0C in winter, 13\u00B0C in summer. Unstad Arctic Surf rents boards and full wetsuits. Beginners start in the beach break; experienced surfers head to the point break on the northern end. The drive from Svolv\u00E6r is 65 km (1 hour 15 minutes on the E10).',
+            highlights: ['Year-round surf: winter swells produce the best waves', 'Water temperature: 6\u00B0C (winter) to 13\u00B0C (summer)', 'Unstad Arctic Surf: board and wetsuit rental on site', 'Northern Lights surfing Oct\u2013Mar \u2014 yes, it is real'],
+            ctaLink: '/destinations/lofoten',
+            ctaText: 'Plan your surf trip',
+          },
+          {
+            title: 'Sea Kayaking',
+            content: 'Paddle between fishing villages and rorbuer along sheltered fjord arms. Guided half-day trips from Svolv\u00E6r, Reine, or Henningsv\u00E6r cover 10\u201315 km through channels between the islands. Multi-day kayak expeditions connect Svolv\u00E6r to \u00C5 along 200 km of coastline with rorbu overnight stays. Sea eagles overhead are almost guaranteed. Season runs May to September. Water temperature: 8\u201314\u00B0C. Dry suits and equipment provided by all operators.',
+            highlights: ['Half-day guided: 10\u201315 km from 1,200 NOK/person', 'Multi-day: Svolv\u00E6r to \u00C5, 200 km, rorbu overnights', 'Sea eagles overhead on every paddle', 'Season: May\u2013September, drysuits provided'],
+            ctaLink: '/destinations/lofoten',
+            ctaText: 'Book sea kayaking',
+          },
+          {
+            title: 'Fishing & Cod Culture',
+            content: 'The skrei (Arctic migratory cod) arrives in Lofoten waters every January and stays until April \u2014 1,000 years of unbroken fishing tradition. Charter a boat from Svolv\u00E6r or Henningsv\u00E6r for deep-sea fishing from NOK 950/person. Watch the catch unloaded at Henningsv\u00E6r dock from 06:00 during peak season. Eat torsketunge (cod tongue) fried in flour and duck fat at Fiskekrogen. Visit the stockfish drying racks on the hillsides from February \u2014 the smell of wind-dried cod is Lofoten\u2019s defining sensory marker.',
+            highlights: ['Skrei season: January 15 to April 15', 'Fishing charters from NOK 950/person', 'Torsketunge at Fiskekrogen, Henningsv\u00E6r', 'Stockfish racks visible (and smellable) from February'],
+            ctaLink: '/destinations/lofoten',
+            ctaText: 'Explore fishing culture',
+          },
+        ],
         link: '/destinations/lofoten',
         linkText: 'Browse activities',
       },
@@ -328,6 +450,16 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         id: 'lo-events',
         title: 'Events',
         shortDesc: 'Skrei season, midnight sun, and island happenings',
+        bulletImages: [
+          '/images/lofoten/fishing-culture/skrei-arctic-cod_reiner-schaufler.jpg',
+          '/images/lofoten/wildlife-nature/midnight-sun-lofoten.jpg',
+          '/images/lofoten/fishing-culture/fish-racks-stockfish_terje-rakke.jpg',
+          '/images/lofoten/wildlife-nature/northern-lights-lofoten.jpg',
+          '/pics/events/lofoten-intl-art-festival-2026.jpg',
+          '/images/lofoten/culture-history/querinissima-cultural-route_vidar-thorbjornsen.jpg',
+          '/images/lofoten/activities/surfing-unstad_kian-bourke-steer.jpg',
+          '/images/lofoten/activities/cycling-lofoten_baard-loeken.jpg',
+        ],
         content:
           'Lofoten\'s events are anchored to the sea, the season, and the light. The skrei (Arctic migratory cod) season runs January through April — 300+ fishing boats, dawn unloading at Henningsvær dock, torsketunge (cod tongue) cutting from 06:00. The midnight sun runs 27 May to 17 July (52 days of no darkness). The Northern Lights season returns in late September. Between the natural events: the Lofoten International Art Festival (LIAF, September), the Lofoten Literature Festival, the Arctic Surf competition at Unstad, and the new SKREI Museum opening in June 2026 at Storvågan. Lofoten has 24,000 residents and 800,000 annual visitors — timing your events visit correctly is the difference between the working archipelago and the tourist queue.',
         bullets: [
@@ -369,10 +501,51 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
       {
         id: 'lo-tours',
         title: 'Tours',
-        shortDesc: 'Guided island itineraries',
+        shortDesc: 'Guided island itineraries and multi-day packages',
+        bulletImages: [
+          '/images/lofoten/landscapes/lofoten-scenic_chris-craggs.jpg',
+          '/images/lofoten/landscapes/lofoten-scenic-route_terje-rakke.jpg',
+          '/images/lofoten/landscapes/lofoten-coast_baard-loeken.jpg',
+          '/images/lofoten/fishing-culture/fish-racks-stockfish_terje-rakke.jpg',
+        ],
         content:
-          'Tours for Lofoten & Islands are coming soon. Check back for guided E10 road trips, multi-day hiking packages, and fishing village tours.',
-        bullets: [],
+          'Lofoten is 170 km of single road (E10), ferry connections, and fishing villages with limited parking. Self-driving works in shoulder season. In July and August, guided packages remove the logistics headache \u2014 accommodation is pre-booked, the E10 bottlenecks are timed correctly, and the rorbu with the wood-fired stove is waiting when you arrive.',
+        bullets: [
+          '3-Day Lofoten Highlights \u2014 Svolv\u00E6r, Henningsv\u00E6r, Reine',
+          '5-Day E10 Road Trip \u2014 full island traverse, Svolv\u00E6r to \u00C5',
+          '7-Day Lofoten & Vester\u00E5len \u2014 islands, whales, and empty trails',
+          'Skrei Season Package \u2014 fishing, culture, and aurora (Jan\u2013Apr)',
+        ],
+        bulletDetails: [
+          {
+            title: '3-Day Lofoten Highlights',
+            content: 'Fly into Svolv\u00E6r, drive the E10 south through Henningsv\u00E6r to Reine. Day 1: sea eagle safari from Svolv\u00E6r harbour. Day 2: Reinebringen hike (448m, 2\u20133 hours) and Reine village. Day 3: \u00C5 i Lofoten, Stockfish Museum, return to Svolv\u00E6r. Three days is tight but covers the essential stops if the weather cooperates. Book rorbu accommodation in Reine for night 2.',
+            highlights: ['Sea eagle safari + Reinebringen hike + \u00C5 village', 'Rorbu overnight in Reine', 'Works as an extension to a Troms\u00F8 trip', 'Best: May\u2013September for hiking and long days'],
+            ctaLink: '/destinations/lofoten',
+            ctaText: 'See 3-day itinerary',
+          },
+          {
+            title: '5-Day E10 Road Trip',
+            content: 'The full E10 from Svolv\u00E6r to \u00C5 and back, with stops at every village worth stopping at. Day 1: Svolv\u00E6r and Kabelvåg (SKREI Museum). Day 2: Henningsv\u00E6r, fishing culture, galleries. Day 3: Flakstad\u00F8y beaches, Nusfjord. Day 4: Reine, Reinebringen, Reinefjord ferry. Day 5: \u00C5, Stockfish Museum, return north. Five days allows breathing room and accounts for at least one weather day.',
+            highlights: ['Full E10 traverse: Svolv\u00E6r to \u00C5 and back', 'Rorbu accommodation each night', 'Weather contingency day built in', 'Self-drive or guided options available'],
+            ctaLink: '/destinations/lofoten',
+            ctaText: 'See 5-day itinerary',
+          },
+          {
+            title: '7-Day Lofoten & Vester\u00E5len',
+            content: 'Combine Lofoten (5 days) with Vester\u00E5len (2 days) for the full northern islands experience. Cross from Lofoten to And\u00F8ya for sperm whale safaris in the Bleik Canyon \u2014 whales year-round, 95% sighting rate. Hike Segla (639m) on Senja on the return leg. This route works best as a loop starting and ending in Svolv\u00E6r or Harstad.',
+            highlights: ['Lofoten E10 + Vester\u00E5len whale watching', 'And\u00F8ya sperm whale safari: year-round, 95% sighting rate', 'Segla peak (639m) on Senja: 3\u20134 hour hike', 'Loop route from Svolv\u00E6r or Harstad airport'],
+            ctaLink: '/destinations/lofoten',
+            ctaText: 'See 7-day itinerary',
+          },
+          {
+            title: 'Skrei Season Package',
+            content: 'January through April is Lofoten\u2019s true season \u2014 the fishing boats are in, the drying racks are filling, and the Northern Lights arc over the harbour. This package combines a fishing charter (NOK 950/person), a visit to the Henningsv\u00E6r cod dock at dawn, torsketunge dining, and two nights of aurora chasing. The crowds are gone. The rorbu fires are lit. Temperatures: \u22125\u00B0C to +5\u00B0C.',
+            highlights: ['Season: January 15 to April 15', 'Fishing charter + cod dock visit + aurora chasing', 'Rorbu accommodation with wood-burning stoves', 'Temperature: \u22125\u00B0C to +5\u00B0C, thermal layers required'],
+            ctaLink: '/destinations/lofoten',
+            ctaText: 'Book skrei season package',
+          },
+        ],
         link: '/destinations/lofoten',
         linkText: 'Browse tours',
       },
@@ -380,9 +553,50 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         id: 'lo-accommodation',
         title: 'Accommodation',
         shortDesc: 'Rorbuer, cabins, and coastal lodges',
+        bulletImages: [
+          '/images/lofoten/villages/rorbu-cabins_tobias-bjorkli.jpg',
+          '/images/lofoten/villages/nusfjord-historic-village.jpg',
+          '/images/lofoten/landscapes/lofoten-landscape-hero_jorn-eriksen.jpg',
+          '/images/lofoten/landscapes/lofoten-coast_baard-loeken-2.jpg',
+        ],
         content:
-          'Accommodation for Lofoten & Islands is coming soon. Check back for rorbuer in Reine and Henningsv\u00E6r, coastal lodges, and camping options.',
-        bullets: [],
+          'Lofoten accommodation centres on the rorbu \u2014 the fisherman\u2019s cabin originally built on stilts over the water so crews could sleep close to their boats during skrei season. Today, rorbuer range from basic self-catering to fully renovated luxury suites. Hotels are scarce; lodges and cabins fill the gap. Summer fills months in advance. Winter has availability and lower prices.',
+        bullets: [
+          'Rorbuer \u2014 traditional fisherman\u2019s cabins, Reine and Henningsv\u00E6r',
+          'Coastal Lodges \u2014 small-scale properties with fjord views',
+          'Hotels \u2014 Svolv\u00E6r and Leknes, limited options',
+          'Camping & Cabins \u2014 beachfront and fjord-edge sites',
+        ],
+        bulletDetails: [
+          {
+            title: 'Rorbuer',
+            content: 'The rorbu is Lofoten\u2019s signature accommodation: red-painted timber cabins on stilts over the harbour, originally built for visiting fishermen. Eliassen Rorbuer in Hamnøy (near Reine) is the most photographed rorbu row in Norway. Anker Brygge in Svolv\u00E6r converts historic warehouses into waterfront suites. Hattvika Lodge in Ballstad offers renovated rorbuer with sea views. Expect self-catering kitchens, wooden floors, and the sound of the harbour outside your window. Peak summer: book 3\u20136 months ahead.',
+            highlights: ['Eliassen Rorbuer, Hamnøy: the postcard rorbuer', 'Anker Brygge, Svolv\u00E6r: converted harbour warehouses', 'Self-catering kitchens standard in most rorbuer', 'Summer peak: book 3\u20136 months ahead'],
+            ctaLink: '/travel/accommodation',
+            ctaText: 'Browse rorbuer',
+          },
+          {
+            title: 'Coastal Lodges',
+            content: 'Small-scale lodges with 8\u201320 rooms are growing across Lofoten \u2014 a step up from self-catering rorbuer without the anonymity of a hotel chain. Nusfjord Arctic Resort occupies a restored 19th-century fishing village with 22 cabins. Lofoten Links Lodges in Gimsøy combines accommodation with a golf course (yes, at 68\u00B0N). These properties run on personal service, communal dining, and direct access to the landscape.',
+            highlights: ['Nusfjord Arctic Resort: restored 19th-century fishing village', '8\u201320 rooms per property', 'Communal dining and personal service', 'Direct access to hiking, fishing, and kayaking'],
+            ctaLink: '/travel/accommodation',
+            ctaText: 'Browse lodges',
+          },
+          {
+            title: 'Hotels',
+            content: 'Hotels in Lofoten are concentrated in Svolv\u00E6r and Leknes. Thon Hotel Lofoten in Svolv\u00E6r is the largest with harbour views and a restaurant. Scandic Leknes covers the budget-to-midrange segment. Beyond these two towns, hotels are rare \u2014 the rorbu and lodge model dominates. If you need a hotel-standard room with reception and daily housekeeping, base yourself in Svolv\u00E6r and day-trip south.',
+            highlights: ['Thon Hotel Lofoten: Svolv\u00E6r harbour, largest on islands', 'Scandic Leknes: budget-to-midrange', 'Hotels rare outside Svolv\u00E6r and Leknes', 'Rorbu and lodge model dominates Lofoten accommodation'],
+            ctaLink: '/travel/accommodation',
+            ctaText: 'Browse hotels',
+          },
+          {
+            title: 'Camping & Cabins',
+            content: 'Lofoten has campsites along the E10 with both tent pitches and basic cabins. Moskenesstraumen Camping near \u00C5 sits at the end of the road with views of the tidal current. Ramberg Beach has beachfront camping on white sand at 68\u00B0N. Wild camping under Allemannsretten is permitted 150 meters from buildings, 2-night limit \u2014 but parking is severely limited in summer and roadside camping is actively discouraged by local authorities. Use designated sites.',
+            highlights: ['Moskenesstraumen Camping: near \u00C5, tidal current views', 'Ramberg Beach: white sand camping at 68\u00B0N', 'Wild camping: 150m from buildings, 2-night limit', 'Designated sites strongly recommended \u2014 parking is scarce'],
+            ctaLink: '/travel/accommodation',
+            ctaText: 'Browse camping',
+          },
+        ],
         link: '/destinations/lofoten',
         linkText: 'Browse accommodation',
       },
@@ -401,7 +615,39 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         shortDesc: 'Settlements at the edge of the world',
         content:
           'Svalbard has one town: Longyearbyen, population 2,400. It is the world\u2019s northernmost settlement with a permanent population, a university, a brewery, and a seed vault. Ny-\u00C5lesund is a research station, not a town. Barentsburg is a Russian mining settlement with a population under 500. Everything starts and ends in Longyearbyen.',
-        bullets: [],
+        bullets: [
+          'Longyearbyen \u2014 78\u00B0N, 2,400 residents, the world\u2019s northernmost town',
+          'Ny-\u00C5lesund \u2014 research station at 79\u00B0N, accessible by chartered flight',
+          'Barentsburg \u2014 Russian mining settlement, population under 500',
+        ],
+        bulletImages: [
+          '/pics/svalbard/Longyearbyen.jpeg',
+          '/pics/svalbard/hus.jpeg',
+          '/pics/svalbard/saaBanken.jpeg',
+        ],
+        bulletDetails: [
+          {
+            title: 'Longyearbyen',
+            content: 'Longyearbyen is where every Svalbard trip begins and ends. The town sits in Adventdalen valley at 78\u00B0N with 2,400 residents, a university (UNIS), the Svalbard Global Seed Vault (not open to visitors), and Svalbard Bryggeri \u2014 the world\u2019s northernmost brewery. The main street runs 2 km. Restaurants, gear shops, and tour operators line it. The polar bear warning signs at the town perimeter are not decorative. Outside Longyearbyen, you need an armed guide or your own rifle.',
+            highlights: ['Population: 2,400 \u2014 world\u2019s northernmost permanent town', 'Airport: Longyearbyen (LYR), direct flights from Oslo (3 hours)', 'Svalbard Bryggeri: world\u2019s northernmost brewery', 'Armed guide required outside town limits (polar bear territory)'],
+            ctaLink: '/destinations/svalbard',
+            ctaText: 'Explore Longyearbyen',
+          },
+          {
+            title: 'Ny-\u00C5lesund',
+            content: 'Ny-\u00C5lesund at 79\u00B0N is the world\u2019s northernmost permanently inhabited research station. It is not a town \u2014 it is a scientific community of 30\u2013150 researchers depending on season. Access is by chartered flight from Longyearbyen only. Day visits are possible through select tour operators, with walking tours of the historic mining settlement (active 1916\u20131963) and the Amundsen mast from which Roald Amundsen departed for the North Pole in 1926.',
+            highlights: ['79\u00B0N \u2014 world\u2019s northernmost research station', 'Access by chartered flight from Longyearbyen only', 'Amundsen\u2019s 1926 North Pole departure site', 'Day visits through select tour operators'],
+            ctaLink: '/destinations/svalbard',
+            ctaText: 'Learn about Ny-\u00C5lesund',
+          },
+          {
+            title: 'Barentsburg',
+            content: 'Barentsburg is a Russian mining settlement 60 km west of Longyearbyen by boat (no road connection). Population: under 500, mostly Russian and Ukrainian miners. The Soviet-era architecture, Lenin bust, and working coal mine give it a time-capsule quality. Boat tours from Longyearbyen run in summer (6\u20138 hours round trip). The brewery (Barentsburg Pomor) and a small hotel are the visitor facilities. Winter access is by snowmobile.',
+            highlights: ['Russian mining settlement, population under 500', 'No road connection \u2014 boat (summer) or snowmobile (winter)', 'Soviet-era architecture and working coal mine', 'Boat tour from Longyearbyen: 6\u20138 hours round trip'],
+            ctaLink: '/destinations/svalbard',
+            ctaText: 'Visit Barentsburg',
+          },
+        ],
         link: '/destinations/svalbard',
         linkText: 'Browse Svalbard',
       },
@@ -410,8 +656,49 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         title: 'Activities',
         shortDesc: 'Expeditions in the high Arctic',
         content:
-          'Activities on Svalbard are coming soon. Check back for glacier hiking, snowmobile expeditions, polar bear safaris, and Arctic kayaking.',
-        bullets: [],
+          'Svalbard does not have trails. It has terrain. Every activity outside Longyearbyen requires an armed guide (polar bear territory begins at the town boundary). The landscape is 60% glacier, the wildlife includes 3,000 polar bears, and the weather changes in minutes. This is expedition-grade travel \u2014 guided, equipped, and planned.',
+        bullets: [
+          'Glacier Hiking \u2014 Longyearbreen and Nordenskiöldbreen with crampons',
+          'Snowmobile Expeditions \u2014 cross-country to abandoned settlements',
+          'Dog Sledding \u2014 husky teams across frozen tundra under aurora',
+          'Arctic Kayaking \u2014 fjord paddling past glaciers and walrus colonies',
+        ],
+        bulletImages: [
+          '/pics/svalbard/expedition.jpeg',
+          '/pics/svalbard/expedition_boat.jpeg',
+          '/pics/subcategory_activities/arctic_huskey_sledfront_banner.png',
+          '/pics/svalbard/expedition_boat2.jpeg',
+        ],
+        bulletDetails: [
+          {
+            title: 'Glacier Hiking',
+            content: 'Svalbard is 60% glacier. Guided glacier hikes on Longyearbreen (3 km from Longyearbyen) and Nordenskiöldbreen cover ice caves, crevasse fields, and moraine landscapes. Full-day expeditions include crampons, ice axes, and harnesses provided by the guide company. No glacier experience required for introductory hikes. Advanced routes cross the glacier plateau to views of Adventfjorden. Armed guide mandatory.',
+            highlights: ['Longyearbreen: 3 km from Longyearbyen, introductory glacier hike', 'Full-day: crampons, ice axes, harnesses provided', 'No prior glacier experience needed for intro routes', 'Armed guide mandatory \u2014 polar bear territory'],
+            ctaLink: '/destinations/svalbard',
+            ctaText: 'Book glacier hiking',
+          },
+          {
+            title: 'Snowmobile Expeditions',
+            content: 'Cross-country snowmobile tours from Longyearbyen cover 50\u2013200 km in a day, reaching abandoned mining settlements (Grumant, Colesbukta) and remote fjords inaccessible by road. No driving licence required on Svalbard. Multi-day expeditions camp in heated tents on the tundra. Season: November to May. Temperature on the snowmobile at speed: \u221230\u00B0C to \u221240\u00B0C wind chill. Full Arctic thermal suits provided.',
+            highlights: ['50\u2013200 km range per day, no licence required', 'Abandoned settlements: Grumant, Colesbukta', 'Multi-day camping expeditions on the tundra', 'Full Arctic thermal suits provided by operators'],
+            ctaLink: '/destinations/svalbard',
+            ctaText: 'Book snowmobile tours',
+          },
+          {
+            title: 'Dog Sledding',
+            content: 'Dog sledding on Svalbard runs from November through May. Teams of 6\u20138 Alaskan huskies pull across frozen tundra and sea ice. Half-day trips (3\u20134 hours, 20\u201330 km) depart from kennels outside Longyearbyen. Full-day and multi-day expeditions reach remote valleys. In polar night (late October to mid-February), you sled under the Northern Lights. In late spring, the midnight sun returns and the landscape opens up. Armed guide on all trips.',
+            highlights: ['Season: November to May', 'Half-day: 3\u20134 hours, 20\u201330 km, from NOK 2,200/person', 'Polar night sledding under Northern Lights (Nov\u2013Feb)', 'Multi-day wilderness camping with dogs beside you'],
+            ctaLink: '/destinations/svalbard',
+            ctaText: 'Book dog sledding',
+          },
+          {
+            title: 'Arctic Kayaking',
+            content: 'Summer (June\u2013September) opens the Svalbard fjords for kayaking past glacier fronts, walrus colonies, and bird cliffs. Guided day trips paddle Adventfjorden and Isfjorden from Longyearbyen. Multi-day expeditions reach Billefjorden and Tempelfjorden with glacier calving views. Water temperature: 2\u20136\u00B0C. Drysuits mandatory and provided. Walrus encounters are common on the outer fjord routes \u2014 maintain 30m distance. Armed guide on all trips.',
+            highlights: ['Season: June to September', 'Walrus and glacier calving encounters', 'Water temperature: 2\u20136\u00B0C, drysuits provided', 'Armed guide mandatory \u2014 coastal polar bear territory'],
+            ctaLink: '/destinations/svalbard',
+            ctaText: 'Book Arctic kayaking',
+          },
+        ],
         link: '/destinations/svalbard',
         linkText: 'Browse activities',
       },
@@ -419,6 +706,14 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         id: 'sv-events',
         title: 'Events',
         shortDesc: 'Polar night festivals and Arctic seasonal events',
+        bulletImages: [
+          '/pics/svalbard/svalbard_banner.jpeg',
+          '/pics/events/dark-season-blues-svalbard-2026.jpg',
+          '/pics/svalbard/expedition.jpeg',
+          '/pics/events/polar-jazz-svalbard-2026.jpg',
+          '/pics/svalbard/expedition_boat2.jpeg',
+          '/pics/svalbard/hvalross.jpeg',
+        ],
         content:
           'Svalbard\'s events are determined by two facts: the polar night runs from late October to mid-February (4 months of darkness at 78°N), and the sun returns 24 hours a day from late April to mid-August. Every event on the Svalbard calendar is a response to one of these extremes. The Svalbard Ski Marathon (April, 1,200 competitors, armed polar bear guides on the course), the Dark Season Blues festival (October, 2,000 visitors as the sun sets for the last time), and Polarjazz (February, the world\'s northernmost jazz festival) define the three seasonal transitions. The summer expedition season (June–September) opens the fjords for guided glacier and wildlife tours as sea ice retreats.',
         bullets: [
@@ -458,10 +753,51 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
       {
         id: 'sv-tours',
         title: 'Tours',
-        shortDesc: 'Guided Arctic expeditions',
+        shortDesc: 'Guided Arctic expeditions and cruise packages',
+        bulletImages: [
+          '/pics/svalbard/expedition_boat.jpeg',
+          '/pics/svalbard/expedition.jpeg',
+          '/pics/svalbard/expedition_boat2.jpeg',
+          '/pics/svalbard/hvalross.jpeg',
+        ],
         content:
-          'Tours for Svalbard are coming soon. Check back for guided expedition packages, multi-day itineraries, and cruise options.',
-        bullets: [],
+          'Svalbard is not a self-guided destination. The polar bear risk, glacier terrain, and extreme weather make licensed guides mandatory for everything outside Longyearbyen. Multi-day expedition packages combine snowmobile, dog sled, glacier, and boat elements into itineraries that work \u2014 from a 3-day winter aurora break to a 7-day summer circumnavigation.',
+        bullets: [
+          '3-Day Polar Night Break \u2014 aurora, dog sled, glacier ice cave',
+          '5-Day Svalbard Explorer \u2014 snowmobile, kayak, glacier, wildlife',
+          '7-Day Summer Circumnavigation \u2014 expedition cruise around Spitsbergen',
+          'Midnight Sun Package \u2014 24-hour daylight expeditions (May\u2013Aug)',
+        ],
+        bulletDetails: [
+          {
+            title: '3-Day Polar Night Break',
+            content: 'Fly into Longyearbyen during polar night (late October to mid-February) for three days of darkness, aurora, and Arctic silence. Day 1: arrive, settle in, evening dog sled run under the Northern Lights. Day 2: glacier ice cave tour on Longyearbreen, evening snowmobile aurora chase. Day 3: Longyearbyen town walk, UNIS gallery, brewery visit before the return flight. Three days is enough for a focused polar experience.',
+            highlights: ['Dog sledding under Northern Lights', 'Glacier ice cave exploration', 'Snowmobile aurora chase', 'Season: late October to mid-February (polar night)'],
+            ctaLink: '/destinations/svalbard',
+            ctaText: 'Book 3-day polar break',
+          },
+          {
+            title: '5-Day Svalbard Explorer',
+            content: 'Five days covers the full Svalbard activity range. Snowmobile expedition to an abandoned settlement (Day 1\u20132). Glacier hike on Nordenskiöldbreen (Day 3). Arctic kayaking in Adventfjorden past walrus colonies (Day 4). Boat trip to the bird cliffs at Alkhornet (Day 5). Accommodation in Longyearbyen. All activities guided with armed escort. Works in both winter (snowmobile-focused) and summer (kayak and hiking-focused) variants.',
+            highlights: ['Snowmobile, glacier, kayak, and boat in five days', 'Winter and summer variants available', 'Armed guide on all activities', 'Longyearbyen accommodation throughout'],
+            ctaLink: '/destinations/svalbard',
+            ctaText: 'Book 5-day explorer',
+          },
+          {
+            title: '7-Day Summer Circumnavigation',
+            content: 'Expedition cruise around Spitsbergen (June\u2013August) on a small ship (50\u2013200 passengers). The route circles the island, passing glacier fronts, polar bear territory on the east coast, walrus colonies at Poolepynten, and the bird cliffs at Alkefjellet (60,000 nesting Br\u00FCnnich\u2019s guillemots). Zodiac landings at 10\u201315 sites. This is the most comprehensive way to see Svalbard\u2019s wildlife and geology. Book 6\u201312 months in advance.',
+            highlights: ['Full Spitsbergen circumnavigation by expedition ship', 'Polar bear sightings on east coast', 'Walrus colonies and 60,000-bird cliffs', 'Zodiac landings at 10\u201315 sites over 7 days'],
+            ctaLink: '/destinations/svalbard',
+            ctaText: 'Book circumnavigation cruise',
+          },
+          {
+            title: 'Midnight Sun Package',
+            content: 'From late April to mid-August, the sun never sets on Svalbard. The midnight sun package combines hiking, kayaking, and boat excursions under 24-hour daylight. Wildlife is most active: Arctic fox pups emerge in June, reindeer calves graze the tundra, and migratory birds fill the cliffs. The sea ice retreats, opening fjords for kayaking and Zodiac cruises. Temperature: 0\u00B0C to +10\u00B0C. Layers required even in summer.',
+            highlights: ['Midnight sun: late April to mid-August at 78\u00B0N', 'Peak wildlife: Arctic fox, reindeer calves, nesting birds', 'Kayaking and hiking under 24-hour daylight', 'Temperature: 0\u00B0C to +10\u00B0C, layers required'],
+            ctaLink: '/destinations/svalbard',
+            ctaText: 'Book midnight sun package',
+          },
+        ],
         link: '/destinations/svalbard',
         linkText: 'Browse tours',
       },
@@ -469,9 +805,50 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         id: 'sv-accommodation',
         title: 'Accommodation',
         shortDesc: 'Where to stay in Longyearbyen',
+        bulletImages: [
+          '/pics/svalbard/Longyearbyen.jpeg',
+          '/pics/svalbard/hus.jpeg',
+          '/pics/svalbard/saaBanken.jpeg',
+          '/pics/svalbard/icebearSignClose.jpeg',
+        ],
         content:
-          'Accommodation for Svalbard is coming soon. Check back for hotels, guesthouses, and expedition lodges in Longyearbyen.',
-        bullets: [],
+          'All Svalbard accommodation is in Longyearbyen. The town has approximately 800 hotel and guesthouse beds \u2014 a number that has not changed in years while visitor numbers have grown. This means one thing: book early. During Dark Season Blues (October), Polarjazz (February), and the Ski Marathon (April), every bed fills months in advance. Summer expedition cruise passengers book 6\u201312 months ahead.',
+        bullets: [
+          'Hotels \u2014 Radisson Blu, Funken Lodge, Svalbard Hotel',
+          'Guesthouses \u2014 Coal Miners\u2019 Cabins, Mary-Ann\u2019s Polarrigg',
+          'Expedition Lodges \u2014 Basecamp Explorer, Isfjord Radio',
+          'Budget \u2014 Gjestehuset 102, Svalbard Hotell Lodge',
+        ],
+        bulletDetails: [
+          {
+            title: 'Hotels',
+            content: 'Radisson Blu Polar Hotel is the largest hotel on Svalbard \u2014 95 rooms, central location, restaurant. Funken Lodge (formerly Spitsbergen Hotel) is the upscale option with a wine bar and Arctic-themed interiors. Svalbard Hotel sits on the main street with views down the valley. All three are walking distance from restaurants, tour operators, and the airport bus stop. Expect hotel prices to reflect the extreme location: NOK 1,800\u20133,500/night.',
+            highlights: ['Radisson Blu Polar Hotel: 95 rooms, largest on Svalbard', 'Funken Lodge: upscale, wine bar, Arctic interiors', 'NOK 1,800\u20133,500/night', 'All within walking distance of town centre'],
+            ctaLink: '/travel/accommodation',
+            ctaText: 'Browse Svalbard hotels',
+          },
+          {
+            title: 'Guesthouses',
+            content: 'Coal Miners\u2019 Cabins converts historic mining barracks into guest rooms with shared facilities. The walls are thin. The communal kitchen is where you meet other travellers at 23:00 after a dog sled run. Mary-Ann\u2019s Polarrigg occupies a renovated mining camp with individual cabins and a main building. Both offer a more social, less polished experience than the hotels \u2014 and at lower prices (NOK 900\u20131,600/night).',
+            highlights: ['Coal Miners\u2019 Cabins: historic barracks, shared facilities', 'Mary-Ann\u2019s Polarrigg: renovated mining camp', 'NOK 900\u20131,600/night', 'Communal kitchens and social atmosphere'],
+            ctaLink: '/travel/accommodation',
+            ctaText: 'Browse guesthouses',
+          },
+          {
+            title: 'Expedition Lodges',
+            content: 'Basecamp Explorer Spitsbergen is Longyearbyen\u2019s expedition-focused property \u2014 trapper-cabin aesthetic, gear drying rooms, and direct tour booking from reception. Isfjord Radio Adventure Hotel sits 30 km from Longyearbyen at a former radio station on the coast. Access by boat (summer) or snowmobile (winter). It is the most remote accommodation on Svalbard open to visitors \u2014 16 rooms, full board, polar bear guards on the perimeter.',
+            highlights: ['Basecamp Explorer: trapper-cabin style, gear drying rooms', 'Isfjord Radio: 30 km from Longyearbyen, 16 rooms, full board', 'Isfjord Radio access: boat (summer) or snowmobile (winter)', 'Polar bear guards on Isfjord Radio perimeter'],
+            ctaLink: '/travel/accommodation',
+            ctaText: 'Browse expedition lodges',
+          },
+          {
+            title: 'Budget Options',
+            content: 'Gjestehuset 102 is Longyearbyen\u2019s most affordable option \u2014 basic rooms, shared bathrooms, communal kitchen. Svalbard Hotell Lodge offers dorm-style and private rooms at the budget end. At 78\u00B0N, "budget" is relative: expect NOK 600\u2013900/night for a basic bed. Camping is technically possible under Allemannsretten but is strongly discouraged due to polar bear risk, and the campsite at Longyearbyen has limited season.',
+            highlights: ['Gjestehuset 102: most affordable, shared facilities', 'Budget range: NOK 600\u2013900/night', 'Camping discouraged due to polar bear risk', 'All budget options in central Longyearbyen'],
+            ctaLink: '/travel/accommodation',
+            ctaText: 'Browse budget stays',
+          },
+        ],
         link: '/destinations/svalbard',
         linkText: 'Browse accommodation',
       },
@@ -488,6 +865,15 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         id: 'fj-cities',
         title: 'Cities',
         shortDesc: 'Fjord basecamps and gateway towns',
+        bulletImages: [
+          '/pics/cities/Bergen_banner.jpeg',
+          '/Banners/flaam_banner.jpg',
+          '/Banners/Aalesund_banner.jpg',
+          '/Banners/geiranger_banner.jpg',
+          '/Banners/voss_banner.jpg',
+          '/Banners/odda_banner.jpg',
+          '/Banners/baalestrand_banner.jpg',
+        ],
         content:
           'Seven basecamps spread along Vestlandet\u2019s coast and deep into the fjord valleys. Bergen is the gateway \u2014 260 days of rain and 900 years of history. Fl\u00E5m sits at the bottom of Aurlandsfjord with 350 permanent residents and one of the world\u2019s steepest railway lines. \u00C5lesund rebuilt in Art Nouveau after the 1904 fire. Each town serves a different fjord and a different purpose on your itinerary.',
         bullets: [
@@ -557,6 +943,12 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         id: 'fj-activities',
         title: 'Activities',
         shortDesc: 'Cruises, kayaking, and fjord hiking',
+        bulletImages: [
+          '/Banners/fjord_cruise_banner.jpg',
+          '/images/lofoten/activities/kayaking-vestvagoey_kristin-folsland-olsen.jpg',
+          '/Banners/bergensbanen_banner.jpg',
+          '/images/senja/activities/hiking-segla_visit-senja.jpg',
+        ],
         content:
           'Electric fjord cruises through UNESCO waters, sea kayaking beneath 1,000-meter walls, the Fl\u00E5m Railway descent, and cliff hikes that drop straight to the waterline \u2014 the fjords run on water, gradient, and verticality. Zero-emission vessels now cover both Geirangerfjord and N\u00E6r\u00F8yfjord. The hiking season opens in June and closes when the snow returns in October.',
         bullets: [
@@ -570,14 +962,14 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
             title: 'Fjord Cruises',
             content: 'Norway mandated zero-emission fjord cruising by 2026 \u2014 Geirangerfjord and N\u00E6r\u00F8yfjord are the first enforcement zones. The Future of The Fjords (electric catamaran) runs N\u00E6r\u00F8yfjord daily from Gudvangen to Fl\u00E5m. Havila Voyages operates hybrid vessels on the coastal route. A Geirangerfjord cruise from Geiranger to Hellesylt covers 15 km past the Seven Sisters, Suitor, and Bridal Veil waterfalls.',
             highlights: ['Zero-emission mandate for UNESCO fjords from 2026', 'Future of The Fjords: all-electric, Gudvangen\u2013Fl\u00E5m daily', 'Geirangerfjord: 15 km past the Seven Sisters waterfall', 'Sognefjord cruises: longest fjord in Norway at 205 km'],
-            ctaLink: '/tjenester/fjord-cruises',
+            ctaLink: '/destinations/fjords',
             ctaText: 'Book fjord cruises',
           },
           {
             title: 'Kayaking',
             content: 'N\u00E6r\u00F8yfjord narrows to 250 meters between walls that rise 1,000 meters on both sides. In a kayak, you hear the waterfalls before you see them. Guided half-day trips paddle 8\u201312 km from Gudvangen or Bakka. Full-day expeditions reach Dyrdal and the abandoned farms at the water\u2019s edge. Geirangerfjord kayaking runs from Geiranger village with views up to the Seven Sisters. Season: May to September. Water temperature: 8\u201314\u00B0C.',
             highlights: ['N\u00E6r\u00F8yfjord: 250m wide, 1,000m walls on both sides', 'Half-day guided: 8\u201312 km, from 890 NOK/person', 'Geirangerfjord kayaking beneath the Seven Sisters', 'Season: May\u2013September, drysuits provided'],
-            ctaLink: '/tjenester/fjord-cruises',
+            ctaLink: '/destinations/fjords',
             ctaText: 'Book kayaking tours',
           },
           {
@@ -602,6 +994,16 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         id: 'fj-events',
         title: 'Events',
         shortDesc: 'Fjord festivals, food seasons, and extreme sports',
+        bulletImages: [
+          '/Banners/festspillene_i_bergen_banner.jpg',
+          '/Banners/ekstremsportveko_banner.png',
+          '/Banners/bergenfest_banner.jpg',
+          '/Banners/gladmatfestivalen_banner.jpg',
+          '/Banners/norseman_banner.jpg',
+          '/Banners/hardanger_eple_banner.jpg',
+          '/Banners/vossajazz_banner.jpg',
+          '/Banners/nuart_banner.jpg',
+        ],
         content:
           'The fjords run the most varied events calendar in Norway — classical music at Troldhaugen during Festspillene i Bergen (May–June, 150,000 tickets sold annually), base jumping at Voss during Ekstremsportveko (June, 5,000 athletes), and the Norseman Xtreme Triathlon (August, 250 participants swimming the Hardangerfjord in darkness at 05:00 and finishing on top of Gaustatoppen). The Hardanger apple harvest runs August through October. Gladmatfestivalen in Stavanger draws 250,000 visitors over four days in July. Vossajazz, Bergenfest, and Moldejazz give the region a concert programme that runs May through August.',
         bullets: [
@@ -651,6 +1053,12 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         id: 'fj-tours',
         title: 'Tours',
         shortDesc: 'Guided fjord itineraries and multi-day packages',
+        bulletImages: [
+          '/pics/cities/Bergen_banner.jpeg',
+          '/pics/cities/Stavanger_banner.jpeg',
+          '/images/senja/landscapes/senja-scenic_baard-loeken.jpg',
+          '/pics/cities/Kristiansund_banner.jpeg',
+        ],
         content:
           'The fjord roads are not straight, the ferry schedules are not obvious, and Google Maps does not account for single-lane tunnels. Guided packages and self-drive itineraries combine the ferries, railways, and mountain passes into routes that work \u2014 from a 3-day Norway in a Nutshell circuit to a 10-day Vestlandet grand tour.',
         bullets: [
@@ -664,7 +1072,7 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
             title: '3-Day Norway in a Nutshell',
             content: 'Bergen to Fl\u00E5m via the Bergen Railway to Myrdal, Fl\u00E5m Railway down to Aurlandsfjord, ferry through N\u00E6r\u00F8yfjord to Gudvangen, bus over Stalheimskleiva to Voss, train back to Bergen. The full loop in one day is rushed \u2014 three days lets you stay overnight in Fl\u00E5m and kayak the fjord before the cruise ships arrive.',
             highlights: ['Bergen Railway + Fl\u00E5m Railway + N\u00E6r\u00F8yfjord ferry', 'Overnight in Fl\u00E5m for early-morning fjord access', 'Stegastein viewpoint day trip from Fl\u00E5m', 'Self-guided or escorted options available'],
-            ctaLink: '/tjenester/fjord-cruises',
+            ctaLink: '/destinations/fjords',
             ctaText: 'Book Nutshell route',
           },
           {
@@ -696,6 +1104,12 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         id: 'fj-accommodation',
         title: 'Accommodation',
         shortDesc: 'Historic hotels, fjord cabins, and waterside lodges',
+        bulletImages: [
+          '/Banners/baalestrand_banner.jpg',
+          '/pics/subcategory_accomendation/rorbu.jpeg',
+          '/pics/cities/Bergen_banner.jpeg',
+          '/images/lofoten/landscapes/lofoten-coast_baard-loeken.jpg',
+        ],
         content:
           'Fjord accommodation ranges from 19th-century grand hotels built for the first wave of fjord tourists to converted boathouses and farmsteads on the waterline. Bergen has full-service hotels. The inner fjord villages run on cabins and small lodges. Fl\u00E5m fills fast \u2014 book 2\u20134 months ahead for June to August. September has availability and lower prices.',
         bullets: [
@@ -759,10 +1173,10 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
           'Ferry to Bygd\u00F8y peninsula: Fram Museum, Kon-Tiki, Viking Ship',
         ],
         bulletImages: [
-          '/pics/cities/oslo_bjorvika.jpeg',
+          '/Banners/mathallen_vulkan_banner.jpg',
           '/pics/cities/oslo_opera.jpeg',
           '/pics/cities/oslo_viegelandsparken.jpeg',
-          '/pics/cities/oslo_bjorvika.jpeg',
+          '/Banners/bydoy_banner.jpg',
         ],
         bulletDetails: [
           {
@@ -811,9 +1225,9 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         ],
         bulletImages: [
           '/pics/cities/Bergen_banner.jpeg',
-          '/pics/cities/Bergen_banner.jpeg',
-          '/pics/cities/Bergen_banner.jpeg',
-          '/pics/cities/Bergen_banner.jpeg',
+          '/Banners/floybanen_banner.jpg',
+          '/Banners/fiskemarked_banner.jpg',
+          '/Banners/gateway_to_sognefjord_banner.jpg',
         ],
         bulletDetails: [
           {
@@ -864,7 +1278,7 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
           '/pics/cities/trondheim_nidarosdomen.jpeg',
           '/pics/cities/trondheim_city.jpeg',
           '/pics/cities/trondheim_banner.jpeg',
-          '/pics/cities/trondheim_banner.jpeg',
+          '/Banners/trondheim_sykkel_banner.jpg',
         ],
         bulletDetails: [
           {
@@ -913,9 +1327,9 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         ],
         bulletImages: [
           '/pics/cities/stavanger_prekestolen.jpeg',
-          '/pics/cities/Stavanger_banner.jpeg',
-          '/pics/cities/Stavanger_banner.jpeg',
-          '/pics/cities/Stavanger_banner.jpeg',
+          '/Banners/nuart_banner.jpg',
+          '/Banners/gamle_stavanger_banner.jpg',
+          '/Banners/norwegian_petrol_museum_banner.jpg',
         ],
         bulletDetails: [
           {
@@ -963,9 +1377,9 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
           'Opera house \u2014 Nordic Opera Festival every February',
         ],
         bulletImages: [
-          '/pics/cities/Kristiansund_banner.jpeg',
-          '/pics/cities/Kristiansund_banner.jpeg',
-          '/pics/cities/Kristiansund_banner.jpeg',
+          '/Banners/Aalesund_banner.jpg',
+          '/images/lofoten/fishing-culture/stockfish-export_steinar-skaar.jpg',
+          '/images/senja/villages/tranoy-lighthouse.jpg',
           '/pics/cities/Kristiansund_banner.jpeg',
         ],
         bulletDetails: [
@@ -1015,6 +1429,14 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         id: 'br-south',
         title: 'Southern & Central Coast',
         shortDesc: 'Bergen to Trondheim — fjords, islands, and open sea',
+        bulletImages: [
+          '/pics/cities/Bergen_banner.jpeg',
+          '/Banners/boat_floro_banner.jpg',
+          '/Banners/Aalesund_banner.jpg',
+          '/Banners/molde_banner.jpg',
+          '/pics/cities/Kristiansund_banner.jpeg',
+          '/pics/cities/trondheim_banner.jpeg',
+        ],
         content:
           'The southern leg departs Bergen and runs north through Norway\'s most dramatic fjord coastline. Florø (Norway\'s westernmost town), Måløy, Torvik, and Ålesund are working harbour towns with Art Nouveau architecture, active fish markets, and genuine coastal life. Molde and Kristiansund bridge the gap to Trondheim — Norway\'s medieval capital and the route\'s first major overnight stop. Both Hurtigruten and Havila Voyages serve this leg on alternating days. Sailing time: Bergen to Trondheim is approximately 42 hours northbound.',
         bullets: [
@@ -1030,24 +1452,32 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
             title: 'Hurtigruten',
             content: 'Hurtigruten has operated the coastal route since 1893 — the world\'s oldest continuous passenger shipping service. The fleet includes the historic MS Lofoten (1964) alongside modernised 1990s–2000s vessels. Fleet retrofitting is underway: battery hybrid technology and liquefied biogas (LBG) propulsion reduce emissions by up to 25% on the route. Book the full 11-night Bergen–Kirkenes sailing or any individual segment. Cabins range from interior berths to premium ocean-view suites.',
             highlights: ['Operating since 1893 — oldest continuous passenger route in the world', 'Fleet of 9 ships — including MS Lofoten (1964, historic preservation)', 'Battery hybrid and LBG retrofitting underway across fleet', 'Book any segment: full 11 nights or individual legs'],
-            ctaLink: '/tjenester/fjord-cruises',
+            ctaLink: '/destinations/fjords',
             ctaText: 'Book Hurtigruten',
           },
           {
             title: 'Havila Voyages',
             content: 'Havila Voyages launched in 2021 as the green challenger on the coastal route. Four brand-new vessels (Havila Castor, Pollux, Capella, Capricorn) are built with the world\'s largest marine battery packs for passenger ships — enabling zero-emission sailing for up to 4 hours through UNESCO-designated fjords. LNG (liquefied natural gas) propulsion covers open-sea legs. Havila and Hurtigruten sail alternating days: every port receives a call every 24 hours in each direction.',
             highlights: ['Four brand-new ships built 2021–2022 — Castor, Pollux, Capella, Capricorn', 'World\'s largest marine battery packs for passenger ships', 'Zero-emission sailing up to 4 hours through UNESCO fjords', 'Alternating daily service with Hurtigruten — 34 ports served every 24 hours'],
-            ctaLink: '/tjenester/fjord-cruises',
+            ctaLink: '/destinations/fjords',
             ctaText: 'Book Havila Voyages',
           },
         ],
-        link: '/tjenester/fjord-cruises',
+        link: '/destinations/fjords',
         linkText: 'View southern coast sailings',
       },
       {
         id: 'br-helgeland',
         title: 'Helgeland & Arctic Circle',
         shortDesc: 'Brønnøysund to Bodø — the Arctic Circle crossing',
+        bulletImages: [
+          '/images/senja/landscapes/senja-coast_frank-andreassen.jpg',
+          '/images/senja/landscapes/senja-scenic_baard-loeken.jpg',
+          '/images/senja/landscapes/senja-panorama_dji.jpg',
+          '/Banners/ornes_banner.jpg',
+          '/pics/subcategory_activities/Midnattsol_padler_fjell_banner.png',
+          '/Banners/bodo_banner.jpg',
+        ],
         content:
           'The Helgeland coast is the most geologically dramatic stretch of the route. The Seven Sisters mountain range (De Syv Søstre) rises directly from the sea. Brønnøysund sits at the base of the 1,072m Torghatten mountain — famous for the natural tunnel punched through its summit by a stone in Norse mythology, now scientifically explained by glacial erosion. The Arctic Circle crossing at 66°33\'N is marked on board by both operators — a ceremony for northbound passengers. Bodø is the route\'s major hub: Norway\'s second-busiest airport, the Bodø–Lofoten ferry terminal, and a city rebuilt entirely after total destruction in 1940.',
         bullets: [
@@ -1081,6 +1511,14 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         id: 'br-lofoten',
         title: 'Lofoten & Vesterålen',
         shortDesc: 'Svolvær to Harstad — the Lofoten wall from the sea',
+        bulletImages: [
+          '/images/lofoten/villages/lofoten-village_kristian-nashoug.jpg',
+          '/images/lofoten/landscapes/lofoten-landscape-hero_jorn-eriksen.jpg',
+          '/images/lofoten/villages/henningsvaer-aerial_tobias-bjorkli.jpg',
+          '/images/lofoten/landscapes/lofoten-scenic_terje-rakke-1.jpg',
+          '/pics/vesteraalen/vesteralen_banner.jpeg',
+          '/images/lofoten/landscapes/lofoten-coast_baard-loeken.jpg',
+        ],
         content:
           'The Vestfjord crossing from Bodø to the Lofoten islands is one of the most dramatic passages in Norwegian coastal shipping. The "Lofoten wall" — 170 km of granite peaks rising 1,000m directly from the Norwegian Sea — is first visible as a silhouette from 60 km distance. Stamsund and Svolvær are the two Lofoten calls. Stokmarknes is the historic birthplace of the coastal route: it was here in 1893 that the first Hurtigruten sailing departed. Harstad, on the mainland side of Vesterålen, is the route\'s northernmost city before the High Arctic stretch.',
         bullets: [
@@ -1103,7 +1541,7 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
             title: 'Hurtigruten Museum, Stokmarknes',
             content: 'Stokmarknes is where the original coastal route began in 1893. The Hurtigruten Museum preserves the DS Finnmarken (1956) — a retired coastal express ship displayed on land — alongside the full history of the route, the vessels, and the communities it has served for 130 years. The ship is accessible to visitors. The museum documents the transformation from essential public service to premium travel product, the environmental retrofitting programme, and the construction of the Havila Voyages fleet.',
             highlights: ['Birthplace of the Hurtigruten route — July 2, 1893', 'DS Finnmarken (1956) preserved and accessible on land', 'Full history of all vessels and routes since 1893', 'Stokmarknes town: 3,000 residents, active boat-building heritage'],
-            ctaLink: '/tjenester/fjord-cruises',
+            ctaLink: '/destinations/fjords',
             ctaText: 'Plan Lofoten sailing',
           },
         ],
@@ -1114,6 +1552,14 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         id: 'br-arctic',
         title: 'High Arctic & Finnmark',
         shortDesc: 'Tromsø to Kirkenes — the Barents Sea coast',
+        bulletImages: [
+          '/pics/Tromso/tromso_oversikt_nordlys.jpeg',
+          '/pics/Tromso/tromso_banner.jpeg',
+          '/pics/nordkapp/nordkapp_banner.jpeg',
+          '/images/nordkapp/landscapes/nordkapp-cliff_trym-bergsmo.jpg',
+          '/pics/Finnmark/nordkapp.jpeg',
+          '/images/nordkapp/activities/king-crab-catch_tommy-andreassen.jpg',
+        ],
         content:
           'The northernmost leg of the Kystruten is the most remote. From Tromsø — the largest city above the Arctic Circle — the route follows the Finnmark coast through settlements with no road connections. Honningsvåg is the gateway to North Cape (71°08\'N). Vardø is the easternmost town in mainland Norway, sitting inside a genuine Arctic wind exposure zone with the climate closer to the Russian Arctic than to Bergen. Kirkenes, 400 km north of the Arctic Circle and 14 km from the Russian border, is the route\'s terminus — and for southbound sailings, the starting point.',
         bullets: [
@@ -1140,7 +1586,7 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
             ctaText: 'Northern Norway guide',
           },
         ],
-        link: '/tjenester/fjord-cruises',
+        link: '/destinations/fjords',
         linkText: 'Book the Arctic sailing',
       },
     ],

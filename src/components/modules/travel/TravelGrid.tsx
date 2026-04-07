@@ -20,7 +20,7 @@ export function TravelGrid({ items, showFilters = true }: TravelGridProps) {
       return items;
     }
     return items.filter(
-      (item) => item.destination === activeDestination || item.destination === 'all'
+      (item) => item.destination === activeDestination
     );
   }, [items, activeDestination]);
 

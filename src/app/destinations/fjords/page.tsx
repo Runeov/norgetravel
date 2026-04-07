@@ -129,8 +129,8 @@ export default function FjordsPage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Book a fjord cruise</h2>
           <p className="text-white/80 mb-8 max-w-xl mx-auto">Electric ferries, hybrid ships, and day-trip packages — all with zero-emission certification.</p>
-          <Link href="/tjenester/fjord-cruises" className="inline-flex items-center justify-center px-8 py-3 bg-white text-[#1B3A5C] font-bold rounded-full hover:shadow-lg transition-all">
-            View Fjord Cruises <ArrowRight className="ml-2 w-4 h-4" />
+          <Link href="/travel" className="inline-flex items-center justify-center px-8 py-3 bg-white text-[#1B3A5C] font-bold rounded-full hover:shadow-lg transition-all">
+            Explore Fjord Travel <ArrowRight className="ml-2 w-4 h-4" />
           </Link>
         </div>
       </section>

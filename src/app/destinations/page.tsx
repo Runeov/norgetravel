@@ -114,7 +114,7 @@ export default function DestinationsPage() {
           <p className="text-white/80 mb-8 max-w-xl mx-auto">Northern Lights chases, fjord cruises, Arctic trekking, and cabin stays — all with commission-transparent affiliate links.</p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/tjenester/northern-lights" className="inline-flex items-center justify-center px-6 py-2.5 bg-white text-[#1B3A5C] font-medium rounded-full hover:shadow-lg transition-all text-sm">Northern Lights</Link>
-            <Link href="/tjenester/fjord-cruises" className="inline-flex items-center justify-center px-6 py-2.5 bg-white/10 text-white font-medium rounded-full hover:bg-white/20 transition-all text-sm">Fjord Cruises</Link>
+            <Link href="/destinations/fjords" className="inline-flex items-center justify-center px-6 py-2.5 bg-white/10 text-white font-medium rounded-full hover:bg-white/20 transition-all text-sm">Fjord Cruises</Link>
             <Link href="/tjenester/trekking" className="inline-flex items-center justify-center px-6 py-2.5 bg-white/10 text-white font-medium rounded-full hover:bg-white/20 transition-all text-sm">Arctic Trekking</Link>
             <Link href="/tjenester/remote-cabins" className="inline-flex items-center justify-center px-6 py-2.5 bg-white/10 text-white font-medium rounded-full hover:bg-white/20 transition-all text-sm">Remote Cabins</Link>
           </div>

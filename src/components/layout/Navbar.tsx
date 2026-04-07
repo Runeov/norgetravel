@@ -76,7 +76,6 @@ export function Navbar() {
         : 'text-slate-600 hover:bg-slate-50'
     }`;
 
-  const toursMenuActive = pathname.startsWith('/tjenester');
   const guideMenuActive =
     pathname === '/kunnskapsbank' ||
     pathname.startsWith('/kunnskapsbank/');
@@ -151,29 +150,26 @@ export function Navbar() {
                 </div>
               </div>
 
-              {/* Tours dropdown */}
+              {/* Guides dropdown */}
               <div className="relative group">
                 <button
                   type="button"
-                  className={`${navLinkClass(toursMenuActive)} inline-flex items-center gap-1`}
+                  className={`${navLinkClass(guideMenuActive)} inline-flex items-center gap-1`}
                   aria-haspopup="menu"
                 >
-                  Tours
+                  Guides
                   <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" />
                 </button>
                 <div className="absolute left-0 top-full pt-2 opacity-0 invisible -translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0">
                   <div className="w-60 rounded-2xl border border-slate-200 bg-white/95 backdrop-blur-md p-2 shadow-xl">
-                    <Link href="/tjenester/northern-lights" className={dropdownItemClass(pathname.startsWith('/tjenester/northern-lights'))}>
-                      Northern Lights Tours
+                    <Link href="/kunnskapsbank#safety" className={dropdownItemClass(pathname === '/kunnskapsbank')}>
+                      Safety & Preparation
                     </Link>
-                    <Link href="/tjenester/fjord-cruises" className={dropdownItemClass(pathname.startsWith('/tjenester/fjord-cruises'))}>
-                      Fjord Cruises
+                    <Link href="/kunnskapsbank#trip-reports" className={dropdownItemClass(false)}>
+                      Trip Reports
                     </Link>
-                    <Link href="/tjenester/trekking" className={dropdownItemClass(pathname.startsWith('/tjenester/trekking'))}>
-                      Arctic Trekking
-                    </Link>
-                    <Link href="/tjenester/remote-cabins" className={dropdownItemClass(pathname.startsWith('/tjenester/remote-cabins'))}>
-                      Remote Cabin Stays
+                    <Link href="/kunnskapsbank#planning" className={dropdownItemClass(false)}>
+                      Planning Guides
                     </Link>
                   </div>
                 </div>
@@ -214,9 +210,6 @@ export function Navbar() {
                 About
               </Link>
 
-              <Link href="/kunnskapsbank" className={navLinkClass(guideMenuActive)}>
-                Travel Guide
-              </Link>
             </div>
           </div>
 
@@ -310,26 +303,23 @@ export function Navbar() {
               <button
                 type="button"
                 onClick={() => toggleMobileDropdown('tours')}
-                className={mobileMenuItemClass(toursMenuActive)}
+                className={mobileMenuItemClass(guideMenuActive)}
               >
                 <span className="flex items-center justify-between">
-                  Tours
+                  Guides
                   <ChevronDown className={`h-5 w-5 transition-transform ${mobileDropdowns.tours ? 'rotate-180' : ''}`} />
                 </span>
               </button>
               {mobileDropdowns.tours && (
                 <div className="pl-4 space-y-1">
-                  <Link href="/tjenester/northern-lights" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/tjenester/northern-lights'))}>
-                    Northern Lights Tours
+                  <Link href="/kunnskapsbank#safety" onClick={closeMobileMenu} className={dropdownItemClass(false)}>
+                    Safety & Preparation
                   </Link>
-                  <Link href="/tjenester/fjord-cruises" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/tjenester/fjord-cruises'))}>
-                    Fjord Cruises
+                  <Link href="/kunnskapsbank#trip-reports" onClick={closeMobileMenu} className={dropdownItemClass(false)}>
+                    Trip Reports
                   </Link>
-                  <Link href="/tjenester/trekking" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/tjenester/trekking'))}>
-                    Arctic Trekking
-                  </Link>
-                  <Link href="/tjenester/remote-cabins" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/tjenester/remote-cabins'))}>
-                    Remote Cabin Stays
+                  <Link href="/kunnskapsbank#planning" onClick={closeMobileMenu} className={dropdownItemClass(false)}>
+                    Planning Guides
                   </Link>
                 </div>
               )}
@@ -368,9 +358,6 @@ export function Navbar() {
                 About
               </Link>
 
-              <Link href="/kunnskapsbank" onClick={closeMobileMenu} className={mobileMenuItemClass(guideMenuActive)}>
-                Travel Guide
-              </Link>
 
               <div className="pt-4 mt-2 border-t border-slate-100 space-y-2">
                 {itemCount > 0 && (

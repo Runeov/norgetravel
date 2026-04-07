@@ -14,14 +14,14 @@ const destinations = [
     slug: 'lofoten',
     name: 'Lofoten',
     tagline: 'Working coast',
-    image: '/pics/Lofoten/lofoten_banner.jpeg',
+    image: '/images/lofoten/landscapes/lofoten-landscape-hero_jorn-eriksen.jpg',
     stat: 'Jan–Apr skrei season',
   },
   {
     slug: 'fjords',
     name: 'Fjords',
     tagline: 'Zero-emission from 2026',
-    image: '/pics/Fjords/fjords_banner.jpeg',
+    image: '/pics/cities/Bergen_banner.jpeg',
     stat: '2 UNESCO World Heritage',
   },
   {
