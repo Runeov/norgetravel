@@ -28,7 +28,7 @@ const destinations = [
     slug: 'svalbard',
     name: 'Svalbard',
     tagline: '78°N – glacier hiking Jul–Aug',
-    image: '/pics/Svalbard/svalbard_banner.jpeg',
+    image: '/images/svalbard/landscapes/svalbard-landscape_emilien-gigandet-2.jpg',
     stat: 'Whale watching Jun–Aug',
   },
 ];

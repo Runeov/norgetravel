@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 
 const fjords = [
   {
+    slug: 'geirangerfjord',
     name: 'Geirangerfjord',
     length: '15 km',
     unesco: true,
@@ -18,6 +19,7 @@ const fjords = [
     access: 'Ferry from Hellesylt or Ørsneset. Drive Ørnesvegen (Eagle Road) for the classic overview.',
   },
   {
+    slug: 'naeroyfjord',
     name: 'Nærøyfjord',
     length: '18 km',
     unesco: true,
@@ -25,6 +27,7 @@ const fjords = [
     access: 'From Flåm or Gudvangen. Combine with the Flåm Railway for Norway\'s best day trip.',
   },
   {
+    slug: 'hardangerfjord',
     name: 'Hardangerfjord',
     length: '179 km',
     unesco: false,
@@ -32,6 +35,7 @@ const fjords = [
     access: 'RV7 from Bergen (2h). Øvre Eidfjord is the gateway to Hardangervidda plateau.',
   },
   {
+    slug: 'sognefjord',
     name: 'Sognefjord',
     length: '205 km',
     unesco: false,
@@ -87,17 +91,25 @@ export default function FjordsPage() {
           <p className="text-slate-600 mb-12 max-w-2xl">Norway has over 1,700 named fjords. These four are where most travellers should start.</p>
           <div className="grid lg:grid-cols-2 gap-6">
             {fjords.map((f) => (
-              <div key={f.name} className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/50">
+              <Link
+                key={f.slug}
+                href={`/destinations/fjords/${f.slug}`}
+                className="group bg-white rounded-2xl p-6 shadow-sm border border-slate-200/50 hover:shadow-md transition-shadow"
+              >
                 <div className="flex items-start justify-between mb-3">
-                  <h3 className="font-bold text-xl text-slate-900">{f.name}</h3>
+                  <h3 className="font-bold text-xl text-slate-900 group-hover:text-[#1A365D] transition-colors">{f.name}</h3>
                   <div className="flex gap-2">
                     <span className="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-full">{f.length}</span>
                     {f.unesco && <span className="text-xs bg-[#00CC6A]/10 text-[#00CC6A] font-bold px-2 py-1 rounded-full">UNESCO</span>}
                   </div>
                 </div>
                 <p className="text-slate-600 text-sm mb-3 leading-relaxed">{f.highlight}</p>
-                <p className="text-[#1B3A5C] text-sm font-medium">📍 {f.access}</p>
-              </div>
+                <p className="text-slate-500 text-sm mb-4">📍 {f.access}</p>
+                <span className="inline-flex items-center text-sm font-semibold text-[#1A365D] group-hover:text-[#00D084] transition-colors">
+                  Read full guide
+                  <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </Link>
             ))}
           </div>
         </div>
