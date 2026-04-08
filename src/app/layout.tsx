@@ -6,6 +6,7 @@ import '../index.css';
 import { cn } from '@/lib/utils';
 import { RootLayoutContent } from '@/components/layout/RootLayoutContent';
 import { getSiteUrl } from '@/lib/site-url';
+import { Analytics } from '@vercel/analytics/next';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const siteUrl = getSiteUrl();
@@ -110,6 +111,7 @@ export default function RootLayout({
             {children}
           </main>
         </RootLayoutContent>
+        <Analytics />
         <SpeedInsights />
       </body>
     </html>
