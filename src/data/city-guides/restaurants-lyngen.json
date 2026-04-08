@@ -1,0 +1,234 @@
+{
+  "_meta": {
+    "city": "Lyngen",
+    "fetchedAt": "2026-04-03T20:42:13.673284+00:00",
+    "count": 10,
+    "note": "Fetched via Google Places API. All restaurants verified OPERATIONAL at fetch time. Descriptions marked 'pending editorial review' need manual editing."
+  },
+  "restaurants": [
+    {
+      "id": "bteriet-restaurant",
+      "name": "Bøteriet Restaurant",
+      "placeId": "ChIJhzQDkBkFxUURa_WCaa4Sxo4",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Lenangsveien 2344, 9068 Nord-lenangen, Norway",
+      "website": "https://xlyngen.no/shop/produktkategori/restaurant-boteriet/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 1:00 – 10:00 PM; Tuesday: 1:00 – 10:00 PM; Wednesday: 1:00 – 10:00 PM...",
+      "description": "Restaurant in Lyngen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 5,
+          "reviewCount": 17
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "restaurant-solvind",
+      "name": "Restaurant Solvind",
+      "placeId": "ChIJXZ1cb5kRxUURslT2-KgxKK8",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Spåkenesveien 281, 9153 Rotsund, Norway",
+      "website": "https://lyngen-north.com/restaurant",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: Closed; Wednesday: Closed...",
+      "description": "Restaurant in Lyngen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.9,
+          "reviewCount": 21
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "lyngen-north",
+      "name": "Lyngen North",
+      "placeId": "ChIJvzUXFXsRxUURK2DsKTHKDHI",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Spåkenesveien 281, Spåkenesveien 281, 9153 Rotsund, Norway",
+      "website": "https://lyngen-north.com/",
+      "reservationRequired": false,
+      "openingHours": "Check website for hours",
+      "description": "Restaurant in Lyngen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.8,
+          "reviewCount": 362
+        },
+        "tripAdvisor": {
+          "score": 4.6,
+          "reviewCount": 7,
+          "bubbleRating": 5
+        },
+        "facebook": {
+          "score": 5.0,
+          "reviewCount": 53
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "bukta-sushi",
+      "name": "Bukta Sushi",
+      "placeId": "ChIJPdfbYQHFxEUR1xnZzOTHVMs",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Strandvegen 134, 9006 Tromsø, Norway",
+      "website": "https://www.facebook.com/profile.php?id=61569482090208",
+      "reservationRequired": false,
+      "openingHours": "Monday: 3:00 – 11:00 PM; Tuesday: 3:00 – 11:00 PM; Wednesday: 3:00 – 11:00 PM...",
+      "description": "Restaurant in Lyngen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.8,
+          "reviewCount": 63
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "emmer-av-eliassen-matkunst",
+      "name": "Emmer av Eliassen Matkunst",
+      "placeId": "ChIJybUKZgAFxUURwWN-85GOw4s",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Sandnesveien 30, 9068 Nordlenangen, Norway",
+      "website": "https://www.facebook.com/profile.php?id=61557758832459",
+      "reservationRequired": false,
+      "openingHours": "Monday: 12:00 – 8:00 PM; Tuesday: 12:00 – 8:00 PM; Wednesday: 12:00 – 8:00 PM...",
+      "description": "Restaurant in Lyngen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 99
+        },
+        "tripAdvisor": {
+          "score": 4.8,
+          "reviewCount": 28,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "suvi",
+      "name": "Suvi",
+      "placeId": "ChIJEVwtH63FxEURhdVLS3Z5c0k",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Samuel Arnesens gate 5, 9008 Tromsø, Norway",
+      "website": "https://suvitromso.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 3:00 – 9:00 PM; Tuesday: 3:00 – 9:00 PM; Wednesday: 3:00 – 9:00 PM...",
+      "description": "Restaurant in Lyngen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 946
+        },
+        "tripAdvisor": {
+          "score": 4.3,
+          "reviewCount": 501,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "sabi-sushi-troms",
+      "name": "Sabi Sushi Tromsø",
+      "placeId": "ChIJz0QXUpDFxEURkDUtjKc66iE",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Storgata 73, 9008 Tromsø, Norway",
+      "website": "https://nettbutikk.sabi.no/articles/r7755-sabi-tromso-apner-snart--o7203-henting-tromso",
+      "reservationRequired": false,
+      "openingHours": "Monday: 1:00 – 10:00 PM; Tuesday: 1:00 – 10:00 PM; Wednesday: 1:00 – 10:00 PM...",
+      "description": "Restaurant in Lyngen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 239
+        },
+        "tripAdvisor": {
+          "score": 3.9,
+          "reviewCount": 57,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "go2-arctic-grill",
+      "name": "Go2 Arctic Grill",
+      "placeId": "ChIJL9okNcQ9xUURTWzs8hWPtis",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Strandveien 10, 9060 Lyngseidet, Norway",
+      "website": null,
+      "reservationRequired": false,
+      "openingHours": "Monday: 10:00 AM – 8:00 PM; Tuesday: 10:00 AM – 8:00 PM; Wednesday: 10:00 AM – 8:00 PM...",
+      "description": "Restaurant in Lyngen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 298
+        },
+        "tripAdvisor": {
+          "score": 3.9,
+          "reviewCount": 19,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "sumo-restaurant-vervet",
+      "name": "Sumo Restaurant Vervet",
+      "placeId": "ChIJo1IjFW7FxEURIPagnw7cmhM",
+      "cuisine": "norwegian",
+      "pricePoint": "$$$",
+      "address": "Nordøstpassasjen 43, 9008 Tromsø, Norway",
+      "website": "http://www.sumorestaurants.no/",
+      "reservationRequired": true,
+      "openingHours": "Monday: 3:00 – 11:00 PM; Tuesday: 3:00 – 11:00 PM; Wednesday: 3:00 – 11:00 PM...",
+      "description": "Restaurant in Lyngen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.1,
+          "reviewCount": 398
+        },
+        "tripAdvisor": {
+          "score": 3.6,
+          "reviewCount": 100,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "lyngseidet-gjestegard-as",
+      "name": "Lyngseidet Gjestegård AS",
+      "placeId": "ChIJZz42ExU8xUURLtyreugwiuU",
+      "cuisine": "pub",
+      "pricePoint": "$$",
+      "address": "Kjosveien 14, 9060 Lyngseidet, Norway",
+      "website": "http://gjestegaarden.no/",
+      "reservationRequired": false,
+      "openingHours": "Check website for hours",
+      "description": "Restaurant in Lyngen. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 3.8,
+          "reviewCount": 113
+        }
+      },
+      "diceScore": 4
+    }
+  ]
+}

@@ -1,9 +1,8 @@
 import Hero from '@/components/modules/home/Hero';
-import TrustStrip from '@/components/modules/home/TrustStrip';
-import WhatsNew2026 from '@/components/modules/home/WhatsNew2026';
-import Services from '@/components/modules/home/Services';
-import SalesPitch from '@/components/modules/home/SalesPitch';
-import TravelGuideTeaser from '@/components/modules/home/KunnskapsbankTeaser';
+import EditorialPromise from '@/components/modules/home/EditorialPromise';
+import ZoneExperts from '@/components/modules/home/ZoneExperts';
+import SustainableTravel from '@/components/modules/home/SustainableTravel';
+import DestinationsTeaser from '@/components/modules/home/DestinationsTeaser';
 import ContactPanel from '@/components/modules/home/ContactPanel';
 import { getSiteUrl } from '@/lib/site-url';
 
@@ -15,8 +14,8 @@ export default function HomePage() {
     '@type': 'TravelAgency',
     'name': 'NorgeTravel.com',
     'image': `${siteUrl}/norgeTravel.png`,
-    'description': 'Sustainable Arctic adventure guides for Norway — Northern Lights tours in Tromsø, zero-emission fjord cruises, luxury trekking in Lofoten and Svalbard, and remote cabin stays.',
-    'slogan': 'Sustainable Arctic Adventures',
+    'description': 'Sustainable Arctic adventure guides for Norway. Five zone experts covering Northern Lights tours, zero-emission fjord cruises, luxury trekking, and remote cabin stays.',
+    'slogan': 'The Real Norway, Unfiltered',
     'url': siteUrl,
     'email': 'hello@norgetravel.com',
     'areaServed': [
@@ -36,20 +35,11 @@ export default function HomePage() {
       'Lofoten trekking Norrøna',
       'Svalbard Arctic expeditions',
       'Norwegian remote cabin stays hytter',
-      'Arctic nomad digital nomad Norway',
       'Sustainable travel Norway 2026',
+      'Fjellvettreglene mountain safety',
+      'Allemannsretten right to roam',
     ],
-    'hasOfferCatalog': {
-      '@type': 'OfferCatalog',
-      'name': 'Norway Travel Experiences',
-      'itemListElement': [
-        { '@type': 'Offer', 'itemOffered': { '@type': 'TouristTrip', 'name': 'Northern Lights Tours Tromsø' } },
-        { '@type': 'Offer', 'itemOffered': { '@type': 'TouristTrip', 'name': 'Zero-Emission Fjord Cruises' } },
-        { '@type': 'Offer', 'itemOffered': { '@type': 'TouristTrip', 'name': 'Arctic Trekking Lofoten & Svalbard' } },
-        { '@type': 'Offer', 'itemOffered': { '@type': 'LodgingBusiness', 'name': 'Remote Cabin Stays (Hytter)' } },
-        { '@type': 'Offer', 'itemOffered': { '@type': 'TouristTrip', 'name': 'Arctic Nomad Digital Nomad Packages' } },
-      ],
-    },
+    'hasCredential': ['NHO Reiseliv', 'Miljøfyrtårn (Eco-Lighthouse)'],
     'sameAs': [
       'https://norgetravel.com',
     ],
@@ -63,11 +53,10 @@ export default function HomePage() {
       />
 
       <Hero />
-      <TrustStrip />
-      <WhatsNew2026 />
-      <Services />
-      <SalesPitch />
-      <TravelGuideTeaser />
+      <EditorialPromise />
+      <ZoneExperts />
+      <SustainableTravel />
+      <DestinationsTeaser />
       <ContactPanel />
     </main>
   );

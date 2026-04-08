@@ -19,7 +19,7 @@ interface PageProps {
 }
 
 // Valid categories from the schema
-const VALID_CATEGORIES: ArticleCategory[] = ['artikler', 'bedrift', 'sametinget', 'organisasjoner', 'analyse', 'regelverk'];
+const VALID_CATEGORIES: ArticleCategory[] = ['artikler', 'bedrift', 'sametinget', 'organisasjoner', 'analyse', 'regelverk', 'safety', 'trip-reports', 'planning'];
 
 // Category theme colors
 const CATEGORY_THEME: Record<string, { text: string; bg: string; border: string; badge: string }> = {
@@ -29,6 +29,9 @@ const CATEGORY_THEME: Record<string, { text: string; bg: string; border: string;
   organisasjoner: { text: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200', badge: 'bg-green-100 text-green-700' },
   analyse: { text: 'text-purple-600', bg: 'bg-purple-50', border: 'border-purple-200', badge: 'bg-purple-100 text-purple-700' },
   regelverk: { text: 'text-slate-600', bg: 'bg-slate-100', border: 'border-slate-200', badge: 'bg-slate-100 text-slate-700' },
+  safety: { text: 'text-[#D32F2F]', bg: 'bg-red-50', border: 'border-red-200', badge: 'bg-red-100 text-red-700' },
+  'trip-reports': { text: 'text-[#1A365D]', bg: 'bg-blue-50', border: 'border-blue-200', badge: 'bg-blue-100 text-blue-700' },
+  planning: { text: 'text-emerald-700', bg: 'bg-emerald-50', border: 'border-emerald-200', badge: 'bg-emerald-100 text-emerald-700' },
 };
 
 /**
@@ -125,9 +128,9 @@ export default async function DynamicArticlePage({ params }: PageProps) {
         <nav className="flex items-center gap-2 text-sm text-slate-500 mb-12" aria-label="Brødsmulesti">
           <Link
             href="/kunnskapsbank"
-            className="hover:text-[#E86C1F] transition-colors"
+            className="hover:text-[#1A365D] transition-colors"
           >
-            Kunnskapsbank
+            Travel Guides
           </Link>
           <span>/</span>
           <Link
@@ -146,7 +149,7 @@ export default async function DynamicArticlePage({ params }: PageProps) {
           className="inline-flex items-center text-slate-500 hover:text-[#E86C1F] mb-8 font-medium transition-colors"
         >
           <ArrowLeft className="w-4 h-4 mr-2" aria-hidden="true" />
-          Tilbake til Kunnskapsbanken
+          Back to Travel Guides
         </Link>
 
         {/* HEADER */}
@@ -230,13 +233,20 @@ export default async function DynamicArticlePage({ params }: PageProps) {
 
         {/* Featured Image */}
         {article.featuredImage && (
-          <div className="mb-16 rounded-2xl overflow-hidden shadow-lg">
-            <img
-              src={article.featuredImage}
-              alt={article.featuredImageAlt || article.title}
-              className="w-full h-auto object-cover"
-            />
-          </div>
+          <figure className="mb-16">
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <img
+                src={article.featuredImage}
+                alt={article.featuredImageAlt || article.title}
+                className="w-full h-auto object-cover"
+              />
+            </div>
+            {article.featuredImageAlt && (
+              <figcaption className="text-xs text-slate-400 mt-2">
+                {article.featuredImageAlt}
+              </figcaption>
+            )}
+          </figure>
         )}
 
         {/* ARTICLE BODY */}
@@ -269,49 +279,28 @@ export default async function DynamicArticlePage({ params }: PageProps) {
               <div>
                 <p className="font-bold text-slate-900">{article.authorName || 'Averdi'}</p>
                 <p className="text-sm text-slate-500">
-                  Publisert{' '}
+                  Published{' '}
                   {article.publishedAt
-                    ? new Date(article.publishedAt).toLocaleDateString('nb-NO', {
+                    ? new Date(article.publishedAt).toLocaleDateString('en-GB', {
                         day: 'numeric',
                         month: 'long',
                         year: 'numeric',
                       })
-                    : 'nylig'}
+                    : 'recently'}
                 </p>
               </div>
             </div>
           </div>
 
-          {/* CTA */}
-          <div className="bg-slate-900 rounded-2xl p-8 md:p-12 text-center md:text-left relative overflow-hidden">
-            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-              <div className="max-w-xl">
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  Trenger du hjelp med dette?
-                </h3>
-                <p className="text-slate-300 text-lg">
-                  Vi oversetter komplekse regler til konkrete handlinger. Ta kontakt for en uforpliktende prat.
-                </p>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0 w-full md:w-auto">
-                <Link
-                  href="/#contact"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-[#E86C1F] text-white font-bold rounded-full hover:bg-[#d65f18] transition-all"
-                >
-                  Kontakt oss
-                  <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
-                </Link>
-                <Link
-                  href="/kunnskapsbank"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-white/10 text-white font-bold rounded-full hover:bg-white/20 transition-all backdrop-blur-sm"
-                >
-                  Mer i Kunnskapsbanken
-                </Link>
-              </div>
-            </div>
-            {/* Background decoration */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#E86C1F]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+          {/* More guides CTA */}
+          <div className="text-center mt-8">
+            <Link
+              href="/kunnskapsbank"
+              className="inline-flex items-center justify-center px-6 py-3 bg-[#1A365D] text-white font-bold rounded-md hover:bg-[#152d52] transition-colors"
+            >
+              More travel guides
+              <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
+            </Link>
           </div>
         </footer>
       </article>

@@ -7,6 +7,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
 import logoNorgeTravel from '@/assets/norgeTravel.png';
 import { useTripMap } from '@/context/TripMapContext';
+import { useTrip } from '@/context/TripContext';
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,6 +20,7 @@ export function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const { openMap } = useTripMap();
+  const { itemCount } = useTrip();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -74,7 +76,6 @@ export function Navbar() {
         : 'text-slate-600 hover:bg-slate-50'
     }`;
 
-  const toursMenuActive = pathname.startsWith('/tjenester');
   const guideMenuActive =
     pathname === '/kunnskapsbank' ||
     pathname.startsWith('/kunnskapsbank/');
@@ -149,29 +150,26 @@ export function Navbar() {
                 </div>
               </div>
 
-              {/* Tours dropdown */}
+              {/* Guides dropdown */}
               <div className="relative group">
                 <button
                   type="button"
-                  className={`${navLinkClass(toursMenuActive)} inline-flex items-center gap-1`}
+                  className={`${navLinkClass(guideMenuActive)} inline-flex items-center gap-1`}
                   aria-haspopup="menu"
                 >
-                  Tours
+                  Guides
                   <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" />
                 </button>
                 <div className="absolute left-0 top-full pt-2 opacity-0 invisible -translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0">
                   <div className="w-60 rounded-2xl border border-slate-200 bg-white/95 backdrop-blur-md p-2 shadow-xl">
-                    <Link href="/tjenester/northern-lights" className={dropdownItemClass(pathname.startsWith('/tjenester/northern-lights'))}>
-                      Northern Lights Tours
+                    <Link href="/kunnskapsbank#safety" className={dropdownItemClass(pathname === '/kunnskapsbank')}>
+                      Safety & Preparation
                     </Link>
-                    <Link href="/tjenester/fjord-cruises" className={dropdownItemClass(pathname.startsWith('/tjenester/fjord-cruises'))}>
-                      Fjord Cruises
+                    <Link href="/kunnskapsbank#trip-reports" className={dropdownItemClass(false)}>
+                      Trip Reports
                     </Link>
-                    <Link href="/tjenester/trekking" className={dropdownItemClass(pathname.startsWith('/tjenester/trekking'))}>
-                      Arctic Trekking
-                    </Link>
-                    <Link href="/tjenester/remote-cabins" className={dropdownItemClass(pathname.startsWith('/tjenester/remote-cabins'))}>
-                      Remote Cabin Stays
+                    <Link href="/kunnskapsbank#planning" className={dropdownItemClass(false)}>
+                      Planning Guides
                     </Link>
                   </div>
                 </div>
@@ -212,20 +210,32 @@ export function Navbar() {
                 About
               </Link>
 
-              <Link href="/kunnskapsbank" className={navLinkClass(guideMenuActive)}>
-                Travel Guide
-              </Link>
             </div>
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-3">
+            {itemCount > 0 && (
+              <Link
+                href="/my-trip"
+                className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  scrolled
+                    ? 'text-[#1B3A5C] hover:bg-[#1B3A5C]/10'
+                    : 'text-white/90 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                My Trip
+                <span className="absolute -top-1 -right-1 bg-[#00CC6A] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  {itemCount}
+                </span>
+              </Link>
+            )}
             <button
               onClick={openMap}
               className="group relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white transition-all duration-300 bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-full hover:shadow-lg hover:shadow-[#1B3A5C]/30 hover:-translate-y-0.5 focus:outline-none"
-              aria-label="Plan your trip"
+              aria-label="Open trip planner"
             >
-              Plan Your Trip
+              Trip Planner
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </button>
           </div>
@@ -293,26 +303,23 @@ export function Navbar() {
               <button
                 type="button"
                 onClick={() => toggleMobileDropdown('tours')}
-                className={mobileMenuItemClass(toursMenuActive)}
+                className={mobileMenuItemClass(guideMenuActive)}
               >
                 <span className="flex items-center justify-between">
-                  Tours
+                  Guides
                   <ChevronDown className={`h-5 w-5 transition-transform ${mobileDropdowns.tours ? 'rotate-180' : ''}`} />
                 </span>
               </button>
               {mobileDropdowns.tours && (
                 <div className="pl-4 space-y-1">
-                  <Link href="/tjenester/northern-lights" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/tjenester/northern-lights'))}>
-                    Northern Lights Tours
+                  <Link href="/kunnskapsbank#safety" onClick={closeMobileMenu} className={dropdownItemClass(false)}>
+                    Safety & Preparation
                   </Link>
-                  <Link href="/tjenester/fjord-cruises" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/tjenester/fjord-cruises'))}>
-                    Fjord Cruises
+                  <Link href="/kunnskapsbank#trip-reports" onClick={closeMobileMenu} className={dropdownItemClass(false)}>
+                    Trip Reports
                   </Link>
-                  <Link href="/tjenester/trekking" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/tjenester/trekking'))}>
-                    Arctic Trekking
-                  </Link>
-                  <Link href="/tjenester/remote-cabins" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/tjenester/remote-cabins'))}>
-                    Remote Cabin Stays
+                  <Link href="/kunnskapsbank#planning" onClick={closeMobileMenu} className={dropdownItemClass(false)}>
+                    Planning Guides
                   </Link>
                 </div>
               )}
@@ -351,13 +358,22 @@ export function Navbar() {
                 About
               </Link>
 
-              <Link href="/kunnskapsbank" onClick={closeMobileMenu} className={mobileMenuItemClass(guideMenuActive)}>
-                Travel Guide
-              </Link>
 
-              <div className="pt-4 mt-2 border-t border-slate-100">
-                <button onClick={() => { openMap(); setIsMenuOpen(false); }} className="w-full flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-xl shadow-md active:scale-95 transition-all" aria-label="Plan your trip">
-                  Plan Your Trip
+              <div className="pt-4 mt-2 border-t border-slate-100 space-y-2">
+                {itemCount > 0 && (
+                  <Link
+                    href="/my-trip"
+                    onClick={closeMobileMenu}
+                    className="w-full flex items-center justify-center gap-2 px-6 py-3 text-base font-medium text-[#1B3A5C] border border-[#1B3A5C] rounded-md active:scale-95 transition-all"
+                  >
+                    My Trip
+                    <span className="bg-[#00CC6A] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                      {itemCount}
+                    </span>
+                  </Link>
+                )}
+                <button onClick={() => { openMap(); setIsMenuOpen(false); }} className="w-full flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md shadow-md active:scale-95 transition-all" aria-label="Open trip planner">
+                  Trip Planner
                 </button>
               </div>
             </div>

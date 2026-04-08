@@ -1,0 +1,301 @@
+{
+  "_meta": {
+    "city": "Nordkapp",
+    "fetchedAt": "2026-04-05T17:41:55.111004+00:00",
+    "count": 13,
+    "note": "Fetched via Google Places API. All restaurants verified OPERATIONAL at fetch time. Descriptions marked 'pending editorial review' need manual editing."
+  },
+  "restaurants": [
+    {
+      "id": "nor-cafe-bistro",
+      "name": "NOR Cafe' & Bistro",
+      "placeId": "ChIJyV1etcWpyUUR0wPLaaab28U",
+      "cuisine": "cafe",
+      "pricePoint": "$$",
+      "address": "Holmen 6B, 9750 Honningsvåg, Norway",
+      "website": "https://www.norcafebistro.com/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 3:00 – 9:00 PM; Tuesday: 11:00 AM – 9:00 PM; Wednesday: 11:00 AM – 9:00 PM...",
+      "description": "Restaurant in Nordkapp. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.7,
+          "reviewCount": 275
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "sjgata-pub",
+      "name": "Sjøgata Pub",
+      "placeId": "ChIJBVLImWypyUURCQ2PKR57hxk",
+      "cuisine": "pub",
+      "pricePoint": "$$",
+      "address": "Sjøgata 20, 9750 Honningsvåg, Norway",
+      "website": "http://www.perleportenkulturhus.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 2:00 PM, 6:00 PM – 2:00 AM; Tuesday: 11:00 AM – 2:00 PM, 6:00 PM – 2:00 AM; Wednesday: 11:00 AM – 2:00 PM, 6:00 PM – 2:00 AM...",
+      "description": "Restaurant in Nordkapp. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 302
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "soi-9-restaurant-bar",
+      "name": "Soi 9 Restaurant & Bar",
+      "placeId": "ChIJJ_RNGhupyUURBbwwgn1c6tk",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Sjøgata 6, 9750 Honningsvåg, Norway",
+      "website": "http://www.soi9nk.com/",
+      "reservationRequired": false,
+      "openingHours": "Check website for hours",
+      "description": "Restaurant in Nordkapp. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 144
+        },
+        "tripAdvisor": {
+          "score": 4.1,
+          "reviewCount": 8,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "nickys-gatekjkken",
+      "name": "Nicky's Gatekjøkken",
+      "placeId": "ChIJB_ug0MqpyUURgPgiY1MvVBk",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Fiskeriveien 8, 9750 Honningsvåg, Norway",
+      "website": "https://www.facebook.com/NickysFoodtruck",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: Closed; Wednesday: Closed...",
+      "description": "Restaurant in Nordkapp. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 16
+        },
+        "tripAdvisor": {
+          "score": 3.8,
+          "reviewCount": 80,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "honni-bakes",
+      "name": "Honni Bakes",
+      "placeId": "ChIJzXHS1kKpyUURSeM53nEWysk",
+      "cuisine": "bakery",
+      "pricePoint": "$$",
+      "address": "Sjøgata 2, 9750 Honningsvåg, Norway",
+      "website": "https://www.facebook.com/honnibakes/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 8:00 AM – 5:00 PM; Tuesday: 8:00 AM – 5:00 PM; Wednesday: 8:00 AM – 5:00 PM...",
+      "description": "Restaurant in Nordkapp. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 439
+        },
+        "tripAdvisor": {
+          "score": 4.7,
+          "reviewCount": 132,
+          "bubbleRating": 5
+        },
+        "facebook": {
+          "score": 4.8,
+          "reviewCount": 33
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "havly-restaurant",
+      "name": "Havly Restaurant",
+      "placeId": "ChIJax7UwRCpyUURy2d6mF5fvuc",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Storgata 12B, 9750 Honningsvåg, Norway",
+      "website": "http://www.arctichotelnordkapp.com/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 5:30 – 10:00 PM; Tuesday: 5:30 – 10:00 PM; Wednesday: 5:30 – 10:00 PM...",
+      "description": "Restaurant in Nordkapp. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 243
+        },
+        "tripAdvisor": {
+          "score": 4.3,
+          "reviewCount": 104,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "kos-kitchen-and-small-shop",
+      "name": "KOS Kitchen and Small Shop",
+      "placeId": "ChIJkTpVXUKpyUUR8tecXkGHv70",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Storgata 22, 9750 Honningsvåg, Norway",
+      "website": "http://kos-hvg.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 10:00 AM – 6:00 PM; Tuesday: 10:00 AM – 6:00 PM; Wednesday: 10:00 AM – 6:00 PM...",
+      "description": "Restaurant in Nordkapp. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 171
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "corner-spiseri",
+      "name": "Corner Spiseri",
+      "placeId": "ChIJQZvNUrJtQUYRSUs0SUlJP2c",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Fiskeriveien 2A, 9750 Honningsvåg, Norway",
+      "website": "http://www.utelivinordkapp.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 11:00 PM; Tuesday: 11:00 AM – 11:00 PM; Wednesday: 11:00 AM – 11:00 PM...",
+      "description": "Restaurant in Nordkapp. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 1015
+        },
+        "tripAdvisor": {
+          "score": 4.0,
+          "reviewCount": 376,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "arctic-sans-as",
+      "name": "Arctic Sans AS",
+      "placeId": "ChIJ68BGmqypyUURU-W176h18ic",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Storgata 10A, 9750 Honningsvåg, Norway",
+      "website": "https://www.facebook.com/ArcticSans/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 7:00 PM; Tuesday: 11:00 AM – 7:00 PM; Wednesday: 11:00 AM – 7:00 PM...",
+      "description": "Restaurant in Nordkapp. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 143
+        },
+        "tripAdvisor": {
+          "score": 3.9,
+          "reviewCount": 98,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "north-cape-winter-christmas-house",
+      "name": "North Cape Winter & Christmas House",
+      "placeId": "ChIJdUXaFrFSyEURsT34wIpEtqc",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Børnesveien 1, 9763 Skarsvåg, Norway",
+      "website": "http://www.julehuset.no/eng/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 2:00 PM, 4:00 – 8:00 PM; Tuesday: 11:00 AM – 2:00 PM, 4:00 – 8:00 PM; Wednesday: 11:00 AM – 2:00 PM, 4:00 – 8:00 PM...",
+      "description": "Restaurant in Nordkapp. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 397
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "the-emergency-pub",
+      "name": "The emergency Pub",
+      "placeId": "ChIJndeM01ypyUURXH5cAnM_NuQ",
+      "cuisine": "pub",
+      "pricePoint": "$$",
+      "address": "Larsjorda 1B, 9750 Honningsvåg, Norway",
+      "website": "https://www.utelivinordkapp.no/noden/",
+      "reservationRequired": false,
+      "openingHours": "Check website for hours",
+      "description": "Restaurant in Nordkapp. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 90
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "arctic-hotel-nordkapp",
+      "name": "Arctic Hotel Nordkapp",
+      "placeId": "ChIJq6r2_EKpyUURyg3RoqTkBcc",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Storgata 12 A, 9750 Honningsvåg, Norway",
+      "website": "https://arctichotelnordkapp.com/",
+      "reservationRequired": false,
+      "openingHours": "Check website for hours",
+      "description": "Restaurant in Nordkapp. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4,
+          "reviewCount": 209
+        },
+        "tripAdvisor": {
+          "score": 4.4,
+          "reviewCount": 466,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "marios-pizza-grill",
+      "name": "Mario's Pizza & Grill",
+      "placeId": "ChIJX5np30KpyUUR1qyZ32bCm40",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Storgata 8A, 9750 Honningsvåg, Norway",
+      "website": "https://www.facebook.com/Viva-Napoli-Honningsv%C3%A5g-611975232226287/?fref=ts",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 9:00 PM; Tuesday: 11:00 AM – 9:00 PM; Wednesday: 11:00 AM – 9:00 PM...",
+      "description": "Restaurant in Nordkapp. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 3.7,
+          "reviewCount": 195
+        },
+        "tripAdvisor": {
+          "score": 4.3,
+          "reviewCount": 265,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    }
+  ]
+}

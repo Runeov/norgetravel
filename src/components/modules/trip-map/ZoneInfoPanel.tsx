@@ -11,9 +11,10 @@ interface ZoneInfoPanelProps {
   selectedZone: MapZone | null;
   onClose: () => void;
   onExplore?: (zoneId: string) => void;
+  onNavigateAway?: () => void;
 }
 
-export function ZoneInfoPanel({ hoveredZone, selectedZone, onExplore }: ZoneInfoPanelProps) {
+export function ZoneInfoPanel({ hoveredZone, selectedZone, onExplore, onNavigateAway }: ZoneInfoPanelProps) {
   const zone = selectedZone || hoveredZone;
 
   return (
@@ -103,6 +104,7 @@ export function ZoneInfoPanel({ hoveredZone, selectedZone, onExplore }: ZoneInfo
               ) : (
                 <Link
                   href={selectedZone.href}
+                  onClick={() => onNavigateAway?.()}
                   className="inline-flex items-center justify-center w-full px-6 py-3 text-sm font-bold text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-full hover:shadow-lg hover:shadow-[#00CC6A]/30 hover:-translate-y-0.5 transition-all duration-300"
                 >
                   Explore {selectedZone.name}

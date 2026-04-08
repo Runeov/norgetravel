@@ -17,6 +17,8 @@ export interface TravelStore<T extends TravelItemBase> {
   getPublished: () => Promise<T[]>;
   getFeatured: () => Promise<T[]>;
   filterByDestination: (destination: Destination) => Promise<T[]>;
+  /** Filter published items whose JSON key starts with one of the given city prefixes, e.g. ['tromso', 'troms']. */
+  filterByIdPrefixes: (prefixes: string[]) => Promise<T[]>;
   create: (data: Omit<T, 'id' | 'sortOrder' | 'createdAt' | 'updatedAt'>) => Promise<T>;
   update: (id: string, updates: Partial<T>) => Promise<T | null>;
   remove: (id: string) => Promise<boolean>;
@@ -50,8 +52,31 @@ export function createTravelStore<T extends TravelItemBase>(
   const DATA_FILE = path.join(process.cwd(), 'src/data', dataFileName);
   const lockResource = dataFileName.replace('.json', '');
 
-  // ─── Read all items from JSON file ───
+  // ─── In-memory cache to avoid re-reading + re-validating on every call ───
+  let cache: TravelDataMap<T> | null = null;
+  let cacheTime = 0;
+  let cachePromise: Promise<TravelDataMap<T>> | null = null;
+  const CACHE_TTL = 30_000; // 30 seconds — covers a full page render cycle
+
+  // ─── Read all items from JSON file (cached) ───
   async function readFile(): Promise<TravelDataMap<T>> {
+    const now = Date.now();
+    if (cache && now - cacheTime < CACHE_TTL) return cache;
+    // Deduplicate concurrent reads for the same file
+    if (cachePromise) return cachePromise;
+
+    cachePromise = readFileFromDisk();
+    try {
+      const result = await cachePromise;
+      cache = result;
+      cacheTime = Date.now();
+      return result;
+    } finally {
+      cachePromise = null;
+    }
+  }
+
+  async function readFileFromDisk(): Promise<TravelDataMap<T>> {
     try {
       const data = await fs.readFile(DATA_FILE, 'utf-8');
       const parsed = JSON.parse(data);
@@ -76,9 +101,15 @@ export function createTravelStore<T extends TravelItemBase>(
     }
   }
 
+  function invalidateCache() {
+    cache = null;
+    cacheTime = 0;
+  }
+
   // ─── Write all items to JSON file ───
   async function writeFile(data: TravelDataMap<T>): Promise<void> {
     await fs.writeFile(DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
+    invalidateCache();
   }
 
   // ─── Public API ───
@@ -119,6 +150,18 @@ export function createTravelStore<T extends TravelItemBase>(
     const items = await readFile();
     return Object.values(items)
       .filter((item) => item.status === 'published' && (item.destination === destination || item.destination === 'all'))
+      .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
+  }
+
+  async function filterByIdPrefixes(prefixes: string[]): Promise<T[]> {
+    if (!prefixes.length) return [];
+    const items = await readFile();
+    return Object.entries(items)
+      .filter(([id, item]) => {
+        if (item.status !== 'published') return false;
+        return prefixes.some((p) => id === p || id.startsWith(p + '-'));
+      })
+      .map(([, item]) => item)
       .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
   }
 
@@ -217,6 +260,7 @@ export function createTravelStore<T extends TravelItemBase>(
     getPublished,
     getFeatured,
     filterByDestination,
+    filterByIdPrefixes,
     create,
     update,
     remove,

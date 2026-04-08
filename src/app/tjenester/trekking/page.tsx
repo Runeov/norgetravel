@@ -61,6 +61,7 @@ export default function TrekkingPage() {
           fill
           className="object-cover opacity-50"
           priority
+          quality={75}
           placeholder="blur"
           sizes="100vw"
         />

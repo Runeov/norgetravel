@@ -40,13 +40,16 @@ export interface Employee {
 }
 
 // Article Types
-export type ArticleCategory = 
+export type ArticleCategory =
   | 'artikler'
   | 'bedrift'
   | 'sametinget'
   | 'organisasjoner'
   | 'analyse'
-  | 'regelverk';
+  | 'regelverk'
+  | 'safety'
+  | 'trip-reports'
+  | 'planning';
 
 export type ArticleStatus = 'draft' | 'published';
 
@@ -148,6 +151,9 @@ export const CATEGORY_LABELS: Record<ArticleCategory, string> = {
   organisasjoner: 'Organisasjoner',
   analyse: 'Analyse',
   regelverk: 'Regelverk',
+  safety: 'Safety & Preparation',
+  'trip-reports': 'Trip Reports',
+  planning: 'Planning Guides',
 };
 
 // Category colors for badges
@@ -158,4 +164,7 @@ export const CATEGORY_COLORS: Record<ArticleCategory, string> = {
   organisasjoner: 'bg-green-100 text-green-700',
   analyse: 'bg-purple-100 text-purple-700',
   regelverk: 'bg-slate-100 text-slate-700',
+  safety: 'bg-red-100 text-red-700',
+  'trip-reports': 'bg-blue-100 text-blue-700',
+  planning: 'bg-emerald-100 text-emerald-700',
 };

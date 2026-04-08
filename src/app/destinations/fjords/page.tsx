@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, MapPin, Clock } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
-import heroImage from '@/assets/Hero_Tjenester.avif';
 
 export const metadata: Metadata = {
   title: 'Norwegian Fjords Travel Guide 2026 | NorgeTravel',
@@ -53,12 +52,12 @@ export default function FjordsPage() {
       {/* Hero */}
       <section className="relative overflow-hidden bg-slate-900 text-white">
         <Image
-          src={heroImage}
-          alt="Norwegian fjord — steep cliffs and calm blue water"
+          src="/images/narvik/fjord-railway/ofoten-railway-fjord_christina-myrland.jpg"
+          alt="Ofoten railway running along the fjord near Narvik, steep mountains dropping into calm water"
           fill
           className="object-cover opacity-50"
           priority
-          placeholder="blur"
+          quality={75}
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/40 to-slate-900/80" />
@@ -128,8 +127,8 @@ export default function FjordsPage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Book a fjord cruise</h2>
           <p className="text-white/80 mb-8 max-w-xl mx-auto">Electric ferries, hybrid ships, and day-trip packages — all with zero-emission certification.</p>
-          <Link href="/tjenester/fjord-cruises" className="inline-flex items-center justify-center px-8 py-3 bg-white text-[#1B3A5C] font-bold rounded-full hover:shadow-lg transition-all">
-            View Fjord Cruises <ArrowRight className="ml-2 w-4 h-4" />
+          <Link href="/travel" className="inline-flex items-center justify-center px-8 py-3 bg-white text-[#1B3A5C] font-bold rounded-full hover:shadow-lg transition-all">
+            Explore Fjord Travel <ArrowRight className="ml-2 w-4 h-4" />
           </Link>
         </div>
       </section>

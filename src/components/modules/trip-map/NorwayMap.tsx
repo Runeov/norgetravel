@@ -9,6 +9,8 @@ import {
   referenceMarkers,
   cityZonePositions,
   mapZones,
+  boatRoutePoints,
+  boatRoutePath,
 } from '@/data/norway-map-zones';
 
 interface NorwayMapProps {
@@ -21,9 +23,13 @@ interface NorwayMapProps {
 export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: NorwayMapProps) {
   const svalbardZone = mapZones.find((z) => z.id === 'svalbard');
   const cityZone = mapZones.find((z) => z.id === 'cities');
-  const polygonZones = mapZones.filter((z) => z.id !== 'svalbard' && z.id !== 'cities');
+  const boatZone = mapZones.find((z) => z.id === 'boat-routes');
+  const polygonZones = mapZones.filter(
+    (z) => z.id !== 'svalbard' && z.id !== 'cities' && z.id !== 'boat-routes'
+  );
 
   const cityActive = hoveredZone === 'cities' || selectedZone === 'cities';
+  const boatActive = hoveredZone === 'boat-routes' || selectedZone === 'boat-routes';
 
   // Sort polygon zones so the active one renders last (SVG z-ordering)
   const sortedPolygonZones = [...polygonZones].sort((a, b) => {
@@ -361,6 +367,175 @@ export function NorwayMap({ hoveredZone, selectedZone, onHover, onSelect }: Norw
           >
             {cityZone.name}
           </motion.text>
+        </g>
+      )}
+
+      {/* Boat Routes — icon toggles route visibility on click */}
+      {boatZone && (
+        <g>
+          {/* Route line + port markers — only visible when selected */}
+          {boatActive && (
+            <motion.g
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
+            >
+              {/* Route line */}
+              <motion.path
+                d={boatRoutePath}
+                fill="none"
+                stroke={boatZone.color}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeDasharray="6 5"
+                strokeWidth={2.5}
+                strokeOpacity={0.9}
+                className="pointer-events-none"
+              />
+
+              {/* Port markers */}
+              {boatRoutePoints.map((port) => (
+                <g key={port.name} className="pointer-events-none">
+                  <circle
+                    cx={port.x}
+                    cy={port.y}
+                    r={4}
+                    fill={boatZone.color}
+                    fillOpacity={0.95}
+                    stroke="white"
+                    strokeWidth={1}
+                    strokeOpacity={0.6}
+                  />
+                  <text
+                    x={port.x + 7}
+                    y={port.y + 1}
+                    fill={boatZone.color}
+                    fillOpacity={0.85}
+                    fontSize={9}
+                    fontWeight={600}
+                    dominantBaseline="central"
+                    className="select-none"
+                  >
+                    {port.name}
+                  </text>
+                </g>
+              ))}
+
+              {/* Route label */}
+              <text
+                x={boatZone.labelPosition.x}
+                y={boatZone.labelPosition.y}
+                textAnchor="middle"
+                dominantBaseline="central"
+                className="pointer-events-none select-none"
+                fill={boatZone.color}
+                fontSize={13}
+                fontWeight={600}
+                letterSpacing={0.4}
+                opacity={1}
+              >
+                {boatZone.name}
+              </text>
+            </motion.g>
+          )}
+
+          {/* Boat icon — always visible, click to toggle route */}
+          <g
+            className="cursor-pointer"
+            onClick={() => onSelect('boat-routes')}
+            onMouseEnter={() => onHover('boat-routes')}
+            onMouseLeave={() => onHover(null)}
+            role="button"
+            tabIndex={0}
+            aria-label={boatZone.name}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect('boat-routes'); }
+            }}
+          >
+            {/* Hit area */}
+            <circle
+              cx={-15}
+              cy={430}
+              r={28}
+              fill="transparent"
+            />
+
+            {/* Glow ring */}
+            <motion.circle
+              cx={-15}
+              cy={430}
+              r={22}
+              fill={boatZone.color}
+              stroke={boatZone.color}
+              strokeWidth={boatActive ? 2 : 1}
+              animate={{
+                fillOpacity: boatActive ? 0.25 : 0.08,
+                strokeOpacity: boatActive ? 0.7 : 0.25,
+              }}
+              transition={{ duration: 0.2 }}
+              filter={boatActive ? 'url(#city-glow)' : undefined}
+            />
+
+            {/* Boat SVG icon (simplified ship silhouette) */}
+            <motion.g
+              transform="translate(-27, 418) scale(1)"
+              animate={{ opacity: boatActive ? 1 : 0.7 }}
+              transition={{ duration: 0.2 }}
+              className="pointer-events-none"
+            >
+              {/* Hull */}
+              <path
+                d="M2,18 L4,22 L20,22 L22,18 Z"
+                fill={boatZone.color}
+                fillOpacity={0.9}
+              />
+              {/* Cabin */}
+              <rect x={7} y={12} width={10} height={6} rx={1} fill={boatZone.color} fillOpacity={0.8} />
+              {/* Funnel */}
+              <rect x={11} y={6} width={3} height={6} rx={0.5} fill={boatZone.color} fillOpacity={0.7} />
+              {/* Smoke */}
+              <motion.circle
+                cx={12.5}
+                cy={4}
+                r={1.5}
+                fill={boatZone.color}
+                animate={{ opacity: [0.4, 0.15, 0.4], cy: [4, 1, 4] }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+              />
+            </motion.g>
+
+            {/* Label below icon */}
+            <motion.text
+              x={-15}
+              y={457}
+              textAnchor="middle"
+              dominantBaseline="central"
+              fill="white"
+              fontSize={10}
+              fontWeight={600}
+              letterSpacing={0.3}
+              className="pointer-events-none select-none"
+              animate={{ opacity: boatActive ? 1 : 0.5 }}
+              transition={{ duration: 0.2 }}
+            >
+              Boat Routes
+            </motion.text>
+
+            {/* Pulsing ring when selected */}
+            {selectedZone === 'boat-routes' && (
+              <motion.circle
+                cx={-15}
+                cy={430}
+                r={22}
+                fill="none"
+                stroke={boatZone.color}
+                strokeWidth={1}
+                initial={{ opacity: 0.6, r: 22 }}
+                animate={{ opacity: [0.6, 0, 0.6], r: [22, 32, 22] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeOut' }}
+              />
+            )}
+          </g>
         </g>
       )}
 

@@ -133,6 +133,150 @@ export const cities: CityData[] = [
     ],
     gradient: 'from-cyan-900 to-slate-900',
   },
+  {
+    slug: 'tromso',
+    name: 'Troms\u00F8',
+    tagline: 'Arctic capital, Northern Lights basecamp',
+    metaDescription:
+      'Troms\u00F8 travel guide: Northern Lights chasing, Arctic Cathedral, whale watching, and the gateway to the Arctic. Practical info for visiting Norway\u2019s Arctic capital.',
+    heroDescription:
+      'Troms\u00F8 sits at 69\u00B0N with 75,000 residents, a university, a brewery, and 69 days of polar night. The city is the main basecamp for Northern Lights trips, whale watching in the fjords, and Svalbard departures. The Arctic Cathedral crosses the sound in Tromsdalen.',
+    heroImage: '/pics/Tromso/tromso_banner.jpeg',
+    heroImageAlt: 'Troms\u00F8 city and harbour with Arctic Cathedral, Northern Norway',
+    stats: [
+      { label: 'Population', value: '75,000' },
+      { label: 'Airport', value: 'TOS Langnes' },
+      { label: 'Polar night', value: 'Nov 21\u2013Jan 21' },
+      { label: 'Best time', value: 'Sep\u2013Mar (aurora) / Jun\u2013Aug (midnight sun)' },
+    ],
+    gradient: 'from-violet-900 to-slate-900',
+  },
+  {
+    slug: 'alta',
+    name: 'Alta',
+    tagline: 'Canyon, rock carvings, and Northern Lights',
+    metaDescription:
+      'Alta travel guide: UNESCO rock carvings, Northern Lights observatory at Haldde, dog sledding, and the Alta Canyon. Gateway to Finnmark.',
+    heroDescription:
+      'Alta sits at 70\u00B0N at the head of the Altafjord in Finnmark. The UNESCO-listed rock carvings at Hj\u00E6mmalu\u0307ft date to 7,000 years ago. The Northern Lights observatory at Haldde sits at 904 meters. The Alta Canyon is Northern Europe\u2019s largest at 400 meters deep.',
+    heroImage: '/pics/Finnmark/alta_banner.jpeg',
+    heroImageAlt: 'Alta river and canyon landscape, Finnmark, Northern Norway',
+    stats: [
+      { label: 'Population', value: '21,000' },
+      { label: 'Airport', value: 'ALF Alta' },
+      { label: 'Canyon depth', value: '400 m' },
+      { label: 'Best time', value: 'Sep\u2013Mar (aurora) / Jun\u2013Aug (midnight sun)' },
+    ],
+    gradient: 'from-indigo-900 to-slate-900',
+  },
+  {
+    slug: 'bodo',
+    name: 'Bod\u00F8',
+    tagline: 'Saltstraumen, sea eagles, gateway to Lofoten',
+    metaDescription:
+      'Bod\u00F8 travel guide: Saltstraumen maelstrom, sea eagle safaris, European Capital of Culture 2024, and the Lofoten ferry departure.',
+    heroDescription:
+      'Bod\u00F8 is the departure point for the Lofoten ferry across the Vestfjord. Saltstraumen, 33 km southeast, is the world\u2019s strongest tidal current at 400 million cubic meters of water per cycle. The city was European Capital of Culture in 2024. Sea eagles nest in the surrounding fjords.',
+    heroImage: '/pics/vesteraalen/vesteralen_banner.jpeg',
+    heroImageAlt: 'Bod\u00F8 coastline and Vestfjord, Nordland, Northern Norway',
+    stats: [
+      { label: 'Population', value: '53,000' },
+      { label: 'Airport', value: 'BOO Bod\u00F8' },
+      { label: 'Ferry to Lofoten', value: 'Bod\u00F8\u2013Moskenes' },
+      { label: 'Best time', value: 'Jun\u2013Sep' },
+    ],
+    gradient: 'from-sky-900 to-slate-900',
+  },
+  {
+    slug: 'hammerfest',
+    name: 'Hammerfest',
+    tagline: 'One of the northernmost cities in the world',
+    metaDescription:
+      'Hammerfest travel guide: Royal and Ancient Polar Bear Society, M\u00E9ridian Column UNESCO site, and Arctic town life at 70\u00B0N.',
+    heroDescription:
+      'Hammerfest sits at 70\u00B040\u2019N on the coast of Finnmark. The Royal and Ancient Polar Bear Society museum dates to 1963. The Meridian Column is a UNESCO World Heritage Site marking the first international scientific collaboration to measure the Earth\u2019s shape. The town was razed in 1944 and rebuilt from scratch.',
+    heroImage: '/pics/Finnmark/nordkapp.jpeg',
+    heroImageAlt: 'Hammerfest Arctic coastline, Finnmark, Northern Norway',
+    stats: [
+      { label: 'Population', value: '11,000' },
+      { label: 'Airport', value: 'HFT Hammerfest' },
+      { label: 'Latitude', value: '70\u00B040\u2019N' },
+      { label: 'Best time', value: 'Jun\u2013Sep / Jan\u2013Mar (aurora)' },
+    ],
+    gradient: 'from-slate-800 to-blue-900',
+  },
+  {
+    slug: 'narvik',
+    name: 'Narvik',
+    tagline: 'War history, Ofoten railway, and Arctic skiing',
+    metaDescription:
+      'Narvik travel guide: WWII museum, Narvikfjellet ski resort, Ofoten Line railway, and the gateway to the Lofoten Islands via the E10.',
+    heroDescription:
+      'Narvik sits on the Ofotfjord in Nordland, connected to Sweden by the Ofoten Line railway built to transport iron ore. The WWII battles of Narvik in 1940 were among the first Allied victories. Narvikfjellet ski resort drops 900 meters to sea level. The E10 to Lofoten starts here.',
+    heroImage: '/pics/Tromso/Landscape.jpeg',
+    heroImageAlt: 'Narvik and the Ofotfjord surrounded by mountains, Nordland, Northern Norway',
+    stats: [
+      { label: 'Population', value: '19,000' },
+      { label: 'Airport', value: 'EVE Harstad/Narvik' },
+      { label: 'E10 to Svolver', value: '230 km' },
+      { label: 'Best time', value: 'Jun\u2013Sep / Feb\u2013Apr (skiing)' },
+    ],
+    gradient: 'from-zinc-800 to-slate-900',
+  },
+  {
+    slug: 'senja',
+    name: 'Senja',
+    tagline: 'Norway in miniature, fewer crowds',
+    metaDescription:
+      'Senja travel guide: Segla peak, the National Tourist Route, Husøy fishing village, and Norway\u2019s second-largest island without the Lofoten crowds.',
+    heroDescription:
+      'Senja is Norway\u2019s second-largest island: fjords, fishing villages, and mountain peaks without the Lofoten visitor pressure. The National Tourist Route along the western coast passes Tungeneset viewpoint and Bergsbotn. Segla peak (639 m) is the signature hike. Hus\u00F8y fishing village sits on a 500-meter-wide island.',
+    heroImage: '/pics/senja/senja_banner.jpeg',
+    heroImageAlt: 'Senja coastline with dramatic mountains and fjords, Northern Norway',
+    stats: [
+      { label: 'Area', value: '1,586 km\u00B2' },
+      { label: 'Nearest airport', value: 'TOS Troms\u00F8 (3h drive)' },
+      { label: 'Segla peak', value: '639 m' },
+      { label: 'Best time', value: 'Jun\u2013Sep' },
+    ],
+    gradient: 'from-teal-900 to-slate-900',
+  },
+  {
+    slug: 'nordkapp',
+    name: 'Nordkapp',
+    tagline: 'The northernmost point of mainland Europe',
+    metaDescription:
+      'Nordkapp travel guide: North Cape plateau, midnight sun, Honningsv\u00E5g town, and the 307-meter cliff at 71\u00B010\u2019N.',
+    heroDescription:
+      'Nordkapp is the 307-meter cliff at 71\u00B010\u2019N marketed as the northernmost point of mainland Europe. Honningsv\u00E5g is the town at the base: 2,500 residents, a fishing harbour, and the Hurtigruten port. The midnight sun is visible from May 14 to July 29. In winter, the plateau is often closed by wind and snow.',
+    heroImage: '/pics/nordkapp/nordkapp_banner.jpeg',
+    heroImageAlt: 'North Cape plateau and globe monument at midnight sun, Nordkapp, Norway',
+    stats: [
+      { label: 'Population', value: '2,500 (Honningsv\u00E5g)' },
+      { label: 'Airport', value: 'HVG Honningsv\u00E5g' },
+      { label: 'Latitude', value: '71\u00B010\u2019N' },
+      { label: 'Best time', value: 'May\u2013Jul (midnight sun)' },
+    ],
+    gradient: 'from-orange-900 to-slate-900',
+  },
+  {
+    slug: 'lyngen',
+    name: 'Lyngen',
+    tagline: 'Alpine fjord peaks and ski touring',
+    metaDescription:
+      'Lyngen travel guide: Lyngen Alps ski touring, Arctic alpine climbing, Lyngenfjord scenery, and remote Northern Norway wilderness.',
+    heroDescription:
+      'The Lyngen Alps rise directly from the Lyngenfjord: glaciated peaks to 1,833 meters with their feet in the Arctic Ocean. The area is the premier ski touring destination in Northern Norway from February to May. In summer, the midnight sun lights the peaks around the clock. The E6 runs along the fjord\u2019s western shore.',
+    heroImage: '/pics/lyngen/Lyngen_banner.jpeg',
+    heroImageAlt: 'Lyngen Alps rising from the Lyngenfjord, Troms, Northern Norway',
+    stats: [
+      { label: 'Highest peak', value: 'Jiehkkev\u00E1rri (1,833 m)' },
+      { label: 'Nearest airport', value: 'TOS Troms\u00F8 (2h drive)' },
+      { label: 'Ski season', value: 'Feb\u2013May' },
+      { label: 'Best time', value: 'Feb\u2013May (ski) / Jun\u2013Sep (hike)' },
+    ],
+    gradient: 'from-blue-900 to-slate-900',
+  },
 ];
 
 export const attractions: CityAttraction[] = [

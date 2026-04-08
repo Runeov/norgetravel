@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowLeft,
@@ -23,6 +24,9 @@ import {
   MapPin,
   Compass,
   Bed,
+  Ship,
+  Anchor,
+  Waves,
 } from 'lucide-react';
 import type { ZoneDetailData, BulletDetail } from '@/data/zone-subcategories';
 
@@ -31,6 +35,11 @@ interface ZoneDetailViewProps {
   onBack: () => void;
   allZones?: ZoneDetailData[];
   onSwitchZone?: (zoneId: string) => void;
+  onNavigateAway?: () => void;
+  activeTab?: number;
+  onTabChange?: (tab: number) => void;
+  selectedCard?: number | null;
+  onCardChange?: (card: number | null) => void;
 }
 
 const iconMap: Record<string, React.ElementType> = {
@@ -54,6 +63,10 @@ const iconMap: Record<string, React.ElementType> = {
   'fj-events': Calendar,
   'fj-tours': Compass,
   'fj-accommodation': Bed,
+  'br-south': Ship,
+  'br-helgeland': Anchor,
+  'br-lofoten': Waves,
+  'br-arctic': Compass,
   'northern-lights': Sparkles,
   'dog-sledding': PawPrint,
   'midnight-sun': Sun,
@@ -88,12 +101,16 @@ function CardDetailPanel({
   detail,
   zoneColor,
   bulletIndex,
+  imageUrl,
   onBack,
+  onNavigateAway,
 }: {
   detail: BulletDetail;
   zoneColor: string;
   bulletIndex: number;
+  imageUrl?: string;
   onBack: () => void;
+  onNavigateAway?: () => void;
 }) {
   const router = useRouter();
 
@@ -116,12 +133,19 @@ function CardDetailPanel({
         <span className="text-sm font-medium">Back to overview</span>
       </button>
 
-      {/* Placeholder image */}
+      {/* Banner image */}
       <div className={`relative h-32 w-full rounded-xl overflow-hidden mb-6 bg-gradient-to-br ${bulletGradients[bulletIndex % bulletGradients.length]}`}>
+        {imageUrl && (
+          <Image
+            src={imageUrl}
+            alt=""
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 80vw, 40vw"
+            aria-hidden="true"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-        <span className="absolute top-3 right-3 text-[10px] text-white/30 font-medium uppercase tracking-wider">
-          Image placeholder
-        </span>
       </div>
 
       {/* Title */}
@@ -153,7 +177,10 @@ function CardDetailPanel({
       {/* CTA */}
       <div className="mt-auto pt-5 border-t border-white/10">
         <button
-          onClick={() => router.push(detail.ctaLink)}
+          onClick={() => {
+            onNavigateAway?.();
+            router.push(detail.ctaLink);
+          }}
           className="inline-flex items-center justify-center w-full px-6 py-3 text-sm font-bold text-white rounded-full hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
           style={{ background: `linear-gradient(to right, #1B3A5C, ${zoneColor})` }}
         >
@@ -166,10 +193,25 @@ function CardDetailPanel({
 }
 
 /* ── Main component ────────────────────────────────────────────────── */
-export function ZoneDetailView({ data, onBack, allZones, onSwitchZone }: ZoneDetailViewProps) {
+export function ZoneDetailView({
+  data,
+  onBack,
+  allZones,
+  onSwitchZone,
+  onNavigateAway,
+  activeTab: externalTab,
+  onTabChange,
+  selectedCard: externalCard,
+  onCardChange,
+}: ZoneDetailViewProps) {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState(0);
-  const [selectedCard, setSelectedCard] = useState<number | null>(null);
+  const [internalTab, setInternalTab] = useState(0);
+  const [internalCard, setInternalCard] = useState<number | null>(null);
+
+  const activeTab = externalTab ?? internalTab;
+  const selectedCard = externalCard ?? internalCard;
+  const setActiveTab = onTabChange ?? setInternalTab;
+  const setSelectedCard = onCardChange ?? setInternalCard;
 
   const currentIndex = allZones?.findIndex((z) => z.zoneId === data.zoneId) ?? -1;
   const prevZone = allZones && currentIndex > 0 ? allZones[currentIndex - 1] : null;
@@ -305,7 +347,9 @@ export function ZoneDetailView({ data, onBack, allZones, onSwitchZone }: ZoneDet
                                 detail={sub.bulletDetails[selectedCard]}
                                 zoneColor={data.zoneColor}
                                 bulletIndex={selectedCard}
+                                imageUrl={sub.bulletImages?.[selectedCard]}
                                 onBack={() => setSelectedCard(null)}
+                                onNavigateAway={onNavigateAway}
                               />
                             ) : (
                               <motion.div
@@ -322,10 +366,23 @@ export function ZoneDetailView({ data, onBack, allZones, onSwitchZone }: ZoneDet
                                   {sub.bullets.map((bullet, i) => (
                                     <button
                                       key={i}
-                                      onClick={() => sub.bulletDetails?.[i] ? setSelectedCard(i) : router.push(sub.link)}
+                                      onClick={() => { if (sub.bulletDetails?.[i]) { setSelectedCard(i); } else { onNavigateAway?.(); router.push(sub.link); } }}
                                       className="group/card relative rounded-xl overflow-hidden border border-white/10 hover:border-white/20 transition-all text-left"
                                     >
-                                      <div className={`h-16 w-full bg-gradient-to-br ${bulletGradients[i % bulletGradients.length]}`} />
+                                      <div className={`relative h-16 w-full bg-gradient-to-br ${bulletGradients[i % bulletGradients.length]}`}>
+                                        {sub.bulletImages?.[i] && (
+                                          <Image
+                                            src={sub.bulletImages[i]}
+                                            alt=""
+                                            fill
+                                            quality={60}
+                                            className="object-cover"
+                                            sizes="(max-width: 640px) 40vw, 25vw"
+                                            aria-hidden="true"
+                                          />
+                                        )}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                                      </div>
                                       <div className="p-2.5">
                                         <p className="text-white/80 text-xs font-medium leading-snug line-clamp-2">{bullet}</p>
                                         <ArrowRight
@@ -338,7 +395,7 @@ export function ZoneDetailView({ data, onBack, allZones, onSwitchZone }: ZoneDet
                                   ))}
                                 </div>
                                 <button
-                                  onClick={() => router.push(sub.link)}
+                                  onClick={() => { onNavigateAway?.(); router.push(sub.link); }}
                                   className="font-bold text-sm flex items-center gap-2 hover:gap-3 transition-all"
                                   style={{ color: data.zoneColor }}
                                 >
@@ -397,7 +454,9 @@ export function ZoneDetailView({ data, onBack, allZones, onSwitchZone }: ZoneDet
                 detail={activeDetail}
                 zoneColor={data.zoneColor}
                 bulletIndex={selectedCard!}
+                imageUrl={activeSub?.bulletImages?.[selectedCard!]}
                 onBack={() => setSelectedCard(null)}
+                onNavigateAway={onNavigateAway}
               />
             ) : activeSub ? (
               /* ── Tab content with CTA cards ─────────────────────── */
@@ -442,14 +501,22 @@ export function ZoneDetailView({ data, onBack, allZones, onSwitchZone }: ZoneDet
                   {activeSub.bullets.map((bullet, i) => (
                     <button
                       key={i}
-                      onClick={() => activeSub.bulletDetails?.[i] ? setSelectedCard(i) : router.push(activeSub.link)}
+                      onClick={() => { if (activeSub.bulletDetails?.[i]) { setSelectedCard(i); } else { onNavigateAway?.(); router.push(activeSub.link); } }}
                       className="group/card relative rounded-xl overflow-hidden border border-white/10 hover:border-white/25 hover:shadow-lg hover:shadow-black/20 transition-all duration-300 text-left"
                     >
                       <div className={`relative h-24 w-full bg-gradient-to-br ${bulletGradients[i % bulletGradients.length]}`}>
+                        {activeSub.bulletImages?.[i] && (
+                          <Image
+                            src={activeSub.bulletImages[i]}
+                            alt=""
+                            fill
+                            quality={60}
+                            className="object-cover"
+                            sizes="(max-width: 1024px) 25vw, 15vw"
+                            aria-hidden="true"
+                          />
+                        )}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                        <span className="absolute top-2 right-2 text-[10px] text-white/30 font-medium uppercase tracking-wider">
-                          Image
-                        </span>
                       </div>
                       <div className="p-3">
                         <p className="text-white/80 text-sm font-medium leading-snug line-clamp-2 mb-2">
@@ -471,7 +538,7 @@ export function ZoneDetailView({ data, onBack, allZones, onSwitchZone }: ZoneDet
                 <div className="mt-auto pt-6 border-t border-white/10">
                   <div className="flex items-center justify-between">
                     <button
-                      onClick={() => router.push(activeSub.link)}
+                      onClick={() => { onNavigateAway?.(); router.push(activeSub.link); }}
                       className="inline-flex items-center gap-2 font-bold text-sm hover:gap-3 transition-all group"
                       style={{ color: data.zoneColor }}
                     >

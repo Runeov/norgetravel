@@ -1,0 +1,734 @@
+{
+  "_meta": {
+    "city": "Bodø",
+    "fetchedAt": "2026-04-05T17:41:28.361112+00:00",
+    "count": 32,
+    "note": "Fetched via Google Places API. All restaurants verified OPERATIONAL at fetch time. Descriptions marked 'pending editorial review' need manual editing."
+  },
+  "restaurants": [
+    {
+      "id": "burgasm-bod",
+      "name": "BURGASM BODØ",
+      "placeId": "ChIJGwBDal4Q30URSSFRBgsdkwk",
+      "cuisine": "pub",
+      "pricePoint": "$$",
+      "address": "Havnegata 1, 8006 Bodø, Norway",
+      "website": "https://burgasm.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 3:00 – 9:00 PM; Tuesday: 3:00 – 9:00 PM; Wednesday: 3:00 – 9:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 1242
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "the-social-bar-bistro",
+      "name": "The Social Bar& Bistro",
+      "placeId": "ChIJOQz4m2MR30URsjS_5pmi6Tc",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Sjøgata 37, 39, 8003 Bodø, Norway",
+      "website": "https://www.strawberry.no/hotell/norge/bodo/quality-hotel-ramsalt/fasiliteter/restaurant-og-bar/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 6:00 – 10:00 PM; Tuesday: 6:00 – 10:00 PM; Wednesday: 6:00 – 10:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 13
+        },
+        "tripAdvisor": {
+          "score": 3.2,
+          "reviewCount": 76,
+          "bubbleRating": 3
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "tiger-sushi-bar",
+      "name": "Tiger Sushi Bar",
+      "placeId": "ChIJvyOt_i0R30URhNU6VttXFNI",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Sandgata 5B, 8006 Bodø, Norway",
+      "website": "https://tigersushibar.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 1:00 – 9:00 PM; Tuesday: 1:00 – 9:00 PM; Wednesday: 1:00 – 9:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 659
+        },
+        "tripAdvisor": {
+          "score": 4.7,
+          "reviewCount": 3,
+          "bubbleRating": 5
+        },
+        "facebook": {
+          "score": 4.8,
+          "reviewCount": 58
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "brasilia-bod",
+      "name": "Brasilia Bodø",
+      "placeId": "ChIJxztwhFwR30UR1JY9YThYMxs",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Sjøgata 31B, 8006 Bodø, Norway",
+      "website": "https://brasilia.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 4:00 – 11:00 PM; Tuesday: 4:00 – 11:00 PM; Wednesday: 4:00 – 11:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 216
+        },
+        "tripAdvisor": {
+          "score": 4.7,
+          "reviewCount": 429,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "restaurant-attme",
+      "name": "Restaurant ATTME",
+      "placeId": "ChIJ-5DiEFgR30URkyJ_1dbd4tI",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Fjellveien 187, 8011 Bodø, Norway",
+      "website": "https://restaurantattme.com/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 5:00 – 11:00 PM; Tuesday: 5:00 – 11:00 PM; Wednesday: 5:00 – 11:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 14
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "sjbaren",
+      "name": "Sjøbaren",
+      "placeId": "ChIJbz4tX_4R30URDVIdJ-Vy-2o",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Sjøgata 33b, 8006 Bodø, Norway",
+      "website": "https://www.sjobaren.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 3:00 – 10:00 PM; Tuesday: 3:00 – 10:00 PM; Wednesday: 3:00 – 10:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.5,
+          "reviewCount": 13
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "hundholmen-brygghus",
+      "name": "Hundholmen Brygghus",
+      "placeId": "ChIJOVwI6l0Q30URTrIQJJ4TlSU",
+      "cuisine": "pub",
+      "pricePoint": "$$",
+      "address": "Tollbugata 13, 8005 Bodø, Norway",
+      "website": "http://hundholmenbrygghus.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 2:00 PM – 12:00 AM; Wednesday: 2:00 PM – 12:00 AM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 1382
+        },
+        "tripAdvisor": {
+          "score": 4.1,
+          "reviewCount": 294,
+          "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 4.7,
+          "reviewCount": 450
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "orion-pizza-og-restaurant",
+      "name": "Orion Pizza og Restaurant",
+      "placeId": "ChIJxXEdJF4Q30URheh90fGXgW4",
+      "cuisine": "international",
+      "pricePoint": "$",
+      "address": "Sjøgata 22, 8006 Bodø, Norway",
+      "website": "https://bodo.orionpizza.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 1:00 – 10:00 PM; Tuesday: 1:00 – 10:00 PM; Wednesday: 1:00 – 10:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 1359
+        },
+        "tripAdvisor": {
+          "score": 4.0,
+          "reviewCount": 164,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "lystpa-restaurant-vinbar-pizza-neapolitana",
+      "name": "LystPå Restaurant Vinbar & Pizza Neapolitana",
+      "placeId": "ChIJmXpWE14Q30URhMWX9X59ceo",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Storgata 7A, 8006 Bodø, Norway",
+      "website": "https://www.lystpa.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 4:00 – 11:00 PM; Tuesday: 4:00 – 11:00 PM; Wednesday: 4:00 – 11:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 473
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "buffalo-steakhouse",
+      "name": "Buffalo Steakhouse",
+      "placeId": "ChIJM-2WlwoR30URma40PigR5A4",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Havnegata 1, 8006 Bodø, Norway",
+      "website": "http://www.buffalo.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: Closed; Wednesday: Closed...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 45
+        },
+        "tripAdvisor": {
+          "score": 4.0,
+          "reviewCount": 4,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "bryggerikaia",
+      "name": "Bryggerikaia",
+      "placeId": "ChIJEepRVlwQ30URixMiJ4H_wT0",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Sjøgata 1, 8006 Bodø, Norway",
+      "website": "http://www.bryggerikaia.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 3:00 – 11:00 PM; Tuesday: 3:00 – 11:00 PM; Wednesday: 3:00 – 11:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 1261
+        },
+        "tripAdvisor": {
+          "score": 3.9,
+          "reviewCount": 722,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "annas-gatekjkken",
+      "name": "Annas Gatekjøkken",
+      "placeId": "ChIJA30Q4F0Q30URbQqurzWVn2k",
+      "cuisine": "norwegian",
+      "pricePoint": "$",
+      "address": "Sjøgata 16A, 8006 Bodø, Norway",
+      "website": "https://annas-gatekjokken.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 11:45 PM; Tuesday: 11:00 AM – 11:45 PM; Wednesday: 11:00 AM – 11:45 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 838
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "ohma-asian-cooking",
+      "name": "Ohma Asian Cooking",
+      "placeId": "ChIJnzBRQVwQ30UREjwcWSyLpko",
+      "cuisine": "international",
+      "pricePoint": "$$$",
+      "address": "Storgata 2, 8006 Bodø, Norway",
+      "website": "http://www.ohma-asian.no/",
+      "reservationRequired": true,
+      "openingHours": "Monday: 3:00 – 11:00 PM; Tuesday: 3:00 – 11:00 PM; Wednesday: 3:00 – 11:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 719
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "pangea-kitchen-bar",
+      "name": "Pangea Kitchen & Bar",
+      "placeId": "ChIJ4e5osAAR30UR-7HRYFzoaxg",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Storgata 5C, 8006 Bodø, Norway",
+      "website": "https://www.pangeapatorget.com/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 11:00 AM – 11:00 PM; Wednesday: 11:00 AM – 11:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 356
+        },
+        "tripAdvisor": {
+          "score": 4.7,
+          "reviewCount": 225,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "habibi-grill",
+      "name": "Habibi Grill",
+      "placeId": "ChIJzQCRiIwR30URBKhSImUhQ9Y",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Sjøgata 44, 8006 Bodø, Norway",
+      "website": null,
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 2:00 – 11:30 PM; Wednesday: 2:00 – 11:30 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.3,
+          "reviewCount": 84
+        },
+        "tripAdvisor": {
+          "score": 4.7,
+          "reviewCount": 7,
+          "bubbleRating": 5
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "restaurant-bjrk",
+      "name": "Restaurant Bjørk",
+      "placeId": "ChIJYd5l1F0Q30URvGk9PyH2WAg",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Storgata 8, 8006 Bodø, Norway",
+      "website": "http://www.restaurantbjork.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 10:00 PM; Tuesday: 11:00 AM – 10:00 PM; Wednesday: 11:00 AM – 10:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.2,
+          "reviewCount": 1097
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "mon-ami-restaurant",
+      "name": "Mon Ami Restaurant",
+      "placeId": "ChIJwS0o1l0Q30URRI1p6XT0PRA",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Stormyrveien 20, 8008 Bodø, Norway",
+      "website": "http://www.monamibodo.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 9:00 AM – 9:00 PM; Tuesday: 9:00 AM – 9:00 PM; Wednesday: 9:00 AM – 9:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.2,
+          "reviewCount": 483
+        },
+        "tripAdvisor": {
+          "score": 3.7,
+          "reviewCount": 23,
+          "bubbleRating": 4
+        },
+        "facebook": {
+          "score": 3.8,
+          "reviewCount": 342
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "gatsby",
+      "name": "Gatsby",
+      "placeId": "ChIJezddbVwQ30UREWjAKuXTq20",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Moloveien 18, 8003 Bodø, Norway",
+      "website": "https://www.gatsby.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 3:00 – 11:00 PM; Tuesday: 3:00 PM – 12:00 AM; Wednesday: 3:00 PM – 12:00 AM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.1,
+          "reviewCount": 1071
+        },
+        "tripAdvisor": {
+          "score": 3.7,
+          "reviewCount": 254,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "kaptein-larsen",
+      "name": "Kaptein Larsen",
+      "placeId": "ChIJc97wR1wQ30URKWPQRqvKF-0",
+      "cuisine": "pub",
+      "pricePoint": "$$",
+      "address": "Storgata 4A, 8006 Bodø, Norway",
+      "website": "http://sportsbarenbodo.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 3:00 PM – 12:00 AM; Tuesday: 3:00 PM – 12:00 AM; Wednesday: 3:00 PM – 12:00 AM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.1,
+          "reviewCount": 532
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "chonticha-thai-restaurant",
+      "name": "Chonticha Thai Restaurant",
+      "placeId": "ChIJA4sRPl4Q30UR_NIDQzejlMA",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Sjøgata 21, 8006 Bodø, Norway",
+      "website": "http://www.chonticha.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 2:00 – 10:00 PM; Wednesday: 2:00 – 10:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.1,
+          "reviewCount": 476
+        },
+        "tripAdvisor": {
+          "score": 3.6,
+          "reviewCount": 165,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "olivia-ramsalt",
+      "name": "Olivia Ramsalt",
+      "placeId": "ChIJT-taKs8R30UR5ABqhuz7zSU",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Sjøgata 29, 8006 Bodø, Norway",
+      "website": "https://oliviarestauranter.no/restauranter/ramsalt",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 10:00 PM; Tuesday: 11:00 AM – 10:00 PM; Wednesday: 11:00 AM – 10:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.1,
+          "reviewCount": 442
+        },
+        "tripAdvisor": {
+          "score": 4.0,
+          "reviewCount": 168,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "nytbar",
+      "name": "Nytbar",
+      "placeId": "ChIJR1qFDjgR30UR6ErMeajTieA",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Sjøgata 3, 8006 Bodø, Norway",
+      "website": "https://nytbar.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 10:00 AM – 10:30 PM; Tuesday: 10:00 AM – 10:30 PM; Wednesday: 10:00 AM – 10:30 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.1,
+          "reviewCount": 108
+        },
+        "facebook": {
+          "score": 5.0,
+          "reviewCount": 6
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "roast-restaurant-bar",
+      "name": "ROAST Restaurant & Bar",
+      "placeId": "ChIJ9T5QsF0Q30URhCS0SZv9lRc",
+      "cuisine": "norwegian",
+      "pricePoint": "$$$",
+      "address": "Tollbugata 5, 8006 Bodø, Norway",
+      "website": "https://booking.gastroplanner.no/roast-restaurant/t",
+      "reservationRequired": true,
+      "openingHours": "Monday: Closed; Tuesday: 5:00 PM – 12:00 AM; Wednesday: 5:00 PM – 12:00 AM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4,
+          "reviewCount": 364
+        },
+        "tripAdvisor": {
+          "score": 3.8,
+          "reviewCount": 59,
+          "bubbleRating": 4
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "sushi-point-bod",
+      "name": "Sushi Point Bodø",
+      "placeId": "ChIJwxxYJewQ30UR9Q0Y2JYTcbw",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Stormyrveien 20, 8008 Bodø, Norway",
+      "website": "http://www.sushipoint.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 10:00 AM – 8:30 PM; Tuesday: 10:00 AM – 8:30 PM; Wednesday: 10:00 AM – 8:30 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4,
+          "reviewCount": 220
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "egon",
+      "name": "Egon",
+      "placeId": "ChIJxw4YeFwQ30URUg8YITAM6vg",
+      "cuisine": "norwegian",
+      "pricePoint": "$$",
+      "address": "Moloveien 14, 8003 Bodø, Norway",
+      "website": "http://www.egon.no/restauranter/bodo",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 11:00 PM; Tuesday: 11:00 AM – 11:00 PM; Wednesday: 11:00 AM – 11:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 3.9,
+          "reviewCount": 1123
+        },
+        "tripAdvisor": {
+          "score": 3.3,
+          "reviewCount": 358,
+          "bubbleRating": 3
+        }
+      },
+      "diceScore": 4
+    },
+    {
+      "id": "pizzabakeren-rnvikleira",
+      "name": "Pizzabakeren Rønvikleira",
+      "placeId": "ChIJiVh63ocQ30URvV6BLH7iOJ4",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Jernbaneveien 51, 8012 Bodø, Norway",
+      "website": "https://www.pizzabakeren.no/?utm_source=gmb&utm_medium=organic&utm_campaign=google_mybusiness&utm_content=ronvikleira",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 10:00 PM; Tuesday: 11:00 AM – 10:00 PM; Wednesday: 11:00 AM – 10:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 3.9,
+          "reviewCount": 124
+        },
+        "tripAdvisor": {
+          "score": 3.2,
+          "reviewCount": 41,
+          "bubbleRating": 3
+        }
+      },
+      "diceScore": 4
+    },
+    {
+      "id": "peppes-pizza-bod",
+      "name": "Peppes Pizza - Bodø",
+      "placeId": "ChIJDQSwz10Q30URMGdslMjYyhY",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Storgata 3, 8001 Bodø, Norway",
+      "website": "https://www.peppes.no/?utm_source=googlemybusiness&utm_medium=organic&utm_content=bodo",
+      "reservationRequired": false,
+      "openingHours": "Monday: 1:00 – 11:00 PM; Tuesday: 1:00 – 11:00 PM; Wednesday: 1:00 – 11:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 3.8,
+          "reviewCount": 1084
+        },
+        "tripAdvisor": {
+          "score": 3.2,
+          "reviewCount": 259,
+          "bubbleRating": 3
+        }
+      },
+      "diceScore": 4
+    },
+    {
+      "id": "pizzabakeren-stormyra",
+      "name": "Pizzabakeren Stormyra",
+      "placeId": "ChIJF21s04wQ30URESNDBvJlj4w",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Sivert Nielsens gate 54, 8007 Bodø, Norway",
+      "website": "https://www.pizzabakeren.no/?utm_source=gmb&utm_medium=organic&utm_campaign=google_mybusiness&utm_content=stormyra",
+      "reservationRequired": false,
+      "openingHours": "Monday: 11:00 AM – 11:00 PM; Tuesday: 11:00 AM – 11:00 PM; Wednesday: 11:00 AM – 11:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 3.8,
+          "reviewCount": 280
+        },
+        "tripAdvisor": {
+          "score": 3.2,
+          "reviewCount": 41,
+          "bubbleRating": 3
+        }
+      },
+      "diceScore": 4
+    },
+    {
+      "id": "fellini-pizza-bod",
+      "name": "Fellini pizza - Bodø",
+      "placeId": "ChIJ_0e4cWEX30URXro1fZD9aXo",
+      "cuisine": "international",
+      "pricePoint": "$",
+      "address": "Mørkvedsentret 11, 8028 Bodø, Norway",
+      "website": "http://www.fellinipizza.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 2:00 – 9:00 PM; Tuesday: 2:00 – 9:00 PM; Wednesday: 2:00 – 9:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.6,
+          "reviewCount": 446
+        }
+      },
+      "diceScore": 6
+    },
+    {
+      "id": "royal-pizzeria",
+      "name": "Royal Pizzeria",
+      "placeId": "ChIJkz955m0a30URtml65zQagAA",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "8015 Løpsmarka, Norway",
+      "website": null,
+      "reservationRequired": false,
+      "openingHours": "Monday: 2:00 – 9:00 PM; Tuesday: 2:00 – 9:00 PM; Wednesday: 2:00 – 9:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.4,
+          "reviewCount": 77
+        }
+      },
+      "diceScore": 5
+    },
+    {
+      "id": "china-garden-bod-as",
+      "name": "China Garden Bodø AS",
+      "placeId": "ChIJ76jy2F8Q30URegJ-uGctUGg",
+      "cuisine": "international",
+      "pricePoint": "$",
+      "address": "Storgata 60, 8006 Bodø, Norway",
+      "website": null,
+      "reservationRequired": false,
+      "openingHours": "Monday: Closed; Tuesday: 2:00 – 9:00 PM; Wednesday: 2:00 – 9:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4.1,
+          "reviewCount": 307
+        },
+        "tripAdvisor": {
+          "score": 3.4,
+          "reviewCount": 48,
+          "bubbleRating": 3
+        }
+      },
+      "diceScore": 4
+    },
+    {
+      "id": "great-gandhi",
+      "name": "Great Gandhi",
+      "placeId": "ChIJj1zhM-f_g0QRX-dIVAJWwvE",
+      "cuisine": "international",
+      "pricePoint": "$$",
+      "address": "Dronningens gate 25, 8006 Bodø, Norway",
+      "website": "https://great-gandhi.no/",
+      "reservationRequired": false,
+      "openingHours": "Monday: 2:00 – 11:00 PM; Tuesday: 2:00 – 11:00 PM; Wednesday: 2:00 – 11:00 PM...",
+      "description": "Restaurant in Bodø. Description pending editorial review.",
+      "ratings": {
+        "google": {
+          "score": 4,
+          "reviewCount": 544
+        },
+        "tripAdvisor": {
+          "score": 3.3,
+          "reviewCount": 171,
+          "bubbleRating": 3
+        }
+      },
+      "diceScore": 4
+    }
+  ]
+}

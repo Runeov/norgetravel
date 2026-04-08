@@ -2,29 +2,14 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { ArrowUp } from 'lucide-react';
 import logoNorgeTravel from '@/assets/norgeTravel.png';
 import { useTripMap } from '@/context/TripMapContext';
 
 export function Footer() {
-  const router = useRouter();
   const pathname = usePathname();
   const { openMap } = useTripMap();
-
-  const scrollToSection = (sectionId: string) => {
-    if (pathname !== '/') {
-      router.push(`/#${sectionId}`);
-    } else {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        const navbarHeight = 80;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.scrollY - navbarHeight;
-        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-      }
-    }
-  };
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -66,10 +51,10 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('services')} className="hover:text-[#1B3A5C] transition-colors flex items-center gap-2 group">
+                <Link href="/kunnskapsbank" className="hover:text-[#1B3A5C] transition-colors flex items-center gap-2 group">
                   <span className="w-1 h-1 rounded-full bg-[#1B3A5C] opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  Tours
-                </button>
+                  Travel Guides
+                </Link>
               </li>
               <li>
                 <Link href="/om-oss" className="hover:text-[#1B3A5C] transition-colors flex items-center gap-2 group">
@@ -78,15 +63,9 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/kunnskapsbank" className="hover:text-[#1B3A5C] transition-colors flex items-center gap-2 group">
-                  <span className="w-1 h-1 rounded-full bg-[#1B3A5C] opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  Travel Guide
-                </Link>
-              </li>
-              <li>
                 <button onClick={openMap} className="hover:text-[#1B3A5C] transition-colors flex items-center gap-2 group">
                   <span className="w-1 h-1 rounded-full bg-[#1B3A5C] opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  Plan Your Trip
+                  Trip Planner
                 </button>
               </li>
             </ul>
