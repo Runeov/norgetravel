@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, MapPin, Clock } from 'lucide-react';
+import { ArrowRight, MapPin, Clock, Calendar } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
+import { eventsStore } from '@/lib/admin/travel-events';
 
 export const metadata: Metadata = {
   title: 'Norwegian Fjords Travel Guide 2026 | NorgeTravel',
@@ -50,7 +51,8 @@ const operators = [
   { name: 'Fjord Tours', route: 'Norway in a Nutshell', emission: 'Electric ferries', commission: 'GetYourGuide 7%' },
 ];
 
-export default function FjordsPage() {
+export default async function FjordsPage() {
+  const events = await eventsStore.filterByDestination('fjords');
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Hero */}
@@ -133,6 +135,43 @@ export default function FjordsPage() {
           <p className="text-xs text-slate-400">All operator links on NorgeTravel include rel="sponsored" disclosure per FTC and EU guidelines.</p>
         </div>
       </section>
+
+      {/* Events */}
+      {events.length > 0 && (
+        <section className="py-20 bg-slate-50">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center gap-3 mb-4">
+              <Calendar className="w-6 h-6 text-[#1A365D]" aria-hidden="true" />
+              <h2 className="text-3xl font-bold text-slate-900">Events and festivals</h2>
+            </div>
+            <p className="text-slate-600 mb-12 max-w-2xl">
+              {events.length} events across the Norwegian fjords, from extreme triathlons to apple harvest festivals and classical music in Bergen.
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {events.map((event) => (
+                <div key={event.id} className="bg-white rounded-lg border border-slate-200 p-6">
+                  <h3 className="font-bold text-slate-900 mb-2">{event.name}</h3>
+                  {'startDate' in event && (
+                    <p className="text-xs text-[#00CC6A] font-medium mb-3">
+                      {new Date(event.startDate as string).toLocaleDateString('en-GB', { month: 'short', day: 'numeric' })}
+                      {'endDate' in event && event.endDate !== event.startDate && (
+                        <> – {new Date(event.endDate as string).toLocaleDateString('en-GB', { month: 'short', day: 'numeric', year: 'numeric' })}</>
+                      )}
+                    </p>
+                  )}
+                  <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">{event.description}</p>
+                  {'venue' in event && (
+                    <p className="text-xs text-slate-400 mt-3 flex items-center gap-1">
+                      <MapPin className="w-3 h-3" aria-hidden="true" />
+                      {event.venue as string}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] text-white">

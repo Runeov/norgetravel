@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, MapPin, Sun, Thermometer, Clock } from 'lucide-react';
+import { ArrowRight, MapPin, Sun, Thermometer, Clock, Calendar } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
+import { eventsStore } from '@/lib/admin/travel-events';
 
 
 export const metadata: Metadata = {
@@ -68,7 +69,8 @@ const bestFor = [
   { season: 'Sep', activity: 'Photography', detail: 'First auroras return + autumn foliage' },
 ];
 
-export default function NorthernNorwayPage() {
+export default async function NorthernNorwayPage() {
+  const events = await eventsStore.filterByDestination('northern-norway');
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Hero */}
@@ -213,6 +215,43 @@ export default function NorthernNorwayPage() {
           </div>
         </div>
       </section>
+
+      {/* Events */}
+      {events.length > 0 && (
+        <section className="py-20 bg-slate-50">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center gap-3 mb-4">
+              <Calendar className="w-6 h-6 text-[#1A365D]" aria-hidden="true" />
+              <h2 className="text-3xl font-bold text-slate-900">Events and festivals</h2>
+            </div>
+            <p className="text-slate-600 mb-12 max-w-2xl">
+              {events.length} events across Northern Norway, from film festivals in polar darkness to Sami cultural gatherings and midnight sun marathons.
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {events.map((event) => (
+                <div key={event.id} className="bg-white rounded-lg border border-slate-200 p-6">
+                  <h3 className="font-bold text-slate-900 mb-2">{event.name}</h3>
+                  {'startDate' in event && (
+                    <p className="text-xs text-[#00CC6A] font-medium mb-3">
+                      {new Date(event.startDate as string).toLocaleDateString('en-GB', { month: 'short', day: 'numeric' })}
+                      {'endDate' in event && event.endDate !== event.startDate && (
+                        <> – {new Date(event.endDate as string).toLocaleDateString('en-GB', { month: 'short', day: 'numeric', year: 'numeric' })}</>
+                      )}
+                    </p>
+                  )}
+                  <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">{event.description}</p>
+                  {'venue' in event && (
+                    <p className="text-xs text-slate-400 mt-3 flex items-center gap-1">
+                      <MapPin className="w-3 h-3" aria-hidden="true" />
+                      {event.venue as string}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Tours CTA */}
       <section className="py-20 bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] text-white">

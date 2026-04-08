@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, MapPin, Clock, Thermometer, UtensilsCrossed } from 'lucide-react';
+import { ArrowRight, MapPin, Clock, Thermometer, UtensilsCrossed, Calendar } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { RestaurantGrid } from '@/components/modules/destinations/RestaurantGrid';
 import { lofotenRestaurants } from '@/data/city-guides/restaurants-lofoten';
+import { eventsStore } from '@/lib/admin/travel-events';
 
 export const metadata: Metadata = {
   title: 'Lofoten Islands Travel Guide 2026 | NorgeTravel',
@@ -20,7 +21,8 @@ const experiences = [
   { emoji: '🐟', title: 'Cod fishing charter', body: 'Year-round fishing. Peak season Jan–Apr when Arctic cod migrate to spawn. Charters from NOK 950/person.' },
 ];
 
-export default function LofotenPage() {
+export default async function LofotenPage() {
+  const events = await eventsStore.filterByDestination('lofoten');
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Hero */}
@@ -157,6 +159,43 @@ export default function LofotenPage() {
           </div>
         </div>
       </section>
+
+      {/* Events */}
+      {events.length > 0 && (
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center gap-3 mb-4">
+              <Calendar className="w-6 h-6 text-[#1A365D]" aria-hidden="true" />
+              <h2 className="text-3xl font-bold text-slate-900">Events and festivals</h2>
+            </div>
+            <p className="text-slate-600 mb-12 max-w-2xl">
+              {events.length} events across the Lofoten calendar, from the 1,000-year-old cod fishing season to midnight sun music festivals.
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {events.map((event) => (
+                <div key={event.id} className="bg-slate-50 rounded-lg border border-slate-200 p-6">
+                  <h3 className="font-bold text-slate-900 mb-2">{event.name}</h3>
+                  {'startDate' in event && (
+                    <p className="text-xs text-[#00CC6A] font-medium mb-3">
+                      {new Date(event.startDate as string).toLocaleDateString('en-GB', { month: 'short', day: 'numeric' })}
+                      {'endDate' in event && event.endDate !== event.startDate && (
+                        <> – {new Date(event.endDate as string).toLocaleDateString('en-GB', { month: 'short', day: 'numeric', year: 'numeric' })}</>
+                      )}
+                    </p>
+                  )}
+                  <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">{event.description}</p>
+                  {'venue' in event && (
+                    <p className="text-xs text-slate-400 mt-3 flex items-center gap-1">
+                      <MapPin className="w-3 h-3" aria-hidden="true" />
+                      {event.venue as string}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Restaurants */}
       {lofotenRestaurants.length > 0 && (
