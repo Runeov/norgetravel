@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Plus, Edit, Trash2, Eye, EyeOff } from 'lucide-react';
 import { getAllEmployeesSorted } from '@/lib/admin/employees';
 import DeleteEmployeeButton from '@/components/admin/DeleteEmployeeButton';
@@ -41,9 +42,11 @@ export default async function EmployeesListPage() {
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-3">
                     {employee.image ? (
-                      <img 
-                        src={employee.image} 
+                      <Image
+                        src={employee.image}
                         alt={employee.name}
+                        width={40}
+                        height={40}
                         className="w-10 h-10 rounded-full object-cover"
                       />
                     ) : (

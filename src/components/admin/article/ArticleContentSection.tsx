@@ -1,7 +1,9 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import FormField, { TextInput, TextArea } from '../shared/FormField';
-import RichTextEditor from '../RichTextEditor';
+
+const RichTextEditor = dynamic(() => import('../RichTextEditor'), { ssr: false });
 import type { ArticleFormData } from '@/types/admin';
 
 interface ArticleContentSectionProps {

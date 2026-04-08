@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -68,7 +69,7 @@ export function FeatureTabs({
                     isActive ? "bg-white" : "bg-gray-100 group-hover:bg-white"
                   )}
                 >
-                  <img src={item.icon} alt="" className="w-8 h-8 object-contain" aria-hidden="true" />
+                  <Image src={item.icon} alt="" width={32} height={32} className="w-8 h-8 object-contain" aria-hidden="true" />
                 </div>
 
                 <div className="flex-1">
@@ -151,7 +152,7 @@ export function FeatureTabs({
               >
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center p-3">
-                    <img src={items[activeTab].icon} alt="" className="w-full h-full object-contain" aria-hidden="true" />
+                    <Image src={items[activeTab].icon} alt="" width={56} height={56} className="w-full h-full object-contain" aria-hidden="true" />
                   </div>
                   <div>
                     <h3 className="text-3xl font-bold text-slate-900">{items[activeTab].title}</h3>

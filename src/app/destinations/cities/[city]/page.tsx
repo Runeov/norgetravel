@@ -14,33 +14,27 @@ import { CITY_ACCOMMODATION_TOWNS } from '@/lib/city-accommodation-towns';
 import { extractRatings } from '@/lib/ratings';
 import type { CityRestaurant } from '@/types/city-guide';
 
-import { osloRestaurants } from '@/data/city-guides/restaurants-oslo';
-import { bergenRestaurants } from '@/data/city-guides/restaurants-bergen';
-import { trondheimRestaurants } from '@/data/city-guides/restaurants-trondheim';
-import { stavangerRestaurants } from '@/data/city-guides/restaurants-stavanger';
-import { tromsoRestaurants } from '@/data/city-guides/restaurants-tromso';
-import { altaRestaurants } from '@/data/city-guides/restaurants-alta';
-import { bodoRestaurants } from '@/data/city-guides/restaurants-bodo';
-import { hammerfestRestaurants } from '@/data/city-guides/restaurants-hammerfest';
-import { narvikRestaurants } from '@/data/city-guides/restaurants-narvik';
-import { senjaRestaurants } from '@/data/city-guides/restaurants-senja';
-import { nordkappRestaurants } from '@/data/city-guides/restaurants-nordkapp';
-import { lyngenRestaurants } from '@/data/city-guides/restaurants-lyngen';
-
-const CITY_RESTAURANTS: Record<string, CityRestaurant[]> = {
-  oslo: osloRestaurants,
-  bergen: bergenRestaurants,
-  trondheim: trondheimRestaurants,
-  stavanger: stavangerRestaurants,
-  tromso: tromsoRestaurants,
-  alta: altaRestaurants,
-  bodo: bodoRestaurants,
-  hammerfest: hammerfestRestaurants,
-  narvik: narvikRestaurants,
-  senja: senjaRestaurants,
-  nordkapp: nordkappRestaurants,
-  lyngen: lyngenRestaurants,
-};
+async function getCityRestaurants(citySlug: string): Promise<CityRestaurant[]> {
+  const loaders: Record<string, () => Promise<{ [key: string]: CityRestaurant[] }>> = {
+    oslo: () => import('@/data/city-guides/restaurants-oslo'),
+    bergen: () => import('@/data/city-guides/restaurants-bergen'),
+    trondheim: () => import('@/data/city-guides/restaurants-trondheim'),
+    stavanger: () => import('@/data/city-guides/restaurants-stavanger'),
+    tromso: () => import('@/data/city-guides/restaurants-tromso'),
+    alta: () => import('@/data/city-guides/restaurants-alta'),
+    bodo: () => import('@/data/city-guides/restaurants-bodo'),
+    hammerfest: () => import('@/data/city-guides/restaurants-hammerfest'),
+    narvik: () => import('@/data/city-guides/restaurants-narvik'),
+    senja: () => import('@/data/city-guides/restaurants-senja'),
+    nordkapp: () => import('@/data/city-guides/restaurants-nordkapp'),
+    lyngen: () => import('@/data/city-guides/restaurants-lyngen'),
+  };
+  const loader = loaders[citySlug];
+  if (!loader) return [];
+  const mod = await loader();
+  const exportName = `${citySlug}Restaurants`;
+  return (mod as Record<string, CityRestaurant[]>)[exportName] ?? Object.values(mod)[0] ?? [];
+}
 
 interface PageProps {
   params: Promise<{ city: string }>;
@@ -70,9 +64,10 @@ export default async function CityPage({ params }: PageProps) {
   const prefixes = CITY_EXPERIENCE_PREFIXES[citySlug] ?? [];
   const towns = CITY_ACCOMMODATION_TOWNS[citySlug] ?? [];
 
-  const [experiences, accommodation] = await Promise.all([
+  const [experiences, accommodation, cityRestaurants] = await Promise.all([
     prefixes.length > 0 ? experiencesStore.filterByIdPrefixes(prefixes) : Promise.resolve([]),
     towns.length > 0 ? accommodationStore.filterByNearestTowns(towns) : Promise.resolve([]),
+    getCityRestaurants(citySlug),
   ]);
 
   return (
@@ -224,7 +219,7 @@ export default async function CityPage({ params }: PageProps) {
       )}
 
       {/* Restaurants */}
-      {CITY_RESTAURANTS[citySlug] && CITY_RESTAURANTS[citySlug].length > 0 && (
+      {cityRestaurants && cityRestaurants.length > 0 && (
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="flex items-center gap-3 mb-4">
@@ -232,10 +227,10 @@ export default async function CityPage({ params }: PageProps) {
               <h2 className="text-3xl font-bold text-slate-900">Where to eat in {city.name}</h2>
             </div>
             <p className="text-slate-600 mb-12 max-w-2xl">
-              {CITY_RESTAURANTS[citySlug].length} restaurants rated by NorgeTravel. Scores combine Google, TripAdvisor, Facebook, and Yelp ratings.
+              {cityRestaurants.length} restaurants rated by NorgeTravel. Scores combine Google, TripAdvisor, Facebook, and Yelp ratings.
             </p>
             <RestaurantGrid
-              restaurants={CITY_RESTAURANTS[citySlug]}
+              restaurants={cityRestaurants}
               cityName={city.name}
             />
           </div>

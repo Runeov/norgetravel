@@ -99,9 +99,8 @@ export function Footer() {
           </div>
 
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-slate-500">
-            <Link href="/privacy" className="hover:text-[#1B3A5C] transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-[#1B3A5C] transition-colors">Terms of Use</Link>
-            <Link href="/accessibility" className="hover:text-[#1B3A5C] transition-colors">Accessibility</Link>
+            <Link href="/personvern" className="hover:text-[#1B3A5C] transition-colors">Privacy Policy</Link>
+            <Link href="/tilgjengelighet" className="hover:text-[#1B3A5C] transition-colors">Accessibility</Link>
             <span className="text-slate-400 cursor-not-allowed" title="Coming soon">Cookies</span>
           </div>
 

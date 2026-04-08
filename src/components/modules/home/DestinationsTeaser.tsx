@@ -6,16 +6,16 @@ const destinations = [
   {
     slug: 'northern-norway',
     name: 'Northern Norway',
-    tagline: 'Aurora capital',
+    tagline: 'Midnight sun & aurora',
     image: '/pics/Tromso/tromso_banner.jpeg',
-    stat: 'Oct–Mar aurora season',
+    stat: 'Jun–Aug midnight sun',
   },
   {
     slug: 'lofoten',
     name: 'Lofoten',
-    tagline: 'Working coast',
+    tagline: 'Hiking & midnight sun',
     image: '/images/lofoten/landscapes/lofoten-landscape-hero_jorn-eriksen.jpg',
-    stat: 'Jan–Apr skrei season',
+    stat: 'Jun–Jul 24-hour daylight',
   },
   {
     slug: 'fjords',
@@ -27,9 +27,9 @@ const destinations = [
   {
     slug: 'svalbard',
     name: 'Svalbard',
-    tagline: '78°N',
+    tagline: '78°N – glacier hiking Jul–Aug',
     image: '/pics/Svalbard/svalbard_banner.jpeg',
-    stat: 'Polar bears outnumber people',
+    stat: 'Whale watching Jun–Aug',
   },
 ];
 

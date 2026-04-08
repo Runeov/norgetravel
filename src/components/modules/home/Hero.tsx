@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
-import heroImage from '@/assets/landing.png';
 import { useTripMap } from '@/context/TripMapContext';
 
 export default function Hero() {
@@ -21,13 +20,12 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden min-h-[90vh] flex items-center bg-slate-900 text-white">
       <Image
-        src={heroImage}
-        alt="Husky dog sled team resting on ice under the Northern Lights in Arctic Norway"
+        src="/images/tromso/landscapes/midnight-sun-sommaroy_vegard-stien.jpg"
+        alt="Midnight sun over Sommarøy islands and turquoise Arctic waters near Tromsø, Northern Norway"
         fill
         className="object-cover opacity-50"
         priority
         quality={75}
-        placeholder="blur"
         sizes="100vw"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/40 to-slate-900/80" />
@@ -46,7 +44,7 @@ export default function Hero() {
 
           {/* Body */}
           <p className="text-lg sm:text-xl text-slate-300 mb-8 leading-relaxed">
-            Sustainable Arctic adventures hand-picked for the modern explorer. Northern Lights tours, zero-emission fjord cruises, and remote wilderness stays — all in one place.
+            Sustainable Arctic adventures hand-picked for the modern explorer. Midnight sun kayaking, zero-emission fjord cruises, glacier hikes, and remote wilderness stays. All in one place.
           </p>
 
           {/* CTAs */}
@@ -74,7 +72,7 @@ export default function Hero() {
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-5 h-5 text-[#00CC6A]" aria-hidden="true" />
-              <span>Peak Aurora Season</span>
+              <span>Midnight Sun Season (Jun–Aug)</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-5 h-5 text-[#00CC6A]" aria-hidden="true" />

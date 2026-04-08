@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { Employee, TimelineMilestone } from '@/types/admin';
 import { MapPin, Mail, Phone, Briefcase, GraduationCap, Award, Star, ChevronDown, ChevronUp } from 'lucide-react';
 import { useState, useEffect } from 'react';
@@ -158,9 +159,11 @@ export default function EmployeeProfileCard({ employee }: EmployeeProfileCardPro
           {/* Profile Image */}
           <div className="relative flex-shrink-0">
             {employee.image ? (
-              <img 
-                src={employee.image} 
+              <Image
+                src={employee.image}
                 alt={employee.name}
+                width={96}
+                height={96}
                 className="w-24 h-24 rounded-full object-cover border-3 border-white shadow-md transition-transform duration-400 hover:scale-105"
               />
             ) : (

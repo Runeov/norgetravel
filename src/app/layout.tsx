@@ -8,7 +8,7 @@ import { RootLayoutContent } from '@/components/layout/RootLayoutContent';
 import { getSiteUrl } from '@/lib/site-url';
 import { Analytics } from '@vercel/analytics/next';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 const siteUrl = getSiteUrl();
 
 // 1. Viewport is handled separately in Next.js 15+
@@ -22,16 +22,17 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     template: '%s | NorgeTravel.com',
-    default: 'NorgeTravel 2026 – Northern Lights Solar Maximum & Sustainable Fjord Cruises',
+    default: 'NorgeTravel 2026 – Midnight Sun Adventures, Fjord Cruises & Arctic Hiking',
   },
-  description: 'The definitive guide to Norways 2026 Solar Maximum. Experience zero-emission fjord cruises, Tromsø Northern Lights tours, and sustainable Arctic adventures with expert local insights.',
+  description: 'The definitive guide to Norway in 2026. Midnight sun kayaking, zero-emission fjord cruises, glacier hikes, and sustainable Arctic adventures with expert local insights.',
   keywords: [
-    'Solar Maximum 2026 Northern Lights',
+    'Norway midnight sun summer 2026',
+    'Arctic fjord kayaking summer',
     'Zero-emission Norway fjord cruises',
+    'Lofoten midnight sun hiking',
     'Sustainable Arctic travel 2026',
-    'Tromsø Aurora tours',
-    'Norway luxury eco-travel',
-    'Lofoten sustainable trekking',
+    'Norwegian summer fishing charters',
+    'Norway glacier hiking',
     'NorgeTravel',
   ],
   icons: {
@@ -55,8 +56,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NorgeTravel 2026 | Arctic Adventures',
-    description: 'Expert guides for the 2026 Solar Maximum and Sustainable Norway Travel.',
+    title: 'NorgeTravel 2026 | Arctic Summer Adventures',
+    description: 'Expert guides for midnight sun adventures, fjord cruises, and sustainable Norway travel.',
     images: ['/og-image-2026.jpg'],
   },
 };
