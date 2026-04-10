@@ -75,15 +75,51 @@ const categories = [
     ctaColor: 'text-[#1A365D]',
     articles: [
       {
+        title: 'RIB Fjordsafari Geirangerfjord: what the cruise ship cannot show you',
+        slug: 'rib-fjordsafari-geirangerfjord-review',
+        readTime: '8 min',
+        status: 'published' as const,
+      },
+      {
+        title: 'Kayaking beneath the Seven Sisters: 4 hours on Geirangerfjord at paddle height',
+        slug: 'kayaking-seven-sisters-geirangerfjord',
+        readTime: '9 min',
+        status: 'published' as const,
+      },
+      {
+        title: 'Geiranger by car: Eagle Road, Flydalsjuvet, and Dalsnibba in one drive',
+        slug: 'geiranger-by-car-eagle-road-dalsnibba',
+        readTime: '10 min',
+        status: 'published' as const,
+      },
+      {
+        title: 'Storseterfossen: walking behind a 30-meter waterfall above Geirangerfjord',
+        slug: 'storseterfossen-walk-behind-waterfall-geiranger',
+        readTime: '9 min',
+        status: 'published' as const,
+      },
+      {
+        title: 'Fossevandring: 327 stone steps through the waterfalls of Geiranger village',
+        slug: 'fossevandring-waterfall-walk-geiranger',
+        readTime: '7 min',
+        status: 'published' as const,
+      },
+      {
+        title: 'Løsta viewpoint: the short, steep hike to Geirangerfjord\u2019s best panorama',
+        slug: 'losta-viewpoint-hike-geiranger',
+        readTime: '8 min',
+        status: 'published' as const,
+      },
+      {
+        title: 'Skageflå mountain farm: a Red-grade hike to the abandoned ledge above the Seven Sisters',
+        slug: 'skagefla-mountain-farm-geirangerfjord',
+        readTime: '10 min',
+        status: 'published' as const,
+      },
+      {
         title: 'Besseggen in October: why the shoulder season is worth the cold',
         slug: 'besseggen-october-trip-report',
         readTime: '9 min',
-        status: 'coming-soon' as const,
-      },
-      {
-        title: 'Driving the E10 through Lofoten in February',
-        slug: 'e10-lofoten-february',
-        readTime: '11 min',
         status: 'coming-soon' as const,
       },
       {

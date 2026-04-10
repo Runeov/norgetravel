@@ -31,6 +31,13 @@ const destinations = [
     image: '/images/svalbard/landscapes/svalbard-landscape_emilien-gigandet-2.jpg',
     stat: 'Whale watching Jun–Aug',
   },
+  {
+    slug: 'cities',
+    name: 'Cities of Norway',
+    tagline: 'Oslo, Bergen, Trondheim & more',
+    image: '/pics/cities/Bergen_banner.jpeg',
+    stat: '5 city guides',
+  },
 ];
 
 export default function DestinationsTeaser() {
@@ -40,14 +47,14 @@ export default function DestinationsTeaser() {
         <div className="flex items-center justify-between mb-10">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-[#1A365D] mb-2">
-              Four regions. One country.
+              Five destinations. One country.
             </h2>
             <p className="text-slate-600 text-lg">
               Each destination has its own logistics, its own weather, and its own set of rules. We cover them all.
             </p>
           </div>
           <Link
-            href="/travel"
+            href="/destinations"
             className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-[#1A365D] hover:text-[#00D084] transition-colors"
           >
             All destinations
@@ -55,7 +62,7 @@ export default function DestinationsTeaser() {
           </Link>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
           {destinations.map((dest) => (
             <Link
               key={dest.slug}
@@ -84,7 +91,7 @@ export default function DestinationsTeaser() {
 
         <div className="text-center mt-8 sm:hidden">
           <Link
-            href="/travel"
+            href="/destinations"
             className="inline-flex items-center gap-2 text-sm font-semibold text-[#1A365D] hover:text-[#00D084] transition-colors min-h-[44px]"
           >
             All destinations

@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useTripMap } from '@/context/TripMapContext';
 
@@ -18,7 +19,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden min-h-[90vh] flex items-center bg-slate-900 text-white">
+    <section className="relative overflow-hidden min-h-[90vh] flex items-center bg-slate-900 text-white -mt-20 pt-20">
       <Image
         src="/images/tromso/landscapes/midnight-sun-sommaroy_vegard-stien.jpg"
         alt="Midnight sun over Sommarøy islands and turquoise Arctic waters near Tromsø, Northern Norway"
@@ -49,13 +50,13 @@ export default function Hero() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 mb-10">
-            <button
-              onClick={() => scrollToSection('services')}
+            <Link
+              href="/destinations/fjords"
               className="inline-flex items-center justify-center rounded-full text-base font-medium transition-all focus-visible:outline-none bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] text-white hover:shadow-lg hover:shadow-[#00CC6A]/30 hover:-translate-y-0.5 h-12 px-8"
             >
-              Explore Tours
+              Explore Fjords
               <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-            </button>
+            </Link>
             <button
               onClick={openMap}
               className="inline-flex items-center justify-center rounded-full text-base font-medium transition-all focus-visible:outline-none border border-white/40 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 h-12 px-8"

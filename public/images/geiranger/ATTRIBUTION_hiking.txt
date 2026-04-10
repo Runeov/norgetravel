@@ -1,0 +1,26 @@
+Geiranger Hiking Trail Images - Attribution
+Downloaded: 2026-04-10T21:55:14.433Z
+
+fossevandring_stairs.jpg
+  Description: Geiranger waterfall stairs on the rock wall
+  License: Public domain
+  Author: Szilas
+  Source: https://upload.wikimedia.org/wikipedia/commons/2/20/Geiranger_fjord%2C_small_waterfall_on_the_stairs_of_the_rock_wall.jpg
+
+skagefla_farm.jpg
+  Description: Skageflå Farm on the Cliff above Geirangerfjord
+  License: CC BY 3.0
+  Author: rheins
+  Source: https://upload.wikimedia.org/wikipedia/commons/8/83/Skagefl%C3%A5_Farm_on_the_Cliff_-_2013.08.jpg
+
+seven_sisters_waterfall.jpg
+  Description: The Seven Sisters waterfall, Geirangerfjord
+  License: CC BY-SA 4.0
+  Author: W. Bulach
+  Source: https://upload.wikimedia.org/wikipedia/commons/a/ad/00_3584_The_Seven_Sisters_-_Geirangerfjord.jpg
+
+geirangerfjord_view_losta.jpg
+  Description: View on the Geirangerfjord from Løsta
+  License: CC0
+  Author: Bloodworx
+  Source: https://upload.wikimedia.org/wikipedia/commons/2/27/Geirangerfjord_View_from_L%C3%B8sta.JPG

@@ -108,7 +108,7 @@ export function Navbar() {
                 alt="NorgeTravel Logo"
                 width={220}
                 height={80}
-                className={`h-20 w-auto transition-all duration-300 ${scrolled ? '' : 'brightness-0 invert'}`}
+                className={`h-20 w-auto rounded-xl transition-all duration-300 ${scrolled ? '' : 'brightness-0 invert'}`}
                 priority
                 placeholder="blur"
               />
@@ -145,6 +145,9 @@ export function Navbar() {
                     </Link>
                     <Link href="/destinations/svalbard" className={dropdownItemClass(pathname.startsWith('/destinations/svalbard'))}>
                       Svalbard
+                    </Link>
+                    <Link href="/destinations/cities" className={dropdownItemClass(pathname.startsWith('/destinations/cities'))}>
+                      Cities of Norway
                     </Link>
                   </div>
                 </div>
@@ -296,6 +299,9 @@ export function Navbar() {
                   </Link>
                   <Link href="/destinations/svalbard" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/destinations/svalbard'))}>
                     Svalbard
+                  </Link>
+                  <Link href="/destinations/cities" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/destinations/cities'))}>
+                    Cities of Norway
                   </Link>
                 </div>
               )}

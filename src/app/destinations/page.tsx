@@ -5,7 +5,7 @@ import { NorgeBackground } from '@/components/modules/NorgeBackground';
 
 export const metadata: Metadata = {
   title: 'Norway Destinations 2026 | NorgeTravel',
-  description: 'Northern Norway, Lofoten Islands, Norwegian Fjords, and Svalbard — complete destination guides with best time to visit, what to do, and vetted operator links.',
+  description: 'Northern Norway, Lofoten Islands, Norwegian Fjords, Svalbard, and Norwegian cities — complete destination guides with best time to visit, what to do, and vetted operator links.',
 };
 
 const destinations = [
@@ -54,6 +54,15 @@ const destinations = [
     emoji: '🌌',
     color: 'from-[#1B3A5C] to-[#5CBFEE]',
   },
+  {
+    slug: 'cities',
+    name: 'Cities of Norway',
+    tagline: 'Five basecamps, five different Norways',
+    description: 'Oslo, Bergen, Trondheim, Stavanger, and Kristiansund. Each city opens a different door into Norway. Skip the tourist-facing restaurants and find where the locals eat.',
+    highlights: ['Oslo', 'Bergen', 'Trondheim', 'Stavanger'],
+    emoji: '🏙️',
+    color: 'from-[#334155] to-[#1B3A5C]',
+  },
 ];
 
 export default function DestinationsPage() {
@@ -70,7 +79,7 @@ export default function DestinationsPage() {
             </span>
           </h1>
           <p className="text-xl text-white/70 max-w-2xl mx-auto">
-            Four regions. Four entirely different Norways. Each one worth the trip alone.
+            Four regions. One country. Each destination has its own logistics, its own weather, and its own set of rules. We cover them all.
           </p>
         </div>
       </section>

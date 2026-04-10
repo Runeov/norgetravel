@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, ArrowLeft, MapPin, Waves, Mountain, Calendar, Ship, Clock } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
+import { GeirangerActivities } from '@/components/modules/destinations/GeirangerActivities';
 import { notFound } from 'next/navigation';
 import { getFjord, getAllFjordSlugs } from '@/data/fjords';
 
@@ -113,43 +114,49 @@ export default async function FjordPage({ params }: PageProps) {
       {/* Activities */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="flex items-center gap-3 mb-4">
-            <Mountain className="w-6 h-6 text-[#1A365D]" aria-hidden="true" />
-            <h2 className="text-3xl font-bold text-slate-900">What to do at {fjord.name}</h2>
-          </div>
-          <p className="text-slate-600 mb-12 max-w-2xl">
-            {fjord.activities.length} activities with practical details and honest assessments.
-          </p>
-          <div className="grid sm:grid-cols-2 gap-6">
-            {fjord.activities.map((activity) => (
-              <div
-                key={activity.title}
-                className="bg-slate-50 rounded-lg border border-slate-200 p-6"
-              >
-                <h3 className="text-lg font-bold text-slate-800 mb-3">{activity.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-4">{activity.description}</p>
-                <div className="flex flex-wrap gap-3 text-xs">
-                  {activity.duration && (
-                    <span className="inline-flex items-center gap-1 bg-white border border-slate-200 px-2 py-1 rounded-sm text-slate-600">
-                      <Clock className="w-3 h-3" aria-hidden="true" />
-                      {activity.duration}
-                    </span>
-                  )}
-                  {activity.price && (
-                    <span className="inline-flex items-center gap-1 bg-white border border-slate-200 px-2 py-1 rounded-sm text-slate-600">
-                      {activity.price}
-                    </span>
-                  )}
-                  {activity.season && (
-                    <span className="inline-flex items-center gap-1 bg-white border border-slate-200 px-2 py-1 rounded-sm text-slate-600">
-                      <Calendar className="w-3 h-3" aria-hidden="true" />
-                      {activity.season}
-                    </span>
-                  )}
-                </div>
+          {fjord.slug === 'geirangerfjord' ? (
+            <GeirangerActivities />
+          ) : (
+            <>
+              <div className="flex items-center gap-3 mb-4">
+                <Mountain className="w-6 h-6 text-[#1A365D]" aria-hidden="true" />
+                <h2 className="text-3xl font-bold text-slate-900">What to do at {fjord.name}</h2>
               </div>
-            ))}
-          </div>
+              <p className="text-slate-600 mb-12 max-w-2xl">
+                {fjord.activities.length} activities with practical details and honest assessments.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-6">
+                {fjord.activities.map((activity) => (
+                  <div
+                    key={activity.title}
+                    className="bg-slate-50 rounded-lg border border-slate-200 p-6"
+                  >
+                    <h3 className="text-lg font-bold text-slate-800 mb-3">{activity.title}</h3>
+                    <p className="text-sm text-slate-600 leading-relaxed mb-4">{activity.description}</p>
+                    <div className="flex flex-wrap gap-3 text-xs">
+                      {activity.duration && (
+                        <span className="inline-flex items-center gap-1 bg-white border border-slate-200 px-2 py-1 rounded-sm text-slate-600">
+                          <Clock className="w-3 h-3" aria-hidden="true" />
+                          {activity.duration}
+                        </span>
+                      )}
+                      {activity.price && (
+                        <span className="inline-flex items-center gap-1 bg-white border border-slate-200 px-2 py-1 rounded-sm text-slate-600">
+                          {activity.price}
+                        </span>
+                      )}
+                      {activity.season && (
+                        <span className="inline-flex items-center gap-1 bg-white border border-slate-200 px-2 py-1 rounded-sm text-slate-600">
+                          <Calendar className="w-3 h-3" aria-hidden="true" />
+                          {activity.season}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </section>
 
