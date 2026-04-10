@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { ArrowRight, ArrowLeft, MapPin, Waves, Mountain, Calendar, Ship, Clock } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { GeirangerActivities } from '@/components/modules/destinations/GeirangerActivities';
+import { GeirangerGettingThere } from '@/components/modules/destinations/GeirangerGettingThere';
+import { GeirangerBasecamps } from '@/components/modules/destinations/GeirangerBasecamps';
 import { notFound } from 'next/navigation';
 import { getFjord, getAllFjordSlugs } from '@/data/fjords';
 
@@ -163,44 +165,56 @@ export default async function FjordPage({ params }: PageProps) {
       {/* Getting There */}
       <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-4">
-          <div className="flex items-center gap-3 mb-4">
-            <Ship className="w-6 h-6 text-[#1A365D]" aria-hidden="true" />
-            <h2 className="text-3xl font-bold text-slate-900">How to reach {fjord.name}</h2>
-          </div>
-          <p className="text-slate-600 mb-12 max-w-2xl">
-            Actual routes and real driving times. Not what the map app says.
-          </p>
-          <div className="grid lg:grid-cols-2 gap-6">
-            {fjord.gettingThere.map((route, i) => (
-              <div key={i} className="bg-white rounded-lg border border-slate-200 p-6">
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-[#5CBFEE] mt-0.5 shrink-0" aria-hidden="true" />
-                  <p className="text-sm text-slate-700 leading-relaxed">{route}</p>
-                </div>
+          {fjord.slug === 'geirangerfjord' ? (
+            <GeirangerGettingThere />
+          ) : (
+            <>
+              <div className="flex items-center gap-3 mb-4">
+                <Ship className="w-6 h-6 text-[#1A365D]" aria-hidden="true" />
+                <h2 className="text-3xl font-bold text-slate-900">How to reach {fjord.name}</h2>
               </div>
-            ))}
-          </div>
+              <p className="text-slate-600 mb-12 max-w-2xl">
+                Actual routes and real driving times. Not what the map app says.
+              </p>
+              <div className="grid lg:grid-cols-2 gap-6">
+                {fjord.gettingThere.map((route, i) => (
+                  <div key={i} className="bg-white rounded-lg border border-slate-200 p-6">
+                    <div className="flex items-start gap-3">
+                      <MapPin className="w-5 h-5 text-[#5CBFEE] mt-0.5 shrink-0" aria-hidden="true" />
+                      <p className="text-sm text-slate-700 leading-relaxed">{route}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </section>
 
       {/* Basecamps */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">Where to base yourself</h2>
-          <p className="text-slate-600 mb-12 max-w-2xl">
-            {fjord.basecamps.length} towns along {fjord.name}, each with a different purpose on your itinerary.
-          </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {fjord.basecamps.map((basecamp) => (
-              <div key={basecamp.name} className="bg-slate-50 rounded-lg border border-slate-200 p-6">
-                <h3 className="font-bold text-slate-900 mb-1">{basecamp.name}</h3>
-                {basecamp.distance && (
-                  <p className="text-xs text-[#5CBFEE] font-medium mb-3">{basecamp.distance}</p>
-                )}
-                <p className="text-sm text-slate-600 leading-relaxed">{basecamp.description}</p>
+          {fjord.slug === 'geirangerfjord' ? (
+            <GeirangerBasecamps />
+          ) : (
+            <>
+              <h2 className="text-3xl font-bold text-slate-900 mb-4">Where to base yourself</h2>
+              <p className="text-slate-600 mb-12 max-w-2xl">
+                {fjord.basecamps.length} towns along {fjord.name}, each with a different purpose on your itinerary.
+              </p>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {fjord.basecamps.map((basecamp) => (
+                  <div key={basecamp.name} className="bg-slate-50 rounded-lg border border-slate-200 p-6">
+                    <h3 className="font-bold text-slate-900 mb-1">{basecamp.name}</h3>
+                    {basecamp.distance && (
+                      <p className="text-xs text-[#5CBFEE] font-medium mb-3">{basecamp.distance}</p>
+                    )}
+                    <p className="text-sm text-slate-600 leading-relaxed">{basecamp.description}</p>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </>
+          )}
         </div>
       </section>
 
