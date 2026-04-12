@@ -261,7 +261,7 @@ type TabId = 'flam' | 'gudvangen' | 'aurland';
 /*  Component                                                          */
 /* ------------------------------------------------------------------ */
 
-export function NaeroyfjordBasecamps() {
+export default function NaeroyfjordBasecamps() {
   const [activeBase, setActiveBase] = useState<string>('flam');
 
   const base = basecamps.find((b) => b.id === activeBase) ?? basecamps[0];

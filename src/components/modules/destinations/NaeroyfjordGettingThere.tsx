@@ -312,7 +312,7 @@ const routes: RouteData[] = [
 /*  Component                                                          */
 /* ------------------------------------------------------------------ */
 
-export function NaeroyfjordGettingThere() {
+export default function NaeroyfjordGettingThere() {
   const [activeRoute, setActiveRoute] = useState<string>('bergen-train');
 
   const route = routes.find((r) => r.id === activeRoute) ?? routes[0];
