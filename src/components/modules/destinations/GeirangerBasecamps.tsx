@@ -616,15 +616,15 @@ export function GeirangerBasecamps() {
                 <span className="font-semibold text-slate-800">
                   Peak July:
                 </span>{' '}
-                Book hotels 3\u20136 months ahead. Hotel Union and Grande Fjord
+                Book hotels 3–6 months ahead. Hotel Union and Grande Fjord
                 Hotel fill first. Camping has more last-minute
                 availability.{' '}
                 <span className="font-semibold text-slate-800">
                   September:
                 </span>{' '}
-                1\u20132 months is usually sufficient. Expect 30\u201340% lower
-                rates than July. Mid-range hotel reality: 2,000\u20134,000
-                NOK/night in July, 1,200\u20132,500 NOK/night in September.
+                1–2 months is usually sufficient. Expect 30–40% lower
+                rates than July. Mid-range hotel reality: 2,000–4,000
+                NOK/night in July, 1,200–2,500 NOK/night in September.
               </p>
             </div>
           </div>

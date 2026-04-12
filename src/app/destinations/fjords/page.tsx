@@ -107,9 +107,9 @@ export default async function FjordsPage() {
                 </div>
                 <p className="text-slate-600 text-sm mb-3 leading-relaxed">{f.highlight}</p>
                 <p className="text-slate-500 text-sm mb-4">📍 {f.access}</p>
-                <span className="inline-flex items-center text-sm font-semibold text-[#1A365D] group-hover:text-[#00D084] transition-colors">
+                <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#00D084] group-hover:bg-[#00B875] text-[#1A365D] text-sm font-bold rounded-md transition-colors duration-200 min-h-[44px]">
                   Read full guide
-                  <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                 </span>
               </Link>
             ))}
