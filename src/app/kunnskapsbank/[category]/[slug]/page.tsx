@@ -264,7 +264,7 @@ export default async function DynamicArticlePage({ params }: PageProps) {
                 </>
               ) : (
                 <img
-                  src={article.featuredImage}
+                  src={article.featuredImage ?? undefined}
                   alt={article.featuredImageAlt || article.title}
                   className="w-full h-auto object-cover"
                 />
