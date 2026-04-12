@@ -54,7 +54,7 @@ export default function TrekkingPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-slate-900 text-white">
+      <section className="relative overflow-hidden bg-slate-900 text-white -mt-20 pt-20">
         <Image
           src={heroImage}
           alt="Arctic trekking in Lofoten — hiker on ridge with fjord below"

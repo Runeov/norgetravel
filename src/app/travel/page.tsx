@@ -143,7 +143,7 @@ export default async function TravelPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[#1B3A5C] text-white">
+      <section className="relative overflow-hidden bg-[#1B3A5C] text-white -mt-20 pt-20">
         <NorgeBackground />
         <div className="relative z-10 container mx-auto px-4 py-24 lg:py-36 text-center">
           <h1 className="text-5xl lg:text-7xl font-bold mb-6">

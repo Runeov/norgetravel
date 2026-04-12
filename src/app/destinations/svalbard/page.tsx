@@ -61,7 +61,7 @@ export default async function SvalbardPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-slate-900 text-white">
+      <section className="relative overflow-hidden bg-slate-900 text-white -mt-20 pt-20">
         <Image
           src="/images/svalbard/landscapes/svalbard-panorama_emilien-gigandet-1.jpg"
           alt="Svalbard panorama at 78 degrees north, glacial terrain and Arctic mountains under pale polar light"

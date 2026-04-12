@@ -15,7 +15,7 @@ export default function CitiesIndexPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-slate-900 text-white">
+      <section className="relative overflow-hidden bg-slate-900 text-white -mt-20 pt-20">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1B3A5C] to-slate-900" />
         <div className="relative z-10 container mx-auto px-4 py-32 lg:py-44">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00CC6A]/20 text-[#00CC6A] text-sm font-medium mb-6">

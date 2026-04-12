@@ -10,7 +10,7 @@ export default function TilgjengelighetPage() {
   return (
     <main className="flex-1 bg-white">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#1B3A5C] to-[#1B3A5C]/80 text-white py-20 px-4">
+      <section className="bg-gradient-to-br from-[#1B3A5C] to-[#1B3A5C]/80 text-white py-20 px-4 -mt-20 pt-20">
         <div className="max-w-3xl mx-auto">
           <p className="text-sm font-semibold text-[#5CBFEE] uppercase tracking-widest mb-3">EAA – European Accessibility Act</p>
           <h1 className="text-4xl font-bold mb-4">Accessibility Statement</h1>

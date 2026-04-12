@@ -73,7 +73,7 @@ export default async function CityPage({ params }: PageProps) {
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-slate-900 text-white">
+      <section className="relative overflow-hidden bg-slate-900 text-white -mt-20 pt-20">
         <Image
           src={city.heroImage}
           alt={city.heroImageAlt}

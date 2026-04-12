@@ -19,7 +19,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden min-h-[90vh] flex items-center bg-slate-900 text-white -mt-20 pt-20">
+    <section className="relative overflow-hidden h-screen flex items-center bg-slate-900 text-white -mt-20 pt-20">
       <Image
         src="/images/tromso/landscapes/midnight-sun-sommaroy_vegard-stien.jpg"
         alt="Midnight sun over Sommarøy islands and turquoise Arctic waters near Tromsø, Northern Norway"

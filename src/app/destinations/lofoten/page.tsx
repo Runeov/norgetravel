@@ -26,7 +26,7 @@ export default async function LofotenPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-slate-900 text-white">
+      <section className="relative overflow-hidden bg-slate-900 text-white -mt-20 pt-20">
         <Image
           src="/images/lofoten/landscapes/lofoten-landscape-hero_jorn-eriksen.jpg"
           alt="Lofoten archipelago from above, jagged peaks rising from the Norwegian Sea with fishing villages below"

@@ -69,7 +69,7 @@ export default function DestinationsPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Header */}
-      <section className="relative overflow-hidden py-20 lg:py-32 bg-[#1B3A5C] text-white">
+      <section className="relative overflow-hidden py-20 lg:py-32 bg-[#1B3A5C] text-white -mt-20 pt-20">
         <NorgeBackground />
         <div className="container mx-auto px-4 relative z-10 text-center">
           <h1 className="text-5xl lg:text-7xl font-bold mb-6">

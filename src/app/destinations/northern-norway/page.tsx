@@ -74,7 +74,7 @@ export default async function NorthernNorwayPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-slate-900 text-white">
+      <section className="relative overflow-hidden bg-slate-900 text-white -mt-20 pt-20">
         <Image
           src="/images/tromso/northern-lights/aurora-tromso_yngve-olsen-1.jpg"
           alt="Aurora borealis over Tromso at 69 degrees north, green bands across a dark Arctic sky"

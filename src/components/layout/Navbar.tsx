@@ -22,8 +22,7 @@ export function Navbar() {
   const { openMap } = useTripMap();
   const { itemCount } = useTrip();
 
-  const isHome = pathname === '/';
-  const solid = scrolled || !isHome;
+  const solid = scrolled;
 
   useEffect(() => {
     const handleScroll = () => {

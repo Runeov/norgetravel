@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowRight, Clock, MapPin, ExternalLink } from 'lucide-react';
-import { NorgeBackground } from '@/components/modules/NorgeBackground';
+import { ArrowRight, CheckCircle2, Clock, MapPin, ExternalLink } from 'lucide-react';
 import {
   ACTIVITY_BLURBS,
   ACTIVITY_LABELS,
@@ -46,32 +46,66 @@ export default async function FjordActivityPage({ params }: PageProps) {
 
   return (
     <main className="min-h-screen bg-slate-50">
-      <section className="relative overflow-hidden bg-[#1A365D] text-white">
-        <NorgeBackground />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <Link
-            href="/destinations/fjords"
-            className="inline-flex items-center gap-2 text-sm text-[#A5D8FF] hover:text-white transition-colors mb-6"
-          >
-            <ArrowRight className="w-4 h-4 rotate-180" />
-            Back to the fjords
-          </Link>
-          <p className="text-sm font-semibold text-[#00D084] uppercase tracking-wide mb-3">
-            Fjord activities
-          </p>
-          <h1 className="text-4xl md:text-6xl font-black tracking-tight uppercase mb-6">
-            {label}
-          </h1>
-          <p className="text-lg md:text-xl text-slate-200 leading-relaxed max-w-3xl">
-            {blurb}
-          </p>
-          <p className="text-sm text-[#A5D8FF] mt-6 font-medium">
-            {tours.length} {tours.length === 1 ? 'tour' : 'tours'} across four fjords
-          </p>
+      <section className="relative overflow-hidden h-screen flex items-center bg-slate-900 text-white -mt-20 pt-20">
+        <Image
+          src="/images/narvik/fjord-railway/ofoten-railway-fjord_christina-myrland.jpg"
+          alt="Fjord landscape — steep mountains dropping into calm water"
+          fill
+          className="object-cover opacity-50"
+          priority
+          quality={75}
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/40 to-slate-900/80" />
+
+        <div className="relative z-10 container mx-auto px-4 sm:px-6">
+          <div className="max-w-2xl">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6">
+              {label}{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5CBFEE] to-[#00CC6A]">
+                Norwegian Fjords
+              </span>
+            </h1>
+
+            <p className="text-lg sm:text-xl text-slate-300 mb-8 leading-relaxed">
+              {blurb}
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 mb-10">
+              <Link
+                href="#tours"
+                className="inline-flex items-center justify-center rounded-full text-base font-medium transition-all focus-visible:outline-none bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] text-white hover:shadow-lg hover:shadow-[#00CC6A]/30 hover:-translate-y-0.5 h-12 px-8"
+              >
+                Browse {tours.length} {tours.length === 1 ? 'tour' : 'tours'}
+                <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+              </Link>
+              <Link
+                href="/destinations/fjords"
+                className="inline-flex items-center justify-center rounded-full text-base font-medium transition-all focus-visible:outline-none border border-white/40 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 h-12 px-8"
+              >
+                Back to fjords
+              </Link>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-6 text-sm text-slate-300">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-[#00CC6A]" aria-hidden="true" />
+                <span>Across four UNESCO fjords</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-[#00CC6A]" aria-hidden="true" />
+                <span>Vetted operators</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-[#00CC6A]" aria-hidden="true" />
+                <span>Peak season May–Sep</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+      <section id="tours" className="container mx-auto px-4 sm:px-6 py-12 md:py-20">
         {tours.length === 0 ? (
           <div className="bg-white border border-slate-200 rounded-lg p-10 text-center">
             <h2 className="text-xl font-bold text-[#1A365D] mb-2">No tours tagged yet</h2>

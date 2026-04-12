@@ -74,7 +74,7 @@ export default async function FjordsPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-slate-900 text-white">
+      <section className="relative overflow-hidden bg-slate-900 text-white -mt-20 pt-20">
         <Image
           src="/images/narvik/fjord-railway/ofoten-railway-fjord_christina-myrland.jpg"
           alt="Ofoten railway running along the fjord near Narvik, steep mountains dropping into calm water"
