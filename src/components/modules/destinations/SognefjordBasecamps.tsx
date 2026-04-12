@@ -4,12 +4,21 @@ import { useState } from 'react';
 import { MapPin, Train, Ship, Building, Clock, CheckCircle, XCircle, Info, ExternalLink } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+interface InternalAccommodationTags {
+  coords?: { lat: number; lng: number };
+  budget?: 'free' | 'budget' | 'mid-range' | 'luxury';
+  seasons?: Array<'winter' | 'spring' | 'summer' | 'autumn'>;
+  familyFriendly?: boolean;
+  indoor?: boolean;
+}
+
 interface Accommodation {
   name: string;
   type: string;
   priceRange: string;
   note: string;
   bookingUrl?: string;
+  internal?: InternalAccommodationTags;
 }
 
 interface DiningOption {
@@ -71,6 +80,13 @@ const basecamps: BasecampData[] = [
         priceRange: '1,500–3,200 NOK/night',
         note: 'The premium option in Flåm, operating since 1866. Fjord-view rooms, restaurant, spa, and proximity to both railway station and ferry dock. Fills from May onward — book 3–6 months ahead for summer dates.',
         bookingUrl: 'https://www.booking.com/hotel/no/fretheim.html',
+        internal: {
+          coords: { lat: 60.8632, lng: 7.1136 },
+          budget: 'mid-range',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
       {
         name: 'Flåm Marina & Apartments',
@@ -78,12 +94,26 @@ const basecamps: BasecampData[] = [
         priceRange: '1,200–2,500 NOK/night',
         note: 'Modern apartments on the harbourfront. Kitchen-equipped. Popular with families and groups. Fjord views from the deck.',
         bookingUrl: 'https://www.booking.com/hotel/no/flam-marina-og-apartments.html',
+        internal: {
+          coords: { lat: 60.8632, lng: 7.1136 },
+          budget: 'mid-range',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
       {
         name: 'Flåm Camping og Vandrerheim',
         type: 'Camping + hostel',
         priceRange: '200–250 NOK tent / 350–450 NOK hostel bed',
         note: 'The main budget option in Flåm. Tent pitches along the river, basic hostel dormitories, and private cabin rooms. EV charging on-site. Seasonal.',
+        internal: {
+          coords: { lat: 60.8632, lng: 7.1136 },
+          budget: 'budget',
+          seasons: ['spring', 'summer', 'autumn'],
+          familyFriendly: false,
+          indoor: true,
+        },
       },
     ],
     dining: [
@@ -147,18 +177,39 @@ const basecamps: BasecampData[] = [
         priceRange: '1,800–3,800 NOK/night',
         note: 'Operating continuously since 1877 in the same family. The historic wing is genuinely Victorian — not a replica. Fjord-view rooms, restaurant open to non-guests, and boat dock directly below the garden terrace. One of Norway\'s most historically significant hotels.',
         bookingUrl: 'https://www.booking.com/hotel/no/kviknes.html',
+        internal: {
+          coords: { lat: 61.2076, lng: 6.5327 },
+          budget: 'luxury',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
       {
         name: 'Balestrand Hostel (Balestrand Vandrerhjem)',
         type: 'Hostel / budget rooms',
         priceRange: '400–600 NOK/night',
         note: 'Budget accommodation in the village. Basic private rooms and dormitories. The building is positioned on the fjord — views without the price premium of Kviknes.',
+        internal: {
+          coords: { lat: 61.2076, lng: 6.5327 },
+          budget: 'budget',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: false,
+          indoor: true,
+        },
       },
       {
         name: 'Dragsvik Fjordhotell',
         type: 'Hotel',
         priceRange: '1,200–2,000 NOK/night',
         note: 'Across the fjord from Balestrand at Dragsvik (accessible by car ferry). Quieter than Balestrand itself. Free parking. Views toward Balestrand.',
+        internal: {
+          coords: { lat: 61.2076, lng: 6.5327 },
+          budget: 'mid-range',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
     ],
     dining: [
@@ -222,18 +273,39 @@ const basecamps: BasecampData[] = [
         priceRange: '1,100–1,800 NOK/night',
         note: 'The main hotel in Sogndal town centre. Standard rooms, reliable rather than remarkable. Free parking. 5 minutes by car from the Hella ferry dock for Balestrand connections.',
         bookingUrl: 'https://www.booking.com/searchresults.html?ss=Sogndal+hotel',
+        internal: {
+          coords: { lat: 61.2297, lng: 7.1015 },
+          budget: 'mid-range',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
       {
         name: 'Loftesnes Hotel',
         type: 'Boutique hotel',
         priceRange: '1,200–2,200 NOK/night',
         note: 'At the edge of Sogndal where the Sognaelva river enters the fjord. Better fjord views than the town-centre hotels. Popular with business travellers during the academic year.',
+        internal: {
+          coords: { lat: 61.2297, lng: 7.1015 },
+          budget: 'mid-range',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
       {
         name: 'Sogndal Camping',
         type: 'Camping',
         priceRange: '180–220 NOK tent',
         note: 'Seasonal campsite with fjord access. Tent pitches and basic cabins. EV charging. Open May–September.',
+        internal: {
+          coords: { lat: 61.2297, lng: 7.1015 },
+          budget: 'budget',
+          seasons: ['spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
     ],
     dining: [
@@ -298,12 +370,26 @@ const basecamps: BasecampData[] = [
         priceRange: '1,000–1,800 NOK/night',
         note: 'A traditional hotel in the old town district, operating in Lærdal since the 19th century. Heritage rooms, local character. The most atmospherically positioned accommodation in the town.',
         bookingUrl: 'https://www.booking.com/searchresults.html?ss=laerdal+hotel',
+        internal: {
+          coords: { lat: 61.0967, lng: 7.4805 },
+          budget: 'mid-range',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
       {
         name: 'Lærdal Camping',
         type: 'Camping',
         priceRange: '170–210 NOK tent',
         note: 'On the Laerdalselvi river, used by salmon fishermen in the fishing season (June–September). Basic facilities, quiet.',
+        internal: {
+          coords: { lat: 61.0967, lng: 7.4805 },
+          budget: 'budget',
+          seasons: ['spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: false,
+        },
       },
     ],
     dining: [

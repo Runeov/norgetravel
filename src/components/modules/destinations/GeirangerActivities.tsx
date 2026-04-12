@@ -18,6 +18,7 @@ import {
   Ruler,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { geirangerTours as tours } from '@/data/fjord-tours';
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -44,6 +45,33 @@ interface Trail {
   difficulty: 'Easy' | 'Moderate' | 'Hard';
   description: string;
   slug?: string;
+  internal?: {
+    coords?: { lat: number; lng: number };
+    dntGrade?: 'green' | 'blue' | 'red' | 'black';
+    budget?: 'free' | 'budget' | 'mid-range' | 'luxury';
+    seasons?: Array<'winter' | 'spring' | 'summer' | 'autumn'>;
+    requiresGuide?: boolean;
+    familyFriendly?: boolean;
+  };
+}
+
+interface InternalTourTags {
+  coords?: { lat: number; lng: number };
+  difficulty?: 'easy' | 'moderate' | 'hard' | 'expert';
+  budget?: 'free' | 'budget' | 'mid-range' | 'luxury';
+  seasons?: Array<'winter' | 'spring' | 'summer' | 'autumn'>;
+  durationHours?: number;
+  requiresGuide?: boolean;
+  familyFriendly?: boolean;
+  indoor?: boolean;
+}
+
+interface InternalRestaurantTags {
+  coords?: { lat: number; lng: number };
+  budget?: 'free' | 'budget' | 'mid-range' | 'luxury';
+  seasons?: Array<'winter' | 'spring' | 'summer' | 'autumn'>;
+  familyFriendly?: boolean;
+  indoor?: boolean;
 }
 
 interface Restaurant {
@@ -51,6 +79,8 @@ interface Restaurant {
   cuisine: string;
   priceRange: string;
   highlight: string;
+  norgetravelRating?: number;
+  internal?: InternalRestaurantTags;
 }
 
 interface Tour {
@@ -60,6 +90,7 @@ interface Tour {
   duration: string;
   highlight: string;
   affiliateUrl: string;
+  internal?: InternalTourTags;
 }
 
 /* ------------------------------------------------------------------ */
@@ -118,49 +149,6 @@ const featuredGuides: ActivityGuide[] = [
   },
 ];
 
-const tours: Tour[] = [
-  {
-    name: 'RIB Fjordsafari',
-    type: 'Speedboat tour',
-    price: 'From 895 NOK',
-    duration: '50 min',
-    highlight:
-      'RIB boat at 35 knots, 15 meters from the waterfalls. Full flotation suits and goggles provided. 12 passengers per boat.',
-    affiliateUrl:
-      'https://www.getyourguide.com/geiranger-l4560/rib-geiranger-fjordsafari-t697794/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
-  },
-  {
-    name: 'Guided kayak tour',
-    type: 'Kayaking',
-    price: 'From 1,550 NOK',
-    duration: '4 hours',
-    highlight:
-      'Paddle beneath the Seven Sisters with a certified guide. Drysuits provided. Maximum 8 per group. No experience required.',
-    affiliateUrl:
-      'https://www.getyourguide.com/geiranger-l4560/geiranger-kayak-tour-with-waterfall-views-t923778/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
-  },
-  {
-    name: 'Fjord sightseeing cruise',
-    type: 'Zero-emission cruise',
-    price: 'From 610 NOK',
-    duration: '75 min',
-    highlight:
-      'Electric sightseeing loop from Geiranger. Passes the Seven Sisters, the Suitor, and the Bridal Veil. Audio guide included.',
-    affiliateUrl:
-      'https://www.getyourguide.com/geiranger-l4560/geirangerfjord-sightseeing-boat-with-audio-guide-t637010/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
-  },
-  {
-    name: 'Fjord cruise with Hellesylt stop',
-    type: 'Cruise + village visit',
-    price: 'From 750 NOK',
-    duration: '2.5 hours',
-    highlight:
-      'Cruise the full 15 km UNESCO fjord to Hellesylt with a 1.5-hour stop in the village before the return sailing.',
-    affiliateUrl:
-      'https://www.getyourguide.com/geiranger-l4560/geiranger-fjord-tour-from-geiranger-15-hour-in-hellesylt-t734295/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
-  },
-];
-
 const trails: Trail[] = [
   {
     name: 'Waterfall walk (Fossevandring)',
@@ -171,6 +159,14 @@ const trails: Trail[] = [
     description:
       'Family-friendly path from the village centre to the Norwegian Fjord Centre. 327 stone steps with handrails, passing multiple waterfalls cascading into the village. Certified National Hiking Trail with 180,000 annual visitors.',
     slug: 'fossevandring-waterfall-walk-geiranger',
+    internal: {
+      coords: { lat: 62.1017, lng: 7.2067 },
+      dntGrade: 'green',
+      budget: 'free',
+      seasons: ['spring', 'summer', 'autumn'],
+      requiresGuide: false,
+      familyFriendly: true,
+    },
   },
   {
     name: 'Storseterfossen waterfall',
@@ -181,6 +177,14 @@ const trails: Trail[] = [
     description:
       'Norway\u2019s first certified National Hiking Trail leads behind a 30-meter waterfall. Secured walkway with guardrails. Drive to Vesteras farm or hike the full 4 km from Geiranger village.',
     slug: 'storseterfossen-walk-behind-waterfall-geiranger',
+    internal: {
+      coords: { lat: 62.1100, lng: 7.1750 },
+      dntGrade: 'blue',
+      budget: 'free',
+      seasons: ['summer', 'autumn'],
+      requiresGuide: false,
+      familyFriendly: true,
+    },
   },
   {
     name: 'L\u00f8sta viewpoint',
@@ -191,6 +195,14 @@ const trails: Trail[] = [
     description:
       'Panoramic view directly down into Geirangerfjord from 500 meters above sea level. Starts from Vesteras farm at 340 m. Steep climbs, fixed ropes on the final section, and muddy terrain after rain.',
     slug: 'losta-viewpoint-hike-geiranger',
+    internal: {
+      coords: { lat: 62.1150, lng: 7.1700 },
+      dntGrade: 'blue',
+      budget: 'free',
+      seasons: ['summer', 'autumn'],
+      requiresGuide: false,
+      familyFriendly: false,
+    },
   },
   {
     name: 'Skagefl\u00e5 mountain farm',
@@ -201,6 +213,14 @@ const trails: Trail[] = [
     description:
       'DNT Red trail to an abandoned farm perched on a ledge 250 meters above the fjord, facing the Seven Sisters waterfall. Worked until 1916. Take the Fjord Guiding boat to Skagehola (249 NOK one-way) to cut the approach.',
     slug: 'skagefla-mountain-farm-geirangerfjord',
+    internal: {
+      coords: { lat: 62.1208, lng: 7.1450 },
+      dntGrade: 'red',
+      budget: 'free',
+      seasons: ['summer', 'autumn'],
+      requiresGuide: false,
+      familyFriendly: false,
+    },
   },
 ];
 
@@ -211,6 +231,14 @@ const restaurants: Restaurant[] = [
     priceRange: '275\u2013460 NOK mains',
     highlight:
       'Harbourside location at the ferry terminal. Homemade fish soup, halibut, and reindeer dishes. 35 seats. The most consistently reviewed standalone restaurant in the village.',
+    norgetravelRating: 8.6,
+    internal: {
+      coords: { lat: 62.1013, lng: 7.2058 },
+      budget: 'mid-range',
+      seasons: ['spring', 'summer', 'autumn'],
+      familyFriendly: true,
+      indoor: true,
+    },
   },
   {
     name: 'Wester\u00e5s Gard',
@@ -218,6 +246,14 @@ const restaurants: Restaurant[] = [
     priceRange: '500\u2013600 NOK mains',
     highlight:
       'Working farm restaurant perched above the village with panoramic fjord views. Seasonal menu (May\u2013September). Cod, lamb, homemade desserts. Same farm is the trailhead for Storseterfossen.',
+    norgetravelRating: 9.1,
+    internal: {
+      coords: { lat: 62.1100, lng: 7.1750 },
+      budget: 'luxury',
+      seasons: ['spring', 'summer', 'autumn'],
+      familyFriendly: true,
+      indoor: true,
+    },
   },
   {
     name: 'Friaren Bistro',
@@ -225,6 +261,14 @@ const restaurants: Restaurant[] = [
     priceRange: '250\u2013400 NOK mains',
     highlight:
       'Outdoor terrace in the village centre, attached to Hotel Geiranger. Summer seafood, lamb, and entrecote. One of the few places with genuine al fresco fjord-side seating.',
+    norgetravelRating: 7.6,
+    internal: {
+      coords: { lat: 62.1020, lng: 7.2060 },
+      budget: 'mid-range',
+      seasons: ['summer'],
+      familyFriendly: true,
+      indoor: false,
+    },
   },
   {
     name: 'Naustkroa',
@@ -232,6 +276,14 @@ const restaurants: Restaurant[] = [
     priceRange: '200\u2013350 NOK mains',
     highlight:
       'Waterfront boathouse setting with generous portions. Salmon, meatballs, and pizza. More casual and family-oriented. The building sits directly on the water.',
+    norgetravelRating: 7.4,
+    internal: {
+      coords: { lat: 62.1015, lng: 7.2075 },
+      budget: 'budget',
+      seasons: ['spring', 'summer', 'autumn'],
+      familyFriendly: true,
+      indoor: true,
+    },
   },
 ];
 
@@ -513,20 +565,36 @@ export function GeirangerActivities() {
                       aria-hidden="true"
                     />
                   </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-slate-800">
-                      {restaurant.name}
-                    </h3>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-2">
+                      <h3 className="text-lg font-bold text-slate-800">
+                        {restaurant.name}
+                      </h3>
+                      {restaurant.norgetravelRating !== undefined && (
+                        <span
+                          className="inline-flex items-center gap-1 bg-[#1A365D] text-white px-2 py-0.5 rounded-sm text-xs font-bold shrink-0"
+                          title="NorgeTravel rating (out of 10)"
+                        >
+                          <Star className="w-3 h-3 fill-current" aria-hidden="true" />
+                          {restaurant.norgetravelRating.toFixed(1)}
+                        </span>
+                      )}
+                    </div>
                     <p className="text-xs text-slate-500">{restaurant.cuisine}</p>
                   </div>
                 </div>
                 <p className="text-sm text-slate-600 leading-relaxed mb-4">
                   {restaurant.highlight}
                 </p>
-                <div className="mt-auto pt-3 border-t border-slate-100">
+                <div className="mt-auto pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
                   <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-sm text-xs text-slate-600 font-medium">
                     {restaurant.priceRange}
                   </span>
+                  {restaurant.norgetravelRating !== undefined && (
+                    <span className="text-[10px] uppercase tracking-wide text-slate-400 font-medium">
+                      NorgeTravel rated
+                    </span>
+                  )}
                 </div>
               </div>
             ))}

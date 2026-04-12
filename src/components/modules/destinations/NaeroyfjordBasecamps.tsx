@@ -22,11 +22,20 @@ import { cn } from '@/lib/utils';
 /*  Types                                                              */
 /* ------------------------------------------------------------------ */
 
+interface InternalAccommodationTags {
+  coords?: { lat: number; lng: number };
+  budget?: 'free' | 'budget' | 'mid-range' | 'luxury';
+  seasons?: Array<'winter' | 'spring' | 'summer' | 'autumn'>;
+  familyFriendly?: boolean;
+  indoor?: boolean;
+}
+
 interface Accommodation {
   name: string;
   type: string;
   price: string;
   highlight: string;
+  internal?: InternalAccommodationTags;
 }
 
 interface DiningOption {
@@ -90,6 +99,13 @@ const basecamps: BasecampData[] = [
         price: '1,500–3,500 NOK/night',
         highlight:
           'The original 1866 wooden hotel building is still standing. 87 rooms. Restaurant and bar on-site. Located at the fjord edge, 200m from the Flam Railway station. The historic wing has smaller rooms with original fittings — worth asking for specifically.',
+        internal: {
+          coords: { lat: 60.8632, lng: 7.1136 },
+          budget: 'mid-range',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
       {
         name: 'Flam Marina & Apartments',
@@ -97,6 +113,13 @@ const basecamps: BasecampData[] = [
         price: '1,200–2,500 NOK/night',
         highlight:
           'Modern apartments directly on the harbour. Some units have fjord-facing terraces. Kitchen included — useful for multi-night stays when you want to avoid tourist-priced restaurants every evening.',
+        internal: {
+          coords: { lat: 60.8632, lng: 7.1136 },
+          budget: 'mid-range',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
       {
         name: 'Flam Camping',
@@ -104,6 +127,13 @@ const basecamps: BasecampData[] = [
         price: '200–250 NOK (tent) / cabins from 800 NOK',
         highlight:
           '2 km from the village centre. Pitches with fjord views. Basic sanitary facilities. The cheapest option in the area and genuinely pleasant in good weather. Bring your own bedding for cabins.',
+        internal: {
+          coords: { lat: 60.8632, lng: 7.1136 },
+          budget: 'budget',
+          seasons: ['spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
     ],
     dining: [
@@ -162,6 +192,13 @@ const basecamps: BasecampData[] = [
         price: '180–220 NOK (tent) / cabins from 650 NOK',
         highlight:
           'Basic but functional. The site is at the valley floor with views up toward the fjord entrance. Sanitary facilities on-site. The cheapest basecamp in the Naeroyfjord area.',
+        internal: {
+          coords: { lat: 60.8710, lng: 6.8413 },
+          budget: 'budget',
+          seasons: ['spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
       {
         name: 'Gudvangen Viking Village accommodation',
@@ -169,6 +206,13 @@ const basecamps: BasecampData[] = [
         price: 'From 500 NOK per person',
         highlight:
           'Sleep in the Viking Village settlement — communal longhouse-style accommodation open May to September. Not for everyone, but an unusual experience. Breakfast included. Book via the Viking Village directly.',
+        internal: {
+          coords: { lat: 60.8710, lng: 6.8413 },
+          budget: 'budget',
+          seasons: ['spring', 'summer', 'autumn'],
+          familyFriendly: false,
+          indoor: true,
+        },
       },
     ],
     dining: [
@@ -221,6 +265,13 @@ const basecamps: BasecampData[] = [
         price: '1,200–2,500 NOK/night',
         highlight:
           'On the Aurland waterfront. Restaurant on-site. 20 rooms. The fjord view from the upper rooms is better than anything available in Flam at the same price point.',
+        internal: {
+          coords: { lat: 60.9050, lng: 7.1855 },
+          budget: 'mid-range',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
       {
         name: 'Lunde Camping',
@@ -228,6 +279,13 @@ const basecamps: BasecampData[] = [
         price: '190–220 NOK (tent) / cabins from 700 NOK',
         highlight:
           'Small, family-run site 2 km from Aurland village. Fjord-edge pitches. Quieter than Flam Camping. Book ahead for cabins in July.',
+        internal: {
+          coords: { lat: 60.9050, lng: 7.1855 },
+          budget: 'budget',
+          seasons: ['spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
     ],
     dining: [

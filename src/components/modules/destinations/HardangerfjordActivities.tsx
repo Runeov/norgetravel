@@ -18,6 +18,7 @@ import {
   Apple,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { hardangerfjordTours as tours } from '@/data/fjord-tours';
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -36,6 +37,34 @@ interface ActivityGuide {
   bookingUrl?: string;
 }
 
+interface InternalTrailTags {
+  coords?: { lat: number; lng: number };
+  dntGrade?: 'green' | 'blue' | 'red' | 'black';
+  budget?: 'free' | 'budget' | 'mid-range' | 'luxury';
+  seasons?: Array<'winter' | 'spring' | 'summer' | 'autumn'>;
+  requiresGuide?: boolean;
+  familyFriendly?: boolean;
+}
+
+interface InternalTourTags {
+  coords?: { lat: number; lng: number };
+  difficulty?: 'easy' | 'moderate' | 'hard' | 'expert';
+  budget?: 'free' | 'budget' | 'mid-range' | 'luxury';
+  seasons?: Array<'winter' | 'spring' | 'summer' | 'autumn'>;
+  durationHours?: number;
+  requiresGuide?: boolean;
+  familyFriendly?: boolean;
+  indoor?: boolean;
+}
+
+interface InternalRestaurantTags {
+  coords?: { lat: number; lng: number };
+  budget?: 'free' | 'budget' | 'mid-range' | 'luxury';
+  seasons?: Array<'winter' | 'spring' | 'summer' | 'autumn'>;
+  familyFriendly?: boolean;
+  indoor?: boolean;
+}
+
 interface Trail {
   name: string;
   distance: string;
@@ -44,6 +73,7 @@ interface Trail {
   difficulty: 'Easy' | 'Moderate' | 'Hard';
   description: string;
   slug?: string;
+  internal?: InternalTrailTags;
 }
 
 interface Restaurant {
@@ -51,6 +81,9 @@ interface Restaurant {
   cuisine: string;
   priceRange: string;
   highlight: string;
+  /** NorgeTravel editorial rating, 1.0–10.0 scale (one decimal). */
+  norgetravelRating?: number;
+  internal?: InternalRestaurantTags;
 }
 
 interface Tour {
@@ -60,6 +93,7 @@ interface Tour {
   duration: string;
   highlight: string;
   affiliateUrl: string;
+  internal?: InternalTourTags;
 }
 
 /* ------------------------------------------------------------------ */
@@ -123,49 +157,6 @@ const featuredGuides: ActivityGuide[] = [
   },
 ];
 
-const tours: Tour[] = [
-  {
-    name: 'Guided Trolltunga (summer)',
-    type: 'Small group guided hike',
-    price: 'From 995 NOK',
-    duration: '10–12 hours',
-    highlight:
-      'Guided departure from Skjeggedal trailhead. Guide ensures the group maintains the pace needed to complete the route safely before dark. Early departures (06:00) available for June to August. Maximum 12 per group. The guide carries a first aid kit and satellite communicator.',
-    affiliateUrl:
-      'https://www.getyourguide.com/odda-l2558/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
-  },
-  {
-    name: 'Folgefonna glacier walk',
-    type: 'Guided glacier experience',
-    price: 'From 850 NOK',
-    duration: '4–6 hours',
-    highlight:
-      'Folgefonna is the third largest glacier in Norway. Guided walks depart from the Fonnabu visitor centre on the plateau above Jondal. Crampons and ice axe provided. The contrast between the fjord at sea level and the glacier at 1,200 meters is a 1-hour drive.',
-    affiliateUrl:
-      'https://www.getyourguide.com/hardangerfjord-l97248/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
-  },
-  {
-    name: 'Hardangerfjord sightseeing cruise',
-    type: 'Boat tour',
-    price: 'From 650 NOK',
-    duration: '2–3 hours',
-    highlight:
-      'Departs from Eidfjord or Norheimsund. The cruise covers the inner fjord, passing the Hardanger Bridge (1,380 m span) and the orchard villages along the south shore. Best option for travellers who want the fjord from the water without committing to a full day.',
-    affiliateUrl:
-      'https://www.getyourguide.com/hardangerfjord-l97248/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
-  },
-  {
-    name: 'Folgefonna summer skiing',
-    type: 'Ski day on the glacier',
-    price: 'From 480 NOK (lift pass)',
-    duration: 'Full day',
-    highlight:
-      'Folgefonna Ski Resort operates June to August on the glacier plateau at 1,200 m while the fjord is warm below. Ski and snowboard rental available at the resort. The descent to Jondal and back is an experience on its own.',
-    affiliateUrl:
-      'https://www.getyourguide.com/hardangerfjord-l97248/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
-  },
-];
-
 const trails: Trail[] = [
   {
     name: 'Trolltunga',
@@ -175,6 +166,14 @@ const trails: Trail[] = [
     difficulty: 'Hard',
     description:
       "Norway's most photographed rock ledge juts 700 meters above Ringedalsvatnet. The full route from Skjeggedal is 27 km return with 800 meters of elevation gain. DNT Red grade. A guide is required by Norwegian law from October 1 to May 31. Start before 07:00 in summer to secure trailhead parking. The ledge itself is 2 meters wide — the queue can be 30 minutes at midday in July.",
+    internal: {
+      coords: { lat: 60.1244, lng: 6.7403 },
+      dntGrade: 'red',
+      budget: 'free',
+      seasons: ['summer', 'autumn'],
+      requiresGuide: false,
+      familyFriendly: false,
+    },
   },
   {
     name: 'Ringedalsvatnet lake loop',
@@ -184,6 +183,14 @@ const trails: Trail[] = [
     difficulty: 'Moderate',
     description:
       'The Trolltunga route passes Ringedalsvatnet, the turquoise lake below the rock ledge. Turning back at the lake (rather than continuing to Trolltunga) gives a DNT Blue-grade experience with comparable scenery at half the effort. The lake reflects the surrounding peaks on calm mornings.',
+    internal: {
+      coords: { lat: 60.1200, lng: 6.7500 },
+      dntGrade: 'blue',
+      budget: 'free',
+      seasons: ['summer', 'autumn'],
+      requiresGuide: false,
+      familyFriendly: true,
+    },
   },
   {
     name: 'Hardangervidda plateau day walk',
@@ -193,6 +200,14 @@ const trails: Trail[] = [
     difficulty: 'Moderate',
     description:
       'The Hardangervidda National Park begins directly above Eidfjord. Marked trails from the Rv7 give access to the plateau without a multi-day commitment. The Dyranut DNT cabin is 15 km from the Rv7 trailhead. The plateau wild reindeer herds are most visible in August. Check weather at yr.no before departing.',
+    internal: {
+      coords: { lat: 60.4183, lng: 7.5155 },
+      dntGrade: 'blue',
+      budget: 'free',
+      seasons: ['summer', 'autumn'],
+      requiresGuide: false,
+      familyFriendly: false,
+    },
   },
   {
     name: 'Vøringsfossen valley floor walk',
@@ -202,6 +217,14 @@ const trails: Trail[] = [
     difficulty: 'Easy',
     description:
       'From the Fossli parking area, descend to the floor of Måbødalen for the base view of Vøringsfossen — 182 meters of free fall with the full drop visible from below. A shorter and easier alternative to the upper-platform viewpoint accessible by road. Visit before 10:00 in summer to avoid the tour bus crowds.',
+    internal: {
+      coords: { lat: 60.4287, lng: 7.2512 },
+      dntGrade: 'green',
+      budget: 'free',
+      seasons: ['spring', 'summer', 'autumn'],
+      requiresGuide: false,
+      familyFriendly: true,
+    },
   },
 ];
 
@@ -212,6 +235,14 @@ const restaurants: Restaurant[] = [
     priceRange: '300–600 NOK mains',
     highlight:
       'The grand hotel at Lofthus has operated since 1846. The restaurant uses apples, cider, and lamb from the surrounding farms. The dining room overlooks the orchard and Sørfjorden below. Book 24 hours ahead in season — the hotel fills with guests and the restaurant follows.',
+    norgetravelRating: 8.5,
+    internal: {
+      coords: { lat: 60.3297, lng: 6.6548 },
+      budget: 'luxury',
+      seasons: ['spring', 'summer', 'autumn'],
+      familyFriendly: true,
+      indoor: true,
+    },
   },
   {
     name: 'Hardanger cider farms (Lofthus/Aga)',
@@ -219,6 +250,14 @@ const restaurants: Restaurant[] = [
     priceRange: '80–150 NOK (tastings)',
     highlight:
       'The orchards along the south shore from Aga to Ullensvang open their farmgates from August through October. Cider tastings, apple juice, and direct sales from the producer. The Hardangertun market on the third weekend of September gathers 50 producers in one place.',
+    norgetravelRating: 9.2,
+    internal: {
+      coords: { lat: 60.3296, lng: 6.6548 },
+      budget: 'budget',
+      seasons: ['summer', 'autumn'],
+      familyFriendly: true,
+      indoor: false,
+    },
   },
   {
     name: 'Eidfjord Hotel restaurant',
@@ -226,6 +265,14 @@ const restaurants: Restaurant[] = [
     priceRange: '200–400 NOK mains',
     highlight:
       'Reliable mid-range dining in Eidfjord village. Local fish and meat dishes. The most consistent option in Eidfjord for travellers not staying at the Quality Hotel Vøringsfoss. Walk-ins usually accommodated.',
+    norgetravelRating: 7.0,
+    internal: {
+      coords: { lat: 60.4679, lng: 7.0686 },
+      budget: 'mid-range',
+      seasons: ['winter', 'spring', 'summer', 'autumn'],
+      familyFriendly: true,
+      indoor: true,
+    },
   },
   {
     name: 'Trolltunga Hotel restaurant (Odda)',
@@ -233,6 +280,14 @@ const restaurants: Restaurant[] = [
     priceRange: '200–350 NOK mains',
     highlight:
       'In Odda town, 23 km from the Skjeggedal trailhead. The best option for a post-Trolltunga dinner — you will be hungry. Simple Norwegian dishes with generous portions. The breakfast for next-day hikers is good value.',
+    norgetravelRating: 7.4,
+    internal: {
+      coords: { lat: 60.0680, lng: 6.5463 },
+      budget: 'mid-range',
+      seasons: ['spring', 'summer', 'autumn'],
+      familyFriendly: true,
+      indoor: true,
+    },
   },
 ];
 
@@ -489,20 +544,36 @@ export default function HardangerfjordActivities() {
                   <div className="w-10 h-10 rounded-lg bg-[#1A365D]/10 flex items-center justify-center shrink-0 text-[#1A365D]">
                     <UtensilsCrossed className="w-5 h-5" aria-hidden="true" />
                   </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-slate-800">
-                      {restaurant.name}
-                    </h3>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-2">
+                      <h3 className="text-lg font-bold text-slate-800">
+                        {restaurant.name}
+                      </h3>
+                      {restaurant.norgetravelRating !== undefined && (
+                        <span
+                          className="inline-flex items-center gap-1 bg-[#1A365D] text-white px-2 py-0.5 rounded-sm text-xs font-bold shrink-0"
+                          title="NorgeTravel rating (out of 10)"
+                        >
+                          <Star className="w-3 h-3 fill-current" aria-hidden="true" />
+                          {restaurant.norgetravelRating.toFixed(1)}
+                        </span>
+                      )}
+                    </div>
                     <p className="text-xs text-slate-500">{restaurant.cuisine}</p>
                   </div>
                 </div>
                 <p className="text-sm text-slate-600 leading-relaxed mb-4">
                   {restaurant.highlight}
                 </p>
-                <div className="mt-auto pt-3 border-t border-slate-100">
+                <div className="mt-auto pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
                   <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-sm text-xs text-slate-600 font-medium">
                     {restaurant.priceRange}
                   </span>
+                  {restaurant.norgetravelRating !== undefined && (
+                    <span className="text-[10px] uppercase tracking-wide text-slate-400 font-medium">
+                      NorgeTravel rated
+                    </span>
+                  )}
                 </div>
               </div>
             ))}

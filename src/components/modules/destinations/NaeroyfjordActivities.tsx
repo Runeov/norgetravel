@@ -18,6 +18,7 @@ import {
   Train,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { naeroyfjordTours as tours } from '@/data/fjord-tours';
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -36,6 +37,34 @@ interface ActivityGuide {
   bookingUrl?: string;
 }
 
+interface InternalTrailTags {
+  coords?: { lat: number; lng: number };
+  dntGrade?: 'green' | 'blue' | 'red' | 'black';
+  budget?: 'free' | 'budget' | 'mid-range' | 'luxury';
+  seasons?: Array<'winter' | 'spring' | 'summer' | 'autumn'>;
+  requiresGuide?: boolean;
+  familyFriendly?: boolean;
+}
+
+interface InternalTourTags {
+  coords?: { lat: number; lng: number };
+  difficulty?: 'easy' | 'moderate' | 'hard' | 'expert';
+  budget?: 'free' | 'budget' | 'mid-range' | 'luxury';
+  seasons?: Array<'winter' | 'spring' | 'summer' | 'autumn'>;
+  durationHours?: number;
+  requiresGuide?: boolean;
+  familyFriendly?: boolean;
+  indoor?: boolean;
+}
+
+interface InternalRestaurantTags {
+  coords?: { lat: number; lng: number };
+  budget?: 'free' | 'budget' | 'mid-range' | 'luxury';
+  seasons?: Array<'winter' | 'spring' | 'summer' | 'autumn'>;
+  familyFriendly?: boolean;
+  indoor?: boolean;
+}
+
 interface Trail {
   name: string;
   distance: string;
@@ -44,18 +73,8 @@ interface Trail {
   difficulty: 'Easy' | 'Moderate' | 'Hard';
   description: string;
   slug?: string;
-  /**
-   * Hidden internal metadata. Never rendered in UI.
-   * Reserved for the advanced trip planner (filters, map pins, itinerary building).
-   */
-  internal?: {
-    coords?: { lat: number; lng: number };
-    dntGrade?: 'green' | 'blue' | 'red' | 'black';
-    budget?: 'free' | 'budget' | 'mid-range' | 'luxury';
-    seasons?: Array<'winter' | 'spring' | 'summer' | 'autumn'>;
-    requiresGuide?: boolean;
-    familyFriendly?: boolean;
-  };
+  /** Hidden internal metadata. Never rendered in UI. */
+  internal?: InternalTrailTags;
 }
 
 interface Restaurant {
@@ -63,6 +82,9 @@ interface Restaurant {
   cuisine: string;
   priceRange: string;
   highlight: string;
+  /** NorgeTravel editorial rating, 1.0–10.0 scale (one decimal). */
+  norgetravelRating?: number;
+  internal?: InternalRestaurantTags;
 }
 
 interface Tour {
@@ -72,6 +94,7 @@ interface Tour {
   duration: string;
   highlight: string;
   affiliateUrl: string;
+  internal?: InternalTourTags;
 }
 
 /* ------------------------------------------------------------------ */
@@ -137,49 +160,6 @@ const featuredGuides: ActivityGuide[] = [
   },
 ];
 
-const tours: Tour[] = [
-  {
-    name: 'Norway in a Nutshell (Bergen day trip)',
-    type: 'Guided full-day loop',
-    price: 'From 1,490 NOK',
-    duration: '10–12 hours',
-    highlight:
-      'Bergen Railway to Myrdal, Flåm Railway to Flåm, Nærøyfjord electric ferry to Gudvangen, bus over Stalheimskleiva back to Voss, train to Bergen. The most efficient way to see the fjords without a car. Departs Bergen 08:05 daily in summer.',
-    affiliateUrl:
-      'https://www.getyourguide.com/flam-l2424/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
-  },
-  {
-    name: 'Nærøyfjord kayak (half-day)',
-    type: 'Guided small group',
-    price: 'From 890 NOK',
-    duration: '3.5 hours',
-    highlight:
-      'Departs from Gudvangen Viking Village. Groups of maximum 8 with one guide. Paddle into the fjord past abandoned farm terraces and seasonal waterfalls. Drysuits provided. No prior kayak experience required.',
-    affiliateUrl:
-      'https://www.getyourguide.com/flam-l2424/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
-  },
-  {
-    name: 'RIB speedboat on Aurlandsfjord',
-    type: 'Guided 1.5 hours',
-    price: 'From 1,095 NOK',
-    duration: '1.5 hours',
-    highlight:
-      'High-speed RIB from Flåm harbour up Aurlandsfjord and into the Nærøyfjord entrance. Flotation suits provided. View of Stegastein from the water. Maximum 12 passengers per boat.',
-    affiliateUrl:
-      'https://www.getyourguide.com/flam-l2424/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
-  },
-  {
-    name: 'Flåm Railway experience',
-    type: 'Self-guided with optional audio',
-    price: 'From 390 NOK',
-    duration: '1 hour',
-    highlight:
-      'Myrdal to Flåm (or reverse). Includes Kjosfossen waterfall stop. Buy tickets in advance through the Flåm Railway official booking or at Flåm station. The route is most scenic descending from Myrdal.',
-    affiliateUrl:
-      'https://www.getyourguide.com/flam-l2424/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
-  },
-];
-
 const trails: Trail[] = [
   {
     name: 'Rimstigen',
@@ -190,6 +170,14 @@ const trails: Trail[] = [
     description:
       'The historic mountain path from Gudvangen up to the Nali farm terrace 850 meters above sea level. Steep from the first step. Rimstigen is closed November to April. Access from the fjord side is by boat from Gudvangen — there is no road to the trailhead. Book a boat connection from visitflam.com and factor crossing time into your day. DNT Red grade. 850 meters of elevation in 5.5 km.',
     slug: 'rimstigen-naeroyfjord-trail-report',
+    internal: {
+      coords: { lat: 60.8738, lng: 6.8376 },
+      dntGrade: 'red',
+      budget: 'free',
+      seasons: ['summer', 'autumn'],
+      requiresGuide: false,
+      familyFriendly: false,
+    },
   },
   {
     name: 'Stegastein viewpoint',
@@ -200,6 +188,14 @@ const trails: Trail[] = [
     description:
       'The walking route from Aurland village to the 30-meter cantilevered platform at 640 meters above Aurlandsfjord. The drive up the Rv243 Bjørgavegen takes 20 minutes and fills the car park by midday in summer. The trail takes 2.5 to 3 hours up through forest and past abandoned summer farms. You earn the platform on foot and choose your window.',
     slug: 'stegastein-viewpoint-aurland-hike',
+    internal: {
+      coords: { lat: 60.9053, lng: 7.1920 },
+      dntGrade: 'blue',
+      budget: 'free',
+      seasons: ['summer', 'autumn'],
+      requiresGuide: false,
+      familyFriendly: false,
+    },
   },
   {
     name: 'Bakka–Nali farm trail',
@@ -210,6 +206,14 @@ const trails: Trail[] = [
     description:
       'The old farm path from Bakka village on Nærøyfjord to the abandoned summer farm at Nali, 800 meters above the water. DNT Red: sustained steep gradient, exposed upper sections, no facilities. Access to Bakka by local ferry from Gudvangen or road via Dyrdal. One of the few trails in the UNESCO fjord where you look straight down at the ferry route.',
     slug: 'bakka-nali-farm-trail-naeroyfjord',
+    internal: {
+      coords: { lat: 60.9183, lng: 6.9480 },
+      dntGrade: 'red',
+      budget: 'free',
+      seasons: ['summer', 'autumn'],
+      requiresGuide: false,
+      familyFriendly: false,
+    },
   },
   {
     name: 'Prest viewpoint — above Flåm',
@@ -220,6 +224,14 @@ const trails: Trail[] = [
     description:
       'The Prest trail climbs steeply from Flåm village to a viewpoint at 580 meters directly above the start of Nærøyfjord. On a clear day you see the entire fjord confluence — Aurlandsfjord, the start of Nærøyfjord, and Flåm village below. Less crowded than the Aurland side trails. Starts from the signed trailhead at the far end of the campsite.',
     slug: 'prest-viewpoint-flam-trail',
+    internal: {
+      coords: { lat: 60.8625, lng: 7.1150 },
+      dntGrade: 'blue',
+      budget: 'free',
+      seasons: ['summer', 'autumn'],
+      requiresGuide: false,
+      familyFriendly: false,
+    },
   },
 ];
 
@@ -230,6 +242,14 @@ const restaurants: Restaurant[] = [
     priceRange: '250–450 NOK mains',
     highlight:
       'Viking longhouse exterior in Flåm village. Brews on-site — the pale ale is the one to order. Pork ribs and smoked salmon are the reliable mains. Outdoor terrace facing the Flåm Railway platform. Tables fill by 18:00 in summer — arrive early or book ahead.',
+    norgetravelRating: 8.7,
+    internal: {
+      coords: { lat: 60.8632, lng: 7.1136 },
+      budget: 'mid-range',
+      seasons: ['winter', 'spring', 'summer', 'autumn'],
+      familyFriendly: true,
+      indoor: true,
+    },
   },
   {
     name: 'Flåmsbrygga',
@@ -237,6 +257,14 @@ const restaurants: Restaurant[] = [
     priceRange: '200–400 NOK mains',
     highlight:
       'On the Flåm harbour. Fish soup and grilled fish direct from Sognefjord. Simpler than Ægir and better for lunch after the morning ferry. Outdoor seating on the dock when the weather holds.',
+    norgetravelRating: 7.8,
+    internal: {
+      coords: { lat: 60.8632, lng: 7.1136 },
+      budget: 'mid-range',
+      seasons: ['spring', 'summer', 'autumn'],
+      familyFriendly: true,
+      indoor: true,
+    },
   },
   {
     name: 'Fretheim Hotel Restaurant',
@@ -244,6 +272,14 @@ const restaurants: Restaurant[] = [
     priceRange: '300–500 NOK mains',
     highlight:
       'The dining room in the historic 1866 wooden hotel at Flåm. Traditional Norwegian dishes including local lamb and cured fish. Book ahead for dinner — the hotel fills in July and walk-ins compete with guests for tables.',
+    norgetravelRating: 8.3,
+    internal: {
+      coords: { lat: 60.8635, lng: 7.1123 },
+      budget: 'luxury',
+      seasons: ['spring', 'summer', 'autumn'],
+      familyFriendly: true,
+      indoor: true,
+    },
   },
   {
     name: 'Gudvangen Viking Village',
@@ -251,6 +287,14 @@ const restaurants: Restaurant[] = [
     priceRange: '150–250 NOK',
     highlight:
       'Open-fire cooking area serving traditional food during operating hours. Smoked meats and flatbreads cooked on open hearths. Not a restaurant in the conventional sense — a cultural experience with food. Open May to September.',
+    norgetravelRating: 7.5,
+    internal: {
+      coords: { lat: 60.8710, lng: 6.8413 },
+      budget: 'budget',
+      seasons: ['summer'],
+      familyFriendly: true,
+      indoor: false,
+    },
   },
 ];
 
@@ -531,20 +575,36 @@ export default function NaeroyfjordActivities() {
                   <div className="w-10 h-10 rounded-lg bg-[#1A365D]/10 flex items-center justify-center shrink-0 text-[#1A365D]">
                     <UtensilsCrossed className="w-5 h-5" aria-hidden="true" />
                   </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-slate-800">
-                      {restaurant.name}
-                    </h3>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-2">
+                      <h3 className="text-lg font-bold text-slate-800">
+                        {restaurant.name}
+                      </h3>
+                      {restaurant.norgetravelRating !== undefined && (
+                        <span
+                          className="inline-flex items-center gap-1 bg-[#1A365D] text-white px-2 py-0.5 rounded-sm text-xs font-bold shrink-0"
+                          title="NorgeTravel rating (out of 10)"
+                        >
+                          <Star className="w-3 h-3 fill-current" aria-hidden="true" />
+                          {restaurant.norgetravelRating.toFixed(1)}
+                        </span>
+                      )}
+                    </div>
                     <p className="text-xs text-slate-500">{restaurant.cuisine}</p>
                   </div>
                 </div>
                 <p className="text-sm text-slate-600 leading-relaxed mb-4">
                   {restaurant.highlight}
                 </p>
-                <div className="mt-auto pt-3 border-t border-slate-100">
+                <div className="mt-auto pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
                   <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-sm text-xs text-slate-600 font-medium">
                     {restaurant.priceRange}
                   </span>
+                  {restaurant.norgetravelRating !== undefined && (
+                    <span className="text-[10px] uppercase tracking-wide text-slate-400 font-medium">
+                      NorgeTravel rated
+                    </span>
+                  )}
                 </div>
               </div>
             ))}

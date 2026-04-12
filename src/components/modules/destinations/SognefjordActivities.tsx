@@ -18,6 +18,7 @@ import {
   Ruler,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { sognefjordTours as tours } from '@/data/fjord-tours';
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -36,6 +37,34 @@ interface ActivityGuide {
   bookingUrl?: string;
 }
 
+interface InternalTrailTags {
+  coords?: { lat: number; lng: number };
+  dntGrade?: 'green' | 'blue' | 'red' | 'black';
+  budget?: 'free' | 'budget' | 'mid-range' | 'luxury';
+  seasons?: Array<'winter' | 'spring' | 'summer' | 'autumn'>;
+  requiresGuide?: boolean;
+  familyFriendly?: boolean;
+}
+
+interface InternalTourTags {
+  coords?: { lat: number; lng: number };
+  difficulty?: 'easy' | 'moderate' | 'hard' | 'expert';
+  budget?: 'free' | 'budget' | 'mid-range' | 'luxury';
+  seasons?: Array<'winter' | 'spring' | 'summer' | 'autumn'>;
+  durationHours?: number;
+  requiresGuide?: boolean;
+  familyFriendly?: boolean;
+  indoor?: boolean;
+}
+
+interface InternalRestaurantTags {
+  coords?: { lat: number; lng: number };
+  budget?: 'free' | 'budget' | 'mid-range' | 'luxury';
+  seasons?: Array<'winter' | 'spring' | 'summer' | 'autumn'>;
+  familyFriendly?: boolean;
+  indoor?: boolean;
+}
+
 interface Trail {
   name: string;
   distance: string;
@@ -44,6 +73,7 @@ interface Trail {
   difficulty: 'Easy' | 'Moderate' | 'Hard';
   description: string;
   slug?: string;
+  internal?: InternalTrailTags;
 }
 
 interface Restaurant {
@@ -51,6 +81,9 @@ interface Restaurant {
   cuisine: string;
   priceRange: string;
   highlight: string;
+  /** NorgeTravel editorial rating, 1.0–10.0 scale (one decimal). */
+  norgetravelRating?: number;
+  internal?: InternalRestaurantTags;
 }
 
 interface Tour {
@@ -60,6 +93,7 @@ interface Tour {
   duration: string;
   highlight: string;
   affiliateUrl: string;
+  internal?: InternalTourTags;
 }
 
 /* ------------------------------------------------------------------ */
@@ -123,49 +157,6 @@ const featuredGuides: ActivityGuide[] = [
   },
 ];
 
-const tours: Tour[] = [
-  {
-    name: 'Norway in a Nutshell — Bergen loop',
-    type: 'Rail + ferry combination',
-    price: 'From 1,290 NOK',
-    duration: '10–12 hours',
-    highlight:
-      'Bergen to Voss by train, Voss to Myrdal by train, Flåm Railway to Flåm, electric ferry through Nærøyfjord to Gudvangen, bus over Stalheim to Voss, train back to Bergen. Covers the full Sognefjord/Nærøyfjord experience in a single day without a car. Departs Bergen 08:05 daily in summer.',
-    affiliateUrl:
-      'https://www.getyourguide.com/bergen-l173/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
-  },
-  {
-    name: 'Sognefjord express boat — Bergen to Flåm',
-    type: 'Norled express boat service',
-    price: 'From 680 NOK Bergen–Flåm',
-    duration: '5.5 hours Bergen–Flåm',
-    highlight:
-      'Norled operates the express boat from Bergen directly into the main Sognefjord trunk, calling at Balestrand, Leikanger, and Flåm. Covers sections of Sognefjord not accessible by road. Operates summer season on the full route; year-round between Flåm and Balestrand.',
-    affiliateUrl:
-      'https://www.getyourguide.com/flam-l2424/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
-  },
-  {
-    name: 'Jostedalsbreen glacier walk',
-    type: 'Guided glacier experience',
-    price: 'From 850 NOK',
-    duration: '3–5 hours',
-    highlight:
-      "Jostedalsbreen is the largest glacier in mainland Europe — 487 square kilometres. Outlet glaciers accessible from the Sognefjord area include Nigardsbreen (from Luster) and Supphellebreen (from Fjærland). All require a certified guide with glacier equipment. Solo walks on the glacier are not permitted.",
-    affiliateUrl:
-      'https://www.getyourguide.com/flam-l2424/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
-  },
-  {
-    name: 'Sognefjord sea kayak',
-    type: 'Guided half-day or full-day',
-    price: 'From 950 NOK half day',
-    duration: '4–8 hours',
-    highlight:
-      'Sea kayaking on the main Sognefjord trunk between Balestrand and Sogndal. Guided tours run from Balestrand. The scale of Sognefjord — 1,308 m at its deepest — is best understood from water level. Suitable for beginners on guided tours. Wet or drysuits provided.',
-    affiliateUrl:
-      'https://www.getyourguide.com/flam-l2424/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
-  },
-];
-
 const trails: Trail[] = [
   {
     name: 'Prest viewpoint — above Flåm',
@@ -175,6 +166,14 @@ const trails: Trail[] = [
     difficulty: 'Moderate',
     description:
       'The Prest trail climbs steeply from Flåm village to a viewpoint 580 meters above the Nærøyfjord confluence. On a clear day the view spans Aurlandsfjord and the start of Nærøyfjord. Less crowded than Stegastein. Starts from the signed trailhead at the far end of the campsite. The ascent is steep — use hiking poles.',
+    internal: {
+      coords: { lat: 60.8625, lng: 7.1150 },
+      dntGrade: 'blue',
+      budget: 'free',
+      seasons: ['summer', 'autumn'],
+      requiresGuide: false,
+      familyFriendly: false,
+    },
   },
   {
     name: 'Stegastein viewpoint from Aurland',
@@ -184,6 +183,14 @@ const trails: Trail[] = [
     difficulty: 'Easy',
     description:
       'Stegastein is a cantilevered viewing platform 650 meters above Aurlandsfjord, 8 km by road from Aurland village. It can be driven to (free, no toll), making it accessible to all mobility levels. Alternatively, hike the signed trail from Aurland village in 3–4 hours. The platform juts 30 meters out over the fjord — the floor is partly transparent.',
+    internal: {
+      coords: { lat: 60.9053, lng: 7.1920 },
+      dntGrade: 'green',
+      budget: 'free',
+      seasons: ['spring', 'summer', 'autumn'],
+      requiresGuide: false,
+      familyFriendly: true,
+    },
   },
   {
     name: 'Rimstigen — medieval path above Nærøyfjord',
@@ -193,6 +200,14 @@ const trails: Trail[] = [
     difficulty: 'Hard',
     description:
       "A medieval farmers' path connecting Nærøyfjord to the plateau. Steep, exposed in sections, and only accessible from the fjord side by boat — Dyrdal has no road. Factor in boat timing from Flåm or Gudvangen when planning the day. The wet rock sections become dangerously slippery in rain. DNT Red grade. The descent to Bakka on the far side is nearly as steep.",
+    internal: {
+      coords: { lat: 60.8738, lng: 6.8376 },
+      dntGrade: 'red',
+      budget: 'free',
+      seasons: ['summer', 'autumn'],
+      requiresGuide: false,
+      familyFriendly: false,
+    },
   },
   {
     name: 'Kvænangseidet — Sognefjord main trunk ridge',
@@ -202,6 +217,14 @@ const trails: Trail[] = [
     difficulty: 'Moderate',
     description:
       'A less-visited ridge walk above Sogndal with panoramic views over the main Sognefjord trunk and glacier views east toward Jostedalsbreen. The trail starts from the Sogndal side and reaches a plateau at 700 meters. A practical alternative for hikers based in Sogndal who want a mountain day without driving to Flåm.',
+    internal: {
+      coords: { lat: 61.2300, lng: 7.1000 },
+      dntGrade: 'blue',
+      budget: 'free',
+      seasons: ['summer', 'autumn'],
+      requiresGuide: false,
+      familyFriendly: false,
+    },
   },
 ];
 
@@ -212,6 +235,14 @@ const restaurants: Restaurant[] = [
     priceRange: '250–450 NOK mains',
     highlight:
       'A Viking hall-styled brewery in Flåm harbour, producing beers brewed with glacial meltwater and local botanicals. The food is hearty: elk burgers, fjord trout, Nordic sharing boards. The busiest restaurant in Flåm — arrive early or book ahead. The house dark ale is worth ordering.',
+    norgetravelRating: 8.7,
+    internal: {
+      coords: { lat: 60.8632, lng: 7.1136 },
+      budget: 'mid-range',
+      seasons: ['winter', 'spring', 'summer', 'autumn'],
+      familyFriendly: true,
+      indoor: true,
+    },
   },
   {
     name: 'Kviknes Hotel — Balestrand',
@@ -219,6 +250,14 @@ const restaurants: Restaurant[] = [
     priceRange: '350–600 NOK mains',
     highlight:
       'Kviknes Hotel has operated in Balestrand since 1877 and retains its Victorian-era wooden architecture. The restaurant uses local dairy, fjord fish, and mountain game. The finest dining in the Sognefjord area. Kaiser Wilhelm II stayed here repeatedly in the early 1900s. Non-guests can book the restaurant.',
+    norgetravelRating: 9.0,
+    internal: {
+      coords: { lat: 61.2076, lng: 6.5327 },
+      budget: 'luxury',
+      seasons: ['spring', 'summer', 'autumn'],
+      familyFriendly: true,
+      indoor: true,
+    },
   },
   {
     name: 'Fretheim Hotel restaurant — Flåm',
@@ -226,6 +265,14 @@ const restaurants: Restaurant[] = [
     priceRange: '280–500 NOK mains',
     highlight:
       "Fretheim Hotel has been the upper-end option in Flåm since 1866. The restaurant focuses on seasonal local produce: Flåm valley lamb, Sognefjord trout, and foraged ingredients from the surrounding mountains. Less crowded than Ægir, slightly more formal. Booking essential July–August.",
+    norgetravelRating: 8.3,
+    internal: {
+      coords: { lat: 60.8635, lng: 7.1123 },
+      budget: 'luxury',
+      seasons: ['spring', 'summer', 'autumn'],
+      familyFriendly: true,
+      indoor: true,
+    },
   },
   {
     name: 'Sogndal town cafés',
@@ -233,6 +280,14 @@ const restaurants: Restaurant[] = [
     priceRange: '150–300 NOK',
     highlight:
       "Sogndal is the main town on Sognefjord — 7,000 residents, university, airport — with a functioning local food scene: bakeries, cafés, and a Rema 1000 for self-catering. Loftesnes Restaurant at the edge of town is the reliable dinner option with fjord views. Less tourist-priced than Flåm.",
+    norgetravelRating: 7.3,
+    internal: {
+      coords: { lat: 61.2297, lng: 7.1015 },
+      budget: 'budget',
+      seasons: ['winter', 'spring', 'summer', 'autumn'],
+      familyFriendly: true,
+      indoor: true,
+    },
   },
 ];
 
@@ -490,20 +545,36 @@ export default function SognefjordActivities() {
                   <div className="w-10 h-10 rounded-lg bg-[#1A365D]/10 flex items-center justify-center shrink-0 text-[#1A365D]">
                     <UtensilsCrossed className="w-5 h-5" aria-hidden="true" />
                   </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-slate-800">
-                      {restaurant.name}
-                    </h3>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-2">
+                      <h3 className="text-lg font-bold text-slate-800">
+                        {restaurant.name}
+                      </h3>
+                      {restaurant.norgetravelRating !== undefined && (
+                        <span
+                          className="inline-flex items-center gap-1 bg-[#1A365D] text-white px-2 py-0.5 rounded-sm text-xs font-bold shrink-0"
+                          title="NorgeTravel rating (out of 10)"
+                        >
+                          <Star className="w-3 h-3 fill-current" aria-hidden="true" />
+                          {restaurant.norgetravelRating.toFixed(1)}
+                        </span>
+                      )}
+                    </div>
                     <p className="text-xs text-slate-500">{restaurant.cuisine}</p>
                   </div>
                 </div>
                 <p className="text-sm text-slate-600 leading-relaxed mb-4">
                   {restaurant.highlight}
                 </p>
-                <div className="mt-auto pt-3 border-t border-slate-100">
+                <div className="mt-auto pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
                   <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-sm text-xs text-slate-600 font-medium">
                     {restaurant.priceRange}
                   </span>
+                  {restaurant.norgetravelRating !== undefined && (
+                    <span className="text-[10px] uppercase tracking-wide text-slate-400 font-medium">
+                      NorgeTravel rated
+                    </span>
+                  )}
                 </div>
               </div>
             ))}

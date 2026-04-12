@@ -25,11 +25,20 @@ import { cn } from '@/lib/utils';
 /*  Types                                                              */
 /* ------------------------------------------------------------------ */
 
+interface InternalAccommodationTags {
+  coords?: { lat: number; lng: number };
+  budget?: 'free' | 'budget' | 'mid-range' | 'luxury';
+  seasons?: Array<'winter' | 'spring' | 'summer' | 'autumn'>;
+  familyFriendly?: boolean;
+  indoor?: boolean;
+}
+
 interface Accommodation {
   name: string;
   type: string;
   price: string;
   highlight: string;
+  internal?: InternalAccommodationTags;
 }
 
 interface DiningOption {
@@ -93,6 +102,13 @@ const basecamps: BasecampData[] = [
         price: '2,000\u20134,500 NOK/night',
         highlight:
           '197 rooms. 4 restaurants including Restaurant Fjorden (buffet, seats 400) and Julie (a la carte). Spa with indoor/outdoor pools. 40 EV charging points. Vintage car museum. The dominant hotel in the village.',
+        internal: {
+          coords: { lat: 62.1017, lng: 7.2067 },
+          budget: 'luxury',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
       {
         name: 'Havila Hotel Geiranger',
@@ -100,6 +116,13 @@ const basecamps: BasecampData[] = [
         price: '1,500\u20133,500 NOK/night',
         highlight:
           'Central village location with direct fjord views. Restaurant Skagefl\u00e5 focuses on traditional Norwegian dishes. Smaller scale than Hotel Union, more intimate.',
+        internal: {
+          coords: { lat: 62.1017, lng: 7.2067 },
+          budget: 'mid-range',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
       {
         name: 'Grande Fjord Hotel',
@@ -107,6 +130,13 @@ const basecamps: BasecampData[] = [
         price: '1,200\u20133,500 NOK/night',
         highlight:
           'Family-owned. 100 m from the fjord. 6th-floor panoramic restaurant with Scandinavian dishes. 2 outdoor jacuzzis with fjord views. Expanded with new building in 2024.',
+        internal: {
+          coords: { lat: 62.1017, lng: 7.2067 },
+          budget: 'mid-range',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
       {
         name: 'Geirangerfjorden Feriesenter',
@@ -114,6 +144,13 @@ const basecamps: BasecampData[] = [
         price: '190\u2013240 NOK (tent) / cabins vary',
         highlight:
           '2 km from village centre. 16 cabins (6 sizes), 42 pitches (37 with electricity). Fjord views. Renovated sanitary facilities with showers, kitchen, laundry.',
+        internal: {
+          coords: { lat: 62.1017, lng: 7.2067 },
+          budget: 'budget',
+          seasons: ['spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
     ],
     dining: [
@@ -177,6 +214,13 @@ const basecamps: BasecampData[] = [
         price: 'From ~720 NOK/night',
         highlight:
           'Simple rooms with fjord-view terrace. 11 minutes\u2019 walk uphill from centre. Common room with TV. The budget option.',
+        internal: {
+          coords: { lat: 62.0864, lng: 6.8700 },
+          budget: 'budget',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: false,
+          indoor: true,
+        },
       },
       {
         name: 'Hellesylt Camping',
@@ -184,6 +228,13 @@ const basecamps: BasecampData[] = [
         price: 'From ~200 NOK/night',
         highlight:
           'Waterfront campsite at the fjord entrance. ~100 pitches for tents, caravans, RVs. 100 m to village centre and grocery stores.',
+        internal: {
+          coords: { lat: 62.0864, lng: 6.8700 },
+          budget: 'budget',
+          seasons: ['spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: false,
+        },
       },
       {
         name: 'Hotel Union \u00d8ye (23 km away)',
@@ -191,6 +242,13 @@ const basecamps: BasecampData[] = [
         price: '2,500\u20134,000 NOK/night',
         highlight:
           'In Norangsdalen, 23 km from Hellesylt. Historic hotel where royalty and artists stayed. If you want the luxury option near Hellesylt, this is it.',
+        internal: {
+          coords: { lat: 62.0864, lng: 6.8700 },
+          budget: 'luxury',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
     ],
     dining: [
@@ -245,6 +303,13 @@ const basecamps: BasecampData[] = [
         price: '2,000\u20133,500 NOK/night',
         highlight:
           '131 rooms in a converted 1904 Art Nouveau warehouse overlooking the strait. Home to Maki restaurant (fine dining). Also operates Molja Lighthouse: a single hotel room inside a 150-year-old lighthouse at the end of a jetty.',
+        internal: {
+          coords: { lat: 62.4722, lng: 6.1495 },
+          budget: 'luxury',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
       {
         name: 'Scandic Parken',
@@ -252,6 +317,13 @@ const basecamps: BasecampData[] = [
         price: '1,300\u20132,000 NOK/night',
         highlight:
           'Reliable mid-range. Central location. Rated 8.5/10 across 2,700+ reviews. Breakfast included.',
+        internal: {
+          coords: { lat: 62.4722, lng: 6.1495 },
+          budget: 'mid-range',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
       {
         name: 'Thon Hotel \u00c5lesund',
@@ -259,6 +331,13 @@ const basecamps: BasecampData[] = [
         price: '1,300\u20132,000 NOK/night',
         highlight:
           'Central. Rated 8.6/10. Standard Thon quality. Good fallback if Brosundet is booked.',
+        internal: {
+          coords: { lat: 62.4722, lng: 6.1495 },
+          budget: 'mid-range',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
       {
         name: '\u00c5lesund Youth Hostel',
@@ -266,6 +345,13 @@ const basecamps: BasecampData[] = [
         price: 'From ~420\u2013530 NOK/night',
         highlight:
           'Dorm and private rooms. Clean, spacious. Common lounge. The genuine budget option in the city.',
+        internal: {
+          coords: { lat: 62.4722, lng: 6.1495 },
+          budget: 'budget',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: false,
+          indoor: true,
+        },
       },
     ],
     dining: [
@@ -330,6 +416,13 @@ const basecamps: BasecampData[] = [
         price: '3,500\u20137,500 NOK/night (incl. breakfast + dinner)',
         highlight:
           'Glass-and-wood cabins by Jensen & Skodvin Architects. Filming location for Ex Machina and Succession. 7 Landscape Rooms, 2 Bird Houses, 1 Writer\u2019s Lodge. 8 km from Valldal centre at Gudbrandsjuvet gorge. A destination in itself.',
+        internal: {
+          coords: { lat: 62.3047, lng: 7.3778 },
+          budget: 'luxury',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: false,
+          indoor: true,
+        },
       },
       {
         name: 'Valldal Fjordhotell',
@@ -337,6 +430,13 @@ const basecamps: BasecampData[] = [
         price: 'From ~1,250 NOK/night',
         highlight:
           '40 rooms on Norddalsfjord. Ground-floor rooms with private terraces. Restaurant with local specialties. ROA sauna by the river. Expanding with 16 new rooms for summer 2026.',
+        internal: {
+          coords: { lat: 62.3047, lng: 7.3778 },
+          budget: 'mid-range',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
       {
         name: 'Gjerde Camping',
@@ -344,6 +444,13 @@ const basecamps: BasecampData[] = [
         price: 'Cabins from ~800 NOK/night',
         highlight:
           'High-standard cabins (5\u20137 beds) and basic cabins. Family-friendly. Scenic valley setting.',
+        internal: {
+          coords: { lat: 62.3047, lng: 7.3778 },
+          budget: 'budget',
+          seasons: ['spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
     ],
     dining: [

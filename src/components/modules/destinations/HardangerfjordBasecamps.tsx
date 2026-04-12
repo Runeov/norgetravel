@@ -4,12 +4,21 @@ import { useState } from 'react';
 import { MapPin, Mountain, Apple, Ship, Clock, CheckCircle, XCircle, Info, ExternalLink } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+interface InternalAccommodationTags {
+  coords?: { lat: number; lng: number };
+  budget?: 'free' | 'budget' | 'mid-range' | 'luxury';
+  seasons?: Array<'winter' | 'spring' | 'summer' | 'autumn'>;
+  familyFriendly?: boolean;
+  indoor?: boolean;
+}
+
 interface Accommodation {
   name: string;
   type: string;
   priceRange: string;
   note: string;
   bookingUrl?: string;
+  internal?: InternalAccommodationTags;
 }
 
 interface DiningOption {
@@ -71,18 +80,39 @@ const basecamps: BasecampData[] = [
         priceRange: '900–1,800 NOK/night',
         note: 'Purpose-built for Trolltunga hikers. Gear storage, packed lunch service, shuttle pickup arranged at reception. Books out in July and August — reserve minimum 3 months ahead.',
         bookingUrl: 'https://www.booking.com/hotel/no/trolltunga.html',
+        internal: {
+          coords: { lat: 60.0680, lng: 6.5463 },
+          budget: 'mid-range',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
       {
         name: 'Odda Camping',
         type: 'Camping + Cabins',
         priceRange: '200 NOK tent / 600–900 NOK cabin',
         note: 'On the fjord shore 2 km from town. Tent sites, caravans, and basic cabins. Shared facilities. EV charging. Shuttle to Trolltunga trailhead available.',
+        internal: {
+          coords: { lat: 60.0680, lng: 6.5463 },
+          budget: 'budget',
+          seasons: ['spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
       {
         name: 'Buer Gard Camping',
         type: 'Farm camping',
         priceRange: '150–200 NOK tent',
         note: 'Seasonal farm camping closer to the Folgefonna glacier approach. Quiet, basic, operated by a working farm. No EV charging.',
+        internal: {
+          coords: { lat: 60.0680, lng: 6.5463 },
+          budget: 'budget',
+          seasons: ['spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: false,
+        },
       },
     ],
     dining: [
@@ -146,18 +176,39 @@ const basecamps: BasecampData[] = [
         priceRange: '1,200–2,400 NOK/night',
         note: 'The main hotel in the village, directly on the fjord shore. Standard rooms, sauna, fjord-view restaurant. Books solid in summer — reserve early.',
         bookingUrl: 'https://www.booking.com/hotel/no/eidfjord.html',
+        internal: {
+          coords: { lat: 60.4679, lng: 7.0686 },
+          budget: 'mid-range',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
       {
         name: 'Fossli Hotel',
         type: 'Historic mountain hotel',
         priceRange: '1,500–2,800 NOK/night',
         note: 'Perched above Vøringsfossen at 620 metres, open since 1891. Views directly over the gorge. Historic, characterful, and priced accordingly. Full board packages available.',
+        internal: {
+          coords: { lat: 60.4679, lng: 7.0686 },
+          budget: 'mid-range',
+          seasons: ['spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
       {
         name: 'Eidfjord Camping',
         type: 'Camping',
         priceRange: '180–220 NOK tent',
         note: 'Flat, well-kept campsite at the fjord\'s edge. Seasonal, open May–September. Basic cabins also available at approximately 700 NOK.',
+        internal: {
+          coords: { lat: 60.4679, lng: 7.0686 },
+          budget: 'budget',
+          seasons: ['spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
     ],
     dining: [
@@ -220,18 +271,39 @@ const basecamps: BasecampData[] = [
         priceRange: '1,500–3,500 NOK/night',
         note: 'The centrepiece of Lofthus since 1846. Fjord-facing rooms, spa, pool, and gardens. Grieg\'s piano remains in the Grieg cabin on the grounds. This is one of Norway\'s genuinely historic hotels, not a heritage imitation.',
         bookingUrl: 'https://www.booking.com/hotel/no/ullensvang-hotel.html',
+        internal: {
+          coords: { lat: 60.3297, lng: 6.6548 },
+          budget: 'luxury',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
       {
         name: 'Lofthus Camping',
         type: 'Camping',
         priceRange: '170–200 NOK tent',
         note: 'Orchard camping — tent pitches among the apple trees. Seasonal, May–September. No EV charging. The setting is remarkable even if the facilities are basic.',
+        internal: {
+          coords: { lat: 60.3297, lng: 6.6548 },
+          budget: 'budget',
+          seasons: ['spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: false,
+        },
       },
       {
         name: 'Hardanger Gard',
         type: 'Farm stays / self-catering',
         priceRange: '1,200–2,000 NOK/night',
         note: 'Several working farms in the Lofthus area offer self-catering fjord-view apartments. Book directly through visitnorway.com or visitullensvang.no.',
+        internal: {
+          coords: { lat: 60.3297, lng: 6.6548 },
+          budget: 'mid-range',
+          seasons: ['spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
     ],
     dining: [
@@ -294,12 +366,26 @@ const basecamps: BasecampData[] = [
         priceRange: '1,000–1,800 NOK/night',
         note: 'The main hotel in Norheimsund. Traditional wooden building on the fjord. Reliable rather than remarkable. Good base for day trip hiking.',
         bookingUrl: 'https://www.booking.com/searchresults.html?ss=Norheimsund',
+        internal: {
+          coords: { lat: 60.3731, lng: 6.1470 },
+          budget: 'mid-range',
+          seasons: ['winter', 'spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
       {
         name: 'Kvam Camping',
         type: 'Camping',
         priceRange: '180–220 NOK tent',
         note: 'Seasonal campsite on the fjord shore. Tent and caravan pitches, basic cabins. EV charging available.',
+        internal: {
+          coords: { lat: 60.3731, lng: 6.1470 },
+          budget: 'budget',
+          seasons: ['spring', 'summer', 'autumn'],
+          familyFriendly: true,
+          indoor: true,
+        },
       },
     ],
     dining: [
