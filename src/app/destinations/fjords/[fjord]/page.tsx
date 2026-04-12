@@ -6,6 +6,15 @@ import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { GeirangerActivities } from '@/components/modules/destinations/GeirangerActivities';
 import { GeirangerGettingThere } from '@/components/modules/destinations/GeirangerGettingThere';
 import { GeirangerBasecamps } from '@/components/modules/destinations/GeirangerBasecamps';
+import NaeroyfjordActivities from '@/components/modules/destinations/NaeroyfjordActivities';
+import NaeroyfjordGettingThere from '@/components/modules/destinations/NaeroyfjordGettingThere';
+import NaeroyfjordBasecamps from '@/components/modules/destinations/NaeroyfjordBasecamps';
+import HardangerfjordActivities from '@/components/modules/destinations/HardangerfjordActivities';
+import HardangerfjordGettingThere from '@/components/modules/destinations/HardangerfjordGettingThere';
+import HardangerfjordBasecamps from '@/components/modules/destinations/HardangerfjordBasecamps';
+import SognefjordActivities from '@/components/modules/destinations/SognefjordActivities';
+import SognefjordGettingThere from '@/components/modules/destinations/SognefjordGettingThere';
+import SognefjordBasecamps from '@/components/modules/destinations/SognefjordBasecamps';
 import { notFound } from 'next/navigation';
 import { getFjord, getAllFjordSlugs } from '@/data/fjords';
 
@@ -118,6 +127,12 @@ export default async function FjordPage({ params }: PageProps) {
         <div className="container mx-auto px-4">
           {fjord.slug === 'geirangerfjord' ? (
             <GeirangerActivities />
+          ) : fjord.slug === 'naeroyfjord' ? (
+            <NaeroyfjordActivities />
+          ) : fjord.slug === 'hardangerfjord' ? (
+            <HardangerfjordActivities />
+          ) : fjord.slug === 'sognefjord' ? (
+            <SognefjordActivities />
           ) : (
             <>
               <div className="flex items-center gap-3 mb-4">
@@ -167,6 +182,12 @@ export default async function FjordPage({ params }: PageProps) {
         <div className="container mx-auto px-4">
           {fjord.slug === 'geirangerfjord' ? (
             <GeirangerGettingThere />
+          ) : fjord.slug === 'naeroyfjord' ? (
+            <NaeroyfjordGettingThere />
+          ) : fjord.slug === 'hardangerfjord' ? (
+            <HardangerfjordGettingThere />
+          ) : fjord.slug === 'sognefjord' ? (
+            <SognefjordGettingThere />
           ) : (
             <>
               <div className="flex items-center gap-3 mb-4">
@@ -196,6 +217,12 @@ export default async function FjordPage({ params }: PageProps) {
         <div className="container mx-auto px-4">
           {fjord.slug === 'geirangerfjord' ? (
             <GeirangerBasecamps />
+          ) : fjord.slug === 'naeroyfjord' ? (
+            <NaeroyfjordBasecamps />
+          ) : fjord.slug === 'hardangerfjord' ? (
+            <HardangerfjordBasecamps />
+          ) : fjord.slug === 'sognefjord' ? (
+            <SognefjordBasecamps />
           ) : (
             <>
               <h2 className="text-3xl font-bold text-slate-900 mb-4">Where to base yourself</h2>
