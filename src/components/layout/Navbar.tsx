@@ -22,6 +22,9 @@ export function Navbar() {
   const { openMap } = useTripMap();
   const { itemCount } = useTrip();
 
+  const isHome = pathname === '/';
+  const solid = scrolled || !isHome;
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -53,7 +56,7 @@ export function Navbar() {
 
   const navLinkClass = (isActive: boolean) =>
     `px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-      scrolled
+      solid
         ? isActive
           ? 'text-[#1B3A5C] bg-[#1B3A5C]/10'
           : 'text-slate-600 hover:text-[#1B3A5C] hover:bg-slate-50'
@@ -92,7 +95,7 @@ export function Navbar() {
   return (
     <nav
       className={`sticky top-0 z-50 w-full border-b transition-all duration-300 ${
-        scrolled
+        solid
           ? 'bg-white/80 backdrop-blur-md border-slate-200/50 shadow-sm'
           : 'bg-transparent border-transparent'
       }`}
@@ -108,7 +111,7 @@ export function Navbar() {
                 alt="NorgeTravel Logo"
                 width={220}
                 height={80}
-                className={`h-20 w-auto rounded-xl transition-all duration-300 ${scrolled ? '' : 'brightness-0 invert'}`}
+                className={`h-20 w-auto rounded-xl transition-all duration-300 ${solid ? '' : 'brightness-0 invert'}`}
                 priority
                 placeholder="blur"
               />
@@ -222,7 +225,7 @@ export function Navbar() {
               <Link
                 href="/my-trip"
                 className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  scrolled
+                  solid
                     ? 'text-[#1B3A5C] hover:bg-[#1B3A5C]/10'
                     : 'text-white/90 hover:text-white hover:bg-white/10'
                 }`}
@@ -256,7 +259,7 @@ export function Navbar() {
                 });
               }}
               className={`inline-flex items-center justify-center p-2 rounded-full transition-colors ${
-                scrolled
+                solid
                   ? 'text-slate-600 hover:text-[#1B3A5C] hover:bg-[#1B3A5C]/10'
                   : 'text-white hover:text-white hover:bg-white/10'
               }`}

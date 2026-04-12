@@ -46,9 +46,27 @@ const fjords = [
 ];
 
 const operators = [
-  { name: 'Hurtigruten', route: 'Full coastal route', emission: 'Hybrid-electric', commission: 'Trade portal' },
-  { name: 'Havila Voyages', route: 'Bergen–Kirkenes', emission: 'LNG + battery', commission: 'Agency form' },
-  { name: 'Fjord Tours', route: 'Norway in a Nutshell', emission: 'Electric ferries', commission: 'GetYourGuide 7%' },
+  {
+    name: 'Hurtigruten',
+    route: 'Full coastal route',
+    emission: 'Hybrid-electric',
+    url: 'https://www.hurtigruten.com',
+    description: 'Since 1893. Bergen–Kirkenes in 12 days, 34 ports. Hybrid-electric fleet with the Sea Zero project targeting a zero-emission ship by 2030.',
+  },
+  {
+    name: 'Havila Voyages',
+    route: 'Bergen–Kirkenes',
+    emission: 'LNG + battery',
+    url: 'https://www.havilavoyages.com',
+    description: 'Four ships with the largest battery packs at sea. 4 hours silent sailing through Geirangerfjord and Nærøyfjord — already meeting the 2026 zero-emission mandate.',
+  },
+  {
+    name: 'Fjord Tours',
+    route: 'Norway in a Nutshell',
+    emission: 'Electric ferries',
+    url: 'https://www.fjordtours.com',
+    description: 'Norway in a Nutshell since 1982. One ticket combines the Bergen Railway, Flåm Railway, and an all-electric fjord cruise across Nærøyfjord.',
+  },
 ];
 
 export default async function FjordsPage() {
@@ -124,15 +142,20 @@ export default async function FjordsPage() {
           <p className="text-slate-600 mb-10 max-w-2xl">Norway mandates zero-emission fjord cruises from 2026. These operators are already there.</p>
           <div className="grid sm:grid-cols-3 gap-6 mb-10">
             {operators.map((op) => (
-              <div key={op.name} className="border border-slate-200 rounded-2xl p-6">
+              <a
+                key={op.name}
+                href={op.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block border border-slate-200 rounded-2xl p-6 hover:border-[#1B3A5C] hover:shadow-md transition-all"
+              >
                 <h3 className="font-bold text-slate-900 mb-1">{op.name}</h3>
                 <p className="text-sm text-slate-500 mb-2">{op.route}</p>
-                <span className="inline-block text-xs bg-[#00CC6A]/10 text-[#00CC6A] font-medium px-2 py-1 rounded-full mb-3">{op.emission}</span>
-                <p className="text-xs text-slate-400">Affiliate: {op.commission}</p>
-              </div>
+                <p className="text-sm text-slate-600 leading-relaxed mb-3">{op.description}</p>
+                <span className="inline-block text-xs bg-[#00CC6A]/10 text-[#00CC6A] font-medium px-2 py-1 rounded-full">{op.emission}</span>
+              </a>
             ))}
           </div>
-          <p className="text-xs text-slate-400">All operator links on NorgeTravel include rel="sponsored" disclosure per FTC and EU guidelines.</p>
         </div>
       </section>
 

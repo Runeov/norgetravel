@@ -44,6 +44,18 @@ interface Trail {
   difficulty: 'Easy' | 'Moderate' | 'Hard';
   description: string;
   slug?: string;
+  /**
+   * Hidden internal metadata. Never rendered in UI.
+   * Reserved for the advanced trip planner (filters, map pins, itinerary building).
+   */
+  internal?: {
+    coords?: { lat: number; lng: number };
+    dntGrade?: 'green' | 'blue' | 'red' | 'black';
+    budget?: 'free' | 'budget' | 'mid-range' | 'luxury';
+    seasons?: Array<'winter' | 'spring' | 'summer' | 'autumn'>;
+    requiresGuide?: boolean;
+    familyFriendly?: boolean;
+  };
 }
 
 interface Restaurant {
@@ -75,9 +87,9 @@ const featuredGuides: ActivityGuide[] = [
     price: 'From 450 NOK',
     season: 'Year-round (reduced winter)',
     icon: <Ship className="w-5 h-5" aria-hidden="true" />,
-    href: 'https://www.getyourguide.com/flam-l2424/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
-    linkLabel: 'Book the Nærøyfjord ferry',
-    isExternal: true,
+    href: '/kunnskapsbank/trip-reports/naeroyfjord-electric-ferry-review',
+    linkLabel: 'Read the full review',
+    isExternal: false,
     bookingUrl:
       'https://www.getyourguide.com/flam-l2424/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
   },
@@ -89,9 +101,9 @@ const featuredGuides: ActivityGuide[] = [
     price: 'From 390 NOK',
     season: 'Year-round',
     icon: <Train className="w-5 h-5" aria-hidden="true" />,
-    href: 'https://www.getyourguide.com/flam-l2424/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
-    linkLabel: 'Book the Flåm Railway',
-    isExternal: true,
+    href: '/kunnskapsbank/trip-reports/flam-railway-myrdal-review',
+    linkLabel: 'Read the full review',
+    isExternal: false,
     bookingUrl:
       'https://www.getyourguide.com/flam-l2424/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
   },
@@ -103,9 +115,9 @@ const featuredGuides: ActivityGuide[] = [
     price: 'From 890 NOK',
     season: 'May–September',
     icon: <Waves className="w-5 h-5" aria-hidden="true" />,
-    href: 'https://www.getyourguide.com/flam-l2424/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
-    linkLabel: 'Book kayak tour',
-    isExternal: true,
+    href: '/kunnskapsbank/trip-reports/kayaking-naeroyfjord-guided-review',
+    linkLabel: 'Read the full review',
+    isExternal: false,
     bookingUrl:
       'https://www.getyourguide.com/flam-l2424/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
   },
@@ -117,9 +129,9 @@ const featuredGuides: ActivityGuide[] = [
     price: 'From 1,490 NOK',
     season: 'Daily in summer (May–Sep)',
     icon: <Mountain className="w-5 h-5" aria-hidden="true" />,
-    href: 'https://www.getyourguide.com/flam-l2424/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
-    linkLabel: 'Book Norway in a Nutshell',
-    isExternal: true,
+    href: '/kunnskapsbank/trip-reports/norway-in-a-nutshell-bergen-review',
+    linkLabel: 'Read the full review',
+    isExternal: false,
     bookingUrl:
       'https://www.getyourguide.com/flam-l2424/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
   },
@@ -177,24 +189,27 @@ const trails: Trail[] = [
     difficulty: 'Hard',
     description:
       'The historic mountain path from Gudvangen up to the Nali farm terrace 850 meters above sea level. Steep from the first step. Rimstigen is closed November to April. Access from the fjord side is by boat from Gudvangen — there is no road to the trailhead. Book a boat connection from visitflam.com and factor crossing time into your day. DNT Red grade. 850 meters of elevation in 5.5 km.',
+    slug: 'rimstigen-naeroyfjord-trail-report',
   },
   {
     name: 'Stegastein viewpoint',
-    distance: '5 km return',
-    elevation: '650 m',
-    time: '2.5–3.5 hours',
+    distance: '6 km one way',
+    elevation: '640 m',
+    time: '5–6 hours round trip',
     difficulty: 'Moderate',
     description:
-      'From Aurland village, climb to Stegastein — a cantilevered platform jutting 4 meters out from the cliff 650 meters above Aurlandsfjord. The fjord and surrounding peaks are visible from the platform. Marked trail with a moderate gradient. Alternatively, drive to the car park and walk the last 200 meters from the road.',
+      'The walking route from Aurland village to the 30-meter cantilevered platform at 640 meters above Aurlandsfjord. The drive up the Rv243 Bjørgavegen takes 20 minutes and fills the car park by midday in summer. The trail takes 2.5 to 3 hours up through forest and past abandoned summer farms. You earn the platform on foot and choose your window.',
+    slug: 'stegastein-viewpoint-aurland-hike',
   },
   {
     name: 'Bakka–Nali farm trail',
-    distance: '8 km return',
-    elevation: '500 m',
-    time: '3–4 hours',
-    difficulty: 'Moderate',
+    distance: '3 km one way',
+    elevation: '800 m',
+    time: '5–6 hours round trip',
+    difficulty: 'Hard',
     description:
-      'From Bakka village (reached by boat from Gudvangen or Flåm), climb through abandoned farm terraces on the fjord shelf. The trail passes the remains of farm buildings inhabited until the 1970s. The view across Nærøyfjord from the upper shelf is unobstructed in both directions. DNT Blue grade. Start early if combining with the boat crossing.',
+      'The old farm path from Bakka village on Nærøyfjord to the abandoned summer farm at Nali, 800 meters above the water. DNT Red: sustained steep gradient, exposed upper sections, no facilities. Access to Bakka by local ferry from Gudvangen or road via Dyrdal. One of the few trails in the UNESCO fjord where you look straight down at the ferry route.',
+    slug: 'bakka-nali-farm-trail-naeroyfjord',
   },
   {
     name: 'Prest viewpoint — above Flåm',
@@ -204,6 +219,7 @@ const trails: Trail[] = [
     difficulty: 'Moderate',
     description:
       'The Prest trail climbs steeply from Flåm village to a viewpoint at 580 meters directly above the start of Nærøyfjord. On a clear day you see the entire fjord confluence — Aurlandsfjord, the start of Nærøyfjord, and Flåm village below. Less crowded than the Aurland side trails. Starts from the signed trailhead at the far end of the campsite.',
+    slug: 'prest-viewpoint-flam-trail',
   },
 ];
 
@@ -439,43 +455,67 @@ export default function NaeroyfjordActivities() {
         {/* Hiking */}
         {activeTab === 'hiking' && (
           <div className="grid sm:grid-cols-2 gap-6">
-            {trails.map((trail) => (
-              <div
-                key={trail.name}
-                className="bg-white rounded-lg border border-slate-200 p-6 hover:shadow-md transition-shadow flex flex-col"
-              >
-                <div className="flex items-start justify-between gap-3 mb-3">
-                  <h3 className="text-lg font-bold text-slate-800">
-                    {trail.name}
-                  </h3>
-                  <span
-                    className={cn(
-                      'inline-flex items-center px-2 py-1 rounded-sm text-xs font-bold uppercase tracking-wide shrink-0',
-                      difficultyColor[trail.difficulty]
-                    )}
-                  >
-                    {trail.difficulty}
-                  </span>
+            {trails.map((trail) => {
+              const cardInner = (
+                <>
+                  <div className="flex items-start justify-between gap-3 mb-3">
+                    <h3 className="text-lg font-bold text-slate-800">
+                      {trail.name}
+                    </h3>
+                    <span
+                      className={cn(
+                        'inline-flex items-center px-2 py-1 rounded-sm text-xs font-bold uppercase tracking-wide shrink-0',
+                        difficultyColor[trail.difficulty]
+                      )}
+                    >
+                      {trail.difficulty}
+                    </span>
+                  </div>
+                  <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                    {trail.description}
+                  </p>
+                  <div className="mt-auto flex flex-wrap items-center gap-3 text-xs pt-3 border-t border-slate-100">
+                    <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-sm text-slate-600 font-medium">
+                      <Ruler className="w-3 h-3" aria-hidden="true" />
+                      {trail.distance}
+                    </span>
+                    <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-sm text-slate-600 font-medium">
+                      <TrendingUp className="w-3 h-3" aria-hidden="true" />
+                      {trail.elevation}
+                    </span>
+                    <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-sm text-slate-600 font-medium">
+                      <Clock className="w-3 h-3" aria-hidden="true" />
+                      {trail.time}
+                    </span>
+                  </div>
+                  {trail.slug && (
+                    <div className="pt-3 mt-3 border-t border-slate-100">
+                      <span className="inline-flex items-center gap-1 text-sm font-bold text-[#1A365D] group-hover:text-[#00D084] transition-colors">
+                        Read the full trail guide
+                        <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                      </span>
+                    </div>
+                  )}
+                </>
+              );
+
+              return trail.slug ? (
+                <Link
+                  key={trail.name}
+                  href={`/kunnskapsbank/trip-reports/${trail.slug}`}
+                  className="group bg-white rounded-lg border border-slate-200 p-6 hover:shadow-md hover:border-[#1A365D]/40 transition-all flex flex-col"
+                >
+                  {cardInner}
+                </Link>
+              ) : (
+                <div
+                  key={trail.name}
+                  className="bg-white rounded-lg border border-slate-200 p-6 hover:shadow-md transition-shadow flex flex-col"
+                >
+                  {cardInner}
                 </div>
-                <p className="text-sm text-slate-600 leading-relaxed mb-4">
-                  {trail.description}
-                </p>
-                <div className="mt-auto flex flex-wrap items-center gap-3 text-xs pt-3 border-t border-slate-100">
-                  <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-sm text-slate-600 font-medium">
-                    <Ruler className="w-3 h-3" aria-hidden="true" />
-                    {trail.distance}
-                  </span>
-                  <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-sm text-slate-600 font-medium">
-                    <TrendingUp className="w-3 h-3" aria-hidden="true" />
-                    {trail.elevation}
-                  </span>
-                  <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-sm text-slate-600 font-medium">
-                    <Clock className="w-3 h-3" aria-hidden="true" />
-                    {trail.time}
-                  </span>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
 

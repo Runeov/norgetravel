@@ -231,17 +231,46 @@ export default async function DynamicArticlePage({ params }: PageProps) {
           )}
         </header>
 
-        {/* Featured Image */}
-        {article.featuredImage && (
+        {/* Featured Video or Image */}
+        {(article.featuredVideo || article.featuredImage) && (
           <figure className="mb-16">
-            <div className="rounded-lg overflow-hidden shadow-lg">
-              <img
-                src={article.featuredImage}
-                alt={article.featuredImageAlt || article.title}
-                className="w-full h-auto object-cover"
-              />
+            <div className="relative rounded-lg overflow-hidden shadow-lg">
+              {article.featuredVideo ? (
+                <>
+                  <video
+                    src={article.featuredVideo}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-auto"
+                  />
+                  {/* Gradient + text overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                    <span className={`inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest ${theme.badge} mb-3`}>
+                      <BookOpen className="w-3 h-3" aria-hidden="true" />
+                      {categoryLabel}
+                    </span>
+                    <h2 className="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-1">
+                      {article.title}
+                    </h2>
+                    {article.subtitle && (
+                      <p className="text-sm md:text-base text-white/75 font-medium leading-snug mt-2 max-w-2xl">
+                        {article.subtitle}
+                      </p>
+                    )}
+                  </div>
+                </>
+              ) : (
+                <img
+                  src={article.featuredImage}
+                  alt={article.featuredImageAlt || article.title}
+                  className="w-full h-auto object-cover"
+                />
+              )}
             </div>
-            {article.featuredImageAlt && (
+            {article.featuredImageAlt && !article.featuredVideo && (
               <figcaption className="text-xs text-slate-400 mt-2">
                 {article.featuredImageAlt}
               </figcaption>

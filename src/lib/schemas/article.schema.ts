@@ -28,6 +28,7 @@ export const ArticleSchema = z.object({
   authorName: z.string().optional(),
   featuredImage: z.string().nullable().optional(),
   featuredImageAlt: z.string().nullable().optional(),
+  featuredVideo: z.string().nullable().optional(),
   metaTitle: z.string().optional(),
   metaDescription: z.string().optional(),
   status: ArticleStatusSchema,

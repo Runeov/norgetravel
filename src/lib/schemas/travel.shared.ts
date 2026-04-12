@@ -15,6 +15,29 @@ export const PriceRangeSchema = z.enum(['budget', 'mid-range', 'luxury', 'varies
 // ─── Status enum ───
 export const TravelItemStatusSchema = z.enum(['draft', 'published']);
 
+// ─── Internal-only metadata (hidden from UI, used by future advanced trip planner) ───
+export const GeoCoordsSchema = z.object({
+  lat: z.number().min(-90).max(90),
+  lng: z.number().min(-180).max(180),
+});
+
+export const DNTGradeSchema = z.enum(['green', 'blue', 'red', 'black']);
+export const DifficultySchema = z.enum(['easy', 'moderate', 'hard', 'expert']);
+export const InternalBudgetSchema = z.enum(['free', 'budget', 'mid-range', 'luxury']);
+export const InternalSeasonSchema = z.enum(['winter', 'spring', 'summer', 'autumn']);
+
+export const InternalTagsSchema = z.object({
+  budget: InternalBudgetSchema.optional(),
+  difficulty: DifficultySchema.optional(),
+  dntGrade: DNTGradeSchema.optional(),
+  seasons: z.array(InternalSeasonSchema).optional(),
+  durationHours: z.number().min(0).optional(),
+  familyFriendly: z.boolean().optional(),
+  requiresGuide: z.boolean().optional(),
+  indoor: z.boolean().optional(),
+  accessibility: z.enum(['wheelchair', 'stroller', 'limited-mobility', 'none']).optional(),
+}).strict();
+
 // ─── Base schema that all 5 categories extend ───
 export const TravelItemBaseSchema = z.object({
   id: z.string().min(1),
@@ -31,6 +54,9 @@ export const TravelItemBaseSchema = z.object({
   sortOrder: z.number(),
   createdAt: z.string(),
   updatedAt: z.string(),
+  // Hidden internal metadata — never rendered in UI, reserved for advanced trip planner
+  coords: GeoCoordsSchema.optional(),
+  internalTags: InternalTagsSchema.optional(),
 });
 
 // ─── Create variant (omits auto-generated fields) ───
@@ -51,6 +77,12 @@ export type TravelItemStatus = z.infer<typeof TravelItemStatusSchema>;
 export type TravelItemBase = z.infer<typeof TravelItemBaseSchema>;
 export type TravelItemBaseCreate = z.infer<typeof TravelItemBaseCreateSchema>;
 export type TravelItemBaseUpdate = z.infer<typeof TravelItemBaseUpdateSchema>;
+export type GeoCoords = z.infer<typeof GeoCoordsSchema>;
+export type DNTGrade = z.infer<typeof DNTGradeSchema>;
+export type Difficulty = z.infer<typeof DifficultySchema>;
+export type InternalBudget = z.infer<typeof InternalBudgetSchema>;
+export type InternalSeason = z.infer<typeof InternalSeasonSchema>;
+export type InternalTags = z.infer<typeof InternalTagsSchema>;
 
 // ─── Labels for destinations ───
 export const DESTINATION_LABELS: Record<Destination, string> = {

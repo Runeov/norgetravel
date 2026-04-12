@@ -58,7 +58,7 @@ const iconMap: Record<string, React.ElementType> = {
   'sv-events': Calendar,
   'sv-tours': Compass,
   'sv-accommodation': Bed,
-  'fj-cities': MapPin,
+  'fj-fjords': Waves,
   'fj-activities': Sparkles,
   'fj-events': Calendar,
   'fj-tours': Compass,
@@ -416,7 +416,7 @@ export function ZoneDetailView({
 
           {/* Mobile zone navigation */}
           {allZones && allZones.length > 1 && onSwitchZone && (
-            <div className="sm:hidden flex items-center gap-2 mt-4 pt-4 border-t border-white/10">
+            <div className="sm:hidden grid grid-cols-3 gap-2 mt-4 pt-4 border-t border-white/10">
               {allZones.map((zone) => {
                 const isActive = zone.zoneId === data.zoneId;
                 const ZoneIcon = zoneIconMap[zone.zoneId] || Calendar;
@@ -430,14 +430,14 @@ export function ZoneDetailView({
                         onSwitchZone(zone.zoneId);
                       }
                     }}
-                    className={`flex-1 flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-medium transition-all ${
+                    className={`min-w-0 flex flex-col items-center justify-center gap-1 px-1.5 py-2 rounded-lg text-[10px] leading-tight text-center font-medium transition-all ${
                       isActive
                         ? 'bg-white/15 text-white'
                         : 'bg-white/5 text-white/40'
                     }`}
                   >
-                    <ZoneIcon className="w-3.5 h-3.5" aria-hidden="true" />
-                    {zone.zoneName}
+                    <ZoneIcon className="w-4 h-4 shrink-0" aria-hidden="true" />
+                    <span className="block w-full break-words">{zone.zoneName}</span>
                   </button>
                 );
               })}
