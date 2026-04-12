@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, MapPin } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
+import { ShareButtons } from '@/components/ui/ShareButtons';
 import { cities } from '@/data/city-attractions';
 
 export const metadata: Metadata = {
@@ -103,6 +104,11 @@ export default function CitiesIndexPage() {
               Norwegian Fjords
             </Link>
           </div>
+        </div>
+      </section>
+      <section className="relative z-10 py-10 border-t border-slate-200 bg-white">
+        <div className="container mx-auto px-4 flex justify-center">
+          <ShareButtons url="/destinations/cities/" title="Cities of Norway Travel Guide" />
         </div>
       </section>
     </main>

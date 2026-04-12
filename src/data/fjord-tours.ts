@@ -91,7 +91,7 @@ export const naeroyfjordTours: RawTour[] = [
     highlight:
       'Bergen Railway to Myrdal, Flåm Railway to Flåm, Nærøyfjord electric ferry to Gudvangen, bus over Stalheimskleiva back to Voss, train to Bergen. The most efficient way to see the fjords without a car. Departs Bergen 08:05 daily in summer.',
     affiliateUrl:
-      'https://www.getyourguide.com/flam-l2424/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
+      'https://www.getyourguide.com/flam-l108502/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
     internal: {
       coords: { lat: 60.3913, lng: 5.3221 },
       difficulty: 'easy',
@@ -111,7 +111,7 @@ export const naeroyfjordTours: RawTour[] = [
     highlight:
       'Departs from Gudvangen Viking Village. Groups of maximum 8 with one guide. Paddle into the fjord past abandoned farm terraces and seasonal waterfalls. Drysuits provided. No prior kayak experience required.',
     affiliateUrl:
-      'https://www.getyourguide.com/flam-l2424/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
+      'https://www.getyourguide.com/flam-l108502/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
     internal: {
       coords: { lat: 60.8710, lng: 6.8413 },
       difficulty: 'moderate',
@@ -131,7 +131,7 @@ export const naeroyfjordTours: RawTour[] = [
     highlight:
       'High-speed RIB from Flåm harbour up Aurlandsfjord and into the Nærøyfjord entrance. Flotation suits provided. View of Stegastein from the water. Maximum 12 passengers per boat.',
     affiliateUrl:
-      'https://www.getyourguide.com/flam-l2424/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
+      'https://www.getyourguide.com/flam-l108502/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
     internal: {
       coords: { lat: 60.8632, lng: 7.1136 },
       difficulty: 'easy',
@@ -151,7 +151,7 @@ export const naeroyfjordTours: RawTour[] = [
     highlight:
       'Myrdal to Flåm (or reverse). Includes Kjosfossen waterfall stop. Buy tickets in advance through the Flåm Railway official booking or at Flåm station. The route is most scenic descending from Myrdal.',
     affiliateUrl:
-      'https://www.getyourguide.com/flam-l2424/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
+      'https://www.getyourguide.com/flam-l108502/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
     internal: {
       coords: { lat: 60.8632, lng: 7.1136 },
       difficulty: 'easy',
@@ -257,7 +257,7 @@ export const sognefjordTours: RawTour[] = [
     highlight:
       'Bergen to Voss by train, Voss to Myrdal by train, Flåm Railway to Flåm, electric ferry through Nærøyfjord to Gudvangen, bus over Stalheim to Voss, train back to Bergen. Covers the full Sognefjord/Nærøyfjord experience in a single day without a car. Departs Bergen 08:05 daily in summer.',
     affiliateUrl:
-      'https://www.getyourguide.com/bergen-l173/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
+      'https://www.getyourguide.com/bergen-l1132/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
     internal: {
       coords: { lat: 60.3913, lng: 5.3221 },
       difficulty: 'easy',
@@ -277,7 +277,7 @@ export const sognefjordTours: RawTour[] = [
     highlight:
       'Norled operates the express boat from Bergen directly into the main Sognefjord trunk, calling at Balestrand, Leikanger, and Flåm. Covers sections of Sognefjord not accessible by road. Operates summer season on the full route; year-round between Flåm and Balestrand.',
     affiliateUrl:
-      'https://www.getyourguide.com/flam-l2424/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
+      'https://www.getyourguide.com/flam-l108502/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
     internal: {
       coords: { lat: 60.3913, lng: 5.3221 },
       difficulty: 'easy',
@@ -297,7 +297,7 @@ export const sognefjordTours: RawTour[] = [
     highlight:
       'Jostedalsbreen is the largest glacier in mainland Europe at 487 square kilometres. Outlet glaciers accessible from the Sognefjord area include Nigardsbreen (from Luster) and Supphellebreen (from Fjærland). All require a certified guide with glacier equipment. Solo walks on the glacier are not permitted.',
     affiliateUrl:
-      'https://www.getyourguide.com/flam-l2424/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
+      'https://www.getyourguide.com/flam-l108502/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
     internal: {
       coords: { lat: 61.6850, lng: 7.2250 },
       difficulty: 'moderate',
@@ -317,7 +317,7 @@ export const sognefjordTours: RawTour[] = [
     highlight:
       'Sea kayaking on the main Sognefjord trunk between Balestrand and Sogndal. Guided tours run from Balestrand. The scale of Sognefjord, 1,308 m at its deepest, is best understood from water level. Suitable for beginners on guided tours. Wet or drysuits provided.',
     affiliateUrl:
-      'https://www.getyourguide.com/flam-l2424/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
+      'https://www.getyourguide.com/flam-l108502/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
     internal: {
       coords: { lat: 61.2076, lng: 6.5327 },
       difficulty: 'moderate',
@@ -340,7 +340,7 @@ export const hardangerfjordTours: RawTour[] = [
     highlight:
       'Guided departure from Skjeggedal trailhead. Guide ensures the group maintains the pace needed to complete the route safely before dark. Early departures (06:00) available for June to August. Maximum 12 per group. The guide carries a first aid kit and satellite communicator.',
     affiliateUrl:
-      'https://www.getyourguide.com/odda-l2558/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
+      'https://www.getyourguide.com/odda-l97971/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
     internal: {
       coords: { lat: 60.1244, lng: 6.7403 },
       difficulty: 'hard',
@@ -360,7 +360,7 @@ export const hardangerfjordTours: RawTour[] = [
     highlight:
       'Folgefonna is the third largest glacier in Norway. Guided walks depart from the Fonnabu visitor centre on the plateau above Jondal. Crampons and ice axe provided. The contrast between the fjord at sea level and the glacier at 1,200 meters is a 1-hour drive.',
     affiliateUrl:
-      'https://www.getyourguide.com/hardangerfjord-l97248/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
+      'https://www.getyourguide.com/vestland-county-l1985/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
     internal: {
       coords: { lat: 60.0330, lng: 6.3280 },
       difficulty: 'moderate',
@@ -380,7 +380,7 @@ export const hardangerfjordTours: RawTour[] = [
     highlight:
       'Departs from Eidfjord or Norheimsund. The cruise covers the inner fjord, passing the Hardanger Bridge (1,380 m span) and the orchard villages along the south shore. Best option for travellers who want the fjord from the water without committing to a full day.',
     affiliateUrl:
-      'https://www.getyourguide.com/hardangerfjord-l97248/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
+      'https://www.getyourguide.com/vestland-county-l1985/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
     internal: {
       coords: { lat: 60.4679, lng: 7.0686 },
       difficulty: 'easy',
@@ -400,7 +400,7 @@ export const hardangerfjordTours: RawTour[] = [
     highlight:
       'Folgefonna Ski Resort operates June to August on the glacier plateau at 1,200 m while the fjord is warm below. Ski and snowboard rental available at the resort. The descent to Jondal and back is an experience on its own.',
     affiliateUrl:
-      'https://www.getyourguide.com/hardangerfjord-l97248/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
+      'https://www.getyourguide.com/vestland-county-l1985/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
     internal: {
       coords: { lat: 60.0330, lng: 6.3280 },
       difficulty: 'moderate',

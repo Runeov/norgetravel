@@ -1452,14 +1452,14 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
           '/Banners/bodo_banner.jpg',
         ],
         content:
-          'The Helgeland coast is the most geologically dramatic stretch of the route. The Seven Sisters mountain range (De Syv Søstre) rises directly from the sea. Brønnøysund sits at the base of the 1,072m Torghatten mountain — famous for the natural tunnel punched through its summit by a stone in Norse mythology, now scientifically explained by glacial erosion. The Arctic Circle crossing at 66°33\'N is marked on board by both operators — a ceremony for northbound passengers. Bodø is the route\'s major hub: Norway\'s second-busiest airport, the Bodø–Lofoten ferry terminal, and a city rebuilt entirely after total destruction in 1940.',
+          'The Helgeland coast is the most geologically dramatic stretch of the route. The Seven Sisters mountain range (De Syv Søstre) rises directly from the sea on Alsten island near Sandnessjøen — seven peaks between 910m and 1,072m, with Botnkrona the tallest. Further south, Brønnøysund sits below the 258m Torghatten — famous for the 160m natural tunnel punched through the mountain, traditionally explained in Norse mythology by a stone thrown through the hill, and geologically explained by marine erosion at an earlier sea level. The Arctic Circle crossing at 66°33\'N is marked on board by both operators — a ceremony for northbound passengers. Bodø is the route\'s major hub: the largest airport in Nordland, the Bodø–Moskenes car ferry terminal to Lofoten, and a city largely destroyed by Luftwaffe bombing in May 1940 and rebuilt in the post-war years.',
         bullets: [
           'Brønnøysund — Torghatten mountain with natural tunnel, Seven Sisters visible at sea',
           'Sandnessjøen — base for Helgeland coast island hiking and kayaking',
           'Nesna — peninsula town, ferry connections to Helgeland islands',
           'Ørnes — gateway to Svartisen glacier, second-largest in mainland Norway',
           'Arctic Circle crossing at 66°33\'N — ceremony on board, northbound sailings',
-          'Bodø — second-busiest Norwegian airport, Bodø–Moskenes ferry terminal, rebuilt 1940–1960',
+          'Bodø — largest airport in Nordland, Bodø–Moskenes car ferry to Lofoten, rebuilt after the 1940 bombing',
         ],
         bulletDetails: [
           {

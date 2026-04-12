@@ -1187,5 +1187,84 @@ ANIMATION:
 
 ---
 
+## 19. OUTBOUND URL VERIFICATION (MANDATORY)
+
+Every outbound URL — affiliate, operator, ticket, schedule, museum, official body — must be verified against the live source before it lands in code. This rule exists because fabricated URL components that look plausible (location codes, category slugs, tour IDs) will 404 in production while passing every lint and typecheck locally.
+
+### The root-cause pattern (do not repeat)
+
+Broken URLs are produced by **pattern-matching across destinations** rather than verifying against the live source. Examples of what caused production 404s:
+
+- Invented a GetYourGuide location code by altering the digits from a different destination (used `lofoten-islands-l132885` when the real code is `l95198`)
+- Copied a category code from one destination to another without checking it applied (used Tromsø's whale-watching `tc225` for Lofoten fishing, kayaking, and "trollfjord" — none of which are real GYG categories under that code)
+- Guessed a museum slug from the English name (`/our-museums/norwegian-fishing-village-museum/` instead of the real `/our-venues/norsk-fiskevaersmuseum/`)
+
+These failed because **the URL structure on a third-party site is opaque data, not a pattern**. Affiliate site slugs, location codes, and category codes are assigned by the partner and cannot be derived from keywords.
+
+### The verification protocol
+
+For every new outbound URL, one of the following must be true:
+
+1. **Retrieved from the live source** — fetched via the destination's own search or sitemap, then HEAD-checked (`curl -sI -o /dev/null -w "%{http_code}" -L -A "<real UA>" "$URL"`) and confirmed 200.
+2. **Falls back to a verified base URL** — if a specific tour/category page cannot be verified, link to the location landing page or search endpoint that has been verified, not to a constructed subpath.
+3. **Copied verbatim from an existing verified file** — e.g. a tour URL already in `src/data/fjord-tours.ts` that has been known-good in production.
+
+Never invent, alter, or interpolate URL components. If you cannot verify a URL, you do not publish it.
+
+### GetYourGuide specifics (the most common offender)
+
+- Location code format: `/LOCATION-SLUG-l#####/` — digits are opaque, never pattern-match from another destination
+- Category code format: `/LOCATION-SLUG-l#####/CATEGORY-SLUG-tc####/` — both the category slug AND the `tc####` are specific to that location; **a tc-code valid for Tromsø is not valid for Lofoten**
+- Tour code format: `/LOCATION-SLUG-l#####/TOUR-SLUG-t######/` — `t######` IDs are per-tour, never reusable
+- Safe fallback when an activity category is not verified: the base location URL `/LOCATION-SLUG-l#####/` with affiliate params — let GYG's on-site filters handle the narrowing
+- Bot-blocked responses are real: GYG returns 403/404 to curl without browser headers. Use `-A "Mozilla/5.0 ... Chrome/..." ` and accept that a 200 with a real `<title>` is the only reliable signal
+
+### Affiliate URL parameter hygiene
+
+- Every affiliate URL carries the full tracking tail: `partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle` (or `content-end` for bottom-of-page CTAs)
+- Every outbound affiliate link renders with `rel="noopener noreferrer sponsored"` and `target="_blank"` — no exceptions
+
+### Pre-publication HEAD-check (run this on every PR that adds URLs)
+
+```bash
+UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+for url in $(grep -rhoE 'https?://[^"'\'' )]+' src/components/modules/destinations/ src/app/destinations/ src/data/ | sort -u); do
+  code=$(curl -s -L --max-time 12 -A "$UA" -o /dev/null -w "%{http_code}" "$url")
+  [ "$code" != "200" ] && echo "$code  $url"
+done
+```
+
+Treat any non-200 as broken until proven otherwise (HEAD-check with a second, browser-like UA to rule out bot-blocking). 3xx that resolves to 200 is acceptable. 4xx is never acceptable.
+
+### The 200-with-wrong-content trap (GYG masquerade)
+
+A GetYourGuide URL can return HTTP 200 and still be wrong. When the location slug does not match its `l#####` code, GYG silently renders the page for whichever city owns that code — the traveller clicks "Tromsø tours" and lands on Manila. HEAD status alone will not catch this.
+
+**Mandatory second check:** after the HEAD-check, fetch the page body and confirm the `<title>` contains the expected city name. Any mismatch is a broken link, same severity as a 404.
+
+Known examples discovered in production (all returned 200 with foreign content):
+
+| ❌ Fabricated code | Actually rendered | ✅ Real code |
+|---|---|---|
+| `bergen-l173` | Dubai | `bergen-l1132` |
+| `flam-l2424` | Hoa Binh | `flam-l108502` |
+| `odda-l2558` | Győr | `odda-l97971` |
+| `tromso-l235` | Manila | `tromso-l32375` |
+| `longyearbyen-l93817` | 404 | `longyearbyen-l97776` |
+| `lofoten-islands-l132885` | 404 | `lofoten-islands-l95198` |
+| `sogndal-l3113` | wrong city | `sogndalsfjora-l220787` |
+| `hardangerfjord-l97248` | 404 | fallback to `vestland-county-l1985` |
+
+Never copy an `l#####` code from memory or from another file without re-verifying it against a live search on getyourguide.com. If the destination does not have its own GYG landing page, fall back to the county or region URL that has been verified — never invent one.
+
+### What is forbidden
+
+- ❌ Constructing a third-party URL by altering digits, swapping slugs, or combining tokens from another destination's URL
+- ❌ Publishing an outbound URL without a successful HEAD-check from a browser-like UA
+- ❌ Guessing a museum, operator, or official body URL from the English name or brand — always find it via the official homepage's internal links
+- ❌ Using one destination's category/tour code (`tc####`, `t######`, `l#####`) on another destination's page
+
+---
+
 *Document version: 2.0 | Updated: March 2026 | Next review: June 2026*
 *Cross-reference: NorgeTravel_company_profile_v2.md | NorgeTravel_voice_rules_v2.md | NorgeTravel_expert_personas_v2.md | Norgetravel_banned_words.md*

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Clock, BookOpen, User, Calendar, Tag, ArrowRight } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
+import { ShareButtons } from '@/components/ui/ShareButtons';
 import { getArticles } from '@/lib/admin/articles';
 import { CATEGORY_LABELS } from '@/types/admin';
 import type { ArticleCategory } from '@/types/admin';
@@ -281,6 +282,12 @@ export default async function DynamicArticlePage({ params }: PageProps) {
 
         {/* FOOTER */}
         <footer className="mt-20 pt-8 border-t border-slate-200">
+          <ShareButtons
+            url={`/kunnskapsbank/${article.category}/${article.slug}`}
+            title={article.title}
+            className="mb-8"
+          />
+
           {/* Author card */}
           <div className={`${theme.bg} border ${theme.border} p-6 rounded-2xl mb-8`}>
             <div className="flex items-center gap-4">

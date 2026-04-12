@@ -3,7 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, MapPin, Clock, Calendar } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
+import { ShareButtons } from '@/components/ui/ShareButtons';
 import { eventsStore } from '@/lib/admin/travel-events';
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'Norwegian Fjords Travel Guide 2026 | NorgeTravel',
@@ -70,7 +73,7 @@ const operators = [
 ];
 
 export default async function FjordsPage() {
-  const events = await eventsStore.filterByDestination('fjords');
+  const events = await eventsStore.filterUpcomingByDestination('fjords');
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Hero */}
@@ -204,6 +207,11 @@ export default async function FjordsPage() {
           <Link href="/travel" className="inline-flex items-center justify-center px-8 py-3 bg-white text-[#1B3A5C] font-bold rounded-full hover:shadow-lg transition-all">
             Explore Fjord Travel <ArrowRight className="ml-2 w-4 h-4" />
           </Link>
+        </div>
+      </section>
+      <section className="relative z-10 py-10 border-t border-slate-200 bg-white">
+        <div className="container mx-auto px-4 flex justify-center">
+          <ShareButtons url="/destinations/fjords/" title="Norwegian Fjords Travel Guide" />
         </div>
       </section>
     </main>

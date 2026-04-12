@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, MapPin, Clock, Thermometer, Compass } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
+import { ShareButtons } from '@/components/ui/ShareButtons';
 import { DestinationActivities } from '@/components/modules/destinations/DestinationActivities';
 import { DestinationBasecamps, type Basecamp } from '@/components/modules/destinations/DestinationBasecamps';
 
@@ -504,6 +505,11 @@ export default function AltaPage() {
               All Northern Norway
             </Link>
           </div>
+        </div>
+      </section>
+      <section className="relative z-10 py-10 border-t border-slate-200 bg-white">
+        <div className="container mx-auto px-4 flex justify-center">
+          <ShareButtons url="/destinations/alta/" title="Alta & Sápmi Travel Guide" />
         </div>
       </section>
     </main>

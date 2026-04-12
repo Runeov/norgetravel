@@ -3,12 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, MapPin, Clock, Thermometer } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
-import { SvalbardTabs } from '@/components/modules/destinations/SvalbardTabs';
-import { experiencesStore } from '@/lib/admin/travel-experiences';
-import { eventsStore } from '@/lib/admin/travel-events';
-import { accommodationStore } from '@/lib/admin/travel-accommodation';
-import { guidesStore } from '@/lib/admin/travel-guides';
-import { CITY_EXPERIENCE_PREFIXES } from '@/lib/city-experience-prefixes';
+import { ShareButtons } from '@/components/ui/ShareButtons';
+import { SvalbardActivities } from '@/components/modules/destinations/SvalbardActivities';
 
 export const metadata: Metadata = {
   title: 'Svalbard Travel Guide 2026 | NorgeTravel',
@@ -24,40 +20,7 @@ const facts = [
   { label: 'Currency', value: 'Norwegian Krone (NOK)' },
 ];
 
-const experiences = [
-  {
-    title: 'Polar bear safaris',
-    price: 'From NOK 2,400/person',
-    duration: '4–8 hours',
-    body: 'Snowmobile or boat safaris into the wilderness. You\'ll carry a rifle — or your guide will. It\'s legal and mandatory outside Longyearbyen.',
-  },
-  {
-    title: 'Northern Lights dog sled',
-    price: 'From NOK 3,200/person',
-    duration: '3 hours',
-    body: 'Dog sledding under the aurora at 78°N. This is the most extreme aurora experience on earth. Peak season: Nov–Feb.',
-  },
-  {
-    title: 'Glacier hiking',
-    price: 'From NOK 1,600/person',
-    duration: 'Full day',
-    body: 'Svalbard has 60% glacier coverage. Guided hikes on Longyearbreen and Nordenskiöldbreen with crampons and ice axes provided.',
-  },
-  {
-    title: 'Snowmobile expeditions',
-    price: 'From NOK 2,800/person',
-    duration: '6–10 hours',
-    body: 'Cross-country snowmobile tours to abandoned Russian settlements and remote fjords. No licence required.',
-  },
-];
-
 export default async function SvalbardPage() {
-  const [activities, events, accommodation, tours] = await Promise.all([
-    experiencesStore.filterByIdPrefixes(CITY_EXPERIENCE_PREFIXES['svalbard']),
-    eventsStore.filterByDestination('svalbard'),
-    accommodationStore.filterByDestination('svalbard'),
-    guidesStore.filterByDestination('svalbard'),
-  ]);
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Hero */}
@@ -109,17 +72,47 @@ export default async function SvalbardPage() {
       <section className="relative py-20 overflow-hidden">
         <NorgeBackground />
         <div className="container mx-auto px-4 relative z-10">
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">Explore Svalbard</h2>
-          <p className="text-slate-600 mb-12 max-w-2xl">
-            Everything you need for a Svalbard expedition — activities, events, accommodation, and guided tours from licensed operators.
+          <SvalbardActivities />
+        </div>
+      </section>
+
+      {/* When to visit */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">When to visit Svalbard</h2>
+          <p className="text-slate-600 mb-10 max-w-2xl">
+            Svalbard runs on extremes. What you can do changes completely by season, and some activities only exist for a two-month window.
           </p>
-          <SvalbardTabs
-            activities={activities}
-            events={events}
-            accommodation={accommodation}
-            tours={tours}
-            fallbackActivities={experiences}
-          />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="border border-slate-200 rounded-lg p-6 bg-white">
+              <p className="text-xs font-bold text-[#1B3A5C] uppercase tracking-wider mb-1">Oct 26 – Feb 15</p>
+              <h3 className="font-bold text-slate-900 mb-3">Polar night</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Four months of total darkness. Temperatures −15°C to −25°C. Peak aurora visibility across 24-hour night sky. Snowmobile tours begin in January once sea ice forms. Dog sledding runs throughout. Limited hiking — guided only, bear protection required.
+              </p>
+            </div>
+            <div className="border border-slate-200 rounded-lg p-6 bg-white">
+              <p className="text-xs font-bold text-[#1B3A5C] uppercase tracking-wider mb-1">Feb 15 – Apr 19</p>
+              <h3 className="font-bold text-slate-900 mb-3">Sunlight returns</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                The sun climbs back above the horizon on 8 March. Peak snowmobile and dog sled season — March is the single best month for multi-day expeditions. Ice caves open. −5°C to −15°C. Aurora still possible in late February and early March.
+              </p>
+            </div>
+            <div className="border border-slate-200 rounded-lg p-6 bg-white">
+              <p className="text-xs font-bold text-[#1B3A5C] uppercase tracking-wider mb-1">Apr 19 – Aug 23</p>
+              <h3 className="font-bold text-slate-900 mb-3">Midnight sun</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                24-hour daylight for four months. Temperatures 0°C to +7°C. Boat expeditions run to Pyramiden, Barentsburg, and the glacier fronts of Isfjord. Hiking opens on the tundra. Polar bear risk shifts as bears follow retreating ice — guides carry rifles. No aurora.
+              </p>
+            </div>
+            <div className="border border-slate-200 rounded-lg p-6 bg-white">
+              <p className="text-xs font-bold text-[#1B3A5C] uppercase tracking-wider mb-1">Aug 23 – Oct 26</p>
+              <h3 className="font-bold text-slate-900 mb-3">Autumn shoulder</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Sun sets for the first time in late August. Aurora returns from early September. Hiking continues until snow. −5°C to +3°C. Quieter than peak summer, cheaper flights, but snowmobile season has not started. A transitional window for photographers.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -166,6 +159,11 @@ export default async function SvalbardPage() {
               Arctic Trekking
             </Link>
           </div>
+        </div>
+      </section>
+      <section className="relative z-10 py-10 border-t border-slate-200 bg-white">
+        <div className="container mx-auto px-4 flex justify-center">
+          <ShareButtons url="/destinations/svalbard/" title="Svalbard Travel Guide" />
         </div>
       </section>
     </main>

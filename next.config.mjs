@@ -7,6 +7,7 @@ const nextConfig = {
 
   images: {
     formats: ['image/avif', 'image/webp'],
+    qualities: [60, 75, 85],
   },
 
   // SEO: Ensure clean URLs by removing the .html extension

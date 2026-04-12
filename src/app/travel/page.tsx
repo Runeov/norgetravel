@@ -18,6 +18,8 @@ import { accommodationStore } from '@/lib/admin/travel-accommodation';
 import { eventsStore } from '@/lib/admin/travel-events';
 import { extractRatings } from '@/lib/ratings';
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: 'Travel Norway 2026 | NorgeTravel',
   description:
@@ -136,7 +138,7 @@ export default async function TravelPage() {
   const [featuredExperiences, featuredEvents, recentAccommodation] =
     await Promise.all([
       experiencesStore.getFeatured(),
-      eventsStore.getFeatured(),
+      eventsStore.getUpcomingFeatured(),
       accommodationStore.getPublished().then((items) => items.slice(0, 6)),
     ]);
 

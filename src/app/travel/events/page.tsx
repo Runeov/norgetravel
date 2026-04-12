@@ -5,6 +5,8 @@ import { TravelHero } from '@/components/modules/travel/TravelHero';
 import { TravelGrid } from '@/components/modules/travel/TravelGrid';
 import { eventsStore } from '@/lib/admin/travel-events';
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: 'Events & Festivals in Norway | NorgeTravel',
   description:
@@ -12,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default async function EventsPage() {
-  const items = await eventsStore.getPublished();
+  const items = await eventsStore.getUpcoming();
 
   return (
     <main className="min-h-screen bg-slate-50">

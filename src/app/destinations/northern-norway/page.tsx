@@ -3,8 +3,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, MapPin, Sun, Thermometer, Clock, Calendar } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
+import { ShareButtons } from '@/components/ui/ShareButtons';
 import { eventsStore } from '@/lib/admin/travel-events';
 
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'Northern Norway Travel Guide 2026 | NorgeTravel',
@@ -13,7 +16,7 @@ export const metadata: Metadata = {
 
 const highlights = [
   {
-    title: 'Aurora Capital',
+    title: 'Aurora Capital: Tromsø',
     body: 'Tromsø sits at 69°N inside the auroral oval. On a G2+ storm night, the sky turns green from horizon to horizon.',
     image: '/images/tromso/northern-lights/aurora-kvaloya_vegard-stien.jpg',
     imageAlt: 'Aurora borealis over Kvaløya island near Tromsø, green bands reflected in calm Arctic water',
@@ -21,44 +24,36 @@ const highlights = [
     linkLabel: 'Explore Tromsø',
   },
   {
-    title: 'Lofoten Islands',
-    body: '170 km of jagged peaks rising straight from the sea. Village-to-village treks, world-class surf, and stockfish culture.',
-    image: '/images/lofoten/landscapes/lofoten-coast_baard-loeken.jpg',
-    imageAlt: 'Lofoten coastline with dramatic mountain peaks rising from the Norwegian Sea',
-    link: '/destinations/lofoten',
-    linkLabel: 'Explore Lofoten',
+    title: 'Senja & Vesterålen',
+    body: 'The same peaks-into-sea scenery as Lofoten without the cruise-ship traffic. Senja for the jagged coast. Vesterålen for sperm whales year-round off Andenes.',
+    image: '/images/senja/landscapes/senja-scenic_baard-loeken.jpg',
+    imageAlt: 'Senja island coastline with jagged mountain peaks above a sheltered fishing harbour',
+    link: '/destinations/senja',
+    linkLabel: 'Explore Senja & Vesterålen',
   },
   {
-    title: 'Svalbard',
-    body: '78°N. Polar bears outnumber people. Four months of total darkness, four months of midnight sun. Accessible with a direct flight from Oslo.',
-    image: '/images/svalbard/landscapes/svalbard-panorama_emilien-gigandet-1.jpg',
-    imageAlt: 'Svalbard glacial landscape under pale Arctic light at 78 degrees north',
-    link: '/destinations/svalbard',
-    linkLabel: 'Explore Svalbard',
+    title: 'Lyngen Alps',
+    body: 'The most serious alpine terrain in Nord-Norge. Ski-touring peaks rising 1,800 m straight from the fjord. Under two hours from Tromsø airport.',
+    image: '/images/lyngen/landscapes/lyngen-alps-mighty-peaks_petr-pavlicek.jpg',
+    imageAlt: 'Lyngen Alps winter peaks rising 1,800 metres directly from the Lyngenfjord',
+    link: '/destinations/lyngen',
+    linkLabel: 'Explore Lyngen',
+  },
+  {
+    title: 'Alta & Sápmi',
+    body: 'UNESCO rock carvings 7,000 years old. Sami heartland around Kautokeino and Karasjok. World-class dog sledding. Gateway to Finnmarksvidda.',
+    image: '/images/alta/northern-lights/aurora-alta_anne-olsen-ryum.jpg',
+    imageAlt: 'Northern Lights over Alta, Finnmark with green aurora above the Sami cultural heartland',
+    link: '/destinations/alta',
+    linkLabel: 'Explore Alta & Sápmi',
   },
   {
     title: 'North Cape',
     body: '71°N. The northernmost point in mainland Europe. Midnight sun from mid-May to late July. 300,000 visitors per year reach this cliff.',
     image: '/images/nordkapp/landscapes/nordkapp-cliff_trym-bergsmo.jpg',
     imageAlt: 'North Cape cliff edge at 71 degrees north, the northernmost point of mainland Europe',
-    link: '/destinations/northern-norway',
-    linkLabel: 'Coming soon',
-  },
-  {
-    title: 'Senja Island',
-    body: 'The same dramatic peaks-into-sea scenery as Lofoten with a fraction of the foot traffic. No cruise ship docks. No new airport. Space to breathe.',
-    image: '/images/senja/landscapes/senja-scenic_baard-loeken.jpg',
-    imageAlt: 'Senja island coastline with jagged mountain peaks and sheltered fishing harbour',
-    link: '/destinations/northern-norway',
-    linkLabel: 'Coming soon',
-  },
-  {
-    title: 'Alta',
-    body: 'UNESCO rock carvings 7,000 years old. World-class dog sledding. The Northern Lights Cathedral. Gateway to Finnmark.',
-    image: '/images/alta/northern-lights/aurora-alta_anne-olsen-ryum.jpg',
-    imageAlt: 'Northern Lights over Alta, Finnmark with green aurora illuminating the Arctic sky',
-    link: '/destinations/northern-norway',
-    linkLabel: 'Coming soon',
+    link: '/destinations/nordkapp',
+    linkLabel: 'Explore North Cape',
   },
 ];
 
@@ -70,7 +65,7 @@ const bestFor = [
 ];
 
 export default async function NorthernNorwayPage() {
-  const events = await eventsStore.filterByDestination('northern-norway');
+  const events = await eventsStore.filterUpcomingByDestination('northern-norway');
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Hero */}
@@ -109,7 +104,7 @@ export default async function NorthernNorwayPage() {
         <NorgeBackground />
         <div className="container mx-auto px-4 relative z-10">
           <h2 className="text-3xl font-bold text-slate-900 mb-4">Explore Northern Norway</h2>
-          <p className="text-slate-600 mb-12 max-w-2xl">Six destinations across the Arctic. Each one distinct. Pick your basecamp.</p>
+          <p className="text-slate-600 mb-12 max-w-2xl">Five regions across the Arctic. Each one distinct. Pick your basecamp.</p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {highlights.map((h) => (
               <div key={h.title} className="group bg-white rounded-lg overflow-hidden shadow-sm border border-slate-200/50 hover:shadow-md transition-shadow">
@@ -266,6 +261,11 @@ export default async function NorthernNorwayPage() {
               Arctic Trekking
             </Link>
           </div>
+        </div>
+      </section>
+      <section className="relative z-10 py-10 border-t border-slate-200 bg-white">
+        <div className="container mx-auto px-4 flex justify-center">
+          <ShareButtons url="/destinations/northern-norway/" title="Northern Norway Travel Guide" />
         </div>
       </section>
     </main>

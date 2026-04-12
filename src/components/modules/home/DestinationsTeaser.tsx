@@ -21,7 +21,7 @@ const destinations = [
     slug: 'fjords',
     name: 'Fjords',
     tagline: 'Zero-emission from 2026',
-    image: '/pics/cities/Bergen_banner.jpeg',
+    image: '/images/narvik/fjord-railway/ofoten-railway-fjord_christina-myrland.jpg',
     stat: '2 UNESCO World Heritage',
   },
   {

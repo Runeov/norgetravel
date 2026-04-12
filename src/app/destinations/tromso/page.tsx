@@ -4,17 +4,12 @@ import Link from 'next/link';
 
 // Revalidate the whole page every 24 hours so Google ratings stay current without a manual deploy
 export const revalidate = 86400;
-import { ArrowRight, MapPin, Clock, Thermometer } from 'lucide-react';
+import { ArrowRight, MapPin, Clock, Thermometer, Compass } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
-import { TromsoCityTabs } from '@/components/modules/destinations/TromsoCityTabs';
-import { RestaurantGrid } from '@/components/modules/destinations/RestaurantGrid';
-import { experiencesStore } from '@/lib/admin/travel-experiences';
-import { eventsStore } from '@/lib/admin/travel-events';
-import { accommodationStore } from '@/lib/admin/travel-accommodation';
-import { guidesStore } from '@/lib/admin/travel-guides';
+import { ShareButtons } from '@/components/ui/ShareButtons';
+import { TromsoActivities } from '@/components/modules/destinations/TromsoActivities';
+import { TromsoBasecamps } from '@/components/modules/destinations/TromsoBasecamps';
 import { tromso } from '@/data/city-guides/tromso';
-import { fetchGoogleRatings } from '@/lib/google-places';
-import { CITY_EXPERIENCE_PREFIXES } from '@/lib/city-experience-prefixes';
 
 export const metadata: Metadata = {
   title: tromso.metaTitle,
@@ -22,32 +17,6 @@ export const metadata: Metadata = {
 };
 
 export default async function TromsoPage() {
-  // Collect Place IDs for restaurants that have one configured
-  const placeIds = tromso.restaurants
-    .map((r) => r.placeId)
-    .filter((id): id is string => Boolean(id));
-
-  const [activities, events, accommodation, tours, liveRatings] = await Promise.all([
-    experiencesStore.filterByIdPrefixes(CITY_EXPERIENCE_PREFIXES['tromso']),
-    eventsStore.filterByDestination('northern-norway'),
-    accommodationStore.filterByDestination('northern-norway'),
-    guidesStore.filterByDestination('northern-norway'),
-    fetchGoogleRatings(placeIds),
-  ]);
-
-  // Merge live Google ratings over stored fallback data
-  const restaurants = tromso.restaurants.map((r) => {
-    const live = r.placeId ? liveRatings[r.placeId] : null;
-    if (!live) return r;
-    return {
-      ...r,
-      ratings: {
-        ...r.ratings,
-        google: { score: live.score, reviewCount: live.reviewCount },
-      },
-    };
-  });
-
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Hero */}
@@ -101,12 +70,60 @@ export default async function TromsoPage() {
         </div>
       </section>
 
+      {/* Overview */}
+      <section className="relative py-20 overflow-hidden bg-white">
+        <NorgeBackground />
+        <div className="container mx-auto px-4 relative z-10">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">About Tromsø</h2>
+          <div className="grid lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-2 space-y-4">
+              <p className="text-slate-600 leading-relaxed">
+                Tromsø sits at 69°N on the island of Tromsøya, connected by bridge and tunnel to the mainland and to Kvaløya. It is the largest city above the Arctic Circle in Norway — 75,000 residents, a working port, a university with the world&apos;s northernmost medical school, and a functioning hospital. It is not a tourist outpost. It is an Arctic city that happens to sit directly under the auroral oval.
+              </p>
+              <p className="text-slate-600 leading-relaxed">
+                The Northern Lights appear here on clear nights between September and March when the KP index exceeds 3. Neither condition is guaranteed on any given night. Commercial chases drive 50–200 km from the city to find clear sky. Four-night minimum — anything less is a gamble. The polar night runs November 26 to January 15: 50 days when the sun does not rise above the horizon.
+              </p>
+              <p className="text-slate-600 leading-relaxed">
+                From May 18 to July 26, the midnight sun reverses the clock. Hiking, sea kayaking, and the Midnight Sun Marathon happen under 24-hour daylight. In November, orca and humpback pods follow the herring into Kaldfjord — by December, 400–600 orca concentrate in the fjords for the peak whale-watching season. Tromsø is the basecamp for all of it.
+              </p>
+            </div>
+            <div className="space-y-4">
+              <div className="bg-white rounded-lg border border-slate-200 p-6">
+                <h3 className="font-bold text-slate-900 mb-4 text-sm uppercase tracking-wide">Key facts</h3>
+                <dl className="space-y-3">
+                  {tromso.facts.map((f) => (
+                    <div key={f.label} className="flex justify-between gap-4 text-sm">
+                      <dt className="text-slate-500 shrink-0">{f.label}</dt>
+                      <dd className="font-medium text-slate-800 text-right">{f.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+              <div className="bg-white rounded-lg border border-slate-200 p-6">
+                <h3 className="font-bold text-slate-900 mb-2 text-sm uppercase tracking-wide">Best time to visit</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  September to March for Northern Lights. May to July for midnight sun. December to January for peak whale season. Avoid November — polar night has started but aurora chases are hit-or-miss with early-season cloud cover.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Activities tabs */}
+      <section className="relative py-20 overflow-hidden">
+        <NorgeBackground />
+        <div className="container mx-auto px-4 relative z-10">
+          <TromsoActivities />
+        </div>
+      </section>
+
       {/* When to visit */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-slate-900 mb-4">When to visit Tromsø</h2>
           <p className="text-slate-600 mb-10 max-w-2xl">
-            Tromsø runs on light. What you can do — and see — changes completely by season.
+            Tromsø runs on light. What you can do and see changes completely by season.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {tromso.seasonalWindows.map((w) => (
@@ -122,38 +139,6 @@ export default async function TromsoPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Activities tabs */}
-      <section className="relative py-20 overflow-hidden">
-        <NorgeBackground />
-        <div className="container mx-auto px-4 relative z-10">
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">Explore Tromsø</h2>
-          <p className="text-slate-600 mb-12 max-w-2xl">
-            Activities, events, accommodation, and guided tours from licensed operators.
-          </p>
-          <TromsoCityTabs
-            activities={activities}
-            events={events}
-            accommodation={accommodation}
-            tours={tours}
-            fallbackActivities={tromso.experiences}
-          />
-        </div>
-      </section>
-
-      {/* Restaurants */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">
-            Where to eat in Tromsø
-          </h2>
-          <p className="text-slate-600 mb-10 max-w-2xl">
-            Five restaurants worth your time — from the cod tongue pub that predates the
-            tourist industry to the tasting menu that put Arctic ingredients on the map.
-          </p>
-          <RestaurantGrid restaurants={restaurants} cityName="Troms\u00F8" />
         </div>
       </section>
 
@@ -237,6 +222,68 @@ export default async function TromsoPage() {
         </div>
       </section>
 
+      {/* Basecamps — where to base yourself */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <TromsoBasecamps />
+        </div>
+      </section>
+
+      {/* Related Tours */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">Itineraries that include Tromsø</h2>
+          <p className="text-slate-600 mb-12 max-w-2xl">
+            Multi-day routes built around Tromsø as the Arctic basecamp.
+          </p>
+          <div className="space-y-4">
+            {[
+              '7-day Tromsø aurora week: 4 aurora chases, 1 whale safari, 1 dog sled, 1 rest day',
+              '10-day Lofoten–Tromsø road trip: fly into Bodø, drive the E10 through Lofoten, ferry to Tromsø',
+              '5-day midnight sun intensive (June): Senja island day trip, sea kayaking on Kaldfjord, Fjellheisen at 01:00',
+              '14-day Arctic circle: Oslo to Tromsø via Hurtigruten + land segments, including Svalbard option',
+            ].map((tour, i) => (
+              <div key={i} className="bg-white rounded-lg border border-slate-200 p-6 flex items-center gap-4">
+                <div className="w-10 h-10 rounded-lg bg-[#1A365D]/10 flex items-center justify-center shrink-0">
+                  <Compass className="w-5 h-5 text-[#1A365D]" aria-hidden="true" />
+                </div>
+                <p className="text-sm text-slate-700 font-medium">{tour}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Expert Byline — Bjørn Haugen */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto">
+            <Link
+              href="/om-oss/bjorn-haugen"
+              className="group flex items-start gap-5 bg-slate-50 rounded-lg border border-slate-200 p-6 hover:shadow-md transition-shadow"
+            >
+              <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 bg-slate-200">
+                <Image
+                  src="/pics/team/bjorn_profile.png"
+                  alt="Bjørn Haugen, Arctic Field Editor at NorgeTravel"
+                  fill
+                  className="object-cover"
+                  sizes="64px"
+                />
+              </div>
+              <div className="min-w-0">
+                <p className="text-xs font-semibold text-[#6D28D9] uppercase tracking-wide mb-1">The Arctic</p>
+                <h3 className="font-bold text-slate-800 group-hover:text-[#1A365D] transition-colors">Bjørn Haugen</h3>
+                <p className="text-sm text-slate-500 mb-2">Arktisk feltekspert | Arctic Field Editor</p>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  DNT-certified guide with 25 years in Nord-Norge and Svalbard. Former search and rescue volunteer in Tromsø. Knows exactly why the tourist board photo of the aurora is not the one you&apos;ll see on night one — and how to plan for the one you will.
+                </p>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] text-white">
         <div className="container mx-auto px-4 text-center">
@@ -259,6 +306,11 @@ export default async function TromsoPage() {
               All Northern Norway
             </Link>
           </div>
+        </div>
+      </section>
+      <section className="relative z-10 py-10 border-t border-slate-200 bg-white">
+        <div className="container mx-auto px-4 flex justify-center">
+          <ShareButtons url="/destinations/tromso/" title="Tromsø Travel Guide" />
         </div>
       </section>
     </main>
