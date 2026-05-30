@@ -36,7 +36,7 @@ export async function generateSocialMediaPosts(
   // Extract key information from article
   const { title, excerpt, content, category, tags } = article;
   
-  // Generate LinkedIn post (TANGEN mode)
+  // Generate LinkedIn post (THE GRIT mode)
   const linkedinPost = await generateLinkedInPost({
     title,
     excerpt,
@@ -45,7 +45,7 @@ export async function generateSocialMediaPosts(
     tags,
   });
   
-  // Generate Facebook post (TANGEN mode, more casual)
+  // Generate Facebook post (THE HEARTH mode, more sensory)
   const facebookPost = await generateFacebookPost({
     title,
     excerpt,
@@ -63,13 +63,13 @@ export async function generateSocialMediaPosts(
 }
 
 /**
- * Generate LinkedIn post following TANGEN voice architecture
- * 
+ * Generate LinkedIn post following NorgeTravel's THE GRIT voice
+ *
  * Structure:
- * 1. THE HOOK → Contrarian statement or question
- * 2. THE MEAT → 3-4 short paragraphs, sparingly use emojis (✅, 📉, 💡)
- * 3. THE TWIST → The unique Averdi perspective
- * 4. THE ENGAGEMENT → Direct question to audience
+ * 1. THE HOOK → Expectation vs. reality check
+ * 2. THE FACTS → 3-4 short paragraphs backed by numbers, dates, named operators
+ * 3. THE NORGETRAVEL ANGLE → The honest local guide perspective
+ * 4. THE ENGAGEMENT → Direct, specific question to the audience
  */
 async function generateLinkedInPost(params: {
   title: string;
@@ -102,8 +102,8 @@ async function generateLinkedInPost(params: {
 }
 
 /**
- * Generate Facebook post following TANGEN voice architecture
- * Similar to LinkedIn but more casual and community-focused
+ * Generate Facebook post following NorgeTravel's THE HEARTH voice
+ * Similar to LinkedIn but more sensory, personal, and people-first
  */
 async function generateFacebookPost(params: {
   title: string;
@@ -243,47 +243,95 @@ async function callAIService(
   prompt: string,
   platform: 'linkedin' | 'facebook'
 ): Promise<string> {
-  // Check if AI API key is configured
-  const apiKey = process.env.OPENAI_API_KEY || process.env.ANTHROPIC_API_KEY;
-  
-  if (!apiKey) {
-    // Fallback to template-based generation if no AI API is configured
-    console.warn('No AI API key configured. Using template-based generation.');
-    return generateTemplateBasedPost(prompt, platform);
+  const systemPrompt =
+    'You write social posts for NorgeTravel.com, an independent English-language travel guide for Norway. ' +
+    'Follow the brand voice: lead with a number, date, or named place. Active voice. No brochure words ' +
+    '(no "magical", "breathtaking", "stunning", "hidden gem", "vibrant"). Never use em dashes. ' +
+    'Output only the post text, no preamble.';
+
+  // Prefer Anthropic Claude, fall back to OpenAI, then to the local template.
+  if (process.env.ANTHROPIC_API_KEY) {
+    try {
+      return await callAnthropic(systemPrompt, prompt);
+    } catch (error) {
+      console.error('Anthropic generation failed, falling back:', error);
+    }
   }
-  
-  try {
-    // Example using OpenAI API
-    // In production, you would implement the actual API call here
-    
-    // For now, return a template-based post
-    return generateTemplateBasedPost(prompt, platform);
-    
-    // TODO: Implement actual AI API call
-    // const response = await fetch('https://api.openai.com/v1/chat/completions', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Authorization': `Bearer ${apiKey}`,
-    //   },
-    //   body: JSON.stringify({
-    //     model: 'gpt-4',
-    //     messages: [
-    //       { role: 'system', content: 'You are a social media expert for Averdi AS.' },
-    //       { role: 'user', content: prompt }
-    //     ],
-    //     max_tokens: 500,
-    //     temperature: 0.7,
-    //   }),
-    // });
-    // 
-    // const data = await response.json();
-    // return data.choices[0].message.content;
-    
-  } catch (error) {
-    console.error('AI service error:', error);
-    return generateTemplateBasedPost(prompt, platform);
+
+  if (process.env.OPENAI_API_KEY) {
+    try {
+      return await callOpenAI(systemPrompt, prompt);
+    } catch (error) {
+      console.error('OpenAI generation failed, falling back:', error);
+    }
   }
+
+  console.warn('No AI API key configured. Using template-based generation.');
+  return generateTemplateBasedPost(prompt, platform);
+}
+
+/**
+ * Anthropic Claude (Messages API) via fetch — no SDK dependency required.
+ * Model is configurable via SOCIAL_AI_MODEL.
+ */
+async function callAnthropic(systemPrompt: string, userPrompt: string): Promise<string> {
+  const model = process.env.SOCIAL_AI_MODEL || 'claude-sonnet-4-6';
+  const response = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': process.env.ANTHROPIC_API_KEY as string,
+      'anthropic-version': '2023-06-01',
+    },
+    body: JSON.stringify({
+      model,
+      max_tokens: 700,
+      temperature: 0.7,
+      system: systemPrompt,
+      messages: [{ role: 'user', content: userPrompt }],
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Anthropic API error ${response.status}: ${await response.text()}`);
+  }
+
+  const data = await response.json();
+  const text = data?.content?.[0]?.text;
+  if (!text) throw new Error('Anthropic API returned no text content');
+  return text.trim();
+}
+
+/**
+ * OpenAI (Chat Completions) via fetch. Model is configurable via SOCIAL_AI_MODEL_OPENAI.
+ */
+async function callOpenAI(systemPrompt: string, userPrompt: string): Promise<string> {
+  const model = process.env.SOCIAL_AI_MODEL_OPENAI || 'gpt-4o';
+  const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+    },
+    body: JSON.stringify({
+      model,
+      max_tokens: 700,
+      temperature: 0.7,
+      messages: [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: userPrompt },
+      ],
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`OpenAI API error ${response.status}: ${await response.text()}`);
+  }
+
+  const data = await response.json();
+  const text = data?.choices?.[0]?.message?.content;
+  if (!text) throw new Error('OpenAI API returned no text content');
+  return text.trim();
 }
 
 /**
@@ -304,23 +352,21 @@ function generateTemplateBasedPost(
   const excerpt = excerptMatch ? excerptMatch[1] : '';
   
   if (platform === 'linkedin') {
-    return `Visste du at ${title.toLowerCase()}? 💡
+    return `${title}
 
 ${excerpt}
 
-Vi har dykket ned i dette temaet og funnet innsikter som kan hjelpe din bedrift.
+We mapped the real route, the real timing, and the real numbers. No brochure copy.
 
-Read the full guide at norgetravel.com.
-
-Hva er dine erfaringer med dette? Del gjerne i kommentarfeltet! 👇`;
+Read the full guide at norgetravel.com. Link in the first comment. 🧭`;
   } else {
-    return `${title} 📊
+    return `${title}
 
 ${excerpt}
 
-Read the full guide at norgetravel.com (link in comments) 🧭
+We walked it, drove it, and timed it so you do not have to guess.
 
-Har du spørsmål? Send oss en melding! ✨`;
+Read the full guide at norgetravel.com (link in comments) 🥾`;
   }
 }
 
@@ -333,34 +379,40 @@ function generateHashtags(
   platform: 'linkedin' | 'facebook'
 ): string[] {
   const hashtags: string[] = [];
-  
-  // Add category-based hashtag
+
+  // Add category-based hashtags (travel categories)
   const categoryHashtags: Record<string, string[]> = {
-    bedrift: ['#Bedrift', '#Regnskap', '#NordNorge'],
-    sametinget: ['#Sametinget', '#Samisk', '#Tilskudd'],
-    organisasjoner: ['#Organisasjoner', '#Frivillig', '#Regnskap'],
-    analyse: ['#Analyse', '#Økonomi', '#Innsikt'],
-    regelverk: ['#Regelverk', '#Skatt', '#Regnskap'],
+    'trip-reports': ['#Norway', '#VisitNorway', '#Hiking'],
+    planning: ['#Norway', '#TravelNorway', '#TripPlanning'],
+    safety: ['#Norway', '#HikingSafety', '#Fjellvettreglene'],
+    artikler: ['#Norway', '#VisitNorway', '#ArcticNorway'],
   };
-  
-  if (categoryHashtags[category]) {
-    hashtags.push(...categoryHashtags[category]);
-  }
-  
-  // Add tag-based hashtags (max 3)
+
+  hashtags.push(...(categoryHashtags[category] ?? ['#Norway', '#VisitNorway']));
+
+  // Add tag-based hashtags (PascalCase, alphanumeric only)
   const tagHashtags = tags
-    .slice(0, 3)
-    .map(tag => `#${tag.charAt(0).toUpperCase() + tag.slice(1)}`);
-  
+    .slice(0, 4)
+    .map(
+      tag =>
+        '#' +
+        tag
+          .split(/\s+/)
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+          .join('')
+          .replace(/[^A-Za-z0-9]/g, '')
+    )
+    .filter(tag => tag.length > 1);
+
   hashtags.push(...tagHashtags);
-  
-  // Add Averdi brand hashtag
-  hashtags.push('#Averdi');
-  
+
+  // Add brand hashtag
+  hashtags.push('#NorgeTravel');
+
   // LinkedIn typically uses fewer hashtags (3-5)
   // Facebook can use more (5-10)
   const maxHashtags = platform === 'linkedin' ? 5 : 8;
-  
+
   return [...new Set(hashtags)].slice(0, maxHashtags);
 }
 
