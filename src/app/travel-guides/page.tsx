@@ -60,7 +60,8 @@ const categories = [
         title: 'Allemannsretten explained: your rights and obligations',
         slug: 'allemannsretten-right-to-roam',
         readTime: '9 min',
-        status: 'published' as const,
+        status: 'coming-soon' as const,
+        releaseDate: 'July 12',
       },
     ],
   },
@@ -139,7 +140,8 @@ const categories = [
         title: 'DNT cabin guide: how the hut system works, keys, and booking',
         slug: 'dnt-cabin-guide',
         readTime: '10 min',
-        status: 'published' as const,
+        status: 'coming-soon' as const,
+        releaseDate: 'July 19',
       },
     ],
   },
@@ -283,7 +285,7 @@ export default function KunnskapsbankPage() {
                         </span>
                         {article.status === 'coming-soon' ? (
                           <span className="text-xs font-bold text-slate-400 uppercase tracking-wide">
-                            Coming soon
+                            {('releaseDate' in article && article.releaseDate) ? `Coming ${(article as any).releaseDate}` : 'Coming soon'}
                           </span>
                         ) : (
                           <Link
