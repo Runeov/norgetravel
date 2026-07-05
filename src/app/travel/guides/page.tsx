@@ -40,7 +40,7 @@ export default async function GuidesPage() {
       <section className="py-12 lg:py-20">
         <div className="container mx-auto px-4">
           {items.length > 0 ? (
-            <TravelGrid items={items} showFilters />
+            <TravelGrid items={items} showFilters category="guides" />
           ) : (
             <div className="text-center py-16">
               <span className="text-6xl mb-6 block">🧭</span>

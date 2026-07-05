@@ -12,6 +12,7 @@ import {
   type TravelItemBase,
 } from '@/lib/schemas/travel.shared';
 import { AddToTripButton } from '@/components/ui/AddToTripButton';
+import { ShareButtons } from '@/components/ui/ShareButtons';
 import type { TripItemCategory } from '@/types/trip';
 
 export interface RatingData {
@@ -52,8 +53,10 @@ function RatingBadge({ source, rating, reviewCount }: { source: string; rating: 
 }
 
 export function TravelCard({ item, category, ratings }: TravelCardProps) {
+  const shareUrl = category ? `/travel/${category}/#${item.id}` : `/travel/#${item.id}`;
+
   return (
-    <div className="group bg-white rounded-lg overflow-hidden shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+    <div id={item.id} className="scroll-mt-24 group bg-white rounded-lg overflow-hidden shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
       {/* Image or gradient placeholder */}
       {item.imageUrl ? (
         <div className="relative h-48 overflow-hidden bg-slate-200">
@@ -129,7 +132,7 @@ export function TravelCard({ item, category, ratings }: TravelCardProps) {
         </p>
 
         {/* Actions */}
-        <div className="flex items-center gap-2 flex-wrap">
+        <div className="flex items-center gap-2 flex-wrap mb-4">
           {category && (
             <AddToTripButton
               item={{
@@ -155,6 +158,11 @@ export function TravelCard({ item, category, ratings }: TravelCardProps) {
               <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
             </a>
           )}
+        </div>
+
+        {/* Share Section */}
+        <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+          <ShareButtons url={shareUrl} title={item.name} label="Share" className="w-full justify-between" />
         </div>
       </div>
     </div>

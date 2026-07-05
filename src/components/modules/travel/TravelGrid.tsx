@@ -6,13 +6,15 @@ import { TravelCard } from './TravelCard';
 import { TravelFilters } from './TravelFilters';
 import { extractRatings } from '@/lib/ratings';
 import type { TravelItemBase, Destination } from '@/lib/schemas/travel.shared';
+import type { TripItemCategory } from '@/types/trip';
 
 interface TravelGridProps {
   items: TravelItemBase[];
   showFilters?: boolean;
+  category?: TripItemCategory;
 }
 
-export function TravelGrid({ items, showFilters = true }: TravelGridProps) {
+export function TravelGrid({ items, showFilters = true, category }: TravelGridProps) {
   const [activeDestination, setActiveDestination] = useState<Destination | 'all-items'>('all-items');
 
   const filteredItems = useMemo(() => {
@@ -38,7 +40,7 @@ export function TravelGrid({ items, showFilters = true }: TravelGridProps) {
       {filteredItems.length > 0 ? (
         <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-6">
           {filteredItems.map((item) => (
-            <TravelCard key={item.id} item={item} ratings={extractRatings(item)} />
+            <TravelCard key={item.id} item={item} ratings={extractRatings(item)} category={category} />
           ))}
         </div>
       ) : (
