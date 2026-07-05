@@ -46,9 +46,9 @@ const categories = [
       },
       {
         title: 'Winter driving in Norway: tires, chains, and the roads that close',
-        slug: 'winter-driving-norway',
-        readTime: '10 min',
-        status: 'coming-soon' as const,
+        slug: 'winter-driving-norway-tires-chains-road-closures',
+        readTime: '14 min',
+        status: 'published' as const,
       },
       {
         title: 'What to pack for Arctic Norway, month by month',
@@ -59,8 +59,8 @@ const categories = [
       {
         title: 'Allemannsretten explained: your rights and obligations',
         slug: 'allemannsretten-right-to-roam',
-        readTime: '7 min',
-        status: 'coming-soon' as const,
+        readTime: '9 min',
+        status: 'published' as const,
       },
     ],
   },
@@ -138,8 +138,8 @@ const categories = [
       {
         title: 'DNT cabin guide: how the hut system works, keys, and booking',
         slug: 'dnt-cabin-guide',
-        readTime: '9 min',
-        status: 'coming-soon' as const,
+        readTime: '10 min',
+        status: 'published' as const,
       },
     ],
   },

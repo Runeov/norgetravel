@@ -289,26 +289,33 @@ export default async function DynamicArticlePage({ params }: PageProps) {
           />
 
           {/* Author card */}
-          <div className={`${theme.bg} border ${theme.border} p-6 rounded-2xl mb-8`}>
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm">
-                <User className={`w-6 h-6 ${theme.text}`} aria-hidden="true" />
-              </div>
-              <div>
-                <p className="font-bold text-slate-900">{article.authorName || 'Averdi'}</p>
-                <p className="text-sm text-slate-500">
-                  Published{' '}
-                  {article.publishedAt
-                    ? new Date(article.publishedAt).toLocaleDateString('en-GB', {
-                        day: 'numeric',
-                        month: 'long',
-                        year: 'numeric',
-                      })
-                    : 'recently'}
-                </p>
+          <Link
+            href={`/om-oss/${article.authorId}`}
+            className="block group mb-8"
+          >
+            <div className={`${theme.bg} border ${theme.border} p-6 rounded-2xl hover:shadow-md transition-shadow`}>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm">
+                  <User className={`w-6 h-6 ${theme.text}`} aria-hidden="true" />
+                </div>
+                <div>
+                  <p className="font-bold text-slate-900 group-hover:text-[#E86C1F] transition-colors">
+                    {article.authorName || 'Averdi'}
+                  </p>
+                  <p className="text-sm text-slate-500">
+                    Published{' '}
+                    {article.publishedAt
+                      ? new Date(article.publishedAt).toLocaleDateString('en-GB', {
+                          day: 'numeric',
+                          month: 'long',
+                          year: 'numeric',
+                        })
+                      : 'recently'}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
 
           {/* More guides CTA */}
           <div className="text-center mt-8">
