@@ -99,7 +99,7 @@ export default function ArticleForm({ article }: ArticleFormProps) {
 
         {isEditing && article.status === 'published' && (
           <Link
-            href={`/kunnskapsbank/${article.category}/${article.slug}`}
+            href={`/travel-guides/${article.category}/${article.slug}`}
             target="_blank"
             className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-600 bg-slate-100 rounded-lg hover:bg-slate-200 transition-colors"
           >

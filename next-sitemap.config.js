@@ -38,7 +38,7 @@ module.exports = {
   outDir: './out',
   exclude: [
     '/team-demo', // Internal demo page
-    '/kunnskapsbank/artikler/sosiookonomiske-forskjeller_Long',
+    '/travel-guides/artikler/sosiookonomiske-forskjeller_Long',
     '/admin',
     '/admin/*',
   ],
@@ -63,15 +63,15 @@ module.exports = {
       changefreq = 'weekly';
     }
     // Hub pages get high priority
-    else if (path === '/kunnskapsbank' || 
-             path === '/kunnskapsbank/sametinget' || 
-             path === '/kunnskapsbank/bedrifter' ||
-             path === '/kunnskapsbank/organisasjoner') {
+    else if (path === '/travel-guides' || 
+             path === '/travel-guides/sametinget' || 
+             path === '/travel-guides/bedrifter' ||
+             path === '/travel-guides/organisasjoner') {
       priority = 0.9;
       changefreq = 'weekly';
     }
     // Article and subpages
-    else if (path.startsWith('/kunnskapsbank/')) {
+    else if (path.startsWith('/travel-guides/')) {
       priority = 0.8;
       changefreq = 'monthly';
     }

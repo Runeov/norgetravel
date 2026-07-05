@@ -101,7 +101,7 @@ export default function ArticleMetaSection({
           className="text-sm font-mono"
         />
         <p className="text-xs text-slate-400 mt-2">
-          /kunnskapsbank/{formData.category}/{formData.slug || 'url-slug'}
+          /travel-guides/{formData.category}/{formData.slug || 'url-slug'}
         </p>
       </div>
 

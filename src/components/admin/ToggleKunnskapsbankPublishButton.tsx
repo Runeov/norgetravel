@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Loader2, Eye, EyeOff } from 'lucide-react';
-import type { KunnskapsbankSectionId } from '@/lib/schemas/kunnskapsbank.schema';
+import type { KunnskapsbankSectionId } from '@/lib/schemas/travel-guides.schema';
 
 interface ToggleKunnskapsbankPublishButtonProps {
   sectionId: KunnskapsbankSectionId;
@@ -23,7 +23,7 @@ export default function ToggleKunnskapsbankPublishButton({
     setIsUpdating(true);
 
     try {
-      const response = await fetch('/api/admin/kunnskapsbank', {
+      const response = await fetch('/api/admin/travel-guides', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

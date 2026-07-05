@@ -33,7 +33,7 @@ interface CTABannerProps {
  *     primaryLabel="Explore tours"
  *     primaryHref="/tjenester/northern-lights"
  *     secondaryLabel="Read our guide"
- *     secondaryHref="/kunnskapsbank"
+ *     secondaryHref="/travel-guides"
  *     variant="gradient"
  *   />
  */

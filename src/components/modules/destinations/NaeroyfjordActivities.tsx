@@ -110,7 +110,7 @@ const featuredGuides: ActivityGuide[] = [
     price: 'From 450 NOK',
     season: 'Year-round (reduced winter)',
     icon: <Ship className="w-5 h-5" aria-hidden="true" />,
-    href: '/kunnskapsbank/trip-reports/naeroyfjord-electric-ferry-review',
+    href: '/travel-guides/trip-reports/naeroyfjord-electric-ferry-review',
     linkLabel: 'Read the full review',
     isExternal: false,
     bookingUrl:
@@ -124,7 +124,7 @@ const featuredGuides: ActivityGuide[] = [
     price: 'From 390 NOK',
     season: 'Year-round',
     icon: <Train className="w-5 h-5" aria-hidden="true" />,
-    href: '/kunnskapsbank/trip-reports/flam-railway-myrdal-review',
+    href: '/travel-guides/trip-reports/flam-railway-myrdal-review',
     linkLabel: 'Read the full review',
     isExternal: false,
     bookingUrl:
@@ -138,7 +138,7 @@ const featuredGuides: ActivityGuide[] = [
     price: 'From 890 NOK',
     season: 'May–September',
     icon: <Waves className="w-5 h-5" aria-hidden="true" />,
-    href: '/kunnskapsbank/trip-reports/kayaking-naeroyfjord-guided-review',
+    href: '/travel-guides/trip-reports/kayaking-naeroyfjord-guided-review',
     linkLabel: 'Read the full review',
     isExternal: false,
     bookingUrl:
@@ -152,7 +152,7 @@ const featuredGuides: ActivityGuide[] = [
     price: 'From 1,490 NOK',
     season: 'Daily in summer (May–Sep)',
     icon: <Mountain className="w-5 h-5" aria-hidden="true" />,
-    href: '/kunnskapsbank/trip-reports/norway-in-a-nutshell-bergen-review',
+    href: '/travel-guides/trip-reports/norway-in-a-nutshell-bergen-review',
     linkLabel: 'Read the full review',
     isExternal: false,
     bookingUrl:
@@ -546,7 +546,7 @@ export default function NaeroyfjordActivities() {
               return trail.slug ? (
                 <Link
                   key={trail.name}
-                  href={`/kunnskapsbank/trip-reports/${trail.slug}`}
+                  href={`/travel-guides/trip-reports/${trail.slug}`}
                   className="group bg-white rounded-lg border border-slate-200 p-6 hover:shadow-md hover:border-[#1A365D]/40 transition-all flex flex-col"
                 >
                   {cardInner}

@@ -4,8 +4,8 @@ export const dynamic = 'force-static';
 import {
   getAllKunnskapsbankSectionsSorted,
   updateKunnskapsbankSectionPublishStatus,
-} from '@/lib/admin/kunnskapsbank';
-import { KunnskapsbankSectionIdSchema } from '@/lib/schemas/kunnskapsbank.schema';
+} from '@/lib/admin/travel-guides-sections';
+import { KunnskapsbankSectionIdSchema } from '@/lib/schemas/travel-guides.schema';
 import { getAdminReadOnlyResponse } from '@/lib/admin/write-access';
 
 interface UpdateKunnskapsbankBody {
@@ -13,7 +13,7 @@ interface UpdateKunnskapsbankBody {
   isPublished?: boolean;
 }
 
-// GET /api/admin/kunnskapsbank - List all kunnskapsbank section statuses
+// GET /api/admin/travel-guides - List all kunnskapsbank section statuses
 export async function GET() {
   try {
     const sections = await getAllKunnskapsbankSectionsSorted();
@@ -27,7 +27,7 @@ export async function GET() {
   }
 }
 
-// PATCH /api/admin/kunnskapsbank - Update section publish status
+// PATCH /api/admin/travel-guides - Update section publish status
 export async function PATCH(request: NextRequest) {
   try {
     const readOnlyResponse = getAdminReadOnlyResponse();

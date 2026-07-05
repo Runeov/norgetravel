@@ -79,8 +79,8 @@ export function Navbar() {
     }`;
 
   const guideMenuActive =
-    pathname === '/kunnskapsbank' ||
-    pathname.startsWith('/kunnskapsbank/');
+    pathname === '/travel-guides' ||
+    pathname.startsWith('/travel-guides/');
 
   const closeMobileMenu = () => {
     setIsMenuOpen(false);
@@ -167,13 +167,13 @@ export function Navbar() {
                 </button>
                 <div className="absolute left-0 top-full pt-2 opacity-0 invisible -translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0">
                   <div className="w-60 rounded-2xl border border-slate-200 bg-white/95 backdrop-blur-md p-2 shadow-xl">
-                    <Link href="/kunnskapsbank#safety" className={dropdownItemClass(pathname === '/kunnskapsbank')}>
+                    <Link href="/travel-guides#safety" className={dropdownItemClass(pathname === '/travel-guides')}>
                       Safety & Preparation
                     </Link>
-                    <Link href="/kunnskapsbank#trip-reports" className={dropdownItemClass(false)}>
+                    <Link href="/travel-guides#trip-reports" className={dropdownItemClass(false)}>
                       Trip Reports
                     </Link>
-                    <Link href="/kunnskapsbank#planning" className={dropdownItemClass(false)}>
+                    <Link href="/travel-guides#planning" className={dropdownItemClass(false)}>
                       Planning Guides
                     </Link>
                   </div>
@@ -320,13 +320,13 @@ export function Navbar() {
               </button>
               {mobileDropdowns.tours && (
                 <div className="pl-4 space-y-1">
-                  <Link href="/kunnskapsbank#safety" onClick={closeMobileMenu} className={dropdownItemClass(false)}>
+                  <Link href="/travel-guides#safety" onClick={closeMobileMenu} className={dropdownItemClass(false)}>
                     Safety & Preparation
                   </Link>
-                  <Link href="/kunnskapsbank#trip-reports" onClick={closeMobileMenu} className={dropdownItemClass(false)}>
+                  <Link href="/travel-guides#trip-reports" onClick={closeMobileMenu} className={dropdownItemClass(false)}>
                     Trip Reports
                   </Link>
-                  <Link href="/kunnskapsbank#planning" onClick={closeMobileMenu} className={dropdownItemClass(false)}>
+                  <Link href="/travel-guides#planning" onClick={closeMobileMenu} className={dropdownItemClass(false)}>
                     Planning Guides
                   </Link>
                 </div>

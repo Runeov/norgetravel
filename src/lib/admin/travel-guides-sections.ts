@@ -5,10 +5,10 @@ import {
   KunnskapsbankSectionSchema,
   type KunnskapsbankSection,
   type KunnskapsbankSectionId,
-} from '@/lib/schemas/kunnskapsbank.schema';
+} from '@/lib/schemas/travel-guides.schema';
 import { withFileLock } from '@/lib/storage/file-lock';
 
-const DATA_FILE = path.join(process.cwd(), 'src/data/kunnskapsbank.json');
+const DATA_FILE = path.join(process.cwd(), 'src/data/travel-guides-sections.json');
 
 export type KunnskapsbankSectionsData = Record<KunnskapsbankSectionId, KunnskapsbankSection>;
 
@@ -17,7 +17,7 @@ function createDefaultSections(now = new Date().toISOString()): KunnskapsbankSec
     sametinget: {
       id: 'sametinget',
       title: 'Sametinget & Duodji',
-      path: '/kunnskapsbank/sametinget',
+      path: '/travel-guides/sametinget',
       isPublished: true,
       publishedAt: now,
       updatedAt: now,
@@ -25,7 +25,7 @@ function createDefaultSections(now = new Date().toISOString()): KunnskapsbankSec
     bedrifter: {
       id: 'bedrifter',
       title: 'Bedrift & Handel',
-      path: '/kunnskapsbank/bedrifter',
+      path: '/travel-guides/bedrifter',
       isPublished: true,
       publishedAt: now,
       updatedAt: now,
@@ -33,7 +33,7 @@ function createDefaultSections(now = new Date().toISOString()): KunnskapsbankSec
     organisasjoner: {
       id: 'organisasjoner',
       title: 'Lag & Forening',
-      path: '/kunnskapsbank/organisasjoner',
+      path: '/travel-guides/organisasjoner',
       isPublished: true,
       publishedAt: now,
       updatedAt: now,

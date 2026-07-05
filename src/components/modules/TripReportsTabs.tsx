@@ -96,7 +96,7 @@ export function TripReportsTabs({ articles, categoryId }: Props) {
                 <span className="text-xs font-bold text-slate-400 uppercase tracking-wide">Coming soon</span>
               ) : (
                 <Link
-                  href={`/kunnskapsbank/${categoryId}/${article.slug}`}
+                  href={`/travel-guides/${categoryId}/${article.slug}`}
                   className="inline-flex items-center gap-1 text-xs font-bold text-[#1A365D] hover:gap-2 transition-all"
                 >
                   Read guide

@@ -43,7 +43,7 @@ export default function TravelGuideTeaser() {
                   Solar Cycle 25 is at its peak. We break down the best locations, what G-scale geomagnetic storms mean for visibility, and which tour operators offer aurora guarantees.
                 </p>
                 <Link
-                  href="/kunnskapsbank"
+                  href="/travel-guides"
                   className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-full shadow-md hover:shadow-lg hover:shadow-[#1B3A5C]/30 hover:-translate-y-0.5 transition-all duration-300"
                 >
                   Read the guide
@@ -66,7 +66,7 @@ export default function TravelGuideTeaser() {
 
         <div className="text-center">
           <Link
-            href="/kunnskapsbank"
+            href="/travel-guides"
             className="inline-flex items-center justify-center text-[#1B3A5C] text-lg font-medium hover:text-[#00CC6A] transition-colors group"
           >
             Browse all travel guides

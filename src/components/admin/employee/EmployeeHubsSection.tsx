@@ -50,7 +50,7 @@ export default function EmployeeHubsSection({
               value={hub.link}
               onChange={(e) => onUpdate(index, 'link', e.target.value)}
               className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#E86C1F] focus:border-transparent text-sm"
-              placeholder="/kunnskapsbank/organisasjoner"
+              placeholder="/travel-guides/organisasjoner"
             />
           </div>
         </div>

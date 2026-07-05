@@ -109,7 +109,7 @@ const featuredGuides: ActivityGuide[] = [
     price: 'Free trail (guide required Oct–May)',
     season: 'Jun–Sep (self-guided). Oct–May (guide required).',
     icon: <Mountain className="w-5 h-5" aria-hidden="true" />,
-    href: '/kunnskapsbank/trip-reports/trolltunga-skjeggedal-trip-report',
+    href: '/travel-guides/trip-reports/trolltunga-skjeggedal-trip-report',
     linkLabel: 'Read the full report',
     isExternal: false,
     bookingUrl:
@@ -123,7 +123,7 @@ const featuredGuides: ActivityGuide[] = [
     price: 'Free (parking paid)',
     season: 'May–October (road access)',
     icon: <Waves className="w-5 h-5" aria-hidden="true" />,
-    href: '/kunnskapsbank/trip-reports/voringsfossen-mabodalen-guide',
+    href: '/travel-guides/trip-reports/voringsfossen-mabodalen-guide',
     linkLabel: 'Read the full guide',
     isExternal: false,
   },
@@ -135,7 +135,7 @@ const featuredGuides: ActivityGuide[] = [
     price: 'Tastings from 80–150 NOK',
     season: 'Blossom: May. Harvest: Aug–Oct.',
     icon: <Apple className="w-5 h-5" aria-hidden="true" />,
-    href: '/kunnskapsbank/trip-reports/hardanger-cider-harvest-trail',
+    href: '/travel-guides/trip-reports/hardanger-cider-harvest-trail',
     linkLabel: 'Read the full guide',
     isExternal: false,
     bookingUrl:
@@ -149,7 +149,7 @@ const featuredGuides: ActivityGuide[] = [
     price: 'From 850 NOK',
     season: 'May–September',
     icon: <Mountain className="w-5 h-5" aria-hidden="true" />,
-    href: '/kunnskapsbank/trip-reports/folgefonna-glacier-walk-report',
+    href: '/travel-guides/trip-reports/folgefonna-glacier-walk-report',
     linkLabel: 'Read the full review',
     isExternal: false,
     bookingUrl:

@@ -46,7 +46,7 @@ const navItems: NavItem[] = [
   },
   {
     label: 'Kunnskapsbank',
-    href: '/admin/kunnskapsbank',
+    href: '/admin/travel-guides',
     icon: <BookOpen className="w-5 h-5" />,
   },
   {

@@ -62,7 +62,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: {
       title: article.metaTitle || article.title,
       description: article.metaDescription || article.excerpt,
-      url: `https://norgetravel.com/kunnskapsbank/${article.category}/${article.slug}`,
+      url: `https://norgetravel.com/travel-guides/${article.category}/${article.slug}`,
       siteName: 'NorgeTravel.com',
       locale: 'en_US',
       type: 'article',
@@ -108,10 +108,10 @@ export default async function DynamicArticlePage({ params }: PageProps) {
     },
     datePublished: article.publishedAt || article.createdAt,
     dateModified: article.updatedAt,
-    url: `https://norgetravel.com/kunnskapsbank/${article.category}/${article.slug}`,
+    url: `https://norgetravel.com/travel-guides/${article.category}/${article.slug}`,
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://norgetravel.com/kunnskapsbank/${article.category}/${article.slug}`,
+      '@id': `https://norgetravel.com/travel-guides/${article.category}/${article.slug}`,
     },
   };
 
@@ -128,14 +128,14 @@ export default async function DynamicArticlePage({ params }: PageProps) {
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-slate-500 mb-12" aria-label="Brødsmulesti">
           <Link
-            href="/kunnskapsbank"
+            href="/travel-guides"
             className="hover:text-[#1A365D] transition-colors"
           >
             Travel Guides
           </Link>
           <span>/</span>
           <Link
-            href={`/kunnskapsbank/${article.category}`}
+            href={`/travel-guides/${article.category}`}
             className={`hover:${theme.text} transition-colors`}
           >
             {categoryLabel}
@@ -146,7 +146,7 @@ export default async function DynamicArticlePage({ params }: PageProps) {
 
         {/* Back link */}
         <Link
-          href="/kunnskapsbank"
+          href="/travel-guides"
           className="inline-flex items-center text-slate-500 hover:text-[#E86C1F] mb-8 font-medium transition-colors"
         >
           <ArrowLeft className="w-4 h-4 mr-2" aria-hidden="true" />
@@ -283,7 +283,7 @@ export default async function DynamicArticlePage({ params }: PageProps) {
         {/* FOOTER */}
         <footer className="mt-20 pt-8 border-t border-slate-200">
           <ShareButtons
-            url={`/kunnskapsbank/${article.category}/${article.slug}`}
+            url={`/travel-guides/${article.category}/${article.slug}`}
             title={article.title}
             className="mb-8"
           />
@@ -320,7 +320,7 @@ export default async function DynamicArticlePage({ params }: PageProps) {
           {/* More guides CTA */}
           <div className="text-center mt-8">
             <Link
-              href="/kunnskapsbank"
+              href="/travel-guides"
               className="inline-flex items-center justify-center px-6 py-3 bg-[#1A365D] text-white font-bold rounded-md hover:bg-[#152d52] transition-colors"
             >
               More travel guides

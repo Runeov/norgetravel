@@ -109,7 +109,7 @@ const featuredGuides: ActivityGuide[] = [
     price: 'From 390 NOK one-way',
     season: 'Year-round',
     icon: <Train className="w-5 h-5" aria-hidden="true" />,
-    href: '/kunnskapsbank/trip-reports/flam-railway-myrdal-review',
+    href: '/travel-guides/trip-reports/flam-railway-myrdal-review',
     linkLabel: 'Read the full review',
     isExternal: false,
     bookingUrl:
@@ -123,7 +123,7 @@ const featuredGuides: ActivityGuide[] = [
     price: 'From 450 NOK',
     season: 'Year-round (reduced winter)',
     icon: <Ship className="w-5 h-5" aria-hidden="true" />,
-    href: '/kunnskapsbank/trip-reports/naeroyfjord-electric-ferry-review',
+    href: '/travel-guides/trip-reports/naeroyfjord-electric-ferry-review',
     linkLabel: 'Read the full review',
     isExternal: false,
     bookingUrl:
@@ -137,7 +137,7 @@ const featuredGuides: ActivityGuide[] = [
     price: 'No toll — self-drive',
     season: 'Mid-May to late October',
     icon: <Mountain className="w-5 h-5" aria-hidden="true" />,
-    href: '/kunnskapsbank/trip-reports/sognefjellet-rv55-national-tourist-route',
+    href: '/travel-guides/trip-reports/sognefjellet-rv55-national-tourist-route',
     linkLabel: 'Read the full guide',
     isExternal: false,
   },
@@ -149,7 +149,7 @@ const featuredGuides: ActivityGuide[] = [
     price: 'Ferry ~40 NOK / Church ~120 NOK',
     season: 'June–September',
     icon: <Waves className="w-5 h-5" aria-hidden="true" />,
-    href: '/kunnskapsbank/trip-reports/urnes-stave-church-lustrafjord',
+    href: '/travel-guides/trip-reports/urnes-stave-church-lustrafjord',
     linkLabel: 'Read the full guide',
     isExternal: false,
     bookingUrl:

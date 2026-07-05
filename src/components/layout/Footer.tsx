@@ -51,7 +51,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/kunnskapsbank" className="hover:text-[#1B3A5C] transition-colors flex items-center gap-2 group">
+                <Link href="/travel-guides" className="hover:text-[#1B3A5C] transition-colors flex items-center gap-2 group">
                   <span className="w-1 h-1 rounded-full bg-[#1B3A5C] opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   Travel Guides
                 </Link>

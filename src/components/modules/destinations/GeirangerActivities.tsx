@@ -106,7 +106,7 @@ const featuredGuides: ActivityGuide[] = [
     price: 'From 895 NOK',
     season: 'Mar\u2013Dec',
     icon: <Waves className="w-5 h-5" aria-hidden="true" />,
-    href: '/kunnskapsbank/trip-reports/rib-fjordsafari-geirangerfjord-review',
+    href: '/travel-guides/trip-reports/rib-fjordsafari-geirangerfjord-review',
     linkLabel: 'Read our full review',
     bookingUrl:
       'https://www.getyourguide.com/geiranger-l4560/rib-geiranger-fjordsafari-t697794/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
@@ -119,7 +119,7 @@ const featuredGuides: ActivityGuide[] = [
     price: 'From 1,550 NOK',
     season: 'Apr\u2013Aug',
     icon: <Waves className="w-5 h-5" aria-hidden="true" />,
-    href: '/kunnskapsbank/trip-reports/kayaking-seven-sisters-geirangerfjord',
+    href: '/travel-guides/trip-reports/kayaking-seven-sisters-geirangerfjord',
     linkLabel: 'Read our full review',
     bookingUrl:
       'https://www.getyourguide.com/geiranger-l4560/geiranger-kayak-tour-with-waterfall-views-t923778/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
@@ -132,7 +132,7 @@ const featuredGuides: ActivityGuide[] = [
     price: '150 NOK toll',
     season: 'Jun\u2013Oct',
     icon: <Car className="w-5 h-5" aria-hidden="true" />,
-    href: '/kunnskapsbank/trip-reports/geiranger-by-car-eagle-road-dalsnibba',
+    href: '/travel-guides/trip-reports/geiranger-by-car-eagle-road-dalsnibba',
     linkLabel: 'Read our driving guide',
   },
   {
@@ -537,7 +537,7 @@ export function GeirangerActivities() {
                   </span>
                   {trail.slug && (
                     <Link
-                      href={`/kunnskapsbank/trip-reports/${trail.slug}`}
+                      href={`/travel-guides/trip-reports/${trail.slug}`}
                       className="inline-flex items-center gap-1 ml-auto text-xs font-bold text-[#1A365D] hover:text-[#00D084] transition-colors"
                     >
                       Read guide

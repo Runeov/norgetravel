@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { BookOpen, Eye, ExternalLink } from 'lucide-react';
-import { getAllKunnskapsbankSectionsSorted } from '@/lib/admin/kunnskapsbank';
+import { getAllKunnskapsbankSectionsSorted } from '@/lib/admin/travel-guides-sections';
 import ToggleKunnskapsbankPublishButton from '@/components/admin/ToggleKunnskapsbankPublishButton';
 
 export const dynamic = 'force-static';

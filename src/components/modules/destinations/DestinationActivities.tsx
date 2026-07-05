@@ -261,7 +261,7 @@ export function DestinationActivities({
                   </span>
                   {trail.slug && (
                     <Link
-                      href={`/kunnskapsbank/trip-reports/${trail.slug}`}
+                      href={`/travel-guides/trip-reports/${trail.slug}`}
                       className="inline-flex items-center gap-1 ml-auto text-xs font-bold text-[#1A365D] hover:text-[#00D084] transition-colors"
                     >
                       Read guide

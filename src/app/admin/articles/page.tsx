@@ -132,7 +132,7 @@ export default async function ArticlesPage() {
                       <div className="flex items-center justify-end gap-1">
                         {article.status === 'published' && (
                           <Link
-                            href={`/kunnskapsbank/${article.category}/${article.slug}`}
+                            href={`/travel-guides/${article.category}/${article.slug}`}
                             target="_blank"
                             className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
                             title="Se artikkel"

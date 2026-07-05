@@ -12,6 +12,16 @@ const nextConfig = {
 
   // SEO: Ensure clean URLs by removing the .html extension
   trailingSlash: true,
+
+  async redirects() {
+    return [
+      {
+        source: '/travel-guides/:path*',
+        destination: '/travel-guides/:path*',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

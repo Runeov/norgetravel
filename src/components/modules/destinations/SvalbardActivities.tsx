@@ -68,7 +68,7 @@ const featuredGuides: ActivityGuide[] = [
     price: 'From 990 NOK (guided)',
     season: 'Jun–Sep',
     icon: <Mountain className="w-5 h-5" aria-hidden="true" />,
-    href: '/kunnskapsbank/trip-reports/plataberget-longyearbyen-svalbard',
+    href: '/travel-guides/trip-reports/plataberget-longyearbyen-svalbard',
     linkLabel: 'Read the trail guide',
   },
   {
@@ -438,7 +438,7 @@ export function SvalbardActivities() {
                   </span>
                   {trail.slug && (
                     <Link
-                      href={`/kunnskapsbank/trip-reports/${trail.slug}`}
+                      href={`/travel-guides/trip-reports/${trail.slug}`}
                       className="inline-flex items-center gap-1 ml-auto text-xs font-bold text-[#1A365D] hover:text-[#00D084] transition-colors"
                     >
                       Read guide

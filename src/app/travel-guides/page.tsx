@@ -12,13 +12,13 @@ export const metadata: Metadata = {
   description:
     'Expert travel guides for Norway. Mountain safety and the Fjellvettreglene, first-person trip reports from Lofoten to Svalbard, and logistics guides for ferries, driving, and budgets.',
   alternates: {
-    canonical: '/kunnskapsbank',
+    canonical: '/travel-guides',
   },
   openGraph: {
     title: 'Travel Guides | NorgeTravel.com',
     description:
       'Expert travel guides for Norway. Safety preparation, trip reports, and planning guides for ferries, driving, budgets, and the DNT cabin network.',
-    url: 'https://norgetravel.com/kunnskapsbank',
+    url: 'https://norgetravel.com/travel-guides',
     siteName: 'NorgeTravel.com',
     locale: 'en_US',
     type: 'website',
@@ -168,7 +168,7 @@ const jsonLd = {
           '@type': 'ListItem',
           position: 2,
           name: 'Travel Guides',
-          item: 'https://norgetravel.com/kunnskapsbank',
+          item: 'https://norgetravel.com/travel-guides',
         },
       ],
     },
@@ -177,7 +177,7 @@ const jsonLd = {
       name: 'Travel Guides | NorgeTravel.com',
       description:
         'Expert travel guides for Norway. Safety, trip reports, and planning guides.',
-      url: 'https://norgetravel.com/kunnskapsbank',
+      url: 'https://norgetravel.com/travel-guides',
       publisher: {
         '@type': 'Organization',
         name: 'NorgeTravel.com',
@@ -287,7 +287,7 @@ export default function KunnskapsbankPage() {
                           </span>
                         ) : (
                           <Link
-                            href={`/kunnskapsbank/${cat.id}/${article.slug}`}
+                            href={`/travel-guides/${cat.id}/${article.slug}`}
                             className={`inline-flex items-center gap-1 text-xs font-bold ${cat.ctaColor} hover:gap-2 transition-all`}
                           >
                             Read guide
