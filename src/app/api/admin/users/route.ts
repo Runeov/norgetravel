@@ -3,7 +3,7 @@ import { getAllUsersSafe, createUser, updateUser, deleteUser } from '@/lib/admin
 import { getSessionFromRequest } from '@/lib/admin/auth';
 import { getAdminReadOnlyResponse } from '@/lib/admin/write-access';
 
-export const dynamic = 'force-static';
+export const dynamic = 'force-dynamic';
 import { UserCreateSchema, UserUpdateSchema } from '@/lib/schemas/user.schema';
 import { ZodError } from 'zod';
 

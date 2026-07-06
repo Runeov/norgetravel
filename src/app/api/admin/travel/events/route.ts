@@ -4,7 +4,7 @@ import { EventCreateSchema, EventUpdateSchema } from '@/lib/schemas/travel.event
 import { getAdminReadOnlyResponse } from '@/lib/admin/write-access';
 import type { Destination } from '@/lib/schemas/travel.shared';
 
-export const dynamic = 'force-static';
+export const dynamic = 'force-dynamic';
 
 // GET /api/admin/travel/events — List all event items
 export async function GET(request: NextRequest) {

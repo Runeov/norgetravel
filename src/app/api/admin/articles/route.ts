@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getAllArticlesSorted, createArticle } from '@/lib/admin/articles';
 import { getAdminReadOnlyResponse } from '@/lib/admin/write-access';
 
-export const dynamic = 'force-static';
+export const dynamic = 'force-dynamic';
 import type { ArticleFormData } from '@/types/admin';
 
 // GET /api/admin/articles - List all articles

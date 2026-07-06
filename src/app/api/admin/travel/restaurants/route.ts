@@ -4,7 +4,7 @@ import { RestaurantCreateSchema, RestaurantUpdateSchema } from '@/lib/schemas/tr
 import { getAdminReadOnlyResponse } from '@/lib/admin/write-access';
 import type { Destination } from '@/lib/schemas/travel.shared';
 
-export const dynamic = 'force-static';
+export const dynamic = 'force-dynamic';
 
 // GET /api/admin/travel/restaurants — List all restaurant items
 export async function GET(request: NextRequest) {
