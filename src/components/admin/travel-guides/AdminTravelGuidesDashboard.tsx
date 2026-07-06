@@ -44,9 +44,12 @@ export default function AdminTravelGuidesDashboard({
   const [previewArticleId, setPreviewArticleId] = useState<string | null>(null);
   const [previewChannel, setPreviewChannel] = useState<'x' | 'reddit' | 'facebook' | 'tiktok'>('x');
 
+  // Extract category IDs dynamically from the sections prop to keep it universal
+  const categoryIds = sections.map((s) => s.id);
+
   // Filter articles by category
   const travelArticles = Object.values(articles).filter(
-    (a: any) => ['safety', 'planning', 'trip-reports'].includes(a.category)
+    (a: any) => categoryIds.includes(a.category)
   );
 
   // Social media mock metrics
