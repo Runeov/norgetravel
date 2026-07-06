@@ -1,4 +1,4 @@
-# WCAG Fix Instructions for localhost:3001 (Averdi)
+# WCAG Fix Instructions for localhost:3001 (NorgeTravel)
 
 > **Generated from WCAG scan:** 2026-02-24  
 > **Target:** http://localhost:3001 (Next.js / React site)  
@@ -204,7 +204,7 @@ When an icon is the **only content** of a button or link, add `aria-label` to th
 ```jsx
 // Logo link (already has aria-label but it's redundant — keep it, just fix SVG):
 <a aria-label="Gå til forsiden" href="/">
-  <img alt="Averdi Logo" ... />
+  <img alt="NorgeTravel Logo" ... />
   {/* No SVG here, this is fine */}
 </a>
 ```

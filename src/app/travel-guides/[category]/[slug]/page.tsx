@@ -192,7 +192,7 @@ export default async function DynamicArticlePage({ params }: PageProps) {
               <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center">
                 <User className="w-4 h-4 text-slate-500" aria-hidden="true" />
               </div>
-              <span className="font-medium text-slate-700">{article.authorName || 'Averdi'}</span>
+              <span className="font-medium text-slate-700">{article.authorName || 'NorgeTravel'}</span>
             </div>
 
             {/* Date */}
@@ -300,7 +300,7 @@ export default async function DynamicArticlePage({ params }: PageProps) {
                 </div>
                 <div>
                   <p className="font-bold text-slate-900 group-hover:text-[#E86C1F] transition-colors">
-                    {article.authorName || 'Averdi'}
+                    {article.authorName || 'NorgeTravel'}
                   </p>
                   <p className="text-sm text-slate-500">
                     Published{' '}

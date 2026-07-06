@@ -1,4 +1,4 @@
-# WCAG Accessibility Fix Report — Averdi (localhost:3001)
+# WCAG Accessibility Fix Report — NorgeTravel (localhost:3001)
 ## For Claude AI — Complete Fix Instructions
 
 **Scan date:** 2026-02-24  
@@ -242,7 +242,7 @@ Or add fallback text inside:
 
 **Elements:**
 ```html
-<h3 class="text-lg font-bold text-slate-900">Averdi Analyse</h3>
+<h3 class="text-lg font-bold text-slate-900">NorgeTravel Analyse</h3>
 <h4 class="font-bold text-slate-800 mb-2">Konsultasjonsutmattelse</h4>
 <h4 class="font-bold text-slate-900 mb-2">Hvorfor blir diagnosen sen?</h4>
 <h4 class="text-xs uppercase font-bold text-slate-500 mb-2">Byggekostnad</h4>
@@ -330,7 +330,7 @@ The checker flags "Gå til forsiden" as redundant because screen readers already
 
 **Option B — Change to a non-redundant label:**
 ```jsx
-<a aria-label="Averdi - Gå til forsiden" className="flex items-center gap-2 ..." href="/">
+<a aria-label="NorgeTravel - Gå til forsiden" className="flex items-center gap-2 ..." href="/">
 ```
 
 #### Long link text on card components — multiple pages
@@ -370,7 +370,7 @@ These are card links where the entire card content becomes the link text. Fix by
 | `/kunnskapsbank/sametinget` | `/kunnskapsbank/sametinget/primaernaering` | `"Primærnæring — Les mer"` |
 | `/kunnskapsbank/sametinget` | `/kunnskapsbank/sametinget/kultur-sprak` | `"Kultur og språk — Les mer"` |
 | `/kunnskapsbank/organisasjoner` | `/kunnskapsbank/organisasjoner/idrettslag` | `"Idrettslag — Les mer"` |
-| `/kunnskapsbank/artikler/sosiookonomiske-forskjeller_Long` | `/kunnskapsbank/artikler/averdi-radet` | `"Averdi Rådet — Les neste artikkel"` |
+| `/kunnskapsbank/artikler/sosiookonomiske-forskjeller_Long` | `/kunnskapsbank/artikler/norgetravel-radet` | `"NorgeTravel Rådet — Les neste artikkel"` |
 
 ---
 

@@ -85,7 +85,7 @@ export default function AdminSidebar() {
             <span className="text-white font-bold text-lg">A</span>
           </div>
           <div>
-            <span className="font-bold text-slate-900">Averdi</span>
+            <span className="font-bold text-slate-900">NorgeTravel</span>
             <span className="text-xs text-slate-500 block">Admin Panel</span>
           </div>
         </Link>

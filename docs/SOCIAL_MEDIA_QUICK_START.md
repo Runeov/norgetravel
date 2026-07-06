@@ -2,7 +2,7 @@
 
 ## 🚀 What This Does
 
-Automatically generates LinkedIn and Facebook posts from your published articles, following Averdi's voice architecture (TANGEN mode).
+Automatically generates LinkedIn and Facebook posts from your published articles, following NorgeTravel's voice architecture (TANGEN mode).
 
 ---
 
@@ -61,7 +61,7 @@ Automatically generates LinkedIn and Facebook posts from your published articles
 ```
 ✅ Engaging question or contrarian statement
 ✅ 3-4 short paragraphs with data/insights
-✅ Averdi's unique perspective
+✅ NorgeTravel's unique perspective
 ✅ Question to engage audience
 ✅ 3-5 relevant hashtags
 ✅ ~1,300 characters
@@ -106,7 +106,7 @@ Automatically generates LinkedIn and Facebook posts from your published articles
 
 ## 📊 Voice Architecture
 
-Posts follow Averdi's **TANGEN mode**:
+Posts follow NorgeTravel's **TANGEN mode**:
 
 | Element | LinkedIn | Facebook |
 |---------|----------|----------|
@@ -134,7 +134,7 @@ konkurransefordel som få utnytter fullt ut.
 
 Hvordan bruker din bedrift Nord-Norge-fordelen?
 
-#Bedrift #NordNorge #Regnskap #Averdi
+#Bedrift #NordNorge #Regnskap #NorgeTravel
 ```
 
 ### Facebook Example
@@ -147,11 +147,11 @@ tiltakssonen til sin fordel.
 Kort fortalt: Med 0% arbeidsgiveravgift har du plutselig et innovasjonsfond 
 på 14,1% av lønnsbudsjettet. Det er reelle penger som kan brukes på vekst. 📊
 
-Les hele artikkelen på averdi.no (link i kommentarfeltet) 👇
+Les hele artikkelen på norgetravel.no (link i kommentarfeltet) 👇
 
 Har du spørsmål om hvordan dette gjelder din bedrift? Send oss en melding! ✨
 
-#Bedrift #NordNorge #Regnskap #Finnmark #Tiltakssonen #Averdi
+#Bedrift #NordNorge #Regnskap #Finnmark #Tiltakssonen #NorgeTravel
 ```
 
 ---
@@ -167,7 +167,7 @@ For detailed technical documentation, see:
 
 - **Technical issues:** Check the full documentation
 - **Voice/content questions:** Review `.kilocode/rules/Voice_rules.md`
-- **Support:** support@averdi.no
+- **Support:** hello@norgetravel.com
 
 ---
 

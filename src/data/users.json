@@ -1,1 +1,12 @@
-{}
+{
+  "initial-admin": {
+    "id": "initial-admin",
+    "email": "admin@norgetravel.com",
+    "name": "Administrator",
+    "passwordHash": "$2b$10$zwLd9dqtOjbUArrF5LWs/eB87kutEpfsDaqoL5e.PPDxMerkjrCpa",
+    "role": "admin",
+    "isActive": true,
+    "createdAt": "2026-07-06T14:00:00Z",
+    "updatedAt": "2026-07-06T14:00:00Z"
+  }
+}

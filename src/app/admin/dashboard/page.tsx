@@ -16,7 +16,7 @@ export default async function AdminDashboard() {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-slate-900">Dashboard</h1>
-        <p className="text-slate-500 mt-1">Velkommen til Averdi administrasjonspanel</p>
+        <p className="text-slate-500 mt-1">Velkommen til NorgeTravel administrasjonspanel</p>
       </div>
       
       {/* Stats Grid */}

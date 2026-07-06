@@ -2,7 +2,7 @@
 
 ## EmployeeProfileCard
 
-Modern, interactive employee profile card component inspired by contemporary design patterns while adhering to Averdi's brand guidelines.
+Modern, interactive employee profile card component inspired by contemporary design patterns while adhering to NorgeTravel's brand guidelines.
 
 ### Features
 
@@ -12,7 +12,7 @@ Modern, interactive employee profile card component inspired by contemporary des
   - Auto-rotating testimonial slider with manual controls
   - Hover effects on skills badges
   - Animated status indicator
-- **Averdi Brand Compliance**:
+- **NorgeTravel Brand Compliance**:
   - Uses official color palette (`#E86C1F`, `#F4B223`)
   - Follows Tailwind utility-first approach
   - Implements proper border radius (`rounded-2xl`, `rounded-full`)

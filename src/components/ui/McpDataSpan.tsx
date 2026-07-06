@@ -16,7 +16,7 @@ export function McpDataSpan({
   id, 
   value, 
   format = 'text', 
-  source = "Averdi Internal DB", 
+  source = "NorgeTravel Internal DB", 
   className 
 }: McpDataSpanProps) {
   

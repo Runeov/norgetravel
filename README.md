@@ -242,7 +242,7 @@ Configured for **Netlify** (`netlify.toml`, Netlify Forms). Also works on **Verc
 
 To deploy to GitHub Pages, you can export the site as static HTML and push to the `gh-pages` branch.
 
-1. Set the `BASE_PATH` environment variable to your repository name (e.g., `/averdiNextJS-main` if your repo is `username.github.io/averdiNextJS-main`). If you are using a custom domain or hosting at the root (`username.github.io`), leave it empty.
+1. Set the `BASE_PATH` environment variable to your repository name (e.g., `/norgetravelNextJS-main` if your repo is `username.github.io/norgetravelNextJS-main`). If you are using a custom domain or hosting at the root (`username.github.io`), leave it empty.
 
 2. Run the export script:
    ```bash

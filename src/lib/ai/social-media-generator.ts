@@ -68,7 +68,7 @@ export async function generateSocialMediaPosts(
  * Structure:
  * 1. THE HOOK → Contrarian statement or question
  * 2. THE MEAT → 3-4 short paragraphs, sparingly use emojis (✅, 📉, 💡)
- * 3. THE TWIST → The unique Averdi perspective
+ * 3. THE TWIST → The unique NorgeTravel perspective
  * 4. THE ENGAGEMENT → Direct question to audience
  */
 async function generateLinkedInPost(params: {
@@ -269,7 +269,7 @@ async function callAIService(
     //   body: JSON.stringify({
     //     model: 'gpt-4',
     //     messages: [
-    //       { role: 'system', content: 'You are a social media expert for Averdi AS.' },
+    //       { role: 'system', content: 'You are a social media expert for NorgeTravel AS.' },
     //       { role: 'user', content: prompt }
     //     ],
     //     max_tokens: 500,
@@ -354,8 +354,8 @@ function generateHashtags(
   
   hashtags.push(...tagHashtags);
   
-  // Add Averdi brand hashtag
-  hashtags.push('#Averdi');
+  // Add NorgeTravel brand hashtag
+  hashtags.push('#NorgeTravel');
   
   // LinkedIn typically uses fewer hashtags (3-5)
   // Facebook can use more (5-10)

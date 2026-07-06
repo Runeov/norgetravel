@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import AdminLayoutWrapper from '@/components/admin/AdminLayoutWrapper';
 
 export const metadata: Metadata = {
-  title: 'Admin | Averdi',
-  description: 'Averdi administrasjonspanel',
+  title: 'Admin | NorgeTravel',
+  description: 'NorgeTravel administrasjonspanel',
   robots: 'noindex, nofollow',
 };
 

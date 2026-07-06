@@ -1,12 +1,12 @@
 # SEO & LLM Discoverability Audit
-## Averdi Next.js — February 2026
+## NorgeTravel Next.js — February 2026
 ### Focus: Smaller Companies, Sametinget, Lag & Foreninger
 
 ---
 
 ## EXECUTIVE SUMMARY
 
-The Averdi Next.js site has **strong content foundations** across all three target segments, but suffers from **inconsistent SEO implementation** — the Sametinget section is well-optimized while the Bedrifter and Organisasjoner sections have significant gaps. For LLM discoverability specifically, the site has good structured data on some pages but lacks the semantic clarity and entity definitions that AI systems use to recommend businesses.
+The NorgeTravel Next.js site has **strong content foundations** across all three target segments, but suffers from **inconsistent SEO implementation** — the Sametinget section is well-optimized while the Bedrifter and Organisasjoner sections have significant gaps. For LLM discoverability specifically, the site has good structured data on some pages but lacks the semantic clarity and entity definitions that AI systems use to recommend businesses.
 
 ### Overall Score by Segment
 
@@ -119,7 +119,7 @@ Current description: `'Guide til 0% arbeidsgiveravgift...'`
 
 ### 2.4 🟠 Missing `Service` Schema on Bedrifter Pages
 
-The bedrifter hub uses `FAQPage` schema only. It should also include a `Service` schema (like the Sametinget page does) to tell LLMs: "Averdi provides accounting services for businesses in Northern Norway."
+The bedrifter hub uses `FAQPage` schema only. It should also include a `Service` schema (like the Sametinget page does) to tell LLMs: "NorgeTravel provides accounting services for businesses in Northern Norway."
 
 ### 2.5 🟠 Organisasjoner Title Doesn't Include Geographic Terms
 
@@ -133,7 +133,7 @@ Missing geographic qualifiers that LLMs use for local matching:
 - "Karasjok"
 - "Nord-Troms"
 
-**Recommended:** `'Regnskap for lag og foreninger i Finnmark | Momskompensasjon & Årsregnskap | Averdi'`
+**Recommended:** `'Regnskap for lag og foreninger i Finnmark | Momskompensasjon & Årsregnskap | NorgeTravel'`
 
 ---
 
@@ -143,7 +143,7 @@ Missing geographic qualifiers that LLMs use for local matching:
 
 LLMs (ChatGPT, Claude, Gemini, Perplexity) use these signals to recommend a business:
 
-| Signal | Averdi Status | Score |
+| Signal | NorgeTravel Status | Score |
 |--------|--------------|-------|
 | **JSON-LD structured data** | Partial (good on Sametinget, weak elsewhere) | ⭐⭐⭐ |
 | **Clear entity definition** ("who we are, what we do, where") | Weak — homepage schema too sparse | ⭐⭐ |
@@ -156,7 +156,7 @@ LLMs (ChatGPT, Claude, Gemini, Perplexity) use these signals to recommend a busi
 
 ### 3.2 LLM Query Simulation
 
-Here's how Averdi would rank for typical LLM queries:
+Here's how NorgeTravel would rank for typical LLM queries:
 
 #### Query: "Regnskapsfører for små bedrifter i Finnmark"
 - **Current ranking:** ⭐⭐ (Weak)
@@ -175,16 +175,16 @@ Here's how Averdi would rank for typical LLM queries:
 
 #### Query: "Regnskap for forening i Nord-Norge"
 - **Current ranking:** ⭐ (Very Weak)
-- **Why:** The organisasjoner hub title is "Lag & Forening | Regnskapshjelp for Frivilligheten" — no geographic terms, no JSON-LD, no OG tags. LLMs have almost no structured signal to connect Averdi to this query.
+- **Why:** The organisasjoner hub title is "Lag & Forening | Regnskapshjelp for Frivilligheten" — no geographic terms, no JSON-LD, no OG tags. LLMs have almost no structured signal to connect NorgeTravel to this query.
 - **Fix:** Complete metadata overhaul of organisasjoner hub.
 
 ### 3.3 The "Entity Gap" Problem
 
-LLMs build an internal "entity model" of businesses. For Averdi, the entity model is currently:
+LLMs build an internal "entity model" of businesses. For NorgeTravel, the entity model is currently:
 
 ```
 WHAT LLMs KNOW:
-├── Name: Averdi AS
+├── Name: NorgeTravel AS
 ├── Type: AccountingService
 ├── Location: Karasjok (from JSON-LD)
 ├── Area: Finnmark, Troms, Nord-Norge (vague)
@@ -210,11 +210,11 @@ WHAT LLMs DON'T KNOW:
 
 | Element | Status | Issue |
 |---------|--------|-------|
-| Title | ✅ `'Averdi - Statsautorisert regnskapsførerselskap i Nord-Norge'` | Good but could include "Karasjok" |
-| Description | ⚠️ Truncated: `'Averdi er et statsautorisert regnskapsførerselskap med base i Karasjok...'` | Ends with `...` — likely incomplete |
+| Title | ✅ `'NorgeTravel - Statsautorisert regnskapsførerselskap i Nord-Norge'` | Good but could include "Karasjok" |
+| Description | ⚠️ Truncated: `'NorgeTravel er et statsautorisert regnskapsførerselskap med base i Karasjok...'` | Ends with `...` — likely incomplete |
 | JSON-LD | ⚠️ `AccountingService` — minimal fields | Missing 8+ recommended fields |
 | OpenGraph | ❌ Missing entirely | Critical for social sharing |
-| H1 | ✅ `'Velkommen til Averdi'` | Could be more descriptive for SEO |
+| H1 | ✅ `'Velkommen til NorgeTravel'` | Could be more descriptive for SEO |
 | Canonical | ❌ Missing | |
 | `lang` attribute | ✅ `nb` | Correct |
 
@@ -222,7 +222,7 @@ WHAT LLMs DON'T KNOW:
 
 | Element | Status | Issue |
 |---------|--------|-------|
-| Title | ⚠️ `'Kunnskapsbank \| Averdi'` | Too generic, no keywords |
+| Title | ⚠️ `'Kunnskapsbank \| NorgeTravel'` | Too generic, no keywords |
 | Description | ✅ Good: mentions Sametinget, Tiltakssonen, Idrettslag | |
 | JSON-LD | ✅ `FAQPage` with 3 questions | Good but could add `CollectionPage` type |
 | OpenGraph | ❌ Missing | |
@@ -269,8 +269,8 @@ WHAT LLMs DON'T KNOW:
 
 | Page | Title Quality | Description | JSON-LD | OG |
 |------|--------------|-------------|---------|-----|
-| `/sametinget/naering` | ⚠️ Missing "Averdi" or "2026" | ✅ | ❌ | ❌ |
-| `/sametinget/primaernaering` | ⚠️ Missing "Averdi" | ✅ | ❌ | ❌ |
+| `/sametinget/naering` | ⚠️ Missing "NorgeTravel" or "2026" | ✅ | ❌ | ❌ |
+| `/sametinget/primaernaering` | ⚠️ Missing "NorgeTravel" | ✅ | ❌ | ❌ |
 | `/sametinget/duodji` | ✅ Compelling with amount | ✅ | ❌ | ❌ |
 | `/sametinget/kultur-sprak` | ✅ Good | ✅ | ❌ | ❌ |
 | `/sametinget/institusjon` | ✅ Good | ✅ | ❌ | ❌ |
@@ -303,8 +303,8 @@ Allow: /
 Disallow: /team-demo
 Disallow: /api/
 Disallow: /admin/
-Host: https://www.averdi.no
-Sitemap: https://www.averdi.no/sitemap.xml
+Host: https://www.norgetravel.no
+Sitemap: https://www.norgetravel.no/sitemap.xml
 ```
 
 | Check | Status |
@@ -348,10 +348,10 @@ Add these fields to the `AccountingService` schema in `page.tsx`:
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'AccountingService',
-  'name': 'Averdi AS',
-  'image': 'https://averdi.no/logo_averdi.png',
+  'name': 'NorgeTravel AS',
+  'image': 'https://norgetravel.no/logo_norgetravel.png',
   'description': 'Statsautorisert regnskapsførerselskap spesialisert på nordnorsk næringsliv, tiltakssonen og samiske organisasjoner.',
-  'url': 'https://www.averdi.no',
+  'url': 'https://www.norgetravel.no',
   'telephone': '+47 78 46 61 16',
   'slogan': 'Tolken av Nord-Norge',
   'foundingDate': '1989',
@@ -409,15 +409,15 @@ const jsonLd = {
 In `layout.tsx`, add:
 ```typescript
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.averdi.no'),
+  metadataBase: new URL('https://www.norgetravel.no'),
   title: { ... },
   description: '...',
   openGraph: {
     type: 'website',
     locale: 'nb_NO',
-    url: 'https://www.averdi.no',
-    siteName: 'Averdi - Tolken av Nord-Norge',
-    images: [{ url: '/og-images/averdi-default.jpg', width: 1200, height: 630 }],
+    url: 'https://www.norgetravel.no',
+    siteName: 'NorgeTravel - Tolken av Nord-Norge',
+    images: [{ url: '/og-images/norgetravel-default.jpg', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -463,10 +463,10 @@ export const metadata: Metadata = {
 A growing number of sites are adding an `llms.txt` file (similar to `robots.txt`) that helps LLMs understand the site. Consider creating `/public/llms.txt`:
 
 ```
-# Averdi AS — Statsautorisert Regnskapsførerselskap
+# NorgeTravel AS — Statsautorisert Regnskapsførerselskap
 
 ## About
-Averdi AS is a state-authorized accounting firm based in Karasjok, Finnmark, Norway. 
+NorgeTravel AS is a state-authorized accounting firm based in Karasjok, Finnmark, Norway. 
 Founded in 1989, we specialize in accounting, payroll, tax advisory, and grant application 
 assistance for businesses, organizations, and Sami institutions in Northern Norway.
 
@@ -521,7 +521,7 @@ Despite the technical SEO gaps, the **content quality is exceptional**:
 - ❌ No explicit "Vi hjelper småbedrifter" page or section
 - ❌ No pricing/package information (LLMs love to compare)
 - ❌ No client testimonials or case studies (social proof for LLMs)
-- ❌ No "Hvorfor velge Averdi" comparison page
+- ❌ No "Hvorfor velge NorgeTravel" comparison page
 - ❌ Missing "Samiske foreninger" page (placeholder exists but not built)
 
 ---

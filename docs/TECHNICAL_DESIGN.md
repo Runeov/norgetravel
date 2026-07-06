@@ -1,4 +1,4 @@
-# Averdi Admin System - Technical Design Document
+# NorgeTravel Admin System - Technical Design Document
 
 **Version:** 1.0
 **Date:** January 2026
@@ -8,7 +8,7 @@
 
 ## 1. Overview
 
-The Averdi Admin System is a content management system built with Next.js 15 for managing employees and articles on the averdi.no website. This document describes the technical architecture, design decisions, and implementation details.
+The NorgeTravel Admin System is a content management system built with Next.js 15 for managing employees and articles on the norgetravel.no website. This document describes the technical architecture, design decisions, and implementation details.
 
 ### 1.1 Technology Stack
 

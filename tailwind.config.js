@@ -15,8 +15,8 @@ module.exports = {
         'nt-green':  '#00CC6A',   // Aurora green — gradient endpoint, highlights
         'nt-blue':   '#5CBFEE',   // Water / fjord blue — secondary accents
         // Legacy aliases (keep during migration)
-        'averdi-orange': '#1B3A5C',
-        'averdi-yellow': '#00CC6A',
+        'norgetravel-orange': '#1B3A5C',
+        'norgetravel-yellow': '#00CC6A',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'sans-serif'],

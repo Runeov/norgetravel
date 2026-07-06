@@ -105,7 +105,7 @@ function AccountingCredentialsGuide({ system }: { system: string }) {
                     <div className="bg-gray-50 p-4 rounded-lg text-sm">
                       <p className="text-gray-700 mb-2">Logg inn på integrasjonspartnerens dashboard for å hente Client Key</p>
                       <div className="bg-blue-50 p-2 rounded text-xs text-blue-800">
-                        <strong>Averdi-kunder:</strong> Send beskjed når godkjent, vi henter nøkkelen for deg
+                        <strong>NorgeTravel-kunder:</strong> Send beskjed når godkjent, vi henter nøkkelen for deg
                       </div>
                     </div>
                   </div>
@@ -183,9 +183,9 @@ function AccountingCredentialsGuide({ system }: { system: string }) {
                 <ExternalLink className="w-3 h-3" />
                 {isPowerOffice ? 'PowerOffice docs' : '24SevenOffice support'}
               </a>
-              <a href="mailto:support@averdi.no" className="text-green-700 hover:underline flex items-center gap-1">
+              <a href="mailto:hello@norgetravel.com" className="text-green-700 hover:underline flex items-center gap-1">
                 <Key className="w-3 h-3" />
-                support@averdi.no
+                hello@norgetravel.com
               </a>
             </div>
           </div>
@@ -514,11 +514,11 @@ function VippsCredentialsGuide() {
                 Offisiell Vipps dokumentasjon om portalen
               </a>
               <a 
-                href="mailto:support@averdi.no" 
+                href="mailto:hello@norgetravel.com" 
                 className="flex items-center gap-2 text-green-700 hover:underline"
               >
                 <Key className="w-4 h-4" />
-                Kontakt Averdi support: support@averdi.no
+                Kontakt NorgeTravel support: hello@norgetravel.com
               </a>
             </div>
           </div>
@@ -792,7 +792,7 @@ API Key: ${config.accountingApiKey}
 API Secret: [REDACTED - See encrypted config file]
 `}
 
-IMPLEMENTATION CHECKLIST FOR AVERDI ACCOUNTING
+IMPLEMENTATION CHECKLIST FOR NorgeTravel ACCOUNTING
 -----------------------------------------------
 □ Step 1: Verify Signing Authority
   - Client has BankID
@@ -885,7 +885,7 @@ CONTACT INFORMATION
 Vipps Support: https://vippsmobilepay.com/support
 ${config.accountingSystem === 'poweroffice' ? 'PowerOffice Support: https://www.poweroffice.no/support' : '24SevenOffice Support: https://24sevenoffice.com/support'}
 ${partner ? `${partner.name}: ${partner.url || '[Contact via accounting software]'}` : ''}
-Averdi Accounting: support@averdi.no
+NorgeTravel Accounting: hello@norgetravel.com
 Phone: +47 78 46 61 16
 
 SECURITY NOTES
@@ -923,11 +923,11 @@ Problem: Integration stopped working
 → Check: Vipps Portal > Developer > API Keys status
 → Action: Re-authorize in PowerOffice Extensions
 
-For detailed troubleshooting: Contact support@averdi.no
+For detailed troubleshooting: Contact hello@norgetravel.com
 
 ESTIMATED TIMELINE
 ------------------
-Day 1-2:   Averdi reviews configuration
+Day 1-2:   NorgeTravel reviews configuration
 Day 3-5:   Technical setup and OAuth authorizations
 Day 6-7:   Testing phase with client
 Day 8-10:  Go-live and monitoring
@@ -961,8 +961,8 @@ Send this TXT file via email, but send JSON file via secure channel only.
     URL.revokeObjectURL(url);
   };
 
-  const sendToAverdi = () => {
-    const emailBody = `Hello Averdi Accounting Team,
+  const sendToNorgeTravel = () => {
+    const emailBody = `Hello NorgeTravel Accounting Team,
 
 I have completed the Vipps MobilePay integration setup wizard.
 
@@ -974,7 +974,7 @@ I will send the full configuration file separately via secure channel.
 
 Best regards`;
 
-    const mailtoLink = `mailto:support@averdi.no?subject=Vipps Integration Setup - ${config.companyName} (${config.orgNumber})&body=${encodeURIComponent(emailBody)}`;
+    const mailtoLink = `mailto:hello@norgetravel.com?subject=Vipps Integration Setup - ${config.companyName} (${config.orgNumber})&body=${encodeURIComponent(emailBody)}`;
     window.location.href = mailtoLink;
   };
 
@@ -1012,7 +1012,7 @@ Best regards`;
         {troubleshootingOpen && (
           <div className="p-6">
             <p className="text-sm text-gray-600">
-              For full troubleshooting guide, contact <a href="mailto:support@averdi.no" className="text-blue-600 hover:underline">support@averdi.no</a>
+              For full troubleshooting guide, contact <a href="mailto:hello@norgetravel.com" className="text-blue-600 hover:underline">hello@norgetravel.com</a>
             </p>
           </div>
         )}
@@ -1174,7 +1174,7 @@ Best regards`;
                 type="text"
                 value={config.companyName}
                 onChange={(e) => updateConfig('companyName', e.target.value)}
-                placeholder="e.g., Averdi AS or Ski Idrettslag"
+                placeholder="e.g., NorgeTravel AS or Ski Idrettslag"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
               />
             </div>
@@ -1473,11 +1473,11 @@ Best regards`;
             </button>
 
             <button
-              onClick={sendToAverdi}
+              onClick={sendToNorgeTravel}
               className="w-full bg-green-500 hover:bg-green-600 text-white px-6 py-4 rounded-lg font-medium flex items-center justify-center gap-2 transition-colors"
             >
               <Check className="w-5 h-5" />
-              Email Configuration to Averdi
+              Email Configuration to NorgeTravel
             </button>
           </div>
 

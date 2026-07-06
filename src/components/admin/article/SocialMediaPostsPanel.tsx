@@ -111,7 +111,7 @@ export default function SocialMediaPostsPanel({
             Klikk "Generer innlegg" for å lage LinkedIn og Facebook-innlegg basert på artikkelen.
           </p>
           <p className="text-xs text-slate-400 mt-2">
-            Innleggene følger Averdi's voice architecture (TANGEN-modus)
+            Innleggene følger NorgeTravel's voice architecture (TANGEN-modus)
           </p>
         </div>
       )}

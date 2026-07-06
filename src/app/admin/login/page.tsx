@@ -146,7 +146,7 @@ export default function AdminLoginPage() {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-[#E86C1F] to-[#F4B223] mb-4">
             <Lock className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-2xl font-bold text-slate-900">Averdi Admin</h1>
+          <h1 className="text-2xl font-bold text-slate-900">NorgeTravel Admin</h1>
           <p className="text-slate-500 mt-1">Logg inn for å administrere innhold</p>
         </div>
 

@@ -46,10 +46,10 @@ function generateMilestones(employee: Employee): TimelineMilestone[] {
     icon: 'award'
   });
   
-  // Joined Averdi milestone
+  // Joined NorgeTravel milestone
   milestones.push({
     year: (currentYear - 5).toString(),
-    title: 'Ble en del av Averdi',
+    title: 'Ble en del av NorgeTravel',
     description: `Begynte som ${employee.role.split('/')[0].trim()} i Karasjok`,
     icon: 'star',
     highlight: true

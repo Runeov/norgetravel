@@ -1,7 +1,7 @@
 # Publish Readiness Report
 
 Date: 2026-03-02
-Project: `averdiNextJS`
+Project: `norgetravelNextJS`
 
 ## Executive Verdict
 - Marketing/site deploy: **Ready with cautions**
@@ -44,7 +44,7 @@ Recommended soon after publishing:
 3. Add smoke tests for admin login and CRUD endpoints.
 
 ## Temporary Domain Mode (Vercel)
-- If `averdi.no` is not yet available in this Vercel project, set:
-  - `SITE_URL=https://averdi-next-js-git-main-pro-design.vercel.app`
-  - `NEXT_PUBLIC_SITE_URL=https://averdi-next-js-git-main-pro-design.vercel.app`
-- Deploy on Vercel subdomain first, then switch both values to `https://www.averdi.no` when DNS/cutover is ready.
+- If `norgetravel.no` is not yet available in this Vercel project, set:
+  - `SITE_URL=https://norgetravel-next-js-git-main-pro-design.vercel.app`
+  - `NEXT_PUBLIC_SITE_URL=https://norgetravel-next-js-git-main-pro-design.vercel.app`
+- Deploy on Vercel subdomain first, then switch both values to `https://www.norgetravel.no` when DNS/cutover is ready.

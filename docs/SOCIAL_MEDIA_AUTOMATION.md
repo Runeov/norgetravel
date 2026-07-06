@@ -1,4 +1,4 @@
-# Social Media Post Automation for Averdi
+# Social Media Post Automation for NorgeTravel
 
 **Version:** 1.0  
 **Date:** February 2026  
@@ -8,7 +8,7 @@
 
 ## Overview
 
-This document describes the automatic social media post generation system for Averdi articles. When an article is published, the system can generate platform-specific posts for LinkedIn and Facebook that follow Averdi's voice architecture rules.
+This document describes the automatic social media post generation system for NorgeTravel articles. When an article is published, the system can generate platform-specific posts for LinkedIn and Facebook that follow NorgeTravel's voice architecture rules.
 
 ---
 
@@ -68,14 +68,14 @@ validatePost(post: SocialMediaPost): { valid: boolean; errors: string[] }
 
 **Voice Architecture Integration:**
 
-The generator follows Averdi's voice rules:
+The generator follows NorgeTravel's voice rules:
 
 #### LinkedIn (TANGEN Mode)
 ```
 Structure:
 1. THE HOOK      → Contrarian statement or question
 2. THE MEAT      → 3-4 short paragraphs, emojis (✅, 📉, 💡)
-3. THE TWIST     → Unique Averdi perspective
+3. THE TWIST     → Unique NorgeTravel perspective
 4. THE ENGAGEMENT → Direct question to audience
 
 Example:
@@ -121,7 +121,7 @@ Cookie: admin-session=<jwt-token>
     "linkedin": {
       "platform": "linkedin",
       "content": "Er du klar over at...",
-      "hashtags": ["#Bedrift", "#Vipps", "#Averdi"],
+      "hashtags": ["#Bedrift", "#Vipps", "#NorgeTravel"],
       "characterCount": 456,
       "generatedAt": "2026-02-02T21:00:00Z"
     },
@@ -227,11 +227,11 @@ ANTHROPIC_API_KEY=sk-ant-...
 
 ### AI Prompt Engineering
 
-The prompts are carefully crafted to follow Averdi's voice architecture:
+The prompts are carefully crafted to follow NorgeTravel's voice architecture:
 
 **LinkedIn Prompt Structure:**
 ```
-1. System context (who Averdi is)
+1. System context (who NorgeTravel is)
 2. Voice architecture rules (TANGEN mode)
 3. Structure requirements (HOOK → MEAT → TWIST → ENGAGEMENT)
 4. Article information (title, excerpt, content preview)
@@ -261,18 +261,18 @@ The prompts are carefully crafted to follow Averdi's voice architecture:
 
 **LinkedIn:** 3-5 hashtags (professional, focused)
 ```typescript
-['#Bedrift', '#Regnskap', '#NordNorge', '#Averdi']
+['#Bedrift', '#Regnskap', '#NordNorge', '#NorgeTravel']
 ```
 
 **Facebook:** 5-8 hashtags (broader, community-focused)
 ```typescript
-['#Bedrift', '#Regnskap', '#NordNorge', '#Finnmark', '#Averdi']
+['#Bedrift', '#Regnskap', '#NordNorge', '#Finnmark', '#NorgeTravel']
 ```
 
 **Generation Logic:**
 1. Category-based hashtags (e.g., 'bedrift' → '#Bedrift', '#Regnskap')
 2. Tag-based hashtags (from article tags)
-3. Brand hashtag ('#Averdi')
+3. Brand hashtag ('#NorgeTravel')
 4. Deduplicated and limited to platform max
 
 ### HTML Stripping
@@ -352,7 +352,7 @@ If AI service fails:
 5. **Image Generation**
    - Auto-generate social media images
    - Use article featured image
-   - Add Averdi branding overlay
+   - Add NorgeTravel branding overlay
 
 6. **Analytics Integration**
    - Track post performance
@@ -372,7 +372,7 @@ If AI service fails:
    - Content gap analysis
 
 3. **AI Learning**
-   - Train on Averdi's best-performing posts
+   - Train on NorgeTravel's best-performing posts
    - Fine-tune voice architecture
    - Personalized style per employee
 
@@ -544,7 +544,7 @@ const limiter = rateLimit({
 
 - User guide: See "Usage Guide" section above
 - Video tutorial: (To be created)
-- Support email: support@averdi.no
+- Support email: hello@norgetravel.com
 
 ---
 
