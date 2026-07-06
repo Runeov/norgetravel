@@ -127,6 +127,8 @@ export default function EmployeeForm({ employee, isNew = false }: EmployeeFormPr
             onAdd={addRelatedHub}
             onUpdate={updateRelatedHub}
             onRemove={removeRelatedHub}
+            employeeId={employee?.id}
+            employeeName={employee?.name}
           />
         )}
 

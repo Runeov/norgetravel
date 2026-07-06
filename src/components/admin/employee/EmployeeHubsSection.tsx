@@ -10,6 +10,8 @@ interface EmployeeHubsSectionProps {
   onAdd: () => void;
   onUpdate: (index: number, field: keyof RelatedHub, value: string) => void;
   onRemove: (index: number) => void;
+  employeeId?: string;
+  employeeName?: string;
 }
 
 export default function EmployeeHubsSection({
@@ -17,6 +19,8 @@ export default function EmployeeHubsSection({
   onAdd,
   onUpdate,
   onRemove,
+  employeeId,
+  employeeName,
 }: EmployeeHubsSectionProps) {
   const [articles, setArticles] = useState<any[]>([]);
 
@@ -34,6 +38,13 @@ export default function EmployeeHubsSection({
     }
     loadArticles();
   }, []);
+
+  const filteredArticles = articles.filter((art) => {
+    if (!employeeId) return true;
+    const matchesId = art.authorId?.toLowerCase() === employeeId.toLowerCase();
+    const matchesName = employeeName && art.authorName?.toLowerCase() === employeeName.toLowerCase();
+    return matchesId || matchesName;
+  });
 
   return (
     <DynamicList
@@ -67,7 +78,7 @@ export default function EmployeeHubsSection({
               value={hub.link}
               onChange={(e) => {
                 const selectedLink = e.target.value;
-                const matchedArticle = articles.find(
+                const matchedArticle = filteredArticles.find(
                   (a) => `/travel-guides/${a.category}/${a.slug}` === selectedLink
                 );
                 onUpdate(index, 'link', selectedLink);
@@ -78,7 +89,7 @@ export default function EmployeeHubsSection({
               className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#E86C1F] focus:border-transparent text-sm"
             >
               <option value="">Velg en artikkel...</option>
-              {articles.map((art) => {
+              {filteredArticles.map((art) => {
                 const url = `/travel-guides/${art.category}/${art.slug}`;
                 return (
                   <option key={art.id} value={url}>
@@ -86,7 +97,7 @@ export default function EmployeeHubsSection({
                   </option>
                 );
               })}
-              {hub.link && !articles.some((a) => `/travel-guides/${a.category}/${a.slug}` === hub.link) && (
+              {hub.link && !filteredArticles.some((a) => `/travel-guides/${a.category}/${a.slug}` === hub.link) && (
                 <option value={hub.link}>{hub.link} (Egendefinert)</option>
               )}
             </select>
