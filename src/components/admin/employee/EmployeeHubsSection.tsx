@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { Link as LinkIcon } from 'lucide-react';
 import DynamicList from '../shared/DynamicList';
 import type { RelatedHub } from '@/lib/schemas/employee.schema';
@@ -17,6 +18,23 @@ export default function EmployeeHubsSection({
   onUpdate,
   onRemove,
 }: EmployeeHubsSectionProps) {
+  const [articles, setArticles] = useState<any[]>([]);
+
+  useEffect(() => {
+    async function loadArticles() {
+      try {
+        const res = await fetch('/api/admin/articles');
+        const json = await res.json();
+        if (json.success && Array.isArray(json.data)) {
+          setArticles(json.data);
+        }
+      } catch (error) {
+        console.error('Error loading articles for dropdown:', error);
+      }
+    }
+    loadArticles();
+  }, []);
+
   return (
     <DynamicList
       items={relatedHubs}
@@ -43,15 +61,35 @@ export default function EmployeeHubsSection({
           </div>
           <div>
             <label className="block text-xs font-medium text-slate-500 mb-1">
-              Lenke
+              Velg artikkel / Skriv inn lenke
             </label>
-            <input
-              type="text"
+            <select
               value={hub.link}
-              onChange={(e) => onUpdate(index, 'link', e.target.value)}
-              className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#E86C1F] focus:border-transparent text-sm"
-              placeholder="/travel-guides/organisasjoner"
-            />
+              onChange={(e) => {
+                const selectedLink = e.target.value;
+                const matchedArticle = articles.find(
+                  (a) => `/travel-guides/${a.category}/${a.slug}` === selectedLink
+                );
+                onUpdate(index, 'link', selectedLink);
+                if (matchedArticle) {
+                  onUpdate(index, 'title', matchedArticle.title);
+                }
+              }}
+              className="w-full px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#E86C1F] focus:border-transparent text-sm"
+            >
+              <option value="">Velg en artikkel...</option>
+              {articles.map((art) => {
+                const url = `/travel-guides/${art.category}/${art.slug}`;
+                return (
+                  <option key={art.id} value={url}>
+                    {art.title} ({art.category})
+                  </option>
+                );
+              })}
+              {hub.link && !articles.some((a) => `/travel-guides/${a.category}/${a.slug}` === hub.link) && (
+                <option value={hub.link}>{hub.link} (Egendefinert)</option>
+              )}
+            </select>
           </div>
         </div>
       )}
