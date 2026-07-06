@@ -81,6 +81,16 @@ export default async function EmployeesListPage() {
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex items-center justify-end gap-2">
+                    {employee.isActive && (
+                      <Link
+                        href={`/om-oss/${employee.id}`}
+                        target="_blank"
+                        className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
+                        title="Se profil"
+                      >
+                        <Eye className="w-4 h-4" />
+                      </Link>
+                    )}
                     <Link
                       href={`/admin/employees/${employee.id}`}
                       className="p-2 text-slate-400 hover:text-[#E86C1F] hover:bg-[#E86C1F]/10 rounded-lg transition-colors"
