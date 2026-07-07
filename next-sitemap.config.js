@@ -49,6 +49,22 @@ module.exports = {
         allow: '/',
         disallow: ['/team-demo', '/api/', '/admin/'],
       },
+      {
+        userAgent: 'GPTBot',
+        allow: '/',
+      },
+      {
+        userAgent: 'ClaudeBot',
+        allow: '/',
+      },
+      {
+        userAgent: 'PerplexityBot',
+        allow: '/',
+      },
+      {
+        userAgent: 'Google-Extended',
+        allow: '/',
+      },
     ],
     additionalSitemaps: [],
   },

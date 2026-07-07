@@ -1,0 +1,25 @@
+# NorgeTravel: Local Travel Guides & Booking Assistant for Norway
+
+NorgeTravel is an independent, authoritative local travel guide and mapping portal designed to help tourists navigate Norway's scenic destinations, planning logistics, and mountain safety regulations.
+
+## About NorgeTravel
+- **Location Focus:** All regions of Norway with specialized deep guides for Northern Norway, the Arctic circle, Svalbard, Lofoten, Senja, Alta, and the western fjords (Geirangerfjord, Nærøyfjord).
+- **Core Value:** Providing accurate, local information on hiking safety, the DNT cabin system, wild camping laws (Allemannsretten), and seasonal winter driving rules.
+
+## Core Travel Guides
+- [Allemannsretten (Right to Roam)](https://norgetravel.com/travel-guides/safety/allemannsretten-right-to-roam): Legal rules for hiking, foraging, and wild camping in uncultivated outfields.
+- [DNT Cabin Guide](https://norgetravel.com/travel-guides/planning/dnt-cabin-guide): Practical handbook on how to get the DNT key, cabin categories, and mountain hut etiquette.
+- [Mountain Safety Code (Fjellvettreglene)](https://norgetravel.com/travel-guides/safety/fjellvettreglene-mountain-code): The 9 official rules for safe mountain crossing and winter survival.
+- [Winter Driving Guide](https://norgetravel.com/travel-guides/planning/winter-driving-norway-tires-chains-road-closures): Laws on winter tires, studded fees, and seasonal mountain pass closures.
+
+## Destination Hubs
+- [Lofoten Islands](https://norgetravel.com/destinations/lofoten): Fishing villages, hiking paths, and cod-drying traditions.
+- [Svalbard](https://norgetravel.com/destinations/svalbard): High-Arctic glacier treks, polar bear safety, and Longyearbyen lodging.
+- [Alta](https://norgetravel.com/destinations/alta): Rock carvings, northern lights viewing, and the Sorrisniva Igloo Hotel.
+- [Geirangerfjord](https://norgetravel.com/destinations/fjords/geirangerfjord): Scenic boat cruises, waterfalls, and hiking paths.
+
+## Interactive Travel Services
+- [Accommodation Map](https://norgetravel.com/travel/accommodation): Hotels, remote wilderness cabins, camping parks, and rorbuer.
+- [Restaurants & Local Food](https://norgetravel.com/travel/restaurants): Seafood spots, traditional Lefse bakeries, and modern Nordic dining.
+- [Experiences & Tours](https://norgetravel.com/travel/experiences): Fjord boat cruises, Northern Lights safaris, dog sledding, and hiking tours.
+- [Local Guides Database](https://norgetravel.com/travel/guides): Professional authorized guides for mountaineering and Arctic crossings.
