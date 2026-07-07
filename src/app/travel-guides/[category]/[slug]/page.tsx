@@ -70,6 +70,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         images: [{ url: article.featuredImage, alt: article.featuredImageAlt || article.title }],
       }),
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.metaTitle || article.title,
+      description: article.metaDescription || article.excerpt,
+      ...(article.featuredImage && {
+        images: [article.featuredImage],
+      }),
+    },
   };
 }
 

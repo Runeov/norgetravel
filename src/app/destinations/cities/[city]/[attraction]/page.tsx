@@ -26,6 +26,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${attraction.title} | ${attraction.cityName} | NorgeTravel`,
     description: attraction.metaDescription,
+    openGraph: {
+      title: `${attraction.title} | ${attraction.cityName} | NorgeTravel`,
+      description: attraction.metaDescription,
+      url: `https://norgetravel.com/destinations/cities/${citySlug}/${attractionSlug}`,
+      siteName: 'NorgeTravel',
+      locale: 'en_US',
+      type: 'website',
+      images: [{ url: attraction.heroImage, alt: attraction.heroImageAlt || attraction.title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${attraction.title} | ${attraction.cityName} | NorgeTravel`,
+      description: attraction.metaDescription,
+      images: [attraction.heroImage],
+    },
   };
 }
 
