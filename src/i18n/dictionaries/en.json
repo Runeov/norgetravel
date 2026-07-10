@@ -1,0 +1,15 @@
+{
+  "navigation": {
+    "destinations": "Destinations",
+    "experiences": "Experiences",
+    "guides": "Travel Guides",
+    "about": "About Us",
+    "planTrip": "Plan Trip"
+  },
+  "home": {
+    "heroTitle": "Norge Travel & Adventures",
+    "heroSubtitle": "Sustainable Arctic adventures hand-picked for the modern explorer. Midnight sun kayaking, zero-emission fjord cruises, glacier hikes, and remote wilderness stays. All in one place.",
+    "exploreFjords": "Explore Fjords",
+    "tripPlanner": "Trip Planner"
+  }
+}

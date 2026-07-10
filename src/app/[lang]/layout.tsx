@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import '../index.css';
+import '@/index.css';
 import { cn } from '@/lib/utils';
 import { RootLayoutContent } from '@/components/layout/RootLayoutContent';
 import { getSiteUrl } from '@/lib/site-url';
@@ -65,11 +65,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ lang: string }>;
 }) {
+  const resolvedParams = await params;
+  const lang = resolvedParams.lang || 'en';
   // 2. JSON-LD Structured Data (Organization & Travel Agency)
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -87,7 +91,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang={lang} className="scroll-smooth">
       <head>
         {/* Injecting Structured Data */}
         <script

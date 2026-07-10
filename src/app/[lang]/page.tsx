@@ -5,8 +5,11 @@ import SustainableTravel from '@/components/modules/home/SustainableTravel';
 import DestinationsTeaser from '@/components/modules/home/DestinationsTeaser';
 import ContactPanel from '@/components/modules/home/ContactPanel';
 import { getSiteUrl } from '@/lib/site-url';
+import { getDictionary } from '@/i18n/get-dictionary';
 
-export default function HomePage() {
+export default async function HomePage({ params }: { params: Promise<{ lang: 'en' | 'zh' }> }) {
+  const lang = (await params).lang || 'en';
+  const dict = await getDictionary(lang);
   const siteUrl = getSiteUrl();
 
   const jsonLd = {
@@ -52,7 +55,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <Hero />
+      <Hero dict={dict.home} />
       <EditorialPromise />
       <ZoneExperts />
       <SustainableTravel />

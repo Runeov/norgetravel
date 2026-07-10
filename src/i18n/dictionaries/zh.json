@@ -1,0 +1,15 @@
+{
+  "navigation": {
+    "destinations": "目的地",
+    "experiences": "体验",
+    "guides": "旅行指南",
+    "about": "关于我们",
+    "planTrip": "规划行程"
+  },
+  "home": {
+    "heroTitle": "挪威旅行与探险",
+    "heroSubtitle": "专为现代探险家精选的可持续北极探险。午夜太阳皮划艇、零排放峡湾游船、冰川徒步和偏远荒野住宿。一应俱全。",
+    "exploreFjords": "探索峡湾",
+    "tripPlanner": "行程规划器"
+  }
+}

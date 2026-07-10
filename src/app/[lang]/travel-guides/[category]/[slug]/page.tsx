@@ -16,7 +16,7 @@ export function generateStaticParams() {
 }
 
 interface PageProps {
-  params: Promise<{ category: string; slug: string }>;
+  params: Promise<{ category: string; slug: string; lang: string }>;
 }
 
 // Valid categories from the schema
@@ -38,8 +38,8 @@ const CATEGORY_THEME: Record<string, { text: string; bg: string; border: string;
 /**
  * Find an article by category and slug from the JSON data store
  */
-async function findArticle(category: string, slug: string) {
-  const articles = await getArticles();
+async function findArticle(category: string, slug: string, lang: string) {
+  const articles = await getArticles(lang);
   return Object.values(articles).find(
     (a) => a.category === category && a.slug === slug && a.status === 'published'
   ) || null;
@@ -48,9 +48,9 @@ async function findArticle(category: string, slug: string) {
 /**
  * Generate dynamic metadata for SEO
  */
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { category, slug } = await params;
-  const article = await findArticle(category, slug);
+export async function generateMetadata({ params }: { params: Promise<{ category: string; slug: string; lang: string }> }): Promise<Metadata> {
+  const { category, slug, lang } = await params;
+  const article = await findArticle(category, slug, lang);
 
   if (!article) {
     return { title: 'Artikkel ikke funnet' };
@@ -82,7 +82,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function DynamicArticlePage({ params }: PageProps) {
-  const { category, slug } = await params;
+  const { category, slug, lang } = await params;
 
   // Validate category
   if (!VALID_CATEGORIES.includes(category as ArticleCategory)) {
@@ -90,7 +90,7 @@ export default async function DynamicArticlePage({ params }: PageProps) {
   }
 
   // Find the article
-  const article = await findArticle(category, slug);
+  const article = await findArticle(category, slug, lang);
 
   if (!article) {
     notFound();

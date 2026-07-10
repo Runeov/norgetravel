@@ -5,7 +5,14 @@ import Link from 'next/link';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useTripMap } from '@/context/TripMapContext';
 
-export default function Hero() {
+export default function Hero({ dict }: { dict?: any }) {
+  // Fallback to hardcoded English if dict is undefined (for testing/safety)
+  const d = dict || {
+    heroTitle: "Norge Travel & Adventures",
+    heroSubtitle: "Sustainable Arctic adventures hand-picked for the modern explorer. Midnight sun kayaking, zero-emission fjord cruises, glacier hikes, and remote wilderness stays. All in one place.",
+    exploreFjords: "Explore Fjords",
+    tripPlanner: "Trip Planner"
+  };
   const { openMap } = useTripMap();
 
   const scrollToSection = (id: string) => {
@@ -37,15 +44,12 @@ export default function Hero() {
 
           {/* Heading */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5CBFEE] to-[#00CC6A]">
-              Norge
-            </span>{' '}
-            Travel & Adventures
+            {d.heroTitle}
           </h1>
 
           {/* Body */}
           <p className="text-lg sm:text-xl text-slate-300 mb-8 leading-relaxed">
-            Sustainable Arctic adventures hand-picked for the modern explorer. Midnight sun kayaking, zero-emission fjord cruises, glacier hikes, and remote wilderness stays. All in one place.
+            {d.heroSubtitle}
           </p>
 
           {/* CTAs */}
@@ -54,14 +58,14 @@ export default function Hero() {
               href="/destinations/fjords"
               className="inline-flex items-center justify-center rounded-full text-base font-medium transition-all focus-visible:outline-none bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] text-white hover:shadow-lg hover:shadow-[#00CC6A]/30 hover:-translate-y-0.5 h-12 px-8"
             >
-              Explore Fjords
+              {d.exploreFjords}
               <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
             </Link>
             <button
               onClick={openMap}
               className="inline-flex items-center justify-center rounded-full text-base font-medium transition-all focus-visible:outline-none border border-white/40 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 h-12 px-8"
             >
-              Trip Planner
+              {d.tripPlanner}
             </button>
           </div>
 

@@ -4,7 +4,7 @@ import { ArticleSchema, ArticleCreateSchema, type Article, type ArticleCreate } 
 import { withFileLock } from '@/lib/storage/file-lock';
 
 const DATA_FILE = path.join(process.cwd(), 'src/data/articles.json');
-
+const DATA_FILE_ZH = path.join(process.cwd(), 'src/data/articles_zh.json');
 export interface ArticlesData {
   [key: string]: Article;
 }
@@ -12,9 +12,10 @@ export interface ArticlesData {
 /**
  * Read all articles from the JSON file
  */
-export async function getArticles(): Promise<ArticlesData> {
+export async function getArticles(lang?: string): Promise<ArticlesData> {
   try {
-    const data = await fs.readFile(DATA_FILE, 'utf-8');
+    const filePath = lang === 'zh' ? DATA_FILE_ZH : DATA_FILE;
+    const data = await fs.readFile(filePath, 'utf-8');
     const parsed = JSON.parse(data);
 
     // Validate each article
