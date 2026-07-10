@@ -4,6 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { TravelHero } from '@/components/modules/travel/TravelHero';
 import { TravelGrid } from '@/components/modules/travel/TravelGrid';
 import { transportStore } from '@/lib/admin/travel-transport';
+import { AviasalesWidget } from '@/components/ui/AviasalesWidget';
 
 export const metadata: Metadata = {
   title: 'Transport in Norway | NorgeTravel',
@@ -33,6 +34,20 @@ export default async function TransportPage() {
             <ArrowLeft className="w-4 h-4" />
             Back to Travel Map
           </Link>
+        </div>
+      </section>
+
+      {/* Flight Price Matrix Widget */}
+      <section className="py-8 bg-white border-y border-slate-200">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="mb-6 text-center">
+            <h2 className="text-2xl font-bold text-slate-900 mb-2">Find the best flight deals</h2>
+            <p className="text-slate-500">Compare direct and non-direct flights to Norway below.</p>
+          </div>
+          <AviasalesWidget
+            scriptSrc="https://tpwgt.com/content?currency=usd&trs=514175&shmarker=715596&color_button=%23FF0000&target_host=www.aviasales.com%2Fsearch&locale=en&powered_by=true&origin=LON&destination=OSL&with_fallback=false&non_direct_flights=true&min_lines=5&border_radius=0&color_background=%23ffffff&color_text=%23000000&color_border=%23FFFFFF&promo_id=2811&campaign_id=100"
+            className="shadow-sm border border-slate-100 rounded-lg p-2"
+          />
         </div>
       </section>
 

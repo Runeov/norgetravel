@@ -13,6 +13,7 @@ import { CITY_EXPERIENCE_PREFIXES } from '@/lib/city-experience-prefixes';
 import { CITY_ACCOMMODATION_TOWNS } from '@/lib/city-accommodation-towns';
 import { extractRatings } from '@/lib/ratings';
 import type { CityRestaurant } from '@/types/city-guide';
+import { AviasalesWidget } from '@/components/ui/AviasalesWidget';
 
 async function getCityRestaurants(citySlug: string): Promise<CityRestaurant[]> {
   const loaders: Record<string, () => Promise<{ [key: string]: CityRestaurant[] }>> = {
@@ -124,6 +125,20 @@ export default async function CityPage({ params }: PageProps) {
               </span>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Interactive Flight Map */}
+      <section className="py-8 bg-slate-900 border-b border-slate-800">
+        <div className="container mx-auto px-4">
+          <div className="mb-6 text-center text-white">
+            <h2 className="text-2xl font-bold mb-2">Explore flights to {city.name}</h2>
+            <p className="text-slate-400">Discover direct routes and the cheapest connections on our interactive map.</p>
+          </div>
+          <AviasalesWidget
+            scriptSrc="https://tpwgt.com/content?currency=usd&trs=514175&shmarker=715596&powered_by=true&search_host=www.aviasales.com%2Fsearch&locale=en&value_min=0&value_max=1000000&round_trip=true&only_direct=false&radius=1&draggable=true&disable_zoom=false&show_logo=false&scrollwheel=false&primary=%233FABDB&secondary=%233FABDB&light=%23ffffff&width=1500&height=500&zoom=3&promo_id=4054&campaign_id=100"
+            className="rounded-xl overflow-hidden shadow-2xl"
+          />
         </div>
       </section>
 

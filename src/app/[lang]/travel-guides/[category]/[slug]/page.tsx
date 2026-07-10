@@ -8,6 +8,7 @@ import { getArticles } from '@/lib/admin/articles';
 import { CATEGORY_LABELS } from '@/types/admin';
 import type { ArticleCategory } from '@/types/admin';
 import articlesJson from '@/data/articles.json';
+import { AviasalesWidget } from '@/components/ui/AviasalesWidget';
 
 export function generateStaticParams() {
   return Object.values(articlesJson as Record<string, { category: string; slug: string; status: string }>)
@@ -269,7 +270,6 @@ export default async function DynamicArticlePage({ params }: PageProps) {
           </figure>
         )}
 
-        {/* ARTICLE BODY */}
         <div
           className="prose prose-lg prose-slate max-w-none
             prose-headings:font-bold prose-headings:text-slate-900
@@ -288,8 +288,20 @@ export default async function DynamicArticlePage({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
 
+        {/* Affiliate Booking CTA */}
+        <section className="mt-16 bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200">
+          <div className="text-center mb-6">
+            <h3 className="text-2xl font-bold text-slate-900 mb-2">Ready to book your trip?</h3>
+            <p className="text-slate-500">Find the best flight deals to Norway directly below.</p>
+          </div>
+          <AviasalesWidget
+            scriptSrc={`https://tpwgt.com/content?currency=usd&trs=514175&shmarker=715596&searchUrl=www.aviasales.com%2Fsearch&locale=${lang === 'zh' ? 'zh-CN' : 'en'}&powered_by=true&one_way=false&only_direct=false&period=year&range=7%2C14&primary=%230C73FE&color_background=%23ffffff&dark=%23000000&light=%23FFFFFF&achieve=%2345AD35&promo_id=4041&campaign_id=100`}
+            className="rounded-xl overflow-hidden"
+          />
+        </section>
+
         {/* FOOTER */}
-        <footer className="mt-20 pt-8 border-t border-slate-200">
+        <footer className="mt-12 pt-8 border-t border-slate-200">
           <ShareButtons
             url={`/travel-guides/${article.category}/${article.slug}`}
             title={article.title}
