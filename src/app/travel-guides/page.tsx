@@ -44,12 +44,7 @@ const categories = [
         readTime: '12 min',
         status: 'published' as const,
       },
-      {
-        title: 'Winter driving in Norway: tires, chains, and the roads that close',
-        slug: 'winter-driving-norway-tires-chains-road-closures',
-        readTime: '14 min',
-        status: 'published' as const,
-      },
+
       {
         title: 'What to pack for Arctic Norway, month by month',
         slug: 'arctic-norway-packing-guide',
