@@ -6,6 +6,7 @@ import '@/index.css';
 import { cn } from '@/lib/utils';
 import { RootLayoutContent } from '@/components/layout/RootLayoutContent';
 import { getSiteUrl } from '@/lib/site-url';
+import { getDictionary } from '@/i18n/get-dictionary';
 import { Analytics } from '@vercel/analytics/next';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
@@ -73,7 +74,8 @@ export default async function RootLayout({
   params: Promise<{ lang: string }>;
 }) {
   const resolvedParams = await params;
-  const lang = resolvedParams.lang || 'en';
+  const lang = (resolvedParams.lang || 'en') as 'en' | 'zh';
+  const dict = await getDictionary(lang);
   // 2. JSON-LD Structured Data (Organization & Travel Agency)
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -114,7 +116,7 @@ export default async function RootLayout({
         >
           Skip to main content
         </a>
-        <RootLayoutContent>
+        <RootLayoutContent dict={dict.navigation}>
           <main id="main-content">
             {children}
           </main>

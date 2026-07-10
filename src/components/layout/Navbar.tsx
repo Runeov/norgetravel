@@ -9,7 +9,15 @@ import logoNorgeTravel from '@/assets/norgeTravel.png';
 import { useTripMap } from '@/context/TripMapContext';
 import { useTrip } from '@/context/TripContext';
 
-export function Navbar() {
+export function Navbar({ dict }: { dict?: any }) {
+  const d = dict || {
+    home: "Home",
+    destinations: "Destinations",
+    experiences: "Experiences",
+    guides: "Travel Guides",
+    about: "About Us",
+    planTrip: "Plan Trip"
+  };
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mobileDropdowns, setMobileDropdowns] = useState({
     destinations: false,
@@ -121,7 +129,7 @@ export function Navbar() {
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-2">
               <Link href="/" className={navLinkClass(pathname === '/')}>
-                Home
+                {d.home}
               </Link>
 
               {/* Destinations dropdown */}
@@ -131,7 +139,7 @@ export function Navbar() {
                   className={`${navLinkClass(pathname.startsWith('/destinations'))} inline-flex items-center gap-1`}
                   aria-haspopup="menu"
                 >
-                  Destinations
+                  {d.destinations}
                   <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" />
                 </button>
                 <div className="absolute left-0 top-full pt-2 opacity-0 invisible -translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0">
@@ -202,7 +210,7 @@ export function Navbar() {
                       🧭 Guides
                     </Link>
                     <Link href="/travel/experiences" className={dropdownItemClass(pathname.startsWith('/travel/experiences'))}>
-                      ⛷️ Experiences
+                      ⛷️ {d.experiences}
                     </Link>
                     <Link href="/travel/restaurants" className={dropdownItemClass(pathname.startsWith('/travel/restaurants'))}>
                       🍽️ Restaurants
@@ -212,7 +220,7 @@ export function Navbar() {
               </div>
 
               <Link href="/om-oss" className={navLinkClass(pathname === '/om-oss')}>
-                About
+                {d.about}
               </Link>
 
             </div>
@@ -240,7 +248,7 @@ export function Navbar() {
               className="group relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white transition-all duration-300 bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-full hover:shadow-lg hover:shadow-[#1B3A5C]/30 hover:-translate-y-0.5 focus:outline-none"
               aria-label="Open trip planner"
             >
-              Trip Planner
+              {d.planTrip}
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </button>
           </div>
@@ -314,7 +322,7 @@ export function Navbar() {
                 className={mobileMenuItemClass(guideMenuActive)}
               >
                 <span className="flex items-center justify-between">
-                  Guides
+                  {d.guides}
                   <ChevronDown className={`h-5 w-5 transition-transform ${mobileDropdowns.tours ? 'rotate-180' : ''}`} />
                 </span>
               </button>

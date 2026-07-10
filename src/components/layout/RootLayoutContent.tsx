@@ -11,9 +11,10 @@ import { MinimizedTripPlanner } from '@/components/modules/trip-map/MinimizedTri
 
 interface RootLayoutContentProps {
   children: React.ReactNode;
+  dict?: any;
 }
 
-export function RootLayoutContent({ children }: RootLayoutContentProps) {
+export function RootLayoutContent({ children, dict }: RootLayoutContentProps) {
   const pathname = usePathname();
   const isAdminRoute = pathname?.startsWith('/admin');
 
@@ -26,7 +27,7 @@ export function RootLayoutContent({ children }: RootLayoutContentProps) {
   return (
     <TripMapProvider>
       <TripProvider>
-        <Navbar />
+        <Navbar dict={dict} />
         <span id="main-content" tabIndex={-1} className="sr-only" />
         {children}
         <Footer />
