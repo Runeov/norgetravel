@@ -1,0 +1,34 @@
+{
+  "navigation": {
+    "destinations": "目的地",
+    "experiences": "体験",
+    "guides": "旅行ガイド",
+    "about": "私たちについて",
+    "planTrip": "旅行を計画する"
+  },
+  "home": {
+    "heroTitle": "ノルウェー旅行とアドベンチャー",
+    "heroSubtitle": "現代の探検家のために厳選された、持続可能な北極圏のアドベンチャー。真夜中の太陽の下でのカヤック、ゼロエミッションのフィヨルドクルーズ、氷河ハイキング、そして秘境での滞在。すべてがここにあります。",
+    "exploreFjords": "フィヨルドを探検する",
+    "tripPlanner": "旅行プランナー"
+  },
+  "footer": {
+    "aboutUs": "会社概要",
+    "contact": "お問い合わせ",
+    "privacyPolicy": "プライバシーポリシー",
+    "termsOfService": "利用規約",
+    "allRightsReserved": "すべての権利を留保"
+  },
+  "tripPlannerUI": {
+    "title": "旅行プランナー",
+    "addDestination": "目的地を追加",
+    "viewMap": "地図を見る"
+  },
+  "destinations": {
+    "northernNorway": "北ノルウェー",
+    "fjords": "フィヨルド地方",
+    "cities": "主要都市",
+    "svalbard": "スヴァールバル諸島",
+    "lofoten": "ロフォーテン諸島"
+  }
+}

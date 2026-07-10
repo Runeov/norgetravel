@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { checkAuthFromRequest, getSessionFromRequest } from '@/lib/admin/auth';
 
-const locales = ['en', 'zh'];
+const locales = ['en', 'zh', 'ja'];
 const defaultLocale = 'en';
 
 function getLocale(request: NextRequest): string {
@@ -11,6 +11,10 @@ function getLocale(request: NextRequest): string {
 
   if (acceptLanguage.toLowerCase().includes('zh')) {
     return 'zh';
+  }
+  
+  if (acceptLanguage.toLowerCase().includes('ja')) {
+    return 'ja';
   }
   
   return defaultLocale;
