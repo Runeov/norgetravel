@@ -16,7 +16,7 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/travel-guides/:path*',
+        source: '/kunnskapsbank/:path*',
         destination: '/travel-guides/:path*',
         permanent: true,
       },
