@@ -11,5 +11,24 @@
     "heroSubtitle": "专为现代探险家精选的可持续北极探险。午夜太阳皮划艇、零排放峡湾游船、冰川徒步和偏远荒野住宿。一应俱全。",
     "exploreFjords": "探索峡湾",
     "tripPlanner": "行程规划器"
+  },
+  "footer": {
+    "aboutUs": "关于我们",
+    "contact": "联系我们",
+    "privacyPolicy": "隐私政策",
+    "termsOfService": "服务条款",
+    "allRightsReserved": "版权所有"
+  },
+  "tripPlannerUI": {
+    "title": "行程规划",
+    "addDestination": "添加目的地",
+    "viewMap": "查看地图"
+  },
+  "destinations": {
+    "northernNorway": "挪威北部",
+    "fjords": "峡湾地区",
+    "cities": "主要城市",
+    "svalbard": "斯瓦尔巴群岛",
+    "lofoten": "罗弗敦群岛"
   }
 }

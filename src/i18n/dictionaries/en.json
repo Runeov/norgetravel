@@ -11,5 +11,24 @@
     "heroSubtitle": "Sustainable Arctic adventures hand-picked for the modern explorer. Midnight sun kayaking, zero-emission fjord cruises, glacier hikes, and remote wilderness stays. All in one place.",
     "exploreFjords": "Explore Fjords",
     "tripPlanner": "Trip Planner"
+  },
+  "footer": {
+    "aboutUs": "About Us",
+    "contact": "Contact",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "allRightsReserved": "All Rights Reserved"
+  },
+  "tripPlannerUI": {
+    "title": "Trip Planner",
+    "addDestination": "Add Destination",
+    "viewMap": "View Map"
+  },
+  "destinations": {
+    "northernNorway": "Northern Norway",
+    "fjords": "Fjord Region",
+    "cities": "Main Cities",
+    "svalbard": "Svalbard",
+    "lofoten": "Lofoten Islands"
   }
 }
