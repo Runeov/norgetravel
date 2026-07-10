@@ -37,10 +37,10 @@ export default function Hero() {
 
           {/* Heading */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6">
-            Discover{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5CBFEE] to-[#00CC6A]">
-              Arctic Norway
-            </span>
+              Norge
+            </span>{' '}
+            Travel & Adventures
           </h1>
 
           {/* Body */}
@@ -77,7 +77,7 @@ export default function Hero() {
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-5 h-5 text-[#00CC6A]" aria-hidden="true" />
-              <span>Norway 2025: 7.2M Record Arrivals</span>
+              <span>Norge 2026: 7.2M Record Arrivals</span>
             </div>
           </div>
 

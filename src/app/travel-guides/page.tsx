@@ -173,7 +173,7 @@ const jsonLd = {
       '@type': 'CollectionPage',
       name: 'Travel Guides | NorgeTravel.com',
       description:
-        'Expert travel guides for Norway. Safety, trip reports, and planning guides.',
+        'Expert travel guides for Norge. Safety, trip reports, and planning guides.',
       url: 'https://norgetravel.com/travel-guides',
       publisher: {
         '@type': 'Organization',
@@ -211,7 +211,7 @@ export default function KunnskapsbankPage() {
             Expert guides
           </div>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-            Norway travel guides
+            Norge travel guides
           </h1>
           <p className="text-xl text-slate-200 leading-relaxed max-w-2xl mx-auto">
             The knowledge that separates a good trip from a ruined itinerary. Safety rules, real trip reports, and the logistics detail that Google Maps leaves out.
