@@ -10,6 +10,7 @@ import type { ArticleCategory } from '@/types/admin';
 import articlesJson from '@/data/articles.json';
 import { AviasalesWidget } from '@/components/ui/AviasalesWidget';
 import { injectAffiliateLinks } from '@/lib/affiliate-linker';
+import { RelatedArticles } from '@/components/modules/travel/RelatedArticles';
 
 export function generateStaticParams() {
   return Object.values(articlesJson as Record<string, { category: string; slug: string; status: string }>)
@@ -97,6 +98,20 @@ export default async function DynamicArticlePage({ params }: PageProps) {
   if (!article) {
     notFound();
   }
+
+  // Find related articles for recommendations
+  const allArticles = await getArticles(lang);
+  const relatedArticles = Object.values(allArticles)
+    .filter((a) => a.category === category && a.slug !== slug && a.status === 'published')
+    .slice(0, 3)
+    .map(a => ({
+      id: a.id,
+      slug: a.slug,
+      category: a.category,
+      title: a.title,
+      excerpt: a.excerpt,
+      readTime: a.readTime
+    }));
 
   const theme = CATEGORY_THEME[article.category] || CATEGORY_THEME.analyse;
   const categoryLabel = CATEGORY_LABELS[article.category as ArticleCategory] || article.category;
@@ -289,17 +304,7 @@ export default async function DynamicArticlePage({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: injectAffiliateLinks(article.content, lang) }}
         />
 
-        {/* Affiliate Booking CTA */}
-        <section className="mt-16 bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200">
-          <div className="text-center mb-6">
-            <h3 className="text-2xl font-bold text-slate-900 mb-2">Ready to book your trip?</h3>
-            <p className="text-slate-500">Find the best flight deals to Norway directly below.</p>
-          </div>
-          <AviasalesWidget
-            scriptSrc={`https://tpwgt.com/content?currency=usd&trs=514175&shmarker=715596&searchUrl=www.aviasales.com%2Fsearch&locale=${lang === 'zh' ? 'zh-CN' : 'en'}&powered_by=true&one_way=false&only_direct=false&period=year&range=7%2C14&primary=%230C73FE&color_background=%23ffffff&dark=%23000000&light=%23FFFFFF&achieve=%2345AD35&promo_id=4041&campaign_id=100`}
-            className="rounded-xl overflow-hidden"
-          />
-        </section>
+        <RelatedArticles articles={relatedArticles} lang={lang} />
 
         {/* FOOTER */}
         <footer className="mt-12 pt-8 border-t border-slate-200">
