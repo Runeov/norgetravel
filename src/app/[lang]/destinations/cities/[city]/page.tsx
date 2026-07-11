@@ -128,20 +128,6 @@ export default async function CityPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Interactive Flight Map */}
-      <section className="py-8 bg-slate-900 border-b border-slate-800">
-        <div className="container mx-auto px-4">
-          <div className="mb-6 text-center text-white">
-            <h2 className="text-2xl font-bold mb-2">Explore flights to {city.name}</h2>
-            <p className="text-slate-400">Discover direct routes and the cheapest connections on our interactive map.</p>
-          </div>
-          <AviasalesWidget
-            scriptSrc="https://tpwgt.com/content?currency=usd&trs=514175&shmarker=715596&powered_by=true&search_host=www.aviasales.com%2Fsearch&locale=en&value_min=0&value_max=1000000&round_trip=true&only_direct=false&radius=1&draggable=true&disable_zoom=false&show_logo=false&scrollwheel=false&primary=%233FABDB&secondary=%233FABDB&light=%23ffffff&width=1500&height=500&zoom=3&promo_id=4054&campaign_id=100"
-            className="rounded-xl overflow-hidden shadow-2xl"
-          />
-        </div>
-      </section>
-
       {/* Attractions */}
       <section className="relative py-20 overflow-hidden">
         <NorgeBackground />
@@ -183,6 +169,20 @@ export default async function CityPage({ params }: PageProps) {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Interactive Flight Map */}
+      <section className="py-12 bg-white border-y border-slate-200">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="mb-6">
+            <h3 className="text-xl font-bold text-slate-900 mb-2">Explore flights to {city.name}</h3>
+            <p className="text-sm text-slate-500">Discover direct routes and the cheapest connections on our interactive map.</p>
+          </div>
+          <AviasalesWidget
+            scriptSrc="https://tpwgt.com/content?currency=usd&trs=514175&shmarker=715596&powered_by=true&search_host=www.aviasales.com%2Fsearch&locale=en&value_min=0&value_max=1000000&round_trip=true&only_direct=false&radius=1&draggable=true&disable_zoom=false&show_logo=false&scrollwheel=false&primary=%233FABDB&secondary=%233FABDB&light=%23ffffff&width=1000&height=400&zoom=3&promo_id=4054&campaign_id=100"
+            className="rounded-xl overflow-hidden shadow-sm border border-slate-200"
+          />
         </div>
       </section>
 

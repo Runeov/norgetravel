@@ -9,6 +9,7 @@ import { CATEGORY_LABELS } from '@/types/admin';
 import type { ArticleCategory } from '@/types/admin';
 import articlesJson from '@/data/articles.json';
 import { AviasalesWidget } from '@/components/ui/AviasalesWidget';
+import { injectAffiliateLinks } from '@/lib/affiliate-linker';
 
 export function generateStaticParams() {
   return Object.values(articlesJson as Record<string, { category: string; slug: string; status: string }>)
@@ -285,7 +286,7 @@ export default async function DynamicArticlePage({ params }: PageProps) {
             prose-table:border-collapse
             prose-th:bg-slate-100 prose-th:text-slate-900 prose-th:font-bold prose-th:p-3
             prose-td:p-3 prose-td:border-slate-200"
-          dangerouslySetInnerHTML={{ __html: article.content }}
+          dangerouslySetInnerHTML={{ __html: injectAffiliateLinks(article.content, lang) }}
         />
 
         {/* Affiliate Booking CTA */}
