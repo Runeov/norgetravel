@@ -304,6 +304,34 @@ export default async function DynamicArticlePage({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: injectAffiliateLinks(article.content, lang) }}
         />
 
+        {/* Global Interactive Trip Planner Card */}
+        <div className="bg-[#1A365D]/5 border border-[#1A365D]/10 rounded-2xl p-8 my-12 shadow-sm hover:shadow-md transition-all">
+          <div className="flex flex-col md:flex-row items-center gap-6">
+            <div className="flex-1">
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-widest bg-emerald-100 text-emerald-700 mb-4">
+                {lang === 'zh' ? '🛠️ 互动规划工具' : '🛠️ Interactive Tool'}
+              </span>
+              <h3 className="text-2xl font-bold text-[#1A365D] mb-3">
+                {lang === 'zh' ? '规划您的完美挪威行程' : 'Plan Your Perfect Norway Itinerary'}
+              </h3>
+              <p className="text-slate-600 leading-relaxed text-sm md:text-base">
+                {lang === 'zh' 
+                  ? '使用我们免费的互动行程规划工具，设计您的挪威路线，预订经过验证的环保木屋和交通，并同步当地渡轮时刻表。' 
+                  : 'Use our free, interactive trip planner to map out your route through Norway, book verified eco-friendly cabins and transport, and sync with local ferry timetables.'}
+              </p>
+            </div>
+            <div className="w-full md:w-auto shrink-0">
+              <Link
+                href={`/${lang}/my-trip`}
+                className="inline-flex items-center justify-center px-6 py-3 bg-[#E86C1F] text-white font-bold rounded-lg hover:bg-[#cf5c15] transition-colors w-full text-center group"
+              >
+                {lang === 'zh' ? '启动规划器' : 'Launch Planner'}
+                <ArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+        </div>
+
         <RelatedArticles articles={relatedArticles} lang={lang} />
 
         {/* FOOTER */}
