@@ -224,8 +224,8 @@ export default function NordkappPage() {
               },
               {
                 title: 'Knivskjelodden hike',
-                image: '/images/nordkapp/midnight-sun/midnight-sun-knivskjellodden_kjell-bendik-pedersen.jpg',
-                alt: 'Midnight sun over the Knivskjelodden promontory, the actual northernmost point of mainland Europe',
+                image: '/images/nordkapp/landscapes/nordkapp-cliff_trym-bergsmo.jpg',
+                alt: 'Midnight sun over the Arctic Ocean off Magerøya, seen from the Knivskjelodden trail',
                 body: 'The actual northernmost point. 9 km one-way, mostly flat, 4 to 5 hours round trip. Free. No entry fee, no crowd, and a sign-in book at the end. June to September only.',
               },
               {
