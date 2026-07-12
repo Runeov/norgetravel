@@ -73,6 +73,7 @@ export interface Article {
   // Media
   featuredImage?: string | null;
   featuredImageAlt?: string | null;
+  featuredImageCaption?: string | null;
   
   // SEO
   metaTitle?: string;

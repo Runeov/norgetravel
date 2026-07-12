@@ -84,6 +84,27 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   };
 }
 
+const PLANNER_COPY = {
+  en: {
+    badge: 'Interactive tool',
+    title: 'Plan your Norway itinerary',
+    body: 'Use our free, interactive trip planner to map out your route through Norway, book verified eco-friendly cabins and transport, and sync with local ferry timetables.',
+    cta: 'Launch the planner',
+  },
+  zh: {
+    badge: '互动规划工具',
+    title: '规划您的挪威行程',
+    body: '使用我们免费的互动行程规划工具，设计您的挪威路线，预订经过验证的环保木屋和交通，并同步当地渡轮时刻表。',
+    cta: '启动规划器',
+  },
+  ja: {
+    badge: 'インタラクティブツール',
+    title: 'ノルウェー旅行のプランを立てる',
+    body: '無料のインタラクティブなトリッププランナーで、ノルウェーのルートを計画し、認証済みのエコフレンドリーな宿泊と交通を予約し、現地のフェリー時刻表を確認できます。',
+    cta: 'プランナーを開く',
+  },
+} as const;
+
 export default async function DynamicArticlePage({ params }: PageProps) {
   const { category, slug, lang } = await params;
 
@@ -280,9 +301,9 @@ export default async function DynamicArticlePage({ params }: PageProps) {
                 />
               )}
             </div>
-            {article.featuredImageAlt && !article.featuredVideo && (
+            {(article.featuredImageCaption || article.featuredImageAlt) && !article.featuredVideo && (
               <figcaption className="text-xs text-slate-400 mt-2">
-                {article.featuredImageAlt}
+                {article.featuredImageCaption || article.featuredImageAlt}
               </figcaption>
             )}
           </figure>
@@ -307,32 +328,35 @@ export default async function DynamicArticlePage({ params }: PageProps) {
         />
 
         {/* Global Interactive Trip Planner Card */}
-        <div className="bg-[#1A365D]/5 border border-[#1A365D]/10 rounded-2xl p-8 my-12 shadow-sm hover:shadow-md transition-all">
-          <div className="flex flex-col md:flex-row items-center gap-6">
-            <div className="flex-1">
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-widest bg-emerald-100 text-emerald-700 mb-4">
-                {lang === 'zh' ? '🛠️ 互动规划工具' : '🛠️ Interactive Tool'}
-              </span>
-              <h3 className="text-2xl font-bold text-[#1A365D] mb-3">
-                {lang === 'zh' ? '规划您的完美挪威行程' : 'Plan Your Perfect Norway Itinerary'}
-              </h3>
-              <p className="text-slate-600 leading-relaxed text-sm md:text-base">
-                {lang === 'zh' 
-                  ? '使用我们免费的互动行程规划工具，设计您的挪威路线，预订经过验证的环保木屋和交通，并同步当地渡轮时刻表。' 
-                  : 'Use our free, interactive trip planner to map out your route through Norway, book verified eco-friendly cabins and transport, and sync with local ferry timetables.'}
-              </p>
+        {(() => {
+          const planner = PLANNER_COPY[lang === 'zh' || lang === 'ja' ? lang : 'en'];
+          return (
+            <div className="bg-[#1A365D]/5 border border-[#1A365D]/10 rounded-lg p-8 my-12 shadow-sm hover:shadow-md transition-all">
+              <div className="flex flex-col md:flex-row items-center gap-6">
+                <div className="flex-1">
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-sm text-xs font-bold uppercase tracking-widest bg-[#00D084]/15 text-[#1A365D] mb-4">
+                    {planner.badge}
+                  </span>
+                  <h3 className="text-2xl font-bold text-[#1A365D] mb-3">
+                    {planner.title}
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed text-sm md:text-base">
+                    {planner.body}
+                  </p>
+                </div>
+                <div className="w-full md:w-auto shrink-0">
+                  <Link
+                    href={`/${lang}/my-trip`}
+                    className="inline-flex items-center justify-center px-6 py-3 bg-[#00D084] text-[#1A365D] font-bold rounded-md hover:bg-[#00B875] transition-colors w-full text-center group"
+                  >
+                    {planner.cta}
+                    <ArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                  </Link>
+                </div>
+              </div>
             </div>
-            <div className="w-full md:w-auto shrink-0">
-              <Link
-                href={`/${lang}/my-trip`}
-                className="inline-flex items-center justify-center px-6 py-3 bg-[#E86C1F] text-white font-bold rounded-lg hover:bg-[#cf5c15] transition-colors w-full text-center group"
-              >
-                {lang === 'zh' ? '启动规划器' : 'Launch Planner'}
-                <ArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-              </Link>
-            </div>
-          </div>
-        </div>
+          );
+        })()}
 
         <RelatedArticles articles={relatedArticles} lang={lang} />
 
