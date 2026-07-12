@@ -266,8 +266,8 @@ export default function AltaPage() {
               },
               {
                 title: 'Sorrisniva & dog sledding',
-                image: '/images/alta/activities/sorrisniva-igloo_yngve-olsen.jpg',
-                alt: 'Sorrisniva Igloo Hotel built from river ice near Alta',
+                image: '/images/alta/northern-lights/aurora-cabin.jpg',
+                alt: 'Snow-covered cabins under the northern lights in the Alta valley',
                 body: 'Sorrisniva Igloo Hotel is rebuilt annually from Alta River ice. Open mid-December to early April. Dog sledding operators like Holmen Husky run half-day and overnight trips.',
               },
             ]}

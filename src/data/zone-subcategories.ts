@@ -1352,7 +1352,7 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         bulletImages: [
           '/Banners/Aalesund_banner.jpg',
           '/images/lofoten/fishing-culture/stockfish-export_steinar-skaar.jpg',
-          '/images/senja/villages/tranoy-lighthouse.jpg',
+          '/images/lofoten/landscapes/lofoten-nature_ernst-furuhatt-1.jpg',
           '/pics/cities/Kristiansund_banner.jpeg',
         ],
         bulletDetails: [

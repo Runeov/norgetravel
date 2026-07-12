@@ -257,8 +257,10 @@ export default async function DynamicArticlePage({ params }: PageProps) {
           )}
         </header>
 
-        {/* Featured Video or Image */}
-        {(article.featuredVideo || article.featuredImage) && (
+        {/* Featured Video or Image. Skip the standalone hero when the body
+            already renders the same image, so it is not displayed twice. */}
+        {(article.featuredVideo ||
+          (article.featuredImage && !article.content.includes(article.featuredImage))) && (
           <figure className="mb-16">
             <div className="relative rounded-lg overflow-hidden shadow-lg">
               {article.featuredVideo ? (
