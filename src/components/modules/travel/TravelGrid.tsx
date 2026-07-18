@@ -6,6 +6,7 @@ import { TravelCard } from './TravelCard';
 import { TravelFilters } from './TravelFilters';
 import { extractRatings } from '@/lib/ratings';
 import type { TravelItemBase, Destination } from '@/lib/schemas/travel.shared';
+import type { TransportType } from '@/lib/schemas/travel.transport.schema';
 import type { TripItemCategory } from '@/types/trip';
 import { AviasalesWidget } from '@/components/ui/AviasalesWidget';
 
@@ -17,15 +18,21 @@ interface TravelGridProps {
 
 export function TravelGrid({ items, showFilters = true, category }: TravelGridProps) {
   const [activeDestination, setActiveDestination] = useState<Destination | 'all-items'>('all-items');
+  const [activeTransportType, setActiveTransportType] = useState<TransportType | 'all'>('all');
 
   const filteredItems = useMemo(() => {
-    if (activeDestination === 'all-items') {
-      return items;
+    let result = items;
+    
+    if (activeDestination !== 'all-items') {
+      result = result.filter((item) => item.destination === activeDestination);
     }
-      return items.filter(
-        (item) => item.destination === activeDestination
-      );
-  }, [items, activeDestination]);
+    
+    if (category === 'transport' && activeTransportType !== 'all') {
+      result = result.filter((item) => (item as any).transportType === activeTransportType);
+    }
+    
+    return result;
+  }, [items, activeDestination, activeTransportType, category]);
 
   return (
     <div className="space-y-8">
@@ -34,6 +41,9 @@ export function TravelGrid({ items, showFilters = true, category }: TravelGridPr
         <TravelFilters
           activeDestination={activeDestination}
           onDestinationChange={setActiveDestination}
+          category={category}
+          activeTransportType={activeTransportType}
+          onTransportTypeChange={setActiveTransportType}
         />
       )}
 
