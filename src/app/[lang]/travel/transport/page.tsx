@@ -4,7 +4,6 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { TravelHero } from '@/components/modules/travel/TravelHero';
 import { TravelGrid } from '@/components/modules/travel/TravelGrid';
 import { transportStore } from '@/lib/admin/travel-transport';
-import { AviasalesWidget } from '@/components/ui/AviasalesWidget';
 
 export const metadata: Metadata = {
   title: 'Transport in Norway | NorgeTravel',

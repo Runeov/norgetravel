@@ -44,9 +44,13 @@ export function TravelFilters({
   onTransportTypeChange,
 }: TravelFiltersProps) {
   return (
-    <div className="space-y-4">
+    <div className="space-y-5 rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
       {/* Primary Row: Destinations */}
-      <div className="flex flex-wrap gap-2 justify-center">
+      <fieldset>
+        <legend className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+          Region
+        </legend>
+        <div className="flex flex-wrap gap-2">
         {filterPills.map((pill) => (
           <button
             key={pill.value}
@@ -62,11 +66,16 @@ export function TravelFilters({
             {pill.label}
           </button>
         ))}
-      </div>
+        </div>
+      </fieldset>
 
       {/* Secondary Row: Transport Types */}
       {category === 'transport' && onTransportTypeChange && (
-        <div className="flex flex-wrap gap-2 justify-center pt-2">
+        <fieldset className="border-t border-slate-100 pt-4">
+          <legend className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+            Travel by
+          </legend>
+          <div className="flex flex-wrap gap-2">
           {transportPills.map((pill) => (
             <button
               key={pill.value}
@@ -81,7 +90,8 @@ export function TravelFilters({
               {pill.label}
             </button>
           ))}
-        </div>
+          </div>
+        </fieldset>
       )}
     </div>
   );
