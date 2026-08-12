@@ -39,9 +39,9 @@ export function AddToTripButton({ item, className }: AddToTripButtonProps) {
     <button
       onClick={handleClick}
       className={cn(
-        'inline-flex items-center justify-center gap-1.5 px-4 py-2 text-sm font-medium rounded-md min-h-[44px] transition-colors',
+        'inline-flex items-center justify-center gap-1.5 px-4 py-2 text-sm font-medium rounded-md min-h-[44px] transition-[transform,background-color,border-color,color] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1B3A5C] focus-visible:ring-offset-2 active:translate-y-px motion-reduce:transform-none motion-reduce:transition-none',
         added
-          ? 'bg-[#00CC6A] text-white hover:bg-[#00b35e]'
+          ? 'bg-[#dff7ea] text-[#11643f] hover:bg-[#c9f0dc]'
           : 'border border-[#1B3A5C] text-[#1B3A5C] hover:bg-[#1B3A5C]/5',
         className
       )}

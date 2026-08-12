@@ -5,6 +5,7 @@ export type AnalyticsEventName =
   | 'scroll_depth'
   | 'related_content_click'
   | 'transport_filter_used'
+  | 'transport_item_expanded'
   | 'transport_operator_click'
   | 'affiliate_click'
   | 'commercial_offer_viewed'
@@ -25,6 +26,7 @@ const EVENT_NAMES = new Set<AnalyticsEventName>([
   'scroll_depth',
   'related_content_click',
   'transport_filter_used',
+  'transport_item_expanded',
   'transport_operator_click',
   'affiliate_click',
   'commercial_offer_viewed',
