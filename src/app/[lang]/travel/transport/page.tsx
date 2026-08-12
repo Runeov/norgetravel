@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { TravelHero } from '@/components/modules/travel/TravelHero';
 import { TravelGrid } from '@/components/modules/travel/TravelGrid';
 import { transportStore } from '@/lib/admin/travel-transport';
+import { getActiveCommercialOffers } from '@/data/commercial-offers';
 
 export const metadata: Metadata = {
   title: 'Transport in Norway | NorgeTravel',
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
 
 export default async function TransportPage() {
   const items = await transportStore.getPublished();
+  const commercialOffers = getActiveCommercialOffers('transport_after_flights');
 
   return (
     <main className="min-h-screen bg-slate-50">
@@ -40,7 +42,12 @@ export default async function TransportPage() {
       <section className="py-12 lg:py-20">
         <div className="container mx-auto px-4">
           {items.length > 0 ? (
-            <TravelGrid items={items} showFilters category="transport" />
+            <TravelGrid
+              items={items}
+              showFilters
+              category="transport"
+              commercialOffers={commercialOffers}
+            />
           ) : (
             <div className="text-center py-16">
               <span className="text-6xl mb-6 block">🚂</span>

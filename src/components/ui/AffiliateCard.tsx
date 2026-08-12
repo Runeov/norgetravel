@@ -67,6 +67,7 @@ export function AffiliateCard({
 
   return (
     <div
+      data-analytics-placement={`affiliate_card:${name}`}
       className={cn(
         'relative rounded-2xl border bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5',
         featured

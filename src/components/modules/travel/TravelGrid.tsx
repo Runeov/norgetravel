@@ -12,15 +12,22 @@ import {
   type TransportType,
 } from '@/lib/schemas/travel.transport.schema';
 import type { TripItemCategory } from '@/types/trip';
-import { KiwiFlightBanner } from '@/components/ui/KiwiFlightBanner';
+import { CommercialOfferPanel } from '@/components/commerce/CommercialOfferPanel';
+import type { CommercialOffer } from '@/lib/schemas/commercial-offer.schema';
 
 interface TravelGridProps {
   items: TravelItemBase[];
   showFilters?: boolean;
   category?: TripItemCategory;
+  commercialOffers?: CommercialOffer[];
 }
 
-export function TravelGrid({ items, showFilters = true, category }: TravelGridProps) {
+export function TravelGrid({
+  items,
+  showFilters = true,
+  category,
+  commercialOffers = [],
+}: TravelGridProps) {
   const [activeDestination, setActiveDestination] = useState<Destination | 'all-items'>('all-items');
   const [activeTransportType, setActiveTransportType] = useState<TransportType | 'all'>('all');
 
@@ -109,9 +116,14 @@ export function TravelGrid({ items, showFilters = true, category }: TravelGridPr
                   ))}
                 </div>
                 {group.type === 'fly' && (
-                  <div className="mt-8">
-                    <KiwiFlightBanner />
-                  </div>
+                  commercialOffers.map((offer) => (
+                    <div key={offer.id} className="mt-8">
+                      <CommercialOfferPanel
+                        offer={offer}
+                        placement="transport_after_flights"
+                      />
+                    </div>
+                  ))
                 )}
               </section>
             ))}

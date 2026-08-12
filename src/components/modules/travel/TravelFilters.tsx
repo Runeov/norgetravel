@@ -8,6 +8,7 @@ import {
 } from '@/lib/schemas/travel.shared';
 import { TRANSPORT_TYPE_LABELS, type TransportType } from '@/lib/schemas/travel.transport.schema';
 import type { TripItemCategory } from '@/types/trip';
+import { trackEvent } from '@/lib/analytics';
 
 interface TravelFiltersProps {
   activeDestination: Destination | 'all-items';
@@ -54,7 +55,14 @@ export function TravelFilters({
         {filterPills.map((pill) => (
           <button
             key={pill.value}
-            onClick={() => onDestinationChange(pill.value)}
+            onClick={() => {
+              onDestinationChange(pill.value);
+              trackEvent('transport_filter_used', {
+                filter: 'region',
+                value: pill.value,
+                category,
+              });
+            }}
             className={cn(
               'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300',
               activeDestination === pill.value
@@ -79,7 +87,14 @@ export function TravelFilters({
           {transportPills.map((pill) => (
             <button
               key={pill.value}
-              onClick={() => onTransportTypeChange(pill.value)}
+              onClick={() => {
+                onTransportTypeChange(pill.value);
+                trackEvent('transport_filter_used', {
+                  filter: 'transport_type',
+                  value: pill.value,
+                  category,
+                });
+              }}
               className={cn(
                 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200',
                 activeTransportType === pill.value

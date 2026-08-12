@@ -4,6 +4,7 @@ import { useTrip } from '@/context/TripContext';
 import type { TripItem } from '@/types/trip';
 import { cn } from '@/lib/utils';
 import { Plus, Check } from 'lucide-react';
+import { trackEvent } from '@/lib/analytics';
 
 interface AddToTripButtonProps {
   item: TripItem;
@@ -17,8 +18,20 @@ export function AddToTripButton({ item, className }: AddToTripButtonProps) {
   function handleClick() {
     if (added) {
       removeItem(item.id);
+      trackEvent('trip_item_removed', {
+        item_id: item.id,
+        item_name: item.name,
+        category: item.category,
+        destination: item.destination,
+      });
     } else {
       addItem({ ...item, addedAt: new Date().toISOString() });
+      trackEvent('trip_item_added', {
+        item_id: item.id,
+        item_name: item.name,
+        category: item.category,
+        destination: item.destination,
+      });
     }
   }
 
