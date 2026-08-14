@@ -8,6 +8,7 @@ import { TripMapProvider } from '@/context/TripMapContext';
 import { TripProvider } from '@/context/TripContext';
 import { NorwayMapOverlay } from '@/components/modules/trip-map/NorwayMapOverlay';
 import { MinimizedTripPlanner } from '@/components/modules/trip-map/MinimizedTripPlanner';
+import { AnalyticsTracker } from '@/components/analytics/AnalyticsTracker';
 
 interface RootLayoutContentProps {
   children: React.ReactNode;
@@ -27,6 +28,7 @@ export function RootLayoutContent({ children, dict }: RootLayoutContentProps) {
   return (
     <TripMapProvider>
       <TripProvider>
+        <AnalyticsTracker />
         <Navbar dict={dict} />
         <span id="main-content" tabIndex={-1} className="sr-only" />
         {children}

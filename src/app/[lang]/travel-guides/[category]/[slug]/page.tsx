@@ -8,7 +8,6 @@ import { getArticles } from '@/lib/admin/articles';
 import { CATEGORY_LABELS } from '@/types/admin';
 import type { ArticleCategory } from '@/types/admin';
 import articlesJson from '@/data/articles.json';
-import { AviasalesWidget } from '@/components/ui/AviasalesWidget';
 import { injectAffiliateLinks } from '@/lib/affiliate-linker';
 import { RelatedArticles } from '@/components/modules/travel/RelatedArticles';
 
@@ -310,6 +309,7 @@ export default async function DynamicArticlePage({ params }: PageProps) {
         )}
 
         <div
+          data-analytics-placement="article_body"
           className="prose prose-lg prose-slate max-w-none
             prose-headings:font-bold prose-headings:text-slate-900
             prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-6
@@ -347,6 +347,9 @@ export default async function DynamicArticlePage({ params }: PageProps) {
                 <div className="w-full md:w-auto shrink-0">
                   <Link
                     href={`/${lang}/my-trip`}
+                    data-analytics-event="trip_planner_opened"
+                    data-analytics-placement="article_planner_card"
+                    data-analytics-target={article.slug}
                     className="inline-flex items-center justify-center px-6 py-3 bg-[#00D084] text-[#1A365D] font-bold rounded-md hover:bg-[#00B875] transition-colors w-full text-center group"
                   >
                     {planner.cta}

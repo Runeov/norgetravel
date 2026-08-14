@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState, useCallback } from 'react';
+import { trackEvent } from '@/lib/analytics';
 
 export interface TripMapState {
   selectedZone: string | null;
@@ -29,23 +30,30 @@ export function TripMapProvider({ children }: { children: React.ReactNode }) {
   const openMap = useCallback(() => {
     setIsOpen(true);
     setIsMinimized(false);
+    trackEvent('trip_planner_opened', { source: 'open' });
   }, []);
 
   const closeMap = useCallback(() => {
     setIsOpen(false);
     setIsMinimized(false);
     setSavedState(null);
+    trackEvent('trip_planner_closed');
   }, []);
 
   const minimizeMap = useCallback((state: TripMapState) => {
     setSavedState(state);
     setIsOpen(false);
     setIsMinimized(true);
+    trackEvent('trip_planner_minimized', {
+      selected_zone: state.selectedZone,
+      drill_down_zone: state.drillDownZone,
+    });
   }, []);
 
   const restoreMap = useCallback(() => {
     setIsOpen(true);
     setIsMinimized(false);
+    trackEvent('trip_planner_opened', { source: 'restore' });
   }, []);
 
   return (

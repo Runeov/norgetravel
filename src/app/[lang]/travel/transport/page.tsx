@@ -1,82 +1,87 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { TravelHero } from '@/components/modules/travel/TravelHero';
+import { ArrowRight, Compass, Mail } from 'lucide-react';
+import { TransportHero } from '@/components/modules/travel/TransportHero';
 import { TravelGrid } from '@/components/modules/travel/TravelGrid';
 import { transportStore } from '@/lib/admin/travel-transport';
-import { AviasalesWidget } from '@/components/ui/AviasalesWidget';
+import { getActiveCommercialOffers } from '@/data/commercial-offers';
 
 export const metadata: Metadata = {
   title: 'Transport in Norway | NorgeTravel',
   description:
-    'Getting around Norway — flights, trains, buses, ferries, car rentals, and cycling routes. Find the best transport options for your Norwegian adventure.',
+    'Compare flights, trains, buses, ferries, and road transfers for travel across Norway.',
 };
 
 export default async function TransportPage() {
   const items = await transportStore.getPublished();
+  const commercialOffers = getActiveCommercialOffers('transport_after_flights');
 
   return (
-    <main className="min-h-screen bg-slate-50">
-      {/* Hero */}
-      <TravelHero
-        title="Getting Around Norway"
-        subtitle="Flights, trains, buses, ferries, and more — navigate Norway's stunning landscapes with the right transport for every route."
-        emoji="🚂"
-      />
+    <div className="min-h-screen bg-[#f5f8f9]">
+      <TransportHero />
 
-      {/* Back link */}
-      <section className="pt-8 pb-0">
-        <div className="container mx-auto px-4">
-          <Link
-            href="/travel"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-[#1B3A5C] transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Travel Map
-          </Link>
-        </div>
-      </section>
+      <section id="transport-options" className="scroll-mt-24 px-4 py-16 sm:px-6 lg:py-24">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-10 max-w-3xl">
+            <div className="flex items-center gap-3 text-[#1B3A5C]">
+              <Compass className="h-5 w-5" aria-hidden="true" />
+              <span className="text-sm font-semibold">Find the right connection</span>
+            </div>
+            <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-slate-900 text-balance sm:text-5xl">
+              Compare the journey, not just the destination.
+            </h2>
+            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">
+              Filter by travel mode and region, then compare route, timing, season, and operator details.
+            </p>
+          </div>
 
-      {/* Grid */}
-      <section className="py-12 lg:py-20">
-        <div className="container mx-auto px-4">
           {items.length > 0 ? (
-            <TravelGrid items={items} showFilters category="transport" />
+            <TravelGrid
+              items={items}
+              showFilters
+              category="transport"
+              commercialOffers={commercialOffers}
+            />
           ) : (
-            <div className="text-center py-16">
-              <span className="text-6xl mb-6 block">🚂</span>
-              <h2 className="text-2xl font-bold text-slate-900 mb-3">
-                Transport listings coming soon
-              </h2>
-              <p className="text-slate-600 max-w-md mx-auto mb-8 leading-relaxed">
-                We&apos;re curating the best transport options across Norway. Check back soon for flights, trains, ferries, and more.
+            <div className="rounded-xl border border-slate-200 bg-white px-6 py-16 text-center">
+              <h2 className="text-2xl font-semibold text-slate-900">Transport listings are being updated</h2>
+              <p className="mx-auto mt-3 max-w-md text-slate-600">
+                Return to the travel map while we prepare the latest route information.
               </p>
               <Link
                 href="/travel"
-                className="inline-flex items-center justify-center px-6 py-2.5 bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] text-white font-medium rounded-full hover:shadow-lg hover:shadow-[#1B3A5C]/30 transition-all duration-300 text-sm"
+                className="mt-7 inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-[#1B3A5C] px-5 py-2.5 text-sm font-semibold text-white transition-[transform,background-color] hover:bg-[#112a45] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1B3A5C] focus-visible:ring-offset-2 active:translate-y-px"
               >
-                Explore Travel Map
+                Explore travel map
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
           )}
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 bg-gradient-to-r from-[#1B3A5C] to-[#5CBFEE] text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Are you a transport provider?</h2>
-          <p className="text-white/80 mb-8 max-w-xl mx-auto leading-relaxed">
-            Help travelers navigate Norway. Partner with us to list your ferry, bus, or transfer service on NorgeTravel.
-          </p>
-          <Link
-            href="/om-oss"
-            className="inline-flex items-center justify-center px-8 py-3 bg-white text-[#1B3A5C] font-bold rounded-md hover:shadow-lg transition-all"
-          >
-            Partner with us <ArrowRight className="ml-2 w-4 h-4" />
-          </Link>
+      <section className="px-4 pb-20 sm:px-6 lg:pb-28">
+        <div className="mx-auto max-w-7xl overflow-hidden rounded-xl bg-[#17364f] text-white">
+          <div className="grid gap-8 px-6 py-10 sm:px-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:px-14 lg:py-12">
+            <div className="max-w-2xl">
+              <p className="text-sm font-semibold text-[#7bdcb0]">For transport operators</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
+                Add a useful route to the guide.
+              </h2>
+              <p className="mt-3 max-w-xl leading-relaxed text-sky-50/70">
+                Tell us where you run, when you operate, and what travelers should know before they book.
+              </p>
+            </div>
+            <a
+              href="mailto:hello@norgetravel.com?subject=Transport%20listing%20for%20NorgeTravel"
+              className="inline-flex min-h-12 w-fit items-center justify-center gap-2 rounded-lg bg-[#65d6a6] px-5 py-3 text-sm font-bold text-[#102d46] transition-[transform,background-color] hover:-translate-y-0.5 hover:bg-[#82e3ba] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#17364f] active:translate-y-px motion-reduce:transform-none motion-reduce:transition-none"
+            >
+              <Mail className="h-4 w-4" aria-hidden="true" />
+              Submit a route
+            </a>
+          </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

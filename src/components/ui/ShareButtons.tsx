@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { Facebook, Linkedin, Mail, MessageCircle, Link2, Check, Share2 } from 'lucide-react';
+import { trackEvent } from '@/lib/analytics';
 
 interface ShareButtonsProps {
   url: string;
@@ -102,6 +103,7 @@ export function ShareButtons({ url, title, label = 'Share this page', className 
     try {
       await navigator.clipboard.writeText(fullUrl);
       setCopied(true);
+      trackEvent('share_completed', { method: 'copy_link', target: fullUrl });
       setTimeout(() => setCopied(false), 2000);
     } catch {
       // clipboard blocked — no-op
@@ -115,6 +117,7 @@ export function ShareButtons({ url, title, label = 'Share this page', className 
         text: title,
         url: fullUrl,
       });
+      trackEvent('share_completed', { method: 'native', target: fullUrl });
     } catch {
       // User cancelled or share failed — no-op
     }
@@ -128,7 +131,12 @@ export function ShareButtons({ url, title, label = 'Share this page', className 
           <a
             key={target.name}
             href={target.href}
-            onClick={target.onClick}
+            onClick={(event) => {
+              target.onClick?.(event);
+              if (target.href !== '#') {
+                trackEvent('share_started', { method: target.name.toLowerCase(), target: fullUrl });
+              }
+            }}
             target={target.href === '#' ? undefined : "_blank"}
             rel={target.href === '#' ? undefined : "noopener noreferrer"}
             aria-label={`Share on ${target.name}`}

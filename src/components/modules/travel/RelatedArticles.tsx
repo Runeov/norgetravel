@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { Clock, ArrowRight } from 'lucide-react';
-import { usePathname } from 'next/navigation';
 
 interface ArticleSummary {
   id: string;
@@ -19,8 +18,6 @@ interface RelatedArticlesProps {
 }
 
 export function RelatedArticles({ articles, lang }: RelatedArticlesProps) {
-  const pathname = usePathname();
-  
   if (!articles || articles.length === 0) {
     return null;
   }
@@ -33,6 +30,9 @@ export function RelatedArticles({ articles, lang }: RelatedArticlesProps) {
           <Link
             key={article.id}
             href={`/${lang}/travel-guides/${article.category}/${article.slug}`}
+            data-analytics-event="related_content_click"
+            data-analytics-placement="related_articles"
+            data-analytics-target={article.slug}
             className="group flex flex-col bg-slate-50 rounded-xl p-6 border border-slate-100 hover:border-slate-200 hover:shadow-md transition-all h-full"
           >
             <div className="flex items-center gap-2 text-sm font-medium text-slate-500 mb-3">

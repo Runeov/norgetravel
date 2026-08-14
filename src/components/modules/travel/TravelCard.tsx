@@ -14,6 +14,7 @@ import {
 import { AddToTripButton } from '@/components/ui/AddToTripButton';
 import { ShareButtons } from '@/components/ui/ShareButtons';
 import type { TripItemCategory } from '@/types/trip';
+import { getPartnerName, trackEvent } from '@/lib/analytics';
 
 export interface RatingData {
   googleRating?: number | null;
@@ -152,6 +153,13 @@ export function TravelCard({ item, category, ratings }: TravelCardProps) {
               href={item.website}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent('transport_operator_click', {
+                item_id: item.id,
+                item_name: item.name,
+                category,
+                destination: item.destination,
+                partner: getPartnerName(item.website || ''),
+              })}
               className="inline-flex items-center gap-1.5 text-sm font-medium text-[#1B3A5C] hover:text-[#00CC6A] transition-colors min-h-[44px]"
             >
               Visit website
