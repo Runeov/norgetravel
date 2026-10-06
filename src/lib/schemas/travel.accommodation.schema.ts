@@ -11,7 +11,7 @@ export const AccommodationSchema = TravelItemBaseSchema.extend({
   accommodationType: AccommodationTypeSchema,
   starRating: z.number().min(1).max(5).nullable().optional(),
   amenities: z.array(z.string()).default([]),
-  capacity: z.string().optional(),
+  capacity: z.string().nullish(),
   checkIn: z.string().optional(),
   checkOut: z.string().optional(),
   bookingUrl: z.string().url().nullable().optional(),

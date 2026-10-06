@@ -107,7 +107,6 @@ export const metadata: Metadata = {
   title: 'North Cape (Nordkapp) Travel Guide 2026 | NorgeTravel',
   description:
     'Nordkapp at 71°10\u2032 N — the northernmost point of mainland Europe. Midnight sun from May 14, winter convoys on the E69, Honningsvåg as basecamp, and the Hurtigruten stop that most travellers miss.',
-  alternates: { canonical: 'https://norgetravel.com/destinations/nordkapp' },
 };
 
 const facts = [

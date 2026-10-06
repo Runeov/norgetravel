@@ -4,13 +4,25 @@ import ZoneExperts from '@/components/modules/home/ZoneExperts';
 import SustainableTravel from '@/components/modules/home/SustainableTravel';
 import DestinationsTeaser from '@/components/modules/home/DestinationsTeaser';
 import ContactPanel from '@/components/modules/home/ContactPanel';
+import type { Metadata } from 'next';
 import { getSiteUrl } from '@/lib/site-url';
 import { getDictionary } from '@/i18n/get-dictionary';
+import { getSiteSeason, SEASON_HOME_META } from '@/lib/season';
+
+// Re-render daily so the seasonal hero and metadata switch on the boundary dates
+export const revalidate = 86400;
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const meta = SEASON_HOME_META[getSiteSeason()][lang === 'zh' ? 'zh' : 'en'];
+  return { title: meta.title, description: meta.description };
+}
 
 export default async function HomePage({ params }: { params: Promise<{ lang: 'en' | 'zh' }> }) {
   const lang = (await params).lang || 'en';
   const dict = await getDictionary(lang);
   const siteUrl = getSiteUrl();
+  const season = getSiteSeason();
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -55,11 +67,11 @@ export default async function HomePage({ params }: { params: Promise<{ lang: 'en
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <Hero dict={dict.home} />
+      <Hero dict={dict.home} season={season} />
       <EditorialPromise />
       <ZoneExperts />
       <SustainableTravel />
-      <DestinationsTeaser />
+      <DestinationsTeaser season={season} />
       <ContactPanel />
     </main>
   );

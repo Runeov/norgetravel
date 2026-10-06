@@ -113,7 +113,7 @@ const featuredGuides: ActivityGuide[] = [
     linkLabel: 'Read the full report',
     isExternal: false,
     bookingUrl:
-      'https://www.getyourguide.com/odda-l2558/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
+      'https://www.getyourguide.com/odda-l97971/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
   },
   {
     title: 'Vøringsfossen: 182 meters into Måbødalen',
@@ -139,7 +139,7 @@ const featuredGuides: ActivityGuide[] = [
     linkLabel: 'Read the full guide',
     isExternal: false,
     bookingUrl:
-      'https://www.getyourguide.com/hardangerfjord-l97248/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
+      'https://www.getyourguide.com/vestland-county-l1985/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
   },
   {
     title: 'Folgefonna glacier walk',
@@ -153,7 +153,7 @@ const featuredGuides: ActivityGuide[] = [
     linkLabel: 'Read the full review',
     isExternal: false,
     bookingUrl:
-      'https://www.getyourguide.com/hardangerfjord-l97248/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
+      'https://www.getyourguide.com/vestland-county-l1985/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
   },
 ];
 
@@ -477,7 +477,7 @@ export default function HardangerfjordActivities() {
             </div>
             <div className="text-center">
               <a
-                href="https://www.getyourguide.com/hardangerfjord-l97248/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-end"
+                href="https://www.getyourguide.com/vestland-county-l1985/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-end"
                 rel="noopener noreferrer sponsored"
                 target="_blank"
                 className="inline-flex items-center gap-2 text-sm font-medium text-[#1A365D] hover:text-[#00D084] transition-colors min-h-[44px]"

@@ -298,8 +298,8 @@
     "location": "Tromsø, Norway",
     "priceRange": "mid-range",
     "website": null,
-    "imageUrl": "/images/tromso/northern-lights/aurora-tromso_yngve-olsen-1.jpg",
-    "imageAlt": null,
+    "imageUrl": "/images/tromso/northern-lights/aurora-tamokdalen_william-copeland.jpg",
+    "imageAlt": "Green and violet aurora over a snow-covered peak in Tamokdalen, inland from Tromsø",
     "status": "published",
     "isFeatured": false,
     "sortOrder": 10,
@@ -5401,8 +5401,8 @@
     "location": "Tromsø, Norway",
     "priceRange": "mid-range",
     "website": "https://spiritinthesky.no/",
-    "imageUrl": "/images/tromso/northern-lights/aurora-tromso_yngve-olsen-2.jpg",
-    "imageAlt": null,
+    "imageUrl": "/images/tromso/northern-lights/aurora-tamokdalen_william-copeland.jpg",
+    "imageAlt": "Green and violet aurora over a snow-covered peak in Tamokdalen, inland from Tromsø",
     "status": "published",
     "isFeatured": false,
     "sortOrder": 140,
@@ -18495,8 +18495,8 @@
     "location": "Tromsø, Norway",
     "priceRange": "mid-range",
     "website": "http://www.helgoy.no/en/tromso-eng/",
-    "imageUrl": "/images/tromso/northern-lights/aurora-tromso_yngve-olsen-2.jpg",
-    "imageAlt": null,
+    "imageUrl": "/images/tromso/northern-lights/aurora-tamokdalen_william-copeland.jpg",
+    "imageAlt": "Green and violet aurora over a snow-covered peak in Tamokdalen, inland from Tromsø",
     "status": "draft",
     "isFeatured": false,
     "sortOrder": 472,
@@ -24257,6 +24257,7 @@
     "diceScore": 5
   },
   "stavanger-preikestolen-hike": {
+    "id": "stavanger-preikestolen-hike",
     "name": "Preikestolen: The Pulpit Rock Hike",
     "description": "Preikestolen is a 604-metre flat-topped cliff that drops vertically into Lysefjord. The hike is 8 km return with 334 metres of elevation gain — rated DNT Blue. Allow 4–5 hours in good conditions, longer in rain or ice. The trailhead is at Preikestolen Mountain Lodge, reached by ferry from Stavanger harbour (45 min) and then bus. The cliff edge has no guardrail. In July and August, the path is crowded from 09:00 onward — start before 08:00 or plan for a late afternoon start. GetYourGuide and Viator both list guided group transfers from Stavanger if you prefer a joined tour with transport included.",
     "destination": "fjords",
@@ -24281,11 +24282,7 @@
       "Ferry + bus sold separately"
     ],
     "bookingUrl": null,
-    "seasonalAvailability": [
-      "spring",
-      "summer",
-      "autumn"
-    ],
+    "seasonalAvailability": "Spring – autumn",
     "meetingPoint": "Stavanger harbour (Fiskepiren) — ferry to Tau, then bus",
     "ratings": {
       "google": {
@@ -24300,6 +24297,7 @@
     "diceScore": 6
   },
   "stavanger-lysefjord-rib-safari": {
+    "id": "stavanger-lysefjord-rib-safari",
     "name": "Lysefjord RIB Safari from Stavanger",
     "description": "A RIB speedboat covers the 42 km length of Lysefjord in under 3 hours, passing under Preikestolen (604 m) and Kjerag (1,084 m) from the water. The cliff faces are sheer — looking straight up at the rock walls from sea level is a different experience than standing on top. Rødne Fjord Cruise operates departures from Skagenkaien, Stavanger. Season runs April to October. Bring a windproof jacket regardless of the weather — at 50 km/h across open water, the wind cuts through cotton.",
     "destination": "fjords",
@@ -24324,11 +24322,7 @@
       "RIB safety briefing"
     ],
     "bookingUrl": null,
-    "seasonalAvailability": [
-      "spring",
-      "summer",
-      "autumn"
-    ],
+    "seasonalAvailability": "Spring – autumn",
     "meetingPoint": "Skagenkaien, Stavanger harbour",
     "ratings": {
       "google": {
@@ -24343,6 +24337,7 @@
     "diceScore": 6
   },
   "bergen-trolltunga-guided-hike": {
+    "id": "bergen-trolltunga-guided-hike",
     "name": "Trolltunga: Guided Hike from Odda",
     "description": "Trolltunga — the Troll's Tongue — is a horizontal rock shelf jutting 700 metres above Lake Ringedalsvatnet in the Hardanger region. The hike is 22 km return with 800 metres of elevation gain. It is a DNT Red trail: exposed ridge sections, river crossings, and route-finding above the treeline. Allow 10–12 hours minimum. Snow can persist on the high sections into June — check conditions before leaving Odda. The trailhead is at Skjeggedal car park, reached via Odda, roughly 2 hours from Bergen by car or bus. Guided groups depart daily from May to October. Solo hikers attempting this in poor visibility or late in the day get evacuated at serious cost — bring a GPS, pack extra layers, and turn back if clouds close in on the plateau.",
     "destination": "fjords",
@@ -24359,7 +24354,7 @@
     "experienceType": "glacier-hike",
     "operator": "Various operators (Trolltunga Active, Nordic Visitor, local guides)",
     "duration": "10–12 hours",
-    "difficulty": "hard",
+    "difficulty": "challenging",
     "minAge": 12,
     "groupSize": null,
     "includes": [
@@ -24367,10 +24362,7 @@
       "Safety equipment"
     ],
     "bookingUrl": null,
-    "seasonalAvailability": [
-      "summer",
-      "autumn"
-    ],
+    "seasonalAvailability": "Summer – autumn",
     "meetingPoint": "Skjeggedal car park, Odda (2 hours from Bergen)",
     "ratings": {
       "google": {
@@ -24385,6 +24377,7 @@
     "diceScore": 6
   },
   "bergen-folgefonna-glacier-hike": {
+    "id": "bergen-folgefonna-glacier-hike",
     "name": "Folgefonna Glacier Hike from Rosendal",
     "description": "Folgefonna is the third-largest glacier in Norway — a 168 km² ice cap sitting above the inner Hardangerfjord. The guided hike from the Folgefonnsenteret starts at 1,150 metres and crosses active glacier terrain: crevasses, blue ice formations, and meltwater streams. Crampons and an ice axe are provided. No prior glacier experience required, but reasonable fitness is essential. The season runs June to September — outside those months the glacier approach roads are closed. Rosendal, the basecamp for this hike, is reached by ferry from Stavanger or by driving the E134 from Bergen (2 hours). Do not attempt the glacier without a certified guide.",
     "destination": "fjords",
@@ -24410,10 +24403,7 @@
       "Certified glacier guide"
     ],
     "bookingUrl": null,
-    "seasonalAvailability": [
-      "summer",
-      "autumn"
-    ],
+    "seasonalAvailability": "Summer – autumn",
     "meetingPoint": "Folgefonnsenteret, Rosendal (2 hours from Bergen)",
     "ratings": {
       "google": {
@@ -24428,6 +24418,7 @@
     "diceScore": 6
   },
   "bergen-norway-in-nutshell": {
+    "id": "bergen-norway-in-nutshell",
     "name": "Norway in a Nutshell: Flåm Railway and Sognefjord",
     "description": "The Norway in a Nutshell route compresses the most dramatic fjord and mountain scenery in western Norway into a single day. From Bergen: train to Myrdal (2 hours), Flåm Railway descent 863 metres to sea level (1 hour — 20 tunnels, 5.4% gradient), ferry across Nærøyfjord and Aurlandsfjord (2 hours, UNESCO-listed), bus over Stalheimskleiva hairpin road back to Voss, train to Bergen. The full circuit runs 8–9 hours. Fjord Tours sells all-inclusive tickets from Bergen. What the brochures don't say: Nærøyfjord in July carries 1,200 cruise passengers per day in addition to the tour groups. The route is still spectacular — just not solitary. Go in May or September.",
     "destination": "fjords",
@@ -24455,11 +24446,7 @@
       "Voss–Bergen train"
     ],
     "bookingUrl": null,
-    "seasonalAvailability": [
-      "spring",
-      "summer",
-      "autumn"
-    ],
+    "seasonalAvailability": "Spring – autumn",
     "meetingPoint": "Bergen Railway Station (Strømsgt. 4)",
     "ratings": {
       "google": {
@@ -24474,6 +24461,7 @@
     "diceScore": 6
   },
   "bergen-hardangerfjord-cider-cruise": {
+    "id": "bergen-hardangerfjord-cider-cruise",
     "name": "Hardangerfjord Cruise with Fruit Farm Stop",
     "description": "Hardangerfjord is 179 km long and lined with apple and cherry orchards — the same fjord where glacier meltwater from Folgefonna meets sea level. The Hardanger Sunnhordlandske Dampskipsselskap (HSD) runs a year-round ferry route from Bergen stopping at Norheimsund, Øystese, and Utne. In spring (April–May), the orchards are in blossom. In autumn (September–October), the cider harvest is in. Book a night at Utne Hotel — the oldest hotel in Norway, operating since 1722 — and build the fjord experience around a stay rather than a rushed day trip.",
     "destination": "fjords",
@@ -24498,11 +24486,7 @@
       "Optional guided farm tour at Øystese or Utne"
     ],
     "bookingUrl": null,
-    "seasonalAvailability": [
-      "spring",
-      "summer",
-      "autumn"
-    ],
+    "seasonalAvailability": "Spring – autumn",
     "meetingPoint": "Strandkaiterminalen, Bergen harbour",
     "ratings": {
       "google": {
@@ -24517,6 +24501,7 @@
     "diceScore": 6
   },
   "trondheim-nidaros-guided-history-tour": {
+    "id": "trondheim-nidaros-guided-history-tour",
     "name": "Nidaros Cathedral: Guided History and Crown Jewels Tour",
     "description": "Nidaros Cathedral is the northernmost medieval cathedral in the world and the only one in Scandinavia still used for coronations. Construction started in 1070 over the grave of Saint Olav — the Viking king who Christianised Norway and was killed at the Battle of Stiklestad in 1030. The Gothic nave took 300 years to build. The guided tour (90 minutes) covers the architectural history, the crypt, and access to the Archbishop's Palace next door. The Crown Regalia — including the Norwegian crown, orb, and sceptre — are displayed in the adjoining palace. Trondheim Turistforening (TTT) also offers evening tours with access to the roof and bell towers.",
     "destination": "all",
@@ -24542,12 +24527,7 @@
       "Crown Regalia access (combined ticket)"
     ],
     "bookingUrl": null,
-    "seasonalAvailability": [
-      "spring",
-      "summer",
-      "autumn",
-      "winter"
-    ],
+    "seasonalAvailability": "Year-round",
     "meetingPoint": "Bispegata 7, Trondheim (opposite Torvet)",
     "ratings": {
       "google": {
@@ -24562,6 +24542,7 @@
     "diceScore": 6
   },
   "trondheim-dovre-musk-ox-safari": {
+    "id": "trondheim-dovre-musk-ox-safari",
     "name": "Dovre Mountain Musk Ox Safari",
     "description": "The musk ox (moskus) is a relic from the last ice age — 350 kg, with horns that survived 40,000 years of Arctic winters. A herd of 300–350 lives in the Dovrefjell-Sunndalsfjella National Park, the only place in mainland Europe where musk oxen roam free. The guided safari operates from Kongsvoll, 1.5 hours south of Trondheim by train (Dovre line). Groups of 6–10 hike at the pace the herd sets — some days 2 km, other days 15 km. The animals are wild and react to perceived threats: keep 200 metres distance and follow guide instructions exactly. Season runs June to September. Moskussafarier AS runs the licensed tours.",
     "destination": "all",
@@ -24587,10 +24568,7 @@
       "Transport from Kongsvoll train station"
     ],
     "bookingUrl": null,
-    "seasonalAvailability": [
-      "summer",
-      "autumn"
-    ],
+    "seasonalAvailability": "Summer – autumn",
     "meetingPoint": "Kongsvoll train station (Dovrebanen line — 1.5 hours from Trondheim)",
     "ratings": {
       "google": {
@@ -24605,6 +24583,7 @@
     "diceScore": 6
   },
   "trondheim-kayak-nidelva": {
+    "id": "trondheim-kayak-nidelva",
     "name": "Sea Kayaking the Nidelva and Trondheimfjord",
     "description": "The Nidelva flows through the centre of Trondheim and opens into Trondheimfjord — 130 km of sheltered water stretching northwest to the sea. Guided kayak trips depart from the Nedre Elvehavn wharf in Trondheim and cover the river reach past the Bakklandet wooden houses before turning north into the fjord. Half-day tours run 3 hours; full-day trips reach the outer islands. Trondheim Kajakklubb runs beginner and guided sessions. The fjord is sheltered enough for beginners except in southwesterly gales — check the met.no forecast before heading into the open water section.",
     "destination": "all",
@@ -24632,11 +24611,7 @@
       "Guide"
     ],
     "bookingUrl": null,
-    "seasonalAvailability": [
-      "spring",
-      "summer",
-      "autumn"
-    ],
+    "seasonalAvailability": "Spring – autumn",
     "meetingPoint": "Nedre Elvehavn, Trondheim (behind Nedre Ila road)",
     "ratings": {
       "google": {
@@ -24651,6 +24626,7 @@
     "diceScore": 5
   },
   "oslo-oslofjord-kayak-islands": {
+    "id": "oslo-oslofjord-kayak-islands",
     "name": "Kayaking the Oslofjord Islands",
     "description": "The inner Oslofjord contains 40 islands accessible by city ferry or kayak from Aker Brygge. The closest — Hovedøya, Nakholmen, and Gressholmen — are 15 minutes paddling from the city centre. Longer routes reach the outer islands: Langøyene (the only fjord island with an official camping area) and Bleikøya. Oslo Kajakk runs guided day tours and multi-day island expeditions. The route between the inner islands is beginner-friendly; the outer fjord sections require sea kayak skills. Boat traffic increases sharply in summer — stay inside ferry lanes and keep clear of the high-speed Drøbak ferries.",
     "destination": "all",
@@ -24678,11 +24654,7 @@
       "Guide (on guided tours)"
     ],
     "bookingUrl": null,
-    "seasonalAvailability": [
-      "spring",
-      "summer",
-      "autumn"
-    ],
+    "seasonalAvailability": "Spring – autumn",
     "meetingPoint": "Aker Brygge harbour or Vippetangen quay, Oslo",
     "ratings": {
       "google": {

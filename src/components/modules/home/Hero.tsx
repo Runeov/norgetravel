@@ -4,8 +4,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useTripMap } from '@/context/TripMapContext';
+import { SEASON_HERO, type SiteSeason } from '@/lib/season';
 
-export default function Hero({ dict }: { dict?: any }) {
+export default function Hero({ dict, season = 'summer' }: { dict?: any; season?: SiteSeason }) {
   // Fallback to hardcoded English if dict is undefined (for testing/safety)
   const d = dict || {
     heroTitle: "Norge Travel & Adventures",
@@ -14,6 +15,8 @@ export default function Hero({ dict }: { dict?: any }) {
     tripPlanner: "Trip Planner"
   };
   const { openMap } = useTripMap();
+  const hero = SEASON_HERO[season];
+  const seasonal = d.seasons?.[season] ?? {};
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -28,8 +31,8 @@ export default function Hero({ dict }: { dict?: any }) {
   return (
     <section className="relative overflow-hidden h-screen flex items-center bg-slate-900 text-white -mt-20 pt-20">
       <Image
-        src="/images/tromso/landscapes/midnight-sun-sommaroy_vegard-stien.jpg"
-        alt="Midnight sun over Sommarøy islands and turquoise Arctic waters near Tromsø, Northern Norway"
+        src={hero.image}
+        alt={hero.alt}
         fill
         className="object-cover opacity-50"
         priority
@@ -49,16 +52,16 @@ export default function Hero({ dict }: { dict?: any }) {
 
           {/* Body */}
           <p className="text-lg sm:text-xl text-slate-300 mb-8 leading-relaxed">
-            {d.heroSubtitle}
+            {seasonal.heroSubtitle ?? d.heroSubtitle}
           </p>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 mb-10">
             <Link
-              href="/destinations/fjords"
+              href={hero.ctaHref}
               className="inline-flex items-center justify-center rounded-full text-base font-medium transition-all focus-visible:outline-none bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] text-white hover:shadow-lg hover:shadow-[#00CC6A]/30 hover:-translate-y-0.5 h-12 px-8"
             >
-              {d.exploreFjords}
+              {seasonal.primaryCta ?? d.exploreFjords}
               <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
             </Link>
             <button
@@ -77,7 +80,7 @@ export default function Hero({ dict }: { dict?: any }) {
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-5 h-5 text-[#00CC6A]" aria-hidden="true" />
-              <span>Midnight Sun Season (Jun–Aug)</span>
+              <span>{seasonal.seasonBadge ?? 'Midnight Sun Season (Jun–Aug)'}</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-5 h-5 text-[#00CC6A]" aria-hidden="true" />

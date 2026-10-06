@@ -108,7 +108,6 @@ export const metadata: Metadata = {
   title: 'Senja & Vesterålen Travel Guide 2026 | NorgeTravel',
   description:
     'Senja and Vesterålen without the Lofoten crowds. Sperm whales year-round off Andenes, the Segla ridge, the Fv862 scenic road, and how to get here from Tromsø.',
-  alternates: { canonical: 'https://norgetravel.com/destinations/senja' },
 };
 
 const facts = [
@@ -257,7 +256,7 @@ export default function SenjaPage() {
                 price: 'From 1,990 NOK',
                 duration: '10–12 hours',
                 highlight: 'Brensholmen–Botnhamn ferry, Segla viewpoint at Bergsbotn, Tungeneset, and the fishing village of Husøy. Small-group minibus with local guide. Summer only (ferry-dependent, late May to late August).',
-                affiliateUrl: 'https://www.getyourguide.com/tromso-l235/senja-day-trip-tc1088/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
+                affiliateUrl: 'https://www.getyourguide.com/tromso-l32375/day-trips-tc360/senja-tl97773/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
               },
               {
                 name: 'Aurora chase from Finnsnes',

@@ -1,7 +1,7 @@
 # Jotunheimen Photo Credits
 
 Source: Wikimedia Commons. Licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/).
-Downloaded as the 1920px Commons rendition, not otherwise modified.
+Downloaded as the 1920px Commons rendition and re-encoded as JPEG (quality 80) for the web; not otherwise altered.
 Credit format: Photo: [Author] / Wikimedia Commons, CC BY-SA 4.0 (link the file page and the license).
 
 ---

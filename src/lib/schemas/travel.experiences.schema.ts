@@ -15,13 +15,13 @@ export const DifficultySchema = z.enum(['easy', 'moderate', 'challenging', 'expe
 export const ExperienceSchema = TravelItemBaseSchema.extend({
   experienceType: ExperienceTypeSchema,
   operator: z.string().min(1, 'Operator is required'),
-  duration: z.string().optional(),
+  duration: z.string().nullish(),
   difficulty: DifficultySchema,
-  minAge: z.number().min(0).optional(),
-  groupSize: z.string().optional(),
+  minAge: z.number().min(0).nullish(),
+  groupSize: z.string().nullish(),
   includes: z.array(z.string()).default([]),
   bookingUrl: z.string().url().nullable().optional(),
-  seasonalAvailability: z.string().optional(),
+  seasonalAvailability: z.string().nullish(),
   meetingPoint: z.string().optional(),
 });
 

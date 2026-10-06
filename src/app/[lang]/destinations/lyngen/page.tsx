@@ -138,7 +138,6 @@ export const metadata: Metadata = {
   title: 'Lyngen Alps Travel Guide 2026 | NorgeTravel',
   description:
     'The most serious alpine terrain in Nord-Norge. Ski-touring peaks rising 1,834 m from Lyngenfjord. Under two hours from Tromsø airport. Season, access, and guide requirements.',
-  alternates: { canonical: 'https://norgetravel.com/destinations/lyngen' },
 };
 
 const facts = [

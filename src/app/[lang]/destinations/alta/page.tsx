@@ -137,7 +137,6 @@ export const metadata: Metadata = {
   title: 'Alta & Sápmi Travel Guide 2026 | NorgeTravel',
   description:
     'Alta, Finnmark, and the Sami heartland. UNESCO rock carvings 7,000 years old, Finnmarksløpet dog race, Kautokeino Easter Festival, and aurora above the Finnmarksvidda plateau.',
-  alternates: { canonical: 'https://norgetravel.com/destinations/alta' },
 };
 
 const facts = [

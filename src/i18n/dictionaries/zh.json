@@ -10,7 +10,17 @@
     "heroTitle": "挪威旅行与探险",
     "heroSubtitle": "专为现代探险家精选的可持续北极探险。午夜太阳皮划艇、零排放峡湾游船、冰川徒步和偏远荒野住宿。一应俱全。",
     "exploreFjords": "探索峡湾",
-    "tripPlanner": "行程规划器"
+    "tripPlanner": "行程规划器",
+    "seasons": {
+      "winter": {
+        "heroSubtitle": "极光季从10月持续到次年3月。我们的北极编辑告诉您在哪里能等到晴朗的夜空、如何在雪中驾驶 E6 和 E8 公路，以及极夜期间哪些向导和小屋值得预订。",
+        "primaryCta": "北极光指南",
+        "seasonBadge": "极光季（10月–3月）"
+      },
+      "summer": {
+        "seasonBadge": "午夜太阳季（6月–8月）"
+      }
+    }
   },
   "footer": {
     "aboutUs": "关于我们",

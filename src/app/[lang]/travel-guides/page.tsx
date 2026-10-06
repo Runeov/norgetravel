@@ -11,9 +11,6 @@ export const metadata: Metadata = {
   title: 'Travel Guides | Safety, Trip Reports & Planning | NorgeTravel',
   description:
     'Expert travel guides for Norway. Mountain safety and the Fjellvettreglene, first-person trip reports from Lofoten to Svalbard, and logistics guides for ferries, driving, and budgets.',
-  alternates: {
-    canonical: '/travel-guides',
-  },
   openGraph: {
     title: 'Travel Guides | NorgeTravel.com',
     description:
@@ -195,7 +192,7 @@ export default function KunnskapsbankPage() {
       {/* Hero */}
       <section className="relative overflow-hidden bg-slate-900 text-white -mt-20 pt-20 z-10">
         <Image
-          src="/images/guides/guides_banner.png"
+          src="/images/guides/guides_banner.jpg"
           alt="Norway travel guides — mountain, fjord, and Arctic landscapes"
           fill
           className="object-cover opacity-50"

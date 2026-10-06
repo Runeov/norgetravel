@@ -72,7 +72,7 @@ export default async function NorthernNorwayPage() {
       <section className="relative overflow-hidden bg-slate-900 text-white -mt-20 pt-20">
         <Image
           src="/images/tromso/northern-lights/aurora-tromso_yngve-olsen-1.jpg"
-          alt="Aurora borealis over Tromso at 69 degrees north, green bands across a dark Arctic sky"
+          alt="Tromsø at night seen from above, city lights and the Tromsø Bridge reflected in the strait"
           fill
           className="object-cover opacity-50"
           priority

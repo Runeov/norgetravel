@@ -10,7 +10,17 @@
     "heroTitle": "Norge Travel & Adventures",
     "heroSubtitle": "Sustainable Arctic adventures hand-picked for the modern explorer. Midnight sun kayaking, zero-emission fjord cruises, glacier hikes, and remote wilderness stays. All in one place.",
     "exploreFjords": "Explore Fjords",
-    "tripPlanner": "Trip Planner"
+    "tripPlanner": "Trip Planner",
+    "seasons": {
+      "winter": {
+        "heroSubtitle": "Aurora season runs from October to March. Our Arctic editors cover where to stand under clear skies, how to drive the E6 and E8 in snow, and which guides and cabins are worth booking for the polar night.",
+        "primaryCta": "Northern Lights guide",
+        "seasonBadge": "Aurora season (Oct–Mar)"
+      },
+      "summer": {
+        "seasonBadge": "Midnight Sun Season (Jun–Aug)"
+      }
+    }
   },
   "footer": {
     "aboutUs": "About Us",

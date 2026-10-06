@@ -32,7 +32,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${label} in the Norwegian Fjords 2026 | NorgeTravel`,
     description: ACTIVITY_BLURBS[activity],
-    alternates: { canonical: `https://norgetravel.com/destinations/fjords/activities/${activity}` },
   };
 }
 

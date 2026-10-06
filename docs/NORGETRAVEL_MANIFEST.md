@@ -80,7 +80,7 @@ Animation:  Framer Motion
 Font:       Inter (via next/font/google)
 Utils:      cn() from @/lib/utils
 Forms:      Netlify Forms (/__forms.html)
-Sitemap:    next-sitemap (postbuild)
+Sitemap:    src/app/sitemap.ts (Next.js route, hreflang alternates)
 SEO:        JSON-LD — @type TravelAgency / TouristTrip
 ```
 

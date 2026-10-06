@@ -120,3 +120,15 @@ All photos used with permission. Credit format: Photo: [Photographer] / nordnorg
 | frozen-waterfall-reisa_petr-pavlicek-2.jpg | Petr Pavlicek | Frozen waterfall, Reisa River | Winter feature |
 | lyngentrappa-viewpoint_knut-hansvold.jpg | Knut Hansvold | Lyngentrappa viewpoint, Lyngen Stairs | Activity |
 | lyngstuva-hike_petr-pavlicek.jpg | Petr Pavlicek | Walk to Lyngstuva, historic hike | Activity |
+
+---
+
+## Wikimedia Commons (not from nordnorge.com)
+
+Licensed under Creative Commons as listed. Downloaded as the 1920px Commons rendition and re-encoded as JPEG (quality 80) for the web; not otherwise altered.
+Credit format: Photo: [Author] / Wikimedia Commons, [licence] (link the file page and the licence).
+
+| File | Author | Subject | Licence | Source |
+|---|---|---|---|---|
+| nature-glaciers/blaisvatnet-lake_evgenii-salganik.jpg | Evgenii Salganik | Blåisvatnet below the Lenangsbreen glacier, August 2023 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Blavatnet.jpg |
+| nature-glaciers/blaisvatnet-lenangstinden_harald-groven.jpg | Harald Groven | Blåisvatnet and Lenangstinden, June 2024 | CC BY-SA 2.0 | https://commons.wikimedia.org/wiki/File:Bl%C3%A5isvannet_(Lyngen).jpg |
