@@ -54,9 +54,8 @@ const categories = [
       {
         title: 'Allemannsretten explained: your rights and obligations',
         slug: 'allemannsretten-right-to-roam',
-        readTime: '9 min',
-        status: 'coming-soon' as const,
-        releaseDate: 'July 12',
+        readTime: '6 min',
+        status: 'published' as const,
       },
     ],
   },
@@ -134,9 +133,8 @@ const categories = [
       {
         title: 'DNT cabin guide: how the hut system works, keys, and booking',
         slug: 'dnt-cabin-guide',
-        readTime: '10 min',
-        status: 'coming-soon' as const,
-        releaseDate: 'July 19',
+        readTime: '5 min',
+        status: 'published' as const,
       },
     ],
   },
