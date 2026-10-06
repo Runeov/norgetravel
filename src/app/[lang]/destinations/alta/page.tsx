@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from '@/components/LocalizedLink';
 import { ArrowRight, MapPin, Clock, Thermometer, Compass } from 'lucide-react';
@@ -6,6 +5,7 @@ import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { ShareButtons } from '@/components/ui/ShareButtons';
 import { DestinationActivities } from '@/components/modules/destinations/DestinationActivities';
 import { DestinationBasecamps, type Basecamp } from '@/components/modules/destinations/DestinationBasecamps';
+import { localizedMetadata } from '@/lib/i18n-seo';
 
 const altaBasecamps: Basecamp[] = [
   {
@@ -133,11 +133,11 @@ const altaBasecamps: Basecamp[] = [
 
 export const revalidate = 86400;
 
-export const metadata: Metadata = {
+export const generateMetadata = localizedMetadata('destinations/alta', {
   title: 'Alta & Sápmi Travel Guide 2026 | NorgeTravel',
   description:
     'Alta, Finnmark and the Sami heartland: UNESCO rock carvings 7,000 years old, the Finnmarksløpet dog race, Kautokeino Easter Festival and plateau aurora.',
-};
+});
 
 const facts = [
   { label: 'Location', value: 'Finnmark (70°N)' },

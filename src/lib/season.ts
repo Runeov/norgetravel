@@ -37,14 +37,14 @@ export const SEASON_HOME_META: Record<SiteSeason, Record<'en' | 'zh' | 'ja', { t
         'Aurora season in Norway: where to see the Northern Lights from Tromsø, Lyngen and Svalbard, how to drive Arctic roads in snow, and where to stay this winter.',
     },
     zh: {
-      title: '挪威旅行 | 北极光、北极冬季与峡湾旅行指南 | NorgeTravel',
+      title: '挪威旅游攻略：极光、峡湾与北极冬季 | 挪威旅行 NorgeTravel',
       description:
-        '挪威极光季指南：在特罗姆瑟、林根和斯瓦尔巴哪里看北极光，如何在北极雪路上驾驶，以及极夜期间住在哪里。',
+        '住在挪威的编辑撰写的挪威旅游攻略：特罗姆瑟、林根和斯瓦尔巴哪里看极光，冬季雪路自驾，峡湾渡轮，旅行费用与最佳旅行时间。',
     },
     ja: {
-      title: 'NorgeTravel | ノルウェーのオーロラ、北極圏の冬、フィヨルド旅行ガイド',
+      title: 'ノルウェー旅行・観光ガイド：オーロラ、フィヨルド、冬の北極圏 | NorgeTravel',
       description:
-        'ノルウェーのオーロラシーズン：トロムソ、リンゲン、スバールバルでオーロラを見る場所、雪道での北極圏ドライブ、この冬の滞在先。',
+        'ノルウェーに住む編集者のノルウェー旅行ガイド。トロムソ、リンゲン、スバールバルでオーロラを見る時期と場所、冬の雪道ドライブ、フィヨルドのフェリー、旅行費用。',
     },
   },
   summer: {
@@ -54,14 +54,14 @@ export const SEASON_HOME_META: Record<SiteSeason, Record<'en' | 'zh' | 'ja', { t
         'Norway travel in 2026: midnight sun kayaking, zero-emission fjord cruises, glacier hikes and sustainable Arctic adventures, with expert local insight.',
     },
     zh: {
-      title: '挪威旅行 2026 | 午夜太阳探险、峡湾游轮与北极徒步',
+      title: '挪威旅游攻略：峡湾、午夜太阳与徒步 | 挪威旅行 NorgeTravel',
       description:
-        '2026年挪威旅行的权威指南。拥有当地专家见解的午夜太阳皮划艇、零排放峡湾游轮、冰川徒步及可持续的北极探险。',
+        '住在挪威的编辑撰写的挪威旅游攻略：峡湾自驾与渡轮，罗弗敦群岛，午夜太阳，徒步路线，旅行费用与最佳旅行时间。',
     },
     ja: {
-      title: 'NorgeTravel 2026 | 白夜のアドベンチャー、フィヨルドクルーズ、北極圏ハイキング',
+      title: 'ノルウェー旅行・観光ガイド：フィヨルド、白夜、ハイキング | NorgeTravel',
       description:
-        '2026年のノルウェー旅行ガイド。白夜のカヤック、ゼロエミッションのフィヨルドクルーズ、氷河ハイキング、地元の専門家による持続可能な北極圏アドベンチャー。',
+        'ノルウェーに住む編集者のノルウェー旅行ガイド。フィヨルドのドライブとフェリー、ロフォーテン諸島、白夜、ハイキング、旅行費用とベストシーズン。',
     },
   },
 };

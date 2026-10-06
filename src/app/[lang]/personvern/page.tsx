@@ -1,10 +1,10 @@
-import type { Metadata } from 'next';
 import Link from '@/components/LocalizedLink';
+import { localizedMetadata } from '@/lib/i18n-seo';
 
-export const metadata: Metadata = {
+export const generateMetadata = localizedMetadata('personvern', {
   title: 'Privacy Policy | NorgeTravel.com',
   description: 'Privacy policy for NorgeTravel.com — what data we collect and your rights under GDPR.',
-};
+});
 
 export default function PersonvernPage() {
   return (

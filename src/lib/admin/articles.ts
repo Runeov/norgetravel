@@ -2,6 +2,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { ArticleSchema, ArticleCreateSchema, type Article, type ArticleCreate } from '@/lib/schemas/article.schema';
 import { withFileLock } from '@/lib/storage/file-lock';
+import { isCjkBody, isCurrentTranslation } from '@/lib/article-locales';
 
 const DATA_FILE = path.join(process.cwd(), 'src/data/articles.json');
 const DATA_FILE_ZH = path.join(process.cwd(), 'src/data/articles_zh.json');
@@ -10,13 +11,13 @@ export interface ArticlesData {
   [key: string]: Article;
 }
 
-// Translated fields taken from articles_ja.json. The ja bodies are English
-// copies, so the body always comes from articles.json, which is never older.
+// Translated fields taken from articles_ja.json. Most ja bodies are English
+// copies, so the body comes from articles.json unless the ja body is Japanese.
 const JA_FIELDS = ['title', 'subtitle', 'excerpt', 'metaTitle', 'metaDescription'] as const;
 
 /**
- * Japanese view: every English article, with the Japanese metadata overlaid
- * only when that translation is at least as new as the English article.
+ * Japanese view: every English article, with the Japanese translation overlaid
+ * only when it is at least as new as the English article.
  */
 async function readJapaneseArticles(): Promise<Record<string, Article>> {
   const [en, ja] = await Promise.all([
@@ -26,12 +27,12 @@ async function readJapaneseArticles(): Promise<Record<string, Article>> {
   const merged: Record<string, Article> = {};
   for (const [key, article] of Object.entries(en)) {
     const translation = ja[key];
-    const current = translation && (translation.updatedAt ?? '') >= (article.updatedAt ?? '');
     merged[key] = { ...article };
-    if (current) {
+    if (isCurrentTranslation(article, translation)) {
       for (const field of JA_FIELDS) {
         if (translation[field]) Object.assign(merged[key], { [field]: translation[field] });
       }
+      if (isCjkBody(translation.content)) merged[key].content = translation.content as string;
     }
   }
   return merged;

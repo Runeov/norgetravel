@@ -13,9 +13,10 @@ import { AnalyticsTracker } from '@/components/analytics/AnalyticsTracker';
 interface RootLayoutContentProps {
   children: React.ReactNode;
   dict?: any;
+  footerDict?: any;
 }
 
-export function RootLayoutContent({ children, dict }: RootLayoutContentProps) {
+export function RootLayoutContent({ children, dict, footerDict }: RootLayoutContentProps) {
   const pathname = usePathname();
   const isAdminRoute = pathname?.startsWith('/admin');
 
@@ -32,7 +33,7 @@ export function RootLayoutContent({ children, dict }: RootLayoutContentProps) {
         <Navbar dict={dict} />
         <span id="main-content" tabIndex={-1} className="sr-only" />
         {children}
-        <Footer />
+        <Footer dict={footerDict} />
         <CookieBanner />
         <NorwayMapOverlay />
         <MinimizedTripPlanner />

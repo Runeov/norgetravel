@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { asLocale, brandTitle, localeAlternates, OG_LOCALE, SITE_NAME } from '@/lib/i18n-seo';
 import Image from 'next/image';
 import Link from '@/components/LocalizedLink';
 import { notFound } from 'next/navigation';
@@ -38,7 +39,7 @@ async function getCityRestaurants(citySlug: string): Promise<CityRestaurant[]> {
 }
 
 interface PageProps {
-  params: Promise<{ city: string }>;
+  params: Promise<{ city: string; lang: string }>;
 }
 
 export async function generateStaticParams() {
@@ -46,24 +47,27 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { city: citySlug } = await params;
+  const { city: citySlug, lang } = await params;
   const city = getCity(citySlug);
   if (!city) return { title: 'City not found | NorgeTravel' };
+  const alternates = localeAlternates(`destinations/cities/${citySlug}`, lang);
+  const title = brandTitle(`${city.name} Travel Guide 2026 | NorgeTravel`, lang);
   return {
-    title: `${city.name} Travel Guide 2026 | NorgeTravel`,
+    alternates,
+    title,
     description: city.metaDescription,
     openGraph: {
-      title: `${city.name} Travel Guide 2026 | NorgeTravel`,
+      title,
       description: city.metaDescription,
-      url: `https://norgetravel.com/destinations/cities/${citySlug}`,
-      siteName: 'NorgeTravel',
-      locale: 'en_US',
+      url: alternates.canonical as string,
+      siteName: SITE_NAME[asLocale(lang)],
+      locale: OG_LOCALE[asLocale(lang)],
       type: 'website',
       images: [{ url: city.heroImage, alt: city.heroImageAlt || city.name }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${city.name} Travel Guide 2026 | NorgeTravel`,
+      title,
       description: city.metaDescription,
       images: [city.heroImage],
     },

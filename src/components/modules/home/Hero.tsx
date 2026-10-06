@@ -5,8 +5,9 @@ import Link from '@/components/LocalizedLink';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useTripMap } from '@/context/TripMapContext';
 import { SEASON_HERO, type SiteSeason } from '@/lib/season';
+import type { HomeCopy } from '@/i18n/home-copy';
 
-export default function Hero({ dict, season = 'summer' }: { dict?: any; season?: SiteSeason }) {
+export default function Hero({ dict, copy, season = 'summer' }: { dict?: any; copy: HomeCopy['hero']; season?: SiteSeason }) {
   // Fallback to hardcoded English if dict is undefined (for testing/safety)
   const d = dict || {
     heroTitle: "Norge Travel & Adventures",
@@ -76,7 +77,7 @@ export default function Hero({ dict, season = 'summer' }: { dict?: any; season?:
           <div className="flex flex-wrap items-center gap-6 text-sm text-slate-300">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-5 h-5 text-[#00CC6A]" aria-hidden="true" />
-              <span>Zero-Emission Partners</span>
+              <span>{copy.trust[0]}</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-5 h-5 text-[#00CC6A]" aria-hidden="true" />
@@ -84,7 +85,7 @@ export default function Hero({ dict, season = 'summer' }: { dict?: any; season?:
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-5 h-5 text-[#00CC6A]" aria-hidden="true" />
-              <span>Norge 2026: 7.2M Record Arrivals</span>
+              <span>{copy.trust[1]}</span>
             </div>
           </div>
 

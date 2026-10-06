@@ -1,14 +1,14 @@
-import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from '@/components/LocalizedLink';
 import { ArrowRight } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import heroImage from '@/assets/hero_raadgivning.avif';
+import { localizedMetadata } from '@/lib/i18n-seo';
 
-export const metadata: Metadata = {
+export const generateMetadata = localizedMetadata('tjenester/trekking', {
   title: 'Arctic Trekking Norway 2026 — Lofoten & Svalbard | NorgeTravel',
   description: 'Guided Arctic trekking in Lofoten and Svalbard: Norrøna-equipped guides, 57hours expedition booking and multi-day routes. From NOK 2,400 per person.',
-};
+});
 
 const routes = [
   {

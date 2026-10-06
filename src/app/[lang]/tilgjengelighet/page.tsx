@@ -1,10 +1,10 @@
-import { Metadata } from 'next';
 import Link from '@/components/LocalizedLink';
+import { localizedMetadata } from '@/lib/i18n-seo';
 
-export const metadata: Metadata = {
+export const generateMetadata = localizedMetadata('tilgjengelighet', {
   title: 'Accessibility Statement | NorgeTravel.com',
   description: 'NorgeTravel.com accessibility statement under EAA (EU 2019/882). Report accessibility barriers to us.',
-};
+});
 
 export default function TilgjengelighetPage() {
   return (

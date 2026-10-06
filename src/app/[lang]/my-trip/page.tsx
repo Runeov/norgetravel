@@ -1,10 +1,10 @@
-import type { Metadata } from 'next';
 import { TripPlannerView } from '@/components/modules/trip-planner/TripPlannerView';
+import { localizedMetadata } from '@/lib/i18n-seo';
 
-export const metadata: Metadata = {
+export const generateMetadata = localizedMetadata('my-trip', {
   title: 'My Trip | NorgeTravel',
   description: 'View and manage your saved Norway trip items. Plan your route across Northern Lights tours, fjord cruises, and Arctic adventures.',
-};
+});
 
 export default function MyTripPage() {
   return (

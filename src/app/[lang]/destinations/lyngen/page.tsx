@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from '@/components/LocalizedLink';
 import { ArrowRight, MapPin, Clock, Thermometer, Compass } from 'lucide-react';
@@ -6,6 +5,7 @@ import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { ShareButtons } from '@/components/ui/ShareButtons';
 import { DestinationActivities } from '@/components/modules/destinations/DestinationActivities';
 import { DestinationBasecamps, type Basecamp } from '@/components/modules/destinations/DestinationBasecamps';
+import { localizedMetadata } from '@/lib/i18n-seo';
 
 const lyngenBasecamps: Basecamp[] = [
   {
@@ -134,11 +134,11 @@ const lyngenBasecamps: Basecamp[] = [
 
 export const revalidate = 86400;
 
-export const metadata: Metadata = {
+export const generateMetadata = localizedMetadata('destinations/lyngen', {
   title: 'Lyngen Alps Travel Guide 2026 | NorgeTravel',
   description:
     'The most serious alpine terrain in Nord-Norge: ski-touring peaks rising 1,834 m from Lyngenfjord, under two hours from Tromsø airport. Season and access.',
-};
+});
 
 const facts = [
   { label: 'Location', value: 'Troms (E90 km of Tromsø)' },

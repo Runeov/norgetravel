@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { brandTitle, localeAlternates } from '@/lib/i18n-seo';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from '@/components/LocalizedLink';
@@ -7,7 +8,7 @@ import { getEmployee, getSortedEmployees } from '@/lib/admin/employees';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 
 interface Props {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: string; lang: string }>;
 }
 
 export async function generateStaticParams() {
@@ -16,12 +17,13 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id } = await params;
+  const { id, lang } = await params;
   const employee = await getEmployee(id);
   if (!employee) return { title: 'Not Found' };
 
   return {
-    title: `${employee.name} — ${employee.role} | NorgeTravel`,
+    alternates: localeAlternates(`om-oss/${id}`, lang),
+    title: brandTitle(`${employee.name}, ${employee.role} | NorgeTravel`, lang),
     description: employee.description,
     openGraph: {
       title: `${employee.name} — ${employee.role}`,

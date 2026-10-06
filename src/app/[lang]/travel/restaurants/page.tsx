@@ -1,16 +1,16 @@
-import type { Metadata } from 'next';
 import Link from '@/components/LocalizedLink';
 import { ArrowLeft } from 'lucide-react';
 import { TravelHero } from '@/components/modules/travel/TravelHero';
 import { TravelGrid } from '@/components/modules/travel/TravelGrid';
 import { toGridItems } from '@/lib/travel-grid';
 import { restaurantsStore } from '@/lib/admin/travel-restaurants';
+import { localizedMetadata } from '@/lib/i18n-seo';
 
-export const metadata: Metadata = {
+export const generateMetadata = localizedMetadata('travel/restaurants', {
   title: 'Restaurants & Dining in Norway | NorgeTravel',
   description:
     'The best restaurants in Norway, from fresh seafood and traditional Norwegian cuisine to Sami food traditions, fine dining, cafés and local bakeries.',
-};
+});
 
 export default async function RestaurantsPage() {
   const items = await restaurantsStore.getPublished();

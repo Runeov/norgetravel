@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { brandTitle, localeAlternates } from '@/lib/i18n-seo';
 import Image from 'next/image';
 import Link from '@/components/LocalizedLink';
 import { ArrowRight, ArrowLeft, MapPin, Waves, Mountain, Calendar, Ship, Clock } from 'lucide-react';
@@ -20,7 +21,7 @@ import { getFjord, getAllFjordSlugs } from '@/data/fjords';
 import { AviasalesWidget } from '@/components/ui/AviasalesWidget';
 
 interface PageProps {
-  params: Promise<{ fjord: string }>;
+  params: Promise<{ fjord: string; lang: string }>;
 }
 
 export async function generateStaticParams() {
@@ -28,11 +29,12 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { fjord: fjordSlug } = await params;
+  const { fjord: fjordSlug, lang } = await params;
   const fjord = getFjord(fjordSlug);
   if (!fjord) return { title: 'Fjord not found | NorgeTravel' };
   return {
-    title: fjord.metaTitle,
+    alternates: localeAlternates(`destinations/fjords/${fjordSlug}`, lang),
+    title: brandTitle(fjord.metaTitle, lang),
     description: fjord.metaDescription,
   };
 }

@@ -1,12 +1,12 @@
-import type { Metadata } from 'next';
 import Link from '@/components/LocalizedLink';
 import { ArrowRight } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
+import { localizedMetadata } from '@/lib/i18n-seo';
 
-export const metadata: Metadata = {
+export const generateMetadata = localizedMetadata('destinations', {
   title: 'Norway Destinations 2026 | NorgeTravel',
   description: 'Northern Norway, Lofoten, the fjords, Svalbard and Norway’s cities: destination guides with the best time to visit, what to do, and vetted operators.',
-};
+});
 
 const destinations = [
   {

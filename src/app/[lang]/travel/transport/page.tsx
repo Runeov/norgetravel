@@ -1,16 +1,16 @@
-import type { Metadata } from 'next';
 import Link from '@/components/LocalizedLink';
 import { ArrowRight, Compass, Mail } from 'lucide-react';
 import { TransportHero } from '@/components/modules/travel/TransportHero';
 import { TravelGrid } from '@/components/modules/travel/TravelGrid';
 import { transportStore } from '@/lib/admin/travel-transport';
 import { getActiveCommercialOffers } from '@/data/commercial-offers';
+import { localizedMetadata } from '@/lib/i18n-seo';
 
-export const metadata: Metadata = {
+export const generateMetadata = localizedMetadata('travel/transport', {
   title: 'Transport in Norway | NorgeTravel',
   description:
     'Compare flights, trains, buses, ferries, and road transfers for travel across Norway.',
-};
+});
 
 export default async function TransportPage() {
   const items = await transportStore.getPublished();

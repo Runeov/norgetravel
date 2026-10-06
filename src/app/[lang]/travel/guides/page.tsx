@@ -1,16 +1,16 @@
-import type { Metadata } from 'next';
 import Link from '@/components/LocalizedLink';
 import { ArrowLeft } from 'lucide-react';
 import { TravelHero } from '@/components/modules/travel/TravelHero';
 import { TravelGrid } from '@/components/modules/travel/TravelGrid';
 import { toGridItems } from '@/lib/travel-grid';
 import { guidesStore } from '@/lib/admin/travel-guides';
+import { localizedMetadata } from '@/lib/i18n-seo';
 
-export const metadata: Metadata = {
+export const generateMetadata = localizedMetadata('travel/guides', {
   title: 'Tour Guides in Norway | NorgeTravel',
   description:
     'Find expert local guides for hiking, fishing, northern lights, wildlife, photography, and more across Norway. Book your perfect Norwegian adventure guide.',
-};
+});
 
 export default async function GuidesPage() {
   const items = await guidesStore.getPublished();

@@ -23,11 +23,11 @@ export const tromso: CityGuide = {
   taglineBadge: 'Arctic Basecamp',
   heroHeadline: 'Troms\u00F8',
   heroBody:
-    "69\u00B0N. 75,000 residents inside the auroral oval. The aurora hangs overhead from September to March, the sun never sets in June, and orca pods follow the herring into the fjords every November. This is Norway's Arctic capital \u2014 not a postcard backdrop.",
+    "69\u00B0N. About 80,000 residents inside the auroral oval. The aurora hangs overhead from September to March, the sun never sets in June, and orca pods follow the herring into the fjords every November. This is Norway's Arctic capital, not a postcard backdrop.",
 
   heroStats: [
     { icon: 'map-pin', text: 'Troms\u00F8 Langnes (TOS) \u2014 46 direct flight destinations' },
-    { icon: 'moon', text: 'Polar night: Nov 26 \u2013 Jan 15' },
+    { icon: 'moon', text: 'Polar night: Nov 27 \u2013 Jan 15' },
     { icon: 'sun', text: 'Midnight sun: May 18 \u2013 Jul 26' },
     { icon: 'thermometer', text: '\u221215\u00B0C to +20\u00B0C year-round range' },
     { icon: 'clock', text: '4\u20137 nights recommended' },
@@ -35,8 +35,8 @@ export const tromso: CityGuide = {
 
   facts: [
     { label: 'Latitude', value: '69\u00B0N \u2014 inside the auroral oval' },
-    { label: 'Population', value: '75,000' },
-    { label: 'Polar night', value: 'Nov 26 \u2013 Jan 15 (50 days)' },
+    { label: 'Population', value: 'About 80,000' },
+    { label: 'Polar night', value: 'Nov 27 \u2013 Jan 15 (50 days)' },
     { label: 'Midnight sun', value: 'May 18 \u2013 Jul 26 (69 days)' },
     { label: 'Airport', value: 'Troms\u00F8 Langnes (TOS)' },
     { label: 'Recommended stay', value: '4\u20137 nights' },
@@ -53,13 +53,13 @@ export const tromso: CityGuide = {
       label: 'Midnight Sun',
       months: 'May \u2013 Jul',
       detail:
-        'From May 18 to July 26, the sun does not set. The Midnight Sun Marathon starts at 22:30 and finishes under full daylight. Hiking, sea kayaking, and coastal cycling under 24-hour golden light.',
+        'From May 18 to July 26, the sun does not set. The Midnight Sun Marathon is run in the evening and finishes under full daylight. Hiking, sea kayaking, and coastal cycling under 24-hour golden light.',
     },
     {
       label: 'Whale Watching',
       months: 'Nov \u2013 Feb',
       detail:
-        'Orca and humpback pods follow herring into the fjords from November. Peak season is December\u2013January when 400\u2013600 orca concentrate in Kaldfjord. Operators report 90% sighting rates at peak. RIB and traditional vessel options from Troms\u00F8 harbour.',
+        'Orca and humpback pods follow the herring into the fjords from November, peaking December\u2013January. Since 2017 the feeding grounds have been in Kv\u00E6nangen and Skjerv\u00F8y, so whale safaris now run from Skjerv\u00F8y, around 3 hours from Troms\u00F8. Operators report 90% sighting rates at peak. RIB and traditional vessel options.',
     },
     {
       label: 'Dog Sledding & Events',
@@ -72,21 +72,21 @@ export const tromso: CityGuide = {
   experiences: [
     {
       title: 'Northern Lights chase',
-      price: 'From \u20AC89/person',
+      price: 'From NOK 1,290/person',
       duration: '4\u20138 hours',
       body: 'Guides track clear skies by car and drive up to 200 km in a night to find the aurora. Private tours for 2\u20136 people move faster and further than group buses. Book 4 nights minimum.',
     },
     {
-      title: 'Whale watching \u2014 Kaldfjord',
+      title: 'Whale watching from Skjerv\u00F8y',
       price: 'From NOK 1,450/person',
       duration: '4\u20136 hours',
-      body: 'Orca and humpback pods feed in the fjords November to February. Peak December\u2013January. RIB boats get you close; traditional vessels are warmer. 90% sighting rate at peak.',
+      body: 'Orca and humpback pods feed in the fjords around Skjerv\u00F8y and Kv\u00E6nangen November to February, around 3 hours from Troms\u00F8. Peak December\u2013January. RIB boats get you close; traditional vessels are warmer. 90% sighting rate at peak.',
     },
     {
       title: 'Dog sled under the aurora',
       price: 'From NOK 2,800/person',
       duration: '3\u20135 hours',
-      body: 'Evening dog sled tours run from kennels outside Troms\u00F8 into the Lyngen foothills. Combine with an aurora chase \u2014 most operators track conditions and adapt the route accordingly.',
+      body: 'Evening dog sled tours run from kennels outside Troms\u00F8, such as Camp Tamok in Tamokdalen, about 75 minutes inland. Combine with an aurora chase: most operators track conditions and adapt the route accordingly.',
     },
     {
       title: 'Senja day trip',
@@ -100,17 +100,17 @@ export const tromso: CityGuide = {
     {
       name: 'GetYourGuide \u2014 Troms\u00F8 Aurora',
       type: 'Group & private tours',
-      priceFrom: '\u20AC89/person',
+      priceFrom: 'From NOK 1,290',
       commission: '7%',
       highlight:
-        'Largest selection of vetted guides. Free cancellation if no lights on group tours.',
+        'Largest selection of vetted guides. Some operators rebook or refund when a chase is cancelled for weather; check each tour\u2019s terms.',
       affiliateUrl: '#',
       rel: 'noopener noreferrer sponsored',
     },
     {
       name: 'Viator \u2014 Northern Lights Chase',
       type: 'Group tours',
-      priceFrom: '\u20AC79/person',
+      priceFrom: 'From NOK 1,290',
       commission: '8\u201310%',
       highlight: 'Best price for group bookings. Mobile tickets. 24/7 support.',
       affiliateUrl: '#',
@@ -155,7 +155,7 @@ export const tromso: CityGuide = {
       reservationRequired: true,
       openingHours: 'Tue\u2013Sat 18:00\u201322:00',
       description:
-        "The Arctic tasting menu that made Troms\u00F8 a culinary destination. Emma Margrete Minde has run this kitchen since 1993 \u2014 northern ingredients (reindeer, king crab, cloudberry) executed with technique and restraint. Seven courses. The dining room holds 30. Book at least two weeks ahead in aurora season.",
+        "The Arctic tasting menu that made Troms\u00F8 a culinary destination. The kitchen works northern ingredients (reindeer, king crab, cloudberry) with technique and restraint. Seven courses. The dining room holds 30. Book at least two weeks ahead in aurora season.",
       mustOrder: ['Arctic char with cloudberry', 'Reindeer with juniper reduction', 'Cloudberry sorbet'],
       ratings: {
         google: { score: 4.6, reviewCount: 218 },
@@ -216,12 +216,12 @@ export const tromso: CityGuide = {
       pricePoint: '$$',
       averageMealPrice: 'NOK 350\u2013500 per person',
       address: 'Strandgata 9, 9008 Troms\u00F8',
-      neighbourhood: 'Harbour front',
+      neighbourhood: 'City centre',
       website: 'https://www.bardusbistro.no',
       reservationRequired: false,
       openingHours: 'Mon\u2013Sat 11:00\u201322:00, Sun 12:00\u201321:00',
       description:
-        "The waterfront bistro locals actually use. Cod, skrei in season, and a fish soup that Troms\u00F8 residents have been arguing is the best in Norway for a decade. No tasting menus \u2014 just honest plates of northern seafood at prices that don't require a second mortgage.",
+        "The bistro next to the city library that locals actually use. Cod, skrei in season, and a fish soup that Troms\u00F8 residents have been arguing is the best in Norway for a decade. No tasting menus, just honest plates of northern seafood at prices that don't require a second mortgage.",
       mustOrder: ['Skrei (Jan\u2013Apr)', 'Fish soup', 'Saithe with brown butter'],
       ratings: {
         google: { score: 4.6, reviewCount: 487 },
@@ -265,7 +265,7 @@ export const tromso: CityGuide = {
       reservationRequired: true,
       openingHours: 'Mon\u2013Sat 17:00\u201322:00',
       description:
-        "Traditional northern Norwegian cooking in a wooden house from 1838 \u2014 one of the few original buildings left in Troms\u00F8 after the wartime destruction. Reindeer stew, salted leg of lamb (pinnekj\u00F8tt), and dried cod prepared using recipes that predate the tourist industry. The building alone is worth the table.",
+        "Traditional northern Norwegian cooking in a wooden house from 1838. Reindeer stew, salted and dried lamb ribs (pinnekj\u00F8tt), and dried cod prepared using recipes that predate the tourist industry. The building alone is worth the table.",
       mustOrder: ['Reindeer stew with lingonberry', 'Pinnekj\u00F8tt (salted lamb)', 'Cloudberry cream'],
       ratings: {
         google: { score: 4.4, reviewCount: 389 },
@@ -328,7 +328,7 @@ export const tromso: CityGuide = {
       reservationRequired: false,
       openingHours: 'Daily 11:00\u201301:00',
       description:
-        "Troms\u00F8's most enduring pub. Fishermen, students, and tourists share the same tables without anyone performing for the others. The cod tongue (torsketunge) is on the menu because it should be \u2014 fried in flour and duck fat, a Troms\u00F8 staple since the fishing industry built this city. The Mack beer is brewed a kilometre away.",
+        "Troms\u00F8's most enduring pub. Fishermen, students, and tourists share the same tables without anyone performing for the others. The cod tongue (torsketunge) is on the menu because it should be: fried in flour and duck fat, a Troms\u00F8 staple since the fishing industry built this city. The Mack beer on tap now comes from Nordkjosbotn, 70 km south, where the brewery moved in 2012.",
       mustOrder: ['Cod tongue (torsketunge)', 'Fish and chips', 'Mack Arctic lager'],
       ratings: {
         google: { score: 4.3, reviewCount: 623 },
@@ -349,7 +349,7 @@ export const tromso: CityGuide = {
       reservationRequired: false,
       openingHours: 'Mon\u2013Thu 10:00\u201322:00, Fri\u2013Sat 10:00\u201323:00',
       description:
-        "The Mack brewery has been in Troms\u00F8 since 1877. The \u00D8lhallen (the brewery bar) opened in 1928 and has been operating continuously since \u2014 including through World War II. Twelve Mack taps, smoked reindeer rolls, simple pub food. No frills. The bar is worth walking into for the building alone.",
+        "Mack was founded in Troms\u00F8 in 1877; the main brewery moved to Nordkjosbotn, 70 km south, in 2012. \u00D8lhallen, the brewery's pub, opened in 1928 and has been operating continuously since, including through World War II, still in the old brewery building in the centre. Twelve Mack taps, smoked reindeer rolls, simple pub food. No frills. The bar is worth walking into for the building alone.",
       mustOrder: ['Mack \u00D8l (flagship lager)', 'Smoked reindeer roll', 'Arctic Lager'],
       ratings: {
         google: { score: 4.4, reviewCount: 892 },

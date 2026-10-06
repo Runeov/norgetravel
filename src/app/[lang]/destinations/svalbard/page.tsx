@@ -1,15 +1,15 @@
-import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from '@/components/LocalizedLink';
 import { ArrowRight, MapPin, Clock, Thermometer } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { ShareButtons } from '@/components/ui/ShareButtons';
 import { SvalbardActivities } from '@/components/modules/destinations/SvalbardActivities';
+import { localizedMetadata } from '@/lib/i18n-seo';
 
-export const metadata: Metadata = {
+export const generateMetadata = localizedMetadata('destinations/svalbard', {
   title: 'Svalbard Travel Guide 2026 | NorgeTravel',
   description: 'Plan a Svalbard expedition: polar bears, glaciers and Northern Lights at 78°N. What to expect, how to get there, and which operators are worth the price.',
-};
+});
 
 const facts = [
   { label: 'Latitude', value: '74°–81°N' },
