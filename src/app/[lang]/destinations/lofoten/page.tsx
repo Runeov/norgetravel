@@ -301,7 +301,7 @@ export default async function LofotenPage() {
             >
               <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 bg-slate-200">
                 <Image
-                  src="/pics/team/Lars_profile.png"
+                  src="/pics/team/Lars_profile.jpg"
                   alt="Lars Erik Nordvik, Coastal Culture & Logistics Editor at NorgeTravel"
                   fill
                   className="object-cover"

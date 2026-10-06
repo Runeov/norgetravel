@@ -28,7 +28,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: 'en
     '@context': 'https://schema.org',
     '@type': 'TravelAgency',
     'name': 'NorgeTravel.com',
-    'image': `${siteUrl}/norgeTravel.png`,
+    'image': `${siteUrl}/norgeTravel.jpg`,
     'description': 'Sustainable Arctic adventure guides for Norge. Five zone experts covering Northern Lights tours, zero-emission fjord cruises, luxury trekking, and remote cabin stays.',
     'slogan': 'The Real Norge, Unfiltered',
     'url': siteUrl,

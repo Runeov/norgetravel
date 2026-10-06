@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     siteName: 'NorgeTravel.com',
     images: [
       {
-        url: '/norgeTravel.png',
+        url: '/norgeTravel.jpg',
         width: 1200,
         height: 630,
         alt: 'NorgeTravel.com — The Real Norway, Unfiltered',

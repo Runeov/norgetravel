@@ -264,7 +264,7 @@ export default async function TromsoPage() {
             >
               <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 bg-slate-200">
                 <Image
-                  src="/pics/team/bjorn_profile.png"
+                  src="/pics/team/bjorn_profile.jpg"
                   alt="Bjørn Haugen, Arctic Field Editor at NorgeTravel"
                   fill
                   className="object-cover"

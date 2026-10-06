@@ -312,7 +312,7 @@ export default async function FjordPage({ params }: PageProps) {
             >
               <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 bg-slate-200">
                 <Image
-                  src="/pics/team/ingrid_profile.png"
+                  src="/pics/team/ingrid_profile.jpg"
                   alt="Ingrid Solheim, Fjord Logistics Editor at Norgetravel"
                   fill
                   className="object-cover"

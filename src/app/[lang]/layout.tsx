@@ -58,7 +58,7 @@ export async function generateMetadata({
         locale: 'zh_CN',
         url: siteUrl,
         siteName: 'NorgeTravel',
-        images: [{ url: '/og-image-2026.jpg', width: 1200, height: 630, alt: '挪威峡湾上空的北极光' }],
+        images: [{ url: '/og-image-2026.jpg', width: 1200, height: 630, alt: '挪威北部西格纳尔山谷奥特廷峰上空的北极光' }],
       },
       twitter: {
         card: 'summary_large_image',
@@ -100,7 +100,7 @@ export async function generateMetadata({
       locale: 'en_US',
       url: siteUrl,
       siteName: 'NorgeTravel.com',
-      images: [{ url: '/og-image-2026.jpg', width: 1200, height: 630, alt: 'Northern Lights over a Norwegian Fjord' }],
+      images: [{ url: '/og-image-2026.jpg', width: 1200, height: 630, alt: 'Northern Lights over Otertind in Signaldalen, Northern Norway' }],
     },
     twitter: {
       card: 'summary_large_image',
@@ -127,7 +127,7 @@ export default async function RootLayout({
     '@type': 'TravelAgency',
     'name': 'NorgeTravel.com',
     'url': siteUrl,
-    'logo': `${siteUrl}/norgeTravel.png`,
+    'logo': `${siteUrl}/norgeTravel.jpg`,
     'description': 'Leading provider of sustainable Arctic adventures and Northern Lights tours for the 2026 season.',
     'address': {
       '@type': 'PostalAddress',

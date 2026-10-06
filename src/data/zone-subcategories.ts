@@ -118,10 +118,10 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
           'Arctic Wildlife \u2014 whales, eagles, and reindeer',
         ],
         bulletImages: [
-          '/pics/subcategory_tours/nordlys_banner.png',
-          '/pics/subcategory_activities/arctic_huskey_sledfront_banner.png',
-          '/pics/subcategory_activities/Midnattsol_padler_fjell_banner.png',
-          '/pics/subcategory_activities/arctic_reinsdyr_i_kulde_banner.png',
+          '/pics/subcategory_tours/nordlys_banner.jpg',
+          '/pics/subcategory_activities/arctic_huskey_sledfront_banner.jpg',
+          '/pics/subcategory_activities/Midnattsol_padler_fjell_banner.jpg',
+          '/pics/subcategory_activities/arctic_reinsdyr_i_kulde_banner.jpg',
         ],
         bulletDetails: [
           {
@@ -162,11 +162,11 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         shortDesc: 'Festivals and seasonal happenings across the Arctic',
         bulletImages: [
           '/pics/subcategory_events/riddu_banner.jpg',
-          '/pics/subcategory_events/MSM_Banner.png',
+          '/pics/subcategory_events/MSM_Banner.jpg',
           '/pics/subcategory_events/riddu_banner.jpg',
           '/pics/subcategory_events/olavfestdagene_banner.jpg',
           '/pics/subcategory_events/traena_banner.jpg',
-          '/pics/subcategory_tours/nordlys_banner.png',
+          '/pics/subcategory_tours/nordlys_banner.jpg',
           '/images/lyngen/activities/whale-safari-skjervoy_francisco-damm.jpg',
           '/images/lyngen/northern-lights/aurora-otertind_petr-pavlicek.jpg',
         ],
@@ -666,7 +666,7 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         bulletImages: [
           '/pics/svalbard/expedition.jpeg',
           '/pics/svalbard/expedition_boat.jpeg',
-          '/pics/subcategory_activities/arctic_huskey_sledfront_banner.png',
+          '/pics/subcategory_activities/arctic_huskey_sledfront_banner.jpg',
           '/pics/svalbard/expedition_boat2.jpeg',
         ],
         bulletDetails: [
@@ -1448,7 +1448,7 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
           '/images/senja/landscapes/senja-scenic_baard-loeken.jpg',
           '/images/senja/landscapes/senja-panorama_dji.jpg',
           '/Banners/ornes_banner.jpg',
-          '/pics/subcategory_activities/Midnattsol_padler_fjell_banner.png',
+          '/pics/subcategory_activities/Midnattsol_padler_fjell_banner.jpg',
           '/Banners/bodo_banner.jpg',
         ],
         content:

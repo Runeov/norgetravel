@@ -445,7 +445,7 @@ export default function NordkappPage() {
           <div className="max-w-2xl mx-auto">
             <Link href="/om-oss/bjorn-haugen" className="group flex items-start gap-5 bg-white rounded-lg border border-slate-200 p-6 hover:shadow-md transition-shadow">
               <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 bg-slate-200">
-                <Image src="/pics/team/bjorn_profile.png" alt="Bjørn Haugen, Arctic Field Editor at NorgeTravel" fill className="object-cover" sizes="64px" />
+                <Image src="/pics/team/bjorn_profile.jpg" alt="Bjørn Haugen, Arctic Field Editor at NorgeTravel" fill className="object-cover" sizes="64px" />
               </div>
               <div className="min-w-0">
                 <p className="text-xs font-semibold text-[#6D28D9] uppercase tracking-wide mb-1">The Arctic</p>
