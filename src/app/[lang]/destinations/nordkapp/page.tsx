@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from '@/components/LocalizedLink';
 import { ArrowRight, MapPin, Clock, Thermometer, Compass } from 'lucide-react';
@@ -6,6 +5,7 @@ import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { ShareButtons } from '@/components/ui/ShareButtons';
 import { DestinationActivities } from '@/components/modules/destinations/DestinationActivities';
 import { DestinationBasecamps, type Basecamp } from '@/components/modules/destinations/DestinationBasecamps';
+import { localizedMetadata } from '@/lib/i18n-seo';
 
 const nordkappBasecamps: Basecamp[] = [
   {
@@ -103,11 +103,11 @@ const nordkappBasecamps: Basecamp[] = [
 
 export const revalidate = 86400;
 
-export const metadata: Metadata = {
+export const generateMetadata = localizedMetadata('destinations/nordkapp', {
   title: 'North Cape (Nordkapp) Travel Guide 2026 | NorgeTravel',
   description:
     'Nordkapp at 71\u00B010\u2032 N on Mager\u00F8ya: midnight sun from 14 May, winter convoys on the E69, Honningsv\u00E5g as basecamp, and the Hurtigruten stop most travellers miss.',
-};
+});
 
 const facts = [
   { label: 'Latitude', value: '71°10\u2032 21\u2033 N' },

@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from '@/components/LocalizedLink';
 import { ArrowRight, MapPin, Clock, Thermometer, Compass } from 'lucide-react';
@@ -6,6 +5,7 @@ import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { ShareButtons } from '@/components/ui/ShareButtons';
 import { DestinationActivities } from '@/components/modules/destinations/DestinationActivities';
 import { DestinationBasecamps, type Basecamp } from '@/components/modules/destinations/DestinationBasecamps';
+import { localizedMetadata } from '@/lib/i18n-seo';
 
 const senjaBasecamps: Basecamp[] = [
   {
@@ -104,11 +104,11 @@ const senjaBasecamps: Basecamp[] = [
 
 export const revalidate = 86400;
 
-export const metadata: Metadata = {
+export const generateMetadata = localizedMetadata('destinations/senja', {
   title: 'Senja & Vesterålen Travel Guide 2026 | NorgeTravel',
   description:
     'Senja and Vesterålen without the Lofoten crowds. Sperm whales year-round off Andenes, the Segla ridge, the Fv862 scenic road, and how to get here from Tromsø.',
-};
+});
 
 const facts = [
   { label: 'Location', value: 'Troms & Nordland' },

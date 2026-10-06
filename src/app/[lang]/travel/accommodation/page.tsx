@@ -1,16 +1,16 @@
-import type { Metadata } from 'next';
 import Link from '@/components/LocalizedLink';
 import { ArrowLeft } from 'lucide-react';
 import { TravelHero } from '@/components/modules/travel/TravelHero';
 import { TravelGrid } from '@/components/modules/travel/TravelGrid';
 import { toGridItems } from '@/lib/travel-grid';
 import { accommodationStore } from '@/lib/admin/travel-accommodation';
+import { localizedMetadata } from '@/lib/i18n-seo';
 
-export const metadata: Metadata = {
+export const generateMetadata = localizedMetadata('travel/accommodation', {
   title: 'Accommodation in Norway | NorgeTravel',
   description:
     'Where to stay in Norway — hotels, cabins, hostels, camping, rorbu, glamping, and apartments. Find the perfect accommodation for your Norwegian adventure.',
-};
+});
 
 export default async function AccommodationPage() {
   const items = await accommodationStore.getPublished();

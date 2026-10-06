@@ -1,17 +1,17 @@
-import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from '@/components/LocalizedLink';
 import { ArrowRight, MapPin, Clock, Calendar } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { ShareButtons } from '@/components/ui/ShareButtons';
 import { eventsStore } from '@/lib/admin/travel-events';
+import { localizedMetadata } from '@/lib/i18n-seo';
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
+export const generateMetadata = localizedMetadata('destinations/fjords', {
   title: 'Norwegian Fjords Travel Guide 2026 | NorgeTravel',
   description: 'Geirangerfjord, Nærøyfjord, Sognefjord and Hardangerfjord: ferries, zero-emission cruise operators, viewpoints, and how to avoid the crowds.',
-};
+});
 
 const fjords = [
   {

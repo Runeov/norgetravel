@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { asLocale, brandTitle, localeAlternates, OG_LOCALE, SITE_NAME } from '@/lib/i18n-seo';
 import Image from 'next/image';
 import Link from '@/components/LocalizedLink';
 import { notFound } from 'next/navigation';
@@ -12,7 +13,7 @@ import {
 } from '@/data/city-attractions';
 
 interface PageProps {
-  params: Promise<{ city: string; attraction: string }>;
+  params: Promise<{ city: string; attraction: string; lang: string }>;
 }
 
 export async function generateStaticParams() {
@@ -20,24 +21,27 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { city: citySlug, attraction: attractionSlug } = await params;
+  const { city: citySlug, attraction: attractionSlug, lang } = await params;
   const attraction = getAttraction(citySlug, attractionSlug);
   if (!attraction) return { title: 'Not found | NorgeTravel' };
+  const alternates = localeAlternates(`destinations/cities/${citySlug}/${attractionSlug}`, lang);
+  const title = brandTitle(`${attraction.title} | ${attraction.cityName} | NorgeTravel`, lang);
   return {
-    title: `${attraction.title} | ${attraction.cityName} | NorgeTravel`,
+    alternates,
+    title,
     description: attraction.metaDescription,
     openGraph: {
-      title: `${attraction.title} | ${attraction.cityName} | NorgeTravel`,
+      title,
       description: attraction.metaDescription,
-      url: `https://norgetravel.com/destinations/cities/${citySlug}/${attractionSlug}`,
-      siteName: 'NorgeTravel',
-      locale: 'en_US',
+      url: alternates.canonical as string,
+      siteName: SITE_NAME[asLocale(lang)],
+      locale: OG_LOCALE[asLocale(lang)],
       type: 'website',
       images: [{ url: attraction.heroImage, alt: attraction.heroImageAlt || attraction.title }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${attraction.title} | ${attraction.cityName} | NorgeTravel`,
+      title,
       description: attraction.metaDescription,
       images: [attraction.heroImage],
     },

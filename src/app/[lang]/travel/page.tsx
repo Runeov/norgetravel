@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from '@/components/LocalizedLink';
 import {
@@ -17,14 +16,15 @@ import { experiencesStore } from '@/lib/admin/travel-experiences';
 import { accommodationStore } from '@/lib/admin/travel-accommodation';
 import { eventsStore } from '@/lib/admin/travel-events';
 import { extractRatings } from '@/lib/ratings';
+import { localizedMetadata } from '@/lib/i18n-seo';
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
+export const generateMetadata = localizedMetadata('travel', {
   title: 'Travel Norway 2026 | NorgeTravel',
   description:
     'Plan your Norway trip — experiences, accommodation, events, and transport across Northern Norway, Lofoten, the Fjords, and Svalbard.',
-};
+});
 
 const destinations = [
   {

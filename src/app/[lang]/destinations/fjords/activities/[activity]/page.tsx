@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { brandTitle, localeAlternates } from '@/lib/i18n-seo';
 import Image from 'next/image';
 import Link from '@/components/LocalizedLink';
 import { notFound } from 'next/navigation';
@@ -14,7 +15,7 @@ import {
 } from '@/data/fjord-tours';
 
 interface PageProps {
-  params: Promise<{ activity: string }>;
+  params: Promise<{ activity: string; lang: string }>;
 }
 
 export function generateStaticParams() {
@@ -26,11 +27,12 @@ function isValidActivity(slug: string): slug is ActivityCategory {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { activity } = await params;
+  const { activity, lang } = await params;
   if (!isValidActivity(activity)) return { title: 'Activity not found | NorgeTravel' };
   const label = ACTIVITY_LABELS[activity];
   return {
-    title: `${label} in the Norwegian Fjords 2026 | NorgeTravel`,
+    alternates: localeAlternates(`destinations/fjords/activities/${activity}`, lang),
+    title: brandTitle(`${label} in the Norwegian Fjords 2026 | NorgeTravel`, lang),
     description: ACTIVITY_BLURBS[activity],
   };
 }

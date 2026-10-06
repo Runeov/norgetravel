@@ -4,11 +4,32 @@
     "experiences": "体験",
     "guides": "旅行ガイド",
     "about": "私たちについて",
-    "planTrip": "旅行を計画する"
+    "planTrip": "旅行を計画する",
+    "home": "ホーム",
+    "guidesShort": "ガイド",
+    "northernNorway": "北ノルウェー",
+    "lofoten": "ロフォーテン諸島",
+    "fjords": "ノルウェーのフィヨルド",
+    "svalbard": "スバールバル諸島",
+    "cities": "ノルウェーの都市",
+    "safety": "安全と準備",
+    "tripReports": "旅行記",
+    "planning": "旅の計画ガイド",
+    "travelMap": "旅行マップ",
+    "myTrip": "マイトリップ",
+    "tripPlanner": "旅行プランナー",
+    "openPlanner": "旅行プランナーを開く",
+    "openMenu": "メニューを開く",
+    "homeAria": "Norge Travel ホームへ",
+    "transport": "交通",
+    "accommodation": "宿泊",
+    "localGuides": "ガイド",
+    "restaurants": "レストラン",
+    "skipToContent": "本文へスキップ"
   },
   "home": {
-    "heroTitle": "ノルウェー旅行とアドベンチャー",
-    "heroSubtitle": "現代の探検家のために厳選された、持続可能な北極圏のアドベンチャー。真夜中の太陽の下でのカヤック、ゼロエミッションのフィヨルドクルーズ、氷河ハイキング、そして秘境での滞在。すべてがここにあります。",
+    "heroTitle": "ノルウェー旅行 Norge Travel：現地在住の編集者がつくる旅行ガイド",
+    "heroSubtitle": "フィヨルドのドライブとフェリー、ロフォーテン諸島の白夜、DNTの山小屋をつなぐハイキング。担当地域に住む編集者が、実際の所要時間、天気、費用を伝えます。",
     "exploreFjords": "フィヨルドを探検する",
     "tripPlanner": "旅行プランナー",
     "seasons": {
@@ -27,7 +48,21 @@
     "contact": "お問い合わせ",
     "privacyPolicy": "プライバシーポリシー",
     "termsOfService": "利用規約",
-    "allRightsReserved": "すべての権利を留保"
+    "allRightsReserved": "すべての権利を留保",
+    "tagline": "ノルウェーに住む編集者が書くノルウェー旅行ガイド。オーロラ、フィヨルドとフェリー、北極圏のハイキング、宿泊先。",
+    "badgeCertified": "エコ・ライトハウス（Miljøfyrtårn）認証",
+    "badgeEditors": "ノルウェーの5地域に編集者",
+    "explore": "メニュー",
+    "home": "ホーム",
+    "guides": "旅行ガイド",
+    "about": "私たちについて",
+    "tripPlanner": "旅行プランナー",
+    "country": "ノルウェー",
+    "rights": "© 2026 NorgeTravel.com 無断転載を禁じます",
+    "accessibility": "アクセシビリティ",
+    "cookies": "Cookie",
+    "comingSoon": "準備中",
+    "backToTop": "ページの先頭へ"
   },
   "tripPlannerUI": {
     "title": "旅行プランナー",
@@ -38,7 +73,7 @@
     "northernNorway": "北ノルウェー",
     "fjords": "フィヨルド地方",
     "cities": "主要都市",
-    "svalbard": "スヴァールバル諸島",
+    "svalbard": "スバールバル諸島",
     "lofoten": "ロフォーテン諸島"
   }
 }

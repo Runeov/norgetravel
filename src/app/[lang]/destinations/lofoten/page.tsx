@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from '@/components/LocalizedLink';
 import { ArrowRight, MapPin, Clock, Thermometer, Calendar } from 'lucide-react';
@@ -7,13 +6,14 @@ import { ShareButtons } from '@/components/ui/ShareButtons';
 import { LofotenActivities } from '@/components/modules/destinations/LofotenActivities';
 import { LofotenBasecamps } from '@/components/modules/destinations/LofotenBasecamps';
 import { eventsStore } from '@/lib/admin/travel-events';
+import { localizedMetadata } from '@/lib/i18n-seo';
 
 export const revalidate = 86400;
 
-export const metadata: Metadata = {
+export const generateMetadata = localizedMetadata('destinations/lofoten', {
   title: 'Lofoten Islands Travel Guide 2026 | NorgeTravel',
   description: 'Everything you need to plan a Lofoten trip: best hikes, where to stay, fishing villages, and when to go. Verified operator links with commission disclosures.',
-};
+});
 
 const facts = [
   { label: 'Latitude', value: '68°N' },

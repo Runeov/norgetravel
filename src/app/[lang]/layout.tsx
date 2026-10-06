@@ -8,6 +8,7 @@ import { RootLayoutContent } from '@/components/layout/RootLayoutContent';
 import { getSiteUrl } from '@/lib/site-url';
 import { getDictionary } from '@/i18n/get-dictionary';
 import { Analytics } from '@vercel/analytics/next';
+import { asLocale, HTML_LANG, localeUrl, OG_LOCALE, SITE_NAME, type Locale } from '@/lib/i18n-seo';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 const siteUrl = getSiteUrl();
@@ -19,63 +20,17 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ lang: string }>;
-}): Promise<Metadata> {
-  const resolvedParams = await params;
-  const lang = resolvedParams.lang || 'en';
-
-  if (lang === 'zh') {
-    return {
-      metadataBase: new URL(siteUrl),
-      title: {
-        // Page titles already carry the brand ("… | NorgeTravel"), so no suffix here
-        template: '%s',
-        default: '挪威旅行 | 当地专家撰写的挪威旅行指南 | NorgeTravel',
-      },
-      description: '当地专家撰写的挪威旅行指南：北极光、峡湾游轮、北极徒步、冬季自驾与可持续住宿。',
-      keywords: [
-        '挪威旅游',
-        '挪威峡湾',
-        '挪威徒步指南',
-        '挪威午夜太阳',
-        '去挪威旅游',
-        '北极峡湾皮划艇',
-        '挪威极光',
-        '特罗姆瑟旅游',
-        '斯瓦尔巴群岛',
-        'NorgeTravel',
-      ],
-      icons: {
-        icon: '/norgeTravel_noText.png',
-        shortcut: '/norgeTravel_noText.png',
-        apple: '/norgeTravel_noText.png',
-      },
-      openGraph: {
-        type: 'website',
-        locale: 'zh_CN',
-        url: siteUrl,
-        siteName: 'NorgeTravel',
-        images: [{ url: '/og-image-2026.jpg', width: 1200, height: 630, alt: '挪威北部西格纳尔山谷奥特廷峰上空的北极光' }],
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: '挪威旅行 2026 | 北极探险',
-        description: '提供北极光、峡湾游轮和可持续挪威旅行的专家指南。',
-        images: ['/og-image-2026.jpg'],
-      },
-    };
-  }
-
-  return {
-    metadataBase: new URL(siteUrl),
-    title: {
-      // Page titles already carry the brand ("… | NorgeTravel"), so no suffix here
-      template: '%s',
-      default: 'NorgeTravel | Norway Travel Guides from Local Experts',
-    },
+// Per-locale defaults. Chinese and Japanese titles lead with 挪威旅游攻略 and
+// ノルウェー旅行, the head search terms that the brand name translates to.
+const LOCALE_META: Record<Locale, {
+  title: string;
+  description: string;
+  keywords: string[];
+  ogAlt: string;
+  twitterTitle: string;
+}> = {
+  en: {
+    title: 'Norge Travel | Norway Travel Guides from Local Experts',
     description: 'Norway travel guides from local experts: Northern Lights, fjord cruises, Arctic hiking, winter driving and sustainable places to stay.',
     keywords: [
       'Norge travel 2026',
@@ -88,8 +43,93 @@ export async function generateMetadata({
       'Lofoten midnight sun hiking',
       'Sustainable Arctic travel 2026',
       'Norge glacier hiking',
+      'Norge travel',
+      'Norge northern lights',
+      'Norge fjords',
+      'Norge Lofoten',
+      'Norge Tromsø',
+      'Norge Norway travel guide',
+      'Norge Travel',
       'NorgeTravel',
     ],
+    ogAlt: 'Northern Lights over Otertind in Signaldalen, Northern Norway',
+    twitterTitle: 'Norge Travel | Arctic Norway Travel Guides',
+  },
+  zh: {
+    title: '挪威旅游攻略 | Norge Travel 挪威旅行',
+    description: '住在挪威的编辑撰写的挪威旅游攻略：哪里看极光、峡湾自驾与渡轮、罗弗敦群岛、旅行费用和最佳旅行时间。',
+    keywords: [
+      '挪威旅游',
+      '挪威旅游攻略',
+      '挪威旅行',
+      '挪威自由行',
+      '挪威极光',
+      '特罗姆瑟极光',
+      '挪威峡湾',
+      '罗弗敦群岛',
+      '斯瓦尔巴群岛',
+      '挪威旅游费用',
+      '挪威旅游最佳时间',
+      'Norge Travel',
+      '挪威 Norge',
+      'NorgeTravel',
+    ],
+    ogAlt: '挪威北部西格纳尔山谷奥特廷峰上空的北极光',
+    twitterTitle: '挪威旅游攻略 | Norge Travel 挪威旅行',
+  },
+  ja: {
+    title: 'ノルウェー旅行・観光ガイド | Norge Travel ノルウェー旅行',
+    description: 'ノルウェーに住む編集者が書くノルウェー旅行ガイド。オーロラの時期と場所、フィヨルドのフェリーとドライブ、ロフォーテン諸島、旅行費用とベストシーズン。',
+    keywords: [
+      'ノルウェー旅行',
+      'ノルウェー観光',
+      'ノルウェー オーロラ',
+      'トロムソ オーロラ',
+      'ノルウェー フィヨルド',
+      'ロフォーテン諸島',
+      'ノルウェー旅行 費用',
+      'ノルウェー ベストシーズン',
+      'Norge Travel',
+      'NorgeTravel',
+    ],
+    ogAlt: 'ノルウェー北部シグナルダーレンのオーテルティン山にかかるオーロラ',
+    twitterTitle: 'ノルウェー旅行・観光ガイド | Norge Travel ノルウェー旅行',
+  },
+};
+
+// Ownership tags for Google Search Console, Baidu Search Resource Platform and
+// Bing Webmaster Tools. Set as env vars so adding one needs no code change.
+function siteVerification(): Metadata['verification'] {
+  const other = Object.fromEntries(
+    Object.entries({
+      'baidu-site-verification': process.env.BAIDU_SITE_VERIFICATION,
+      'msvalidate.01': process.env.BING_SITE_VERIFICATION,
+    }).filter((entry): entry is [string, string] => !!entry[1])
+  );
+  return {
+    ...(process.env.GOOGLE_SITE_VERIFICATION && { google: process.env.GOOGLE_SITE_VERIFICATION }),
+    ...(Object.keys(other).length > 0 && { other }),
+  };
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const locale = asLocale((await params).lang);
+  const meta = LOCALE_META[locale];
+
+  return {
+    metadataBase: new URL(siteUrl),
+    verification: siteVerification(),
+    title: {
+      // Page titles already carry the brand ("… | NorgeTravel"), so no suffix here
+      template: '%s',
+      default: meta.title,
+    },
+    description: meta.description,
+    keywords: meta.keywords,
     icons: {
       icon: '/norgeTravel_noText.png',
       shortcut: '/norgeTravel_noText.png',
@@ -97,15 +137,15 @@ export async function generateMetadata({
     },
     openGraph: {
       type: 'website',
-      locale: 'en_US',
-      url: siteUrl,
-      siteName: 'NorgeTravel.com',
-      images: [{ url: '/og-image-2026.jpg', width: 1200, height: 630, alt: 'Northern Lights over Otertind in Signaldalen, Northern Norway' }],
+      locale: OG_LOCALE[locale],
+      url: localeUrl(locale, ''),
+      siteName: SITE_NAME[locale],
+      images: [{ url: '/og-image-2026.jpg', width: 1200, height: 630, alt: meta.ogAlt }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'NorgeTravel | Arctic Norway Travel Guides',
-      description: 'Expert guides to the Northern Lights, fjord cruises, Arctic hiking and sustainable travel in Norway.',
+      title: meta.twitterTitle,
+      description: meta.description,
       images: ['/og-image-2026.jpg'],
     },
   };
@@ -119,13 +159,22 @@ export default async function RootLayout({
   params: Promise<{ lang: string }>;
 }) {
   const resolvedParams = await params;
-  const lang = (resolvedParams.lang || 'en') as 'en' | 'zh';
+  const lang = asLocale(resolvedParams.lang);
   const dict = await getDictionary(lang);
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    'name': 'Norge Travel',
+    'alternateName': ['NorgeTravel', 'NorgeTravel.com', '挪威旅行', 'ノルウェー旅行'],
+    'url': `${siteUrl}/`,
+    'inLanguage': ['en', 'zh-Hans', 'ja'],
+  };
   // 2. JSON-LD Structured Data (Organization & Travel Agency)
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'TravelAgency',
     'name': 'NorgeTravel.com',
+    'alternateName': ['Norge Travel', '挪威旅行', 'ノルウェー旅行'],
     'url': siteUrl,
     'logo': `${siteUrl}/norgeTravel.jpg`,
     'description': 'Leading provider of sustainable Arctic adventures and Northern Lights tours for the 2026 season.',
@@ -138,12 +187,16 @@ export default async function RootLayout({
   };
 
   return (
-    <html lang={lang} className="scroll-smooth">
+    <html lang={HTML_LANG[lang]} className="scroll-smooth">
       <head>
         {/* Injecting Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         {/* Affiliate ownership verification — Emerald */}
         <Script
@@ -159,19 +212,15 @@ export default async function RootLayout({
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:border-2 focus:border-black focus:rounded focus:shadow-lg"
         >
-          Skip to main content
+          {dict.navigation.skipToContent}
         </a>
-        <RootLayoutContent dict={dict.navigation}>
+        <RootLayoutContent dict={dict.navigation} footerDict={dict.footer}>
           <main id="main-content">
             {children}
           </main>
         </RootLayoutContent>
-        {lang !== 'zh' && (
-          <>
-            <Analytics />
-            <SpeedInsights />
-          </>
-        )}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

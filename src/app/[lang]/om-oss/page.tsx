@@ -1,13 +1,14 @@
-import { Metadata } from 'next';
 import { getSortedEmployees } from '@/lib/admin/employees';
 import AboutHero from '@/components/modules/about/AboutHero';
 import CompanyStory from '@/components/modules/about/CompanyStory';
 import TeamSectionModern from '@/components/modules/about/TeamSectionModern';
 import CompanyValues from '@/components/modules/about/CompanyValues';
 import ContactPanel from '@/components/modules/home/ContactPanel';
+import { HOME_COPY } from '@/i18n/home-copy';
 import { ArrowRight } from 'lucide-react';
+import { localizedMetadata } from '@/lib/i18n-seo';
 
-export const metadata: Metadata = {
+export const generateMetadata = localizedMetadata('om-oss', {
   title: 'About NorgeTravel | The Honest Guide to Arctic Norway',
   description: 'NorgeTravel is an independent editorial platform connecting travellers with sustainable operators in Norway. Five zone experts, no brochure-speak.',
   openGraph: {
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
     description: 'The honest guide to Arctic Norway. Five zone experts with decades of local experience. Honest logistics, real safety data, and zero brochure-speak.',
     type: 'website',
   },
-};
+});
 
 export default async function OmOssPage() {
   const employees = await getSortedEmployees();
@@ -76,7 +77,7 @@ export default async function OmOssPage() {
       </section>
 
       <CompanyValues />
-      <ContactPanel />
+      <ContactPanel copy={HOME_COPY.en.contact} />
     </main>
   );
 }

@@ -1,16 +1,16 @@
-import type { Metadata } from 'next';
 import Link from '@/components/LocalizedLink';
 import { ArrowLeft } from 'lucide-react';
 import { TravelHero } from '@/components/modules/travel/TravelHero';
 import { TravelGrid } from '@/components/modules/travel/TravelGrid';
 import { toGridItems } from '@/lib/travel-grid';
 import { experiencesStore } from '@/lib/admin/travel-experiences';
+import { localizedMetadata } from '@/lib/i18n-seo';
 
-export const metadata: Metadata = {
+export const generateMetadata = localizedMetadata('travel/experiences', {
   title: 'Experiences & Activities in Norway | NorgeTravel',
   description:
     'Unforgettable Arctic experiences — northern lights safaris, whale watching, dog sledding, glacier hikes, fjord cruises, and more across Norway.',
-};
+});
 
 export default async function ExperiencesPage() {
   const items = await experiencesStore.getPublished();

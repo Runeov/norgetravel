@@ -1,14 +1,14 @@
-import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from '@/components/LocalizedLink';
 import { ShieldAlert, Map, BookOpen, ArrowRight, Mountain, Car, Thermometer, Compass, Route, Clock } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { TripReportsTabs, type TripReportRegion } from '@/components/modules/TripReportsTabs';
 import articlesJson from '@/data/articles.json';
+import { localizedMetadata } from '@/lib/i18n-seo';
 
 export const dynamic = 'force-static';
 
-export const metadata: Metadata = {
+export const generateMetadata = localizedMetadata('travel-guides', {
   title: 'Travel Guides | Safety, Trip Reports & Planning | NorgeTravel',
   description:
     'Expert travel guides for Norway. Mountain safety and the Fjellvettreglene, first-person trip reports from the fjords to Svalbard, and planning guides for the DNT cabin network and the aurora season.',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website',
   },
-};
+});
 
 interface ArticleEntry {
   slug: string;

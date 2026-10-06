@@ -1,16 +1,16 @@
-import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from '@/components/LocalizedLink';
 import { ArrowRight, MapPin } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { ShareButtons } from '@/components/ui/ShareButtons';
 import { cities } from '@/data/city-attractions';
+import { localizedMetadata } from '@/lib/i18n-seo';
 
-export const metadata: Metadata = {
+export const generateMetadata = localizedMetadata('destinations/cities', {
   title: 'Cities of Norway Travel Guide 2026 | NorgeTravel',
   description:
     'Oslo, Bergen, Trondheim, Stavanger, and Kristiansund: five entry points to five different Norways. Practical city guides with no brochure-speak.',
-};
+});
 
 export default function CitiesIndexPage() {
   return (

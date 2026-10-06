@@ -9,16 +9,10 @@ import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
 import logoNorgeTravel from '@/assets/norgeTravel.png';
 import { useTripMap } from '@/context/TripMapContext';
 import { useTrip } from '@/context/TripContext';
+import en from '@/i18n/dictionaries/en.json';
 
 export function Navbar({ dict }: { dict?: any }) {
-  const d = dict || {
-    home: "Home",
-    destinations: "Destinations",
-    experiences: "Experiences",
-    guides: "Travel Guides",
-    about: "About Us",
-    planTrip: "Plan Trip"
-  };
+  const d = dict || en.navigation;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mobileDropdowns, setMobileDropdowns] = useState({
     destinations: false,
@@ -113,10 +107,10 @@ export function Navbar({ dict }: { dict?: any }) {
 
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity" aria-label="NorgeTravel – Go to homepage">
+            <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity" aria-label={d.homeAria}>
               <Image
                 src={logoNorgeTravel}
-                alt="NorgeTravel Logo"
+                alt="Norge Travel logo"
                 width={220}
                 height={80}
                 className={`h-20 w-auto rounded-xl transition-all duration-300 ${solid ? '' : 'brightness-0 invert'}`}
@@ -146,19 +140,19 @@ export function Navbar({ dict }: { dict?: any }) {
                 <div className="absolute left-0 top-full pt-2 opacity-0 invisible -translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0">
                   <div className="w-56 rounded-2xl border border-slate-200 bg-white/95 backdrop-blur-md p-2 shadow-xl">
                     <Link href="/destinations/northern-norway" className={dropdownItemClass(pathname.startsWith('/destinations/northern-norway'))}>
-                      Northern Norway
+                      {d.northernNorway}
                     </Link>
                     <Link href="/destinations/lofoten" className={dropdownItemClass(pathname.startsWith('/destinations/lofoten'))}>
-                      Lofoten Islands
+                      {d.lofoten}
                     </Link>
                     <Link href="/destinations/fjords" className={dropdownItemClass(pathname.startsWith('/destinations/fjords'))}>
-                      Norwegian Fjords
+                      {d.fjords}
                     </Link>
                     <Link href="/destinations/svalbard" className={dropdownItemClass(pathname.startsWith('/destinations/svalbard'))}>
-                      Svalbard
+                      {d.svalbard}
                     </Link>
                     <Link href="/destinations/cities" className={dropdownItemClass(pathname.startsWith('/destinations/cities'))}>
-                      Cities of Norway
+                      {d.cities}
                     </Link>
                   </div>
                 </div>
@@ -171,19 +165,19 @@ export function Navbar({ dict }: { dict?: any }) {
                   className={`${navLinkClass(guideMenuActive)} inline-flex items-center gap-1`}
                   aria-haspopup="menu"
                 >
-                  Guides
+                  {d.guidesShort}
                   <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" />
                 </button>
                 <div className="absolute left-0 top-full pt-2 opacity-0 invisible -translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0">
                   <div className="w-60 rounded-2xl border border-slate-200 bg-white/95 backdrop-blur-md p-2 shadow-xl">
                     <Link href="/travel-guides#safety" className={dropdownItemClass(pathname === '/travel-guides')}>
-                      Safety & Preparation
+                      {d.safety}
                     </Link>
                     <Link href="/travel-guides#trip-reports" className={dropdownItemClass(false)}>
-                      Trip Reports
+                      {d.tripReports}
                     </Link>
                     <Link href="/travel-guides#planning" className={dropdownItemClass(false)}>
-                      Planning Guides
+                      {d.planning}
                     </Link>
                   </div>
                 </div>
@@ -196,25 +190,25 @@ export function Navbar({ dict }: { dict?: any }) {
                   className={`${navLinkClass(pathname.startsWith('/travel'))} inline-flex items-center gap-1`}
                   aria-haspopup="menu"
                 >
-                  Travel Map
+                  {d.travelMap}
                   <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" />
                 </button>
                 <div className="absolute left-0 top-full pt-2 opacity-0 invisible -translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0">
                   <div className="w-60 rounded-2xl border border-slate-200 bg-white/95 backdrop-blur-md p-2 shadow-xl">
                     <Link href="/travel/transport" className={dropdownItemClass(pathname.startsWith('/travel/transport'))}>
-                      🚂 Transport
+                      🚂 {d.transport}
                     </Link>
                     <Link href="/travel/accommodation" className={dropdownItemClass(pathname.startsWith('/travel/accommodation'))}>
-                      🏨 Accommodation
+                      🏨 {d.accommodation}
                     </Link>
                     <Link href="/travel/guides" className={dropdownItemClass(pathname.startsWith('/travel/guides'))}>
-                      🧭 Guides
+                      🧭 {d.localGuides}
                     </Link>
                     <Link href="/travel/experiences" className={dropdownItemClass(pathname.startsWith('/travel/experiences'))}>
                       ⛷️ {d.experiences}
                     </Link>
                     <Link href="/travel/restaurants" className={dropdownItemClass(pathname.startsWith('/travel/restaurants'))}>
-                      🍽️ Restaurants
+                      🍽️ {d.restaurants}
                     </Link>
                   </div>
                 </div>
@@ -238,7 +232,7 @@ export function Navbar({ dict }: { dict?: any }) {
                     : 'text-white/90 hover:text-white hover:bg-white/10'
                 }`}
               >
-                My Trip
+                {d.myTrip}
                 <span className="absolute -top-1 -right-1 bg-[#00CC6A] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                   {itemCount}
                 </span>
@@ -247,7 +241,7 @@ export function Navbar({ dict }: { dict?: any }) {
             <button
               onClick={openMap}
               className="group relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white transition-all duration-300 bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-full hover:shadow-lg hover:shadow-[#1B3A5C]/30 hover:-translate-y-0.5 focus:outline-none"
-              aria-label="Open trip planner"
+              aria-label={d.openPlanner}
             >
               {d.planTrip}
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
@@ -272,7 +266,7 @@ export function Navbar({ dict }: { dict?: any }) {
                   : 'text-white hover:text-white hover:bg-white/10'
               }`}
               aria-expanded={isMenuOpen}
-              aria-label="Open menu"
+              aria-label={d.openMenu}
             >
               {isMenuOpen ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
             </button>
@@ -284,7 +278,7 @@ export function Navbar({ dict }: { dict?: any }) {
           <div className="md:hidden absolute top-20 left-0 w-full bg-white/95 backdrop-blur-xl border-b border-slate-100 shadow-xl animate-in slide-in-from-top-5 duration-200">
             <div className="px-4 pt-2 pb-6 space-y-2">
               <Link href="/" onClick={closeMobileMenu} className={mobileMenuItemClass(pathname === '/')}>
-                Home
+                {d.home}
               </Link>
 
               <button
@@ -293,26 +287,26 @@ export function Navbar({ dict }: { dict?: any }) {
                 className={mobileMenuItemClass(pathname.startsWith('/destinations'))}
               >
                 <span className="flex items-center justify-between">
-                  Destinations
+                  {d.destinations}
                   <ChevronDown className={`h-5 w-5 transition-transform ${mobileDropdowns.destinations ? 'rotate-180' : ''}`} />
                 </span>
               </button>
               {mobileDropdowns.destinations && (
                 <div className="pl-4 space-y-1">
                   <Link href="/destinations/northern-norway" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/destinations/northern-norway'))}>
-                    Northern Norway
+                    {d.northernNorway}
                   </Link>
                   <Link href="/destinations/lofoten" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/destinations/lofoten'))}>
-                    Lofoten Islands
+                    {d.lofoten}
                   </Link>
                   <Link href="/destinations/fjords" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/destinations/fjords'))}>
-                    Norwegian Fjords
+                    {d.fjords}
                   </Link>
                   <Link href="/destinations/svalbard" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/destinations/svalbard'))}>
-                    Svalbard
+                    {d.svalbard}
                   </Link>
                   <Link href="/destinations/cities" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/destinations/cities'))}>
-                    Cities of Norway
+                    {d.cities}
                   </Link>
                 </div>
               )}
@@ -330,13 +324,13 @@ export function Navbar({ dict }: { dict?: any }) {
               {mobileDropdowns.tours && (
                 <div className="pl-4 space-y-1">
                   <Link href="/travel-guides#safety" onClick={closeMobileMenu} className={dropdownItemClass(false)}>
-                    Safety & Preparation
+                    {d.safety}
                   </Link>
                   <Link href="/travel-guides#trip-reports" onClick={closeMobileMenu} className={dropdownItemClass(false)}>
-                    Trip Reports
+                    {d.tripReports}
                   </Link>
                   <Link href="/travel-guides#planning" onClick={closeMobileMenu} className={dropdownItemClass(false)}>
-                    Planning Guides
+                    {d.planning}
                   </Link>
                 </div>
               )}
@@ -347,32 +341,32 @@ export function Navbar({ dict }: { dict?: any }) {
                 className={mobileMenuItemClass(pathname.startsWith('/travel'))}
               >
                 <span className="flex items-center justify-between">
-                  Travel Map
+                  {d.travelMap}
                   <ChevronDown className={`h-5 w-5 transition-transform ${mobileDropdowns.travel ? 'rotate-180' : ''}`} />
                 </span>
               </button>
               {mobileDropdowns.travel && (
                 <div className="pl-4 space-y-1">
                   <Link href="/travel/transport" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/travel/transport'))}>
-                    🚂 Transport
+                    🚂 {d.transport}
                   </Link>
                   <Link href="/travel/accommodation" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/travel/accommodation'))}>
-                    🏨 Accommodation
+                    🏨 {d.accommodation}
                   </Link>
                   <Link href="/travel/guides" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/travel/guides'))}>
-                    🧭 Guides
+                    🧭 {d.localGuides}
                   </Link>
                   <Link href="/travel/experiences" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/travel/experiences'))}>
-                    ⛷️ Experiences
+                    ⛷️ {d.experiences}
                   </Link>
                   <Link href="/travel/restaurants" onClick={closeMobileMenu} className={dropdownItemClass(pathname.startsWith('/travel/restaurants'))}>
-                    🍽️ Restaurants
+                    🍽️ {d.restaurants}
                   </Link>
                 </div>
               )}
 
               <Link href="/om-oss" onClick={closeMobileMenu} className={mobileMenuItemClass(pathname === '/om-oss')}>
-                About
+                {d.about}
               </Link>
 
 
@@ -383,14 +377,14 @@ export function Navbar({ dict }: { dict?: any }) {
                     onClick={closeMobileMenu}
                     className="w-full flex items-center justify-center gap-2 px-6 py-3 text-base font-medium text-[#1B3A5C] border border-[#1B3A5C] rounded-md active:scale-95 transition-all"
                   >
-                    My Trip
+                    {d.myTrip}
                     <span className="bg-[#00CC6A] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                       {itemCount}
                     </span>
                   </Link>
                 )}
-                <button onClick={() => { openMap(); setIsMenuOpen(false); }} className="w-full flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md shadow-md active:scale-95 transition-all" aria-label="Open trip planner">
-                  Trip Planner
+                <button onClick={() => { openMap(); setIsMenuOpen(false); }} className="w-full flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md shadow-md active:scale-95 transition-all" aria-label={d.openPlanner}>
+                  {d.tripPlanner}
                 </button>
               </div>
             </div>

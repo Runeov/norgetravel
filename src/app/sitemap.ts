@@ -1,14 +1,13 @@
 import type { MetadataRoute } from 'next';
 import articlesEn from '@/data/articles.json';
 import articlesZh from '@/data/articles_zh.json';
+import articlesJa from '@/data/articles_ja.json';
 import { getAllCitySlugs, getAllAttractionParams } from '@/data/city-attractions';
 import { getAllFjordSlugs } from '@/data/fjords';
 import { ACTIVITY_SLUGS } from '@/data/fjord-tours';
 import { getSortedEmployees } from '@/lib/admin/employees';
-import { getSiteUrl } from '@/lib/site-url';
-
-type Locale = 'en' | 'zh' | 'ja';
-const LOCALES: Locale[] = ['en', 'zh', 'ja'];
+import { HREFLANG, localeUrl, staticPageLocales, type Locale } from '@/lib/i18n-seo';
+import { articleLocales } from '@/lib/article-locales';
 
 // Public routes without dynamic segments. Leaves out /my-trip (per-visitor
 // planner) and /travel/guides (no listings yet).
@@ -44,40 +43,33 @@ interface ArticleEntry {
   slug: string;
   category: string;
   status: string;
+  content?: string;
   updatedAt?: string;
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const base = getSiteUrl();
-  const url = (locale: Locale, path: string) => `${base}/${locale}/${path ? `${path}/` : ''}`;
-
-  // One entry per locale, each listing every language version as an hreflang alternate
-  const entries = (path: string, locales: Locale[] = LOCALES, lastModified?: string): MetadataRoute.Sitemap =>
+  // One entry per locale that serves the page in its own language. A zh or ja
+  // URL that only repeats the English copy canonicalises to English, so it is left out.
+  const entries = (path: string, locales: Locale[] = staticPageLocales(path), lastModified?: string): MetadataRoute.Sitemap =>
     locales.map((locale) => ({
-      url: url(locale, path),
+      url: localeUrl(locale, path),
       ...(lastModified && { lastModified }),
-      alternates: {
-        languages: {
-          ...Object.fromEntries(locales.map((l) => [l, url(l, path)])),
-          'x-default': url(locales.includes('en') ? 'en' : locales[0], path),
+      ...(locales.length > 1 && {
+        alternates: {
+          languages: {
+            ...Object.fromEntries(locales.map((l) => [HREFLANG[l], localeUrl(l, path)])),
+            'x-default': localeUrl('en', path),
+          },
         },
-      },
+      }),
     }));
 
-  // The zh site reads articles_zh.json; en and ja both serve articles.json
-  const zhPublished = new Set(
-    Object.values(articlesZh as Record<string, ArticleEntry>)
-      .filter((a) => a.status === 'published')
-      .map((a) => a.slug)
-  );
-  const articles = Object.values(articlesEn as Record<string, ArticleEntry>)
-    .filter((a) => a.status === 'published')
-    .flatMap((a) =>
-      entries(
-        `travel-guides/${a.category}/${a.slug}`,
-        zhPublished.has(a.slug) ? LOCALES : ['en', 'ja'],
-        a.updatedAt
-      )
+  const zh = articlesZh as Record<string, ArticleEntry>;
+  const ja = articlesJa as Record<string, ArticleEntry>;
+  const articles = Object.entries(articlesEn as Record<string, ArticleEntry>)
+    .filter(([, a]) => a.status === 'published')
+    .flatMap(([key, a]) =>
+      entries(`travel-guides/${a.category}/${a.slug}`, articleLocales(a, zh[key], ja[key]), a.updatedAt)
     );
 
   const employees = await getSortedEmployees();

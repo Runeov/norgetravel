@@ -8,6 +8,11 @@ import { getArticles } from '@/lib/admin/articles';
 import { CATEGORY_LABELS } from '@/types/admin';
 import type { ArticleCategory } from '@/types/admin';
 import articlesJson from '@/data/articles.json';
+import articlesZh from '@/data/articles_zh.json';
+import articlesJa from '@/data/articles_ja.json';
+import type { Article } from '@/lib/schemas/article.schema';
+import { articleLocales } from '@/lib/article-locales';
+import { asLocale, brandTitle, localeAlternates, OG_LOCALE, SITE_NAME } from '@/lib/i18n-seo';
 import { injectAffiliateLinks } from '@/lib/affiliate-linker';
 import { RelatedArticles } from '@/components/modules/travel/RelatedArticles';
 
@@ -58,15 +63,26 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
     return { title: 'Artikkel ikke funnet' };
   }
 
+  const en = (articlesJson as Record<string, Article>)[article.id];
+  const alternates = localeAlternates(
+    `travel-guides/${article.category}/${article.slug}`,
+    lang,
+    en
+      ? articleLocales(en, (articlesZh as Record<string, Article>)[article.id], (articlesJa as Record<string, Article>)[article.id])
+      : ['en']
+  );
+  const locale = asLocale(lang);
+
   return {
-    title: article.metaTitle || `${article.title} | NorgeTravel`,
+    title: brandTitle(article.metaTitle || `${article.title} | NorgeTravel`, lang),
     description: article.metaDescription || article.excerpt,
+    alternates,
     openGraph: {
       title: article.metaTitle || article.title,
       description: article.metaDescription || article.excerpt,
-      url: `https://norgetravel.com/travel-guides/${article.category}/${article.slug}`,
-      siteName: 'NorgeTravel.com',
-      locale: 'en_US',
+      url: alternates.canonical as string,
+      siteName: SITE_NAME[locale],
+      locale: OG_LOCALE[locale],
       type: 'article',
       ...(article.featuredImage && {
         images: [{ url: article.featuredImage, alt: article.featuredImageAlt || article.title }],

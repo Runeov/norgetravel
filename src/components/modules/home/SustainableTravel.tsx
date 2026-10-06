@@ -5,43 +5,17 @@ import Link from '@/components/LocalizedLink';
 import { Leaf, Ship, Mountain, Fish, ArrowRight } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
+import type { HomeCopy } from '@/i18n/home-copy';
 
+// Text per locale comes from HOME_COPY (src/i18n/home-copy.ts)
 const commitments = [
-  {
-    icon: Ship,
-    title: 'Zero-emission fjord cruising',
-    body: 'From January 2026, all vessels entering Geirangerfjord and Nærøyfjord must meet zero-emission standards. Our partners Hurtigruten and Havila Voyages exceed that bar. Havila runs on 4-hour battery sailing through the UNESCO fjords. We verify compliance before we recommend any operator.',
-    author: 'Ingrid Solheim',
-    stat: 'Zero emissions',
-    statLabel: 'UNESCO fjords, 2026',
-  },
-  {
-    icon: Mountain,
-    title: 'Protecting the trails',
-    body: 'Reinebringen in Lofoten had its trail rebuilt by Nepalese sherpas to control erosion from overtourism. Besseggen sees 60,000 hikers per summer. We grade every route honestly using DNT standards and surface alternatives to overloaded trails. The Fjellvettreglene is not optional guidance. It is the rule.',
-    author: 'Marte Åsheim',
-    stat: '22,000 km',
-    statLabel: 'DNT marked trails',
-  },
-  {
-    icon: Fish,
-    title: 'Supporting the working coast',
-    body: 'Lofoten had 800,000 visitors and 24,000 residents in a single summer. We steer travellers to buy stockfish from the producer, not the souvenir shop. We explain rorbu etiquette. We direct spending to the communities that have fished these waters for a thousand years, not the tourist-trap chains.',
-    author: 'Lars Erik Nordvik',
-    stat: '1,000 years',
-    statLabel: 'Lofoten fishing culture',
-  },
-  {
-    icon: Leaf,
-    title: 'Eco-certified operators only',
-    body: 'NorgeTravel is a certified Eco-Lighthouse (Miljøfyrtårn) business. We prioritise accommodation and tour operators with verified sustainability credentials. When a partner has a mixed record, we note it. Sustainability is a genuine commitment here, not a marketing badge.',
-    author: 'Bjørn Haugen',
-    stat: 'Miljøfyrtårn',
-    statLabel: 'Eco-Lighthouse certified',
-  },
-];
+  { id: 'cruising', icon: Ship, author: 'Ingrid Solheim' },
+  { id: 'trails', icon: Mountain, author: 'Marte Åsheim' },
+  { id: 'coast', icon: Fish, author: 'Lars Erik Nordvik' },
+  { id: 'certified', icon: Leaf, author: 'Bjørn Haugen' },
+] as const;
 
-export default function SustainableTravel() {
+export default function SustainableTravel({ copy }: { copy: HomeCopy['sustainable'] }) {
   const shouldReduceMotion = useReducedMotion();
   const variants = shouldReduceMotion
     ? { initial: {}, animate: {} }
@@ -55,23 +29,24 @@ export default function SustainableTravel() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-white/10 text-white text-sm font-medium mb-4">
             <Leaf className="w-4 h-4 text-[#00D084]" aria-hidden="true" />
-            Sustainable Arctic travel
+            {copy.badge}
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            We don&apos;t promote overtourism.{' '}
-            <span className="text-[#00D084]">We prevent it.</span>
+            {copy.heading}{' '}
+            <span className="text-[#00D084]">{copy.headingAccent}</span>
           </h2>
           <p className="text-lg text-white/70 leading-relaxed">
-            Norway is not a theme park. Our editorial team lives in these places. We protect what we write about because we answer to the communities, not to booking volumes.
+            {copy.intro}
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
           {commitments.map((item, i) => {
             const Icon = item.icon;
+            const text = copy.items[item.id];
             return (
               <motion.div
-                key={item.title}
+                key={item.id}
                 {...variants}
                 transition={{ duration: 0.4, delay: i * 0.08, ease: 'easeOut' }}
                 viewport={{ once: true, margin: '-50px' }}
@@ -84,13 +59,13 @@ export default function SustainableTravel() {
                     <Icon className="w-5 h-5 text-[#00D084]" aria-hidden="true" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-bold text-white mb-2">{item.title}</h3>
-                    <p className="text-white/60 text-sm leading-relaxed mb-4">{item.body}</p>
+                    <h3 className="font-bold text-white mb-2">{text.title}</h3>
+                    <p className="text-white/60 text-sm leading-relaxed mb-4">{text.body}</p>
                     <div className="flex items-center justify-between">
                       <span className="text-xs text-white/40 font-medium">{item.author}</span>
                       <div className="text-right">
-                        <span className="text-[#00D084] text-sm font-bold">{item.stat}</span>
-                        <span className="text-white/40 text-xs block">{item.statLabel}</span>
+                        <span className="text-[#00D084] text-sm font-bold">{text.stat}</span>
+                        <span className="text-white/40 text-xs block">{text.statLabel}</span>
                       </div>
                     </div>
                   </div>
@@ -106,7 +81,7 @@ export default function SustainableTravel() {
             href="/om-oss"
             className="inline-flex items-center gap-2 px-6 py-3 bg-[#00D084] text-[#1A365D] font-semibold rounded-md hover:bg-[#00B875] transition-colors min-h-[44px]"
           >
-            Meet the team
+            {copy.cta}
             <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </Link>
         </div>

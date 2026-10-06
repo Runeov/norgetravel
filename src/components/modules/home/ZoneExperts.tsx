@@ -4,61 +4,18 @@ import Image from 'next/image';
 import Link from '@/components/LocalizedLink';
 import { MapPin, ArrowRight } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
+import type { HomeCopy } from '@/i18n/home-copy';
 
+// Text per locale comes from HOME_COPY (src/i18n/home-copy.ts)
 const experts = [
-  {
-    id: 'ingrid-solheim',
-    name: 'Ingrid Solheim',
-    role: 'Fjord Logistics Editor',
-    zone: 'Fjord Norway',
-    basecamp: 'Bergen',
-    image: '/pics/team/ingrid_profile.jpg',
-    color: '#0E7490',
-    quote: 'You cannot see Sognefjord and Hardangerfjord properly in the same day. Choose one.',
-  },
-  {
-    id: 'bjorn-haugen',
-    name: 'Bjørn Haugen',
-    role: 'Arctic Field Editor',
-    zone: 'The Arctic',
-    basecamp: 'Tromsø',
-    image: '/pics/team/bjorn_profile.jpg',
-    color: '#6D28D9',
-    quote: 'The Northern Lights are not a guaranteed show. Book three nights minimum.',
-  },
-  {
-    id: 'marte-asheim',
-    name: 'Marte Åsheim',
-    role: 'Mountain Safety Editor',
-    zone: 'The High Peaks',
-    basecamp: 'Lom',
-    image: '/pics/team/Marthe_profile.jpg',
-    color: '#78716C',
-    quote: 'The mountain doesn\'t care that you drove four hours to get here. Turn back if the weather says turn back.',
-  },
-  {
-    id: 'silje-nygard',
-    name: 'Silje Nygård',
-    role: 'Urban Culture Editor',
-    zone: 'Urban Hubs',
-    basecamp: 'Trondheim',
-    image: '/pics/team/Silje_profile.jpg',
-    color: '#334155',
-    quote: 'The restaurant review you read was written by someone who visited once, on a press trip, two years ago.',
-  },
-  {
-    id: 'lars-erik-nordvik',
-    name: 'Lars Erik Nordvik',
-    role: 'Coastal Culture Editor',
-    zone: 'Working Coast',
-    basecamp: 'Svolvær',
-    image: '/pics/team/Lars_profile.jpg',
-    color: '#B45309',
-    quote: 'Lofoten in August has 800,000 visitors and 24,000 residents. Plan accordingly.',
-  },
-];
+  { id: 'ingrid-solheim', name: 'Ingrid Solheim', image: '/pics/team/ingrid_profile.jpg', color: '#0E7490' },
+  { id: 'bjorn-haugen', name: 'Bjørn Haugen', image: '/pics/team/bjorn_profile.jpg', color: '#6D28D9' },
+  { id: 'marte-asheim', name: 'Marte Åsheim', image: '/pics/team/Marthe_profile.jpg', color: '#78716C' },
+  { id: 'silje-nygard', name: 'Silje Nygård', image: '/pics/team/Silje_profile.jpg', color: '#334155' },
+  { id: 'lars-erik-nordvik', name: 'Lars Erik Nordvik', image: '/pics/team/Lars_profile.jpg', color: '#B45309' },
+] as const;
 
-export default function ZoneExperts() {
+export default function ZoneExperts({ copy }: { copy: HomeCopy['experts'] }) {
   const shouldReduceMotion = useReducedMotion();
   const variants = shouldReduceMotion
     ? { initial: {}, animate: {} }
@@ -69,15 +26,17 @@ export default function ZoneExperts() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-14">
           <h2 className="text-3xl md:text-4xl font-bold text-[#1A365D] mb-4">
-            Five zones. Five locals.
+            {copy.heading}
           </h2>
           <p className="text-lg text-slate-600 leading-relaxed">
-            Every guide on NorgeTravel is written by someone who lives in the zone they cover. Not a content agency in London. Not a freelancer who visited once. The person who grew up there.
+            {copy.intro}
           </p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {experts.map((expert, i) => (
+          {experts.map((expert, i) => {
+            const text = copy.people[expert.id];
+            return (
             <motion.div
               key={expert.id}
               {...variants}
@@ -94,7 +53,7 @@ export default function ZoneExperts() {
                 <div className="relative h-52 overflow-hidden bg-slate-200">
                   <Image
                     src={expert.image}
-                    alt={`${expert.name}, ${expert.role} at NorgeTravel`}
+                    alt={copy.alt.replace('{name}', expert.name).replace('{role}', text.role)}
                     fill
                     className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 50vw, 20vw"
@@ -106,7 +65,7 @@ export default function ZoneExperts() {
                     className="absolute top-3 left-3 inline-flex items-center px-2 py-0.5 rounded-sm text-[10px] font-bold uppercase tracking-wide text-white border-l-2"
                     style={{ borderColor: expert.color, backgroundColor: 'rgba(0,0,0,0.5)' }}
                   >
-                    {expert.zone}
+                    {text.zone}
                   </span>
 
                   {/* Name on image */}
@@ -114,7 +73,7 @@ export default function ZoneExperts() {
                     <h3 className="text-sm font-bold text-white leading-tight">{expert.name}</h3>
                     <p className="text-[11px] text-white/70 flex items-center gap-1 mt-0.5">
                       <MapPin className="w-2.5 h-2.5" aria-hidden="true" />
-                      {expert.basecamp}
+                      {text.basecamp}
                     </p>
                   </div>
                 </div>
@@ -122,12 +81,13 @@ export default function ZoneExperts() {
                 {/* Quote */}
                 <div className="p-3">
                   <p className="text-xs text-slate-600 leading-relaxed italic line-clamp-3">
-                    &ldquo;{expert.quote}&rdquo;
+                    &ldquo;{text.quote}&rdquo;
                   </p>
                 </div>
               </Link>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="text-center mt-10">
@@ -135,7 +95,7 @@ export default function ZoneExperts() {
             href="/om-oss"
             className="inline-flex items-center gap-2 text-sm font-semibold text-[#1A365D] hover:text-[#00D084] transition-colors min-h-[44px]"
           >
-            Read the full team bios
+            {copy.cta}
             <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </Link>
         </div>

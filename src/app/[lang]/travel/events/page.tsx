@@ -1,17 +1,17 @@
-import type { Metadata } from 'next';
 import Link from '@/components/LocalizedLink';
 import { ArrowLeft } from 'lucide-react';
 import { TravelHero } from '@/components/modules/travel/TravelHero';
 import { EventGrid } from '@/components/modules/travel/EventGrid';
 import { eventsStore } from '@/lib/admin/travel-events';
+import { localizedMetadata } from '@/lib/i18n-seo';
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
+export const generateMetadata = localizedMetadata('travel/events', {
   title: 'Events & Festivals in Norway | NorgeTravel',
   description:
     'Norway’s festivals and events by date, from the Tromsø International Film Festival to midnight sun celebrations, winter markets and Sami culture.',
-};
+});
 
 export default async function EventsPage() {
   const items = await eventsStore.getUpcoming();
