@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { MapPin, Trash2, Compass } from 'lucide-react';
 import { useTrip } from '@/context/TripContext';
 import { useTripMap } from '@/context/TripMapContext';

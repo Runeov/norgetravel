@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ArrowRight, Compass, Mail } from 'lucide-react';
 import { TransportHero } from '@/components/modules/travel/TransportHero';
 import { TravelGrid } from '@/components/modules/travel/TravelGrid';

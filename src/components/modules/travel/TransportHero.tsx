@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ArrowLeft, ArrowRight, Route, TrainFront } from 'lucide-react';
 
 export function TransportHero() {

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ArrowRight, MapPin, Sun, Thermometer, Clock, Calendar } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { ShareButtons } from '@/components/ui/ShareButtons';
@@ -49,9 +49,9 @@ const highlights = [
   },
   {
     title: 'North Cape',
-    body: '71°N. The northernmost point in mainland Europe. Midnight sun from mid-May to late July. 300,000 visitors per year reach this cliff.',
+    body: '71°N on the island of Magerøya. Midnight sun from mid-May to late July. 300,000 visitors per year reach this cliff.',
     image: '/images/nordkapp/landscapes/nordkapp-cliff_trym-bergsmo.jpg',
-    imageAlt: 'North Cape cliff edge at 71 degrees north, the northernmost point of mainland Europe',
+    imageAlt: 'North Cape cliff edge at 71 degrees north on the island of Magerøya',
     link: '/destinations/nordkapp',
     linkLabel: 'Explore North Cape',
   },

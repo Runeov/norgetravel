@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { Hotjar } from '@/components/analytics/Hotjar';
 import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics';
 

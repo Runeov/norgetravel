@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ArrowLeft } from 'lucide-react';
 import { TravelHero } from '@/components/modules/travel/TravelHero';
 import { TravelGrid } from '@/components/modules/travel/TravelGrid';
+import { toGridItems } from '@/lib/travel-grid';
 import { guidesStore } from '@/lib/admin/travel-guides';
 
 export const metadata: Metadata = {
@@ -40,7 +41,7 @@ export default async function GuidesPage() {
       <section className="py-12 lg:py-20">
         <div className="container mx-auto px-4">
           {items.length > 0 ? (
-            <TravelGrid items={items} showFilters category="guides" />
+            <TravelGrid items={toGridItems(items)} showFilters category="guides" />
           ) : (
             <div className="text-center py-16">
               <span className="text-6xl mb-6 block">🧭</span>

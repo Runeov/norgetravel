@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ArrowRight, Clock, Route } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -46,7 +46,7 @@ export function TripReportsTabs({ articles, categoryId }: Props) {
   return (
     <div>
       <div className="flex flex-wrap gap-2 mb-6" role="tablist" aria-label="Filter trip reports by region">
-        {TABS.map((tab) => {
+        {TABS.filter((tab) => tab.id === 'all' || articles.some((a) => a.region === tab.id)).map((tab) => {
           const isActive = active === tab.id;
           const count = counts[tab.id] ?? 0;
           if (count === 0 && tab.id !== 'all') return null;

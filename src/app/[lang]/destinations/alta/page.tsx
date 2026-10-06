@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ArrowRight, MapPin, Clock, Thermometer, Compass } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { ShareButtons } from '@/components/ui/ShareButtons';
@@ -136,7 +136,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: 'Alta & Sápmi Travel Guide 2026 | NorgeTravel',
   description:
-    'Alta, Finnmark, and the Sami heartland. UNESCO rock carvings 7,000 years old, Finnmarksløpet dog race, Kautokeino Easter Festival, and aurora above the Finnmarksvidda plateau.',
+    'Alta, Finnmark and the Sami heartland: UNESCO rock carvings 7,000 years old, the Finnmarksløpet dog race, Kautokeino Easter Festival and plateau aurora.',
 };
 
 const facts = [

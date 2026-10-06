@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useTripMap } from '@/context/TripMapContext';
 import { SEASON_HERO, type SiteSeason } from '@/lib/season';

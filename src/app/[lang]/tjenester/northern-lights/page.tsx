@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ArrowRight, Star } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import heroImage from '@/assets/karasjok_Over.avif';
 
 export const metadata: Metadata = {
   title: 'Northern Lights Tours Tromsø 2026 | NorgeTravel',
-  description: 'The best Northern Lights tours in Tromsø for Solar Cycle 25 — private chases, guided photography, dog sled aurora, and Hurtigruten\'s guarantee. Prices and commission disclosed.',
+  description: 'Northern Lights tours in Tromsø: private chases, guided photography, dog sled aurora trips and Hurtigruten’s guarantee, with prices and commissions disclosed.',
 };
 
 const operators = [

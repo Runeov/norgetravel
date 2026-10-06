@@ -214,7 +214,7 @@ export const geirangerTours: RawTour[] = [
     highlight:
       'Electric sightseeing loop from Geiranger. Passes the Seven Sisters, the Suitor, and the Bridal Veil. Audio guide included.',
     affiliateUrl:
-      'https://www.getyourguide.com/geiranger-l4560/geirangerfjord-sightseeing-boat-with-audio-guide-t637010/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
+      'https://www.getyourguide.com/geiranger-l4560/geiranger-fjord-and-waterfalls-sightseeing-boat-trip-t637010/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
     internal: {
       coords: { lat: 62.1017, lng: 7.2067 },
       difficulty: 'easy',

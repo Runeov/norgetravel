@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { notFound } from 'next/navigation';
 import { ArrowRight, CheckCircle2, Clock, MapPin, ExternalLink } from 'lucide-react';
 import {

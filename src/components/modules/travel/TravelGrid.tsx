@@ -61,6 +61,18 @@ const transportGroupCopy: Record<
   },
 };
 
+// Card grids render in pages so long lists (1,000+ listings) don't ship as one huge page
+const PAGE_SIZE = 24;
+
+const itemNouns: Partial<Record<TripItemCategory, [string, string]>> = {
+  accommodation: ['place to stay', 'places to stay'],
+  restaurants: ['restaurant', 'restaurants'],
+  experiences: ['experience', 'experiences'],
+  events: ['event', 'events'],
+  guides: ['guide', 'guides'],
+  transport: ['transport option', 'transport options'],
+};
+
 function deduplicateItems(items: TravelItemBase[]) {
   const seen = new Set<string>();
 
@@ -91,6 +103,12 @@ export function TravelGrid({
 }: TravelGridProps) {
   const [activeDestination, setActiveDestination] = useState<Destination | 'all-items'>('all-items');
   const [activeTransportType, setActiveTransportType] = useState<TransportType | 'all'>('all');
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+
+  function changeDestination(destination: Destination | 'all-items') {
+    setActiveDestination(destination);
+    setVisibleCount(PAGE_SIZE);
+  }
 
   const uniqueItems = useMemo(() => deduplicateItems(items), [items]);
 
@@ -171,9 +189,13 @@ export function TravelGrid({
   }, [category, filteredItems]);
 
   function resetFilters() {
-    setActiveDestination('all-items');
+    changeDestination('all-items');
     setActiveTransportType('all');
   }
+
+  const paginated = category !== 'transport';
+  const shownCount = paginated ? Math.min(visibleCount, filteredItems.length) : filteredItems.length;
+  const [singular, plural] = (category && itemNouns[category]) || ['listing', 'listings'];
 
   return (
     <div>
@@ -181,7 +203,7 @@ export function TravelGrid({
         <div className="mb-10">
           <TravelFilters
             activeDestination={activeDestination}
-            onDestinationChange={setActiveDestination}
+            onDestinationChange={changeDestination}
             category={category}
             activeTransportType={activeTransportType}
             onTransportTypeChange={setActiveTransportType}
@@ -194,8 +216,13 @@ export function TravelGrid({
       )}
 
       <p className="mb-8 text-sm font-medium text-slate-500" role="status" aria-live="polite">
-        Showing <span className="font-semibold tabular-nums text-slate-900">{filteredItems.length}</span>{' '}
-        {filteredItems.length === 1 ? 'transport option' : 'transport options'}
+        Showing <span className="font-semibold tabular-nums text-slate-900">{shownCount}</span>
+        {shownCount < filteredItems.length && (
+          <>
+            {' '}of <span className="font-semibold tabular-nums text-slate-900">{filteredItems.length}</span>
+          </>
+        )}{' '}
+        {filteredItems.length === 1 ? singular : plural}
       </p>
 
       {filteredItems.length > 0 ? (
@@ -237,11 +264,24 @@ export function TravelGrid({
             ))}
           </div>
         ) : (
-          <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
-            {filteredItems.map((item) => (
-              <TravelCard key={item.id} item={item} ratings={extractRatings(item)} category={category} />
-            ))}
-          </div>
+          <>
+            <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
+              {filteredItems.slice(0, shownCount).map((item) => (
+                <TravelCard key={item.id} item={item} ratings={extractRatings(item)} category={category} />
+              ))}
+            </div>
+            {shownCount < filteredItems.length && (
+              <div className="mt-10 text-center">
+                <button
+                  type="button"
+                  onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
+                  className="inline-flex min-h-11 items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-2 text-sm font-semibold text-[#1B3A5C] transition-colors hover:border-[#1B3A5C] hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1B3A5C] focus-visible:ring-offset-2"
+                >
+                  Show {Math.min(PAGE_SIZE, filteredItems.length - shownCount)} more ({filteredItems.length - shownCount} left)
+                </button>
+              </div>
+            )}
+          </>
         )
       ) : (
         <div className="rounded-xl border border-slate-200 bg-white px-6 py-16 text-center">

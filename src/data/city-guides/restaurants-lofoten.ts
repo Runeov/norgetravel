@@ -447,7 +447,7 @@ export const lofotenRestaurants: CityRestaurant[] = [
       cuisine: 'norwegian',
       pricePoint: '$$',
       address: '\u00C5-veien 45, 8392 \u00C5, Norway',
-      website: 'https://arorbuer.no/mat-og-drikke/?utm_source=google&utm_medium=organic&utm_campaign=google_business&utm_content=brygga_restaurant',
+      website: 'https://arorbuer.no/',
       reservationRequired: false,
       openingHours: 'Monday: Closed; Tuesday: 12:00\u2009\u2013\u20098:00\u202FPM; Wednesday: 12:00\u2009\u2013\u20098:00\u202FPM...',
       description: "Restaurant in Lofoten. Description pending editorial review.",

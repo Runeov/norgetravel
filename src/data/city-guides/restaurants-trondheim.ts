@@ -1328,7 +1328,6 @@ export const trondheimRestaurants: CityRestaurant[] = [
       cuisine: 'international',
       pricePoint: '$$',
       address: 'Vegamot 12, 7049 Trondheim, Norway',
-      website: 'https://vivaitaliatrondheim.com/',
       reservationRequired: false,
       openingHours: 'Monday: 1:00\u2009\u2013\u20099:00\u202FPM; Tuesday: 1:00\u2009\u2013\u200910:00\u202FPM; Wednesday: 1:00\u2009\u2013\u200910:00\u202FPM...',
       description: "Restaurant in Trondheim. Description pending editorial review.",

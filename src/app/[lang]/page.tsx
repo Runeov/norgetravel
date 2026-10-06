@@ -14,7 +14,7 @@ export const revalidate = 86400;
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  const meta = SEASON_HOME_META[getSiteSeason()][lang === 'zh' ? 'zh' : 'en'];
+  const meta = SEASON_HOME_META[getSiteSeason()][lang === 'zh' || lang === 'ja' ? lang : 'en'];
   return { title: meta.title, description: meta.description };
 }
 

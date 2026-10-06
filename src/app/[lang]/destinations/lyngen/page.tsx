@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ArrowRight, MapPin, Clock, Thermometer, Compass } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { ShareButtons } from '@/components/ui/ShareButtons';
@@ -137,7 +137,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: 'Lyngen Alps Travel Guide 2026 | NorgeTravel',
   description:
-    'The most serious alpine terrain in Nord-Norge. Ski-touring peaks rising 1,834 m from Lyngenfjord. Under two hours from Tromsø airport. Season, access, and guide requirements.',
+    'The most serious alpine terrain in Nord-Norge: ski-touring peaks rising 1,834 m from Lyngenfjord, under two hours from Tromsø airport. Season and access.',
 };
 
 const facts = [

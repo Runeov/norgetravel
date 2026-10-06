@@ -16,7 +16,7 @@ export const lyngenRestaurants: CityRestaurant[] = [
       cuisine: 'norwegian',
       pricePoint: '$$',
       address: 'Lenangsveien 2344, 9068 Nord-lenangen, Norway',
-      website: 'https://xlyngen.no/shop/produktkategori/restaurant-boteriet/',
+      website: 'https://xlyngen.no/',
       reservationRequired: false,
       openingHours: 'Monday: 1:00\u2009\u2013\u200910:00\u202FPM; Tuesday: 1:00\u2009\u2013\u200910:00\u202FPM; Wednesday: 1:00\u2009\u2013\u200910:00\u202FPM...',
       description: "Restaurant in Lyngen. Description pending editorial review.",

@@ -138,7 +138,7 @@ export const cities: CityData[] = [
     name: 'Troms\u00F8',
     tagline: 'Arctic capital, Northern Lights basecamp',
     metaDescription:
-      'Troms\u00F8 travel guide: Northern Lights chasing, Arctic Cathedral, whale watching, and the gateway to the Arctic. Practical info for visiting Norway\u2019s Arctic capital.',
+      'Troms\u00F8 travel guide: Northern Lights chasing, the Arctic Cathedral, whale watching, and practical information for visiting Norway\u2019s Arctic capital.',
     heroDescription:
       'Troms\u00F8 sits at 69\u00B0N with 75,000 residents, a university, a brewery, and 69 days of polar night. The city is the main basecamp for Northern Lights trips, whale watching in the fjords, and Svalbard departures. The Arctic Cathedral crosses the sound in Tromsdalen.',
     heroImage: '/pics/Tromso/tromso_banner.jpeg',
@@ -244,11 +244,11 @@ export const cities: CityData[] = [
   {
     slug: 'nordkapp',
     name: 'Nordkapp',
-    tagline: 'The northernmost point of mainland Europe',
+    tagline: 'The 307-metre cliff at 71\u00B010\u2019N',
     metaDescription:
       'Nordkapp travel guide: North Cape plateau, midnight sun, Honningsv\u00E5g town, and the 307-meter cliff at 71\u00B010\u2019N.',
     heroDescription:
-      'Nordkapp is the 307-meter cliff at 71\u00B010\u2019N marketed as the northernmost point of mainland Europe. Honningsv\u00E5g is the town at the base: 2,500 residents, a fishing harbour, and the Hurtigruten port. The midnight sun is visible from May 14 to July 29. In winter, the plateau is often closed by wind and snow.',
+      'Nordkapp is the 307-meter cliff at 71\u00B010\u2019N marketed as the northernmost point of Europe. Honningsv\u00E5g is the town at the base: 2,500 residents, a fishing harbour, and the Hurtigruten port. The midnight sun is visible from May 14 to July 29. In winter, the plateau is often closed by wind and snow.',
     heroImage: '/pics/nordkapp/nordkapp_banner.jpeg',
     heroImageAlt: 'North Cape plateau and globe monument at midnight sun, Nordkapp, Norway',
     stats: [
@@ -859,7 +859,7 @@ export const attractions: CityAttraction[] = [
     heroImage: '/pics/cities/Stavanger_banner.jpeg',
     heroImageAlt: 'Stavanger harbour and Petroleum Museum, Norway',
     metaDescription:
-      'Norwegian Petroleum Museum Stavanger: the Ekofisk discovery, full-scale drilling equipment, the economics of oil, and the building shaped like an offshore platform.',
+      'Norwegian Petroleum Museum, Stavanger: the Ekofisk discovery, full-scale drilling equipment, oil economics, and a building shaped like an offshore platform.',
     heroDescription:
       'Norway\u2019s oil story started in 1969 when the Ekofisk field was discovered in the North Sea. The Petroleum Museum tells that story from the drilling floor up \u2014 full-scale equipment, subsea technology, and the economics that turned a fishing nation into one of the world\u2019s wealthiest countries.',
     stats: [

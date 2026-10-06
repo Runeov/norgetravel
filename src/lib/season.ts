@@ -28,8 +28,8 @@ export const SEASON_HERO: Record<SiteSeason, { image: string; alt: string; ctaHr
   },
 };
 
-/** Homepage <title> and meta description per season. ja falls back to en, as in the root layout. */
-export const SEASON_HOME_META: Record<SiteSeason, Record<'en' | 'zh', { title: string; description: string }>> = {
+/** Homepage <title> and meta description per season and language. */
+export const SEASON_HOME_META: Record<SiteSeason, Record<'en' | 'zh' | 'ja', { title: string; description: string }>> = {
   winter: {
     en: {
       title: 'NorgeTravel | Northern Lights, Arctic Winter and Fjord Travel Guides',
@@ -41,17 +41,27 @@ export const SEASON_HOME_META: Record<SiteSeason, Record<'en' | 'zh', { title: s
       description:
         '挪威极光季指南：在特罗姆瑟、林根和斯瓦尔巴哪里看北极光，如何在北极雪路上驾驶，以及极夜期间住在哪里。',
     },
+    ja: {
+      title: 'NorgeTravel | ノルウェーのオーロラ、北極圏の冬、フィヨルド旅行ガイド',
+      description:
+        'ノルウェーのオーロラシーズン：トロムソ、リンゲン、スバールバルでオーロラを見る場所、雪道での北極圏ドライブ、この冬の滞在先。',
+    },
   },
   summer: {
     en: {
-      title: 'NorgeTravel 2026 – Midnight Sun Adventures, Fjord Cruises & Arctic Hiking',
+      title: 'NorgeTravel 2026 | Midnight Sun Adventures, Fjord Cruises & Arctic Hiking',
       description:
-        'The definitive guide to Norge travel in 2026. Midnight sun kayaking, zero-emission fjord cruises, glacier hikes, and sustainable Arctic adventures with expert local insights.',
+        'Norway travel in 2026: midnight sun kayaking, zero-emission fjord cruises, glacier hikes and sustainable Arctic adventures, with expert local insight.',
     },
     zh: {
-      title: '挪威旅行 2026 – 午夜太阳探险、峡湾游轮与北极徒步',
+      title: '挪威旅行 2026 | 午夜太阳探险、峡湾游轮与北极徒步',
       description:
         '2026年挪威旅行的权威指南。拥有当地专家见解的午夜太阳皮划艇、零排放峡湾游轮、冰川徒步及可持续的北极探险。',
+    },
+    ja: {
+      title: 'NorgeTravel 2026 | 白夜のアドベンチャー、フィヨルドクルーズ、北極圏ハイキング',
+      description:
+        '2026年のノルウェー旅行ガイド。白夜のカヤック、ゼロエミッションのフィヨルドクルーズ、氷河ハイキング、地元の専門家による持続可能な北極圏アドベンチャー。',
     },
   },
 };

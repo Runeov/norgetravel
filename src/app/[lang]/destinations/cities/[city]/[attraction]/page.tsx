@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { notFound } from 'next/navigation';
 import { ArrowRight, ArrowLeft, MapPin, Info } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';

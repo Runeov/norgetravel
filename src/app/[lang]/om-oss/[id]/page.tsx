@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { MapPin, ArrowLeft, Clock, Globe, Award, Users } from 'lucide-react';
 import { getEmployee, getSortedEmployees } from '@/lib/admin/employees';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';

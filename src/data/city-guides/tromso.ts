@@ -15,7 +15,7 @@ export const tromso: CityGuide = {
   name: 'Troms\u00F8',
   metaTitle: 'Troms\u00F8 Travel Guide 2026 | NorgeTravel',
   metaDescription:
-    'Troms\u00F8 at 69\u00B0N: Northern Lights season September\u2013March, midnight sun May\u2013July, whale safaris November\u2013February. Best restaurants, tours, and accommodation with commission-transparent affiliate links.',
+    'Troms\u00F8 at 69\u00B0N: Northern Lights September to March, midnight sun May to July, whale safaris November to February. Restaurants, tours and places to stay.',
 
   heroImageSrc: '/pics/Tromso/tromso_banner.jpeg',
   heroImageAlt: 'Troms\u00F8 cityscape and harbour at night with Northern Lights \u2014 Arctic Norway',

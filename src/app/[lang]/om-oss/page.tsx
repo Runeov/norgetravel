@@ -9,7 +9,7 @@ import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'About NorgeTravel | The Honest Guide to Arctic Norway',
-  description: 'NorgeTravel is an independent editorial platform connecting international travellers with the best sustainable operators in Norway. Five zone experts, five basecamps, zero brochure-speak.',
+  description: 'NorgeTravel is an independent editorial platform connecting travellers with sustainable operators in Norway. Five zone experts, no brochure-speak.',
   openGraph: {
     title: 'About NorgeTravel.com',
     description: 'The honest guide to Arctic Norway. Five zone experts with decades of local experience. Honest logistics, real safety data, and zero brochure-speak.',

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 
 // Revalidate the whole page every 24 hours so Google ratings stay current without a manual deploy
 export const revalidate = 86400;
