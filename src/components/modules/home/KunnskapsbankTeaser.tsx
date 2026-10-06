@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import Image from 'next/image';
 import heroImage from '@/assets/karasjok_Over.avif';
 import { BookOpen, ArrowRight } from 'lucide-react';

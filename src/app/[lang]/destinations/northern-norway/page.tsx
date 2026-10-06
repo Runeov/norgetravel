@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ArrowRight, MapPin, Sun, Thermometer, Clock, Calendar } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { ShareButtons } from '@/components/ui/ShareButtons';
@@ -49,9 +49,9 @@ const highlights = [
   },
   {
     title: 'North Cape',
-    body: '71°N. The northernmost point in mainland Europe. Midnight sun from mid-May to late July. 300,000 visitors per year reach this cliff.',
+    body: '71°N on the island of Magerøya. Midnight sun from mid-May to late July. 300,000 visitors per year reach this cliff.',
     image: '/images/nordkapp/landscapes/nordkapp-cliff_trym-bergsmo.jpg',
-    imageAlt: 'North Cape cliff edge at 71 degrees north, the northernmost point of mainland Europe',
+    imageAlt: 'North Cape cliff edge at 71 degrees north on the island of Magerøya',
     link: '/destinations/nordkapp',
     linkLabel: 'Explore North Cape',
   },
@@ -72,7 +72,7 @@ export default async function NorthernNorwayPage() {
       <section className="relative overflow-hidden bg-slate-900 text-white -mt-20 pt-20">
         <Image
           src="/images/tromso/northern-lights/aurora-tromso_yngve-olsen-1.jpg"
-          alt="Aurora borealis over Tromso at 69 degrees north, green bands across a dark Arctic sky"
+          alt="Tromsø at night seen from above, city lights and the Tromsø Bridge reflected in the strait"
           fill
           className="object-cover opacity-50"
           priority

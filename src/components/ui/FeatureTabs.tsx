@@ -1,7 +1,7 @@
 ﻿'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useLocalizedRouter } from '@/lib/use-localized-router';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ArrowRight, CheckCircle2 } from 'lucide-react';
@@ -30,7 +30,7 @@ export function FeatureTabs({
   themeColor = "#E86C1F", 
   className 
 }: FeatureTabsProps) {
-  const router = useRouter();
+  const router = useLocalizedRouter();
   const [activeTab, setActiveTab] = useState<number | null>(0);
 
   const handleTabClick = (index: number) => {

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ArrowRight, MapPin, Clock, Thermometer, Compass } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { ShareButtons } from '@/components/ui/ShareButtons';
@@ -106,8 +106,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: 'North Cape (Nordkapp) Travel Guide 2026 | NorgeTravel',
   description:
-    'Nordkapp at 71°10\u2032 N — the northernmost point of mainland Europe. Midnight sun from May 14, winter convoys on the E69, Honningsvåg as basecamp, and the Hurtigruten stop that most travellers miss.',
-  alternates: { canonical: 'https://norgetravel.com/destinations/nordkapp' },
+    'Nordkapp at 71\u00B010\u2032 N on Mager\u00F8ya: midnight sun from 14 May, winter convoys on the E69, Honningsv\u00E5g as basecamp, and the Hurtigruten stop most travellers miss.',
 };
 
 const facts = [
@@ -132,7 +131,7 @@ export default function NordkappPage() {
       <section className="relative overflow-hidden bg-slate-900 text-white -mt-20 pt-20">
         <Image
           src="/images/nordkapp/landscapes/nordkapp-cliff_trym-bergsmo.jpg"
-          alt="North Cape cliff at 71°N — the northernmost point of mainland Europe"
+          alt="North Cape cliff at 71°10′N on the island of Magerøya, above the Barents Sea"
           fill
           priority
           quality={60}
@@ -147,7 +146,7 @@ export default function NordkappPage() {
           </div>
           <h1 className="text-5xl lg:text-7xl font-bold mb-6 max-w-3xl">North Cape</h1>
           <p className="text-xl text-slate-300 max-w-2xl mb-8">
-            71°10&#39; North. The northernmost point of mainland Europe. Midnight sun from mid-May to late July. A winter drive that runs as a convoy.
+            71°10&#39; North, on the island of Magerøya. Midnight sun from mid-May to late July. A winter drive that runs as a convoy.
           </p>
           <div className="flex flex-wrap gap-6 text-sm text-slate-300">
             <span className="flex items-center gap-2"><Thermometer className="w-4 h-4 text-[#5CBFEE]" aria-hidden="true" /> −20°C to +12°C</span>
@@ -177,7 +176,7 @@ export default function NordkappPage() {
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-4">
               <p className="text-slate-600 leading-relaxed">
-                Nordkapp sits at 71°10&#39; 21&#8243; North on the island of Magerøya, in Finnmark. The cliff stands 307 m above the Barents Sea. It is marketed as the northernmost point of mainland Europe, which is almost true — the actual northernmost point is Knivskjelodden, the promontory 1 km west and 18 m further north, reachable by a 9 km hiking trail in summer.
+                Nordkapp sits at 71°10&#39; 21&#8243; North on the island of Magerøya, in Finnmark. The cliff stands 307 m above the Barents Sea. It is marketed as the northernmost point of Europe. Two facts complicate that: Magerøya is an island, so the northernmost point of mainland Europe is Kinnarodden on the Nordkinn Peninsula, and Knivskjelodden, a promontory west of the cliff, reaches about 1,450 m further north. A 9 km hiking trail leads there in summer.
               </p>
               <p className="text-slate-600 leading-relaxed">
                 200,000 people make it to the cape every year. Most arrive in the midnight sun window between mid-May and late July. The visitor centre (Nordkapphallen) has a panoramic hall, a short film, a restaurant, and a bar. The entry fee is NOK 330 in 2026 and includes access to the plateau, the iron Globe monument, and the facilities. There is no cheaper way to reach the viewing platform.
@@ -285,7 +284,7 @@ export default function NordkappPage() {
                 elevation: '150 m',
                 time: '4–5 hours',
                 difficulty: 'Moderate',
-                description: 'The actual northernmost point of mainland Europe. 9 km each way, mostly flat tundra, boggy in places. Sign-in book at the promontory. No entry fee. June to September only. DNT Blue.',
+                description: 'The northernmost point of Magerøya, about 1,450 m further north than the Nordkapp cliff. 9 km each way, mostly flat tundra, boggy in places. Sign-in book at the promontory. No entry fee. June to September only. DNT Blue.',
               },
               {
                 name: 'Storfjellet, Honningsvåg',
@@ -446,7 +445,7 @@ export default function NordkappPage() {
           <div className="max-w-2xl mx-auto">
             <Link href="/om-oss/bjorn-haugen" className="group flex items-start gap-5 bg-white rounded-lg border border-slate-200 p-6 hover:shadow-md transition-shadow">
               <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 bg-slate-200">
-                <Image src="/pics/team/bjorn_profile.png" alt="Bjørn Haugen, Arctic Field Editor at NorgeTravel" fill className="object-cover" sizes="64px" />
+                <Image src="/pics/team/bjorn_profile.jpg" alt="Bjørn Haugen, Arctic Field Editor at NorgeTravel" fill className="object-cover" sizes="64px" />
               </div>
               <div className="min-w-0">
                 <p className="text-xs font-semibold text-[#6D28D9] uppercase tracking-wide mb-1">The Arctic</p>

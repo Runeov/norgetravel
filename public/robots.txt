@@ -16,5 +16,5 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://norgetravel.com/sitemap.xml
-Host: https://norgetravel.com
+Sitemap: https://www.norgetravel.com/sitemap.xml
+Host: https://www.norgetravel.com

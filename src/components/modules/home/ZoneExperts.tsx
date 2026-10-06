@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { MapPin, ArrowRight } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 
@@ -12,7 +12,7 @@ const experts = [
     role: 'Fjord Logistics Editor',
     zone: 'Fjord Norway',
     basecamp: 'Bergen',
-    image: '/pics/team/ingrid_profile.png',
+    image: '/pics/team/ingrid_profile.jpg',
     color: '#0E7490',
     quote: 'You cannot see Sognefjord and Hardangerfjord properly in the same day. Choose one.',
   },
@@ -22,7 +22,7 @@ const experts = [
     role: 'Arctic Field Editor',
     zone: 'The Arctic',
     basecamp: 'Tromsø',
-    image: '/pics/team/bjorn_profile.png',
+    image: '/pics/team/bjorn_profile.jpg',
     color: '#6D28D9',
     quote: 'The Northern Lights are not a guaranteed show. Book three nights minimum.',
   },
@@ -32,7 +32,7 @@ const experts = [
     role: 'Mountain Safety Editor',
     zone: 'The High Peaks',
     basecamp: 'Lom',
-    image: '/pics/team/Marthe_profile.png',
+    image: '/pics/team/Marthe_profile.jpg',
     color: '#78716C',
     quote: 'The mountain doesn\'t care that you drove four hours to get here. Turn back if the weather says turn back.',
   },
@@ -42,7 +42,7 @@ const experts = [
     role: 'Urban Culture Editor',
     zone: 'Urban Hubs',
     basecamp: 'Trondheim',
-    image: '/pics/team/Silje_profile.png',
+    image: '/pics/team/Silje_profile.jpg',
     color: '#334155',
     quote: 'The restaurant review you read was written by someone who visited once, on a press trip, two years ago.',
   },
@@ -52,7 +52,7 @@ const experts = [
     role: 'Coastal Culture Editor',
     zone: 'Working Coast',
     basecamp: 'Svolvær',
-    image: '/pics/team/Lars_profile.png',
+    image: '/pics/team/Lars_profile.jpg',
     color: '#B45309',
     quote: 'Lofoten in August has 800,000 visitors and 24,000 residents. Plan accordingly.',
   },

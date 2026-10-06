@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ArrowRight, MapPin, Clock, Thermometer, Calendar } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { ShareButtons } from '@/components/ui/ShareButtons';
@@ -29,7 +29,7 @@ const seasonalWindows = [
     months: 'Sep–Mar',
     label: 'Aurora season',
     detail:
-      'Peak Northern Lights probability at 68°N under the auroral oval. Fewer visitors than summer. 2026–27 is the last elevated solar activity window before the 2031 minimum. Four-night minimum recommended. Weather is the variable, not the aurora.',
+      'Peak Northern Lights probability at 68°N under the auroral oval. Fewer visitors than summer. Solar Cycle 25 is past its 2024–25 maximum, but at 68°N clear, dark nights still bring aurora every winter. Four-night minimum recommended. Weather is the variable, not the aurora.',
   },
   {
     months: 'Jun–Jul',
@@ -301,7 +301,7 @@ export default async function LofotenPage() {
             >
               <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 bg-slate-200">
                 <Image
-                  src="/pics/team/Lars_profile.png"
+                  src="/pics/team/Lars_profile.jpg"
                   alt="Lars Erik Nordvik, Coastal Culture & Logistics Editor at NorgeTravel"
                   fill
                   className="object-cover"

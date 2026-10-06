@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ArrowRight } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 
 export const metadata: Metadata = {
   title: 'Norway Destinations 2026 | NorgeTravel',
-  description: 'Northern Norway, Lofoten Islands, Norwegian Fjords, Svalbard, and Norwegian cities — complete destination guides with best time to visit, what to do, and vetted operator links.',
+  description: 'Northern Norway, Lofoten, the fjords, Svalbard and Norway’s cities: destination guides with the best time to visit, what to do, and vetted operators.',
 };
 
 const destinations = [

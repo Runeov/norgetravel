@@ -5,8 +5,36 @@ import { withFileLock } from '@/lib/storage/file-lock';
 
 const DATA_FILE = path.join(process.cwd(), 'src/data/articles.json');
 const DATA_FILE_ZH = path.join(process.cwd(), 'src/data/articles_zh.json');
+const DATA_FILE_JA = path.join(process.cwd(), 'src/data/articles_ja.json');
 export interface ArticlesData {
   [key: string]: Article;
+}
+
+// Translated fields taken from articles_ja.json. The ja bodies are English
+// copies, so the body always comes from articles.json, which is never older.
+const JA_FIELDS = ['title', 'subtitle', 'excerpt', 'metaTitle', 'metaDescription'] as const;
+
+/**
+ * Japanese view: every English article, with the Japanese metadata overlaid
+ * only when that translation is at least as new as the English article.
+ */
+async function readJapaneseArticles(): Promise<Record<string, Article>> {
+  const [en, ja] = await Promise.all([
+    fs.readFile(DATA_FILE, 'utf-8').then((d) => JSON.parse(d) as Record<string, Article>),
+    fs.readFile(DATA_FILE_JA, 'utf-8').then((d) => JSON.parse(d) as Record<string, Partial<Article>>),
+  ]);
+  const merged: Record<string, Article> = {};
+  for (const [key, article] of Object.entries(en)) {
+    const translation = ja[key];
+    const current = translation && (translation.updatedAt ?? '') >= (article.updatedAt ?? '');
+    merged[key] = { ...article };
+    if (current) {
+      for (const field of JA_FIELDS) {
+        if (translation[field]) Object.assign(merged[key], { [field]: translation[field] });
+      }
+    }
+  }
+  return merged;
 }
 
 /**
@@ -14,9 +42,10 @@ export interface ArticlesData {
  */
 export async function getArticles(lang?: string): Promise<ArticlesData> {
   try {
-    const filePath = lang === 'zh' ? DATA_FILE_ZH : DATA_FILE;
-    const data = await fs.readFile(filePath, 'utf-8');
-    const parsed = JSON.parse(data);
+    const parsed =
+      lang === 'ja'
+        ? await readJapaneseArticles()
+        : JSON.parse(await fs.readFile(lang === 'zh' ? DATA_FILE_ZH : DATA_FILE, 'utf-8'));
 
     // Validate each article
     const validated: ArticlesData = {};

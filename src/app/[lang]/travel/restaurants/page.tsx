@@ -1,14 +1,15 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ArrowLeft } from 'lucide-react';
 import { TravelHero } from '@/components/modules/travel/TravelHero';
 import { TravelGrid } from '@/components/modules/travel/TravelGrid';
+import { toGridItems } from '@/lib/travel-grid';
 import { restaurantsStore } from '@/lib/admin/travel-restaurants';
 
 export const metadata: Metadata = {
   title: 'Restaurants & Dining in Norway | NorgeTravel',
   description:
-    'Discover the best restaurants in Norway — from fresh seafood and traditional Norwegian cuisine to Sami food traditions, fine dining, cozy cafés, and local bakeries.',
+    'The best restaurants in Norway, from fresh seafood and traditional Norwegian cuisine to Sami food traditions, fine dining, cafés and local bakeries.',
 };
 
 export default async function RestaurantsPage() {
@@ -40,7 +41,7 @@ export default async function RestaurantsPage() {
       <section className="py-12 lg:py-20">
         <div className="container mx-auto px-4">
           {items.length > 0 ? (
-            <TravelGrid items={items} showFilters category="restaurants" />
+            <TravelGrid items={toGridItems(items)} showFilters category="restaurants" />
           ) : (
             <div className="text-center py-16">
               <span className="text-6xl mb-6 block">🍽️</span>

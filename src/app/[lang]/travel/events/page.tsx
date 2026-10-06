@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ArrowLeft } from 'lucide-react';
 import { TravelHero } from '@/components/modules/travel/TravelHero';
-import { TravelGrid } from '@/components/modules/travel/TravelGrid';
+import { EventGrid } from '@/components/modules/travel/EventGrid';
 import { eventsStore } from '@/lib/admin/travel-events';
 
 export const revalidate = 3600;
@@ -10,7 +10,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: 'Events & Festivals in Norway | NorgeTravel',
   description:
-    'Discover the best events and festivals in Norway — from the Tromsø International Film Festival to summer midnight sun celebrations, winter markets, and Sami cultural events.',
+    'Norway’s festivals and events by date, from the Tromsø International Film Festival to midnight sun celebrations, winter markets and Sami culture.',
 };
 
 export default async function EventsPage() {
@@ -21,7 +21,7 @@ export default async function EventsPage() {
       {/* Hero */}
       <TravelHero
         title="Events & Festivals in Norway"
-        subtitle="From the Tromsø International Film Festival to midnight sun celebrations and Sami cultural gatherings — Norway's event calendar is as dramatic as its landscape."
+        subtitle="From the Tromsø International Film Festival to Sami Week and the midnight sun races: Norway's festival calendar, with dates."
         emoji="🎉"
       />
 
@@ -42,7 +42,7 @@ export default async function EventsPage() {
       <section className="py-12 lg:py-20">
         <div className="container mx-auto px-4">
           {items.length > 0 ? (
-            <TravelGrid items={items} showFilters category="events" />
+            <EventGrid events={items} />
           ) : (
             <div className="text-center py-16">
               <span className="text-6xl mb-6 block">🎉</span>

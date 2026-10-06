@@ -1,23 +1,21 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ShieldAlert, Map, BookOpen, ArrowRight, Mountain, Car, Thermometer, Compass, Route, Clock } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { TripReportsTabs, type TripReportRegion } from '@/components/modules/TripReportsTabs';
+import articlesJson from '@/data/articles.json';
 
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
   title: 'Travel Guides | Safety, Trip Reports & Planning | NorgeTravel',
   description:
-    'Expert travel guides for Norway. Mountain safety and the Fjellvettreglene, first-person trip reports from Lofoten to Svalbard, and logistics guides for ferries, driving, and budgets.',
-  alternates: {
-    canonical: '/travel-guides',
-  },
+    'Expert travel guides for Norway. Mountain safety and the Fjellvettreglene, first-person trip reports from the fjords to Svalbard, and planning guides for the DNT cabin network and the aurora season.',
   openGraph: {
     title: 'Travel Guides | NorgeTravel.com',
     description:
-      'Expert travel guides for Norway. Safety preparation, trip reports, and planning guides for ferries, driving, budgets, and the DNT cabin network.',
+      'Expert travel guides for Norway. Safety preparation, trip reports, and planning guides for the DNT cabin network and the aurora season.',
     url: 'https://norgetravel.com/travel-guides',
     siteName: 'NorgeTravel.com',
     locale: 'en_US',
@@ -25,7 +23,53 @@ export const metadata: Metadata = {
   },
 };
 
-const categories = [
+interface ArticleEntry {
+  slug: string;
+  title: string;
+  category: string;
+  status: string;
+  readTime?: number;
+  sortOrder?: number;
+  tags?: string[];
+}
+
+// Each hub section lists every published article in these categories
+const SECTION_CATEGORIES: Record<string, string[]> = {
+  safety: ['safety'],
+  'trip-reports': ['trip-reports'],
+  planning: ['planning', 'artikler'],
+};
+
+// Tested in order. Magerøya and Kvaløya slugs contain "fjord", so the northern regions come first.
+const REGION_RULES: [TripReportRegion, RegExp][] = [
+  ['svalbard', /svalbard|longyearbyen/],
+  ['lofoten', /lofoten|reinebringen|henningsv|svolv|kvalvika|munkebu|festvag|ryten/],
+  [
+    'northern-norway',
+    /tromso|lyngen|senja|\balta\b|nordkapp|mager|honningsv|kvaloya|skibotn|kjostind|seiland|blaisvatnet|haldde|komsa|rafsbotn|sorlenangs|rornes|fastdal|goalsevarri|segla|husfjell|hesten|barden|knivskjel|storfjellet/,
+  ],
+  ['cities', /\boslo\b|trondheim|stavanger/],
+  ['fjords', /fjord|geiranger|naeroy|sogne|hardanger|flam|trolltunga|voring|folgefonna|urnes|stegastein|nutshell|rimstigen|prest|losta|skagefla|storseter|fossevandring|nali/],
+];
+
+function tripReportRegion(article: ArticleEntry): TripReportRegion {
+  const haystack = `${article.slug} ${(article.tags ?? []).join(' ')}`.toLowerCase();
+  return REGION_RULES.find(([, pattern]) => pattern.test(haystack))?.[0] ?? 'northern-norway';
+}
+
+const publishedArticles = Object.values(articlesJson as Record<string, ArticleEntry>)
+  .filter((a) => a.status === 'published')
+  .sort((a, b) => (a.sortOrder ?? 999) - (b.sortOrder ?? 999));
+
+const toListItem = (a: ArticleEntry) => ({
+  title: a.title,
+  slug: a.slug,
+  category: a.category,
+  readTime: `${a.readTime ?? 5} min`,
+  status: 'published' as const,
+});
+
+const categoryMeta = [
   {
     id: 'safety',
     title: 'Safety & Preparation',
@@ -37,27 +81,6 @@ const categories = [
     borderHover: 'hover:border-[#D32F2F]/40',
     shadowHover: 'hover:shadow-[#D32F2F]/10',
     ctaColor: 'text-[#D32F2F]',
-    articles: [
-      {
-        title: 'The Mountain Code: 9 rules every hiker in Norway must follow',
-        slug: 'fjellvettreglene-mountain-code',
-        readTime: '12 min',
-        status: 'published' as const,
-      },
-
-      {
-        title: 'What to pack for Arctic Norway, month by month',
-        slug: 'arctic-norway-packing-guide',
-        readTime: '12 min',
-        status: 'published' as const,
-      },
-      {
-        title: 'Allemannsretten explained: your rights and obligations',
-        slug: 'allemannsretten-right-to-roam',
-        readTime: '6 min',
-        status: 'published' as const,
-      },
-    ],
   },
   {
     id: 'trip-reports',
@@ -70,75 +93,29 @@ const categories = [
     borderHover: 'hover:border-[#1A365D]/40',
     shadowHover: 'hover:shadow-[#1A365D]/10',
     ctaColor: 'text-[#1A365D]',
-    articles: [
-      { title: 'RIB Fjordsafari Geirangerfjord: what the cruise ship cannot show you', slug: 'rib-fjordsafari-geirangerfjord-review', readTime: '8 min', status: 'published' as const, region: 'fjords' as TripReportRegion },
-      { title: 'Kayaking beneath the Seven Sisters: 4 hours on Geirangerfjord at paddle height', slug: 'kayaking-seven-sisters-geirangerfjord', readTime: '9 min', status: 'published' as const, region: 'fjords' as TripReportRegion },
-      { title: 'Geiranger by car: Eagle Road, Flydalsjuvet, and Dalsnibba in one drive', slug: 'geiranger-by-car-eagle-road-dalsnibba', readTime: '10 min', status: 'published' as const, region: 'fjords' as TripReportRegion },
-      { title: 'Storseterfossen: walking behind a 30-meter waterfall above Geirangerfjord', slug: 'storseterfossen-walk-behind-waterfall-geiranger', readTime: '9 min', status: 'published' as const, region: 'fjords' as TripReportRegion },
-      { title: 'Fossevandring: 327 stone steps through the waterfalls of Geiranger village', slug: 'fossevandring-waterfall-walk-geiranger', readTime: '7 min', status: 'published' as const, region: 'fjords' as TripReportRegion },
-      { title: 'Løsta viewpoint: the short, steep hike to Geirangerfjord\u2019s best panorama', slug: 'losta-viewpoint-hike-geiranger', readTime: '8 min', status: 'published' as const, region: 'fjords' as TripReportRegion },
-      { title: 'Skageflå mountain farm: a Red-grade hike to the abandoned ledge above the Seven Sisters', slug: 'skagefla-mountain-farm-geirangerfjord', readTime: '10 min', status: 'published' as const, region: 'fjords' as TripReportRegion },
-      { title: 'Nærøyfjord electric ferry: 2 hours through the world\'s narrowest UNESCO fjord', slug: 'naeroyfjord-electric-ferry-review', readTime: '8 min', status: 'published' as const, region: 'fjords' as TripReportRegion },
-      { title: 'Flåm Railway: 866 meters in 55 minutes on one of the world\'s steepest standard-gauge lines', slug: 'flam-railway-myrdal-review', readTime: '9 min', status: 'published' as const, region: 'fjords' as TripReportRegion },
-      { title: 'Kayaking Nærøyfjord from Gudvangen: what 250-meter walls look like at water level', slug: 'kayaking-naeroyfjord-guided-review', readTime: '9 min', status: 'published' as const, region: 'fjords' as TripReportRegion },
-      { title: 'Rimstigen: 850 meters above Nærøyfjord on a medieval farmers\' path', slug: 'rimstigen-naeroyfjord-trail-report', readTime: '10 min', status: 'published' as const, region: 'fjords' as TripReportRegion },
-      { title: 'Trolltunga from Skjeggedal: 27 km, 800 meters, and 30 minutes queuing for the photo', slug: 'trolltunga-skjeggedal-trip-report', readTime: '11 min', status: 'published' as const, region: 'fjords' as TripReportRegion },
-      { title: 'Vøringsfossen: the two viewpoints, the valley floor, and arriving before the tour buses', slug: 'voringsfossen-mabodalen-guide', readTime: '8 min', status: 'published' as const, region: 'fjords' as TripReportRegion },
-      { title: 'Hardanger cider trail in September: orchards, farmgates, and 50 producers in one weekend', slug: 'hardanger-cider-harvest-trail', readTime: '9 min', status: 'published' as const, region: 'fjords' as TripReportRegion },
-      { title: 'Folgefonna glacier walk: crampons at 1,200 meters while the fjord is warm below', slug: 'folgefonna-glacier-walk-report', readTime: '9 min', status: 'published' as const, region: 'fjords' as TripReportRegion },
-      { title: 'Driving the Rv55 Sognefjellet: the highest mountain pass road in Northern Europe', slug: 'sognefjellet-rv55-national-tourist-route', readTime: '10 min', status: 'published' as const, region: 'fjords' as TripReportRegion },
-      { title: 'Urnes Stave Church: 900 years old and still standing above Lustrafjord', slug: 'urnes-stave-church-lustrafjord', readTime: '9 min', status: 'published' as const, region: 'fjords' as TripReportRegion },
-      { title: 'Prest viewpoint above Flåm: the ridge hike that avoids the Stegastein crowd', slug: 'prest-viewpoint-flam-trail', readTime: '8 min', status: 'published' as const, region: 'fjords' as TripReportRegion },
-      { title: 'Norway in a Nutshell from Bergen: the day trip that actually delivers', slug: 'norway-in-a-nutshell-bergen-review', readTime: '10 min', status: 'published' as const, region: 'fjords' as TripReportRegion },
-      { title: 'Besseggen in October: why the shoulder season is worth the cold', slug: 'besseggen-october-trip-report', readTime: '9 min', status: 'coming-soon' as const, region: 'fjords' as TripReportRegion },
-      { title: 'Three nights chasing aurora from Tromso: what actually happened', slug: 'aurora-tromso-trip-report', readTime: '8 min', status: 'coming-soon' as const, region: 'northern-norway' as TripReportRegion },
-    ],
   },
   {
     id: 'planning',
     title: 'Planning Guides',
     description:
-      'The logistics that make or break your trip. Ferry schedules, real driving times, budget breakdowns, and the DNT cabin system explained.',
+      'The logistics that make or break your trip, from the DNT cabin system to timing the Northern Lights season.',
     icon: Map,
     color: 'text-[#00D084]',
     bgColor: 'bg-emerald-50',
     borderHover: 'hover:border-[#00D084]/40',
     shadowHover: 'hover:shadow-[#00D084]/10',
     ctaColor: 'text-emerald-700',
-    articles: [
-      {
-        title: 'Bergen to Lofoten: every route compared (fly, drive, ferry, Hurtigruten)',
-        slug: 'bergen-to-lofoten-routes',
-        readTime: '14 min',
-        status: 'coming-soon' as const,
-      },
-      {
-        title: 'Norway ferry guide 2026: schedules, AutoPASS, and booking',
-        slug: 'norway-ferry-guide',
-        readTime: '12 min',
-        status: 'coming-soon' as const,
-      },
-      {
-        title: 'How much does Norway cost? A real budget breakdown by region',
-        slug: 'norway-cost-budget-guide',
-        readTime: '10 min',
-        status: 'coming-soon' as const,
-      },
-      {
-        title: 'Best time to visit Norway by region and activity',
-        slug: 'best-time-visit-norway',
-        readTime: '11 min',
-        status: 'coming-soon' as const,
-      },
-      {
-        title: 'DNT cabin guide: how the hut system works, keys, and booking',
-        slug: 'dnt-cabin-guide',
-        readTime: '5 min',
-        status: 'published' as const,
-      },
-    ],
   },
 ];
+
+const categories = categoryMeta.map((cat) => {
+  const entries = publishedArticles.filter((a) => SECTION_CATEGORIES[cat.id].includes(a.category));
+  return {
+    ...cat,
+    articles: entries.map(toListItem),
+    tripReports: entries.map((a) => ({ ...toListItem(a), region: tripReportRegion(a) })),
+  };
+});
 
 // Category icon mapping for article list
 const articleIcons: Record<string, typeof Mountain> = {
@@ -195,7 +172,7 @@ export default function KunnskapsbankPage() {
       {/* Hero */}
       <section className="relative overflow-hidden bg-slate-900 text-white -mt-20 pt-20 z-10">
         <Image
-          src="/images/guides/guides_banner.png"
+          src="/images/guides/guides_banner.jpg"
           alt="Norway travel guides — mountain, fjord, and Arctic landscapes"
           fill
           className="object-cover opacity-50"
@@ -247,13 +224,7 @@ export default function KunnskapsbankPage() {
                 {cat.id === 'trip-reports' ? (
                   <TripReportsTabs
                     categoryId={cat.id}
-                    articles={cat.articles.map((a) => ({
-                      title: a.title,
-                      slug: a.slug,
-                      readTime: a.readTime,
-                      status: a.status,
-                      region: ('region' in a ? (a as { region: TripReportRegion }).region : 'fjords') as TripReportRegion,
-                    }))}
+                    articles={cat.tripReports}
                   />
                 ) : (
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -276,19 +247,13 @@ export default function KunnskapsbankPage() {
                           <Clock className="w-3 h-3" aria-hidden="true" />
                           {article.readTime}
                         </span>
-                        {article.status === 'coming-soon' ? (
-                          <span className="text-xs font-bold text-slate-400 uppercase tracking-wide">
-                            {('releaseDate' in article && article.releaseDate) ? `Coming ${(article as any).releaseDate}` : 'Coming soon'}
-                          </span>
-                        ) : (
-                          <Link
-                            href={`/travel-guides/${cat.id}/${article.slug}`}
-                            className={`inline-flex items-center gap-1 text-xs font-bold ${cat.ctaColor} hover:gap-2 transition-all`}
-                          >
-                            Read guide
-                            <ArrowRight className="w-3 h-3" aria-hidden="true" />
-                          </Link>
-                        )}
+                        <Link
+                          href={`/travel-guides/${article.category}/${article.slug}`}
+                          className={`inline-flex items-center gap-1 text-xs font-bold ${cat.ctaColor} hover:gap-2 transition-all`}
+                        >
+                          Read guide
+                          <ArrowRight className="w-3 h-3" aria-hidden="true" />
+                        </Link>
                       </div>
                     </div>
                   ))}

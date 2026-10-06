@@ -25,8 +25,8 @@ All photos used with permission. Credit format: Photo: [Photographer] / nordnorg
 
 | File | Photographer | Subject | Use |
 |---|---|---|---|
-| aurora-tromso_yngve-olsen-1.jpg | Yngve Olsen Saebbe | Aurora over Tromso | Hero/banner |
-| aurora-tromso_yngve-olsen-2.jpg | Yngve Olsen Saebbe | Aurora over Tromso region | Banner |
+| aurora-tromso_yngve-olsen-1.jpg | Yngve Olsen Saebbe | Tromsø city lights at night (no aurora in frame) | Hero/banner |
+| aurora-tromso_yngve-olsen-2.jpg | Yngve Olsen Saebbe | Reindeer racing on snow in Tromsø (no aurora in frame) | Banner |
 | aurora-museum_tromso-museum.jpg | Tromso Museum | Northern lights display | Feature |
 | aurora-kvaloya_vegard-stien.jpg | Vegard Stien / Raw Studios | Northern lights, abandoned house Kvaloya | Feature |
 | aurora-lavvo.jpg | Uncredited | Aurora over lavvo tent | Feature |

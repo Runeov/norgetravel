@@ -169,7 +169,6 @@ export const altaRestaurants: CityRestaurant[] = [
       cuisine: 'international',
       pricePoint: '$$',
       address: 'Markedsgata 3, 9510 Alta, Norway',
-      website: 'https://www.griegseafood.no/produksjon/grieg-seafood-finnmark-gsff/',
       reservationRequired: false,
       openingHours: 'Monday: 8:00\u202FAM\u2009\u2013\u20094:00\u202FPM; Tuesday: 8:00\u202FAM\u2009\u2013\u20094:00\u202FPM; Wednesday: 8:00\u202FAM\u2009\u2013\u20094:00\u202FPM...',
       description: "Restaurant in Alta. Description pending editorial review.",

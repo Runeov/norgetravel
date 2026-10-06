@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useLocalizedRouter } from '@/lib/use-localized-router';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -112,7 +112,7 @@ function CardDetailPanel({
   onBack: () => void;
   onNavigateAway?: () => void;
 }) {
-  const router = useRouter();
+  const router = useLocalizedRouter();
 
   return (
     <motion.div
@@ -204,7 +204,7 @@ export function ZoneDetailView({
   selectedCard: externalCard,
   onCardChange,
 }: ZoneDetailViewProps) {
-  const router = useRouter();
+  const router = useLocalizedRouter();
   const [internalTab, setInternalTab] = useState(0);
   const [internalCard, setInternalCard] = useState<number | null>(null);
 

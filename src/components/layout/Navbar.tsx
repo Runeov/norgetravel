@@ -1,9 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import Image from 'next/image';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
+import { useLocalizedRouter } from '@/lib/use-localized-router';
 import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
 import logoNorgeTravel from '@/assets/norgeTravel.png';
 import { useTripMap } from '@/context/TripMapContext';
@@ -26,7 +27,7 @@ export function Navbar({ dict }: { dict?: any }) {
   });
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
+  const router = useLocalizedRouter();
   const { openMap } = useTripMap();
   const { itemCount } = useTrip();
 

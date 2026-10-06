@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import {
   Clock,
   Calendar,
@@ -143,7 +143,7 @@ const featuredGuides: ActivityGuide[] = [
     price: 'From 610 NOK',
     season: 'May\u2013Sep',
     icon: <Ship className="w-5 h-5" aria-hidden="true" />,
-    href: 'https://www.getyourguide.com/geiranger-l4560/geirangerfjord-sightseeing-boat-with-audio-guide-t637010/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
+    href: 'https://www.getyourguide.com/geiranger-l4560/geiranger-fjord-and-waterfalls-sightseeing-boat-trip-t637010/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
     linkLabel: 'Check availability',
     isExternal: true,
   },

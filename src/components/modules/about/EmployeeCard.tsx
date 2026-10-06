@@ -3,7 +3,7 @@
 import { Employee } from '@/types/admin';
 import { MapPin } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 
 const ZONE_COLORS: Record<string, { bg: string; text: string; border: string }> = {
   Bergen:     { bg: 'bg-[#0E7490]/10', text: 'text-[#0E7490]', border: 'border-[#0E7490]' },

@@ -31,10 +31,11 @@ export async function generateMetadata({
     return {
       metadataBase: new URL(siteUrl),
       title: {
-        template: '%s | 挪威旅行 (NorgeTravel)',
-        default: '挪威旅行 2026 – 午夜太阳探险、峡湾游轮与北极徒步',
+        // Page titles already carry the brand ("… | NorgeTravel"), so no suffix here
+        template: '%s',
+        default: '挪威旅行 | 当地专家撰写的挪威旅行指南 | NorgeTravel',
       },
-      description: '2026年挪威旅行的权威指南。拥有当地专家见解的午夜太阳皮划艇、零排放峡湾游轮、冰川徒步及可持续的北极探险。',
+      description: '当地专家撰写的挪威旅行指南：北极光、峡湾游轮、北极徒步、冬季自驾与可持续住宿。',
       keywords: [
         '挪威旅游',
         '挪威峡湾',
@@ -57,12 +58,12 @@ export async function generateMetadata({
         locale: 'zh_CN',
         url: siteUrl,
         siteName: 'NorgeTravel',
-        images: [{ url: '/og-image-2026.jpg', width: 1200, height: 630, alt: '挪威峡湾上空的北极光' }],
+        images: [{ url: '/og-image-2026.jpg', width: 1200, height: 630, alt: '挪威北部西格纳尔山谷奥特廷峰上空的北极光' }],
       },
       twitter: {
         card: 'summary_large_image',
         title: '挪威旅行 2026 | 北极探险',
-        description: '提供午夜太阳探险、峡湾游轮和可持续的挪威旅游专家指南。',
+        description: '提供北极光、峡湾游轮和可持续挪威旅行的专家指南。',
         images: ['/og-image-2026.jpg'],
       },
     };
@@ -71,10 +72,11 @@ export async function generateMetadata({
   return {
     metadataBase: new URL(siteUrl),
     title: {
-      template: '%s | NorgeTravel.com',
-      default: 'NorgeTravel 2026 – Midnight Sun Adventures, Fjord Cruises & Arctic Hiking',
+      // Page titles already carry the brand ("… | NorgeTravel"), so no suffix here
+      template: '%s',
+      default: 'NorgeTravel | Norway Travel Guides from Local Experts',
     },
-    description: 'The definitive guide to Norge travel in 2026. Midnight sun kayaking, zero-emission fjord cruises, glacier hikes, and sustainable Arctic adventures with expert local insights.',
+    description: 'Norway travel guides from local experts: Northern Lights, fjord cruises, Arctic hiking, winter driving and sustainable places to stay.',
     keywords: [
       'Norge travel 2026',
       'Norge fjords',
@@ -98,12 +100,12 @@ export async function generateMetadata({
       locale: 'en_US',
       url: siteUrl,
       siteName: 'NorgeTravel.com',
-      images: [{ url: '/og-image-2026.jpg', width: 1200, height: 630, alt: 'Northern Lights over a Norwegian Fjord' }],
+      images: [{ url: '/og-image-2026.jpg', width: 1200, height: 630, alt: 'Northern Lights over Otertind in Signaldalen, Northern Norway' }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'NorgeTravel 2026 | Arctic Summer Adventures',
-      description: 'Expert guides for midnight sun adventures, fjord cruises, and sustainable Norway travel.',
+      title: 'NorgeTravel | Arctic Norway Travel Guides',
+      description: 'Expert guides to the Northern Lights, fjord cruises, Arctic hiking and sustainable travel in Norway.',
       images: ['/og-image-2026.jpg'],
     },
   };
@@ -125,7 +127,7 @@ export default async function RootLayout({
     '@type': 'TravelAgency',
     'name': 'NorgeTravel.com',
     'url': siteUrl,
-    'logo': `${siteUrl}/norgeTravel.png`,
+    'logo': `${siteUrl}/norgeTravel.jpg`,
     'description': 'Leading provider of sustainable Arctic adventures and Northern Lights tours for the 2026 season.',
     'address': {
       '@type': 'PostalAddress',

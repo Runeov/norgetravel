@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, MapPin } from 'lucide-react';
 import type { MapZone } from '@/data/norway-map-zones';

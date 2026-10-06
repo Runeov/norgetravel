@@ -13,7 +13,7 @@ export const RestaurantSchema = TravelItemBaseSchema.extend({
   reservationRequired: z.boolean().default(false),
   reservationUrl: z.string().url().nullable().optional(),
   dietaryOptions: z.array(z.string()).default([]),
-  averageMealPrice: z.string().optional(),
+  averageMealPrice: z.string().nullish(),
   michelinStars: z.number().min(0).max(3).nullable().optional(),
   specialties: z.array(z.string()).default([]),
   seatingCapacity: z.number().min(0).nullable().optional(),

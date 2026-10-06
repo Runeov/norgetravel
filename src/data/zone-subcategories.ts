@@ -75,7 +75,7 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
           },
           {
             title: 'North Cape',
-            content: 'North Cape (Nordkapp) stands at 71\u00B008\u2019N on the island of Magerøya \u2014 the symbolic northernmost point of mainland Europe. The 307-meter cliff drops straight into the Barents Sea. In summer, the midnight sun hangs above the horizon from May 13 to July 29. In winter, the polar night and aurora make the drive worth the ice. The E69 from Honningsv\u00E5g is 34 km of exposed Arctic road.',
+            content: 'North Cape (Nordkapp) stands at 71\u00B008\u2019N on the island of Magerøya \u2014 the symbolic northernmost point of Europe. The 307-meter cliff drops straight into the Barents Sea. In summer, the midnight sun hangs above the horizon from May 13 to July 29. In winter, the polar night and aurora make the drive worth the ice. The E69 from Honningsv\u00E5g is 34 km of exposed Arctic road.',
             highlights: ['71\u00B008\u2019N \u2014 symbolic northern tip of Europe', 'Midnight sun: May 13 \u2013 July 29', '307-meter cliff into the Barents Sea', 'E69 from Honningsv\u00E5g: 34 km, open year-round'],
             ctaLink: '/destinations/northern-norway',
             ctaText: 'Explore North Cape',
@@ -110,7 +110,7 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         title: 'Activities',
         shortDesc: 'Arctic experiences across every season',
         content:
-          'Northern Lights chase tours, dog sledding across frozen lakes, midnight sun hiking, and whale watching \u2014 Northern Norway runs on extreme seasons. Solar Cycle 25 makes 2026\u201327 the last peak aurora window until 2031. The midnight sun delivers 69 days of 24-hour daylight. The wildlife follows the herring.',
+          'Northern Lights chase tours, dog sledding across frozen lakes, midnight sun hiking, and whale watching. Northern Norway runs on extreme seasons. Solar Cycle 25 reached its maximum in 2024\u201325; strong storms get rarer as it declines toward minimum around 2030, but at 69\u00B0N the aurora appears on clear, dark nights every winter. The midnight sun delivers 69 days of 24-hour daylight. The wildlife follows the herring.',
         bullets: [
           'Northern Lights Tours \u2014 chase the aurora from Troms\u00F8',
           'Dog Sledding \u2014 husky teams through Arctic wilderness',
@@ -118,16 +118,16 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
           'Arctic Wildlife \u2014 whales, eagles, and reindeer',
         ],
         bulletImages: [
-          '/pics/subcategory_tours/nordlys_banner.png',
-          '/pics/subcategory_activities/arctic_huskey_sledfront_banner.png',
-          '/pics/subcategory_activities/Midnattsol_padler_fjell_banner.png',
-          '/pics/subcategory_activities/arctic_reinsdyr_i_kulde_banner.png',
+          '/pics/subcategory_tours/nordlys_banner.jpg',
+          '/pics/subcategory_activities/arctic_huskey_sledfront_banner.jpg',
+          '/pics/subcategory_activities/Midnattsol_padler_fjell_banner.jpg',
+          '/pics/subcategory_activities/arctic_reinsdyr_i_kulde_banner.jpg',
         ],
         bulletDetails: [
           {
             title: 'Northern Lights Tours',
-            content: 'Solar Cycle 25 peaked in 2024\u201325 \u2014 the most intense aurora activity in over a decade. The 2026\u201327 season is the final elevated window before the 11-year decline to solar minimum. Troms\u00F8 sits inside the auroral oval at 69\u00B0N. Chase tours depart nightly, driving 50\u2013200 km toward clear skies using real-time magnetometer data.',
-            highlights: ['Last peak aurora season until 2031', 'Expert-guided chase tours from Troms\u00F8, nightly Sep\u2013Mar', 'KP3+ geomagnetic storm alerts included', 'Svalbard expeditions from $5,432/person (3 nights)'],
+            content: 'NASA and NOAA declared Solar Cycle 25 at its maximum in October 2024, and activity now declines toward a minimum around 2030. That matters less than the marketing suggests: Troms\u00F8 sits under the auroral oval at 69\u00B0N, where a Kp 3 night with a clear sky is enough at any point in the cycle. Chase tours depart nightly, driving 50\u2013200 km toward clear skies using real-time magnetometer data.',
+            highlights: ['Aurora every winter at 69\u00B0N, not just at solar maximum', 'Expert-guided chase tours from Troms\u00F8, nightly Sep\u2013Mar', 'KP3+ geomagnetic storm alerts included', 'Svalbard expeditions from $5,432/person (3 nights)'],
             ctaLink: '/tjenester/northern-lights',
             ctaText: 'Book Northern Lights tours',
           },
@@ -162,11 +162,11 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         shortDesc: 'Festivals and seasonal happenings across the Arctic',
         bulletImages: [
           '/pics/subcategory_events/riddu_banner.jpg',
-          '/pics/subcategory_events/MSM_Banner.png',
+          '/pics/subcategory_events/MSM_Banner.jpg',
           '/pics/subcategory_events/riddu_banner.jpg',
           '/pics/subcategory_events/olavfestdagene_banner.jpg',
           '/pics/subcategory_events/traena_banner.jpg',
-          '/pics/subcategory_tours/nordlys_banner.png',
+          '/pics/subcategory_tours/nordlys_banner.jpg',
           '/images/lyngen/activities/whale-safari-skjervoy_francisco-damm.jpg',
           '/images/lyngen/northern-lights/aurora-otertind_petr-pavlicek.jpg',
         ],
@@ -666,7 +666,7 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
         bulletImages: [
           '/pics/svalbard/expedition.jpeg',
           '/pics/svalbard/expedition_boat.jpeg',
-          '/pics/subcategory_activities/arctic_huskey_sledfront_banner.png',
+          '/pics/subcategory_activities/arctic_huskey_sledfront_banner.jpg',
           '/pics/svalbard/expedition_boat2.jpeg',
         ],
         bulletDetails: [
@@ -1448,7 +1448,7 @@ export const zoneSubcategories: Record<string, ZoneDetailData> = {
           '/images/senja/landscapes/senja-scenic_baard-loeken.jpg',
           '/images/senja/landscapes/senja-panorama_dji.jpg',
           '/Banners/ornes_banner.jpg',
-          '/pics/subcategory_activities/Midnattsol_padler_fjell_banner.png',
+          '/pics/subcategory_activities/Midnattsol_padler_fjell_banner.jpg',
           '/Banners/bodo_banner.jpg',
         ],
         content:

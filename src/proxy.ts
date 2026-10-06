@@ -5,7 +5,26 @@ import { checkAuthFromRequest, getSessionFromRequest } from '@/lib/admin/auth';
 const locales = ['en', 'zh', 'ja'];
 const defaultLocale = 'en';
 
+// Most internal links are unprefixed (e.g. /destinations/lofoten), so keep the
+// visitor in the language of the page they clicked from. Uses the Referer
+// header rather than a cookie, so no preference is stored on the device.
+function localeFromReferer(request: NextRequest): string | null {
+  const referer = request.headers.get('referer');
+  if (!referer) return null;
+  try {
+    const url = new URL(referer);
+    if (url.host !== request.nextUrl.host) return null;
+    const segment = url.pathname.split('/')[1];
+    return locales.includes(segment) ? segment : null;
+  } catch {
+    return null;
+  }
+}
+
 function getLocale(request: NextRequest): string {
+  const fromReferer = localeFromReferer(request);
+  if (fromReferer) return fromReferer;
+
   const acceptLanguage = request.headers.get('accept-language');
   if (!acceptLanguage) return defaultLocale;
 

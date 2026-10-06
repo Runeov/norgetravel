@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ArrowRight, ArrowLeft, MapPin, Waves, Mountain, Calendar, Ship, Clock } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { GeirangerActivities } from '@/components/modules/destinations/GeirangerActivities';
@@ -312,7 +312,7 @@ export default async function FjordPage({ params }: PageProps) {
             >
               <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 bg-slate-200">
                 <Image
-                  src="/pics/team/ingrid_profile.png"
+                  src="/pics/team/ingrid_profile.jpg"
                   alt="Ingrid Solheim, Fjord Logistics Editor at Norgetravel"
                   fill
                   className="object-cover"

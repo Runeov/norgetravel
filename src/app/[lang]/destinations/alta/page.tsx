@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ArrowRight, MapPin, Clock, Thermometer, Compass } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { ShareButtons } from '@/components/ui/ShareButtons';
@@ -136,8 +136,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: 'Alta & Sápmi Travel Guide 2026 | NorgeTravel',
   description:
-    'Alta, Finnmark, and the Sami heartland. UNESCO rock carvings 7,000 years old, Finnmarksløpet dog race, Kautokeino Easter Festival, and aurora above the Finnmarksvidda plateau.',
-  alternates: { canonical: 'https://norgetravel.com/destinations/alta' },
+    'Alta, Finnmark and the Sami heartland: UNESCO rock carvings 7,000 years old, the Finnmarksløpet dog race, Kautokeino Easter Festival and plateau aurora.',
 };
 
 const facts = [
@@ -476,7 +475,7 @@ export default function AltaPage() {
           <div className="max-w-2xl mx-auto">
             <Link href="/om-oss/bjorn-haugen" className="group flex items-start gap-5 bg-white rounded-lg border border-slate-200 p-6 hover:shadow-md transition-shadow">
               <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 bg-slate-200">
-                <Image src="/pics/team/bjorn_profile.png" alt="Bjørn Haugen, Arctic Field Editor at NorgeTravel" fill className="object-cover" sizes="64px" />
+                <Image src="/pics/team/bjorn_profile.jpg" alt="Bjørn Haugen, Arctic Field Editor at NorgeTravel" fill className="object-cover" sizes="64px" />
               </div>
               <div className="min-w-0">
                 <p className="text-xs font-semibold text-[#6D28D9] uppercase tracking-wide mb-1">The Arctic</p>

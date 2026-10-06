@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ArrowRight } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import heroImage from '@/assets/Hero_aboutUS.png';
 
 export const metadata: Metadata = {
   title: 'Remote Cabin Stays Norway 2026 — Hytter & Rorbuer | NorgeTravel',
-  description: 'Book remote Norwegian cabin stays — Lofoten rorbuer, Arctic hytter, and off-grid wilderness lodges. Booking.com and Novasol affiliate links with commission transparency.',
+  description: 'Remote cabin stays in Norway: Lofoten rorbuer, Arctic hytter and off-grid wilderness lodges, with Booking.com and Novasol affiliate links disclosed.',
 };
 
 const cabinTypes = [

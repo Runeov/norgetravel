@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ArrowLeft, RefreshCw } from 'lucide-react';
 
 export default function TransportError({ reset }: { reset: () => void }) {

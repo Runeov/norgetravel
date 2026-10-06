@@ -14,12 +14,12 @@ const WESTERN_DICTIONARY: KeywordLink[] = [
   // --- TOURS & ACTIVITIES ---
   {
     keyword: 'fjord tour',
-    url: 'https://www.getyourguide.com/norwegian-fjords-l134812/?partner_id=5DXMTLJ&utm_medium=online_publisher', 
+    url: 'https://www.getyourguide.com/norway-l169022/?partner_id=5DXMTLJ&utm_medium=online_publisher', 
     title: 'Book a Fjord Tour',
   },
   {
     keyword: 'guided hike',
-    url: 'https://www.getyourguide.com/norway-l36/hiking-tc95/?partner_id=5DXMTLJ&utm_medium=online_publisher', 
+    url: 'https://www.getyourguide.com/norway-l169022/hiking-tc71/?partner_id=5DXMTLJ&utm_medium=online_publisher', 
     title: 'Book Guided Hikes in Norway',
   },
   {

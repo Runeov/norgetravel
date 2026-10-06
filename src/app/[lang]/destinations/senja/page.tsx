@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ArrowRight, MapPin, Clock, Thermometer, Compass } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { ShareButtons } from '@/components/ui/ShareButtons';
@@ -108,7 +108,6 @@ export const metadata: Metadata = {
   title: 'Senja & Vesterålen Travel Guide 2026 | NorgeTravel',
   description:
     'Senja and Vesterålen without the Lofoten crowds. Sperm whales year-round off Andenes, the Segla ridge, the Fv862 scenic road, and how to get here from Tromsø.',
-  alternates: { canonical: 'https://norgetravel.com/destinations/senja' },
 };
 
 const facts = [
@@ -257,7 +256,7 @@ export default function SenjaPage() {
                 price: 'From 1,990 NOK',
                 duration: '10–12 hours',
                 highlight: 'Brensholmen–Botnhamn ferry, Segla viewpoint at Bergsbotn, Tungeneset, and the fishing village of Husøy. Small-group minibus with local guide. Summer only (ferry-dependent, late May to late August).',
-                affiliateUrl: 'https://www.getyourguide.com/tromso-l235/senja-day-trip-tc1088/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
+                affiliateUrl: 'https://www.getyourguide.com/tromso-l32375/day-trips-tc360/senja-tl97773/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
               },
               {
                 name: 'Aurora chase from Finnsnes',
@@ -442,7 +441,7 @@ export default function SenjaPage() {
           <div className="max-w-2xl mx-auto">
             <Link href="/om-oss/bjorn-haugen" className="group flex items-start gap-5 bg-white rounded-lg border border-slate-200 p-6 hover:shadow-md transition-shadow">
               <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 bg-slate-200">
-                <Image src="/pics/team/bjorn_profile.png" alt="Bjørn Haugen, Arctic Field Editor at NorgeTravel" fill className="object-cover" sizes="64px" />
+                <Image src="/pics/team/bjorn_profile.jpg" alt="Bjørn Haugen, Arctic Field Editor at NorgeTravel" fill className="object-cover" sizes="64px" />
               </div>
               <div className="min-w-0">
                 <p className="text-xs font-semibold text-[#6D28D9] uppercase tracking-wide mb-1">The Arctic</p>

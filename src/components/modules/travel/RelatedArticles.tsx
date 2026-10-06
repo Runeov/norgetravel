@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { Clock, ArrowRight } from 'lucide-react';
 
 interface ArticleSummary {

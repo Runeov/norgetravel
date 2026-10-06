@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 
 // Revalidate the whole page every 24 hours so Google ratings stay current without a manual deploy
 export const revalidate = 86400;
@@ -264,7 +264,7 @@ export default async function TromsoPage() {
             >
               <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 bg-slate-200">
                 <Image
-                  src="/pics/team/bjorn_profile.png"
+                  src="/pics/team/bjorn_profile.jpg"
                   alt="Bjørn Haugen, Arctic Field Editor at NorgeTravel"
                   fill
                   className="object-cover"

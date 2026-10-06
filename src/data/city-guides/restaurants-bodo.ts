@@ -351,7 +351,7 @@ export const bodoRestaurants: CityRestaurant[] = [
       cuisine: 'norwegian',
       pricePoint: '$$',
       address: 'Moloveien 14, 8003 Bod\u00F8, Norway',
-      website: 'http://www.egon.no/restauranter/bodo',
+      website: 'http://www.egon.no/',
       reservationRequired: false,
       openingHours: 'Monday: 11:00\u202FAM\u2009\u2013\u200911:00\u202FPM; Tuesday: 11:00\u202FAM\u2009\u2013\u200911:00\u202FPM; Wednesday: 11:00\u202FAM\u2009\u2013\u200911:00\u202FPM...',
       description: "Restaurant in Bod\u00F8. Description pending editorial review.",

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { notFound } from 'next/navigation';
 import { ArrowRight, CheckCircle2, Clock, MapPin, ExternalLink } from 'lucide-react';
 import {
@@ -32,7 +32,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${label} in the Norwegian Fjords 2026 | NorgeTravel`,
     description: ACTIVITY_BLURBS[activity],
-    alternates: { canonical: `https://norgetravel.com/destinations/fjords/activities/${activity}` },
   };
 }
 

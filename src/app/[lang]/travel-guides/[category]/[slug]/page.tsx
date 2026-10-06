@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Clock, BookOpen, User, Calendar, Tag, ArrowRight } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
@@ -180,7 +180,7 @@ export default async function DynamicArticlePage({ params }: PageProps) {
           </Link>
           <span>/</span>
           <Link
-            href={`/travel-guides/${article.category}`}
+            href={`/travel-guides/#${article.category}`}
             className={`hover:${theme.text} transition-colors`}
           >
             {categoryLabel}
@@ -373,7 +373,7 @@ export default async function DynamicArticlePage({ params }: PageProps) {
 
           {/* Author card */}
           <Link
-            href={`/om-oss/${article.authorId}`}
+            href={article.authorId ? `/om-oss/${article.authorId}` : '/om-oss'}
             className="block group mb-8"
           >
             <div className={`${theme.bg} border ${theme.border} p-6 rounded-2xl hover:shadow-md transition-shadow`}>
