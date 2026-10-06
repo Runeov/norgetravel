@@ -10,6 +10,12 @@ export interface NorthernLightsOperatorCopy {
   priceFrom: string;
   commission: string;
   highlight: string;
+  /** Review score and count with source and month, e.g. "4.9 of 5 from 1,886 reviews on GetYourGuide, October 2026" */
+  rating: string;
+  /** Verified destination (Rules.md section 19). Affiliate params only when sponsored is true. */
+  url: string;
+  /** true adds rel="sponsored" and means the commission line shows a real rate */
+  sponsored: boolean;
 }
 
 export interface NorthernLightsTipCopy {
@@ -79,34 +85,43 @@ export const NORTHERN_LIGHTS_COPY: Record<Locale, NorthernLightsCopy> = {
     },
     quickAnswerLabel: 'Quick answer',
     quickAnswer:
-      'The Northern Lights season in Norway (Norge) runs from late September to late March, and Tromsø, at 69°N under the auroral oval, is the base. Kp 2 to 3 is enough for an overhead display here, so a clear sky is the one condition that matters. You can join a small-group chase from 1,290 NOK, book a private guide (about €100 per person for a group of 4) who drives up to 200 km in a night to find clear sky, or rent a car and drive out of the city light yourself. Plan four nights minimum: the polar night, 27 November to 15 January, still gives twilight at midday, and in September and March the sky is dark from about 21:00.',
+      'The Northern Lights season in Norway (Norge) runs from late September to late March, and Tromsø, at 69°N under the auroral oval, is the base. Kp 2 to 3 is enough for an overhead display here, so a clear sky is the one condition that matters. You can join a small-group chase from 1,290 NOK, book a private guide who drives up to 200 km in a night to find clear sky, or rent a car and drive out of the city light yourself. Plan four nights minimum: the polar night, 27 November to 15 January, still gives twilight at midday, and in September and March the sky is dark from about 21:00.',
     operators: {
       heading: 'Recommended operators',
       disclosure:
-        "Affiliate disclosure: NorgeTravel earns a commission when you book via our links. This doesn't change your price. Operators are selected independently.",
+        "Affiliate disclosure: NorgeTravel earns a commission on the links that show one. The others pay us nothing; they are here because their reviews are strong. Your price is the same either way.",
       commission: 'Commission: ',
-      cta: 'Check availability',
+      cta: 'See tours and prices',
       items: [
         {
-          name: 'GetYourGuide — Tromsø Aurora',
-          type: 'Group & private tours',
+          name: 'GetYourGuide: Northern Lights Chase, Tromsø',
+          type: 'Small-group minibus chase',
           priceFrom: 'From 1,290 NOK',
           commission: '7%',
-          highlight: 'Largest selection of vetted guides. Some operators rebook or refund when a chase is cancelled for weather; check each tour’s terms.',
+          highlight: 'Snow-travels drives until the group finds clear sky, and the guide takes the photos. Some operators rebook or refund when a chase is cancelled for weather; check the tour terms.',
+          rating: '4.9 of 5 from 1,886 reviews on GetYourGuide, October 2026',
+          url: 'https://www.getyourguide.com/tromso-l32375/tromso-small-group-northern-lights-tour-wit-minibus-t525013/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
+          sponsored: true,
         },
         {
-          name: 'Viator — Northern Lights Chase',
-          type: 'Group tours',
-          priceFrom: 'From 1,290 NOK',
-          commission: '8–10%',
-          highlight: 'Best price for group bookings. Mobile tickets. 24/7 support.',
+          name: 'Viator: Northern Lights Minibus Chase, Tromsø',
+          type: 'Small-group minibus chase',
+          priceFrom: 'Price on Viator',
+          commission: 'None. No partner link yet',
+          highlight: 'Small-group chase with photos and warm suits included. Mobile tickets and 24/7 support.',
+          rating: '1,451 reviews on Viator, October 2026',
+          url: 'https://www.viator.com/tours/Tromso/Northern-Lights-Trip/d4362-89661P1',
+          sponsored: false,
         },
         {
-          name: 'Local Private Guides',
-          type: 'Private (2–8 people)',
-          priceFrom: '€400/group',
-          commission: '€40+ flat',
-          highlight: 'Maximum flexibility. Guide chooses the location based on real-time forecast.',
+          name: 'Polar Adventures, Tromsø',
+          type: 'Local operator, small groups',
+          priceFrom: 'Price on the operator site',
+          commission: 'None. Chosen for its reviews',
+          highlight: 'Tromsø-based operator running small-group Northern Lights chases, with more than a thousand TripAdvisor reviews behind it.',
+          rating: 'TripAdvisor 4.6 (1,427 reviews), Google 4.5 (545 reviews), October 2026',
+          url: 'https://www.polaradventures.no/',
+          sponsored: false,
         },
       ],
     },
@@ -123,7 +138,7 @@ export const NORTHERN_LIGHTS_COPY: Record<Locale, NorthernLightsCopy> = {
         },
         {
           title: 'Private tour vs group',
-          body: 'A private guide for 4 people costs ~€100/person and can drive up to 200 km in a night. Group tours are fixed-route, fine if skies are clear.',
+          body: 'A private guide can drive up to 200 km in a night and picks the spot from the live forecast. Group tours follow a fixed route, which is fine when skies are clear.',
         },
         {
           title: 'Hurtigruten Northern Lights Promise',
@@ -146,7 +161,7 @@ export const NORTHERN_LIGHTS_COPY: Record<Locale, NorthernLightsCopy> = {
       {
         question: 'How much does a Northern Lights tour in Tromsø cost, and do you need one?',
         answer:
-          'Small-group chases start at 1,290 NOK per person on GetYourGuide and Viator. A private guide costs from €400 per group of 2 to 8 people, about €100 per person for 4, and can drive up to 200 km in a night to wherever the forecast is clear. You do not need a tour if you have a rental car: Kvaløya, 25 minutes west of the city centre, has no light pollution. Group tours are fixed-route, which is fine when the sky is clear.',
+          'Small-group chases start at 1,290 NOK per person on GetYourGuide and Viator. A private guide can drive up to 200 km in a night to wherever the forecast is clear. Private prices are set by each operator. You do not need a tour if you have a rental car: Kvaløya, 25 minutes west of the city centre, has no light pollution. Group tours are fixed-route, which is fine when the sky is clear.',
       },
       {
         question: 'When is the polar night in Tromsø, and is it dark all day?',
@@ -188,34 +203,43 @@ export const NORTHERN_LIGHTS_COPY: Record<Locale, NorthernLightsCopy> = {
     },
     quickAnswerLabel: '快速回答',
     quickAnswer:
-      '挪威的极光季从9月下旬持续到次年3月下旬，基地选在北纬69°、正处于极光椭圆带下方的特罗姆瑟。在这里Kp 2到3就足以让极光出现在头顶，所以唯一真正重要的条件是晴朗的天空。您可以参加1,290挪威克朗起的小团追光，请一位私人向导（4人每人约€100，一晚最多开200公里去找晴空），或者自己租车开出城市灯光。至少安排4晚：极夜（11月27日至1月15日）正午仍有微光，9月和3月大约21:00以后天就全黑了。',
+      '挪威的极光季从9月下旬持续到次年3月下旬，基地选在北纬69°、正处于极光椭圆带下方的特罗姆瑟。在这里Kp 2到3就足以让极光出现在头顶，所以唯一真正重要的条件是晴朗的天空。您可以参加1,290挪威克朗起的小团追光，请一位私人向导（一晚最多开200公里去找晴空），或者自己租车开出城市灯光。至少安排4晚：极夜（11月27日至1月15日）正午仍有微光，9月和3月大约21:00以后天就全黑了。',
     operators: {
       heading: '推荐运营商',
       disclosure:
-        '联盟披露：您通过我们的链接预订时，NorgeTravel 会获得佣金。这不会改变您支付的价格。运营商由我们独立挑选。',
+        '联盟声明：标注佣金的链接会给 NorgeTravel 带来佣金，其余链接我们不赚钱，列出它们是因为评价好。您支付的价格不受影响。',
       commission: '佣金：',
-      cta: '查看可订日期',
+      cta: '查看行程与价格',
       items: [
         {
-          name: 'GetYourGuide 特罗姆瑟极光团',
-          type: '拼团和私人团',
+          name: 'GetYourGuide：特罗姆瑟追极光小团',
+          type: '小团小巴追光',
           priceFrom: '1,290挪威克朗起',
           commission: '7%',
-          highlight: '经过审核的向导选择最多。部分运营商在因天气取消追光时会改期或退款，请查看每个团的条款。',
+          highlight: 'Snow-travels 会一直开到找到晴空为止，向导负责拍照。部分运营商在因天气取消时可改期或退款，请查看该团的条款。',
+          rating: 'GetYourGuide 评分 4.9/5，1,886 条评价（2026年10月）',
+          url: 'https://www.getyourguide.com/tromso-l32375/tromso-small-group-northern-lights-tour-wit-minibus-t525013/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
+          sponsored: true,
         },
         {
-          name: 'Viator 追极光团',
-          type: '拼团',
-          priceFrom: '1,290挪威克朗起',
-          commission: '8–10%',
-          highlight: '团体预订价格最低。手机电子票。7×24小时客服。',
+          name: 'Viator：特罗姆瑟小巴追极光',
+          type: '小团小巴追光',
+          priceFrom: '价格见 Viator',
+          commission: '无，暂无合作链接',
+          highlight: '小团追光，含照片和保暖服。手机电子票，7×24小时客服。',
+          rating: 'Viator 上 1,451 条评价（2026年10月）',
+          url: 'https://www.viator.com/tours/Tromso/Northern-Lights-Trip/d4362-89661P1',
+          sponsored: false,
         },
         {
-          name: '本地私人向导',
-          type: '私人团（2–8人）',
-          priceFrom: '每团 €400',
-          commission: '固定 €40 以上',
-          highlight: '安排最灵活。向导根据实时预报选择观测地点。',
+          name: 'Polar Adventures（特罗姆瑟）',
+          type: '本地运营商，小团',
+          priceFrom: '价格见运营商网站',
+          commission: '无，因评价好而推荐',
+          highlight: '特罗姆瑟本地运营商，经营小团追极光，TripAdvisor 上有一千多条评价。',
+          rating: 'TripAdvisor 4.6（1,427 条评价），Google 4.5（545 条评价），2026年10月',
+          url: 'https://www.polaradventures.no/',
+          sponsored: false,
         },
       ],
     },
@@ -232,7 +256,7 @@ export const NORTHERN_LIGHTS_COPY: Record<Locale, NorthernLightsCopy> = {
         },
         {
           title: '私人团还是拼团',
-          body: '4人请一位私人向导，每人约 €100，一晚最多可以开200公里。拼团路线固定，天空晴朗时也够用。',
+          body: '私人向导一晚最多可以开200公里，并根据实时预报选地点。拼团路线固定，天空晴朗时也够用。',
         },
         {
           title: '海达路德极光承诺',
@@ -255,7 +279,7 @@ export const NORTHERN_LIGHTS_COPY: Record<Locale, NorthernLightsCopy> = {
       {
         question: '特罗姆瑟极光团多少钱，需要跟团吗？',
         answer:
-          'GetYourGuide和Viator上的小团追光每人1,290挪威克朗起。私人向导每团（2–8人）€400起，4人的话每人约€100，一晚最多开200公里，预报哪里晴就去哪里。如果您租了车，不跟团也可以：市中心以西25分钟车程的克瓦尔岛（Kvaløya）没有光污染。拼团路线固定，天空晴朗时也够用。',
+          'GetYourGuide和Viator上的小团追光每人1,290挪威克朗起。私人向导一晚最多开200公里，预报哪里晴就去哪里，价格由各运营商自定。如果您租了车，不跟团也可以：市中心以西25分钟车程的克瓦尔岛（Kvaløya）没有光污染。拼团路线固定，天空晴朗时也够用。',
       },
       {
         question: '极夜是什么时候，白天完全黑吗？',
@@ -297,34 +321,43 @@ export const NORTHERN_LIGHTS_COPY: Record<Locale, NorthernLightsCopy> = {
     },
     quickAnswerLabel: '要点',
     quickAnswer:
-      'ノルウェーのオーロラシーズンは9月下旬から3月下旬までで、拠点はオーロラオーバルの真下、北緯69度のトロムソです。ここではKp 2〜3で頭上にオーロラが出るため、本当に重要な条件は晴れた空だけです。1,290クローネからの少人数追跡ツアーに参加するか、プライベートガイド（4人なら1人約€100、晴れ間を探して一晩に最大200km走ります）を頼むか、レンタカーで自分で街の明かりの外へ出るかを選べます。滞在は最低4泊を見てください。極夜（11月27日〜1月15日）でも正午には薄明かりがあり、9月と3月は21:00ごろから空が暗くなります。',
+      'ノルウェーのオーロラシーズンは9月下旬から3月下旬までで、拠点はオーロラオーバルの真下、北緯69度のトロムソです。ここではKp 2〜3で頭上にオーロラが出るため、本当に重要な条件は晴れた空だけです。1,290クローネからの少人数追跡ツアーに参加するか、プライベートガイド（晴れ間を探して一晩に最大200km走ります）を頼むか、レンタカーで自分で街の明かりの外へ出るかを選べます。滞在は最低4泊を見てください。極夜（11月27日〜1月15日）でも正午には薄明かりがあり、9月と3月は21:00ごろから空が暗くなります。',
     operators: {
       heading: 'おすすめのツアー会社',
       disclosure:
-        'アフィリエイトについて：当サイトのリンクから予約されると、NorgeTravelに紹介料が支払われます。お客様の支払う料金は変わりません。ツアー会社は独自に選んでいます。',
+        'アフィリエイト表示：紹介料の記載があるリンクからの予約でNorgeTravelは紹介料を受け取ります。記載のないリンクからは何も受け取らず、レビューの高さで選んでいます。料金はどちらも変わりません。',
       commission: '紹介料：',
-      cta: '空き状況を確認',
+      cta: 'ツアーと料金を見る',
       items: [
         {
-          name: 'GetYourGuide トロムソのオーロラツアー',
-          type: 'グループツアー・プライベートツアー',
+          name: 'GetYourGuide：トロムソ オーロラ追跡ツアー',
+          type: '少人数ミニバスの追跡ツアー',
           priceFrom: '1,290クローネから',
           commission: '7%',
-          highlight: '審査済みガイドの品ぞろえが最大です。天候で追跡ツアーが中止になった場合、再予約や返金に対応する会社もあります。各ツアーの条件を確認してください。',
+          highlight: 'Snow-travelsは晴れ間が見つかるまで走り、ガイドが写真を撮ります。天候で中止の場合に振替や返金をする事業者もあるので、ツアーの条件を確認してください。',
+          rating: 'GetYourGuide評価4.9/5、レビュー1,886件（2026年10月時点）',
+          url: 'https://www.getyourguide.com/tromso-l32375/tromso-small-group-northern-lights-tour-wit-minibus-t525013/?partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
+          sponsored: true,
         },
         {
-          name: 'Viator オーロラ追跡ツアー',
-          type: 'グループツアー',
-          priceFrom: '1,290クローネから',
-          commission: '8〜10%',
-          highlight: 'グループ予約なら最安です。モバイルチケット対応。24時間年中無休のサポート。',
+          name: 'Viator：トロムソ ミニバス追跡ツアー',
+          type: '少人数ミニバスの追跡ツアー',
+          priceFrom: '料金はViatorで',
+          commission: 'なし。提携リンクは未設定',
+          highlight: '写真と防寒スーツ込みの少人数追跡ツアーです。モバイルチケット対応、24時間サポート。',
+          rating: 'Viatorのレビュー1,451件（2026年10月時点）',
+          url: 'https://www.viator.com/tours/Tromso/Northern-Lights-Trip/d4362-89661P1',
+          sponsored: false,
         },
         {
-          name: '地元のプライベートガイド',
-          type: 'プライベート（2〜8人）',
-          priceFrom: '1グループ€400',
-          commission: '定額€40以上',
-          highlight: '自由度が最も高いツアーです。ガイドがリアルタイムの予報をもとに観測地を選びます。',
+          name: 'Polar Adventures（トロムソ）',
+          type: '地元の事業者、少人数',
+          priceFrom: '料金は公式サイトで',
+          commission: 'なし。レビューの高さで選びました',
+          highlight: 'トロムソ拠点の事業者で、少人数のオーロラ追跡ツアーを運行しています。TripAdvisorに1,000件を超えるレビューがあります。',
+          rating: 'TripAdvisor 4.6（レビュー1,427件）、Google 4.5（レビュー545件）、2026年10月時点',
+          url: 'https://www.polaradventures.no/',
+          sponsored: false,
         },
       ],
     },
@@ -341,7 +374,7 @@ export const NORTHERN_LIGHTS_COPY: Record<Locale, NorthernLightsCopy> = {
         },
         {
           title: 'プライベートツアーかグループツアーか',
-          body: '4人でプライベートガイドを頼むと1人約€100で、一晩に最大200km走ってくれます。グループツアーはルートが決まっていますが、晴れていれば十分です。',
+          body: 'プライベートガイドは一晩に最大200km走り、リアルタイムの予報で観測地を選びます。グループツアーはルートが決まっていますが、晴れていれば十分です。',
         },
         {
           title: 'フッティルーテンのオーロラ保証（Northern Lights Promise）',
@@ -364,7 +397,7 @@ export const NORTHERN_LIGHTS_COPY: Record<Locale, NorthernLightsCopy> = {
       {
         question: 'トロムソのオーロラツアーの費用は？ツアーは必要ですか？',
         answer:
-          'GetYourGuideとViatorの少人数追跡ツアーは1人1,290クローネからです。プライベートガイドは1グループ（2〜8人）€400から、4人なら1人約€100で、予報が晴れの場所へ一晩に最大200km走ってくれます。レンタカーがあればツアーは必須ではなく、中心部から西へ車で25分のクヴァル島（Kvaløya）には光害がありません。グループツアーはルートが決まっていますが、晴れていれば十分です。',
+          'GetYourGuideとViatorの少人数追跡ツアーは1人1,290クローネからです。プライベートガイドは予報が晴れの場所へ一晩に最大200km走ってくれます。料金は事業者ごとに異なります。レンタカーがあればツアーは必須ではなく、中心部から西へ車で25分のクヴァル島（Kvaløya）には光害がありません。グループツアーはルートが決まっていますが、晴れていれば十分です。',
       },
       {
         question: '極夜はいつからいつまでですか？',

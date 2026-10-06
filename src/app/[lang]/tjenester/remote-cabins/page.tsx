@@ -7,7 +7,7 @@ import { localizedMetadata } from '@/lib/i18n-seo';
 
 export const generateMetadata = localizedMetadata('tjenester/remote-cabins', {
   title: 'Remote Cabin Stays Norway 2026 — Hytter & Rorbuer | NorgeTravel',
-  description: 'Remote cabin stays in Norway: Lofoten rorbuer, Arctic hytter and off-grid wilderness lodges, with Booking.com and Novasol affiliate links disclosed.',
+  description: 'Remote cabin stays in Norway: Lofoten rorbuer, Arctic hytter and off-grid wilderness lodges, with where to book and what a night costs.',
 });
 
 const cabinTypes = [
@@ -37,18 +37,21 @@ const cabinTypes = [
   },
 ];
 
+// Destinations verified live, October 2026. No partner programme is active, so no link carries affiliate parameters.
 const operators = [
   {
-    name: 'Booking.com',
-    via: 'Awin / Commission Junction',
-    rate: 'Tiered — up to 25%',
-    note: 'Largest inventory of Norwegian cabins. Filter by "entire home" and "rural" to find the rorbuer and mountain hyttер.',
+    name: 'Booking.com, Norway',
+    meta: 'No commission yet',
+    note: 'Largest inventory of Norwegian cabins. Filter by "entire home" and "rural" to find the rorbuer and mountain hytter.',
+    url: 'https://www.booking.com/country/no.en-gb.html',
+    cta: 'Search cabins on Booking.com',
   },
   {
-    name: 'Novasol',
-    via: 'Awin',
-    rate: '2.5%',
-    note: 'Scandinavian specialist with 30,000 cabins across Norway, Sweden, and Denmark. Best for Lofoten and coastal Norway inventory.',
+    name: 'Eliassen Rorbuer, Hamnøy',
+    meta: 'No commission. Booked directly with the owner',
+    note: 'Rorbu cabins on Hamnøy in Lofoten, between the bridges on the E10 with Olstind straight across the water. One of the most photographed rorbu rows in Norway, booked directly.',
+    url: 'https://rorbuer.no/',
+    cta: 'See the cabins',
   },
 ];
 
@@ -119,20 +122,21 @@ export default function RemoteCabinsPage() {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-slate-900 mb-3">Where to book</h2>
           <p className="text-slate-500 text-sm mb-10">
-            Affiliate disclosure: NorgeTravel earns a commission on bookings via these links. Your price is unchanged.
+            Disclosure: these links pay NorgeTravel nothing today. If a partner programme goes live, the card will say so, and your price stays the same.
           </p>
           <div className="grid sm:grid-cols-2 gap-6 max-w-3xl">
             {operators.map((op) => (
               <div key={op.name} className="border border-slate-200 rounded-2xl p-6 flex flex-col">
                 <h3 className="font-bold text-xl text-slate-900 mb-1">{op.name}</h3>
-                <p className="text-xs text-slate-400 mb-3">Via {op.via} · {op.rate}</p>
+                <p className="text-xs text-slate-400 mb-3">{op.meta}</p>
                 <p className="text-slate-600 text-sm leading-relaxed flex-1">{op.note}</p>
                 <a
-                  href="#"
-                  rel="noopener noreferrer sponsored"
+                  href={op.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="mt-4 inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-full hover:shadow-lg hover:-translate-y-0.5 transition-all"
                 >
-                  Search cabins <ArrowRight className="ml-2 h-4 w-4" />
+                  {op.cta} <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                 </a>
               </div>
             ))}

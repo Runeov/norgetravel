@@ -383,7 +383,7 @@ export default function SenjaPage() {
                 <p className="text-slate-600 text-sm mb-3">
                   Tromsø is the easiest entry for Senja (2 to 3 hours drive plus the summer-only Brensholmen–Botnhamn ferry). Harstad/Narvik Evenes is the closest major airport to both archipelagos. Widerøe flies to Andenes directly.
                 </p>
-                <a href="https://www.kiwi.com/deep?from=OSL&to=TOS" rel="noopener noreferrer sponsored" className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                <a href="https://www.kiwi.com/deep?from=OSL&to=TOS" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
                   Search flights <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
               </div>
@@ -393,9 +393,9 @@ export default function SenjaPage() {
               <div className="flex-1">
                 <p className="font-bold text-slate-900">Drive from Tromsø or Harstad</p>
                 <p className="text-slate-600 text-sm mb-3">
-                  Tromsø to Senja (Botnhamn) via the summer ferry Brensholmen–Botnhamn: 40 minutes on the water, 3 hours total. Winter route via E6 and Finnsnes: 4 hours. Harstad to Andenes on the Andøya scenic route: 3 hours. Studded tyres required in winter.
+                  Tromsø to Senja (Botnhamn) via the summer ferry Brensholmen–Botnhamn: 40 minutes on the water, 3 hours total. Winter route via E6 and Finnsnes: 4 hours. Harstad to Andenes on the Andøya scenic route: 3 hours. Winter tyres are required when conditions call for them; studded tyres are allowed from 16 October to 30 April.
                 </p>
-                <a href="https://www.discovercars.com/?pos=TOS" rel="noopener noreferrer sponsored" className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                <a href="https://www.discovercars.com/?pos=TOS" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
                   Compare car rentals <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
               </div>
@@ -407,7 +407,7 @@ export default function SenjaPage() {
                 <p className="text-slate-600 text-sm mb-3">
                   The Bergen–Kirkenes coastal route stops at both. Stokmarknes has the Hurtigruten Museum. From there, Andenes is 2 hours by car. Pair a Hurtigruten segment with a rental to see both archipelagos.
                 </p>
-                <a href="https://www.hurtigruten.com/en" rel="noopener noreferrer sponsored" className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                <a href="https://www.hurtigruten.com/en" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
                   Browse sailings <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
               </div>

@@ -188,7 +188,7 @@ export default async function LofotenPage() {
                 </p>
                 <a
                   href="https://www.kiwi.com/deep?from=OSL&to=SVJ"
-                  rel="noopener noreferrer sponsored"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
                 >
                   Search flights <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -203,8 +203,8 @@ export default async function LofotenPage() {
                   Torghatten Nord operates the car ferry across the Vestfjord. 3–4 hours crossing. 3–4 daily sailings in summer, 1–2 in winter. Pre-booking strongly advised for vehicles in July–August. Passenger-only express boats (hurtigbåt) also run.
                 </p>
                 <a
-                  href="https://www.torghatten-nord.no"
-                  rel="noopener noreferrer sponsored"
+                  href="https://www.torghatten.no/"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
                 >
                   Ferry schedule <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -220,7 +220,7 @@ export default async function LofotenPage() {
                 </p>
                 <a
                   href="https://www.discovercars.com/?pos=EVE"
-                  rel="noopener noreferrer sponsored"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
                 >
                   Compare car rentals <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -236,7 +236,7 @@ export default async function LofotenPage() {
                 </p>
                 <a
                   href="https://www.hurtigruten.com/en"
-                  rel="noopener noreferrer sponsored"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
                 >
                   Browse sailings <ArrowRight className="h-4 w-4" aria-hidden="true" />

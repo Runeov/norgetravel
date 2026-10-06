@@ -191,7 +191,7 @@ export default async function TromsoPage({ params }: { params: Promise<{ lang: s
                 </p>
                 <a
                   href="https://www.kiwi.com/deep?from=OSL&to=TOS"
-                  rel="noopener noreferrer sponsored"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
                 >
                   {copy.gettingThere.flights.cta} <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -207,7 +207,7 @@ export default async function TromsoPage({ params }: { params: Promise<{ lang: s
                 </p>
                 <a
                   href="https://www.hurtigruten.com/en"
-                  rel="noopener noreferrer sponsored"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
                 >
                   {copy.gettingThere.hurtigruten.cta} <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -223,7 +223,7 @@ export default async function TromsoPage({ params }: { params: Promise<{ lang: s
                 </p>
                 <a
                   href="https://www.discovercars.com/?pos=TOS"
-                  rel="noopener noreferrer sponsored"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
                 >
                   {copy.gettingThere.driving.cta} <ArrowRight className="h-4 w-4" aria-hidden="true" />

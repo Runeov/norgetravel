@@ -16,6 +16,7 @@ import {
   UtensilsCrossed,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { outboundRel } from '@/lib/outbound-rel';
 
 export interface FeaturedActivity {
   title: string;
@@ -151,7 +152,7 @@ export function DestinationActivities({
                       {a.isExternal ? (
                         <a
                           href={a.href}
-                          rel="noopener noreferrer sponsored"
+                          rel={outboundRel(a.href)}
                           target="_blank"
                           className="inline-flex items-center gap-1 text-sm font-bold text-[#1A365D] hover:text-[#00D084] transition-colors"
                         >
@@ -200,7 +201,7 @@ export function DestinationActivities({
                   <div className="mt-auto pt-3 border-t border-slate-100">
                     <a
                       href={tour.affiliateUrl}
-                      rel="noopener noreferrer sponsored"
+                      rel={outboundRel(tour.affiliateUrl)}
                       target="_blank"
                       className="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:shadow-[#1B3A5C]/20 hover:-translate-y-0.5 transition-all min-h-[44px]"
                     >
@@ -215,7 +216,7 @@ export function DestinationActivities({
               <div className="text-center">
                 <a
                   href={toursFooterHref}
-                  rel="noopener noreferrer sponsored"
+                  rel={outboundRel(toursFooterHref)}
                   target="_blank"
                   className="inline-flex items-center gap-2 text-sm font-medium text-[#1A365D] hover:text-[#00D084] transition-colors min-h-[44px]"
                 >

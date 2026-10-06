@@ -1439,7 +1439,7 @@ export const osloRestaurants: CityRestaurant[] = [
       cuisine: 'norwegian',
       pricePoint: '$$',
       address: 'Storgata 10, 0155 Oslo, Norway',
-      website: 'https://diningsix.no/basso-social/',
+      website: 'https://bassosocial.no/',
       reservationRequired: false,
       openingHours: 'Monday: 4:00\u2009\u2013\u20098:30\u202FPM; Tuesday: 4:00\u2009\u2013\u20098:30\u202FPM; Wednesday: 4:00\u2009\u2013\u20098:30\u202FPM...',
       description: "Restaurant in Oslo. Description pending editorial review.",

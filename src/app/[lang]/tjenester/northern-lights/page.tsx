@@ -99,14 +99,19 @@ export default async function NorthernLightsPage({ params }: { params: Promise<{
                 <div className="flex-1">
                   <h3 className="font-bold text-slate-900 mb-1">{op.name}</h3>
                   <p className="text-sm text-slate-500 mb-3">{op.type}</p>
+                  <p className="flex items-start gap-1.5 text-sm text-slate-700 mb-3">
+                    <Star className="w-4 h-4 mt-0.5 shrink-0 text-[#1B3A5C]" aria-hidden="true" />
+                    {op.rating}
+                  </p>
                   <p className="text-2xl font-bold text-[#1B3A5C] mb-4">{op.priceFrom}</p>
                   <p className="text-sm text-slate-600 mb-4 leading-relaxed">{op.highlight}</p>
                 </div>
                 <div className="pt-4 border-t border-slate-100">
                   <p className="text-xs text-slate-400 mb-3">{copy.operators.commission}{op.commission}</p>
                   <a
-                    href="#"
-                    rel={operatorRel}
+                    href={op.url}
+                    target="_blank"
+                    rel={op.sponsored ? operatorRel : 'noopener noreferrer'}
                     className="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-full hover:shadow-lg hover:shadow-[#1B3A5C]/30 hover:-translate-y-0.5 transition-all"
                   >
                     {copy.operators.cta} <ArrowRight className="ml-2 h-4 w-4" />
