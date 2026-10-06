@@ -20,6 +20,17 @@ const nextConfig = {
         destination: '/travel-guides/:path*',
         permanent: true,
       },
+      // Duplicate DNT cabin guides merged into the canonical dnt-cabin-guide
+      {
+        source: '/:lang(en|zh|ja)/travel-guides/planning/:slug(dnt-cabin-guide-western|dnt-cabin-guide-china|dnt-cabin-guide-combined)',
+        destination: '/:lang/travel-guides/planning/dnt-cabin-guide',
+        permanent: true,
+      },
+      {
+        source: '/travel-guides/planning/:slug(dnt-cabin-guide-western|dnt-cabin-guide-china|dnt-cabin-guide-combined)',
+        destination: '/travel-guides/planning/dnt-cabin-guide',
+        permanent: true,
+      },
     ];
   },
 };
