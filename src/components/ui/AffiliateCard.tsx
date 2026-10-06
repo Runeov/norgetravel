@@ -1,6 +1,7 @@
 import Link from '@/components/LocalizedLink';
 import { ArrowRight, ExternalLink } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { outboundRel } from '@/lib/outbound-rel';
 
 export interface AffiliateCardProps {
   /** Partner name */
@@ -129,7 +130,7 @@ export function AffiliateCard({
           <a
             href={signUpUrl}
             target="_blank"
-            rel="noopener noreferrer sponsored"
+            rel={outboundRel(signUpUrl)}
             className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] hover:shadow-md hover:shadow-[#1B3A5C]/20 transition-all"
           >
             Join program

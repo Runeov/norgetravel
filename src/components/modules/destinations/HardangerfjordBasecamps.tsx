@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { MapPin, Mountain, Apple, Ship, Clock, CheckCircle, XCircle, Info, ExternalLink } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { outboundRel } from '@/lib/outbound-rel';
 
 interface InternalAccommodationTags {
   coords?: { lat: number; lng: number };
@@ -570,7 +571,7 @@ export default function HardangerfjordBasecamps() {
                           <a
                             href={acc.bookingUrl}
                             target="_blank"
-                            rel="noopener noreferrer sponsored"
+                            rel={outboundRel(acc.bookingUrl)}
                             className="inline-flex items-center gap-1 mt-2 text-xs font-semibold text-[#1A365D] hover:text-[#00CC6A] transition-colors"
                           >
                             Check availability

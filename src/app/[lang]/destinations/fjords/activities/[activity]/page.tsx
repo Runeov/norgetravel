@@ -13,6 +13,7 @@ import {
   getToursByCategory,
   type ActivityCategory,
 } from '@/data/fjord-tours';
+import { outboundRel } from '@/lib/outbound-rel';
 
 interface PageProps {
   params: Promise<{ activity: string; lang: string }>;
@@ -146,7 +147,7 @@ export default async function FjordActivityPage({ params }: PageProps) {
                   <a
                     href={tour.affiliateUrl}
                     target="_blank"
-                    rel="noopener noreferrer sponsored"
+                    rel={outboundRel(tour.affiliateUrl)}
                     className="group inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-bold text-[#1A365D] bg-[#00D084] hover:bg-[#00B875] rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00D084]"
                   >
                     Book this tour

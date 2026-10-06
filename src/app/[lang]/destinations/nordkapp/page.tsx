@@ -386,7 +386,7 @@ export default function NordkappPage() {
                 <p className="text-slate-600 text-sm mb-3">
                   Nordkapp is one of the headline port calls on the Bergen–Kirkenes coastal route. Northbound arrivals are timed to allow the optional cape excursion. The most common way visitors reach the cape — and the easiest in winter.
                 </p>
-                <a href="https://www.hurtigruten.com/en" rel="noopener noreferrer sponsored" className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                <a href="https://www.hurtigruten.com/en" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
                   Browse sailings <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
               </div>
@@ -398,7 +398,7 @@ export default function NordkappPage() {
                 <p className="text-slate-600 text-sm mb-3">
                   Widerøe flies to Honningsvåg with connections from Tromsø. Alta is the larger airport — 240 km south of Honningsvåg, 3 hours 30 minutes by road. Most self-drive travellers route Oslo–Alta–Nordkapp.
                 </p>
-                <a href="https://www.kiwi.com/deep?from=OSL&to=ALF" rel="noopener noreferrer sponsored" className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                <a href="https://www.kiwi.com/deep?from=OSL&to=ALF" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
                   Search flights <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
               </div>
@@ -410,7 +410,7 @@ export default function NordkappPage() {
                 <p className="text-slate-600 text-sm mb-3">
                   Alta to Nordkapp: 240 km via E6 and E69. The Nordkapptunnelen (6.9 km, 212 m below sea level) connects Magerøya to the mainland. In winter, the final 14 km from Skarsvåg to the cape runs as a convoy only — twice daily escorts, weather-dependent. Studded tyres mandatory.
                 </p>
-                <a href="https://www.discovercars.com/?pos=ALF" rel="noopener noreferrer sponsored" className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                <a href="https://www.discovercars.com/?pos=ALF" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
                   Compare car rentals <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
               </div>

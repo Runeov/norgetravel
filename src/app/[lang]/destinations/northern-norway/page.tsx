@@ -168,7 +168,7 @@ export default async function NorthernNorwayPage() {
                 </p>
                 <a
                   href="https://www.kiwi.com/deep?from=OSL&to=TOS"
-                  rel="noopener noreferrer sponsored"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
                 >
                   Search flights <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -184,7 +184,7 @@ export default async function NorthernNorwayPage() {
                 </p>
                 <a
                   href="https://www.hurtigruten.com/en"
-                  rel="noopener noreferrer sponsored"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
                 >
                   Browse sailings <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -200,7 +200,7 @@ export default async function NorthernNorwayPage() {
                 </p>
                 <a
                   href="https://www.discovercars.com/?pos=TOS"
-                  rel="noopener noreferrer sponsored"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
                 >
                   Compare car rentals <ArrowRight className="h-4 w-4" aria-hidden="true" />

@@ -8,6 +8,7 @@ import { EVENT_TYPE_LABELS } from '@/lib/schemas/travel.events.schema';
 import { formatEventDateRange, isUpcoming, EVENT_TYPE_COLORS } from '@/lib/utils/event-helpers';
 import { AddToTripButton } from '@/components/ui/AddToTripButton';
 import type { TripItem } from '@/types/trip';
+import { outboundRel } from '@/lib/outbound-rel';
 
 interface EventCardProps {
   event: Event;
@@ -106,7 +107,7 @@ export function EventCard({ event }: EventCardProps) {
             <a
               href={event.ticketUrl}
               target="_blank"
-              rel="noopener noreferrer sponsored"
+              rel={outboundRel(event.ticketUrl)}
               className="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-sm font-medium rounded-md min-h-[44px] bg-[#1B3A5C] text-white hover:bg-[#15304d] transition-colors flex-1"
             >
               <Ticket className="w-4 h-4" aria-hidden="true" />

@@ -417,7 +417,7 @@ export default function LyngenPage() {
                 <p className="text-slate-600 text-sm mb-3">
                   SAS and Norwegian from Oslo multiple times daily. 2 hours. From Tromsø airport to Lyngseidet via the Breivikeidet–Svensby ferry: 1 hour 30 minutes total (40 minutes drive, 20 minutes ferry, 30 minutes drive).
                 </p>
-                <a href="https://www.kiwi.com/deep?from=OSL&to=TOS" rel="noopener noreferrer sponsored" className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                <a href="https://www.kiwi.com/deep?from=OSL&to=TOS" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
                   Search flights <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
               </div>
@@ -429,7 +429,7 @@ export default function LyngenPage() {
                 <p className="text-slate-600 text-sm mb-3">
                   Breivikeidet–Svensby ferry runs hourly most of the day. 20 minutes on the water. AutoPASS enabled. The alternative is driving around via Nordkjosbotn on the E6 and E8 — 2 hours 30 minutes, longer but all-road.
                 </p>
-                <a href="https://www.discovercars.com/?pos=TOS" rel="noopener noreferrer sponsored" className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                <a href="https://www.discovercars.com/?pos=TOS" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
                   Compare car rentals <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
               </div>

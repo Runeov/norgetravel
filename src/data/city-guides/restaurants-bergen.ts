@@ -44,7 +44,7 @@ export const bergenRestaurants: CityRestaurant[] = [
       cuisine: 'norwegian',
       pricePoint: '$$',
       address: 'Strandgaten 53, 5004 Bergen, Norway',
-      website: 'https://diningsix.no/basso-social/',
+      website: 'https://bassosocial.no/',
       reservationRequired: false,
       openingHours: 'Monday: 5:00\u2009\u2013\u20098:30\u202FPM; Tuesday: 5:00\u2009\u2013\u20098:30\u202FPM; Wednesday: 5:00\u2009\u2013\u20098:30\u202FPM...',
       description: "Restaurant in Bergen. Description pending editorial review.",

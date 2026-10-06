@@ -74,7 +74,7 @@ export function ShareButtons({ url, title, label = 'Share this page', className 
     },
     {
       name: 'WeChat',
-      href: '#',
+      href: fullUrl,
       onClick: (e: React.MouseEvent) => {
         e.preventDefault();
         copy();
@@ -83,7 +83,7 @@ export function ShareButtons({ url, title, label = 'Share this page', className 
     },
     {
       name: 'Xiaohongshu',
-      href: '#',
+      href: fullUrl,
       onClick: (e: React.MouseEvent) => {
         e.preventDefault();
         copy();

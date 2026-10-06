@@ -416,7 +416,7 @@ export default function AltaPage() {
                 <p className="text-slate-600 text-sm mb-3">
                   SAS and Norwegian fly direct from Oslo. 2 hours. Alta Airport is 4 km from the town centre — taxi or rental car. Widerøe connects smaller Finnmark airports (Hammerfest, Kirkenes, Lakselv).
                 </p>
-                <a href="https://www.kiwi.com/deep?from=OSL&to=ALF" rel="noopener noreferrer sponsored" className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                <a href="https://www.kiwi.com/deep?from=OSL&to=ALF" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
                   Search flights <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
               </div>
@@ -426,9 +426,9 @@ export default function AltaPage() {
               <div className="flex-1">
                 <p className="font-bold text-slate-900">Drive the E6 through Finnmark</p>
                 <p className="text-slate-600 text-sm mb-3">
-                  Tromsø to Alta: 409 km via E6 and E8, 6 hours in summer, longer in winter. Alta to Kautokeino: 130 km, 2 hours. Alta to Karasjok: 260 km, 3 hours 30 minutes. Studded tyres required November 1 to the first Sunday after Easter in Nord-Norge.
+                  Tromsø to Alta: 409 km via E6 and E8, 6 hours in summer, longer in winter. Alta to Kautokeino: 130 km, 2 hours. Alta to Karasjok: 260 km, 3 hours 30 minutes. Winter tyres are required when conditions call for them; studded tyres are allowed in Nord-Norge from 16 October to 30 April.
                 </p>
-                <a href="https://www.discovercars.com/?pos=ALF" rel="noopener noreferrer sponsored" className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                <a href="https://www.discovercars.com/?pos=ALF" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
                   Compare car rentals <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
               </div>
@@ -440,7 +440,7 @@ export default function AltaPage() {
                 <p className="text-slate-600 text-sm mb-3">
                   The Bergen–Kirkenes coastal route stops at Hammerfest (3 hours by road from Alta) and Honningsvåg (4 hours 30 minutes). Pair a northbound Hurtigruten segment with a rental out of Alta.
                 </p>
-                <a href="https://www.hurtigruten.com/en" rel="noopener noreferrer sponsored" className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                <a href="https://www.hurtigruten.com/en" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
                   Browse sailings <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
               </div>

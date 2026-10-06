@@ -45,9 +45,22 @@ const routes = [
   },
 ];
 
+// Destinations verified live, October 2026. No partner programme is active, so no link carries affiliate parameters.
 const gear = [
-  { brand: 'Norrøna Sport', via: 'Commission Junction (CJ)', rate: '10%', note: 'Norwegian brand built for Arctic conditions. Lofoten jacket line is purpose-made for this region.' },
-  { brand: '57hours', via: 'Lead-based affiliate', rate: 'Lead fee', note: 'Books guided expeditions with vetted mountain guides. Specialises in remote and technical routes.' },
+  {
+    brand: 'Norrøna',
+    meta: 'No commission yet',
+    note: 'Norwegian brand built for Arctic conditions. The Lofoten line is purpose-made for this region.',
+    url: 'https://www.norrona.com/',
+    cta: 'Visit Norrøna',
+  },
+  {
+    brand: '57hours',
+    meta: 'No commission yet',
+    note: 'Books guided and self-guided trips with vetted local guides. The 8-day self-guided Lofoten hiking tour handles the huts and logistics; you set the pace.',
+    url: 'https://57hours.com/adventure/lofoten-islands-self-guided-hiking-tour/',
+    cta: 'See the Lofoten trip',
+  },
 ];
 
 export default function TrekkingPage() {
@@ -112,20 +125,21 @@ export default function TrekkingPage() {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-slate-900 mb-4">Gear and guided bookings</h2>
           <p className="text-slate-500 text-sm mb-10">
-            Affiliate disclosure: NorgeTravel earns a commission on gear and guide bookings. Your price is unchanged.
+            Disclosure: these links pay NorgeTravel nothing today. If a partner programme goes live, the card will say so, and your price stays the same.
           </p>
           <div className="grid sm:grid-cols-2 gap-6 max-w-3xl">
             {gear.map((g) => (
               <div key={g.brand} className="border border-slate-200 rounded-2xl p-6 flex flex-col">
                 <h3 className="font-bold text-xl text-slate-900 mb-1">{g.brand}</h3>
-                <p className="text-xs text-slate-400 mb-3">Via {g.via} · {g.rate}</p>
+                <p className="text-xs text-slate-400 mb-3">{g.meta}</p>
                 <p className="text-slate-600 text-sm leading-relaxed flex-1">{g.note}</p>
                 <a
-                  href="#"
-                  rel="noopener noreferrer sponsored"
+                  href={g.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="mt-4 inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-full hover:shadow-lg hover:-translate-y-0.5 transition-all"
                 >
-                  Shop / Book <ArrowRight className="ml-2 h-4 w-4" />
+                  {g.cta} <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                 </a>
               </div>
             ))}
