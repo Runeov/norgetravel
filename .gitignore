@@ -40,3 +40,6 @@ ts-debug.log*
 
 # File lock directory (used by admin JSON storage)
 .locks/
+
+# Local secrets kept out of the repo
+.env.txt
