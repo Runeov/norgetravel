@@ -41,6 +41,8 @@ const BASECAMP_ICONS: Record<BasecampIconKey, LucideIcon> = {
   'map-pin': MapPin,
 };
 import { cn } from '@/lib/utils';
+import { AddToTripButton } from '@/components/ui/AddToTripButton';
+import { destinationTripItem } from '@/lib/trip-items';
 
 export interface BasecampAccommodation {
   name: string;
@@ -78,6 +80,10 @@ export interface Basecamp {
 }
 
 interface Props {
+  /** The destination page slug (e.g. `alta`), used to build trip item ids. */
+  destination: string;
+  /** Region name stored as each basecamp's location in the trip planner. Defaults to the capitalised slug. */
+  region?: string;
   heading?: string;
   intro?: string;
   basecamps: Basecamp[];
@@ -85,6 +91,8 @@ interface Props {
 }
 
 export function DestinationBasecamps({
+  destination,
+  region,
   heading = 'Where to base yourself',
   intro,
   basecamps,
@@ -92,6 +100,7 @@ export function DestinationBasecamps({
 }: Props) {
   const [activeBase, setActiveBase] = useState<string>(basecamps[0]?.id ?? '');
   const base = basecamps.find((b) => b.id === activeBase) ?? basecamps[0];
+  const regionLabel = region ?? destination.charAt(0).toUpperCase() + destination.slice(1);
 
   if (!base) return null;
 
@@ -151,6 +160,9 @@ export function DestinationBasecamps({
               {base.distance}
             </span>
           </div>
+          <div className="mt-4">
+            <AddToTripButton item={destinationTripItem({ category: 'cities', name: base.label, destination, location: regionLabel })} />
+          </div>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-4">
@@ -200,6 +212,9 @@ export function DestinationBasecamps({
                     </div>
                     <p className="text-xs font-medium text-[#1A365D] mb-1.5">{acc.price}</p>
                     <p className="text-xs text-slate-600 leading-relaxed">{acc.highlight}</p>
+                    <div className="mt-2">
+                      <AddToTripButton compact item={destinationTripItem({ category: 'accommodation', name: acc.name, destination, location: base.label, priceRange: acc.price })} />
+                    </div>
                   </div>
                 ))}
               </div>

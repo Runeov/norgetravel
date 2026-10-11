@@ -5,6 +5,8 @@ import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { ShareButtons } from '@/components/ui/ShareButtons';
 import { eventsStore } from '@/lib/admin/travel-events';
 import { localizedMetadata } from '@/lib/i18n-seo';
+import { AddToTripButton } from '@/components/ui/AddToTripButton';
+import { destinationTripItem } from '@/lib/trip-items';
 
 export const revalidate = 3600;
 
@@ -114,13 +116,16 @@ export default async function FjordsPage() {
           <p className="text-slate-600 mb-12 max-w-2xl">Norway has over 1,700 named fjords. These four are where most travellers should start.</p>
           <div className="grid lg:grid-cols-2 gap-6">
             {fjords.map((f) => (
-              <Link
+              <div
                 key={f.slug}
-                href={`/destinations/fjords/${f.slug}`}
                 className="group bg-white rounded-2xl p-6 shadow-sm border border-slate-200/50 hover:shadow-md transition-shadow"
               >
                 <div className="flex items-start justify-between mb-3">
-                  <h3 className="font-bold text-xl text-slate-900 group-hover:text-[#1A365D] transition-colors">{f.name}</h3>
+                  <h3 className="font-bold text-xl text-slate-900 group-hover:text-[#1A365D] transition-colors">
+                    <Link href={`/destinations/fjords/${f.slug}`} className="hover:text-[#1A365D] transition-colors">
+                      {f.name}
+                    </Link>
+                  </h3>
                   <div className="flex gap-2">
                     <span className="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-full">{f.length}</span>
                     {f.unesco && <span className="text-xs bg-[#00CC6A]/10 text-[#00CC6A] font-bold px-2 py-1 rounded-full">UNESCO</span>}
@@ -128,11 +133,17 @@ export default async function FjordsPage() {
                 </div>
                 <p className="text-slate-600 text-sm mb-3 leading-relaxed">{f.highlight}</p>
                 <p className="text-slate-500 text-sm mb-4">📍 {f.access}</p>
-                <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#00D084] group-hover:bg-[#00B875] text-[#1A365D] text-sm font-bold rounded-md transition-colors duration-200 min-h-[44px]">
-                  Read full guide
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-                </span>
-              </Link>
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <Link
+                    href={`/destinations/fjords/${f.slug}`}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#00D084] group-hover:bg-[#00B875] text-[#1A365D] text-sm font-bold rounded-md transition-colors duration-200 min-h-[44px]"
+                  >
+                    Read full guide
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                  </Link>
+                  <AddToTripButton compact item={destinationTripItem({ category: 'cities', name: f.name, destination: 'fjords', href: `/destinations/fjords/${f.slug}` })} />
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -145,18 +156,27 @@ export default async function FjordsPage() {
           <p className="text-slate-600 mb-10 max-w-2xl">Norway mandates zero-emission fjord cruises from 2026. These operators are already there.</p>
           <div className="grid sm:grid-cols-3 gap-6 mb-10">
             {operators.map((op) => (
-              <a
+              <div
                 key={op.name}
-                href={op.url}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="block border border-slate-200 rounded-2xl p-6 hover:border-[#1B3A5C] hover:shadow-md transition-all"
               >
-                <h3 className="font-bold text-slate-900 mb-1">{op.name}</h3>
+                <h3 className="font-bold text-slate-900 mb-1">
+                  <a
+                    href={op.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center min-h-[44px] hover:text-[#1B3A5C] transition-colors"
+                  >
+                    {op.name}
+                  </a>
+                </h3>
                 <p className="text-sm text-slate-500 mb-2">{op.route}</p>
                 <p className="text-sm text-slate-600 leading-relaxed mb-3">{op.description}</p>
-                <span className="inline-block text-xs bg-[#00CC6A]/10 text-[#00CC6A] font-medium px-2 py-1 rounded-full">{op.emission}</span>
-              </a>
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <span className="inline-block text-xs bg-[#00CC6A]/10 text-[#00CC6A] font-medium px-2 py-1 rounded-full">{op.emission}</span>
+                  <AddToTripButton compact item={destinationTripItem({ category: 'tours', name: op.name, destination: 'fjords', href: op.url })} />
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -192,6 +212,9 @@ export default async function FjordsPage() {
                       {event.venue as string}
                     </p>
                   )}
+                  <div className="mt-4 pt-3 border-t border-slate-100">
+                    <AddToTripButton compact item={destinationTripItem({ category: 'events', name: event.name, destination: 'fjords', location: event.location, href: event.ticketUrl ?? event.website, startDate: event.startDate, endDate: event.endDate })} />
+                  </div>
                 </div>
               ))}
             </div>

@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { MapPin, Mountain, Apple, Ship, Clock, CheckCircle, XCircle, Info, ExternalLink } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { outboundRel } from '@/lib/outbound-rel';
+import { AddToTripButton } from '@/components/ui/AddToTripButton';
+import { destinationTripItem } from '@/lib/trip-items';
 
 interface InternalAccommodationTags {
   coords?: { lat: number; lng: number };
@@ -514,6 +516,9 @@ export default function HardangerfjordBasecamps() {
           <div className="p-6 space-y-6">
             {/* Overview */}
             <p className="text-slate-700 leading-relaxed">{basecamp.overview}</p>
+            <div>
+              <AddToTripButton item={destinationTripItem({ category: 'cities', name: basecamp.label, destination: 'hardangerfjord', location: 'Hardangerfjord' })} />
+            </div>
 
             {/* Best for / Not ideal for */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -578,6 +583,9 @@ export default function HardangerfjordBasecamps() {
                             <ExternalLink className="w-3 h-3" aria-hidden="true" />
                           </a>
                         )}
+                        <div className="mt-2">
+                          <AddToTripButton compact item={destinationTripItem({ category: 'accommodation', name: acc.name, destination: 'hardangerfjord', location: basecamp.label, href: acc.bookingUrl, priceRange: acc.priceRange })} />
+                        </div>
                       </div>
                     ))}
                   </div>

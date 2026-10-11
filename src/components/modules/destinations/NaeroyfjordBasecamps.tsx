@@ -17,6 +17,8 @@ import {
   Train,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { AddToTripButton } from '@/components/ui/AddToTripButton';
+import { destinationTripItem } from '@/lib/trip-items';
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -388,6 +390,9 @@ export default function NaeroyfjordBasecamps() {
               {base.locationNote}
             </span>
           </div>
+          <div className="mt-4">
+            <AddToTripButton item={destinationTripItem({ category: 'cities', name: base.label, destination: 'naeroyfjord', location: 'Nærøyfjord' })} />
+          </div>
         </div>
 
         {/* Best for / Not ideal for */}
@@ -446,6 +451,9 @@ export default function NaeroyfjordBasecamps() {
                     </div>
                     <p className="text-xs font-medium text-[#1A365D] mb-1.5">{acc.price}</p>
                     <p className="text-xs text-slate-600 leading-relaxed">{acc.highlight}</p>
+                    <div className="mt-2">
+                      <AddToTripButton compact item={destinationTripItem({ category: 'accommodation', name: acc.name, destination: 'naeroyfjord', location: base.label, priceRange: acc.price })} />
+                    </div>
                   </div>
                 ))}
               </div>

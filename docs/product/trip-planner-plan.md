@@ -55,6 +55,10 @@ Verified with Playwright at 390 px and 1366 px: no horizontal overflow, no conso
 - **Kept both.** `/my-trip/` stays as the saved list; the overview page links to it from the saved count.
 - Verified with Playwright at 390 px and 1366 px: pages load, no horizontal overflow, add-to-trip updates the saved count, trip basics survive a reload, the overlay link lands on the zone page and leaves the planner minimised, the article card links to a zone, an unknown zone is a 404.
 
+### Phase 1b, 12 October 2026: "Add to trip" on the destination pages
+
+The owner asked for the options on pages like `/destinations/lofoten/` to be addable. Every option card on the destination pages now carries the button: featured activities, tours, trails and restaurants in each page's activities tabs; each basecamp and every listed place to stay in the basecamps tabs; the events grids; and the destination, fjord, operator and city cards on the hub pages. `src/lib/trip-items.ts` builds the item from the card (stable id from destination, category and name, so "Added" survives a reload), and `AddToTripButton` gained a `compact` variant for dense cards. Saved items keep the card's link, and the saved-trip page links back to it.
+
 ## Phase 2: interests in, suggestions out, no model needed yet (1 to 2 weeks)
 
 A rule engine over our own data, deterministic and explainable:

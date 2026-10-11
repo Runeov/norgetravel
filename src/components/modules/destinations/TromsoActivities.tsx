@@ -27,6 +27,8 @@ import type {
   TromsoTrailId,
 } from '@/i18n/tromso-copy';
 import { outboundRel } from '@/lib/outbound-rel';
+import { AddToTripButton } from '@/components/ui/AddToTripButton';
+import { destinationTripItem } from '@/lib/trip-items';
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -205,7 +207,8 @@ export function TromsoActivities({ copy }: { copy: TromsoActivitiesCopy }) {
                       {text.season}
                     </span>
                   </div>
-                  <div className="mt-auto pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
+                  <div className="mt-auto pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+                    <AddToTripButton compact item={destinationTripItem({ category: 'experiences', name: text.title, destination: 'tromso', href: guide.href, priceRange: text.price })} />
                     {guide.isExternal ? (
                       <a
                         href={guide.href}
@@ -267,7 +270,8 @@ export function TromsoActivities({ copy }: { copy: TromsoActivitiesCopy }) {
                         </span>
                       </div>
                     </div>
-                    <div className="mt-auto pt-3 border-t border-slate-100">
+                    <div className="mt-auto pt-3 border-t border-slate-100 space-y-3">
+                      <AddToTripButton compact className="w-full" item={destinationTripItem({ category: 'tours', name: text.name, destination: 'tromso', href: tour.affiliateUrl, priceRange: text.price })} />
                       <a
                         href={tour.affiliateUrl}
                         rel={outboundRel(tour.affiliateUrl)}
@@ -340,6 +344,9 @@ export function TromsoActivities({ copy }: { copy: TromsoActivitiesCopy }) {
                       </Link>
                     )}
                   </div>
+                  <div className="mt-3">
+                    <AddToTripButton compact item={destinationTripItem({ category: 'experiences', name: text.name, destination: 'tromso', href: trail.slug ? `/travel-guides/trip-reports/${trail.slug}` : undefined })} />
+                  </div>
                 </div>
               );
             })}
@@ -383,6 +390,9 @@ export function TromsoActivities({ copy }: { copy: TromsoActivitiesCopy }) {
                       {copy.rated}
                     </span>
                   )}
+                </div>
+                <div className="mt-3">
+                  <AddToTripButton compact item={destinationTripItem({ category: 'restaurants', name: restaurant.name, destination: 'tromso', priceRange: restaurant.priceRange })} />
                 </div>
               </div>
             ))}
