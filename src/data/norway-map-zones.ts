@@ -5,6 +5,8 @@ export interface MapZone {
   description: string;
   svgPath: string;
   labelPosition: { x: number; y: number };
+  /** Split the map label over several lines. Defaults to the name on one line. */
+  labelLines?: string[];
   href: string;
   color: string;
   stats: { label: string; value: string }[];
@@ -66,17 +68,17 @@ export const cityZonePositions = [
   { name: 'Oslo', x: 92.6, y: 662.1 },
 ];
 
-// Five interactive destination zones
+// Six interactive destination zones
 export const mapZones: MapZone[] = [
   {
     id: 'northern-norway',
     name: 'Northern Norway',
     tagline: 'Aurora capital of the world',
     description:
-      '3,500 km of Arctic coastline stretching from Bodø at 67°N to the Russian border. Tromsø sits inside the auroral oval — on a G2+ storm night, the sky turns green from horizon to horizon.',
+      '3,500 km of Arctic coastline stretching from Bodø at 67°N to the Russian border. Tromsø sits inside the auroral oval. On a G2+ storm night, the sky turns green from horizon to horizon.',
     svgPath:
       'M173.2,228.3 L190.0,194.1 L202.2,173.3 L218.7,173.4 L231.8,165.3 L236.9,141.0 L245.2,132.2 L256.6,134.0 L271.3,160.3 L286.7,153.9 L302.8,166.1 L313.3,147.5 L318.7,105.6 L332.4,89.8 L346.5,82.2 L366.5,120.3 L362.5,141.6 L377.7,120.4 L380.4,106.5 L391.4,108.2 L383.7,101.0 L374.7,101.3 L360.1,80.4 L391.5,62.8 L377.2,46.0 L366.2,38.3 L352.7,60.4 L352.2,47.5 L353.8,36.0 L336.8,31.6 L334.4,50.9 L328.1,49.4 L318.3,50.0 L305.9,67.2 L314.3,36.0 L306.2,35.9 L292.9,41.6 L283.9,62.9 L277.9,86.1 L265.5,66.4 L252.4,71.0 L258.9,95.2 L244.9,92.1 L239.4,109.4 L230.3,122.5 L232.9,89.9 L224.3,114.1 L214.9,109.3 L211.1,121.2 L203.8,116.0 L193.3,142.8 L178.0,169.6 L193.6,174.4 L179.5,176.8 L175.9,196.5 L170.9,187.5 L160.8,199.8 L156.3,202.5 L160.7,215.2 L165.8,227.3 L157.3,225.4 L147.8,242.5 L149.6,247.2 L156.1,304.7 L173.9,258.5 L173.2,228.3Z',
-    labelPosition: { x: 290, y: 120 },
+    labelPosition: { x: 280, y: 136 },
     href: '/destinations/northern-norway',
     color: '#00CC6A',
     stats: [
@@ -92,7 +94,7 @@ export const mapZones: MapZone[] = [
     name: 'Lofoten Islands',
     tagline: 'Mountains straight out of the sea',
     description:
-      '170 km of jagged granite peaks rising 1,000m directly from the Norwegian Sea. Red rorbuer, stockfish racks, and the E10 — one road in, one road out. 800,000 visitors in summer, 24,000 residents year-round.',
+      '170 km of jagged granite peaks rising 1,000m directly from the Norwegian Sea. Red rorbuer, stockfish racks, and the E10: one road in, one road out. 800,000 visitors in summer, 24,000 residents year-round.',
     svgPath:
       'M120.9,170.0 L135.0,160.0 L155.0,165.0 L160.0,180.0 L155.0,200.0 L148.9,215.0 L138.0,230.0 L125.0,235.0 L115.0,225.0 L112.0,210.0 L110.0,195.0 L115.0,180.0 L120.9,170.0Z',
     labelPosition: { x: 120, y: 195 },
@@ -111,10 +113,11 @@ export const mapZones: MapZone[] = [
     name: 'Norwegian Fjords',
     tagline: 'Two UNESCO sites, zero-emission from 2026',
     description:
-      'Geirangerfjord and Nærøyfjord carry UNESCO World Heritage status. From January 2026, all vessels must meet zero-emission standards. Hurtigruten and Havila Voyages are fully compliant — book with confidence.',
+      'Geirangerfjord and Nærøyfjord carry UNESCO World Heritage status. From January 2026, all vessels must meet zero-emission standards. Hurtigruten and Havila Voyages are fully compliant.',
     svgPath:
       'M6.3,559.4 L10.0,573.9 L17.0,591.6 L31.3,586.9 L41.1,583.8 L45.1,589.9 L35.6,594.2 L11.7,597.3 L9.1,620.8 L9.4,631.7 L14.7,653.1 L9.2,666.6 L12.6,670.9 L21.7,645.4 L33.9,631.2 L27.4,637.0 L18.2,665.0 L22.1,671.7 L11.9,677.6 L15.8,697.6 L28.2,682.2 L21.8,703.6 L27.6,714.2 L15.1,724.4 L29.5,756.6 L31.0,765.9 L35.5,764.5 L52.4,763.0 L70.2,729.2 L77.0,713.7 L82.7,712.6 L87.5,688.2 L90.9,679.9 L97.6,706.2 L105.8,718.5 L108.7,674.4 L117.1,654.9 L117.7,617.7 L121.9,593.8 L118.3,567.3 L112.8,509.0 L113.3,481.0 L120.9,432.0 L140.2,427.8 L138.9,399.2 L148.9,334.5 L156.1,304.7 L149.6,247.2 L147.8,242.5 L137.9,259.4 L135.1,268.9 L126.9,289.7 L141.2,297.3 L125.6,313.2 L115.2,339.0 L116.5,360.4 L118.6,365.7 L100.7,385.4 L97.6,393.5 L79.5,433.3 L79.0,450.5 L95.8,434.2 L100.7,431.5 L98.0,444.6 L91.9,459.2 L80.5,458.4 L69.0,459.5 L60.4,451.4 L61.3,466.2 L60.9,492.5 L46.7,479.5 L33.1,501.7 L53.3,501.0 L45.5,511.5 L27.5,507.9 L29.0,517.3 L21.9,519.6 L12.7,534.2 L14.4,546.0 L22.5,555.0 L6.3,559.4Z',
-    labelPosition: { x: 55, y: 580 },
+    labelPosition: { x: 66, y: 560 },
+    labelLines: ['Norwegian', 'Fjords'],
     href: '/destinations/fjords',
     color: '#5CBFEE',
     stats: [
@@ -128,9 +131,9 @@ export const mapZones: MapZone[] = [
   {
     id: 'svalbard',
     name: 'Svalbard',
-    tagline: '78°N — the far Arctic',
+    tagline: '78°N, the far Arctic',
     description:
-      'Polar bears outnumber people 3:1. A direct 3-hour flight from Oslo lands you in Longyearbyen — the world\'s northernmost town with a permanent population. Four months of polar night, four of midnight sun.',
+      'Polar bears outnumber people 3:1. A direct 3-hour flight from Oslo lands you in Longyearbyen, the world\'s northernmost town with a permanent population. Four months of polar night, four of midnight sun.',
     svgPath: svalbardSpitsbergen,
     labelPosition: { x: 100, y: 140 },
     href: '/destinations/svalbard',
@@ -146,9 +149,9 @@ export const mapZones: MapZone[] = [
   {
     id: 'boat-routes',
     name: 'Boat Routes',
-    tagline: 'Bergen to Kirkenes — 34 ports, 11 nights',
+    tagline: 'Bergen to Kirkenes: 34 ports, 11 nights',
     description:
-      'The Kystruten coastal express has connected 34 Norwegian ports since 1893. Hurtigruten and Havila Voyages run alternating sailings on the full Bergen–Kirkenes route — 2,545 km of coastline, fjords, Arctic wilderness, and working fishing communities.',
+      'The Kystruten coastal express has connected 34 Norwegian ports since 1893. Hurtigruten and Havila Voyages run alternating sailings on the full Bergen–Kirkenes route: 2,545 km of coastline, fjords, Arctic wilderness, and working fishing communities.',
     svgPath: '',
     labelPosition: { x: 160, y: 450 },
     href: '/travel/transport',
@@ -166,7 +169,7 @@ export const mapZones: MapZone[] = [
     name: 'City Norway',
     tagline: 'Urban culture meets coastal soul',
     description:
-      'Four cities, four different Norways. Oslo\'s waterfront opera and Munch museum, Bergen\'s Hanseatic wharves and fish market, Trondheim\'s medieval Nidaros Cathedral, Stavanger\'s street art and oil-era architecture — each city earns its place on your itinerary.',
+      'Four cities, four different Norways. Oslo\'s waterfront opera and Munch museum, Bergen\'s Hanseatic wharves and fish market, Trondheim\'s medieval Nidaros Cathedral, Stavanger\'s street art and oil-era architecture. Each city earns its place on your itinerary.',
     svgPath: '',
     labelPosition: { x: 55, y: 555 },
     href: '/destinations/cities',
@@ -180,3 +183,49 @@ export const mapZones: MapZone[] = [
     highlights: ['Cities', 'Activities & Events', 'Tours', 'Accommodation'],
   },
 ];
+
+// ── Pull-out callouts ───────────────────────────────────────────────────────
+// Zones too small or too scattered to tap on the map get a circle out at sea,
+// joined to their place by a leader line. Positions are viewBox units
+// (viewBox -30 -120 460 950). Tune them here, not in the component.
+export interface MapCallout {
+  zoneId: string;
+  cx: number;
+  cy: number;
+  r: number;
+  /** The point on the map the leader line points to. */
+  leaderTo: { x: number; y: number };
+  /** Label under the circle, one entry per line. */
+  lines: string[];
+  icon: 'mountain' | 'boat' | 'city';
+}
+
+export const mapCallouts: Record<string, MapCallout> = {
+  lofoten: {
+    zoneId: 'lofoten',
+    cx: 44,
+    cy: 200,
+    r: 34,
+    leaderTo: { x: 113, y: 205 },
+    lines: ['Lofoten', 'Islands'],
+    icon: 'mountain',
+  },
+  'boat-routes': {
+    zoneId: 'boat-routes',
+    cx: 16,
+    cy: 330,
+    r: 40,
+    leaderTo: { x: 108, y: 395 },
+    lines: ['Boat', 'routes'],
+    icon: 'boat',
+  },
+  cities: {
+    zoneId: 'cities',
+    cx: 168,
+    cy: 690,
+    r: 36,
+    leaderTo: { x: 104, y: 666 },
+    lines: ['City Norway'],
+    icon: 'city',
+  },
+};
