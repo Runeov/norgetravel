@@ -59,7 +59,7 @@ export const tromso: CityGuide = {
       label: 'Whale Watching',
       months: 'Nov \u2013 Feb',
       detail:
-        'Orca and humpback pods follow the herring into the fjords from November, peaking December\u2013January. Since 2017 the feeding grounds have been in Kv\u00E6nangen and Skjerv\u00F8y, so whale safaris now run from Skjerv\u00F8y, around 3 hours from Troms\u00F8. Operators report 90% sighting rates at peak. RIB and traditional vessel options.',
+        'Orca and humpback pods follow the herring into the fjords from November, peaking December\u2013January. Since 2017 the feeding grounds have been in Kv\u00E6nangen and Skjerv\u00F8y, so whale safaris now run from Skjerv\u00F8y, around 3 hours from Troms\u00F8 with the Lyngen ferries, about an hour more by road. Operators reported whales on about 95% of departures in 2025/26. RIB and traditional vessel options.',
     },
     {
       label: 'Dog Sledding & Events',
@@ -80,7 +80,7 @@ export const tromso: CityGuide = {
       title: 'Whale watching from Skjerv\u00F8y',
       price: 'From NOK 1,450/person',
       duration: '4\u20136 hours',
-      body: 'Orca and humpback pods feed in the fjords around Skjerv\u00F8y and Kv\u00E6nangen November to February, around 3 hours from Troms\u00F8. Peak December\u2013January. RIB boats get you close; traditional vessels are warmer. 90% sighting rate at peak.',
+      body: 'Orca and humpback pods feed in the fjords around Skjerv\u00F8y and Kv\u00E6nangen November to February, around 3 hours from Troms\u00F8 with the Lyngen ferries, about an hour more by road. Peak December\u2013January. RIB boats get you close; traditional vessels are warmer. Operators reported whales on about 95% of departures in 2025/26.',
     },
     {
       title: 'Dog sled under the aurora',

@@ -11,7 +11,7 @@ export const dynamic = 'force-static';
 export const generateMetadata = localizedMetadata('travel-guides', {
   title: 'Travel Guides | Safety, Trip Reports & Planning | NorgeTravel',
   description:
-    'Expert travel guides for Norway. Mountain safety and the Fjellvettreglene, first-person trip reports from the fjords to Svalbard, and planning guides for the DNT cabin network and the aurora season.',
+    'Norway travel guides from local editors: mountain safety, trip reports from the fjords to Svalbard, planning guides for cabins, costs, ferries and the aurora.',
   openGraph: {
     title: 'Travel Guides | NorgeTravel.com',
     description:
