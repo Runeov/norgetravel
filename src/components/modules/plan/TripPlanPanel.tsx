@@ -26,6 +26,7 @@ import { outboundRel } from '@/lib/outbound-rel';
 import { cn } from '@/lib/utils';
 import type { LegMethod, PlanLine, PlanResult, Suggestion } from '@/lib/plan-engine';
 import type { TripInterest } from '@/types/trip';
+import { DayPlanSection } from './DayPlanSection';
 
 /** Zones to plan for when the visitor has chosen none: what they saved, else what they said they came for. */
 const INTEREST_ZONES: Record<TripInterest, string[]> = {
@@ -182,6 +183,23 @@ export function TripPlanPanel() {
 
   const hasInput = zones.length > 0;
 
+  // The same basics as a JSON body for the day-by-day route
+  const requestBody = useMemo(
+    () => ({
+      start: profile.startDate,
+      end: profile.endDate,
+      travellers: profile.travellers,
+      interests: profile.interests,
+      pace: profile.pace,
+      mobility: profile.mobility,
+      budget: profile.budget,
+      zones,
+      saved: items.map((item) => item.id).slice(0, 200),
+      nights: plan?.window.nights,
+    }),
+    [profile, zones, items, plan]
+  );
+
   useEffect(() => {
     if (!hasInput) {
       setPlan(null);
@@ -327,6 +345,11 @@ export function TripPlanPanel() {
               <Lines lines={plan.kit} />
             </Section>
           )}
+          <DayPlanSection
+            request={requestBody}
+            requestKey={query}
+            ready={Boolean(plan.window.startDate && plan.window.endDate && plan.window.nights && plan.zones.length)}
+          />
           {plan.sources.length > 0 && (
             <Section icon={Star} title="Built from">
               <PlanLinks links={plan.sources} />
