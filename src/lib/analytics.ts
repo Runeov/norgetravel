@@ -15,6 +15,10 @@ export type AnalyticsEventName =
   | 'trip_planner_opened'
   | 'trip_planner_minimized'
   | 'trip_planner_closed'
+  | 'trip_planner_view_toggled'
+  | 'trip_planner_zone_switched'
+  | 'trip_planner_level_opened'
+  | 'trip_planner_map_enlarged'
   | 'share_started'
   | 'share_completed';
 
@@ -36,6 +40,10 @@ const EVENT_NAMES = new Set<AnalyticsEventName>([
   'trip_planner_opened',
   'trip_planner_minimized',
   'trip_planner_closed',
+  'trip_planner_view_toggled',
+  'trip_planner_zone_switched',
+  'trip_planner_level_opened',
+  'trip_planner_map_enlarged',
   'share_started',
   'share_completed',
 ]);
