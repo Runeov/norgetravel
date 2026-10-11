@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from '@/components/LocalizedLink';
 import { notFound } from 'next/navigation';
+import { tripReportRegion } from '@/lib/trip-report-region';
 import { ArrowLeft, Clock, BookOpen, User, Calendar, Tag, ArrowRight } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { ShareButtons } from '@/components/ui/ShareButtons';
@@ -346,6 +347,7 @@ export default async function DynamicArticlePage({ params }: PageProps) {
         {/* Global Interactive Trip Planner Card */}
         {(() => {
           const planner = PLANNER_COPY[lang === 'zh' || lang === 'ja' ? lang : 'en'];
+          const plannerZone = tripReportRegion({ slug: article.slug, tags: article.tags });
           return (
             <div className="bg-[#1A365D]/5 border border-[#1A365D]/10 rounded-lg p-8 my-12 shadow-sm hover:shadow-md transition-all">
               <div className="flex flex-col md:flex-row items-center gap-6">
@@ -362,7 +364,7 @@ export default async function DynamicArticlePage({ params }: PageProps) {
                 </div>
                 <div className="w-full md:w-auto shrink-0">
                   <Link
-                    href={`/${lang}/my-trip`}
+                    href={`/${lang}/plan/${plannerZone}`}
                     data-analytics-event="trip_planner_opened"
                     data-analytics-placement="article_planner_card"
                     data-analytics-target={article.slug}

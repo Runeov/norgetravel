@@ -46,6 +46,15 @@ Verified with Playwright at 390 px and 1366 px: no horizontal overflow, no conso
 - Trip model grows: `dates`, `travellers`, `interests[]`, `pace`, `mobility` (own car, no car), `budget` tier, and an `order` on items. Persist in localStorage as now; sync to a server store in Phase 4.
 - Every article gets the "Plan this trip" block from the bounce plan, which opens the stream at the article's zone with the article's place preselected.
 
+### Phase 1 status, 12 October 2026: built on Google_dev
+
+- **The planner is a page.** `/[lang]/plan/` lists the six destinations with what each holds (activities, stays, events, guides). `/[lang]/plan/[zone]/` is the stream: Where (the curated places from the map's drill-down), Do (experiences, featured and best rated first), Attend (upcoming events, past ones if none are coming), Stay, Eat, Move (transport) and Read (guides and trip reports matched by the shared region rules in `src/lib/trip-report-region.ts`). A sticky jump bar shows the section counts; each section shows up to nine cards with a "See all" link to the full listing. Data comes from `src/lib/planner-data.ts` on the server, so the pages ship only the cards they show.
+- **Cards reuse what exists.** Experiences, stays and restaurants use `TravelCard`, events `EventCard`, transport `TransportCard`, so every card already carries "Add to trip", ratings and the partner link. Two new cards cover places and guides.
+- **The trip model grew.** `TripItem` has `zone` and `href`; a `TripProfile` (dates, travellers, interests, pace, getting around, budget) lives in `TripContext` under its own localStorage key, edited through the "Your trip basics" panel on the plan pages. Storage writes now wait for the first read, which closes a race where an empty list could overwrite a saved one.
+- **Entry points.** The navbar's "Plan Trip" goes to `/plan/`; the home hero and footer still open the quick map; the map's detail view has a "Full planner" link to the zone page; every article's planner card opens its own region's page. The sitemap lists the seven pages.
+- **Kept both.** `/my-trip/` stays as the saved list; the overview page links to it from the saved count.
+- Verified with Playwright at 390 px and 1366 px: pages load, no horizontal overflow, add-to-trip updates the saved count, trip basics survive a reload, the overlay link lands on the zone page and leaves the planner minimised, the article card links to a zone, an unknown zone is a 404.
+
 ## Phase 2: interests in, suggestions out, no model needed yet (1 to 2 weeks)
 
 A rule engine over our own data, deterministic and explainable:

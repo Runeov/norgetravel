@@ -7,7 +7,6 @@ import { usePathname } from 'next/navigation';
 import { useLocalizedRouter } from '@/lib/use-localized-router';
 import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
 import logoNorgeTravel from '@/assets/norgeTravel.png';
-import { useTripMap } from '@/context/TripMapContext';
 import { useTrip } from '@/context/TripContext';
 import en from '@/i18n/dictionaries/en.json';
 
@@ -22,7 +21,6 @@ export function Navbar({ dict }: { dict?: any }) {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const router = useLocalizedRouter();
-  const { openMap } = useTripMap();
   const { itemCount } = useTrip();
 
   const solid = scrolled;
@@ -238,14 +236,13 @@ export function Navbar({ dict }: { dict?: any }) {
                 </span>
               </Link>
             )}
-            <button
-              onClick={openMap}
-              className="group relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white transition-all duration-300 bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-full hover:shadow-lg hover:shadow-[#1B3A5C]/30 hover:-translate-y-0.5 focus:outline-none"
-              aria-label={d.openPlanner}
+            <Link
+              href="/plan"
+              className="group relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white transition-all duration-300 bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-full hover:shadow-lg hover:shadow-[#1B3A5C]/30 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00CC6A]"
             >
               {d.planTrip}
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -383,9 +380,9 @@ export function Navbar({ dict }: { dict?: any }) {
                     </span>
                   </Link>
                 )}
-                <button onClick={() => { openMap(); setIsMenuOpen(false); }} className="w-full flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md shadow-md active:scale-95 transition-all" aria-label={d.openPlanner}>
+                <Link href="/plan" onClick={closeMobileMenu} className="w-full flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] rounded-md shadow-md active:scale-95 transition-all">
                   {d.tripPlanner}
-                </button>
+                </Link>
               </div>
             </div>
           </div>
