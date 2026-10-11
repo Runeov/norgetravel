@@ -3,6 +3,7 @@
 import { useId, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { useTrip } from '@/context/TripContext';
+import { mapZones } from '@/data/norway-map-zones';
 import {
   TRIP_BUDGETS,
   TRIP_INTERESTS,
@@ -30,6 +31,8 @@ function formatDate(value: string): string {
 /** One line that says what we know, or nothing when the profile is empty. */
 export function summariseProfile(profile: TripProfile): string | null {
   const parts: string[] = [];
+  const zoneNames = mapZones.filter((zone) => profile.zones.includes(zone.id)).map((zone) => zone.name);
+  if (zoneNames.length) parts.push(zoneNames.join(' + '));
   if (profile.startDate && profile.endDate) parts.push(`${formatDate(profile.startDate)} to ${formatDate(profile.endDate)}`);
   else if (profile.startDate) parts.push(`From ${formatDate(profile.startDate)}`);
   if (profile.travellers) parts.push(`${profile.travellers} ${profile.travellers === 1 ? 'traveller' : 'travellers'}`);
@@ -91,6 +94,11 @@ export function TripBasics({ startOpen = false }: { startOpen?: boolean }) {
     updateProfile({ interests: has ? profile.interests.filter((i) => i !== interest) : [...profile.interests, interest] });
   };
 
+  const toggleZone = (zoneId: string) => {
+    const has = profile.zones.includes(zoneId);
+    updateProfile({ zones: has ? profile.zones.filter((z) => z !== zoneId) : [...profile.zones, zoneId] });
+  };
+
   return (
     <section aria-labelledby={`${id}-title`} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm md:p-6">
       <div className="flex items-start justify-between gap-4">
@@ -116,6 +124,26 @@ export function TripBasics({ startOpen = false }: { startOpen?: boolean }) {
 
       {open && (
         <div id={`${id}-fields`} className="mt-6 grid gap-6 md:grid-cols-2">
+          <div className="md:col-span-2">
+            <p className={labelClass}>Where</p>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {mapZones.map((zone) => {
+                const active = profile.zones.includes(zone.id);
+                return (
+                  <button
+                    key={zone.id}
+                    type="button"
+                    aria-pressed={active}
+                    onClick={() => toggleZone(zone.id)}
+                    className={chipClass(active)}
+                  >
+                    {zone.name}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label htmlFor={`${id}-start`} className={labelClass}>
