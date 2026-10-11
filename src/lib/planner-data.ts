@@ -92,7 +92,7 @@ const PORT_RE = /\b(bergen|[åa]lesund|trondheim|br[øo]nn[øo]ysund|bod[øo]|sv
 const BOAT_RE = /hurtigruten|havila|kystruten|cruise|ferry|ferge|boat|sailing|\brib\b/i;
 const BOAT_ARTICLE_RE = /hurtigruten|havila|kystruten|ferry|cruise|coastal/;
 
-interface Zoneable {
+export interface Zoneable {
   destination: string;
   location: string;
   name: string;
@@ -103,6 +103,10 @@ interface Zoneable {
 }
 
 /** `activity` items (experiences, transport) match the boat zone on what they are; `place` items match on where they are. */
+export function itemInZone(zone: PlanZoneId, item: Zoneable, kind: 'activity' | 'place'): boolean {
+  return inZone(zone, item, kind);
+}
+
 function inZone(zone: PlanZoneId, item: Zoneable, kind: 'activity' | 'place'): boolean {
   if (zone === 'cities') {
     return CITY_RE.test(`${item.location} ${item.nearestTown ?? ''} ${item._city ?? ''}`);
@@ -126,12 +130,21 @@ function articleZones(article: { slug: string; tags?: string[] }): PlanZoneId[] 
 
 // ── Ranking ─────────────────────────────────────────────────────────────────
 
-function ratingOf(item: TravelItemBase): number {
+export function ratingOf(item: TravelItemBase): number {
   const value = (item as { _googleRating?: number | null })._googleRating;
   return typeof value === 'number' ? value : 0;
 }
 
+export function reviewCountOf(item: TravelItemBase): number {
+  const value = (item as { _googleReviewCount?: number | null })._googleReviewCount;
+  return typeof value === 'number' ? value : 0;
+}
+
 /** Featured first, then the best rated, then the editor's order. */
+export function rankItems<T extends TravelItemBase>(items: T[]): T[] {
+  return rank(items);
+}
+
 function rank<T extends TravelItemBase>(items: T[]): T[] {
   return [...items].sort(
     (a, b) =>

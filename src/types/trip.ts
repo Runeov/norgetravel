@@ -42,6 +42,8 @@ export type TripBudget = 'budget' | 'mid-range' | 'luxury';
 
 /** What the visitor has told us about the trip. Stored on their device only. */
 export interface TripProfile {
+  /** Planner zone ids the visitor wants to go to. Empty means "work it out from what I saved and what I like". */
+  zones: string[];
   startDate?: string;
   endDate?: string;
   travellers?: number;
@@ -51,7 +53,7 @@ export interface TripProfile {
   budget?: TripBudget;
 }
 
-export const EMPTY_PROFILE: TripProfile = { interests: [] };
+export const EMPTY_PROFILE: TripProfile = { zones: [], interests: [] };
 
 export const TRIP_INTERESTS: { id: TripInterest; label: string }[] = [
   { id: 'aurora', label: 'Northern Lights' },

@@ -4,6 +4,7 @@ import { localizedMetadata } from '@/lib/i18n-seo';
 import { getPlanOverview } from '@/lib/planner-data';
 import { PLAN_ZONE_ICONS, zoneAccent } from '@/components/modules/plan/PlanLayout';
 import { TripBasics } from '@/components/modules/plan/TripBasics';
+import { TripPlanPanel } from '@/components/modules/plan/TripPlanPanel';
 import { TripSummaryBar } from '@/components/modules/plan/TripSummaryBar';
 
 export const dynamic = 'force-static';
@@ -34,8 +35,9 @@ export default async function PlanPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-7xl space-y-6 px-4 py-8 sm:px-6 lg:px-8">
         <TripBasics startOpen />
+        <TripPlanPanel />
       </section>
 
       <section aria-labelledby="plan-zones-title" className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">

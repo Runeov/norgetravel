@@ -7,6 +7,8 @@ import { useTrip } from '@/context/TripContext';
 import { useTripMap } from '@/context/TripMapContext';
 import type { TripItemCategory } from '@/types/trip';
 import { TripCategorySection } from './TripCategorySection';
+import { TripBasics } from '@/components/modules/plan/TripBasics';
+import { TripPlanPanel } from '@/components/modules/plan/TripPlanPanel';
 
 const CATEGORY_ORDER: TripItemCategory[] = [
   'cities',
@@ -72,6 +74,10 @@ export function TripPlannerView() {
             Open trip map
           </button>
         </div>
+        <div className="mt-12 w-full max-w-3xl space-y-6 text-left">
+          <TripBasics />
+          <TripPlanPanel />
+        </div>
       </div>
     );
   }
@@ -117,6 +123,12 @@ export function TripPlannerView() {
           </div>
         </div>
       )}
+
+      {/* Trip basics and the plan built from them */}
+      <div className="mb-10 space-y-6">
+        <TripBasics />
+        <TripPlanPanel />
+      </div>
 
       {/* Category sections */}
       {CATEGORY_ORDER.map((cat) => {
