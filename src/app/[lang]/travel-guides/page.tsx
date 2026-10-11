@@ -2,8 +2,9 @@ import Image from 'next/image';
 import Link from '@/components/LocalizedLink';
 import { ShieldAlert, Map, BookOpen, ArrowRight, Mountain, Car, Thermometer, Compass, Route, Clock } from 'lucide-react';
 import { NorgeBackground } from '@/components/modules/NorgeBackground';
-import { TripReportsTabs, type TripReportRegion } from '@/components/modules/TripReportsTabs';
+import { TripReportsTabs } from '@/components/modules/TripReportsTabs';
 import articlesJson from '@/data/articles.json';
+import { tripReportRegion } from '@/lib/trip-report-region';
 import { localizedMetadata } from '@/lib/i18n-seo';
 
 export const dynamic = 'force-static';
@@ -39,23 +40,6 @@ const SECTION_CATEGORIES: Record<string, string[]> = {
   'trip-reports': ['trip-reports'],
   planning: ['planning', 'artikler'],
 };
-
-// Tested in order. Magerøya and Kvaløya slugs contain "fjord", so the northern regions come first.
-const REGION_RULES: [TripReportRegion, RegExp][] = [
-  ['svalbard', /svalbard|longyearbyen/],
-  ['lofoten', /lofoten|reinebringen|henningsv|svolv|kvalvika|munkebu|festvag|ryten/],
-  [
-    'northern-norway',
-    /tromso|lyngen|senja|\balta\b|nordkapp|mager|honningsv|kvaloya|skibotn|kjostind|seiland|blaisvatnet|haldde|komsa|rafsbotn|sorlenangs|rornes|fastdal|goalsevarri|segla|husfjell|hesten|barden|knivskjel|storfjellet/,
-  ],
-  ['cities', /\boslo\b|trondheim|stavanger/],
-  ['fjords', /fjord|geiranger|naeroy|sogne|hardanger|flam|trolltunga|voring|folgefonna|urnes|stegastein|nutshell|rimstigen|prest|losta|skagefla|storseter|fossevandring|nali/],
-];
-
-function tripReportRegion(article: ArticleEntry): TripReportRegion {
-  const haystack = `${article.slug} ${(article.tags ?? []).join(' ')}`.toLowerCase();
-  return REGION_RULES.find(([, pattern]) => pattern.test(haystack))?.[0] ?? 'northern-norway';
-}
 
 const publishedArticles = Object.values(articlesJson as Record<string, ArticleEntry>)
   .filter((a) => a.status === 'published')

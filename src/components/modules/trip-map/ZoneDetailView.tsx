@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useLocalizedRouter } from '@/lib/use-localized-router';
 import Image from 'next/image';
+import Link from '@/components/LocalizedLink';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowLeft,
@@ -224,14 +225,24 @@ export function ZoneDetailView({
     <div className="flex flex-col h-full">
       {/* Header */}
       <div className="shrink-0 mb-6">
-        <button
-          onClick={onBack}
-          className="flex items-center gap-2 min-h-[44px] text-white/60 hover:text-white transition-colors mb-2"
-          aria-label={backLabel}
-        >
-          <ArrowLeft className="w-4 h-4" aria-hidden="true" />
-          <span className="text-base font-medium">{backLabel}</span>
-        </button>
+        <div className="flex items-center justify-between gap-3 mb-2">
+          <button
+            onClick={onBack}
+            className="flex items-center gap-2 min-h-[44px] text-white/60 hover:text-white transition-colors"
+            aria-label={backLabel}
+          >
+            <ArrowLeft className="w-4 h-4" aria-hidden="true" />
+            <span className="text-base font-medium">{backLabel}</span>
+          </button>
+          <Link
+            href={`/plan/${data.zoneId}`}
+            onClick={() => onNavigateAway?.()}
+            className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full bg-white/10 px-4 text-sm font-semibold text-white hover:bg-white/20 transition-colors"
+          >
+            Full planner
+            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+          </Link>
+        </div>
 
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="min-w-0">
