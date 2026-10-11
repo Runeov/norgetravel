@@ -262,7 +262,7 @@ export default function LyngenPage() {
                 title: 'Humpback safari, Skjervøy',
                 image: '/images/lyngen/activities/humpback-whale_francisco-damm.jpg',
                 alt: 'Humpback whale surfacing off Skjervøy in Nord-Troms',
-                body: 'Late November to mid-January. Herring concentrate in Kvænangen and humpbacks follow. RIB safaris from Skjervøy harbour. 4 to 6 hours. Sighting rate 90% in peak weeks.',
+                body: 'Late November to mid-January. Herring concentrate in Kvænangen and humpbacks follow. RIB safaris from Skjervøy harbour, about 3 hours on the water. Operators reported whales on about 95% of departures in 2025/26.',
               },
               {
                 title: 'Dog sledding, Tamokdalen',
@@ -285,7 +285,7 @@ export default function LyngenPage() {
                 type: 'RIB safari · winter herring season',
                 price: 'From 1,890 NOK',
                 duration: '4–5 hours',
-                highlight: 'Late November to mid-January only, when herring concentrate in Kvænangen. Thermal suits provided. Sighting rate above 90% in peak weeks. Departs Skjervøy harbour.',
+                highlight: 'Late November to mid-January only, when herring concentrate in Kvænangen. Thermal suits provided. Operators reported whales on about 95% of departures in 2025/26. Departs Skjervøy harbour.',
                 affiliateUrl: 'https://www.getyourguide.com/s/?q=skjervoy+whale+safari&partner_id=5DXMTLJ&utm_medium=online_publisher&placement=content-middle',
               },
               {

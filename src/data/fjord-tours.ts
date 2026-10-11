@@ -41,9 +41,9 @@ export const ACTIVITY_LABELS: Record<ActivityCategory, string> = {
 
 export const ACTIVITY_BLURBS: Record<ActivityCategory, string> = {
   kayaking:
-    'Sea kayak beneath 1,000-meter fjord walls. Guided half-day and full-day paddles across UNESCO Nærøyfjord, Geirangerfjord, Sognefjord and Hardangerfjord. Drysuits provided. Season: May to September.',
+    'Guided sea kayaking on the Nærøyfjord, Geirangerfjord and Sognefjord beneath 1,000-metre walls. Half and full days, drysuits provided, May to September.',
   cruise:
-    'Zero-emission vessels now run the UNESCO fjords. Electric catamarans on Nærøyfjord, hybrid sightseeing loops on Geirangerfjord, and the longest Sognefjord crossings all sail under the 2026 emission mandate.',
+    'Zero-emission fjord cruises: electric catamarans on the Nærøyfjord, hybrid loops on the Geirangerfjord, Sognefjord crossings, and what the 2026 rule means.',
   rib: 'Rigid inflatable boats at 35 knots, the fastest way to the waterfalls. Full flotation suits provided. 12 passengers per boat.',
   railway:
     'The Flåm Railway drops 866 meters in 20 km. The Bergen Line crosses Hardangervidda at 1,222 meters. Combine both on the Norway in a Nutshell route.',

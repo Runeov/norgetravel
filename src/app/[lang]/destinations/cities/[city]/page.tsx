@@ -38,6 +38,8 @@ async function getCityRestaurants(citySlug: string): Promise<CityRestaurant[]> {
   return (mod as Record<string, CityRestaurant[]>)[exportName] ?? Object.values(mod)[0] ?? [];
 }
 
+const CITY_WITH_DESTINATION_PAGE = new Set(['tromso', 'nordkapp', 'senja', 'lyngen', 'alta']);
+
 interface PageProps {
   params: Promise<{ city: string; lang: string }>;
 }
@@ -51,7 +53,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const city = getCity(citySlug);
   if (!city) return { title: 'City not found | NorgeTravel' };
   const alternates = localeAlternates(`destinations/cities/${citySlug}`, lang);
-  const title = brandTitle(`${city.name} Travel Guide 2026 | NorgeTravel`, lang);
+  // Places that also have a destination page get "City Guide" so the two titles differ
+  const kind = CITY_WITH_DESTINATION_PAGE.has(citySlug) ? 'City Guide' : 'Travel Guide';
+  const title = brandTitle(`${city.name} ${kind} 2026 | NorgeTravel`, lang);
   return {
     alternates,
     title,

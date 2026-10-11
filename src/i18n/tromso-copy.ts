@@ -268,7 +268,7 @@ export const TROMSO_COPY: Record<Locale, TromsoCopy> = {
       {
         question: 'What else can you do in Tromsø in winter besides the Northern Lights?',
         answer:
-          'Whale safaris: from November to February orca and humpback pods follow the herring into the fjords around Skjervøy and Kvænangen, around 3 hours from Tromsø, with the peak in December and January and 90% sighting rates at peak; boats cost from 1,450 NOK. Husky sledding runs from Camp Tamok in Tamokdalen, about 75 minutes inland, from 2,800 NOK, and a Sami-led reindeer camp with evening aurora viewing costs from 2,190 NOK. The Fjellheisen cable car climbs to Storsteinen at 421 m in four minutes, and the Sherpa steps up the same slope are walkable year-round with microspikes.',
+          'Whale safaris: from November to February orca and humpback pods follow the herring into the fjords around Skjervøy and Kvænangen, around 3 hours from Tromsø with the Lyngen ferries (about an hour more by road), with the peak in December and January and whales reported on about 95% of departures in the 2025/26 season; boats cost from 1,450 NOK. Husky sledding runs from Camp Tamok in Tamokdalen, about 75 minutes inland, from 2,800 NOK, and a Sami-led reindeer camp with evening aurora viewing costs from 2,190 NOK. The Fjellheisen cable car climbs to Storsteinen at 421 m in four minutes, and the Sherpa steps up the same slope are walkable year-round with microspikes.',
       },
       {
         question: 'Is Tromsø dark all day during the polar night?',
@@ -308,7 +308,7 @@ export const TROMSO_COPY: Record<Locale, TromsoCopy> = {
         whales: {
           title: 'Whale watching from Skjervøy',
           description:
-            'Orca and humpback pods follow the herring into the fjords around Skjervøy and Kvænangen November–February, around 3 hours from Tromsø. Peak December–January. RIB boats get you close; traditional vessels stay warmer for long days. 90% sighting rate at peak season.',
+            'Orca and humpback pods follow the herring into the fjords around Skjervøy and Kvænangen November–February, around 3 hours from Tromsø with the Lyngen ferries, about an hour more by road. Peak December–January. RIB boats get you close; traditional vessels stay warmer for long days. Operators reported whales on about 95% of departures in 2025/26.',
           duration: '4–6 hours',
           price: 'From 1,450 NOK',
           season: 'Nov–Feb',
@@ -803,7 +803,7 @@ export const TROMSO_COPY: Record<Locale, TromsoCopy> = {
       {
         question: '冬天在特罗姆瑟除了看极光还能做什么？',
         answer:
-          '观鲸：11月至次年2月，虎鲸和座头鲸群追着鲱鱼游进谢尔沃伊（Skjervøy）和克韦南根（Kvænangen）一带的峡湾，距特罗姆瑟约3小时，12月至1月是高峰，高峰期目击率90%，船票1,450挪威克朗起。哈士奇雪橇从距特罗姆瑟约75分钟车程的塔莫克山谷（Tamokdalen）Camp Tamok狗场出发，2,800挪威克朗起；由萨米人带领、晚上可看极光的驯鹿营地2,190挪威克朗起。Fjellheisen缆车4分钟到达海拔421米的Storsteinen，同一座山上的夏尔巴阶梯全年可走，冬季需要简易冰爪。',
+          '观鲸：11月至次年2月，虎鲸和座头鲸群追着鲱鱼游进谢尔沃伊（Skjervøy）和克韦南根（Kvænangen）一带的峡湾，距特罗姆瑟约3小时（经林根渡轮，走公路不乘渡轮约多1小时），12月至1月是高峰，2025/26季运营商报告约95%的出航看到了鲸鱼，船票1,450挪威克朗起。哈士奇雪橇从距特罗姆瑟约75分钟车程的塔莫克山谷（Tamokdalen）Camp Tamok狗场出发，2,800挪威克朗起；由萨米人带领、晚上可看极光的驯鹿营地2,190挪威克朗起。Fjellheisen缆车4分钟到达海拔421米的Storsteinen，同一座山上的夏尔巴阶梯全年可走，冬季需要简易冰爪。',
       },
       {
         question: '极夜期间特罗姆瑟白天全是黑的吗？',
@@ -843,7 +843,7 @@ export const TROMSO_COPY: Record<Locale, TromsoCopy> = {
         whales: {
           title: '从谢尔沃伊出发观鲸',
           description:
-            '11月至次年2月，虎鲸和座头鲸群追着鲱鱼游进谢尔沃伊（Skjervøy）和克韦南根（Kvænangen）一带的峡湾，距特罗姆瑟约3小时。高峰在12月至1月。RIB快艇能带您靠得更近；传统船只在漫长的一天里更暖和。高峰期目击率90%。',
+            '11月至次年2月，虎鲸和座头鲸群追着鲱鱼游进谢尔沃伊（Skjervøy）和克韦南根（Kvænangen）一带的峡湾，距特罗姆瑟约3小时（经林根渡轮，走公路约多1小时）。高峰在12月至1月。RIB快艇能带您靠得更近；传统船只在漫长的一天里更暖和。2025/26季运营商报告约95%的出航看到了鲸鱼。',
           duration: '4–6小时',
           price: '1,450挪威克朗起',
           season: '11月至次年2月',
@@ -1363,7 +1363,7 @@ export const TROMSO_COPY: Record<Locale, TromsoCopy> = {
       {
         question: '冬のトロムソでオーロラ以外にできることは？',
         answer:
-          'まずホエールサファリで、11〜2月にシャチとザトウクジラの群れがニシンを追って、トロムソから約3時間のシェルヴォイ（Skjervøy）とクヴェーナンゲン（Kvænangen）周辺のフィヨルドに入ってきます。ピークは12〜1月で遭遇率は90%、料金は1,450クローネからです。ハスキー犬ぞりはトロムソから内陸へ約75分のタモクダーレン（Tamokdalen）のキャンプ・タモクから出発し2,800クローネから、サーミの人々が案内し夜にオーロラも観賞するトナカイキャンプは2,190クローネからです。フィエルハイセンは4分で標高421mのストールシュタイネンへ上がり、同じ山のシェルパ階段はチェーンスパイクを付ければ冬でも歩けます。',
+          'まずホエールサファリで、11〜2月にシャチとザトウクジラの群れがニシンを追って、トロムソから約3時間（リンゲンのフェリー利用、道路のみなら約1時間追加）のシェルヴォイ（Skjervøy）とクヴェーナンゲン（Kvænangen）周辺のフィヨルドに入ってきます。ピークは12〜1月で、2025/26シーズンは出航の約95%でクジラが見られたと事業者が報告しており、料金は1,450クローネからです。ハスキー犬ぞりはトロムソから内陸へ約75分のタモクダーレン（Tamokdalen）のキャンプ・タモクから出発し2,800クローネから、サーミの人々が案内し夜にオーロラも観賞するトナカイキャンプは2,190クローネからです。フィエルハイセンは4分で標高421mのストールシュタイネンへ上がり、同じ山のシェルパ階段はチェーンスパイクを付ければ冬でも歩けます。',
       },
       {
         question: '極夜のトロムソは一日中暗いのですか？',
@@ -1403,7 +1403,7 @@ export const TROMSO_COPY: Record<Locale, TromsoCopy> = {
         whales: {
           title: 'シェルヴォイ発のホエールウォッチング',
           description:
-            '11〜2月、シャチとザトウクジラの群れがニシンを追って、トロムソから約3時間のシェルヴォイ（Skjervøy）とクヴェーナンゲン（Kvænangen）周辺のフィヨルドに入ってきます。ピークは12〜1月。RIBボートなら近くまで寄れ、従来型の船は長い一日でも暖かく過ごせます。ピーク時の遭遇率は90%です。',
+            '11〜2月、シャチとザトウクジラの群れがニシンを追って、トロムソから約3時間（リンゲンのフェリー利用、道路のみなら約1時間追加）のシェルヴォイ（Skjervøy）とクヴェーナンゲン（Kvænangen）周辺のフィヨルドに入ってきます。ピークは12〜1月。RIBボートなら近くまで寄れ、従来型の船は長い一日でも暖かく過ごせます。2025/26シーズンは出航の約95%でクジラが見られたと事業者が報告しています。',
           duration: '4〜6時間',
           price: '1,450クローネから',
           season: '11〜2月',
