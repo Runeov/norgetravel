@@ -192,7 +192,8 @@ export function TripPlanPanel() {
     const timer = setTimeout(async () => {
       setState('loading');
       try {
-        const response = await fetch(`/api/plan/suggest?${query}`, { signal: controller.signal });
+        // Trailing slash: the site redirects bare paths with a 308, and a redirect per keystroke is waste
+        const response = await fetch(`/api/plan/suggest/?${query}`, { signal: controller.signal });
         if (!response.ok) throw new Error(String(response.status));
         setPlan((await response.json()) as PlanResult);
         setState('ready');
