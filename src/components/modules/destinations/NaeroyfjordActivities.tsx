@@ -20,6 +20,8 @@ import {
 import { cn } from '@/lib/utils';
 import { naeroyfjordTours as tours } from '@/data/fjord-tours';
 import { outboundRel } from '@/lib/outbound-rel';
+import { AddToTripButton } from '@/components/ui/AddToTripButton';
+import { destinationTripItem } from '@/lib/trip-items';
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -405,7 +407,8 @@ export default function NaeroyfjordActivities() {
                     {guide.season}
                   </span>
                 </div>
-                <div className="mt-auto pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
+                <div className="mt-auto pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+                  <AddToTripButton compact item={destinationTripItem({ category: 'experiences', name: guide.title, destination: 'naeroyfjord', href: guide.href, priceRange: guide.price })} />
                   {guide.isExternal ? (
                     <a
                       href={guide.href}
@@ -469,7 +472,8 @@ export default function NaeroyfjordActivities() {
                       </span>
                     </div>
                   </div>
-                  <div className="mt-auto pt-3 border-t border-slate-100">
+                  <div className="mt-auto pt-3 border-t border-slate-100 space-y-3">
+                    <AddToTripButton compact className="w-full" item={destinationTripItem({ category: 'tours', name: tour.name, destination: 'naeroyfjord', href: tour.affiliateUrl, priceRange: tour.price })} />
                     <a
                       href={tour.affiliateUrl}
                       rel={outboundRel(tour.affiliateUrl)}
@@ -500,67 +504,61 @@ export default function NaeroyfjordActivities() {
         {/* Hiking */}
         {activeTab === 'hiking' && (
           <div className="grid sm:grid-cols-2 gap-6">
-            {trails.map((trail) => {
-              const cardInner = (
-                <>
-                  <div className="flex items-start justify-between gap-3 mb-3">
-                    <h3 className="text-lg font-bold text-slate-800">
-                      {trail.name}
-                    </h3>
-                    <span
-                      className={cn(
-                        'inline-flex items-center px-2 py-1 rounded-sm text-xs font-bold uppercase tracking-wide shrink-0',
-                        difficultyColor[trail.difficulty]
-                      )}
-                    >
-                      {trail.difficulty}
-                    </span>
-                  </div>
-                  <p className="text-sm text-slate-600 leading-relaxed mb-4">
-                    {trail.description}
-                  </p>
-                  <div className="mt-auto flex flex-wrap items-center gap-3 text-xs pt-3 border-t border-slate-100">
-                    <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-sm text-slate-600 font-medium">
-                      <Ruler className="w-3 h-3" aria-hidden="true" />
-                      {trail.distance}
-                    </span>
-                    <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-sm text-slate-600 font-medium">
-                      <TrendingUp className="w-3 h-3" aria-hidden="true" />
-                      {trail.elevation}
-                    </span>
-                    <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-sm text-slate-600 font-medium">
-                      <Clock className="w-3 h-3" aria-hidden="true" />
-                      {trail.time}
-                    </span>
-                  </div>
-                  {trail.slug && (
-                    <div className="pt-3 mt-3 border-t border-slate-100">
-                      <span className="inline-flex items-center gap-1 text-sm font-bold text-[#1A365D] group-hover:text-[#00D084] transition-colors">
-                        Read the full trail guide
-                        <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
-                      </span>
-                    </div>
-                  )}
-                </>
-              );
-
-              return trail.slug ? (
-                <Link
-                  key={trail.name}
-                  href={`/travel-guides/trip-reports/${trail.slug}`}
-                  className="group bg-white rounded-lg border border-slate-200 p-6 hover:shadow-md hover:border-[#1A365D]/40 transition-all flex flex-col"
-                >
-                  {cardInner}
-                </Link>
-              ) : (
-                <div
-                  key={trail.name}
-                  className="bg-white rounded-lg border border-slate-200 p-6 hover:shadow-md transition-shadow flex flex-col"
-                >
-                  {cardInner}
+            {trails.map((trail) => (
+              <div
+                key={trail.name}
+                className={cn(
+                  trail.slug
+                    ? 'group bg-white rounded-lg border border-slate-200 p-6 hover:shadow-md hover:border-[#1A365D]/40 transition-all flex flex-col'
+                    : 'bg-white rounded-lg border border-slate-200 p-6 hover:shadow-md transition-shadow flex flex-col'
+                )}
+              >
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <h3 className="text-lg font-bold text-slate-800">
+                    {trail.name}
+                  </h3>
+                  <span
+                    className={cn(
+                      'inline-flex items-center px-2 py-1 rounded-sm text-xs font-bold uppercase tracking-wide shrink-0',
+                      difficultyColor[trail.difficulty]
+                    )}
+                  >
+                    {trail.difficulty}
+                  </span>
                 </div>
-              );
-            })}
+                <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                  {trail.description}
+                </p>
+                <div className="mt-auto flex flex-wrap items-center gap-3 text-xs pt-3 border-t border-slate-100">
+                  <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-sm text-slate-600 font-medium">
+                    <Ruler className="w-3 h-3" aria-hidden="true" />
+                    {trail.distance}
+                  </span>
+                  <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-sm text-slate-600 font-medium">
+                    <TrendingUp className="w-3 h-3" aria-hidden="true" />
+                    {trail.elevation}
+                  </span>
+                  <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-sm text-slate-600 font-medium">
+                    <Clock className="w-3 h-3" aria-hidden="true" />
+                    {trail.time}
+                  </span>
+                </div>
+                {trail.slug && (
+                  <div className="pt-3 mt-3 border-t border-slate-100">
+                    <Link
+                      href={`/travel-guides/trip-reports/${trail.slug}`}
+                      className="inline-flex items-center gap-1 text-sm font-bold text-[#1A365D] group-hover:text-[#00D084] transition-colors"
+                    >
+                      Read the full trail guide
+                      <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                    </Link>
+                  </div>
+                )}
+                <div className="mt-3">
+                  <AddToTripButton compact item={destinationTripItem({ category: 'experiences', name: trail.name, destination: 'naeroyfjord', href: trail.slug ? `/travel-guides/trip-reports/${trail.slug}` : undefined })} />
+                </div>
+              </div>
+            ))}
           </div>
         )}
 
@@ -606,6 +604,9 @@ export default function NaeroyfjordActivities() {
                       NorgeTravel rated
                     </span>
                   )}
+                </div>
+                <div className="mt-3">
+                  <AddToTripButton compact item={destinationTripItem({ category: 'restaurants', name: restaurant.name, destination: 'naeroyfjord', priceRange: restaurant.priceRange })} />
                 </div>
               </div>
             ))}

@@ -19,6 +19,8 @@ import {
   Ship,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { AddToTripButton } from '@/components/ui/AddToTripButton';
+import { destinationTripItem } from '@/lib/trip-items';
 
 interface Accommodation {
   name: string;
@@ -448,6 +450,9 @@ export function LofotenBasecamps() {
               {base.distanceToCentre}
             </span>
           </div>
+          <div className="mt-4">
+            <AddToTripButton item={destinationTripItem({ category: 'cities', name: base.label, destination: 'lofoten', location: 'Lofoten' })} />
+          </div>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-4">
@@ -511,6 +516,9 @@ export function LofotenBasecamps() {
                     <p className="text-xs text-slate-600 leading-relaxed">
                       {acc.highlight}
                     </p>
+                    <div className="mt-2">
+                      <AddToTripButton compact item={destinationTripItem({ category: 'accommodation', name: acc.name, destination: 'lofoten', location: base.label, priceRange: acc.price })} />
+                    </div>
                   </div>
                 ))}
               </div>

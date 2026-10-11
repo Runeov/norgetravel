@@ -17,6 +17,8 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { outboundRel } from '@/lib/outbound-rel';
+import { AddToTripButton } from '@/components/ui/AddToTripButton';
+import { destinationTripItem } from '@/lib/trip-items';
 
 export interface FeaturedActivity {
   title: string;
@@ -56,6 +58,8 @@ export interface ActivityRestaurant {
 }
 
 interface Props {
+  /** The destination page slug (e.g. `alta`), used to build trip item ids. */
+  destination: string;
   heading: string;
   intro?: string;
   featured: FeaturedActivity[];
@@ -73,6 +77,7 @@ const difficultyColor: Record<ActivityTrail['difficulty'], string> = {
 };
 
 export function DestinationActivities({
+  destination,
   heading,
   intro,
   featured,
@@ -147,9 +152,10 @@ export function DestinationActivities({
                 <div className="p-5 flex-1 flex flex-col">
                   <h3 className="font-bold text-slate-900 mb-2">{a.title}</h3>
                   <p className="text-sm text-slate-600 leading-relaxed flex-1">{a.body}</p>
-                  {a.href && a.linkLabel && (
-                    <div className="mt-4 pt-3 border-t border-slate-100">
-                      {a.isExternal ? (
+                  <div className="mt-4 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+                    <AddToTripButton compact item={destinationTripItem({ category: 'experiences', name: a.title, destination, href: a.href, imageUrl: a.image })} />
+                    {a.href && a.linkLabel && (
+                      a.isExternal ? (
                         <a
                           href={a.href}
                           rel={outboundRel(a.href)}
@@ -167,9 +173,9 @@ export function DestinationActivities({
                           {a.linkLabel}
                           <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
                         </Link>
-                      )}
-                    </div>
-                  )}
+                      )
+                    )}
+                  </div>
                 </div>
               </article>
             ))}
@@ -198,7 +204,8 @@ export function DestinationActivities({
                       </span>
                     </div>
                   </div>
-                  <div className="mt-auto pt-3 border-t border-slate-100">
+                  <div className="mt-auto pt-3 border-t border-slate-100 space-y-3">
+                    <AddToTripButton compact className="w-full" item={destinationTripItem({ category: 'tours', name: tour.name, destination, href: tour.affiliateUrl, priceRange: tour.price })} />
                     <a
                       href={tour.affiliateUrl}
                       rel={outboundRel(tour.affiliateUrl)}
@@ -270,6 +277,9 @@ export function DestinationActivities({
                     </Link>
                   )}
                 </div>
+                <div className="mt-3">
+                  <AddToTripButton compact item={destinationTripItem({ category: 'experiences', name: trail.name, destination, href: trail.slug ? `/travel-guides/trip-reports/${trail.slug}` : undefined })} />
+                </div>
               </div>
             ))}
           </div>
@@ -307,6 +317,9 @@ export function DestinationActivities({
                   <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-sm text-xs text-slate-600 font-medium">
                     {restaurant.priceRange}
                   </span>
+                </div>
+                <div className="mt-3">
+                  <AddToTripButton compact item={destinationTripItem({ category: 'restaurants', name: restaurant.name, destination, priceRange: restaurant.priceRange })} />
                 </div>
               </div>
             ))}

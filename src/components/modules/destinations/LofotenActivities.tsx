@@ -21,6 +21,8 @@ import {
 import { cn } from '@/lib/utils';
 import { lofotenRestaurants } from '@/data/city-guides/restaurants-lofoten';
 import { outboundRel } from '@/lib/outbound-rel';
+import { AddToTripButton } from '@/components/ui/AddToTripButton';
+import { destinationTripItem } from '@/lib/trip-items';
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -354,7 +356,8 @@ export function LofotenActivities() {
                     {guide.season}
                   </span>
                 </div>
-                <div className="mt-auto pt-3 border-t border-slate-100">
+                <div className="mt-auto pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+                  <AddToTripButton compact item={destinationTripItem({ category: 'experiences', name: guide.title, destination: 'lofoten', href: guide.href, priceRange: guide.price })} />
                   <a
                     href={guide.href}
                     rel={outboundRel(guide.href)}
@@ -392,7 +395,8 @@ export function LofotenActivities() {
                       </span>
                     </div>
                   </div>
-                  <div className="mt-auto pt-3 border-t border-slate-100">
+                  <div className="mt-auto pt-3 border-t border-slate-100 space-y-3">
+                    <AddToTripButton compact className="w-full" item={destinationTripItem({ category: 'tours', name: tour.name, destination: 'lofoten', href: tour.affiliateUrl, priceRange: tour.price })} />
                     <a
                       href={tour.affiliateUrl}
                       rel={outboundRel(tour.affiliateUrl)}
@@ -462,6 +466,9 @@ export function LofotenActivities() {
                     </Link>
                   )}
                 </div>
+                <div className="mt-3">
+                  <AddToTripButton compact item={destinationTripItem({ category: 'experiences', name: trail.name, destination: 'lofoten', href: trail.slug ? `/travel-guides/trip-reports/${trail.slug}` : undefined })} />
+                </div>
               </div>
             ))}
           </div>
@@ -507,6 +514,9 @@ export function LofotenActivities() {
                       NorgeTravel rated
                     </span>
                   )}
+                </div>
+                <div className="mt-3">
+                  <AddToTripButton compact item={destinationTripItem({ category: 'restaurants', name: restaurant.name, destination: 'lofoten', location: restaurant.location, priceRange: restaurant.priceRange })} />
                 </div>
               </div>
             ))}

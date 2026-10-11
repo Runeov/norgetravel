@@ -20,6 +20,8 @@ import {
 import { cn } from '@/lib/utils';
 import { geirangerTours as tours } from '@/data/fjord-tours';
 import { outboundRel } from '@/lib/outbound-rel';
+import { AddToTripButton } from '@/components/ui/AddToTripButton';
+import { destinationTripItem } from '@/lib/trip-items';
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -395,7 +397,8 @@ export function GeirangerActivities() {
                     {guide.season}
                   </span>
                 </div>
-                <div className="mt-auto pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
+                <div className="mt-auto pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+                  <AddToTripButton compact item={destinationTripItem({ category: 'experiences', name: guide.title, destination: 'geirangerfjord', href: guide.href, priceRange: guide.price })} />
                   {guide.isExternal ? (
                     <a
                       href={guide.href}
@@ -468,7 +471,8 @@ export function GeirangerActivities() {
                       </span>
                     </div>
                   </div>
-                  <div className="mt-auto pt-3 border-t border-slate-100">
+                  <div className="mt-auto pt-3 border-t border-slate-100 space-y-3">
+                    <AddToTripButton compact className="w-full" item={destinationTripItem({ category: 'tours', name: tour.name, destination: 'geirangerfjord', href: tour.affiliateUrl, priceRange: tour.price })} />
                     <a
                       href={tour.affiliateUrl}
                       rel={outboundRel(tour.affiliateUrl)}
@@ -546,6 +550,9 @@ export function GeirangerActivities() {
                     </Link>
                   )}
                 </div>
+                <div className="mt-3">
+                  <AddToTripButton compact item={destinationTripItem({ category: 'experiences', name: trail.name, destination: 'geirangerfjord', href: trail.slug ? `/travel-guides/trip-reports/${trail.slug}` : undefined })} />
+                </div>
               </div>
             ))}
           </div>
@@ -596,6 +603,9 @@ export function GeirangerActivities() {
                       NorgeTravel rated
                     </span>
                   )}
+                </div>
+                <div className="mt-3">
+                  <AddToTripButton compact item={destinationTripItem({ category: 'restaurants', name: restaurant.name, destination: 'geirangerfjord', priceRange: restaurant.priceRange })} />
                 </div>
               </div>
             ))}

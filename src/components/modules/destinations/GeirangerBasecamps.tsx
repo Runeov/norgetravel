@@ -20,6 +20,8 @@ import {
   Navigation,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { AddToTripButton } from '@/components/ui/AddToTripButton';
+import { destinationTripItem } from '@/lib/trip-items';
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -562,6 +564,9 @@ export function GeirangerBasecamps() {
               {base.distanceToGeiranger}
             </span>
           </div>
+          <div className="mt-4">
+            <AddToTripButton item={destinationTripItem({ category: 'cities', name: base.label, destination: 'geirangerfjord', location: 'Geirangerfjord' })} />
+          </div>
         </div>
 
         {/* Best for / Not ideal for */}
@@ -628,6 +633,9 @@ export function GeirangerBasecamps() {
                     <p className="text-xs text-slate-600 leading-relaxed">
                       {acc.highlight}
                     </p>
+                    <div className="mt-2">
+                      <AddToTripButton compact item={destinationTripItem({ category: 'accommodation', name: acc.name, destination: 'geirangerfjord', location: base.label, priceRange: acc.price })} />
+                    </div>
                   </div>
                 ))}
               </div>

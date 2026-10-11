@@ -5,6 +5,8 @@ import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { ShareButtons } from '@/components/ui/ShareButtons';
 import { cities } from '@/data/city-attractions';
 import { localizedMetadata } from '@/lib/i18n-seo';
+import { AddToTripButton } from '@/components/ui/AddToTripButton';
+import { destinationTripItem } from '@/lib/trip-items';
 
 export const generateMetadata = localizedMetadata('destinations/cities', {
   title: 'Cities of Norway Travel Guide 2026 | NorgeTravel',
@@ -42,12 +44,11 @@ export default function CitiesIndexPage() {
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {cities.map((city) => (
-              <Link
+              <div
                 key={city.slug}
-                href={`/destinations/cities/${city.slug}`}
                 className="group bg-white rounded-lg border border-slate-200 overflow-hidden hover:shadow-md transition-shadow"
               >
-                <div className="relative h-40 overflow-hidden">
+                <Link href={`/destinations/cities/${city.slug}`} className="block relative h-40 overflow-hidden">
                   <Image
                     src={city.heroImage}
                     alt={city.heroImageAlt}
@@ -59,7 +60,7 @@ export default function CitiesIndexPage() {
                   <div className="absolute bottom-0 left-0 p-4">
                     <h3 className="text-2xl font-bold text-white">{city.name}</h3>
                   </div>
-                </div>
+                </Link>
                 <div className="p-6">
                   <p className="text-sm font-medium text-[#1A365D] mb-2">{city.tagline}</p>
                   <p className="text-slate-600 text-sm leading-relaxed mb-4">
@@ -72,12 +73,18 @@ export default function CitiesIndexPage() {
                       </span>
                     ))}
                   </div>
-                  <span className="inline-flex items-center text-sm font-semibold text-[#1A365D] group-hover:text-[#00D084] transition-colors">
-                    Explore {city.name}
-                    <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-                  </span>
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <Link
+                      href={`/destinations/cities/${city.slug}`}
+                      className="inline-flex items-center min-h-[44px] text-sm font-semibold text-[#1A365D] group-hover:text-[#00D084] transition-colors"
+                    >
+                      Explore {city.name}
+                      <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                    <AddToTripButton compact item={destinationTripItem({ category: 'cities', name: city.name, destination: 'cities', href: `/destinations/cities/${city.slug}`, imageUrl: city.heroImage })} />
+                  </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>

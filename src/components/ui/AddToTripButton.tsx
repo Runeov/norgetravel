@@ -9,9 +9,11 @@ import { trackEvent } from '@/lib/analytics';
 interface AddToTripButtonProps {
   item: TripItem;
   className?: string;
+  /** Tighter padding and smaller text for dense cards. Keeps the 44 px tap height. */
+  compact?: boolean;
 }
 
-export function AddToTripButton({ item, className }: AddToTripButtonProps) {
+export function AddToTripButton({ item, className, compact = false }: AddToTripButtonProps) {
   const { addItem, removeItem, isInTrip } = useTrip();
   const added = isInTrip(item.id);
 
@@ -39,7 +41,8 @@ export function AddToTripButton({ item, className }: AddToTripButtonProps) {
     <button
       onClick={handleClick}
       className={cn(
-        'inline-flex items-center justify-center gap-1.5 px-4 py-2 text-sm font-medium rounded-md min-h-[44px] transition-[transform,background-color,border-color,color] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1B3A5C] focus-visible:ring-offset-2 active:translate-y-px motion-reduce:transform-none motion-reduce:transition-none',
+        'inline-flex items-center justify-center gap-1.5 font-medium rounded-md min-h-[44px] transition-[transform,background-color,border-color,color] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1B3A5C] focus-visible:ring-offset-2 active:translate-y-px motion-reduce:transform-none motion-reduce:transition-none',
+        compact ? 'px-3 py-1.5 text-xs' : 'px-4 py-2 text-sm',
         added
           ? 'bg-[#dff7ea] text-[#11643f] hover:bg-[#c9f0dc]'
           : 'border border-[#1B3A5C] text-[#1B3A5C] hover:bg-[#1B3A5C]/5',

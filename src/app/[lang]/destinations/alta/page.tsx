@@ -242,6 +242,7 @@ export default function AltaPage() {
         <NorgeBackground />
         <div className="container mx-auto px-4 relative z-10">
           <DestinationActivities
+            destination="alta"
             heading="What to do in Alta & Sápmi"
             intro="Four anchors for an Alta and Sápmi trip. UNESCO rock art at Hjemmeluft, aurora chases onto the Finnmarksvidda plateau, the Sami Easter Festival at Kautokeino, and the dog-sledding and ice-hotel cluster around the Alta River."
             featured={[
@@ -381,6 +382,8 @@ export default function AltaPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <DestinationBasecamps
+            destination="alta"
+            region="Alta & Sápmi"
             basecamps={altaBasecamps}
             intro="Three bases cover Alta and Sápmi. The town itself for services and the airport. Sorrisniva for the igloo and the riverside lodge. Kautokeino on the Finnmarksvidda for Sámi cultural context — visited on Sámi terms, not as a tourist stop."
           />

@@ -243,6 +243,7 @@ export default function LyngenPage() {
         <NorgeBackground />
         <div className="container mx-auto px-4 relative z-10">
           <DestinationActivities
+            destination="lyngen"
             heading="What to do in Lyngen"
             intro="Four reasons people fly to Tromsø and then drive straight through it. Ski touring in spring, aurora over the fjord from September, humpback safaris from Skjervøy in the winter herring season, and dog sledding from Tamokdalen year-round on snow."
             featured={[
@@ -382,6 +383,8 @@ export default function LyngenPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <DestinationBasecamps
+            destination="lyngen"
+            region="Lyngen Alps"
             basecamps={lyngenBasecamps}
             intro="Three bases work for Lyngen. Lyngseidet to stay on the peninsula. Djupvik for the premium lodges across the fjord from the highest peaks. Tromsø if you are combining the Alps with the city."
           />

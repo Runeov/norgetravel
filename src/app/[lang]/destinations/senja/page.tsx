@@ -213,6 +213,7 @@ export default function SenjaPage() {
         <NorgeBackground />
         <div className="container mx-auto px-4 relative z-10">
           <DestinationActivities
+            destination="senja"
             heading="What to do in Senja & Vesterålen"
             intro="Four activities worth structuring a trip around. Senja for the peaks-into-sea coast and the Segla ridge. Vesterålen for the year-round sperm whale safaris off Andenes and the Hurtigruten calls at Stokmarknes."
             featured={[
@@ -348,6 +349,8 @@ export default function SenjaPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <DestinationBasecamps
+            destination="senja"
+            region="Senja & Vesterålen"
             basecamps={senjaBasecamps}
             intro="Three bases cover Senja and Vesterålen without backtracking. Hamn for the outer coast and Segla. Finnsnes for services and the cheapest hotels. Andenes for year-round sperm whales and the northern tip of Vesterålen."
           />

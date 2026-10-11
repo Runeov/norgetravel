@@ -6,6 +6,8 @@ import { ShareButtons } from '@/components/ui/ShareButtons';
 import { LofotenActivities } from '@/components/modules/destinations/LofotenActivities';
 import { LofotenBasecamps } from '@/components/modules/destinations/LofotenBasecamps';
 import { eventsStore } from '@/lib/admin/travel-events';
+import { AddToTripButton } from '@/components/ui/AddToTripButton';
+import { destinationTripItem } from '@/lib/trip-items';
 import { localizedMetadata } from '@/lib/i18n-seo';
 
 export const revalidate = 86400;
@@ -284,6 +286,9 @@ export default async function LofotenPage() {
                       {event.venue as string}
                     </p>
                   )}
+                  <div className="mt-4 pt-3 border-t border-slate-100">
+                    <AddToTripButton compact item={destinationTripItem({ category: 'events', name: event.name, destination: 'lofoten', location: event.location, href: event.ticketUrl ?? event.website, startDate: event.startDate, endDate: event.endDate })} />
+                  </div>
                 </div>
               ))}
             </div>

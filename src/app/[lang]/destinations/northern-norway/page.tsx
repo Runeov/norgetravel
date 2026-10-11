@@ -5,6 +5,8 @@ import { NorgeBackground } from '@/components/modules/NorgeBackground';
 import { ShareButtons } from '@/components/ui/ShareButtons';
 import { eventsStore } from '@/lib/admin/travel-events';
 import { localizedMetadata } from '@/lib/i18n-seo';
+import { AddToTripButton } from '@/components/ui/AddToTripButton';
+import { destinationTripItem } from '@/lib/trip-items';
 
 
 export const revalidate = 3600;
@@ -120,17 +122,20 @@ export default async function NorthernNorwayPage() {
                 <div className="p-6">
                   <h3 className="font-bold text-slate-900 text-lg mb-2">{h.title}</h3>
                   <p className="text-slate-600 text-sm leading-relaxed mb-4">{h.body}</p>
-                  {h.linkLabel === 'Coming soon' ? (
-                    <span className="text-sm text-slate-400 font-medium">Coming soon</span>
-                  ) : (
-                    <Link
-                      href={h.link}
-                      className="inline-flex items-center gap-1.5 text-sm font-medium text-[#1B3A5C] hover:text-[#00CC6A] transition-colors"
-                    >
-                      {h.linkLabel}
-                      <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                    </Link>
-                  )}
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    {h.linkLabel === 'Coming soon' ? (
+                      <span className="text-sm text-slate-400 font-medium">Coming soon</span>
+                    ) : (
+                      <Link
+                        href={h.link}
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-[#1B3A5C] hover:text-[#00CC6A] transition-colors"
+                      >
+                        {h.linkLabel}
+                        <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                      </Link>
+                    )}
+                    <AddToTripButton compact item={destinationTripItem({ category: 'cities', name: h.title, destination: 'northern-norway', href: h.linkLabel === 'Coming soon' ? null : h.link, imageUrl: h.image })} />
+                  </div>
                 </div>
               </div>
             ))}
@@ -241,6 +246,9 @@ export default async function NorthernNorwayPage() {
                       {event.venue as string}
                     </p>
                   )}
+                  <div className="mt-4 pt-3 border-t border-slate-100">
+                    <AddToTripButton compact item={destinationTripItem({ category: 'events', name: event.name, destination: 'northern-norway', location: event.location, href: event.ticketUrl ?? event.website, startDate: event.startDate, endDate: event.endDate })} />
+                  </div>
                 </div>
               ))}
             </div>

@@ -1,7 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { X } from 'lucide-react';
+import Link from '@/components/LocalizedLink';
+import { ExternalLink, X } from 'lucide-react';
+import { outboundRel } from '@/lib/outbound-rel';
 import { cn } from '@/lib/utils';
 import type { TripItem } from '@/types/trip';
 import { useTrip } from '@/context/TripContext';
@@ -46,7 +48,25 @@ export function TripItemCard({ item }: TripItemCardProps) {
       {/* Content */}
       <div className="flex-1 min-w-0">
         <div className="flex items-start justify-between gap-2">
-          <h4 className="font-bold text-sm text-slate-800 truncate">{item.name}</h4>
+          <h4 className="font-bold text-sm text-slate-800 truncate">
+            {item.href?.startsWith('/') ? (
+              <Link href={item.href} className="hover:text-[#1B3A5C] hover:underline transition-colors">
+                {item.name}
+              </Link>
+            ) : item.href ? (
+              <a
+                href={item.href}
+                target="_blank"
+                rel={outboundRel(item.href)}
+                className="inline-flex items-center gap-1 hover:text-[#1B3A5C] hover:underline transition-colors"
+              >
+                {item.name}
+                <ExternalLink className="w-3 h-3 shrink-0" aria-hidden="true" />
+              </a>
+            ) : (
+              item.name
+            )}
+          </h4>
           <button
             onClick={() => removeItem(item.id)}
             className="shrink-0 p-1 text-slate-400 hover:text-red-500 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center -m-2"

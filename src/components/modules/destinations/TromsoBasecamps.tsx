@@ -19,6 +19,8 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { TromsoBasecampId, TromsoBasecampsCopy } from '@/i18n/tromso-copy';
+import { AddToTripButton } from '@/components/ui/AddToTripButton';
+import { destinationTripItem } from '@/lib/trip-items';
 
 // Text per locale comes from TROMSO_COPY (src/i18n/tromso-copy.ts)
 const basecamps: { id: TromsoBasecampId; icon: typeof MapPin }[] = [
@@ -95,6 +97,9 @@ export function TromsoBasecamps({ copy }: { copy: TromsoBasecampsCopy }) {
               {base.distanceToCentre}
             </span>
           </div>
+          <div className="mt-4">
+            <AddToTripButton item={destinationTripItem({ category: 'cities', name: base.label, destination: 'tromso', location: 'Tromsø' })} />
+          </div>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-4">
@@ -158,6 +163,9 @@ export function TromsoBasecamps({ copy }: { copy: TromsoBasecampsCopy }) {
                     <p className="text-xs text-slate-600 leading-relaxed">
                       {acc.highlight}
                     </p>
+                    <div className="mt-2">
+                      <AddToTripButton compact item={destinationTripItem({ category: 'accommodation', name: acc.name, destination: 'tromso', location: base.label, priceRange: acc.price })} />
+                    </div>
                   </div>
                 ))}
               </div>

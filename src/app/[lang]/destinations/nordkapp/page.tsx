@@ -212,6 +212,7 @@ export default function NordkappPage() {
         <NorgeBackground />
         <div className="container mx-auto px-4 relative z-10">
           <DestinationActivities
+            destination="nordkapp"
             heading="What to do at North Cape"
             intro="The plateau itself, plus three reasons to stay more than one night on Magerøya. The midnight sun runs May 14 to July 29. The aurora window opens mid-September. The king crab boats run year-round when the Barents Sea lets them."
             featured={[
@@ -351,6 +352,8 @@ export default function NordkappPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <DestinationBasecamps
+            destination="nordkapp"
+            region="North Cape"
             basecamps={nordkappBasecamps}
             intro="Three bases on Magerøya. Honningsvåg for services and the Hurtigruten call. Skarsvåg for the closest approach to the plateau. Gjesvær for the bird-cliffs at Gjesværstappan."
           />
