@@ -1,29 +1,39 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { AgentInputError, AgentUnavailableError, writeDayPlan } from '@/lib/plan-agent';
 import { parsePlanRequest } from '@/lib/plan-request';
+import { countAgentCall, planStoreReady } from '@/lib/plan-store';
 
 export const dynamic = 'force-dynamic';
 // A plan takes 20 to 70 seconds when the model needs its one retry
 export const maxDuration = 120;
 
-// Cost guard rails. Both counters live in the serverless instance, so they are
-// per warm instance, not global; the client only calls this on a button press.
+// Cost guard rails. The per-IP window lives in the serverless instance; the
+// daily cap lives in the plan store when it is configured, so it holds across
+// instances. The client only calls this on a button press.
 const PER_IP_LIMIT = 6; // plans per window
 const PER_IP_WINDOW_MS = 10 * 60 * 1000;
 const DAILY_CAP = Number.parseInt(process.env.PLAN_AGENT_DAILY_CAP ?? '200', 10);
+const DAILY_MESSAGE = 'The day-by-day planner has reached its daily limit. The plan above still works; try again tomorrow.';
 const hits = new Map<string, number[]>();
 let daily = { day: '', count: 0 };
 
-function overLimit(ip: string): string | null {
-  const today = new Date().toISOString().slice(0, 10);
-  if (daily.day !== today) daily = { day: today, count: 0 };
-  if (daily.count >= DAILY_CAP) return 'The day-by-day planner has reached its daily limit. The plan above still works; try again tomorrow.';
+async function overLimit(ip: string): Promise<string | null> {
   const now = Date.now();
   const recent = (hits.get(ip) ?? []).filter((t) => now - t < PER_IP_WINDOW_MS);
   if (recent.length >= PER_IP_LIMIT) return 'That is a few plans in a row. Give it ten minutes and try again.';
+
+  if (planStoreReady()) {
+    const { allowed } = await countAgentCall(DAILY_CAP).catch(() => ({ allowed: true }));
+    if (!allowed) return DAILY_MESSAGE;
+  } else {
+    const today = new Date().toISOString().slice(0, 10);
+    if (daily.day !== today) daily = { day: today, count: 0 };
+    if (daily.count >= DAILY_CAP) return DAILY_MESSAGE;
+    daily.count += 1;
+  }
+
   recent.push(now);
   hits.set(ip, recent);
-  daily.count += 1;
   return null;
 }
 
@@ -51,7 +61,7 @@ export async function POST(request: NextRequest) {
 
   // Only requests that will reach the model count against the limits
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || request.headers.get('x-real-ip') || 'unknown';
-  const limited = overLimit(ip);
+  const limited = await overLimit(ip);
   if (limited) return NextResponse.json({ error: limited }, { status: 429 });
 
   try {

@@ -43,3 +43,5 @@ ts-debug.log*
 
 # Local secrets kept out of the repo
 .env.txt
+
+.env*

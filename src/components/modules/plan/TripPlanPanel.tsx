@@ -26,7 +26,9 @@ import { outboundRel } from '@/lib/outbound-rel';
 import { cn } from '@/lib/utils';
 import type { LegMethod, PlanLine, PlanResult, Suggestion } from '@/lib/plan-engine';
 import type { TripInterest } from '@/types/trip';
+import { buildPlanQuery } from '@/lib/plan-key';
 import { DayPlanSection } from './DayPlanSection';
+import { SharePlanSection } from './SharePlanSection';
 
 /** Zones to plan for when the visitor has chosen none: what they saved, else what they said they came for. */
 const INTEREST_ZONES: Record<TripInterest, string[]> = {
@@ -51,7 +53,7 @@ const LEG_ICON: Record<LegMethod, LucideIcon> = {
   bus: Bus,
 };
 
-function PlanLinks({ links }: { links: { label: string; href: string }[] }) {
+export function PlanLinks({ links }: { links: { label: string; href: string }[] }) {
   if (!links.length) return null;
   return (
     <span className="mt-1 flex flex-wrap gap-x-3 gap-y-1">
@@ -71,7 +73,7 @@ function PlanLinks({ links }: { links: { label: string; href: string }[] }) {
   );
 }
 
-function Lines({ lines, tone = 'plain' }: { lines: PlanLine[]; tone?: 'plain' | 'warn' }) {
+export function Lines({ lines, tone = 'plain' }: { lines: PlanLine[]; tone?: 'plain' | 'warn' }) {
   return (
     <ul className="space-y-3">
       {lines.map((line) => (
@@ -167,19 +169,10 @@ export function TripPlanPanel() {
     return [...new Set(profile.interests.flatMap((interest) => INTEREST_ZONES[interest]))];
   }, [profile.zones, profile.interests, items]);
 
-  const query = useMemo(() => {
-    const params = new URLSearchParams();
-    if (profile.startDate) params.set('start', profile.startDate);
-    if (profile.endDate) params.set('end', profile.endDate);
-    if (profile.travellers) params.set('travellers', String(profile.travellers));
-    if (profile.interests.length) params.set('interests', profile.interests.join(','));
-    if (profile.pace) params.set('pace', profile.pace);
-    if (profile.mobility) params.set('mobility', profile.mobility);
-    if (profile.budget) params.set('budget', profile.budget);
-    if (zones.length) params.set('zones', zones.join(','));
-    if (items.length) params.set('saved', items.map((item) => item.id).slice(0, 200).join(','));
-    return params.toString();
-  }, [profile, zones, items]);
+  const query = useMemo(
+    () => buildPlanQuery(profile, zones, items.map((item) => item.id)),
+    [profile, zones, items]
+  );
 
   const hasInput = zones.length > 0;
 
@@ -350,6 +343,7 @@ export function TripPlanPanel() {
             requestKey={query}
             ready={Boolean(plan.window.startDate && plan.window.endDate && plan.window.nights && plan.zones.length)}
           />
+          <SharePlanSection basics={requestBody} requestKey={query} />
           {plan.sources.length > 0 && (
             <Section icon={Star} title="Built from">
               <PlanLinks links={plan.sources} />
