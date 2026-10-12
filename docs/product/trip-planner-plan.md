@@ -98,6 +98,14 @@ A rule engine over our own data, deterministic and explainable:
 - Shareable plan URL backed by a small server store (Vercel KV or Blob), with an expiry; PDF and calendar export; optional email delivery with explicit consent, which also seeds a newsletter list.
 - "Tell me when tickets open" for events with release dates (Trænafestivalen in March, Ekstremsportveko accommodation in February).
 
+### Phase 4 status, 12 October 2026: built on Google_dev
+
+- **Store.** A private Vercel Blob store, `norgetravel-plans`, linked to the project (`BLOB_READ_WRITE_TOKEN` in production, preview and development). `src/lib/plan-store.ts` keeps JSON under `shared/<id>.json` (90 days), the agent's memo under `agent/<hash>.json` (7 days, so identical inputs do not call the model again on another instance) and the daily counter under `agent/limits/<day>.json`. Without the token it falls back to process memory.
+- **Share.** "Share or export" at the end of "Your plan so far" posts the basics, the saved items and the written days to `POST /api/plan/share/`, which rebuilds the facts on the server (a client cannot store invented ones), cleans the text, and returns `/[lang]/plan/shared/<id>/`. The link is kept on the device and flagged when the plan changes.
+- **Shared page.** Read-only, `noindex`, printable (print rules in `src/index.css` drop the navigation, footer and overlays). Shows the day-by-day plan when there is one, otherwise the engine sections, plus everything saved and the sources. Actions: "Use this plan in my planner" (imports basics, items and the written days into the visitor's own storage and opens `/plan`), "Calendar (.ics)" (one all-day event per day, built in the browser by `src/lib/plan-ics.ts`, only when days exist), "Print or save as PDF", "Copy link" and the share buttons.
+- **Not built.** Email delivery and "tell me when tickets open" need an email provider the site does not have; left for when one is chosen.
+- **Verified.** 13 API checks (bad input, share with and without days, the page renders from the store, bogus items and refs dropped, noindex, unknown and malformed ids are 404) and 8 browser checks (link made from `/plan`, shared page renders without overflow, calendar hidden without days, print present, a fresh browser imports the plan and lands on `/plan` with the basics and the saved count).
+
 ## What success looks like
 
 | Measure (28 days) | Now | After Phase 0 | After Phase 2 | After Phase 3 |

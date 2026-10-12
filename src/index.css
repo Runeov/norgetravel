@@ -18,3 +18,21 @@ body {
   color: var(--foreground);
   background: var(--background);
 }
+/* Print: the shared plan page is the one people print. Chrome, banners and overlays go; the content keeps its width. */
+@media print {
+  nav,
+  footer,
+  .fixed,
+  [data-no-print] {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  main {
+    padding-top: 0 !important;
+  }
+  a[href]::after {
+    content: '';
+  }
+}

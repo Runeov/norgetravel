@@ -22,6 +22,10 @@ export type AnalyticsEventName =
   | 'trip_plan_requested'
   | 'trip_plan_generated'
   | 'trip_plan_failed'
+  | 'trip_plan_shared'
+  | 'trip_plan_imported'
+  | 'trip_plan_calendar'
+  | 'trip_plan_printed'
   | 'share_started'
   | 'share_completed';
 
@@ -50,6 +54,10 @@ const EVENT_NAMES = new Set<AnalyticsEventName>([
   'trip_plan_requested',
   'trip_plan_generated',
   'trip_plan_failed',
+  'trip_plan_shared',
+  'trip_plan_imported',
+  'trip_plan_calendar',
+  'trip_plan_printed',
   'share_started',
   'share_completed',
 ]);

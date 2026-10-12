@@ -1,6 +1,7 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { createHash } from 'node:crypto';
 import { buildPlan, type PlanRequest, type PlanResult } from '@/lib/plan-engine';
+import { loadAgentMemo, saveAgentMemo } from '@/lib/plan-store';
 
 /**
  * Phase 3 of the trip planner: the model writes the day-by-day plan, but only
@@ -263,6 +264,12 @@ export async function writeDayPlan(request: PlanRequest): Promise<AgentPlan> {
   const inputHash = createHash('sha256').update(JSON.stringify({ request: { ...request, savedIds: undefined }, compact })).digest('hex').slice(0, 24);
   const cached = memo.get(inputHash);
   if (cached) return cached;
+  // The store carries the memo across serverless instances; a miss just means a model call
+  const stored = await loadAgentMemo(inputHash).catch(() => null);
+  if (stored) {
+    remember(stored);
+    return stored;
+  }
 
   const client = new Anthropic({ apiKey });
   const refs = refsOf(facts);
@@ -315,5 +322,6 @@ export async function writeDayPlan(request: PlanRequest): Promise<AgentPlan> {
   };
   console.info('plan/agent', { model: MODEL, calls, ...usage, days: plan.days.length, banned: result.bannedWords });
   remember(plan);
+  await saveAgentMemo(plan).catch((error: unknown) => console.warn('plan/agent: memo not saved', error));
   return plan;
 }

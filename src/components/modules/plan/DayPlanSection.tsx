@@ -26,6 +26,11 @@ function readStored(): Stored | null {
   }
 }
 
+/** The written plan kept on this device, with the key of the basics it was written for. */
+export function readStoredDayPlan(): { key: string; plan: AgentPlan } | null {
+  return readStored();
+}
+
 function store(value: Stored) {
   try {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(value));
@@ -64,7 +69,7 @@ function ItemName({ s }: { s: Suggestion }) {
   );
 }
 
-function DayCard({ day, facts }: { day: DayPlan; facts: PlanResult }) {
+export function DayCard({ day, facts }: { day: DayPlan; facts: PlanResult }) {
   const date = formatDate(day.date);
   return (
     <li className="rounded-lg border border-slate-200 bg-white p-5">
