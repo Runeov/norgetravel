@@ -1,8 +1,10 @@
 'use client';
 
 import { createContext, useContext, useState, useCallback, useEffect } from 'react';
-import type { TripItem, TripProfile } from '@/types/trip';
-import { EMPTY_PROFILE } from '@/types/trip';
+import { usePathname } from 'next/navigation';
+import type { TripInterest, TripItem, TripProfile } from '@/types/trip';
+import { EMPTY_PROFILE, TRIP_INTERESTS } from '@/types/trip';
+import { mapZones } from '@/data/norway-map-zones';
 
 const STORAGE_KEY = 'norgetravel-trip';
 const PROFILE_KEY = 'norgetravel-trip-profile';
@@ -21,10 +23,30 @@ interface TripContextValue {
 
 const TripContext = createContext<TripContextValue | null>(null);
 
+const ZONE_IDS = new Set(mapZones.map((zone) => zone.id));
+const INTEREST_IDS = new Set<string>(TRIP_INTERESTS.map((interest) => interest.id));
+
+/**
+ * Reads the regions and interests an article's planner link carries (?zones=…&interests=…),
+ * then drops them from the address bar so a reload does not add them again.
+ */
+function takeLinkedProfile(): Pick<TripProfile, 'zones' | 'interests'> | null {
+  const url = new URL(window.location.href);
+  if (!url.searchParams.has('zones') && !url.searchParams.has('interests')) return null;
+  const listParam = (name: string) => (url.searchParams.get(name) ?? '').split(',').filter(Boolean);
+  const zones = listParam('zones').filter((id) => ZONE_IDS.has(id));
+  const interests = listParam('interests').filter((id): id is TripInterest => INTEREST_IDS.has(id));
+  url.searchParams.delete('zones');
+  url.searchParams.delete('interests');
+  window.history.replaceState(window.history.state, '', `${url.pathname}${url.search}${url.hash}`);
+  return { zones, interests };
+}
+
 export function TripProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<TripItem[]>([]);
   const [profile, setProfile] = useState<TripProfile>(EMPTY_PROFILE);
   const [loaded, setLoaded] = useState(false);
+  const pathname = usePathname();
 
   // Load from localStorage on mount (SSR-safe)
   useEffect(() => {
@@ -38,6 +60,19 @@ export function TripProvider({ children }: { children: React.ReactNode }) {
     }
     setLoaded(true);
   }, []);
+
+  // Merge a planner link's regions and interests after the stored profile is in,
+  // on a full load and on client-side navigation alike
+  useEffect(() => {
+    if (!loaded) return;
+    const linked = takeLinkedProfile();
+    if (!linked) return;
+    setProfile((prev) => ({
+      ...prev,
+      zones: [...new Set([...prev.zones, ...linked.zones])],
+      interests: [...new Set([...prev.interests, ...linked.interests])],
+    }));
+  }, [pathname, loaded]);
 
   // Sync to localStorage on every change, once the stored values have been read
   useEffect(() => {
