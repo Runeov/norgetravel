@@ -16,6 +16,23 @@ import { articleLocales } from '@/lib/article-locales';
 import { asLocale, brandTitle, localeAlternates, OG_LOCALE, SITE_NAME } from '@/lib/i18n-seo';
 import { injectAffiliateLinks } from '@/lib/affiliate-linker';
 import { RelatedArticles } from '@/components/modules/travel/RelatedArticles';
+import { ArticlePlannerInline } from '@/components/modules/travel/ArticlePlannerInline';
+import { extractFaq, splitAtPlannerMarker } from '@/lib/article-blocks';
+
+const PROSE_CLASSES = `prose prose-lg prose-slate max-w-none
+  prose-headings:font-bold prose-headings:text-slate-900
+  prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-6
+  prose-h3:text-2xl prose-h3:mt-12 prose-h3:mb-4
+  prose-p:text-slate-600 prose-p:leading-relaxed
+  prose-a:text-[#E86C1F] prose-a:font-medium prose-a:no-underline hover:prose-a:underline
+  prose-strong:text-slate-900
+  prose-ul:text-slate-600 prose-ol:text-slate-600
+  prose-li:marker:text-[#E86C1F]
+  prose-blockquote:border-l-[#E86C1F] prose-blockquote:text-slate-700 prose-blockquote:italic
+  prose-img:rounded-xl prose-img:shadow-md
+  prose-table:border-collapse
+  prose-th:bg-slate-100 prose-th:text-slate-900 prose-th:font-bold prose-th:p-3
+  prose-td:p-3 prose-td:border-slate-200`;
 
 export function generateStaticParams() {
   return Object.values(articlesJson as Record<string, { category: string; slug: string; status: string }>)
@@ -177,6 +194,21 @@ export default async function DynamicArticlePage({ params }: PageProps) {
     },
   };
 
+  const body = splitAtPlannerMarker(article.content);
+  const faq = extractFaq(article.content);
+  const faqJsonLd =
+    faq.length >= 2
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faq.map(({ question, answer }) => ({
+            '@type': 'Question',
+            name: question,
+            acceptedAnswer: { '@type': 'Answer', text: answer },
+          })),
+        }
+      : null;
+
   return (
     <main className="min-h-screen bg-slate-50 relative overflow-hidden font-sans">
       <NorgeBackground />
@@ -185,6 +217,12 @@ export default async function DynamicArticlePage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
 
       <article className="relative z-10 container mx-auto px-4 py-12 max-w-4xl">
         {/* Breadcrumb */}
@@ -327,22 +365,19 @@ export default async function DynamicArticlePage({ params }: PageProps) {
 
         <div
           data-analytics-placement="article_body"
-          className="prose prose-lg prose-slate max-w-none
-            prose-headings:font-bold prose-headings:text-slate-900
-            prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-6
-            prose-h3:text-2xl prose-h3:mt-12 prose-h3:mb-4
-            prose-p:text-slate-600 prose-p:leading-relaxed
-            prose-a:text-[#E86C1F] prose-a:font-medium prose-a:no-underline hover:prose-a:underline
-            prose-strong:text-slate-900
-            prose-ul:text-slate-600 prose-ol:text-slate-600
-            prose-li:marker:text-[#E86C1F]
-            prose-blockquote:border-l-[#E86C1F] prose-blockquote:text-slate-700 prose-blockquote:italic
-            prose-img:rounded-xl prose-img:shadow-md
-            prose-table:border-collapse
-            prose-th:bg-slate-100 prose-th:text-slate-900 prose-th:font-bold prose-th:p-3
-            prose-td:p-3 prose-td:border-slate-200"
-          dangerouslySetInnerHTML={{ __html: injectAffiliateLinks(article.content, lang) }}
+          className={PROSE_CLASSES}
+          dangerouslySetInnerHTML={{ __html: injectAffiliateLinks(body.before, lang) }}
         />
+        {body.block && (
+          <>
+            <ArticlePlannerInline block={body.block} lang={lang} slug={article.slug} />
+            <div
+              data-analytics-placement="article_body"
+              className={PROSE_CLASSES}
+              dangerouslySetInnerHTML={{ __html: injectAffiliateLinks(body.after, lang) }}
+            />
+          </>
+        )}
 
         {/* Global Interactive Trip Planner Card */}
         {(() => {

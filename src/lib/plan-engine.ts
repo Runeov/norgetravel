@@ -112,9 +112,11 @@ const GUIDE = {
   mountainCode: { label: 'The Mountain Code', href: '/travel-guides/safety/fjellvettreglene-mountain-code' },
   ferries: { label: 'Norway ferry guide', href: '/travel-guides/planning/norway-ferry-guide' },
   bergenToLofoten: { label: 'Bergen to Lofoten routes', href: '/travel-guides/planning/bergen-to-lofoten-routes' },
+  tromsoToLofoten: { label: 'Tromsø to Lofoten routes', href: '/travel-guides/planning/tromso-to-lofoten-routes' },
   bergenRailway: { label: 'Bergen Railway trip report', href: '/travel-guides/trip-reports/bergen-railway-oslo-bergen' },
   hurtigruten: { label: 'Hurtigruten Bergen to Tromsø trip report', href: '/travel-guides/trip-reports/hurtigruten-bergen-tromso' },
   whales: { label: 'Skjervøy whale safari trip report', href: '/travel-guides/trip-reports/whale-safari-skjervoy-tromso' },
+  sledding: { label: 'Dog sledding or reindeer sledding guide', href: '/travel-guides/trip-reports/dog-sledding-vs-reindeer-sledding-tromso' },
   dnt: { label: 'DNT cabin guide', href: '/travel-guides/planning/dnt-cabin-guide' },
   bestTime: { label: 'Best time to visit', href: '/travel-guides/planning/best-time-visit-norway' },
   cost: { label: 'Norway cost guide', href: '/travel-guides/planning/norway-cost-budget-guide' },
@@ -261,7 +263,8 @@ const ACTIVITY_RULES: ActivityRule[] = [
   { id: 'aurora', test: (e) => e.experienceType === 'northern-lights' || /aurora|northern lights/i.test(nameAndText(e)), months: [9, 10, 11, 12, 1, 2, 3], label: 'aurora season, late September to late March', link: GUIDE.northernLights },
   { id: 'midnight-sun', test: (e) => /midnight sun/i.test(e.name), months: [5, 6, 7], label: 'midnight sun, 20 May to 22 July', link: GUIDE.tromso },
   { id: 'whales', test: (e) => e.experienceType === 'whale-watching' || /whale/i.test(e.name), months: [10, 11, 12, 1], label: 'whale season off Skjervøy, October to 31 January', link: GUIDE.whales },
-  { id: 'dog-sledding', test: (e) => e.experienceType === 'dog-sledding' || /dog sled|husky/i.test(e.name), months: [11, 12, 1, 2, 3, 4, 5], label: 'snow season, November to May', link: GUIDE.northernNorway },
+  { id: 'dog-sledding', test: (e) => e.experienceType === 'dog-sledding' || /dog sled|husky/i.test(e.name), months: [11, 12, 1, 2, 3, 4, 5], label: 'snow season, November to May', link: GUIDE.sledding },
+  { id: 'reindeer', test: (e) => /reindeer sled/i.test(e.name), months: [11, 12, 1, 2, 3, 4], label: 'reindeer sledding on snow, November to early April', link: GUIDE.sledding },
   { id: 'snowmobile', test: (e) => e.experienceType === 'snowmobile' || /snowmobile/i.test(e.name), months: [2, 3, 4, 5], label: 'frozen ground, February to May', link: GUIDE.svalbard },
   // The data has no plain "hiking" type, so most hikes are typed glacier-hike; only a glacier in the name gets the glacier window
   { id: 'glacier', test: (e) => /glacier/i.test(e.name), months: [5, 6, 7, 8, 9], label: 'accessible glacier surface, May to September', link: GUIDE.fjords },
@@ -338,10 +341,10 @@ const LEGS: Record<string, LegBuilder> = {
   'fjords>boat-routes': () => ({ method: 'coastal-ship', text: 'Back to Bergen to board the coastal ship, or join it at Ålesund, the first port after Bergen.', links: [GUIDE.hurtigruten] }),
   'cities>lofoten': (ctx) => ({ method: 'fly', text: ctx.car ? 'Fly to Evenes and drive 164 km on the E10 to Svolvær, or fly via Bodø to Svolvær or Leknes. Driving the whole way is 1,570 km and 24 hours at the wheel; plan three days at least.' : 'Widerøe nonstop to Bodø, then 25 minutes on to Svolvær or Leknes. Without flying: rail via Trondheim to Bodø (about 10 hours on the Nordland Line), then the ferry or express boat.', links: [GUIDE.bergenToLofoten] }),
   'fjords>lofoten': (ctx) => ({ method: 'fly', text: ctx.car ? 'Drop the car in Bergen, fly via Bodø to Svolvær or Leknes, and rent again there; or fly to Evenes and drive the E10 in.' : 'Fly from Bergen via Bodø to Svolvær or Leknes, 3 to 4 hours with the connection.', links: [GUIDE.bergenToLofoten] }),
-  'boat-routes>lofoten': () => ({ method: 'coastal-ship', text: 'The coastal ship calls at Stamsund at 19:00 and Svolvær at 21:00 northbound. Step off in Svolvær and stay.', links: [GUIDE.lofoten] }),
+  'boat-routes>lofoten': () => ({ method: 'coastal-ship', text: 'The coastal ship calls at Stamsund at 19:15 and Svolvær at 21:20 northbound. Step off in Svolvær and stay.', links: [GUIDE.lofoten] }),
   'lofoten>northern-norway': (ctx) => ctx.car
-    ? { method: 'drive', text: `E10 east to Narvik, 3 hours from Svolvær, then the E6 north; Narvik to Tromsø is 245 km. ${ctx.winter ? 'Winter: studded tyres are allowed in Nordland, Troms and Finnmark from 16 October to 30 April, and the E6 ices.' : 'Allow a full day with stops.'}`, links: [GUIDE.winterDriving, GUIDE.northernNorway] }
-    : { method: 'fly', text: 'Fly Svolvær to Tromsø via Bodø with Widerøe, or take the coastal ship northbound overnight from Svolvær to Tromsø.', links: [GUIDE.transport, GUIDE.hurtigruten] },
+    ? { method: 'drive', text: `E10 east over Lofast and Tjeldsund to Bjerkvik, then the E6 north over Gratangsfjellet and the E8 into Tromsø: about 430 km from Svolvær, 5.6 to 7 hours without stops. ${ctx.winter ? 'Winter: Gratangsfjellet gets convoys and closures, so check vegvesen.no or call 175 before you leave; studded tyres are allowed in Nordland and Troms from 16 October to 30 April.' : 'Allow a full day with stops.'}`, links: [GUIDE.tromsoToLofoten, GUIDE.winterDriving] }
+    : { method: 'fly', text: 'Widerøe flies Leknes to Tromsø nonstop every day, 16:20 to 17:15 (14:20 on Saturdays); from Svolvær nonstop on Saturdays only, other days via Bodø. Or take the coastal ship north overnight: Svolvær 22:15, Tromsø 14:15 the next day.', links: [GUIDE.tromsoToLofoten, GUIDE.hurtigruten] },
   'boat-routes>northern-norway': () => ({ method: 'coastal-ship', text: 'Stay aboard to Tromsø, or on to Honningsvåg for North Cape and Kirkenes at the end of the line.', links: [GUIDE.hurtigruten] }),
   'fjords>northern-norway': () => ({ method: 'fly', text: 'Fly Bergen to Tromsø; Widerøe and SAS connect via Oslo or direct depending on the day. The coastal ship is the slow alternative, Bergen to Tromsø as one segment.', links: [GUIDE.hurtigruten, GUIDE.transport] }),
   'cities>northern-norway': (ctx) => ({ method: 'fly', text: ctx.car ? 'Fly Oslo to Tromsø (TOS) and rent there; driving north is 1,700 km of E6.' : 'Fly Oslo to Tromsø (TOS). The Arctic Route winter buses and the Svipper city buses cover the ground without a car.', links: [GUIDE.tromso, GUIDE.transport] }),
