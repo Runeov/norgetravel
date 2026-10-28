@@ -78,7 +78,7 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   const article = await findArticle(category, slug, lang);
 
   if (!article) {
-    return { title: 'Artikkel ikke funnet' };
+    return { title: ARTICLE_UI[asLocale(lang)].notFound };
   }
 
   const en = (articlesJson as Record<string, Article>)[article.id];
@@ -116,6 +116,12 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
     },
   };
 }
+
+const ARTICLE_UI = {
+  en: { notFound: 'Article not found', breadcrumb: 'Breadcrumb', featured: 'Featured', dateLocale: 'en-GB', readTime: (minutes: number) => `${minutes} min read` },
+  zh: { notFound: '未找到文章', breadcrumb: '面包屑导航', featured: '精选', dateLocale: 'zh-CN', readTime: (minutes: number) => `阅读时间 ${minutes} 分钟` },
+  ja: { notFound: '記事が見つかりません', breadcrumb: 'パンくずリスト', featured: 'おすすめ', dateLocale: 'ja-JP', readTime: (minutes: number) => `読了時間 ${minutes}分` },
+} as const;
 
 // Shown on Chinese and Japanese pages whose body has not been translated yet
 const ENGLISH_BODY_NOTICE = {
@@ -203,6 +209,7 @@ export default async function DynamicArticlePage({ params }: PageProps) {
   const body = splitAtPlannerMarker(article.content);
   const faq = extractFaq(article.content);
   const locale = asLocale(lang);
+  const ui = ARTICLE_UI[locale];
   const englishBodyNotice = locale !== 'en' && !isCjkBody(article.content) ? ENGLISH_BODY_NOTICE[locale] : null;
   const englishBody = englishBodyNotice !== null;
   const faqJsonLd =
@@ -235,7 +242,7 @@ export default async function DynamicArticlePage({ params }: PageProps) {
 
       <article className="relative z-10 container mx-auto px-4 py-12 max-w-4xl">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-slate-500 mb-12" aria-label="Brødsmulesti">
+        <nav className="flex items-center gap-2 text-sm text-slate-500 mb-12" aria-label={ui.breadcrumb}>
           <Link
             href="/travel-guides"
             className="hover:text-[#1A365D] transition-colors"
@@ -272,7 +279,7 @@ export default async function DynamicArticlePage({ params }: PageProps) {
             </span>
             {article.isFeatured && (
               <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-[#E86C1F]/10 text-[#E86C1F]">
-                Fremhevet
+                {ui.featured}
               </span>
             )}
           </div>
@@ -316,7 +323,7 @@ export default async function DynamicArticlePage({ params }: PageProps) {
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" aria-hidden="true" />
                 <time dateTime={article.publishedAt}>
-                  {new Date(article.publishedAt).toLocaleDateString('nb-NO', {
+                  {new Date(article.publishedAt).toLocaleDateString(ui.dateLocale, {
                     day: 'numeric',
                     month: 'long',
                     year: 'numeric',
@@ -328,7 +335,7 @@ export default async function DynamicArticlePage({ params }: PageProps) {
             {/* Read time */}
             <div className="flex items-center gap-2">
               <Clock className="w-4 h-4" aria-hidden="true" />
-              <span>{article.readTime} min lesetid</span>
+              <span>{ui.readTime(article.readTime)}</span>
             </div>
           </div>
 
