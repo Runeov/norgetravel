@@ -26,3 +26,9 @@ export function articleLocales(en: ArticleLike, zh?: ArticleLike, ja?: ArticleLi
   if (isCurrentTranslation(en, ja) && isCjkBody(ja.content)) locales.push('ja');
   return locales;
 }
+
+/** Shown on Chinese and Japanese pages whose article body has not been translated yet. */
+export const ENGLISH_BODY_NOTICE: Record<Exclude<Locale, 'en'>, string> = {
+  zh: '本文目前只有英文版。可以使用浏览器的翻译功能阅读全文。',
+  ja: 'この記事は現在英語版のみです。ブラウザの翻訳機能で全文をお読みいただけます。',
+};

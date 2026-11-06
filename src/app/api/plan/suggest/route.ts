@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { buildPlan } from '@/lib/plan-engine';
 import { parsePlanRequest } from '@/lib/plan-request';
+import { PLAN_TEXT } from '@/i18n/plan-text';
 
 export const dynamic = 'force-dynamic';
 
@@ -18,6 +19,6 @@ export async function GET(request: NextRequest) {
     });
   } catch (error) {
     console.error('plan/suggest failed', error);
-    return NextResponse.json({ error: 'The planner could not build a plan right now.' }, { status: 500 });
+    return NextResponse.json({ error: PLAN_TEXT[planRequest.locale ?? 'en'].errors.suggestFailed }, { status: 500 });
   }
 }

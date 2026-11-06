@@ -16,7 +16,12 @@ export interface IcsInput {
   title: string;
   url?: string;
   days: IcsDay[];
+  /** Templates for the event title ({n}, {title}) and the plan link ({url}), in the plan's language. */
+  labels?: { day: string; plan: string };
 }
+
+const fill = (template: string, vars: Record<string, string | number>) =>
+  template.replace(/\{(\w+)\}/g, (match, key: string) => (key in vars ? String(vars[key]) : match));
 
 const escapeText = (text: string) =>
   text.replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n');
@@ -53,10 +58,11 @@ export function buildIcs(input: IcsInput): string {
     `X-WR-CALNAME:${escapeText(input.title)}`,
   ];
   const dtstamp = stamp();
+  const labels = input.labels ?? { day: 'Day {n}: {title}', plan: 'Plan: {url}' };
 
   for (const day of input.days) {
     if (!day.date) continue;
-    const description = [day.summary, ...day.items.map((item) => `- ${item}`), input.url ? `Plan: ${input.url}` : '']
+    const description = [day.summary, ...day.items.map((item) => `- ${item}`), input.url ? fill(labels.plan, { url: input.url }) : '']
       .filter(Boolean)
       .join('\n');
     lines.push(
@@ -65,7 +71,7 @@ export function buildIcs(input: IcsInput): string {
       `DTSTAMP:${dtstamp}`,
       `DTSTART;VALUE=DATE:${compact(day.date)}`,
       `DTEND;VALUE=DATE:${compact(nextDay(day.date))}`,
-      `SUMMARY:${escapeText(`Day ${day.day}: ${day.title}`)}`,
+      `SUMMARY:${escapeText(fill(labels.day, { n: day.day, title: day.title }))}`,
       `DESCRIPTION:${escapeText(description)}`,
       ...(input.url ? [`URL:${input.url}`] : []),
       'END:VEVENT'

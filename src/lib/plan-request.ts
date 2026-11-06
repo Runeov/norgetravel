@@ -1,5 +1,6 @@
 import type { PlanRequest } from '@/lib/plan-engine';
 import { isPlanZoneId, type PlanZoneId } from '@/lib/planner-data';
+import { asLocale } from '@/lib/i18n-seo';
 import {
   TRIP_BUDGETS,
   TRIP_INTERESTS,
@@ -47,5 +48,7 @@ export function parsePlanRequest(raw: Raw): PlanRequest {
     budget: oneOf<TripBudget>(raw.budget, TRIP_BUDGETS),
     zones: list(raw.zones).filter((v): v is PlanZoneId => isPlanZoneId(v)),
     savedIds: list(raw.saved ?? raw.savedIds).slice(0, 200),
+    // The language the plan is written in; anything unknown is English
+    locale: asLocale(str(raw.lang) ?? str(raw.locale)),
   };
 }

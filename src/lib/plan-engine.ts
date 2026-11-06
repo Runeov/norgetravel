@@ -1,19 +1,16 @@
-import { mapZones } from '@/data/norway-map-zones';
 import { experiencesStore } from '@/lib/admin/travel-experiences';
 import { accommodationStore } from '@/lib/admin/travel-accommodation';
 import { eventsStore } from '@/lib/admin/travel-events';
 import { itemInZone, rankItems, ratingOf, reviewCountOf, type PlanZoneId } from '@/lib/planner-data';
+import type { Locale } from '@/lib/i18n-seo';
 import type { Experience } from '@/lib/schemas/travel.experiences.schema';
 import type { Accommodation } from '@/lib/schemas/travel.accommodation.schema';
 import type { Event } from '@/lib/schemas/travel.events.schema';
-import {
-  TRIP_INTERESTS,
-  type TripBudget,
-  type TripInterest,
-  type TripItemCategory,
-  type TripMobility,
-  type TripPace,
-} from '@/types/trip';
+import { PLAN_TEXT, type LightId, type PlanGuideKey, type PlanText, type SeasonLabelId } from '@/i18n/plan-text';
+import { PLAN_UI, type PlanUiCopy } from '@/i18n/plan-ui';
+import { LISTING_LABELS } from '@/i18n/listing-labels';
+import { fmt, plural } from '@/i18n/format';
+import type { TripBudget, TripInterest, TripItemCategory, TripMobility, TripPace } from '@/types/trip';
 
 /**
  * Phase 2 of the trip planner: a rule engine over our own data.
@@ -21,6 +18,10 @@ import {
  * every line carries the link it came from. Deterministic, so the same
  * inputs always give the same plan. The Phase 3 agent gets these functions
  * as its tools.
+ *
+ * This module decides which lines apply; what they say, in English, Chinese
+ * or Japanese, lives in @/i18n/plan-text. Listing names and places are data
+ * and stay as stored.
  */
 
 // ── Types ───────────────────────────────────────────────────────────────────
@@ -38,6 +39,8 @@ export interface PlanRequest {
   zones: PlanZoneId[];
   /** Ids already in the visitor's trip; they are not suggested again. */
   savedIds: string[];
+  /** Language the plan is written in. English when absent. */
+  locale?: Locale;
 }
 
 export interface PlanLink {
@@ -97,32 +100,32 @@ export interface PlanResult {
 
 // ── Links to the guides the engine cites ────────────────────────────────────
 
-const GUIDE = {
-  northernLights: { label: 'Northern Lights guide', href: '/tjenester/northern-lights' },
-  tromso: { label: 'Tromsø guide', href: '/destinations/tromso' },
-  lofoten: { label: 'Lofoten guide', href: '/destinations/lofoten' },
-  svalbard: { label: 'Svalbard guide', href: '/destinations/svalbard' },
-  fjords: { label: 'Fjords guide', href: '/destinations/fjords' },
-  northernNorway: { label: 'Northern Norway guide', href: '/destinations/northern-norway' },
-  cities: { label: 'Cities guide', href: '/destinations/cities' },
-  lyngen: { label: 'Lyngen guide', href: '/destinations/lyngen' },
-  transport: { label: 'Transport listings', href: '/travel/transport' },
-  packing: { label: 'Arctic packing guide', href: '/travel-guides/safety/arctic-norway-packing-guide' },
-  winterDriving: { label: 'Winter driving guide', href: '/travel-guides/safety/winter-driving-norway-tires-chains-road-closures' },
-  mountainCode: { label: 'The Mountain Code', href: '/travel-guides/safety/fjellvettreglene-mountain-code' },
-  ferries: { label: 'Norway ferry guide', href: '/travel-guides/planning/norway-ferry-guide' },
-  bergenToLofoten: { label: 'Bergen to Lofoten routes', href: '/travel-guides/planning/bergen-to-lofoten-routes' },
-  tromsoToLofoten: { label: 'Tromsø to Lofoten routes', href: '/travel-guides/planning/tromso-to-lofoten-routes' },
-  bergenRailway: { label: 'Bergen Railway trip report', href: '/travel-guides/trip-reports/bergen-railway-oslo-bergen' },
-  hurtigruten: { label: 'Hurtigruten Bergen to Tromsø trip report', href: '/travel-guides/trip-reports/hurtigruten-bergen-tromso' },
-  whales: { label: 'Skjervøy whale safari trip report', href: '/travel-guides/trip-reports/whale-safari-skjervoy-tromso' },
-  sledding: { label: 'Dog sledding or reindeer sledding guide', href: '/travel-guides/trip-reports/dog-sledding-vs-reindeer-sledding-tromso' },
-  dnt: { label: 'DNT cabin guide', href: '/travel-guides/planning/dnt-cabin-guide' },
-  bestTime: { label: 'Best time to visit', href: '/travel-guides/planning/best-time-visit-norway' },
-  cost: { label: 'Norway cost guide', href: '/travel-guides/planning/norway-cost-budget-guide' },
-  norrona: { label: 'Norrøna', href: 'https://www.norrona.com/' },
-  hours57: { label: '57hours Lofoten self-guided hike', href: 'https://57hours.com/adventure/lofoten-islands-self-guided-hiking-tour/' },
-} as const;
+const GUIDE_HREF: Record<PlanGuideKey, string> = {
+  northernLights: '/tjenester/northern-lights',
+  tromso: '/destinations/tromso',
+  lofoten: '/destinations/lofoten',
+  svalbard: '/destinations/svalbard',
+  fjords: '/destinations/fjords',
+  northernNorway: '/destinations/northern-norway',
+  cities: '/destinations/cities',
+  lyngen: '/destinations/lyngen',
+  transport: '/travel/transport',
+  packing: '/travel-guides/safety/arctic-norway-packing-guide',
+  winterDriving: '/travel-guides/safety/winter-driving-norway-tires-chains-road-closures',
+  mountainCode: '/travel-guides/safety/fjellvettreglene-mountain-code',
+  ferries: '/travel-guides/planning/norway-ferry-guide',
+  bergenToLofoten: '/travel-guides/planning/bergen-to-lofoten-routes',
+  tromsoToLofoten: '/travel-guides/planning/tromso-to-lofoten-routes',
+  bergenRailway: '/travel-guides/trip-reports/bergen-railway-oslo-bergen',
+  hurtigruten: '/travel-guides/trip-reports/hurtigruten-bergen-tromso',
+  whales: '/travel-guides/trip-reports/whale-safari-skjervoy-tromso',
+  sledding: '/travel-guides/trip-reports/dog-sledding-vs-reindeer-sledding-tromso',
+  dnt: '/travel-guides/planning/dnt-cabin-guide',
+  bestTime: '/travel-guides/planning/best-time-visit-norway',
+  cost: '/travel-guides/planning/norway-cost-budget-guide',
+  norrona: 'https://www.norrona.com/',
+  hours57: 'https://57hours.com/adventure/lofoten-islands-self-guided-hiking-tour/',
+};
 
 // ── Dates and seasons ───────────────────────────────────────────────────────
 
@@ -222,28 +225,28 @@ export function parseSeasonText(text?: string | null): number[] | null {
 interface LightWindow {
   from: MonthDay;
   to: MonthDay;
-  text: string;
-  link: PlanLink;
+  text: LightId;
+  link: PlanGuideKey;
 }
 
 const LIGHT: Partial<Record<PlanZoneId, LightWindow[]>> = {
   'northern-norway': [
-    { from: { m: 9, d: 20 }, to: { m: 3, d: 31 }, text: 'Northern Lights season runs from late September to late March. Tromsø sits under the auroral oval; plan four nights minimum, because two of them may be cloudy.', link: GUIDE.northernLights },
-    { from: { m: 11, d: 27 }, to: { m: 1, d: 15 }, text: 'Polar night in Tromsø, 27 November to 15 January: the sun stays below the horizon, with twilight at midday. Tours run on headlamps and the sky is dark by 15:00.', link: GUIDE.tromso },
-    { from: { m: 5, d: 20 }, to: { m: 7, d: 22 }, text: 'Midnight sun in Tromsø from 20 May to 22 July: 24-hour daylight for hiking, sea kayaking and the Midnight Sun Marathon.', link: GUIDE.tromso },
+    { from: { m: 9, d: 20 }, to: { m: 3, d: 31 }, text: 'nnAurora', link: 'northernLights' },
+    { from: { m: 11, d: 27 }, to: { m: 1, d: 15 }, text: 'nnPolarNight', link: 'tromso' },
+    { from: { m: 5, d: 20 }, to: { m: 7, d: 22 }, text: 'nnMidnightSun', link: 'tromso' },
   ],
   lofoten: [
-    { from: { m: 9, d: 1 }, to: { m: 3, d: 31 }, text: 'Lofoten sits under the auroral oval at 68°N; aurora season is September to March, with the islands darkest from December.', link: GUIDE.lofoten },
-    { from: { m: 5, d: 28 }, to: { m: 7, d: 14 }, text: '24-hour daylight from 28 May to 14 July. Peak photography season and peak crowds: book accommodation 6 to 9 months ahead.', link: GUIDE.lofoten },
-    { from: { m: 1, d: 1 }, to: { m: 4, d: 30 }, text: 'Skrei season, January to April: the Arctic cod migration, the fishing fleet out daily and the stockfish racks going up from February.', link: GUIDE.lofoten },
+    { from: { m: 9, d: 1 }, to: { m: 3, d: 31 }, text: 'lofotenAurora', link: 'lofoten' },
+    { from: { m: 5, d: 28 }, to: { m: 7, d: 14 }, text: 'lofotenMidnightSun', link: 'lofoten' },
+    { from: { m: 1, d: 1 }, to: { m: 4, d: 30 }, text: 'lofotenSkrei', link: 'lofoten' },
   ],
   svalbard: [
-    { from: { m: 10, d: 26 }, to: { m: 2, d: 15 }, text: 'Polar night on Svalbard runs from late October to mid-February: four months of darkness at 78°N. Dog sledding and aurora run through it.', link: GUIDE.svalbard },
-    { from: { m: 4, d: 20 }, to: { m: 8, d: 20 }, text: 'The sun stays up 24 hours a day from late April to mid-August. The summer expedition season, June to September, opens the fjords for guided glacier and wildlife trips.', link: GUIDE.svalbard },
+    { from: { m: 10, d: 26 }, to: { m: 2, d: 15 }, text: 'svalbardPolarNight', link: 'svalbard' },
+    { from: { m: 4, d: 20 }, to: { m: 8, d: 20 }, text: 'svalbardMidnightSun', link: 'svalbard' },
   ],
   fjords: [
-    { from: { m: 10, d: 15 }, to: { m: 5, d: 20 }, text: 'Rv55 over Sognefjellet closes in October and does not reopen until late May, and Trollstigen is shut for the winter. Reroute via the Lærdal tunnel and check Statens vegvesen the morning you drive.', link: GUIDE.winterDriving },
-    { from: { m: 6, d: 15 }, to: { m: 8, d: 31 }, text: 'Peak season on the fjords. Book ahead on the long and tourist crossings, expect ferry queues in July and August, and pay tolls with AutoPASS.', link: GUIDE.ferries },
+    { from: { m: 10, d: 15 }, to: { m: 5, d: 20 }, text: 'fjordsClosures', link: 'winterDriving' },
+    { from: { m: 6, d: 15 }, to: { m: 8, d: 31 }, text: 'fjordsPeak', link: 'ferries' },
   ],
 };
 
@@ -253,26 +256,26 @@ interface ActivityRule {
   id: string;
   test: (item: Experience) => boolean;
   months: number[];
-  label: string;
-  link: PlanLink;
+  label: SeasonLabelId;
+  link: PlanGuideKey;
 }
 
 const nameAndText = (item: Experience) => `${item.name} ${item.description}`;
 
 const ACTIVITY_RULES: ActivityRule[] = [
-  { id: 'aurora', test: (e) => e.experienceType === 'northern-lights' || /aurora|northern lights/i.test(nameAndText(e)), months: [9, 10, 11, 12, 1, 2, 3], label: 'aurora season, late September to late March', link: GUIDE.northernLights },
-  { id: 'midnight-sun', test: (e) => /midnight sun/i.test(e.name), months: [5, 6, 7], label: 'midnight sun, 20 May to 22 July', link: GUIDE.tromso },
-  { id: 'whales', test: (e) => e.experienceType === 'whale-watching' || /whale/i.test(e.name), months: [10, 11, 12, 1], label: 'whale season off Skjervøy, October to 31 January', link: GUIDE.whales },
-  { id: 'dog-sledding', test: (e) => e.experienceType === 'dog-sledding' || /dog sled|husky/i.test(e.name), months: [11, 12, 1, 2, 3, 4, 5], label: 'snow season, November to May', link: GUIDE.sledding },
-  { id: 'reindeer', test: (e) => /reindeer sled/i.test(e.name), months: [11, 12, 1, 2, 3, 4], label: 'reindeer sledding on snow, November to early April', link: GUIDE.sledding },
-  { id: 'snowmobile', test: (e) => e.experienceType === 'snowmobile' || /snowmobile/i.test(e.name), months: [2, 3, 4, 5], label: 'frozen ground, February to May', link: GUIDE.svalbard },
+  { id: 'aurora', test: (e) => e.experienceType === 'northern-lights' || /aurora|northern lights/i.test(nameAndText(e)), months: [9, 10, 11, 12, 1, 2, 3], label: 'aurora', link: 'northernLights' },
+  { id: 'midnight-sun', test: (e) => /midnight sun/i.test(e.name), months: [5, 6, 7], label: 'midnightSun', link: 'tromso' },
+  { id: 'whales', test: (e) => e.experienceType === 'whale-watching' || /whale/i.test(e.name), months: [10, 11, 12, 1], label: 'whales', link: 'whales' },
+  { id: 'dog-sledding', test: (e) => e.experienceType === 'dog-sledding' || /dog sled|husky/i.test(e.name), months: [11, 12, 1, 2, 3, 4, 5], label: 'snow', link: 'sledding' },
+  { id: 'reindeer', test: (e) => /reindeer sled/i.test(e.name), months: [11, 12, 1, 2, 3, 4], label: 'reindeer', link: 'sledding' },
+  { id: 'snowmobile', test: (e) => e.experienceType === 'snowmobile' || /snowmobile/i.test(e.name), months: [2, 3, 4, 5], label: 'frozenGround', link: 'svalbard' },
   // The data has no plain "hiking" type, so most hikes are typed glacier-hike; only a glacier in the name gets the glacier window
-  { id: 'glacier', test: (e) => /glacier/i.test(e.name), months: [5, 6, 7, 8, 9], label: 'accessible glacier surface, May to September', link: GUIDE.fjords },
-  { id: 'hiking-typed', test: (e) => e.experienceType === 'glacier-hike', months: [6, 7, 8, 9], label: 'snow-free trails, June to September', link: GUIDE.mountainCode },
-  { id: 'kayak', test: (e) => e.experienceType === 'kayaking' || /kayak|paddle/i.test(e.name), months: [6, 7, 8], label: 'ice-free fjords, June to August', link: GUIDE.lofoten },
-  { id: 'skrei', test: (e) => /skrei|cod fishing/i.test(e.name), months: [1, 2, 3, 4], label: 'skrei season, January to April', link: GUIDE.lofoten },
-  { id: 'ski', test: (e) => /ski tour|ski touring|skiing|\bski\b/i.test(e.name), months: [2, 3, 4, 5], label: 'ski season, February to May', link: GUIDE.lyngen },
-  { id: 'hiking', test: (e) => /\bhik|trek|trail|summit|ridge|stairs|steps\b/i.test(e.name), months: [6, 7, 8, 9], label: 'snow-free trails, June to September', link: GUIDE.mountainCode },
+  { id: 'glacier', test: (e) => /glacier/i.test(e.name), months: [5, 6, 7, 8, 9], label: 'glacier', link: 'fjords' },
+  { id: 'hiking-typed', test: (e) => e.experienceType === 'glacier-hike', months: [6, 7, 8, 9], label: 'snowFreeTrails', link: 'mountainCode' },
+  { id: 'kayak', test: (e) => e.experienceType === 'kayaking' || /kayak|paddle/i.test(e.name), months: [6, 7, 8], label: 'iceFreeFjords', link: 'lofoten' },
+  { id: 'skrei', test: (e) => /skrei|cod fishing/i.test(e.name), months: [1, 2, 3, 4], label: 'skrei', link: 'lofoten' },
+  { id: 'ski', test: (e) => /ski tour|ski touring|skiing|\bski\b/i.test(e.name), months: [2, 3, 4, 5], label: 'ski', link: 'lyngen' },
+  { id: 'hiking', test: (e) => /\bhik|trek|trail|summit|ridge|stairs|steps\b/i.test(e.name), months: [6, 7, 8, 9], label: 'snowFreeTrails', link: 'mountainCode' },
 ];
 
 function activityMonths(item: Experience): { months: number[] | null; rule?: ActivityRule } {
@@ -294,8 +297,6 @@ const INTEREST_TESTS: Record<TripInterest, (item: Experience) => boolean> = {
   family: (e) => e.difficulty === 'easy' && /family|kids|children|reindeer|husky|dog sled|aquarium|museum/i.test(nameAndText(e)),
   photography: (e) => e.experienceType === 'photography-tour' || /photo/i.test(e.name),
 };
-
-const INTEREST_LABEL: Record<TripInterest, string> = Object.fromEntries(TRIP_INTERESTS.map((i) => [i.id, i.label])) as Record<TripInterest, string>;
 
 /** Which zones to suggest when the visitor has named none and saved nothing. */
 export const INTEREST_ZONES: Record<TripInterest, PlanZoneId[]> = {
@@ -322,70 +323,78 @@ interface LegContext {
   summer: boolean;
 }
 
-const ARRIVAL: Record<PlanZoneId, (ctx: LegContext) => RouteLeg> = {
-  cities: () => ({ id: 'arrive-cities', from: 'Home', to: 'City Norway', method: 'fly', text: 'Fly into Oslo (OSL) or Bergen (BGO). The Bergen Railway links the two in about 7 hours; Vy runs 6 to 7 departures a day including a night train.', links: [GUIDE.bergenRailway, GUIDE.cities] }),
-  fjords: (ctx) => ({ id: 'arrive-fjords', from: 'Home', to: 'Norwegian Fjords', method: 'fly', text: ctx.car ? 'Fly into Bergen (BGO) and pick up the car there. Bergen to Flåm is 166 km; budget 3.5 hours for the E16 tunnels and the Gudvangen ferry.' : 'Fly into Bergen (BGO). Without a car, the Bergen Railway, the Flåm Railway and the fjord ferries do the work: the Norway in a Nutshell route.', links: [GUIDE.ferries, GUIDE.fjords] }),
-  'boat-routes': () => ({ id: 'arrive-boat', from: 'Home', to: 'Boat Routes', method: 'coastal-ship', text: 'Fly into Bergen (BGO) and board Hurtigruten or Havila there; the two alternate departures north to Kirkenes, 34 ports and 11 nights for the full run. Segment it rather than sailing it all.', links: [GUIDE.hurtigruten, GUIDE.transport] }),
-  lofoten: (ctx) => ({ id: 'arrive-lofoten', from: 'Home', to: 'Lofoten Islands', method: 'fly', text: ctx.car ? 'Fly to Evenes (EVE) and drive 164 km on the E10 to Svolvær, no ferry needed. Or fly via Bodø to Svolvær or Leknes with Widerøe and rent there.' : 'Widerøe flies nonstop to Bodø, then 25 minutes on to Svolvær or Leknes. Pick one base and let the local buses and tours do the rest.', links: [GUIDE.bergenToLofoten, GUIDE.lofoten] }),
-  'northern-norway': (ctx) => ({ id: 'arrive-nn', from: 'Home', to: 'Northern Norway', method: 'fly', text: ctx.winter && !ctx.car ? 'Fly to Tromsø (TOS); the airport express bus is 15 to 20 minutes into town. In winter a car adds little: aurora chases, whale boats and dog sledding all pick up at hotels.' : 'Fly to Tromsø (TOS), the Arctic basecamp with the most departures, or to Alta for Finnmark and the Sami heartland.', links: [GUIDE.tromso, GUIDE.transport] }),
-  svalbard: () => ({ id: 'arrive-svalbard', from: 'Home', to: 'Svalbard', method: 'fly', text: 'Fly to Longyearbyen: 3 hours direct from Oslo, or via Tromsø. All travel to Svalbard is by air, and outside town you need a licensed guide.', links: [GUIDE.svalbard] }),
-};
-
-type LegBuilder = (ctx: LegContext) => Omit<RouteLeg, 'id' | 'from' | 'to'>;
-
-const LEGS: Record<string, LegBuilder> = {
-  'cities>fjords': (ctx) => ctx.car
-    ? { method: 'drive', text: 'From Bergen, the E16 east: Bergen to Flåm is 166 km, 3.5 hours with the tunnels and the Gudvangen ferry. Pay tolls and ferries with AutoPASS.', links: [GUIDE.ferries, GUIDE.fjords] }
-    : { method: 'train', text: 'Bergen Railway to Myrdal, Flåm Railway down to Aurlandsfjord, ferry to Gudvangen: the Norway in a Nutshell route, about 8 hours if the connections work.', links: [GUIDE.bergenRailway, GUIDE.fjords] },
-  'cities>boat-routes': () => ({ method: 'coastal-ship', text: 'Board the coastal ship in Bergen. Hurtigruten and Havila alternate departures; book the Bergen to Tromsø leg as a segment.', links: [GUIDE.hurtigruten] }),
-  'fjords>boat-routes': () => ({ method: 'coastal-ship', text: 'Back to Bergen to board the coastal ship, or join it at Ålesund, the first port after Bergen.', links: [GUIDE.hurtigruten] }),
-  'cities>lofoten': (ctx) => ({ method: 'fly', text: ctx.car ? 'Fly to Evenes and drive 164 km on the E10 to Svolvær, or fly via Bodø to Svolvær or Leknes. Driving the whole way is 1,570 km and 24 hours at the wheel; plan three days at least.' : 'Widerøe nonstop to Bodø, then 25 minutes on to Svolvær or Leknes. Without flying: rail via Trondheim to Bodø (about 10 hours on the Nordland Line), then the ferry or express boat.', links: [GUIDE.bergenToLofoten] }),
-  'fjords>lofoten': (ctx) => ({ method: 'fly', text: ctx.car ? 'Drop the car in Bergen, fly via Bodø to Svolvær or Leknes, and rent again there; or fly to Evenes and drive the E10 in.' : 'Fly from Bergen via Bodø to Svolvær or Leknes, 3 to 4 hours with the connection.', links: [GUIDE.bergenToLofoten] }),
-  'boat-routes>lofoten': () => ({ method: 'coastal-ship', text: 'The coastal ship calls at Stamsund at 19:15 and Svolvær at 21:20 northbound. Step off in Svolvær and stay.', links: [GUIDE.lofoten] }),
-  'lofoten>northern-norway': (ctx) => ctx.car
-    ? { method: 'drive', text: `E10 east over Lofast and Tjeldsund to Bjerkvik, then the E6 north over Gratangsfjellet and the E8 into Tromsø: about 430 km from Svolvær, 5.6 to 7 hours without stops. ${ctx.winter ? 'Winter: Gratangsfjellet gets convoys and closures, so check vegvesen.no or call 175 before you leave; studded tyres are allowed in Nordland and Troms from 16 October to 30 April.' : 'Allow a full day with stops.'}`, links: [GUIDE.tromsoToLofoten, GUIDE.winterDriving] }
-    : { method: 'fly', text: 'Widerøe flies Leknes to Tromsø nonstop every day, 16:20 to 17:15 (14:20 on Saturdays); from Svolvær nonstop on Saturdays only, other days via Bodø. Or take the coastal ship north overnight: Svolvær 22:15, Tromsø 14:15 the next day.', links: [GUIDE.tromsoToLofoten, GUIDE.hurtigruten] },
-  'boat-routes>northern-norway': () => ({ method: 'coastal-ship', text: 'Stay aboard to Tromsø, or on to Honningsvåg for North Cape and Kirkenes at the end of the line.', links: [GUIDE.hurtigruten] }),
-  'fjords>northern-norway': () => ({ method: 'fly', text: 'Fly Bergen to Tromsø; Widerøe and SAS connect via Oslo or direct depending on the day. The coastal ship is the slow alternative, Bergen to Tromsø as one segment.', links: [GUIDE.hurtigruten, GUIDE.transport] }),
-  'cities>northern-norway': (ctx) => ({ method: 'fly', text: ctx.car ? 'Fly Oslo to Tromsø (TOS) and rent there; driving north is 1,700 km of E6.' : 'Fly Oslo to Tromsø (TOS). The Arctic Route winter buses and the Svipper city buses cover the ground without a car.', links: [GUIDE.tromso, GUIDE.transport] }),
-  'northern-norway>svalbard': () => ({ method: 'fly', text: 'Fly Tromsø to Longyearbyen; most Oslo departures stop in Tromsø, and the direct Oslo flight is 3 hours. Outside Longyearbyen a licensed guide is required.', links: [GUIDE.svalbard] }),
-  'lofoten>svalbard': () => ({ method: 'fly', text: 'Fly via Tromsø or Oslo to Longyearbyen. All travel to Svalbard is by air.', links: [GUIDE.svalbard] }),
-  'cities>svalbard': () => ({ method: 'fly', text: 'Fly Oslo to Longyearbyen direct, 3 hours.', links: [GUIDE.svalbard] }),
-  'fjords>svalbard': () => ({ method: 'fly', text: 'Back to Bergen, then Oslo to Longyearbyen, 3 hours direct.', links: [GUIDE.svalbard] }),
-  'boat-routes>svalbard': () => ({ method: 'fly', text: 'Leave the ship in Tromsø and fly to Longyearbyen.', links: [GUIDE.svalbard] }),
-};
-
-function zoneName(id: PlanZoneId): string {
-  return mapZones.find((zone) => zone.id === id)?.name ?? id;
+/** A leg as the rules give it: the method, the text and the guides it cites. */
+interface LegRule {
+  method: LegMethod;
+  text: string;
+  links: PlanGuideKey[];
 }
 
-function buildRoute(zones: PlanZoneId[], ctx: LegContext): RouteLeg[] {
-  const ordered = CANONICAL_ORDER.filter((zone) => zones.includes(zone));
-  if (ordered.length === 0) return [];
-  const legs: RouteLeg[] = [ARRIVAL[ordered[0]](ctx)];
-  for (let i = 1; i < ordered.length; i += 1) {
-    const from = ordered[i - 1];
-    const to = ordered[i];
-    const builder = LEGS[`${from}>${to}`];
-    const leg = builder
-      ? builder(ctx)
-      : { method: 'fly' as const, text: `Fly between ${zoneName(from)} and ${zoneName(to)}; Widerøe's regional network covers the gaps the trains and ferries do not.`, links: [GUIDE.transport] };
-    legs.push({ id: `${from}-${to}`, from: zoneName(from), to: zoneName(to), ...leg });
-  }
-  return legs;
-}
+type LegText = PlanText['legs'];
+type ArrivalText = PlanText['arrival'];
+
+const ARRIVAL: Record<PlanZoneId, (ctx: LegContext, a: ArrivalText) => LegRule> = {
+  cities: (_, a) => ({ method: 'fly', text: a.cities, links: ['bergenRailway', 'cities'] }),
+  fjords: (ctx, a) => ({ method: 'fly', text: ctx.car ? a.fjordsCar : a.fjordsNoCar, links: ['ferries', 'fjords'] }),
+  'boat-routes': (_, a) => ({ method: 'coastal-ship', text: a.boat, links: ['hurtigruten', 'transport'] }),
+  lofoten: (ctx, a) => ({ method: 'fly', text: ctx.car ? a.lofotenCar : a.lofotenNoCar, links: ['bergenToLofoten', 'lofoten'] }),
+  'northern-norway': (ctx, a) => ({ method: 'fly', text: ctx.winter && !ctx.car ? a.nnWinterNoCar : a.nn, links: ['tromso', 'transport'] }),
+  svalbard: (_, a) => ({ method: 'fly', text: a.svalbard, links: ['svalbard'] }),
+};
+
+const ARRIVAL_ID: Record<PlanZoneId, string> = {
+  cities: 'arrive-cities',
+  fjords: 'arrive-fjords',
+  'boat-routes': 'arrive-boat',
+  lofoten: 'arrive-lofoten',
+  'northern-norway': 'arrive-nn',
+  svalbard: 'arrive-svalbard',
+};
+
+const LEGS: Record<string, (ctx: LegContext, l: LegText) => LegRule> = {
+  'cities>fjords': (ctx, l) =>
+    ctx.car
+      ? { method: 'drive', text: l.citiesFjordsCar, links: ['ferries', 'fjords'] }
+      : { method: 'train', text: l.citiesFjordsNoCar, links: ['bergenRailway', 'fjords'] },
+  'cities>boat-routes': (_, l) => ({ method: 'coastal-ship', text: l.citiesBoat, links: ['hurtigruten'] }),
+  'fjords>boat-routes': (_, l) => ({ method: 'coastal-ship', text: l.fjordsBoat, links: ['hurtigruten'] }),
+  'cities>lofoten': (ctx, l) => ({ method: 'fly', text: ctx.car ? l.citiesLofotenCar : l.citiesLofotenNoCar, links: ['bergenToLofoten'] }),
+  'fjords>lofoten': (ctx, l) => ({ method: 'fly', text: ctx.car ? l.fjordsLofotenCar : l.fjordsLofotenNoCar, links: ['bergenToLofoten'] }),
+  'boat-routes>lofoten': (_, l) => ({ method: 'coastal-ship', text: l.boatLofoten, links: ['lofoten'] }),
+  'lofoten>northern-norway': (ctx, l) =>
+    ctx.car
+      ? {
+          method: 'drive',
+          text: l.lofotenNnCar + (ctx.winter ? l.lofotenNnCarWinter : l.lofotenNnCarOther),
+          links: ['tromsoToLofoten', 'winterDriving'],
+        }
+      : { method: 'fly', text: l.lofotenNnNoCar, links: ['tromsoToLofoten', 'hurtigruten'] },
+  'boat-routes>northern-norway': (_, l) => ({ method: 'coastal-ship', text: l.boatNn, links: ['hurtigruten'] }),
+  'fjords>northern-norway': (_, l) => ({ method: 'fly', text: l.fjordsNn, links: ['hurtigruten', 'transport'] }),
+  'cities>northern-norway': (ctx, l) => ({ method: 'fly', text: ctx.car ? l.citiesNnCar : l.citiesNnNoCar, links: ['tromso', 'transport'] }),
+  'northern-norway>svalbard': (_, l) => ({ method: 'fly', text: l.nnSvalbard, links: ['svalbard'] }),
+  'lofoten>svalbard': (_, l) => ({ method: 'fly', text: l.lofotenSvalbard, links: ['svalbard'] }),
+  'cities>svalbard': (_, l) => ({ method: 'fly', text: l.citiesSvalbard, links: ['svalbard'] }),
+  'fjords>svalbard': (_, l) => ({ method: 'fly', text: l.fjordsSvalbard, links: ['svalbard'] }),
+  'boat-routes>svalbard': (_, l) => ({ method: 'fly', text: l.boatSvalbard, links: ['svalbard'] }),
+};
 
 // ── Public entry point ──────────────────────────────────────────────────────
 
 const NIGHTS_PER_ZONE: Record<TripPace, number> = { relaxed: 4, steady: 3, packed: 2 };
-const BUDGET_TIER: Record<TripBudget, string> = { budget: 'budget', 'mid-range': 'mid-range', luxury: 'luxury' };
-
-const formatDate = (value: string) => {
-  const date = parseDate(value);
-  return date ? date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' }) : value;
-};
 
 export async function buildPlan(request: PlanRequest): Promise<PlanResult> {
+  const locale = request.locale ?? 'en';
+  const t = PLAN_TEXT[locale];
+  const ui: PlanUiCopy = PLAN_UI[locale];
+  const labels = LISTING_LABELS[locale];
+  const zoneName = (id: PlanZoneId): string => ui.zones[id] ?? id;
+  const dayFormat = new Intl.DateTimeFormat(t.dateLocale, { day: 'numeric', month: 'short', timeZone: 'UTC' });
+  const formatDate = (value: string) => {
+    const date = parseDate(value);
+    return date ? dayFormat.format(date) : value;
+  };
+
   const start = parseDate(request.startDate);
   const end = parseDate(request.endDate);
   const months = monthsCovered(start, end);
@@ -397,8 +406,10 @@ export async function buildPlan(request: PlanRequest): Promise<PlanResult> {
   const saved = new Set(request.savedIds);
   const ctx: LegContext = { car: request.mobility === 'car', winter: winterish, summer: summerish };
   const sources = new Map<string, PlanLink>();
-  const cite = (...links: PlanLink[]) => {
-    for (const link of links) sources.set(link.href, link);
+  const link = (key: PlanGuideKey): PlanLink => ({ label: t.guides[key], href: GUIDE_HREF[key] });
+  const cite = (...keys: PlanGuideKey[]) => {
+    const links = keys.map(link);
+    for (const l of links) sources.set(l.href, l);
     return links;
   };
 
@@ -407,55 +418,69 @@ export async function buildPlan(request: PlanRequest): Promise<PlanResult> {
   for (const zone of zones) {
     for (const [i, window] of (LIGHT[zone] ?? []).entries()) {
       if (months.length === 0 || tripTouches(start, end, months, window.from, window.to)) {
-        light.push({ id: `light-${zone}-${i}`, text: window.text, links: cite(window.link) });
+        light.push({ id: `light-${zone}-${i}`, text: t.light[window.text], links: cite(window.link) });
       }
     }
   }
   if (months.length === 0 && zones.length > 0) {
-    light.unshift({ id: 'light-no-dates', text: 'Add your dates and these notes narrow to the light you will actually get: aurora season, polar night or midnight sun.', links: cite(GUIDE.bestTime) });
+    light.unshift({ id: 'light-no-dates', text: t.lightNoDates, links: cite('bestTime') });
   }
 
   // Does it fit
   const fit: PlanLine[] = [];
   if (zones.length > 2) {
-    fit.push({ id: 'fit-regions', text: `${zones.length} regions in one trip means more travel days than place days. Our rule is two regions per trip unless you have 14 nights or more.`, links: cite(GUIDE.bestTime) });
+    fit.push({ id: 'fit-regions', text: fmt(t.fit.regions, { n: zones.length }), links: cite('bestTime') });
   }
   if (nights !== undefined && zones.length > 0) {
     const pace: TripPace = request.pace ?? 'steady';
     const needed = zones.reduce((sum, zone) => sum + NIGHTS_PER_ZONE[pace] + (zone === 'svalbard' ? 1 : 0), 0);
+    const vars = { nights, regions: plural(t.fit.regionCount, zones.length), pace: ui.paces[pace].label.toLowerCase() };
     if (nights < needed) {
-      fit.push({ id: 'fit-nights', text: `${nights} nights across ${zones.length} ${zones.length === 1 ? 'region' : 'regions'} at a ${pace} pace is ${needed - nights} short. Drop a region or add nights; the ferry schedules do not care about optimism.`, links: cite(GUIDE.bestTime) });
+      fit.push({ id: 'fit-nights', text: fmt(t.fit.short, { ...vars, short: needed - nights }), links: cite('bestTime') });
     } else {
-      fit.push({ id: 'fit-ok', text: `${nights} nights across ${zones.length} ${zones.length === 1 ? 'region' : 'regions'} works at a ${pace} pace (${NIGHTS_PER_ZONE[pace]} nights per region).`, links: [] });
+      fit.push({ id: 'fit-ok', text: fmt(t.fit.ok, { ...vars, per: NIGHTS_PER_ZONE[pace] }), links: [] });
     }
   } else if (zones.length > 0) {
-    fit.push({ id: 'fit-no-dates', text: 'Add arrival and departure dates to check whether the pace fits.', links: [] });
+    fit.push({ id: 'fit-no-dates', text: t.fit.noDates, links: [] });
   }
 
   // Route and getting around
-  const legs = zones.length ? buildRoute(zones, ctx) : [];
-  for (const leg of legs) cite(...leg.links);
+  const legs: RouteLeg[] = [];
+  if (zones.length) {
+    const first = ARRIVAL[zones[0]](ctx, t.arrival);
+    legs.push({ id: ARRIVAL_ID[zones[0]], from: t.home, to: zoneName(zones[0]), method: first.method, text: first.text, links: cite(...first.links) });
+    for (let i = 1; i < zones.length; i += 1) {
+      const from = zones[i - 1];
+      const to = zones[i];
+      const rule = LEGS[`${from}>${to}`]?.(ctx, t.legs) ?? {
+        method: 'fly' as const,
+        text: fmt(t.legs.fallback, { from: zoneName(from), to: zoneName(to) }),
+        links: ['transport' as const],
+      };
+      legs.push({ id: `${from}-${to}`, from: zoneName(from), to: zoneName(to), method: rule.method, text: rule.text, links: cite(...rule.links) });
+    }
+  }
   const method: PlanLine[] = [];
   if (!request.mobility && zones.length) {
-    method.push({ id: 'method-mobility', text: 'Say whether you will have a car; the route and the costs change a lot either way.', links: [] });
+    method.push({ id: 'method-mobility', text: t.method.mobility, links: [] });
   }
   if (ctx.car && (zones.includes('northern-norway') || zones.includes('lofoten')) && winterish) {
-    method.push({ id: 'method-studs', text: 'Studded tyres are allowed from 16 October to 30 April in Nordland, Troms and Finnmark (1 November to the first Sunday after Easter further south). Rental cars come with winter tyres; check Statens vegvesen the morning you drive.', links: cite(GUIDE.winterDriving) });
+    method.push({ id: 'method-studs', text: t.method.studs, links: cite('winterDriving') });
   }
   if (!ctx.car && zones.includes('northern-norway') && winterish) {
-    method.push({ id: 'method-tromso-base', text: 'Base in Tromsø and book tours with hotel pickup. The airport express is 15 to 20 minutes into town and the Arctic Route buses reach Lyngen and Finland in winter.', links: cite(GUIDE.tromso, GUIDE.transport) });
+    method.push({ id: 'method-tromso-base', text: t.method.tromsoBase, links: cite('tromso', 'transport') });
   }
   if (ctx.car && zones.includes('lofoten')) {
-    method.push({ id: 'method-bodo-ferry', text: 'Bodø to Moskenes ferry: 3 to 4 hours, only half the capacity can be reserved, and the booking fee is 130 NOK for a car up to 6 m. Book ahead from May to September.', links: cite(GUIDE.ferries) });
+    method.push({ id: 'method-bodo-ferry', text: t.method.bodoFerry, links: cite('ferries') });
   }
   if (ctx.car && zones.includes('fjords') && summerish) {
-    method.push({ id: 'method-fjord-queues', text: 'Fjord ferries in July and August mean queues. Get an AutoPASS ferry agreement for the discount and book the long crossings.', links: cite(GUIDE.ferries) });
+    method.push({ id: 'method-fjord-queues', text: t.method.fjordQueues, links: cite('ferries') });
   }
   if (zones.includes('boat-routes')) {
-    method.push({ id: 'method-coastal', text: 'Treat the coastal ship as transport with a view, not a cruise: 34 ports, 11 nights for the full Bergen to Kirkenes run. Book a segment and get off where the trip wants you.', links: cite(GUIDE.hurtigruten, GUIDE.transport) });
+    method.push({ id: 'method-coastal', text: t.method.coastal, links: cite('hurtigruten', 'transport') });
   }
   if (zones.includes('svalbard')) {
-    method.push({ id: 'method-svalbard-guide', text: 'On Svalbard, everything outside Longyearbyen needs a licensed guide, and the 800 hotel beds book out months ahead.', links: cite(GUIDE.svalbard) });
+    method.push({ id: 'method-svalbard-guide', text: t.method.svalbardGuide, links: cite('svalbard') });
   }
 
   // Data
@@ -490,11 +515,11 @@ export async function buildPlan(request: PlanRequest): Promise<PlanResult> {
 
     for (const entry of scored) {
       const reasons: string[] = [];
-      if (entry.matched.length) reasons.push(`Matches ${entry.matched.map((m) => INTEREST_LABEL[m]).join(', ')}`);
-      if (entry.rule && entry.allowed) reasons.push(`in season (${entry.rule.label})`);
-      if (entry.item.isFeatured) reasons.push('editor’s pick');
+      if (entry.matched.length) reasons.push(fmt(t.reasons.matches, { interests: entry.matched.map((m) => ui.interests[m]).join(ui.listJoin) }));
+      if (entry.rule && entry.allowed) reasons.push(fmt(t.reasons.inSeason, { label: t.seasonLabels[entry.rule.label] }));
+      if (entry.item.isFeatured) reasons.push(t.reasons.pick);
       const rating = ratingOf(entry.item);
-      if (rating) reasons.push(`Google ${rating.toFixed(1)}`);
+      if (rating) reasons.push(fmt(t.reasons.rating, { rating: rating.toFixed(1) }));
       if (entry.rule) cite(entry.rule.link);
       activities.push({
         id: entry.item.id,
@@ -505,7 +530,7 @@ export async function buildPlan(request: PlanRequest): Promise<PlanResult> {
         priceRange: entry.item.priceRange,
         imageUrl: entry.item.imageUrl,
         href: entry.item.bookingUrl ?? entry.item.website ?? `/travel/experiences/#${entry.item.id}`,
-        why: reasons.join(' · ') || 'In this region',
+        why: reasons.join(t.reasons.join) || t.reasons.inRegion,
         rating: rating || undefined,
         reviews: reviewCountOf(entry.item) || undefined,
       });
@@ -520,6 +545,10 @@ export async function buildPlan(request: PlanRequest): Promise<PlanResult> {
     for (const event of zoneEvents) {
       const occurrence = eventOccurrence(event, years, start, end, months);
       if (!occurrence) continue;
+      const dates =
+        occurrence.end !== occurrence.start
+          ? fmt(t.event.range, { start: formatDate(occurrence.start), end: formatDate(occurrence.end) })
+          : formatDate(occurrence.start);
       eventList.push({
         id: event.id,
         name: event.name,
@@ -531,7 +560,7 @@ export async function buildPlan(request: PlanRequest): Promise<PlanResult> {
         href: event.ticketUrl ?? event.website ?? `/travel/events/#${event.id}`,
         startDate: occurrence.start,
         endDate: occurrence.end,
-        why: `${formatDate(occurrence.start)}${occurrence.end !== occurrence.start ? ` to ${formatDate(occurrence.end)}` : ''}${occurrence.projected ? ' (annual, dates from the previous edition)' : ''} · ${event.location}`,
+        why: fmt(t.event.why, { dates, projected: occurrence.projected ? t.event.projected : '', location: event.location }),
       });
     }
   }
@@ -540,20 +569,25 @@ export async function buildPlan(request: PlanRequest): Promise<PlanResult> {
   // Stays
   const stayList: Suggestion[] = [];
   let stayNote: string | undefined;
-  const tier = request.budget ? BUDGET_TIER[request.budget] : undefined;
+  const tier = request.budget;
   for (const zone of zones) {
     const zoneStays = stays.filter((item) => itemInZone(zone, item, 'place') && !saved.has(item.id));
     let pool = tier ? zoneStays.filter((item) => item.priceRange === tier) : zoneStays;
     if (tier && pool.length < 2) {
       pool = zoneStays;
-      stayNote = `Few ${request.budget} listings in ${zoneName(zone)}; showing the best rated at any price.`;
+      stayNote = fmt(t.stayNote, { budget: ui.budgets[tier].toLowerCase(), zone: zoneName(zone) });
     }
     const picked = rankItems(pool)
       .sort((a, b) => Number(Boolean(b.bookingUrl)) - Number(Boolean(a.bookingUrl)) || ratingOf(b) - ratingOf(a))
       .slice(0, 3);
     for (const item of picked) {
       const rating = ratingOf(item);
-      const reasons = [item.accommodationType, item.priceRange, rating ? `Google ${rating.toFixed(1)} (${reviewCountOf(item)})` : null, item.bookingUrl ? 'bookable' : null].filter(Boolean);
+      const reasons = [
+        labels.stays[item.accommodationType],
+        labels.price[item.priceRange],
+        rating ? fmt(t.reasons.ratingReviews, { rating: rating.toFixed(1), reviews: reviewCountOf(item) }) : null,
+        item.bookingUrl ? t.reasons.bookable : null,
+      ].filter(Boolean);
       stayList.push({
         id: item.id,
         name: item.name,
@@ -563,7 +597,7 @@ export async function buildPlan(request: PlanRequest): Promise<PlanResult> {
         priceRange: item.priceRange,
         imageUrl: item.imageUrl,
         href: item.bookingUrl ?? item.website ?? `/travel/accommodation/#${item.id}`,
-        why: reasons.join(' · '),
+        why: reasons.join(t.reasons.join),
         rating: rating || undefined,
         reviews: reviewCountOf(item) || undefined,
       });
@@ -576,26 +610,26 @@ export async function buildPlan(request: PlanRequest): Promise<PlanResult> {
   const cold = winterish || zones.includes('svalbard');
   const hikes = request.interests.includes('hiking') || activities.some((a) => /hik|trek|trail|glacier|summit/i.test(a.name));
   if (cold && arctic) {
-    kit.push({ id: 'kit-wool', text: 'Wool base layers, top and bottom; merino at 200 g/m² is the Norwegian default. Never cotton: it holds sweat against the skin and speeds heat loss.', links: cite(GUIDE.packing) });
-    kit.push({ id: 'kit-shell', text: 'Windproof shell, insulated mid-layer, mittens over gloves, and boots rated for the cold with ice grips for Tromsø pavements.', links: cite(GUIDE.packing) });
+    kit.push({ id: 'kit-wool', text: t.kit.wool, links: cite('packing') });
+    kit.push({ id: 'kit-shell', text: t.kit.shell, links: cite('packing') });
   } else if (arctic || zones.includes('fjords')) {
-    kit.push({ id: 'kit-layers', text: 'A windbreaker and a warm layer even in July. The wind off the Vestfjord cuts through a standard sweater, and fjord weather turns in an hour.', links: cite(GUIDE.packing) });
+    kit.push({ id: 'kit-layers', text: t.kit.layers, links: cite('packing') });
   }
   if (request.interests.includes('aurora') || (winterish && arctic)) {
-    kit.push({ id: 'kit-aurora', text: 'Tripod and spare batteries for aurora nights; the cold drains phones and cameras fast. Four nights minimum, two may be cloudy.', links: cite(GUIDE.northernLights) });
+    kit.push({ id: 'kit-aurora', text: t.kit.aurora, links: cite('northernLights') });
   }
   if (hikes) {
-    kit.push({ id: 'kit-hike', text: 'Shoes with grip (the Reinebringen steps ice over from September), a map and compass as the Mountain Code requires, and a plan to turn back if the weather turns.', links: cite(GUIDE.mountainCode) });
-    kit.push({ id: 'kit-dnt', text: 'For hut-to-hut days: DNT membership and the DNT key, since the self-service cabins are locked with it.', links: cite(GUIDE.dnt) });
+    kit.push({ id: 'kit-hike', text: t.kit.hike, links: cite('mountainCode') });
+    kit.push({ id: 'kit-dnt', text: t.kit.dnt, links: cite('dnt') });
   }
   if (ctx.car) {
-    kit.push({ id: 'kit-autopass', text: 'An AutoPASS tag or a registered number plate: most ferries read it as you drive on, and the prepayment agreement takes 50 percent off private crossings.', links: cite(GUIDE.ferries) });
+    kit.push({ id: 'kit-autopass', text: t.kit.autopass, links: cite('ferries') });
   }
   if (zones.includes('svalbard')) {
-    kit.push({ id: 'kit-svalbard', text: 'On Svalbard the guide carries the rifle and the kit; you bring warm layers, sunglasses for the ice, and a booking made months ahead.', links: cite(GUIDE.svalbard) });
+    kit.push({ id: 'kit-svalbard', text: t.kit.svalbard, links: cite('svalbard') });
   }
   if (kit.length) {
-    kit.push({ id: 'kit-where', text: 'Where to get it: Norrøna makes the shells and insulation for this weather, and 57hours packs a full gear list into its Lofoten self-guided hike.', links: cite(GUIDE.norrona, GUIDE.hours57) });
+    kit.push({ id: 'kit-where', text: t.kit.where, links: cite('norrona', 'hours57') });
   }
 
   return {

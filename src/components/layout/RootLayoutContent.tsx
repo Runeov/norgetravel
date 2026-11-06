@@ -25,6 +25,21 @@ export function RootLayoutContent({ children, dict, footerDict }: RootLayoutCont
     return <>{children}</>;
   }
 
+  // The /app section has its own sidebar and tab bar. It keeps the trip
+  // context (saving to a trip), analytics and the cookie banner, but not the
+  // site chrome or the floating planner, which would cover its tab bar.
+  if (/^\/(en|zh|ja)\/app(\/|$)/.test(pathname ?? '')) {
+    return (
+      <TripMapProvider>
+        <TripProvider>
+          <AnalyticsTracker />
+          {children}
+          <CookieBanner />
+        </TripProvider>
+      </TripMapProvider>
+    );
+  }
+
   // Regular pages get the full site layout with Navbar and Footer
   return (
     <TripMapProvider>

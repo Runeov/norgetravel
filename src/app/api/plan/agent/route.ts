@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { AgentInputError, AgentUnavailableError, writeDayPlan } from '@/lib/plan-agent';
 import { parsePlanRequest } from '@/lib/plan-request';
 import { countAgentCall, planStoreReady } from '@/lib/plan-store';
+import { asLocale } from '@/lib/i18n-seo';
+import { PLAN_TEXT, type PlanText } from '@/i18n/plan-text';
 
 export const dynamic = 'force-dynamic';
 // A plan takes 20 to 70 seconds when the model needs its one retry
@@ -13,22 +15,21 @@ export const maxDuration = 120;
 const PER_IP_LIMIT = 6; // plans per window
 const PER_IP_WINDOW_MS = 10 * 60 * 1000;
 const DAILY_CAP = Number.parseInt(process.env.PLAN_AGENT_DAILY_CAP ?? '200', 10);
-const DAILY_MESSAGE = 'The day-by-day planner has reached its daily limit. The plan above still works; try again tomorrow.';
 const hits = new Map<string, number[]>();
 let daily = { day: '', count: 0 };
 
-async function overLimit(ip: string): Promise<string | null> {
+async function overLimit(ip: string, errors: PlanText['errors']): Promise<string | null> {
   const now = Date.now();
   const recent = (hits.get(ip) ?? []).filter((t) => now - t < PER_IP_WINDOW_MS);
-  if (recent.length >= PER_IP_LIMIT) return 'That is a few plans in a row. Give it ten minutes and try again.';
+  if (recent.length >= PER_IP_LIMIT) return errors.tooMany;
 
   if (planStoreReady()) {
     const { allowed } = await countAgentCall(DAILY_CAP).catch(() => ({ allowed: true }));
-    if (!allowed) return DAILY_MESSAGE;
+    if (!allowed) return errors.dailyLimit;
   } else {
     const today = new Date().toISOString().slice(0, 10);
     if (daily.day !== today) daily = { day: today, count: 0 };
-    if (daily.count >= DAILY_CAP) return DAILY_MESSAGE;
+    if (daily.count >= DAILY_CAP) return errors.dailyLimit;
     daily.count += 1;
   }
 
@@ -43,25 +44,28 @@ async function overLimit(ip: string): Promise<string | null> {
  * Nothing about the visitor is sent beyond those basics; nothing is stored.
  */
 export async function POST(request: NextRequest) {
+  // The page language rides on the query too, so errors before the body is read are in it
+  const queryErrors = PLAN_TEXT[asLocale(request.nextUrl.searchParams.get('lang') ?? undefined)].errors;
   if (!process.env.ANTHROPIC_API_KEY) {
-    return NextResponse.json({ error: 'The day-by-day planner is not configured on this deployment.' }, { status: 503 });
+    return NextResponse.json({ error: queryErrors.notConfigured }, { status: 503 });
   }
 
   let body: Record<string, unknown>;
   try {
     body = (await request.json()) as Record<string, unknown>;
   } catch {
-    return NextResponse.json({ error: 'Send the trip basics as JSON.' }, { status: 400 });
+    return NextResponse.json({ error: queryErrors.needJson }, { status: 400 });
   }
 
   const planRequest = parsePlanRequest(body);
+  const errors = PLAN_TEXT[planRequest.locale ?? 'en'].errors;
   if (!planRequest.startDate || !planRequest.endDate || planRequest.zones.length === 0) {
-    return NextResponse.json({ error: 'Dates and at least one destination are needed for a day-by-day plan.' }, { status: 400 });
+    return NextResponse.json({ error: errors.needDates }, { status: 400 });
   }
 
   // Only requests that will reach the model count against the limits
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || request.headers.get('x-real-ip') || 'unknown';
-  const limited = await overLimit(ip);
+  const limited = await overLimit(ip, errors);
   if (limited) return NextResponse.json({ error: limited }, { status: 429 });
 
   try {
@@ -69,8 +73,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(plan, { headers: { 'Cache-Control': 'no-store' } });
   } catch (error) {
     if (error instanceof AgentInputError) return NextResponse.json({ error: error.message }, { status: 400 });
-    if (error instanceof AgentUnavailableError) return NextResponse.json({ error: 'The day-by-day planner is not configured on this deployment.' }, { status: 503 });
+    if (error instanceof AgentUnavailableError) return NextResponse.json({ error: errors.notConfigured }, { status: 503 });
     console.error('plan/agent failed', error);
-    return NextResponse.json({ error: 'The planner could not write the plan just now. The plan above still works; try again in a minute.' }, { status: 502 });
+    return NextResponse.json({ error: errors.writeFailed }, { status: 502 });
   }
 }

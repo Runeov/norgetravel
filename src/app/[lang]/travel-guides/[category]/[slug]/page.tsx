@@ -12,7 +12,7 @@ import articlesJson from '@/data/articles.json';
 import articlesZh from '@/data/articles_zh.json';
 import articlesJa from '@/data/articles_ja.json';
 import type { Article } from '@/lib/schemas/article.schema';
-import { articleLocales, isCjkBody } from '@/lib/article-locales';
+import { ENGLISH_BODY_NOTICE, articleLocales, isCjkBody } from '@/lib/article-locales';
 import { asLocale, brandTitle, localeAlternates, OG_LOCALE, SITE_NAME } from '@/lib/i18n-seo';
 import { injectAffiliateLinks } from '@/lib/affiliate-linker';
 import { RelatedArticles } from '@/components/modules/travel/RelatedArticles';
@@ -123,11 +123,6 @@ const ARTICLE_UI = {
   ja: { notFound: '記事が見つかりません', breadcrumb: 'パンくずリスト', featured: 'おすすめ', dateLocale: 'ja-JP', readTime: (minutes: number) => `読了時間 ${minutes}分` },
 } as const;
 
-// Shown on Chinese and Japanese pages whose body has not been translated yet
-const ENGLISH_BODY_NOTICE = {
-  zh: '本文目前只有英文版。可以使用浏览器的翻译功能阅读全文。',
-  ja: 'この記事は現在英語版のみです。ブラウザの翻訳機能で全文をお読みいただけます。',
-} as const;
 
 const PLANNER_COPY = {
   en: {

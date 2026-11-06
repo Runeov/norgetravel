@@ -3,6 +3,9 @@ import { buildPlan } from '@/lib/plan-engine';
 import { parsePlanRequest } from '@/lib/plan-request';
 import { newShareId, saveSharedPlan, SHARE_TTL_DAYS, type SharedPlan } from '@/lib/plan-store';
 import { getSiteUrl } from '@/lib/site-url';
+import { asLocale } from '@/lib/i18n-seo';
+import { PLAN_TEXT } from '@/i18n/plan-text';
+import { fmt } from '@/i18n/format';
 import type { AgentPlan } from '@/lib/plan-agent';
 import type { TripItem, TripItemCategory } from '@/types/trip';
 
@@ -97,18 +100,20 @@ export async function POST(request: NextRequest) {
   try {
     body = (await request.json()) as Record<string, unknown>;
   } catch {
-    return NextResponse.json({ error: 'Send the plan as JSON.' }, { status: 400 });
+    return NextResponse.json({ error: PLAN_TEXT.en.errors.shareJson }, { status: 400 });
   }
 
+  // The shared copy is written, and its page served, in the language it was shared from
+  const lang = asLocale(typeof body.lang === 'string' ? body.lang : undefined);
+  const t = PLAN_TEXT[lang];
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
-  if (overLimit(ip)) return NextResponse.json({ error: 'That is a lot of links in a row. Give it ten minutes.' }, { status: 429 });
+  if (overLimit(ip)) return NextResponse.json({ error: t.errors.shareTooMany }, { status: 429 });
 
-  const basics = parsePlanRequest((body.basics ?? {}) as Record<string, unknown>);
+  const basics = { ...parsePlanRequest((body.basics ?? {}) as Record<string, unknown>), locale: lang };
   const items = cleanItems(body.items);
   if (basics.zones.length === 0 && items.length === 0) {
-    return NextResponse.json({ error: 'Pick a destination or save something before sharing.' }, { status: 400 });
+    return NextResponse.json({ error: t.errors.shareEmpty }, { status: 400 });
   }
-  const lang = ['en', 'zh', 'ja'].includes(String(body.lang)) ? String(body.lang) : 'en';
 
   try {
     const facts = await buildPlan({ ...basics, savedIds: [] });
@@ -122,7 +127,7 @@ export async function POST(request: NextRequest) {
       createdAt: now.toISOString(),
       expiresAt: new Date(now.getTime() + SHARE_TTL_DAYS * 86_400_000).toISOString(),
       lang,
-      title: dayPlan?.title || `${facts.zones.map((zone) => zone.name).join(' and ') || 'Norway'} trip plan`,
+      title: dayPlan?.title || fmt(t.share.title, { zones: facts.zones.map((zone) => zone.name).join(t.share.zoneJoin) || t.share.norway }),
       basics: basicsOnly,
       items,
       facts,
@@ -133,6 +138,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ id: plan.id, url, expiresAt: plan.expiresAt }, { headers: { 'Cache-Control': 'no-store' } });
   } catch (error) {
     console.error('plan/share failed', error);
-    return NextResponse.json({ error: 'The link could not be made just now. Try again in a minute.' }, { status: 500 });
+    return NextResponse.json({ error: t.errors.shareFailed }, { status: 500 });
   }
 }

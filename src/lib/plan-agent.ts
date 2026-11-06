@@ -2,6 +2,9 @@ import Anthropic from '@anthropic-ai/sdk';
 import { createHash } from 'node:crypto';
 import { buildPlan, type PlanRequest, type PlanResult } from '@/lib/plan-engine';
 import { loadAgentMemo, saveAgentMemo } from '@/lib/plan-store';
+import type { Locale } from '@/lib/i18n-seo';
+import { PLAN_TEXT } from '@/i18n/plan-text';
+import { fmt } from '@/i18n/format';
 
 /**
  * Phase 3 of the trip planner: the model writes the day-by-day plan, but only
@@ -51,6 +54,15 @@ const MEMO_LIMIT = 50;
 const BANNED =
   /\b(breathtaking|stunning|magical|vibrant|charming|hidden gems?|bucket list|once-in-a-lifetime|unforgettable|quaint|idyllic|unspoiled|timeless|epic|dramatic|majestic|iconic|jaw-dropping|fairy ?tale|wonderland|mystical|must-see|must-do|picturesque|pristine|nestled|boasts|wanderlust)\b/gi;
 
+// The same brochure words in Chinese and Japanese. CJK has no word boundaries, so these match anywhere.
+const BANNED_LOCAL: Partial<Record<Locale, RegExp>> = {
+  zh: /(绝美|美得令人窒息|叹为观止|如梦似幻|梦幻|童话般|世外桃源|人间仙境|必去|必看|必打卡|打卡圣地|秘境|宝藏|网红|震撼)/g,
+  ja: /(絶景|息をのむ|息を呑む|幻想的|おとぎ話|秘境|必見|一生に一度|インスタ映え|夢のような|圧巻)/g,
+};
+
+/** What replaces an em dash in each language: a comma. */
+const DASH_REPLACEMENT: Record<Locale, string> = { en: ', ', zh: '，', ja: '、' };
+
 const SYSTEM_PROMPT = `You are the planning editor at Norgetravel.com, "The Real Norway, Unfiltered". You write day-by-day trip plans for international travellers from facts that the site's rule engine hands you. You are the honest local guide: direct, specific, never a brochure.
 
 Hard rules, in order:
@@ -59,9 +71,9 @@ Hard rules, in order:
 3. Follow the route legs in the order given. Day 1 is the arrival day and uses the arrival leg; the last day is the departure day. The number of days equals the nights plus one and is given to you.
 4. Pace: relaxed means one thing a day, steady two, packed three. Hiking days cite the Mountain Code line and a turn-back plan. Winter days say when it gets dark.
 4b. Where to sleep: on the arrival day and on every day the base changes, include a stay item (stay:<id>) with a note on why that one, so the traveller can book it. The departure day includes the departure leg if one is given, otherwise the kit or stay line that matters that morning.
-5. Voice: English, sentence case titles, active voice, exact numbers only from the facts, contractions where natural. No em dashes anywhere; use full stops or commas. Never use these words: breathtaking, stunning, magical, vibrant, charming, hidden gem, bucket list, once-in-a-lifetime, unforgettable, quaint, idyllic, unspoiled, timeless, epic, dramatic, majestic, iconic, jaw-dropping, fairy tale, wonderland, mystical, must-see, picturesque, pristine, nestled, boasts, wanderlust. Do not pad with filler like "In today's world" or "It's worth noting".
+5. Voice: write every text field in the language named in basics.language, or in English when none is named. Listing names, place names and ids stay exactly as the facts give them. In English: sentence case titles and contractions where natural. In every language: active voice, exact numbers only from the facts, no em dashes anywhere (in Chinese and Japanese no dash punctuation either); use full stops or commas. Never use these words, or their equivalents in the plan's language: breathtaking, stunning, magical, vibrant, charming, hidden gem, bucket list, once-in-a-lifetime, unforgettable, quaint, idyllic, unspoiled, timeless, epic, dramatic, majestic, iconic, jaw-dropping, fairy tale, wonderland, mystical, must-see, picturesque, pristine, nestled, boasts, wanderlust. Do not pad with filler like "In today's world" or "It's worth noting".
 6. Each day: a title of at most eight words, a summary of at most 60 words that tells the traveller what the day actually involves (cold, distance, timing), the items with a one-line note each (why this one, what to book, when to leave), and one sentence in "why" that gives the reasoning (season, light, pace, logistics).
-7. The intro is at most 80 words and opens with the reality check, not a welcome. The title is at most ten words.
+7. The intro is at most 80 words and opens with the reality check, not a welcome. The title is at most ten words. In Chinese and Japanese, read every word limit as twice that many characters.
 8. Submit the plan only through the submit_plan tool.`;
 
 const SUBMIT_PLAN_TOOL: Anthropic.Tool = {
@@ -113,8 +125,11 @@ const SUBMIT_PLAN_TOOL: Anthropic.Tool = {
 // ── Facts the model sees ────────────────────────────────────────────────────
 
 function factsForModel(facts: PlanResult, request: PlanRequest) {
+  const language = PLAN_TEXT[request.locale ?? 'en'].languageName;
   return {
     basics: {
+      // Named only for Chinese and Japanese, so English facts (and their memo keys) are unchanged
+      ...(language && { language }),
       startDate: request.startDate,
       endDate: request.endDate,
       nights: facts.window.nights,
@@ -152,9 +167,9 @@ function refsOf(facts: PlanResult): RefMap {
 
 // ── Validation of what came back ────────────────────────────────────────────
 
-const clean = (text: unknown, max = 600): string =>
+const cleaner = (locale: Locale) => (text: unknown, max = 600): string =>
   String(text ?? '')
-    .replace(/\s*—\s*/g, ', ')
+    .replace(/\s*[—―]+\s*/g, DASH_REPLACEMENT[locale])
     .replace(/\s+/g, ' ')
     .trim()
     .slice(0, max);
@@ -167,7 +182,8 @@ interface Validated {
   bannedWords: string[];
 }
 
-function validate(input: unknown, refs: RefMap, days: number): Validated {
+function validate(input: unknown, refs: RefMap, days: number, locale: Locale): Validated {
+  const clean = cleaner(locale);
   const raw = (input ?? {}) as Record<string, unknown>;
   const unverified: string[] = Array.isArray(raw.unverified) ? raw.unverified.map((line) => clean(line, 200)).filter(Boolean).slice(0, 8) : [];
   const dayList: DayPlan[] = [];
@@ -180,7 +196,7 @@ function validate(input: unknown, refs: RefMap, days: number): Validated {
       const item = (rawItem ?? {}) as Record<string, unknown>;
       const ref = clean(item.ref, 120);
       if (refs.has(ref)) items.push({ ref, note: clean(item.note, 240) });
-      else if (ref) unverified.push(`Left out, not in our listings: ${ref.replace(/^[a-z]+:/, '')}`);
+      else if (ref) unverified.push(fmt(PLAN_TEXT[locale].errors.leftOut, { ref: ref.replace(/^[a-z]+:/, '') }));
     }
     dayList.push({
       day: Number.isInteger(day.day) ? (day.day as number) : index + 1,
@@ -194,7 +210,9 @@ function validate(input: unknown, refs: RefMap, days: number): Validated {
   }
 
   const everything = [raw.title, raw.intro, ...dayList.flatMap((d) => [d.title, d.summary, d.why, ...d.items.map((i) => i.note)])].map((t) => clean(t)).join(' ');
-  const bannedWords = [...new Set((everything.match(BANNED) ?? []).map((w) => w.toLowerCase()))];
+  const local = BANNED_LOCAL[locale];
+  const found = [...(everything.match(BANNED) ?? []), ...(local ? everything.match(local) ?? [] : [])];
+  const bannedWords = [...new Set(found.map((w) => w.toLowerCase()))];
 
   return { title: clean(raw.title, 90), intro: clean(raw.intro, 700), days: dayList, unverified: [...new Set(unverified)].slice(0, 10), bannedWords };
 }
@@ -252,16 +270,20 @@ async function ask(client: Anthropic, messages: Anthropic.MessageParam[]) {
 export async function writeDayPlan(request: PlanRequest): Promise<AgentPlan> {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) throw new AgentUnavailableError('ANTHROPIC_API_KEY is not set');
+  const locale = request.locale ?? 'en';
+  const errors = PLAN_TEXT[locale].errors;
   if (!request.startDate || !request.endDate || request.zones.length === 0) {
-    throw new AgentInputError('Dates and at least one destination are needed for a day-by-day plan.');
+    throw new AgentInputError(errors.needDates);
   }
 
   const facts = await buildPlan(request);
-  if (!facts.window.nights || facts.window.nights < 1) throw new AgentInputError('The trip needs at least one night.');
-  if (facts.window.nights > 21) throw new AgentInputError('The day-by-day plan covers trips of up to 21 nights.');
+  if (!facts.window.nights || facts.window.nights < 1) throw new AgentInputError(errors.oneNight);
+  if (facts.window.nights > 21) throw new AgentInputError(errors.maxNights);
 
   const compact = factsForModel(facts, request);
-  const inputHash = createHash('sha256').update(JSON.stringify({ request: { ...request, savedIds: undefined }, compact })).digest('hex').slice(0, 24);
+  // English requests hash as they did before the planner had languages, so their stored plans still match
+  const keyed = { ...request, savedIds: undefined, locale: locale === 'en' ? undefined : locale };
+  const inputHash = createHash('sha256').update(JSON.stringify({ request: keyed, compact })).digest('hex').slice(0, 24);
   const cached = memo.get(inputHash);
   if (cached) return cached;
   // The store carries the memo across serverless instances; a miss just means a model call
@@ -274,16 +296,19 @@ export async function writeDayPlan(request: PlanRequest): Promise<AgentPlan> {
   const client = new Anthropic({ apiKey });
   const refs = refsOf(facts);
   const dayCount = facts.window.nights + 1;
+  const language = compact.basics.language;
   const factsMessage: Anthropic.MessageParam = {
     role: 'user',
-    content: `Trip basics and every fact you may use, as JSON. Plan ${dayCount} days (arrival day to departure day).\n${JSON.stringify(compact)}`,
+    content: `Trip basics and every fact you may use, as JSON. Plan ${dayCount} days (arrival day to departure day).${
+      language ? ` Write every title, intro, summary, note, why and unverified line in ${language}.` : ''
+    }\n${JSON.stringify(compact)}`,
   };
 
   let calls = 1;
   const first = await ask(client, [factsMessage]);
   let usage = first.usage;
   let stop = first.stop;
-  let result = validate(first.input, refs, dayCount);
+  let result = validate(first.input, refs, dayCount, locale);
 
   // One retry covers the two ways a reply goes wrong: no days, or brochure words
   const problem = result.days.length === 0 ? 'empty' : result.bannedWords.length ? 'banned' : null;
@@ -299,7 +324,7 @@ export async function writeDayPlan(request: PlanRequest): Promise<AgentPlan> {
       ? `That submission had no days. Submit the complete plan now through submit_plan with all ${dayCount} days, each with items that use the given ids.`
       : 'Rewrite the whole plan without those words and without em dashes, keeping every ref. Submit it again through submit_plan.';
     const retry = await ask(client, [factsMessage, { role: 'assistant', content: draftNote }, { role: 'user', content: complaint }]);
-    const second = validate(retry.input, refs, dayCount);
+    const second = validate(retry.input, refs, dayCount, locale);
     usage = { input: usage.input + retry.usage.input, output: usage.output + retry.usage.output, cacheRead: usage.cacheRead + retry.usage.cacheRead, cacheWrite: usage.cacheWrite + retry.usage.cacheWrite };
     stop = retry.stop;
     if (second.days.length) result = second;

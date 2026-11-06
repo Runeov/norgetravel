@@ -12,34 +12,42 @@ import {
   type TripProfile,
 } from '@/types/trip';
 import { cn } from '@/lib/utils';
+import { fmt, plural } from '@/i18n/format';
+import { PLAN_UI_EN } from '@/i18n/plan-ui/en';
+import type { PlanUiCopy } from '@/i18n/plan-ui/types';
+import type { PlanZoneId } from '@/lib/planner-data';
+import { usePlanCopy } from './PlanCopy';
 
 const inputClass =
-  'w-full min-h-[44px] rounded-sm border border-slate-300 bg-white px-4 py-2.5 text-base text-slate-900 placeholder:text-slate-400 focus:border-[#1B3A5C] focus:outline-none focus:ring-1 focus:ring-[#1B3A5C] transition-colors';
-const labelClass = 'block text-sm font-medium uppercase tracking-wide text-slate-700';
+  'w-full min-h-[44px] rounded-sm border border-plan-line-strong bg-plan-card px-4 py-2.5 text-base text-plan-heading placeholder:text-plan-faint focus:border-plan-accent focus:outline-none focus:ring-1 focus:ring-plan-accent transition-colors';
+const labelClass = 'block text-sm font-medium uppercase tracking-wide text-plan-body';
 const chipClass = (active: boolean) =>
   cn(
     'inline-flex min-h-[44px] items-center rounded-full border px-4 text-sm font-semibold transition-colors',
-    active ? 'border-[#1B3A5C] bg-[#1B3A5C] text-white' : 'border-slate-300 bg-white text-slate-700 hover:border-[#1B3A5C]'
+    active ? 'border-plan-accent bg-plan-solid text-plan-on-solid' : 'border-plan-line-strong bg-plan-card text-plan-body hover:border-plan-accent'
   );
 
-function formatDate(value: string): string {
+function formatDate(value: string, locale: string): string {
   const date = new Date(`${value}T00:00:00`);
   if (Number.isNaN(date.getTime())) return value;
-  return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+  return date.toLocaleDateString(locale, { day: 'numeric', month: 'short', year: 'numeric' });
 }
 
+const zoneLabel = (copy: PlanUiCopy, zone: { id: string; name: string }) => copy.zones[zone.id as PlanZoneId] ?? zone.name;
+
 /** One line that says what we know, or nothing when the profile is empty. */
-export function summariseProfile(profile: TripProfile): string | null {
+export function summariseProfile(profile: TripProfile, copy: PlanUiCopy = PLAN_UI_EN): string | null {
   const parts: string[] = [];
-  const zoneNames = mapZones.filter((zone) => profile.zones.includes(zone.id)).map((zone) => zone.name);
+  const day = (value: string) => formatDate(value, copy.dateLocale);
+  const zoneNames = mapZones.filter((zone) => profile.zones.includes(zone.id)).map((zone) => zoneLabel(copy, zone));
   if (zoneNames.length) parts.push(zoneNames.join(' + '));
-  if (profile.startDate && profile.endDate) parts.push(`${formatDate(profile.startDate)} to ${formatDate(profile.endDate)}`);
-  else if (profile.startDate) parts.push(`From ${formatDate(profile.startDate)}`);
-  if (profile.travellers) parts.push(`${profile.travellers} ${profile.travellers === 1 ? 'traveller' : 'travellers'}`);
-  const interests = TRIP_INTERESTS.filter((i) => profile.interests.includes(i.id)).map((i) => i.label);
-  if (interests.length) parts.push(interests.join(', '));
-  if (profile.mobility) parts.push(TRIP_MOBILITY.find((m) => m.id === profile.mobility)?.label ?? '');
-  if (profile.budget) parts.push(TRIP_BUDGETS.find((b) => b.id === profile.budget)?.label ?? '');
+  if (profile.startDate && profile.endDate) parts.push(fmt(copy.basics.range, { start: day(profile.startDate), end: day(profile.endDate) }));
+  else if (profile.startDate) parts.push(fmt(copy.basics.from, { start: day(profile.startDate) }));
+  if (profile.travellers) parts.push(plural(copy.basics.travellerCount, profile.travellers));
+  const interests = TRIP_INTERESTS.filter((i) => profile.interests.includes(i.id)).map((i) => copy.interests[i.id]);
+  if (interests.length) parts.push(interests.join(copy.listJoin));
+  if (profile.mobility) parts.push(copy.mobility[profile.mobility]);
+  if (profile.budget) parts.push(copy.budgets[profile.budget]);
   return parts.length ? parts.filter(Boolean).join(' · ') : null;
 }
 
@@ -85,9 +93,14 @@ function OptionGroup<T extends string>({
  */
 export function TripBasics({ startOpen = false }: { startOpen?: boolean }) {
   const { profile, updateProfile } = useTrip();
+  const copy = usePlanCopy();
+  const text = copy.basics;
   const [open, setOpen] = useState(startOpen);
   const id = useId();
-  const summary = summariseProfile(profile);
+  const summary = summariseProfile(profile, copy);
+  const paces = TRIP_PACES.map((p) => ({ id: p.id, ...copy.paces[p.id] }));
+  const mobility = TRIP_MOBILITY.map((m) => ({ id: m.id, label: copy.mobility[m.id] }));
+  const budgets = TRIP_BUDGETS.map((b) => ({ id: b.id, label: copy.budgets[b.id] }));
 
   const toggleInterest = (interest: TripProfile['interests'][number]) => {
     const has = profile.interests.includes(interest);
@@ -100,24 +113,22 @@ export function TripBasics({ startOpen = false }: { startOpen?: boolean }) {
   };
 
   return (
-    <section aria-labelledby={`${id}-title`} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm md:p-6">
+    <section aria-labelledby={`${id}-title`} className="rounded-lg border border-plan-line bg-plan-card p-5 shadow-sm md:p-6">
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0">
-          <h2 id={`${id}-title`} className="text-lg font-bold text-[#1B3A5C]">
-            Your trip basics
+          <h2 id={`${id}-title`} className="text-lg font-bold text-plan-accent">
+            {text.title}
           </h2>
-          <p className="mt-1 text-base leading-relaxed text-slate-600">
-            {summary ?? 'When, how many, and what you came for. Saved on this device, ready for the route and day plan that come next.'}
-          </p>
+          <p className="mt-1 text-base leading-relaxed text-plan-muted">{summary ?? text.intro}</p>
         </div>
         <button
           type="button"
           onClick={() => setOpen((current) => !current)}
           aria-expanded={open}
           aria-controls={`${id}-fields`}
-          className="inline-flex min-h-[44px] shrink-0 items-center gap-1.5 rounded-md border border-slate-300 px-3.5 text-sm font-semibold text-[#1B3A5C] transition-colors hover:bg-slate-50"
+          className="inline-flex min-h-[44px] shrink-0 items-center gap-1.5 rounded-md border border-plan-line-strong px-3.5 text-sm font-semibold text-plan-accent transition-colors hover:bg-plan-surface"
         >
-          {open ? 'Done' : summary ? 'Edit' : 'Add'}
+          {open ? text.done : summary ? text.edit : text.add}
           <ChevronDown className={cn('h-4 w-4 transition-transform', open && 'rotate-180')} aria-hidden="true" />
         </button>
       </div>
@@ -125,7 +136,7 @@ export function TripBasics({ startOpen = false }: { startOpen?: boolean }) {
       {open && (
         <div id={`${id}-fields`} className="mt-6 grid gap-6 md:grid-cols-2">
           <div className="md:col-span-2">
-            <p className={labelClass}>Where</p>
+            <p className={labelClass}>{text.where}</p>
             <div className="mt-2 flex flex-wrap gap-2">
               {mapZones.map((zone) => {
                 const active = profile.zones.includes(zone.id);
@@ -137,7 +148,7 @@ export function TripBasics({ startOpen = false }: { startOpen?: boolean }) {
                     onClick={() => toggleZone(zone.id)}
                     className={chipClass(active)}
                   >
-                    {zone.name}
+                    {zoneLabel(copy, zone)}
                   </button>
                 );
               })}
@@ -147,7 +158,7 @@ export function TripBasics({ startOpen = false }: { startOpen?: boolean }) {
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label htmlFor={`${id}-start`} className={labelClass}>
-                Arrive
+                {text.arrive}
               </label>
               <input
                 id={`${id}-start`}
@@ -160,7 +171,7 @@ export function TripBasics({ startOpen = false }: { startOpen?: boolean }) {
             </div>
             <div>
               <label htmlFor={`${id}-end`} className={labelClass}>
-                Leave
+                {text.leave}
               </label>
               <input
                 id={`${id}-end`}
@@ -175,7 +186,7 @@ export function TripBasics({ startOpen = false }: { startOpen?: boolean }) {
 
           <div>
             <label htmlFor={`${id}-travellers`} className={labelClass}>
-              Travellers
+              {text.travellers}
             </label>
             <input
               id={`${id}-travellers`}
@@ -194,7 +205,7 @@ export function TripBasics({ startOpen = false }: { startOpen?: boolean }) {
           </div>
 
           <div className="md:col-span-2">
-            <p className={labelClass}>What you came for</p>
+            <p className={labelClass}>{text.cameFor}</p>
             <div className="mt-2 flex flex-wrap gap-2">
               {TRIP_INTERESTS.map((interest) => {
                 const active = profile.interests.includes(interest.id);
@@ -206,16 +217,16 @@ export function TripBasics({ startOpen = false }: { startOpen?: boolean }) {
                     onClick={() => toggleInterest(interest.id)}
                     className={chipClass(active)}
                   >
-                    {interest.label}
+                    {copy.interests[interest.id]}
                   </button>
                 );
               })}
             </div>
           </div>
 
-          <OptionGroup label="Pace" options={TRIP_PACES} value={profile.pace} onChange={(pace) => updateProfile({ pace })} />
-          <OptionGroup label="Getting around" options={TRIP_MOBILITY} value={profile.mobility} onChange={(mobility) => updateProfile({ mobility })} />
-          <OptionGroup label="Budget" options={TRIP_BUDGETS} value={profile.budget} onChange={(budget) => updateProfile({ budget })} />
+          <OptionGroup label={text.pace} options={paces} value={profile.pace} onChange={(pace) => updateProfile({ pace })} />
+          <OptionGroup label={text.gettingAround} options={mobility} value={profile.mobility} onChange={(next) => updateProfile({ mobility: next })} />
+          <OptionGroup label={text.budget} options={budgets} value={profile.budget} onChange={(budget) => updateProfile({ budget })} />
         </div>
       )}
     </section>
