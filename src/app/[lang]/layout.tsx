@@ -198,11 +198,15 @@ export default async function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
-        {/* Affiliate ownership verification — Emerald */}
-        <Script
-          src="https://emrld.ltd/NTE0MTc1.js?t=514175"
-          strategy="afterInteractive"
-        />
+        {/* Affiliate ownership verification — Emerald. Production builds only:
+            on localhost its config request is blocked and the script logs
+            "config is not valid", which the Next dev overlay shows as an error. */}
+        {process.env.NODE_ENV === 'production' && (
+          <Script
+            src="https://emrld.ltd/NTE0MTc1.js?t=514175"
+            strategy="afterInteractive"
+          />
+        )}
       </head>
       <body suppressHydrationWarning className={cn(
         inter.variable, 

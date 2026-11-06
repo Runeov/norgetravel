@@ -1,0 +1,168 @@
+/*
+ * Theme tokens for the /app section, read by the `app-*` Tailwind colours.
+ * Values are RGB channels so Tailwind opacity modifiers work (bg-app-panel/80).
+ * The shell root carries data-app-theme; "fjord" is the default and shows the
+ * landscape photo behind the content.
+ */
+.nt-app {
+  --app-bg: 6 18 38;
+  --app-panel: 14 33 63;
+  --app-raised: 24 49 88;
+  --app-ink: 246 241 231;
+  --app-line: 240 230 210;
+  --app-accent: 232 207 156;
+  --app-gold: 232 207 156;
+  --app-gold-deep: 201 164 106;
+  --app-on-gold: 10 26 51;
+  color-scheme: dark;
+}
+
+.nt-app[data-app-theme='dark'] {
+  --app-bg: 10 10 13;
+  --app-panel: 22 22 28;
+  --app-raised: 34 34 42;
+  --app-ink: 245 244 240;
+  --app-line: 255 255 255;
+}
+
+.nt-app[data-app-theme='light'] {
+  --app-bg: 244 241 234;
+  --app-panel: 255 255 255;
+  --app-raised: 234 228 216;
+  --app-ink: 14 27 48;
+  --app-line: 14 27 48;
+  --app-accent: 128 94 36;
+  color-scheme: light;
+}
+
+.nt-app .app-photo {
+  display: none;
+}
+
+.nt-app[data-app-theme='fjord'] .app-photo {
+  display: block;
+}
+
+/* Gold fill used for the active tab, active chip and primary buttons. */
+.nt-app .app-gold-fill {
+  background-image: linear-gradient(100deg, rgb(var(--app-gold)) 0%, rgb(var(--app-gold-deep)) 100%);
+  color: rgb(var(--app-on-gold));
+}
+
+/* Horizontal rails hide their scrollbar; they scroll by swipe, wheel or keys. */
+.nt-app .app-rail {
+  scrollbar-width: none;
+}
+.nt-app .app-rail::-webkit-scrollbar {
+  display: none;
+}
+
+/* The mark is drawn white; the light theme needs it dark. */
+.nt-app[data-app-theme='light'] .app-mark img {
+  --tw-invert: invert(0);
+}
+
+/*
+ * Planner tokens (see src/index.css) in the app themes, so the shared planner
+ * components render in the app's colours. Text shades are the app ink blended
+ * over its panel at the opacities the app uses elsewhere.
+ */
+.nt-app {
+  --plan-accent: 232 207 156;
+  --plan-solid: 232 207 156;
+  --plan-solid-hover: 201 164 106;
+  --plan-on-solid: 10 26 51;
+  --plan-highlight: 240 222 182;
+  --plan-grad-from: 232 207 156;
+  --plan-grad-to: 201 164 106;
+  --plan-danger: 255 138 128;
+  --plan-heading: 246 241 231;
+  --plan-strong: 246 241 231;
+  --plan-body: 223 220 214;
+  --plan-muted: 195 195 194;
+  --plan-subtle: 165 168 172;
+  --plan-faint: 118 127 139;
+  --plan-card: 18 40 74;
+  --plan-surface: 14 33 63;
+  --plan-chip: 24 49 88;
+  --plan-skeleton: 30 58 100;
+  --plan-line: 48 63 85;
+  --plan-line-strong: 71 82 100;
+  --plan-added: 33 52 74;
+  --plan-on-added: 232 207 156;
+  --plan-added-hover: 40 62 88;
+}
+
+.nt-app[data-app-theme='dark'] {
+  --plan-body: 223 222 219;
+  --plan-muted: 196 195 193;
+  --plan-subtle: 167 166 166;
+  --plan-faint: 122 122 123;
+  --plan-card: 30 30 38;
+  --plan-surface: 22 22 28;
+  --plan-chip: 34 34 42;
+  --plan-skeleton: 44 44 54;
+  --plan-line: 50 50 55;
+  --plan-line-strong: 69 69 73;
+  --plan-added: 40 38 34;
+  --plan-added-hover: 52 48 42;
+}
+
+.nt-app[data-app-theme='light'] {
+  --plan-accent: 128 94 36;
+  --plan-highlight: 128 94 36;
+  --plan-danger: 192 40 40;
+  --plan-heading: 14 27 48;
+  --plan-strong: 14 27 48;
+  --plan-body: 51 60 75;
+  --plan-muted: 71 80 96;
+  --plan-subtle: 100 108 122;
+  --plan-faint: 148 152 160;
+  --plan-card: 255 255 255;
+  --plan-surface: 250 248 243;
+  --plan-chip: 240 236 227;
+  --plan-skeleton: 228 222 210;
+  --plan-line: 226 220 208;
+  --plan-line-strong: 205 198 184;
+  --plan-added: 245 236 214;
+  --plan-on-added: 110 80 28;
+  --plan-added-hover: 238 225 196;
+}
+
+/*
+ * Article bodies are stored HTML written with the site's light classes
+ * (tables, callouts, summary boxes). In the fjord and dark themes those
+ * classes take the app's colours inside an article; the light theme keeps them.
+ */
+.nt-app:not([data-app-theme='light']) .app-article .bg-white { background-color: rgb(var(--app-panel)); }
+.nt-app:not([data-app-theme='light']) .app-article .bg-slate-50 { background-color: rgb(var(--app-raised) / 0.55); }
+.nt-app:not([data-app-theme='light']) .app-article .bg-amber-50 { background-color: rgb(var(--app-gold) / 0.12); }
+.nt-app:not([data-app-theme='light']) .app-article .bg-\[\#1A365D\] { background-color: rgb(var(--app-raised)); }
+.nt-app:not([data-app-theme='light']) .app-article .text-slate-900,
+.nt-app:not([data-app-theme='light']) .app-article .text-slate-800 { color: rgb(var(--app-ink)); }
+.nt-app:not([data-app-theme='light']) .app-article .text-slate-700 { color: rgb(var(--app-ink) / 0.9); }
+.nt-app:not([data-app-theme='light']) .app-article .text-slate-600 { color: rgb(var(--app-ink) / 0.82); }
+.nt-app:not([data-app-theme='light']) .app-article .text-slate-500 { color: rgb(var(--app-ink) / 0.7); }
+.nt-app:not([data-app-theme='light']) .app-article .text-slate-400 { color: rgb(var(--app-ink) / 0.6); }
+.nt-app:not([data-app-theme='light']) .app-article .text-\[\#1A365D\] { color: rgb(var(--app-accent)); }
+.nt-app:not([data-app-theme='light']) .app-article .border-slate-200 { border-color: rgb(var(--app-line) / 0.18); }
+.nt-app:not([data-app-theme='light']) .app-article .divide-slate-100 > :not([hidden]) ~ :not([hidden]) { border-color: rgb(var(--app-line) / 0.12); }
+
+/*
+ * Chinese and Japanese pages. Figtree and Brygada have no CJK glyphs, and the
+ * serif fallback for headings is SimSun or Mincho on many systems, which reads
+ * thin at display sizes. Latin text keeps the app fonts; CJK text falls back
+ * to the platform's sans for that script. The lang selector follows <html lang>.
+ */
+.nt-app:lang(zh) {
+  font-family: var(--font-figtree), 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', 'Noto Sans CJK SC', system-ui, sans-serif;
+}
+.nt-app:lang(zh) .font-display {
+  font-family: var(--font-brygada), 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', 'Noto Sans CJK SC', sans-serif;
+}
+.nt-app:lang(ja) {
+  font-family: var(--font-figtree), 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', 'Noto Sans JP', 'Noto Sans CJK JP', system-ui, sans-serif;
+}
+.nt-app:lang(ja) .font-display {
+  font-family: var(--font-brygada), 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif;
+}

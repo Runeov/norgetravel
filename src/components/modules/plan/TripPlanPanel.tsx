@@ -27,8 +27,10 @@ import { cn } from '@/lib/utils';
 import type { LegMethod, PlanLine, PlanResult, Suggestion } from '@/lib/plan-engine';
 import type { TripInterest } from '@/types/trip';
 import { buildPlanQuery } from '@/lib/plan-key';
+import { fmt, plural } from '@/i18n/format';
 import { DayPlanSection } from './DayPlanSection';
 import { SharePlanSection } from './SharePlanSection';
+import { usePlanCopy } from './PlanCopy';
 
 /** Zones to plan for when the visitor has chosen none: what they saved, else what they said they came for. */
 const INTEREST_ZONES: Record<TripInterest, string[]> = {
@@ -59,11 +61,11 @@ export function PlanLinks({ links }: { links: { label: string; href: string }[] 
     <span className="mt-1 flex flex-wrap gap-x-3 gap-y-1">
       {links.map((link) =>
         link.href.startsWith('/') ? (
-          <Link key={link.href} href={link.href} className="text-sm font-semibold text-[#1B3A5C] hover:text-[#00CC6A] transition-colors">
+          <Link key={link.href} href={link.href} className="text-sm font-semibold text-plan-accent hover:text-plan-highlight transition-colors">
             {link.label}
           </Link>
         ) : (
-          <a key={link.href} href={link.href} target="_blank" rel={outboundRel(link.href)} className="inline-flex items-center gap-1 text-sm font-semibold text-[#1B3A5C] hover:text-[#00CC6A] transition-colors">
+          <a key={link.href} href={link.href} target="_blank" rel={outboundRel(link.href)} className="inline-flex items-center gap-1 text-sm font-semibold text-plan-accent hover:text-plan-highlight transition-colors">
             {link.label}
             <ExternalLink className="h-3 w-3" aria-hidden="true" />
           </a>
@@ -77,15 +79,15 @@ export function Lines({ lines, tone = 'plain' }: { lines: PlanLine[]; tone?: 'pl
   return (
     <ul className="space-y-3">
       {lines.map((line) => (
-        <li key={line.id} className={cn('flex gap-3 text-base leading-relaxed text-slate-700', tone === 'warn' && line.id.startsWith('fit-nights') && 'text-[#D32F2F]')}>
+        <li key={line.id} className={cn('flex gap-3 text-base leading-relaxed text-plan-body', tone === 'warn' && line.id.startsWith('fit-nights') && 'text-plan-danger')}>
           {tone === 'warn' ? (
-            <AlertTriangle className={cn('mt-1 h-4 w-4 shrink-0', line.id === 'fit-ok' ? 'text-[#00CC6A]' : 'text-amber-600')} aria-hidden="true" />
+            <AlertTriangle className={cn('mt-1 h-4 w-4 shrink-0', line.id === 'fit-ok' ? 'text-plan-highlight' : 'text-amber-600')} aria-hidden="true" />
           ) : (
-            <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#1B3A5C]" aria-hidden="true" />
+            <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-plan-solid" aria-hidden="true" />
           )}
           <span className="min-w-0">
             {line.text}
-            {line.detail && <span className="block text-sm text-slate-500">{line.detail}</span>}
+            {line.detail && <span className="block text-sm text-plan-subtle">{line.detail}</span>}
             <PlanLinks links={line.links} />
           </span>
         </li>
@@ -97,17 +99,17 @@ export function Lines({ lines, tone = 'plain' }: { lines: PlanLine[]; tone?: 'pl
 function SuggestionRow({ item }: { item: Suggestion }) {
   const external = item.href && !item.href.startsWith('/');
   return (
-    <li className="flex flex-col gap-2 rounded-lg border border-slate-200 bg-white p-4 sm:flex-row sm:items-start sm:justify-between">
+    <li className="flex flex-col gap-2 rounded-lg border border-plan-line bg-plan-card p-4 sm:flex-row sm:items-start sm:justify-between">
       <div className="min-w-0">
-        <p className="font-bold text-slate-800">
+        <p className="font-bold text-plan-strong">
           {item.href ? (
             external ? (
-              <a href={item.href} target="_blank" rel={outboundRel(item.href)} className="inline-flex items-center gap-1 hover:text-[#1B3A5C] hover:underline">
+              <a href={item.href} target="_blank" rel={outboundRel(item.href)} className="inline-flex items-center gap-1 hover:text-plan-accent hover:underline">
                 {item.name}
                 <ExternalLink className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
               </a>
             ) : (
-              <Link href={item.href} className="hover:text-[#1B3A5C] hover:underline">
+              <Link href={item.href} className="hover:text-plan-accent hover:underline">
                 {item.name}
               </Link>
             )
@@ -115,7 +117,7 @@ function SuggestionRow({ item }: { item: Suggestion }) {
             item.name
           )}
         </p>
-        <p className="mt-0.5 text-sm text-slate-600">{item.why}</p>
+        <p className="mt-0.5 text-sm text-plan-muted">{item.why}</p>
       </div>
       <AddToTripButton
         compact
@@ -141,11 +143,11 @@ function SuggestionRow({ item }: { item: Suggestion }) {
 
 function Section({ icon: Icon, title, count, children }: { icon: LucideIcon; title: string; count?: number; children: React.ReactNode }) {
   return (
-    <section className="border-t border-slate-200 pt-5">
-      <h3 className="mb-3 flex items-center gap-2 text-lg font-bold text-[#1B3A5C]">
+    <section className="border-t border-plan-line pt-5">
+      <h3 className="mb-3 flex items-center gap-2 text-lg font-bold text-plan-accent">
         <Icon className="h-5 w-5" aria-hidden="true" />
         {title}
-        {count !== undefined && <span className="rounded-full bg-slate-100 px-2 text-xs font-semibold text-slate-600">{count}</span>}
+        {count !== undefined && <span className="rounded-full bg-plan-chip px-2 text-xs font-semibold text-plan-muted">{count}</span>}
       </h3>
       {children}
     </section>
@@ -159,6 +161,9 @@ function Section({ icon: Icon, title, count, children }: { icon: LucideIcon; tit
  */
 export function TripPlanPanel() {
   const { profile, items } = useTrip();
+  const copy = usePlanCopy();
+  const text = copy.panel;
+  const lang = copy.locale;
   const [plan, setPlan] = useState<PlanResult | null>(null);
   const [state, setState] = useState<'idle' | 'loading' | 'ready' | 'error'>('idle');
 
@@ -170,8 +175,8 @@ export function TripPlanPanel() {
   }, [profile.zones, profile.interests, items]);
 
   const query = useMemo(
-    () => buildPlanQuery(profile, zones, items.map((item) => item.id)),
-    [profile, zones, items]
+    () => buildPlanQuery(profile, zones, items.map((item) => item.id), lang),
+    [profile, zones, items, lang]
   );
 
   const hasInput = zones.length > 0;
@@ -189,8 +194,9 @@ export function TripPlanPanel() {
       zones,
       saved: items.map((item) => item.id).slice(0, 200),
       nights: plan?.window.nights,
+      ...(lang !== 'en' && { lang }),
     }),
-    [profile, zones, items, plan]
+    [profile, zones, items, plan, lang]
   );
 
   useEffect(() => {
@@ -220,69 +226,67 @@ export function TripPlanPanel() {
 
   const summary = plan
     ? [
-        plan.window.season ? `${plan.window.season} trip` : null,
-        plan.window.nights ? `${plan.window.nights} nights` : null,
-        plan.zones.map((zone) => zone.name).join(', '),
+        plan.window.season ? fmt(text.seasonTrip, { season: copy.seasons[plan.window.season] }) : null,
+        plan.window.nights ? plural(text.nights, plan.window.nights) : null,
+        plan.zones.map((zone) => zone.name).join(copy.listJoin),
       ].filter(Boolean).join(' · ')
     : null;
 
   return (
-    <section aria-labelledby="trip-plan-title" className="rounded-lg border border-slate-200 bg-slate-50 p-5 shadow-sm md:p-6">
+    <section aria-labelledby="trip-plan-title" className="rounded-lg border border-plan-line bg-plan-surface p-5 shadow-sm md:p-6">
       <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">Built from your basics and what you saved</p>
-          <h2 id="trip-plan-title" className="text-2xl font-bold text-[#1B3A5C]">
-            Your plan so far
+          <p className="text-sm font-semibold uppercase tracking-wide text-plan-subtle">{text.eyebrow}</p>
+          <h2 id="trip-plan-title" className="text-2xl font-bold text-plan-accent">
+            {text.title}
           </h2>
         </div>
-        {summary && <p className="text-sm font-medium text-slate-600">{summary}</p>}
+        {summary && <p className="text-sm font-medium text-plan-muted">{summary}</p>}
       </div>
 
       {!hasInput && (
-        <p className="mt-4 text-base leading-relaxed text-slate-600">
-          Pick a destination or an interest above, or save something from a destination page, and the plan builds here: the light you will get, whether the pace fits, the route, what to do and book, and what to pack.
-        </p>
+        <p className="mt-4 text-base leading-relaxed text-plan-muted">{text.empty}</p>
       )}
 
       {state === 'error' && (
-        <p className="mt-4 text-base text-[#D32F2F]">The planner could not build a plan just now. Try again in a moment.</p>
+        <p className="mt-4 text-base text-plan-danger">{text.error}</p>
       )}
 
       {state === 'loading' && !plan && (
         <div className="mt-6 space-y-3" aria-live="polite" aria-busy="true">
-          <div className="h-4 w-3/4 animate-pulse rounded bg-slate-200" />
-          <div className="h-4 w-1/2 animate-pulse rounded bg-slate-200" />
-          <div className="h-4 w-2/3 animate-pulse rounded bg-slate-200" />
+          <div className="h-4 w-3/4 animate-pulse rounded bg-plan-skeleton" />
+          <div className="h-4 w-1/2 animate-pulse rounded bg-plan-skeleton" />
+          <div className="h-4 w-2/3 animate-pulse rounded bg-plan-skeleton" />
         </div>
       )}
 
       {plan && (
         <div className={cn('mt-6 space-y-6', state === 'loading' && 'opacity-60 transition-opacity')} aria-live="polite">
           {plan.light.length > 0 && (
-            <Section icon={Lightbulb} title="Light and season">
+            <Section icon={Lightbulb} title={text.sections.light}>
               <Lines lines={plan.light} />
             </Section>
           )}
           {plan.fit.length > 0 && (
-            <Section icon={AlertTriangle} title="Does it fit?">
+            <Section icon={AlertTriangle} title={text.sections.fit}>
               <Lines lines={plan.fit} tone="warn" />
             </Section>
           )}
           {plan.route.legs.length > 0 && (
-            <Section icon={Route} title="Route">
+            <Section icon={Route} title={text.sections.route}>
               <ol className="space-y-3">
                 {plan.route.legs.map((leg, index) => {
                   const Icon = LEG_ICON[leg.method];
                   return (
                     <li key={leg.id} className="flex gap-3">
-                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#1B3A5C] text-white">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-plan-solid text-plan-on-solid">
                         <Icon className="h-4 w-4" aria-hidden="true" />
                       </span>
                       <span className="min-w-0">
-                        <span className="block text-sm font-semibold uppercase tracking-wide text-slate-500">
-                          {index + 1}. {leg.from} to {leg.to}
+                        <span className="block text-sm font-semibold uppercase tracking-wide text-plan-subtle">
+                          {fmt(text.leg, { n: index + 1, from: leg.from, to: leg.to })}
                         </span>
-                        <span className="block text-base leading-relaxed text-slate-700">{leg.text}</span>
+                        <span className="block text-base leading-relaxed text-plan-body">{leg.text}</span>
                         <PlanLinks links={leg.links} />
                       </span>
                     </li>
@@ -292,30 +296,31 @@ export function TripPlanPanel() {
             </Section>
           )}
           {plan.route.method.length > 0 && (
-            <Section icon={MapIcon} title="Getting around">
+            <Section icon={MapIcon} title={text.sections.method}>
               <Lines lines={plan.route.method} />
             </Section>
           )}
           {(plan.activities.length > 0 || plan.skippedActivities.count > 0) && (
-            <Section icon={Sparkles} title="Do" count={plan.activities.length}>
-              {plan.activities.length === 0 && (
-                <p className="text-base leading-relaxed text-slate-600">Nothing in our listings for these interests runs in your dates. Change the dates or the interests and this fills in.</p>
-              )}
+            <Section icon={Sparkles} title={text.sections.do} count={plan.activities.length}>
+              {plan.activities.length === 0 && <p className="text-base leading-relaxed text-plan-muted">{text.doEmpty}</p>}
               <ul className="space-y-3">
                 {plan.activities.map((item) => (
                   <SuggestionRow key={item.id} item={item} />
                 ))}
               </ul>
               {plan.skippedActivities.count > 0 && (
-                <p className="mt-3 text-sm text-slate-500">
-                  {plan.skippedActivities.count} {plan.skippedActivities.count === 1 ? 'activity runs' : 'activities run'} outside your dates and {plan.skippedActivities.count === 1 ? 'was' : 'were'} left out
-                  {plan.skippedActivities.examples.length ? ` (${plan.skippedActivities.examples.join(', ')})` : ''}.
+                <p className="mt-3 text-sm text-plan-subtle">
+                  {plural(text.skipped, plan.skippedActivities.count, {
+                    examples: plan.skippedActivities.examples.length
+                      ? fmt(text.examples, { list: plan.skippedActivities.examples.join(copy.listJoin) })
+                      : '',
+                  })}
                 </p>
               )}
             </Section>
           )}
           {plan.events.length > 0 && (
-            <Section icon={Calendar} title="Attend" count={plan.events.length}>
+            <Section icon={Calendar} title={text.sections.attend} count={plan.events.length}>
               <ul className="space-y-3">
                 {plan.events.map((item) => (
                   <SuggestionRow key={item.id} item={item} />
@@ -324,8 +329,8 @@ export function TripPlanPanel() {
             </Section>
           )}
           {plan.stays.length > 0 && (
-            <Section icon={BedDouble} title="Stay" count={plan.stays.length}>
-              {plan.stayNote && <p className="mb-3 text-sm text-slate-500">{plan.stayNote}</p>}
+            <Section icon={BedDouble} title={text.sections.stay} count={plan.stays.length}>
+              {plan.stayNote && <p className="mb-3 text-sm text-plan-subtle">{plan.stayNote}</p>}
               <ul className="space-y-3">
                 {plan.stays.map((item) => (
                   <SuggestionRow key={item.id} item={item} />
@@ -334,7 +339,7 @@ export function TripPlanPanel() {
             </Section>
           )}
           {plan.kit.length > 0 && (
-            <Section icon={Backpack} title="Pack">
+            <Section icon={Backpack} title={text.sections.pack}>
               <Lines lines={plan.kit} />
             </Section>
           )}
@@ -345,7 +350,7 @@ export function TripPlanPanel() {
           />
           <SharePlanSection basics={requestBody} requestKey={query} />
           {plan.sources.length > 0 && (
-            <Section icon={Star} title="Built from">
+            <Section icon={Star} title={text.sections.sources}>
               <PlanLinks links={plan.sources} />
             </Section>
           )}

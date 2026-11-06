@@ -10,10 +10,13 @@ import { buildIcs } from '@/lib/plan-ics';
 import { buildPlanQuery } from '@/lib/plan-key';
 import type { SharedPlan } from '@/lib/plan-store';
 import type { TripInterest } from '@/types/trip';
+import { fmt } from '@/i18n/format';
+import type { PlanUiCopy } from '@/i18n/plan-ui/types';
+import { usePlanCopy } from './PlanCopy';
 
 const DAYPLAN_KEY = 'norgetravel-trip-dayplan';
 
-function resolveName(ref: string, facts: SharedPlan['facts']): string | null {
+function resolveName(ref: string, facts: SharedPlan['facts'], copy: PlanUiCopy): string | null {
   const [kind, ...rest] = ref.split(':');
   const id = rest.join(':');
   if (kind === 'activity') return facts.activities.find((a) => a.id === id)?.name ?? null;
@@ -21,7 +24,7 @@ function resolveName(ref: string, facts: SharedPlan['facts']): string | null {
   if (kind === 'stay') return facts.stays.find((a) => a.id === id)?.name ?? null;
   if (kind === 'leg') {
     const leg = facts.route.legs.find((l) => l.id === id);
-    return leg ? `${leg.from} to ${leg.to} (${leg.method.replace('-', ' ')})` : null;
+    return leg ? fmt(copy.shared.icsLeg, { from: leg.from, to: leg.to, method: copy.shared.methods[leg.method] }) : null;
   }
   if (kind === 'kit') return facts.kit.find((l) => l.id === id)?.text.slice(0, 80) ?? null;
   return null;
@@ -43,6 +46,8 @@ function download(filename: string, content: string, type: string) {
 /** Buttons under a shared plan: take it into your own planner, calendar, print, share. */
 export function SharedPlanActions({ plan, url }: { plan: SharedPlan; url: string }) {
   const { clearTrip, addItem, updateProfile } = useTrip();
+  const planCopy = usePlanCopy();
+  const text = planCopy.shared;
   const router = useLocalizedRouter();
   const [copied, setCopied] = useState(false);
   const [importing, setImporting] = useState(false);
@@ -64,14 +69,15 @@ export function SharedPlanActions({ plan, url }: { plan: SharedPlan; url: string
     updateProfile(profile);
     if (plan.dayPlan) {
       try {
-        const key = buildPlanQuery(profile, plan.basics.zones, plan.items.map((item) => item.id));
+        const key = buildPlanQuery(profile, plan.basics.zones, plan.items.map((item) => item.id), planCopy.locale);
         window.localStorage.setItem(DAYPLAN_KEY, JSON.stringify({ key, plan: { ...plan.dayPlan, facts: plan.facts } }));
       } catch {
         // Storage blocked: the day plan stays on this page only
       }
     }
     trackEvent('trip_plan_imported', { id: plan.id, items: plan.items.length, days: plan.dayPlan?.days.length ?? 0 });
-    setTimeout(() => router.push('/plan'), 150);
+    // The translated planner lives in the app; English plans open the site planner as before
+    setTimeout(() => router.push(planCopy.locale === 'en' ? '/plan' : '/app/plan/'), 150);
   };
 
   const calendar = () => {
@@ -80,12 +86,13 @@ export function SharedPlanActions({ plan, url }: { plan: SharedPlan; url: string
       uidBase: plan.id,
       title: plan.title,
       url,
+      labels: { day: text.icsDay, plan: text.icsPlan },
       days: plan.dayPlan.days.map((day) => ({
         day: day.day,
         date: day.date,
         title: day.title,
         summary: day.summary,
-        items: day.items.map((item) => resolveName(item.ref, plan.facts)).filter((name): name is string => Boolean(name)),
+        items: day.items.map((item) => resolveName(item.ref, plan.facts, planCopy)).filter((name): name is string => Boolean(name)),
       })),
     });
     download(`norge-travel-plan-${plan.id}.ics`, ics, 'text/calendar;charset=utf-8');
@@ -119,24 +126,24 @@ export function SharedPlanActions({ plan, url }: { plan: SharedPlan; url: string
           className={`${button} bg-gradient-to-r from-[#1B3A5C] to-[#00CC6A] font-bold text-white hover:shadow-lg hover:shadow-[#00CC6A]/30 hover:-translate-y-0.5 transition-all disabled:opacity-60`}
         >
           <Download className="h-4 w-4" aria-hidden="true" />
-          {importing ? 'Opening your planner' : 'Use this plan in my planner'}
+          {importing ? text.opening : text.use}
         </button>
         {plan.dayPlan && (
           <button type="button" onClick={calendar} className={`${button} border border-white/40 text-white hover:bg-white/10`}>
             <CalendarPlus className="h-4 w-4" aria-hidden="true" />
-            Calendar (.ics)
+            {text.calendar}
           </button>
         )}
         <button type="button" onClick={print} className={`${button} border border-white/40 text-white hover:bg-white/10`}>
           <Printer className="h-4 w-4" aria-hidden="true" />
-          Print or save as PDF
+          {text.print}
         </button>
         <button type="button" onClick={copy} className={`${button} border border-white/40 text-white hover:bg-white/10`}>
           {copied ? <Check className="h-4 w-4" aria-hidden="true" /> : <Copy className="h-4 w-4" aria-hidden="true" />}
-          {copied ? 'Link copied' : 'Copy link'}
+          {copied ? text.linkCopied : text.copyLink}
         </button>
       </div>
-      <ShareButtons url={url} title={plan.title} label="Send it" className="text-white" />
+      <ShareButtons url={url} title={plan.title} label={text.send} className="text-white" />
     </div>
   );
 }

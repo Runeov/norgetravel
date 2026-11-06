@@ -2,6 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Planner colour tokens, read by the `plan-*` Tailwind colours. These are the
+ * site's own planner colours; the /app section overrides them in
+ * src/components/modules/app/app-theme.css so the same planner components
+ * render in the app's themes. RGB channels, so opacity modifiers work.
+ */
+:root {
+  --plan-accent: 27 58 92;
+  --plan-solid: 27 58 92;
+  --plan-solid-hover: 21 48 77;
+  --plan-on-solid: 255 255 255;
+  --plan-highlight: 0 204 106;
+  --plan-grad-from: 27 58 92;
+  --plan-grad-to: 0 204 106;
+  --plan-danger: 211 47 47;
+  --plan-heading: 15 23 42;
+  --plan-strong: 30 41 59;
+  --plan-body: 51 65 85;
+  --plan-muted: 71 85 105;
+  --plan-subtle: 100 116 139;
+  --plan-faint: 148 163 184;
+  --plan-card: 255 255 255;
+  --plan-surface: 248 250 252;
+  --plan-chip: 241 245 249;
+  --plan-skeleton: 226 232 240;
+  --plan-line: 226 232 240;
+  --plan-line-strong: 203 213 225;
+  --plan-added: 223 247 234;
+  --plan-on-added: 17 100 63;
+  --plan-added-hover: 201 240 220;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #0f172a; /* slate-900 */

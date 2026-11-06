@@ -4,9 +4,12 @@ import type { TripProfile } from '@/types/trip';
  * The query string the plan panel sends to the suggest route. It doubles as
  * the key a written day-by-day plan is matched against, so a shared plan that
  * is imported with the same basics and items lands as current, not stale.
+ * A plan in another language is a different plan, so the language is part of
+ * the key; English leaves it out, which keeps keys written before it valid.
  */
-export function buildPlanQuery(profile: TripProfile, zones: string[], itemIds: string[]): string {
+export function buildPlanQuery(profile: TripProfile, zones: string[], itemIds: string[], lang = 'en'): string {
   const params = new URLSearchParams();
+  if (lang !== 'en') params.set('lang', lang);
   if (profile.startDate) params.set('start', profile.startDate);
   if (profile.endDate) params.set('end', profile.endDate);
   if (profile.travellers) params.set('travellers', String(profile.travellers));

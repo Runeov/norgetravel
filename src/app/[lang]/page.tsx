@@ -4,12 +4,16 @@ import ZoneExperts from '@/components/modules/home/ZoneExperts';
 import SustainableTravel from '@/components/modules/home/SustainableTravel';
 import DestinationsTeaser from '@/components/modules/home/DestinationsTeaser';
 import ContactPanel from '@/components/modules/home/ContactPanel';
+import WhatsOn from '@/components/modules/home/WhatsOn';
 import type { Metadata } from 'next';
 import { getSiteUrl } from '@/lib/site-url';
 import { getDictionary } from '@/i18n/get-dictionary';
 import { getSiteSeason, SEASON_HOME_META } from '@/lib/season';
 import { asLocale, brandTitle, localeAlternates } from '@/lib/i18n-seo';
 import { HOME_COPY } from '@/i18n/home-copy';
+import { EVENT_UI, eventRegionNames } from '@/i18n/events-copy';
+import { eventsStore } from '@/lib/admin/travel-events';
+import { buildCalendar } from '@/lib/event-calendar';
 
 // Re-render daily so the seasonal hero and metadata switch on the boundary dates
 export const revalidate = 86400;
@@ -26,6 +30,8 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
   const dict = await getDictionary(lang);
   const siteUrl = getSiteUrl();
   const season = getSiteSeason();
+  const eventUi = EVENT_UI[lang];
+  const events = buildCalendar(await eventsStore.getPublished(), { window: 'upcoming', locale: lang, ui: eventUi });
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -72,6 +78,12 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
       />
 
       <Hero dict={dict.home} copy={copy.hero} season={season} />
+      <WhatsOn
+        copy={copy.whatsOn}
+        events={events}
+        ui={{ onNow: eventUi.onNow, free: eventUi.free, tickets: eventUi.tickets, newTab: eventUi.newTab }}
+        regionNames={eventRegionNames(lang)}
+      />
       <EditorialPromise copy={copy.editorial} />
       <ZoneExperts copy={copy.experts} />
       <SustainableTravel copy={copy.sustainable} />

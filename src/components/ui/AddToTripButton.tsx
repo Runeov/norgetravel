@@ -5,6 +5,8 @@ import type { TripItem } from '@/types/trip';
 import { cn } from '@/lib/utils';
 import { Plus, Check } from 'lucide-react';
 import { trackEvent } from '@/lib/analytics';
+import { fmt } from '@/i18n/format';
+import { usePlanCopy } from '@/components/modules/plan/PlanCopy';
 
 interface AddToTripButtonProps {
   item: TripItem;
@@ -15,6 +17,7 @@ interface AddToTripButtonProps {
 
 export function AddToTripButton({ item, className, compact = false }: AddToTripButtonProps) {
   const { addItem, removeItem, isInTrip } = useTrip();
+  const text = usePlanCopy().add;
   const added = isInTrip(item.id);
 
   function handleClick() {
@@ -41,24 +44,24 @@ export function AddToTripButton({ item, className, compact = false }: AddToTripB
     <button
       onClick={handleClick}
       className={cn(
-        'inline-flex items-center justify-center gap-1.5 font-medium rounded-md min-h-[44px] transition-[transform,background-color,border-color,color] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1B3A5C] focus-visible:ring-offset-2 active:translate-y-px motion-reduce:transform-none motion-reduce:transition-none',
+        'inline-flex items-center justify-center gap-1.5 font-medium rounded-md min-h-[44px] transition-[transform,background-color,border-color,color] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-plan-accent focus-visible:ring-offset-2 active:translate-y-px motion-reduce:transform-none motion-reduce:transition-none',
         compact ? 'px-3 py-1.5 text-xs' : 'px-4 py-2 text-sm',
         added
-          ? 'bg-[#dff7ea] text-[#11643f] hover:bg-[#c9f0dc]'
-          : 'border border-[#1B3A5C] text-[#1B3A5C] hover:bg-[#1B3A5C]/5',
+          ? 'bg-plan-added text-plan-on-added hover:bg-plan-added-hover'
+          : 'border border-plan-accent text-plan-accent hover:bg-plan-accent/5',
         className
       )}
-      aria-label={added ? `Remove ${item.name} from trip` : `Add ${item.name} to trip`}
+      aria-label={fmt(added ? text.removeLabel : text.addLabel, { name: item.name })}
     >
       {added ? (
         <>
           <Check className="w-4 h-4" aria-hidden="true" />
-          Added
+          {text.added}
         </>
       ) : (
         <>
           <Plus className="w-4 h-4" aria-hidden="true" />
-          Add to trip
+          {text.add}
         </>
       )}
     </button>

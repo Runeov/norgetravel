@@ -6,6 +6,7 @@ import { TripReportsTabs } from '@/components/modules/TripReportsTabs';
 import articlesJson from '@/data/articles.json';
 import { tripReportRegion } from '@/lib/trip-report-region';
 import { localizedMetadata } from '@/lib/i18n-seo';
+import { GUIDE_SECTIONS, type GuideSectionId } from '@/lib/guide-sections';
 
 export const dynamic = 'force-static';
 
@@ -34,13 +35,6 @@ interface ArticleEntry {
   tags?: string[];
 }
 
-// Each hub section lists every published article in these categories
-const SECTION_CATEGORIES: Record<string, string[]> = {
-  safety: ['safety'],
-  'trip-reports': ['trip-reports'],
-  planning: ['planning', 'artikler'],
-};
-
 const publishedArticles = Object.values(articlesJson as Record<string, ArticleEntry>)
   .filter((a) => a.status === 'published')
   .sort((a, b) => (a.sortOrder ?? 999) - (b.sortOrder ?? 999));
@@ -53,12 +47,16 @@ const toListItem = (a: ArticleEntry) => ({
   status: 'published' as const,
 });
 
-const categoryMeta = [
-  {
-    id: 'safety',
-    title: 'Safety & Preparation',
-    description:
-      'The Fjellvettreglene, packing for Arctic conditions, winter driving rules, and Allemannsretten explained. Read before you go.',
+// Section styling; titles, descriptions and categories come from GUIDE_SECTIONS
+const sectionStyle: Record<GuideSectionId, {
+  icon: typeof Mountain;
+  color: string;
+  bgColor: string;
+  borderHover: string;
+  shadowHover: string;
+  ctaColor: string;
+}> = {
+  'safety': {
     icon: ShieldAlert,
     color: 'text-[#D32F2F]',
     bgColor: 'bg-red-50',
@@ -66,11 +64,7 @@ const categoryMeta = [
     shadowHover: 'hover:shadow-[#D32F2F]/10',
     ctaColor: 'text-[#D32F2F]',
   },
-  {
-    id: 'trip-reports',
-    title: 'Trip Reports',
-    description:
-      'First-person accounts from our editorial team. What actually happened, what went wrong, and what was worth every kilometer.',
+  'trip-reports': {
     icon: Compass,
     color: 'text-[#1A365D]',
     bgColor: 'bg-blue-50',
@@ -78,11 +72,7 @@ const categoryMeta = [
     shadowHover: 'hover:shadow-[#1A365D]/10',
     ctaColor: 'text-[#1A365D]',
   },
-  {
-    id: 'planning',
-    title: 'Planning Guides',
-    description:
-      'The logistics that make or break your trip, from the DNT cabin system to timing the Northern Lights season.',
+  'planning': {
     icon: Map,
     color: 'text-[#00D084]',
     bgColor: 'bg-emerald-50',
@@ -90,12 +80,15 @@ const categoryMeta = [
     shadowHover: 'hover:shadow-[#00D084]/10',
     ctaColor: 'text-emerald-700',
   },
-];
+};
 
-const categories = categoryMeta.map((cat) => {
-  const entries = publishedArticles.filter((a) => SECTION_CATEGORIES[cat.id].includes(a.category));
+const categories = GUIDE_SECTIONS.map((section) => {
+  const entries = publishedArticles.filter((a) => (section.categories as readonly string[]).includes(a.category));
   return {
-    ...cat,
+    ...sectionStyle[section.id],
+    id: section.id,
+    title: section.title,
+    description: section.description,
     articles: entries.map(toListItem),
     tripReports: entries.map((a) => ({ ...toListItem(a), region: tripReportRegion(a) })),
   };

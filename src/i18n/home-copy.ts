@@ -34,6 +34,16 @@ export interface DestinationCopy {
 
 export interface HomeCopy {
   hero: { trust: [string, string] };
+  whatsOn: {
+    heading: string;
+    intro: string;
+    onNow: string;
+    comingUp: string;
+    /** Shown in the "On now" column when nothing is running today */
+    nothingOn: string;
+    seeAll: string;
+    byRegion: string;
+  };
   editorial: { heading: string; intro: string; pillars: Record<'grit' | 'compass' | 'hearth', PillarCopy> };
   experts: {
     heading: string;
@@ -90,6 +100,15 @@ export interface HomeCopy {
 export const HOME_COPY: Record<Locale, HomeCopy> = {
   en: {
     hero: { trust: ['Local editors in five regions', 'Record 7.2M international visitors in 2025'] },
+    whatsOn: {
+      heading: "What's on in Norway",
+      intro: 'Festivals, races and fishing seasons with fixed dates. Add one to your trip and plan the days around it.',
+      onNow: 'On now',
+      comingUp: 'Coming up',
+      nothingOn: 'Nothing on our calendar is running today.',
+      seeAll: 'Full events calendar',
+      byRegion: 'By region',
+    },
     editorial: {
       heading: 'How we work',
       intro:
@@ -250,6 +269,15 @@ export const HOME_COPY: Record<Locale, HomeCopy> = {
 
   zh: {
     hero: { trust: ['五个地区的本地编辑', '2025年国际游客创纪录达720万人次'] },
+    whatsOn: {
+      heading: '挪威近期活动',
+      intro: '日期固定的节庆、赛事和捕鱼季。把活动加入行程，再围绕它安排其余几天。',
+      onNow: '正在进行',
+      comingUp: '即将开始',
+      nothingOn: '今天日历上没有正在进行的活动。',
+      seeAll: '完整活动日历',
+      byRegion: '按地区',
+    },
     editorial: {
       heading: '我们怎样写攻略',
       intro: '三条编辑原则，一条规矩：告诉旅行者需要知道的，而不是想听的。本站每一篇攻略，都由住在该地区的编辑撰写。',
@@ -406,6 +434,15 @@ export const HOME_COPY: Record<Locale, HomeCopy> = {
 
   ja: {
     hero: { trust: ['5つの地域に地元の編集者', '2025年の外国人旅行者は過去最多の720万人'] },
+    whatsOn: {
+      heading: 'ノルウェーのイベント情報',
+      intro: '日程の決まったフェスティバル、レース、漁のシーズン。イベントを旅程に追加して、前後の日程を組み立てましょう。',
+      onNow: '開催中',
+      comingUp: '今後の予定',
+      nothingOn: '今日開催中のイベントはありません。',
+      seeAll: 'イベントカレンダーをすべて見る',
+      byRegion: '地域から探す',
+    },
     editorial: {
       heading: '私たちの書き方',
       intro:

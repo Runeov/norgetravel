@@ -1,12 +1,12 @@
 import { createTravelStore } from './travel-base';
 import { EventSchema, type Event } from '@/lib/schemas/travel.events.schema';
 import type { Destination } from '@/lib/schemas/travel.shared';
+import { osloToday } from '@/lib/event-calendar';
 
 const base = createTravelStore<Event>('travel-events.json', EventSchema);
 
-function todayISO(): string {
-  return new Date().toISOString().slice(0, 10);
-}
+/** Event dates are Norwegian calendar days, so "today" is today in Norway. */
+const todayISO = osloToday;
 
 function effectiveEnd(event: Event): string {
   return event.endDate || event.startDate;
