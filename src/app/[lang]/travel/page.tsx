@@ -78,7 +78,7 @@ const destinations = [
     tagline: '78°N — the far Arctic',
     description:
       'Polar bears outnumber people 3:1. A direct 3-hour flight from Oslo lands you in Longyearbyen. Four months of polar night, four of midnight sun.',
-    image: '/pics/Svalbard/svalbard_banner.jpeg',
+    image: '/pics/svalbard/svalbard_banner.jpeg',
     imageAlt: 'Svalbard glacier meeting the Arctic sea with mountain backdrop',
     href: '/destinations/svalbard',
     color: '#00CC6A',
