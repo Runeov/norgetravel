@@ -8,6 +8,7 @@ import { ACTIVITY_SLUGS } from '@/data/fjord-tours';
 import { getSortedEmployees } from '@/lib/admin/employees';
 import { HREFLANG, localeUrl, staticPageLocales, type Locale } from '@/lib/i18n-seo';
 import { articleLocales } from '@/lib/article-locales';
+import { CALENDAR_WINDOWS, windowRoute } from '@/lib/event-calendar';
 
 // Public routes without dynamic segments. Leaves out /my-trip (per-visitor
 // planner) and /travel/guides (no listings yet).
@@ -40,6 +41,8 @@ const STATIC_PATHS = [
   'travel',
   'travel/accommodation',
   'travel/events',
+  // The calendar's season and date windows, each its own page
+  ...CALENDAR_WINDOWS.filter((window) => window !== 'upcoming').map(windowRoute),
   'travel/experiences',
   'travel/restaurants',
   'travel/transport',

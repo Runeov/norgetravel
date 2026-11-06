@@ -40,6 +40,9 @@ export function isUpcoming(event: Event): boolean {
  * Single day: "12 Jan 2026"
  * Same month: "12-15 Jan 2026"
  * Cross month: "28 Jan - 2 Feb 2026"
+ *
+ * Dates are calendar dates, which Date parses as midnight UTC, so they are read
+ * back in UTC. Local getters would show the previous day west of UTC.
  */
 export function formatEventDateRange(startDate: string, endDate?: string): string {
   const start = new Date(startDate);
@@ -48,24 +51,24 @@ export function formatEventDateRange(startDate: string, endDate?: string): strin
     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
   ];
 
-  const startDay = start.getDate();
-  const startMonth = months[start.getMonth()];
-  const startYear = start.getFullYear();
+  const startDay = start.getUTCDate();
+  const startMonth = months[start.getUTCMonth()];
+  const startYear = start.getUTCFullYear();
 
   if (!endDate) {
     return `${startDay} ${startMonth} ${startYear}`;
   }
 
   const end = new Date(endDate);
-  const endDay = end.getDate();
-  const endMonth = months[end.getMonth()];
-  const endYear = end.getFullYear();
+  const endDay = end.getUTCDate();
+  const endMonth = months[end.getUTCMonth()];
+  const endYear = end.getUTCFullYear();
 
   if (start.getTime() === end.getTime()) {
     return `${startDay} ${startMonth} ${startYear}`;
   }
 
-  if (start.getMonth() === end.getMonth() && start.getFullYear() === end.getFullYear()) {
+  if (start.getUTCMonth() === end.getUTCMonth() && start.getUTCFullYear() === end.getUTCFullYear()) {
     return `${startDay}-${endDay} ${startMonth} ${startYear}`;
   }
 

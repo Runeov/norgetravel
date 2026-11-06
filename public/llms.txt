@@ -10,13 +10,17 @@ NorgeTravel is an independent, authoritative local travel guide and mapping port
 - [Allemannsretten (Right to Roam)](https://norgetravel.com/travel-guides/safety/allemannsretten-right-to-roam): Legal rules for hiking, foraging, and wild camping in uncultivated outfields.
 - [DNT Cabin Guide](https://norgetravel.com/travel-guides/planning/dnt-cabin-guide): Practical handbook on how to get the DNT key, cabin categories, and mountain hut etiquette.
 - [Mountain Safety Code (Fjellvettreglene)](https://norgetravel.com/travel-guides/safety/fjellvettreglene-mountain-code): The 9 official rules for safe mountain crossing and winter survival.
-- [Winter Driving Guide](https://norgetravel.com/travel-guides/planning/winter-driving-norway-tires-chains-road-closures): Laws on winter tires, studded fees, and seasonal mountain pass closures.
+- [Winter Driving Guide](https://norgetravel.com/travel-guides/safety/winter-driving-norway-tires-chains-road-closures): Laws on winter tires, studded fees, and seasonal mountain pass closures.
 
 ## Destination Hubs
 - [Lofoten Islands](https://norgetravel.com/destinations/lofoten): Fishing villages, hiking paths, and cod-drying traditions.
 - [Svalbard](https://norgetravel.com/destinations/svalbard): High-Arctic glacier treks, polar bear safety, and Longyearbyen lodging.
 - [Alta](https://norgetravel.com/destinations/alta): Rock carvings, northern lights viewing, and the Sorrisniva Igloo Hotel.
 - [Geirangerfjord](https://norgetravel.com/destinations/fjords/geirangerfjord): Scenic boat cruises, waterfalls, and hiking paths.
+
+## Events and Trip Planning
+- [Events Calendar](https://norgetravel.com/en/travel/events/): Festivals, races and fishing seasons in Norway with fixed dates, in date order, with region, price and ticket links. Season pages: [next 90 days](https://norgetravel.com/en/travel/events/next-90-days/), [winter](https://norgetravel.com/en/travel/events/winter/), [summer](https://norgetravel.com/en/travel/events/summer/), [free entry](https://norgetravel.com/en/travel/events/free/).
+- [Trip Planner](https://norgetravel.com/en/plan/): Takes dates, destinations, interests, pace and car or no car, and returns the light and season for those dates, whether the pace fits, the route between regions, activities and events in season, stays and a packing list, each line linked to the guide it comes from.
 
 ## Interactive Travel Services
 - [Accommodation Map](https://norgetravel.com/travel/accommodation): Hotels, remote wilderness cabins, camping parks, and rorbuer.
